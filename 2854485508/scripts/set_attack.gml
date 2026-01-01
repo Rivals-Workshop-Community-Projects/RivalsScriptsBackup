@@ -1,3 +1,6 @@
+///#args attack
+//  ^ this line up here makes gmedit not freak out
+
 var player_marked = false;
 with (oPlayer) {
     if (("mamizou_mark_id" in self) && mamizou_mark_id == other.id) {

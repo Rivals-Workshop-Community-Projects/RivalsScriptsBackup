@@ -24,7 +24,5 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) {
 		sound_play(asset_get("sfx_zetter_shine_charged"));
 		sound_play(asset_get("sfx_gus_land"));
 		shake_camera(4, 8);
-		var fx = spawn_dust_fx(round(x), round(y - 64), asset_get("fx_parry_new"), 32);
-		fx.depth = 5;
 	}
 }

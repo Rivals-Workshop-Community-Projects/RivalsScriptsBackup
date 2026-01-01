@@ -60,6 +60,11 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
         soft_armor = 8;
     }
 }
+		    
+if ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) && fs_sound != noone) {
+	sound_stop(fs_sound);
+	fs_sound = noone;
+}
 current_sprite_set = masked ? 1 : 0;
 
 //Drac special compatability
@@ -110,15 +115,17 @@ var team_attack = get_match_setting(SET_TEAMATTACK);
 with (pHitBox) {
     if (object_index == oPlayer) continue;
     //Windboxes
-    if (player_id == other.id && attack == AT_NSPECIAL && hbox_num == 3)
+    if (player_id == other.id && ((attack == AT_NSPECIAL && hbox_num == 3) || (attack == 49 && hbox_num == 1)))
     {
         var player_list = collision_ellipse_list(bbox_left, bbox_top, bbox_right, bbox_bottom, oPlayer, 1, 1);
         if (player_list != noone) {
             for (var i = 0; i < ds_list_size(player_list); i++) {
-                var hplayer = player_list[|i]
-            	if (hitbox_timer == 1 && instance_exists(hplayer) && hplayer.player != orig_player && hplayer.state != PS_RESPAWN && (get_player_team(hplayer.player) != get_player_team(orig_player) || team_attack) && !hplayer.invincible && !hplayer.hurtboxID.dodging) {
-        	   		hplayer.hsp += lengthdir_x(kb_value, get_hitbox_angle(id));
-            		hplayer.vsp += lengthdir_y(kb_value, get_hitbox_angle(id));
+                var hplayer = player_list[|i];
+                var hbox_angle = 0;
+                with (hplayer) hbox_angle = get_hitbox_angle(other)
+            	if (hitbox_timer == 1 && instance_exists(hplayer) && hplayer.player != orig_player && hplayer.state != PS_RESPAWN && (get_player_team(hplayer.player) != get_player_team(orig_player) || team_attack) && !hplayer.invincible && !hplayer.hurtboxID.dodging && (groundedness == 0 || groundedness == hplayer.free+1)) {
+        	   		hplayer.hsp += lengthdir_x(kb_value, hbox_angle);
+            		hplayer.vsp += lengthdir_y(kb_value, hbox_angle);
             	}
             }
             ds_list_destroy(player_list);
@@ -170,13 +177,32 @@ if (drum_cooldown == 1) {
 		drum_cooldown ++
 }
 
-var rune_applied = has_rune("H")
+var rune_applied = has_rune("H");
+
+
+with (oPlayer) {
+	if ("ddd_respawn_protection" not in self)
+		ddd_respawn_protection = 0;
+		
+	if (id == other.id) continue;
+	if (state == PS_RESPAWN) {
+		ddd_respawn_protection = 20;
+	}
+	else {
+		if (ddd_respawn_protection > 0) {
+			ddd_respawn_protection--;
+		}
+		
+		if (!free) ddd_respawn_protection = 0;
+	}
+}
 
 with (obj_article3) {
     if (object_index != obj_article3) continue;
     if (player_id == other.id && hitstop == 0 && state == 0) {
         var player_list = ds_list_create();
         with (oPlayer) {
+			if (("ddd_respawn_protection" in self) && ddd_respawn_protection > 0) continue;
             var near = collision_line(other.collision_pos[0], other.collision_pos[1], other.collision_pos[2], other.collision_pos[3], id, 0, 0);
             ds_list_add(player_list, near);
         }

@@ -27,6 +27,17 @@ if (attack == AT_FSPECIAL && hbox_num = 1)
     }
 }
 
+//A dummy hitbox ensures the draw order is correct when somebody is transformed. Very hacky but it works.
+if (attack == AT_EXTRA_1 && hbox_num = 2)
+{
+    if (("mamizou_trans_obj" in self) && instance_exists(mamizou_trans_obj)) {
+        if (("mamizou_trans" in mamizou_trans_obj)) {
+            if (mamizou_trans_obj.mamizou_trans) hitbox_timer = 0;
+            mamizou_trans_obj.draw_y = room_height + 999;
+        }
+    }
+}
+
 //Final Smash
 if (attack == 49 && hbox_num = 1)
 {

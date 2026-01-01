@@ -810,7 +810,7 @@ switch (attack){
 		break;
 		case AT_DSPECIAL:
 		    can_fast_fall = false;
-		    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
+		    if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause) {
 				var fx = spawn_hit_fx(round(x),round(y),144);
 				var can_throw_drum = drum_cooldown == 0;
 				if (can_throw_drum) {
@@ -837,7 +837,7 @@ switch (attack){
 		break;
 		
 		case AT_TAUNT:
-			if(window = 2 && (window_timer == 1 || window_timer == 21)) {
+			if(window = 2 && (window_timer == 1 || window_timer == 21) && !hitpause) {
 				sound_play(sound_get("sfx_dedede_nair_hit"))
 			}
 			if (window == 1 && window_timer == 1 && !hitpause) {
@@ -848,18 +848,151 @@ switch (attack){
 		break;
 		
 		case AT_TAUNT_2:
-			if (window == 1) {
+			if (window == 1 && !hitpause) {
 				if (masked)
 					window = 4;
 			}
-			if(window = 2 && window_timer == 2) {
+			if(window = 2 && window_timer == 2 && !hitpause) {
 			    masked = true;
 			}
-			if(window = 4 && window_timer == 2) {
+			if(window = 4 && window_timer == 2 && !hitpause) {
 			    masked = false;
 			}
 		break;
     
+    	case 49:
+			hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+		    can_fast_fall = false;
+	    	can_move = false;
+	    	
+		    if (window == 1 && window_timer == 2 && !hitpause)
+		    {
+				fs_timer = 0;	
+		    	fs_loops = 0;
+		    	fs_sound = -1;
+		    }
+		    
+		    if (window == 2 && window_timer == 1 && !hitpause)
+		    {
+		    	fs_sound = sound_play(sound_get("sfx_final_smash_mus"))
+		    }
+		    
+		    if (window >= 3 && window <= 7 && !hitpause)
+		    {
+		    	if (!instance_exists(fs_hitbox))
+					fs_hitbox = create_hitbox(attack, 1, round(x), round(y));
+					
+				
+				fs_timer++;	
+				
+				if (fs_timer % floor((4 - fs_loops) * 10) == 0) {
+					var chosen = round(random_func(0, 2, false));
+					var rand_x =  (room_width / 2) + (-get_stage_data(SD_WIDTH) + random_func(1, get_stage_data(SD_WIDTH) * 2, true))
+					var rand_y =  y - 128 - (random_func(2, 256, true))
+					switch (chosen) {
+						case 0:
+							var hbox = create_hitbox(49, 4, round(rand_x), round(rand_y));
+							hbox.spr_dir = random_func(3, 100, true) > 50 ? -1 : 1
+							hbox.hsp = 8 * hbox.spr_dir;
+						break;
+						case 1:
+						case 2:
+							var hbox = instance_create(round(rand_x), round(rand_y), "obj_article1");
+							hbox.enem_id = chosen;
+							hbox.state = -1;
+							hbox.spr_dir = random_func(3, 100, true) > 50 ? -1 : 1
+						break;
+					}
+					var fx = spawn_hit_fx(floor(rand_x),floor(rand_y),304);
+					fx.pause = 8;
+				} 
+		    }
+		    
+		    if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)
+		    {
+		    	if (fs_loops >= 3) {
+			    	window = 8;
+			    	window_timer = 0;
+		    	}
+		    }
+		    
+		    
+		    if (window == 7 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1 && !hitpause)
+		    {
+		    	fs_loops++;
+		    	window = 3;
+		    	window_timer = 0;
+		    }
+		    
+		    if (window < 11)
+		    {
+		    	suppress_stage_music();
+		    }
+    	break;
+    
+    	case 48:
+			hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+		    can_fast_fall = false;
+	    	can_move = window == 4;
+	    	
+		    if (window == 1 && window_timer == 2 && !hitpause)
+		    {
+				fs_timer = 0;	
+		    	fs_loops = 0;
+		    }
+		    
+		    if (window >= 2 && window <= 3 && !hitpause) {
+		    	
+		    	var fs_move_speed = window == 3 ? 12 : 4;
+		    	var fs_move_accel = 0.5;
+		    	var fs_jump_speed = -9;
+		    	var fs_time = 180;
+				
+		    	if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1) {
+		    		attack_end();
+		    		fs_loops++;
+		    		if (fs_loops > 2) {
+		    			window = 3; 
+		    			window_timer = 0;
+		    		}
+		    	}
+	    	
+	    		if (get_gameplay_time() % (window == 3 ? 6 : 9) == 0) {
+					var dust = spawn_base_dust(round(x), round(y), "land")
+	    		}
+	    		var move_sign = sign(right_down - left_down)
+				hsp += fs_move_accel * move_sign
+				hsp = clamp(hsp, -fs_move_speed, fs_move_speed);
+				
+				if (window == 2) {
+					vsp = min(vsp, 4);
+				}
+				
+				if (window == 3) {
+			    	fs_timer++;
+			    	
+					if (window_timer == 7)
+						sound_play(asset_get("sfx_spin"), false, 0, 0.5, 0.95);
+					if (!free) {
+				        if (jump_pressed || (up_pressed && can_tap_jump())) {
+				        	vsp = fs_jump_speed;
+				        }
+					}
+					
+					x = clamp(x, 16, room_width - 16);
+					y = min(y, room_height - 16);
+					
+					if (y > room_height - 32) {
+						vsp = fs_jump_speed * 2;
+					}
+				
+		    		if (fs_timer >= fs_time && y <= room_height - 64) {
+		    			window = 4; 
+		    			window_timer = 0;
+		    		}
+				}
+		    }
+	    break;
 }
 
 if (get_window_value(attack, window, AG_MUNO_ATTACK_COOLDOWN) > 0)

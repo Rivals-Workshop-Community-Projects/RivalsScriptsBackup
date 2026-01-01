@@ -1,7 +1,7 @@
-//Gordo
+//Gordo/Final Smash Dee/Doo
 
 //Sprite
-sprite_index = sprite_get("gordo");
+sprite_index = asset_get("empty_sprite");
 mask_index = sprite_get("gordo_mask");
 current_sprite_set = 0;
 num_sprite_sets = 3;
@@ -13,10 +13,15 @@ uses_shader = false;
 unbashable = false;
 
 //State
+enem_id = 0; //0 = gordo; 1 = dee; 2 = doo
 state = 0; //0 = Initial bounce; 1 = Stuck; 2 = Reflected
 state_timer = 0;
 window = 0;
 window_timer = 0;
+
+spr_name = "dee";
+despawn_timer = 0;
+DESPAWN_TIME = 500;
 
 //Variables
 bounce_multiplier = 0.9; //Multiply bonces by this amount.

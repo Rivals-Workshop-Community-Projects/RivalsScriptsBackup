@@ -138,12 +138,17 @@ nspecial_kb_mult = 0;
 nspecial_in_hitstun = false;
 
 //FSpecial
+fspecial_cooldown = 0;
+fspecial_frames = 120;
+fspecial_frames_killed = 240;
+
 follower_max = 2; //Amount of gordos on screen at a time.
 follower_angle_min = 15; //Minimum gordo aiming angle.
 follower_angle_def = 45; //Default gordo aiming angle.
 follower_angle_max = 85; //Maximum gordo aiming angle.
 follower_throw_speed = 12;
 follower_held = noone;
+
 var follower_amount = 1
 for (var i = 0; i < follower_amount; i++) {
     for (var j = 0; j <= 49; j++) {
@@ -179,7 +184,7 @@ taunt_loops = 0;
 //other
 alt_glow_timer = 0;
 
-//set_victory_theme(sound_get("victory")); //Temporarily disable for Vortex
+set_victory_theme(sound_get("victory")); //Temporarily disable for Vortex
 set_victory_bg(sprite_get("victory_bg"));
 
 

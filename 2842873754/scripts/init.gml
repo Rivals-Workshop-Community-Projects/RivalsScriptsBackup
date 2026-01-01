@@ -262,7 +262,6 @@ checked_sprite_names = [
 
 //Compatability
 //Mt. Dedede
-arena_title = "Champion"
 arena_short_name = "King Dedede"
 
 //Dracula
@@ -270,6 +269,15 @@ arena_short_name = "King Dedede"
 dracula_portrait = sprite_get("dracula_portrait");
 dracula_portrait2 = sprite_get("dracula_portrait2");
 
+superTrue = false;
+
+fs_char_portrait_y = 96;
+fs_char_chosen_final_smash = "custom";
+fs_loops = 0;
+fs_sound = noone;
+fs_timer = 0;
+fs_hitbox = noone;
+fs_attack_index = 49;
 //Below code from MunoPhone API.
 #define initIndexes()
 

@@ -1,8 +1,17 @@
-state_machine();
+
+switch (enem_id) {
+	case 1:
+	case 2:
+		state_machine_dee();
+	break;
+	default:
+		state_machine_gordo();
+	break;
+}
 
 with (pHitBox) {
     if (player_id != other.player_id) continue;
-    if ("owner" in self && owner == other.id && attack == AT_FSPECIAL) {
+    if ("owner" in self && owner == other.id && (attack == AT_FSPECIAL || attack == 49)) {
     	if (hitbox_timer > 1)
         	hitbox_timer = 1;
         if (other.hitstop > 0)
@@ -54,7 +63,9 @@ if (destroyed) {
     exit;
 }
 
-#define state_machine()
+#define state_machine_gordo()
+sprite_index = sprite_get("gordo");
+mask_index = sprite_get("gordo_mask");
 if (hitstop > 0) return;
 state_timer ++;
 window_timer++;
@@ -72,25 +83,33 @@ switch(state) {
 		physics_update();
 		
 		if (state_timer == 4) {
+        	var _can_hit = instance_exists(my_hbox) ? array_clone(my_hbox.can_hit) : -1;
         	art_destroy_hitboxes();
         	my_hbox = create_article_hitbox(AT_FSPECIAL, 3, round(x), round(y))
             my_hbox.can_hit_self = true;
-            my_hbox.player = reflect_player;
-            for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
-                my_hbox.can_hit[@ my_hbox.player] = false;
+            my_hbox.player = reflect_player;  
+            if (_can_hit == -1) {
+				for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
+				    my_hbox.can_hit[@ i] = true;
+				}
+			    my_hbox.can_hit[@ my_hbox.player] = false;
+            }
+            else {
+            	my_hbox.can_hit = _can_hit;
             }
             my_hbox.spr_dir = 1;
         }
         if (state_timer == 64) {
-        	var _can_hit = instance_exists(my_hbox) ? my_hbox.can_hit : -1;
+        	var _can_hit = instance_exists(my_hbox) ? array_clone(my_hbox.can_hit) : -1;
         	art_destroy_hitboxes();
         	my_hbox = create_article_hitbox(AT_FSPECIAL, 4, round(x), round(y))
             my_hbox.can_hit_self = true;
             my_hbox.player = reflect_player;
             if (_can_hit == -1) {
-	            for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
-	                my_hbox.can_hit[@ my_hbox.player] = false;
-	            }
+				for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
+				    my_hbox.can_hit[@ i] = true;
+				}
+			    my_hbox.can_hit[@ my_hbox.player] = false;
             }
             else {
             	my_hbox.can_hit = _can_hit;
@@ -202,11 +221,132 @@ if (y > room_height + 32) {
 }
 
 if (getting_bashed) {
-    refle = bashed_id.player;
+    was_parried = true;
+    reflect_player_prev = reflect_player;
+    reflect_player_id_prev = reflect_player_id;
+    reflect_player = bashed_id.player;
+    reflect_player_id = bashed_id;
     hit_already = true;
     state = 0;
     state_timer = 0;
-    if (instance_exists(hitbox)) instance_destroy(hitbox);
+    if (instance_exists(my_hbox)) instance_destroy(my_hbox);
+}
+
+
+#define state_machine_dee()
+mask_index = asset_get("ex_guy_collision_mask");
+image_angle = 0;
+image_blend = c_white;
+image_alpha = 1;
+
+if (hitstop > 0) return;
+state_timer ++;
+window_timer++;
+
+if (!instance_exists(my_hbox)) {
+	art_destroy_hitboxes();
+	var _num = enem_id == 1 ? 2 : 3;
+	my_hbox = create_article_hitbox(49, _num, round(x), round(y))
+	my_hbox.can_hit_self = true;
+	my_hbox.player = reflect_player;
+	for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
+	    my_hbox.can_hit[@ i] = true;
+	}
+    my_hbox.can_hit[@ my_hbox.player] = false;
+	my_hbox.spr_dir = spr_dir;
+	my_hbox.y_pos = -32;
+}
+
+my_hbox.spr_dir = hsp != 0 ? sign(hsp) : 1;
+
+switch (state) {
+    case -1:
+		spr_name = enem_id == 1 ? "dee" : "doo";
+		walk_speed = 8;
+		walk_accel = 0.5;
+		max_fall = 10;
+		grav = 0.4;
+		frict = 0.5;
+		air_frict = 0;
+		art_state_set(0);
+	break;  
+    case 0: //Falling
+        sprite_index = art_sprite_get("spinhurt");
+        image_index += 0.25;
+		physics_update();
+        if (free) {
+	    	hsp = 0;
+	        art_state_set(1);
+		}	
+    break;
+    case 1: //Landing
+        physics_update();
+        sprite_index = art_sprite_get("land"); 
+        image_index = ease_linear(0, image_number, state_timer, 11);
+        if (state_timer >= 10) {
+            art_state_set(2);
+        }
+    break;
+    case 2: //Walking
+        physics_update();	
+        if (free) {
+	    	hsp = 0;
+	        art_state_set(3);
+		}	
+        else {
+            if (window == 1) {
+                
+                hsp += walk_accel * spr_dir;
+                hsp = clamp(hsp, -walk_speed, walk_speed);
+                var wall_r = place_meeting(bbox_right+1, bbox_bottom - 2, asset_get("par_block"));
+                var wall_l = place_meeting(bbox_left-1, bbox_bottom - 2, asset_get("par_block"));
+        		
+                sprite_index = art_sprite_get("walk");
+                image_index += 0.15;
+                
+    			if ((wall_r && hsp > 0) || (wall_l && hsp < 0)) {
+                    hsp = 0;
+                    art_window_set(2);
+                    spr_dir = -spr_dir;
+                }
+            }
+            if (window == 2) {
+                sprite_index = art_sprite_get("walkturn");
+                image_index = ease_linear(0, image_number, window_timer, 7);
+                if (window_timer >= 6) {
+                    art_window_set(1);
+                }
+            }
+        }
+    break;
+    case 3: //Jumping
+        sprite_index = art_sprite_get("jump");
+        physics_update();
+        
+        image_index = ease_linear(0,image_number-1,floor(vsp+max_fall), max_fall*2);
+        
+		if (!free) {
+		    art_state_set(1);
+		}	
+    break;
+    case 4: //Disappearing
+		spawn_hit_fx(round(x), round(y), 144);
+    	destroyed = true;
+    break
+}
+
+if (state != 0)
+	despawn_timer ++;
+
+if (despawn_timer >= DESPAWN_TIME-60 && despawn_timer % 4 <= 2) {
+    visible = !visible;
+}
+if (despawn_timer >= DESPAWN_TIME) {
+    art_state_set(4);
+}
+
+if ((player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND) || player_id.attack != 49) {
+    art_state_set(4);
 }
 
 #define drum_detection()
@@ -254,9 +394,11 @@ window_timer = 0;
 window = _window;
 window_timer = 0;
 
+#define art_sprite_get(_sprite) //Get the sprite of this article
+return sprite_get(string(spr_name)+"_"+string(_sprite));
+
 #define art_got_hit(hbox)
 //This article was hit
-art_destroy_hitboxes();
 art_state_set(0);
 was_parried = true;
 hit_already = true;
@@ -267,7 +409,7 @@ reflect_player = hbox.player;
 reflect_player_id = hbox.last_player_id;
 
 if (hbox.no_other_hit != 0 && reflect_player_prev != 0)
-reflect_player_id.can_be_hit[reflect_player_prev] = hbox.no_other_hit + reflect_player_id_prev.hitstop;
+	reflect_player_id.can_be_hit[reflect_player_prev] = hbox.no_other_hit + reflect_player_id_prev.hitstop;
 
 #define on_hit(hbox)
 // This is the code the article should run on hit.
@@ -355,11 +497,11 @@ with hbox {
     var player_equal = player == other.reflect_player;
     var team_equal = get_player_team(player) == get_player_team(other.player_id.player);
     var url_equal = player_id.url == other.player_id.url && get_char_info(player_id.player, INFO_STR_NAME) == get_char_info(other.player, INFO_STR_NAME);
-    return ("owner" not in self || (owner != other)) //check if the hitbox was created by this article
+    return (("owner" not in self) || (!instance_exists(owner) || (owner != other && owner.reflect_player != other.reflect_player))) //check if the hitbox was created by this article
         && hit_priority != 0 && hit_priority <= 10
         && hitstun_factor >= 0
         && (groundedness == 0 || groundedness == 1+other.free)
-        //&& (!player_equal || other.reflect_player != other.player_id.player) //uncomment to prevent the article from being hit by its owner.
+       // && (!player_equal || player_id_equal)
         //&& ( (get_match_setting(SET_TEAMS) && (get_match_setting(SET_TEAMATTACK) || !team_equal) ) || player_equal) //uncomment to prevent the article from being hit by its owner's team.
 }
 
@@ -375,6 +517,7 @@ for (var i = 0; i < array_length(hbox.can_hit); i++) {
 hbox.spr_dir = spr_dir;
 hbox.x_pos = (hbox.x - x);
 hbox.y_pos = (hbox.y - y);
+
 return hbox;
 
 #define art_destroy_hitboxes()

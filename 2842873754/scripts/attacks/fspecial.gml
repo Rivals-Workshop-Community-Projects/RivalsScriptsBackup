@@ -110,8 +110,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_FSPECIAL, 3, HG_THROWS_ROCK, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_LOCKOUT, 25);
+set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_LOCKOUT, 15);
 
 set_hitbox_value(AT_FSPECIAL, 4, HG_MUNO_HITBOX_NAME, "Gordo (Thrown, Late)");
 set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_TYPE, 2);
@@ -138,8 +137,7 @@ set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FSPECIAL, 4, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_FSPECIAL, 4, HG_THROWS_ROCK, 2);
 set_hitbox_value(AT_FSPECIAL, 4, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FSPECIAL, 4, HG_PROJECTILE_PLASMA_SAFE, 1);
-set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_LOCKOUT, 25);
+set_hitbox_value(AT_FSPECIAL, 4, HG_HIT_LOCKOUT, 15);
 
 set_hitbox_value(AT_FSPECIAL, 5, HG_MUNO_HITBOX_NAME, "Gordo (Wall Stuck)");
 set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_TYPE, 2);
@@ -165,6 +163,6 @@ set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_FSPECIAL, 5, HG_VISUAL_EFFECT, 0);
 set_hitbox_value(AT_FSPECIAL, 5, HG_THROWS_ROCK, 2);
-set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_LOCKOUT, 25);
+set_hitbox_value(AT_FSPECIAL, 5, HG_HIT_LOCKOUT, 15);
 set_hitbox_value(AT_FSPECIAL, 5, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_FSPECIAL, 5, HG_IGNORES_PROJECTILES, 1);

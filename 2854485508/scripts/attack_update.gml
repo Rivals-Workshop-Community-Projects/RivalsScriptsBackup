@@ -144,21 +144,37 @@ switch (attack){
 		if (window == 1 && window_timer == 1 && free && !hitpause) {
 			vsp += 1;
 		}
-	    
-	    var num_fellas = 0;
-	    with (obj_article2) {
-	    	if (player == other.player && player_id == other.id) {
-	    		num_fellas++;
-	    	}
-	    }
-	    
-	    if (window == 1 && window_timer == window_mul && !hitpause && num_fellas < follower_max) {
-			follower_held = instance_create(round(x), round(y), "obj_article2");
-			follower_held.x = round(x + 36 * spr_dir);
-			follower_held.y = round(y - 34);
-			follower_held.state = PS_SPAWN;
-			follower_held.spr_dir = spr_dir;
-			follower_held.enem_id = 0;
+		
+	    if (window == 1 && window_timer == window_mul && !hitpause) {
+	    	var num_fellas = 0;
+	    	var collided_with = noone;
+			with (obj_article2) {
+				num_fellas++;
+				if (player == other.player && player_id == other.id) {
+					if (place_meeting(x, y, other)) {
+						collided_with = id;
+						break;
+					}
+				}
+			}
+			if (instance_exists(collided_with)) {
+				follower_held = collided_with;
+				follower_held.x = round(x + 36 * spr_dir);
+				follower_held.y = round(y - 34);
+				follower_held.next_state = PS_SPAWN;
+				follower_held.spr_dir = spr_dir;
+				follower_held.spawn_hitbox = true;
+			}
+			else {
+				if (num_fellas < follower_max && fspecial_cooldown % fspecial_frames == 0) {
+					follower_held = instance_create(round(x), round(y), "obj_article2");
+					follower_held.x = round(x + 36 * spr_dir);
+					follower_held.y = round(y - 34);
+					follower_held.state = PS_SPAWN;
+					follower_held.spr_dir = spr_dir;
+					follower_held.enem_id = 0;
+				}
+			}
 	    }
 	    
 	    if (window == 1 && instance_exists(follower_held)) {
@@ -196,7 +212,9 @@ switch (attack){
 				follower_held.orig_knock = follower_throw_speed;
 				follower_held.state_timer = 0;
 				follower_held.spr_dir = spr_dir;
-	    		follower_held = noone
+	    		follower_held = noone;
+	    		if (num_fellas < follower_max)
+	    			fspecial_cooldown = fspecial_frames;
 	    	}
 	    }
 		if (free) {

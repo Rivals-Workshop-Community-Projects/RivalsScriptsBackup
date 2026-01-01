@@ -72,3 +72,9 @@ if (attack == AT_EXTRA_1 && hbox_num == 1)
 {
 	vsp *= air_friction
 }
+
+if (attack == 49 && hbox_num == 4) {
+	if ((player_id.state != PS_ATTACK_AIR && player_id.state != PS_ATTACK_GROUND) || player_id.attack != 49) {
+	   destroyed = true;
+	}
+}

@@ -35,6 +35,8 @@ fx_change(AT_DAIR, 1, 20);
 fx_change(AT_DAIR, 2, 197);
 fx_change(AT_DAIR, 3, 197);
 
+fs_attack_index = masked ? 48 : 49;
+
 #define fx_change(_move, _hitbox, _effect)
 if (masked) {
 	set_hitbox_value(_move, _hitbox, HG_VISUAL_EFFECT, _effect);

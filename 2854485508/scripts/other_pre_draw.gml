@@ -25,7 +25,7 @@ var img = 0;
 with (other_player_id) {
     var spr = sprite_get("tanuki_hurt");
     var img = 0;
-    var scale = 0;
+    var scale = 1;
     var mamizou_transform_sprite = 0;
     
     if (variable_instance_exists(other, "mamizou_transform_spr"))  { //A compatible character

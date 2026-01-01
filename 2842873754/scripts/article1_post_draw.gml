@@ -1,4 +1,15 @@
 //Gordo color change
+switch (enem_id) {
+	case 1:
+	case 2:
+		draw_dee();
+	break;
+	default:
+		draw_gordo();
+	break;
+}
+
+#define draw_gordo()
 with (player_id) {
     draw_sprite_ext(sprite_get("gordo_white"), other.image_index, other.x, other.y, other.image_xscale * other.spr_dir, other.image_yscale, other.image_angle, get_player_hud_color(other.reflect_player), other.image_alpha)
 }
@@ -91,3 +102,6 @@ if (need_draw)
     draw_sprite_ext(sprite,image,x_draw,y_draw, 1, 1, 0, get_player_hud_color(player_id.player), 1);
     draw_sprite(sprite_get("gordo_offscreen"),0,x_draw,y_draw);
 }
+
+#define draw_dee()
+//le nothing

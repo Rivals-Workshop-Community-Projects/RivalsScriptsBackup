@@ -20,6 +20,9 @@ uses_shader = true;
 
 collision_box = asset_get("ex_guy_collision_mask");
 char_height = 52;
+
+destroyed = false;
+
 //Stats
 able_to_crouch = false;
 able_to_shield = false;
@@ -100,6 +103,7 @@ up_down = 0;
 left_down = 0;
 right_down = 0;
 jump_down = 0;
+jump_held = 0;
 attack_down = 0;
 shield_down = 0;
 taunt_down = 0;
@@ -148,3 +152,7 @@ super_armor = false;
 soft_armor = 0;
 enemy_hitboxID = noone;
 hitpoints = 0;
+was_parried = false;
+invincible = 0;
+invince_type = 0;
+hurt_img = 0;

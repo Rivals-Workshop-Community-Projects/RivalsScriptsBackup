@@ -1,4 +1,4 @@
-//Dees and doos (used for Final Smash and Runes)
+//Dees and doos (used for Runes)
 idle_anim_speed = .15;
 crouch_anim_speed = .1;
 walk_anim_speed = .25;

@@ -21,8 +21,8 @@ if (my_hitboxID.attack == AT_DSPECIAL || (my_hitboxID.attack == 49 && (("mamizou
     if ((!("mamizou_trans" in hit_player_obj) || !hit_player_obj.mamizou_trans) && !hit_player_obj.super_armor && hit_player_obj.soft_armor == 0) {
         hit_player_obj.mamizou_trans = true;
         hit_player_obj.mamizou_trans_damage = 0;
-	    hit_player_obj.mamizou_draw_y = draw_y;
-	    hit_player_obj.mamizou_mark_id = noone;
+	    var _hbox = create_hitbox(AT_EXTRA_1, 2, 0, 0);
+	    _hbox.mamizou_trans_obj = hit_player_obj;
         var fx = spawn_hit_fx(round(hit_player_obj.x), round(hit_player_obj.y - 48), hfx_leaf_heavy)
         fx.depth = hit_player_obj.depth - 3;
     }

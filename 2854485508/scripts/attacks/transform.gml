@@ -23,3 +23,26 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
+
+//A literal dummy hitbox
+set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_EXTRA_1, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_X, 0);
+set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_EXTRA_1, 2, HG_WIDTH, 0);
+set_hitbox_value(AT_EXTRA_1, 2, HG_HEIGHT, 0);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PRIORITY, 0);
+set_hitbox_value(AT_EXTRA_1, 2, HG_DAMAGE, 0);
+set_hitbox_value(AT_EXTRA_1, 2, HG_ANGLE, 0);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_MASK, asset_get("empty_sprite"));
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1);

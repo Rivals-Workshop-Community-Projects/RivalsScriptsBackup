@@ -107,7 +107,7 @@ with (pHitBox) {
 	
     //Follower
     if ("follower_owner" in self && player_id == other.id && type == 1) {
-        if (instance_exists(follower_owner)) {	
+        if (instance_exists(follower_owner) && !follower_owner.destroyed) {	
         	destroyed = false;
             var x_off = 0;
             var y_off = 0;
@@ -148,6 +148,21 @@ with (pHitBox) {
     }
 }
 
+
+if (fspecial_cooldown > 0) {
+	var num_fellas = 0;
+	with (obj_article2) {
+		if (player == other.player && player_id == other.id) {
+			num_fellas++;
+		}
+	}
+	
+	if (num_fellas < follower_max)
+		fspecial_cooldown--;
+}
+	    
+	    
+
 if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) {
 	dspecial_counter_active = false;
 }
@@ -177,7 +192,6 @@ with (oPlayer) {
 	    || hitstun <= 0) && !hitpause {
 	    	mamizou_trans = false;
 	    	mamizou_trans_damage = 0;
-	    	draw_y = mamizou_draw_y;
 	    	with (other) {
 		        var fx = spawn_hit_fx(round(other.x), round(other.y - 48), hfx_leaf_heavy)
 		        fx.depth = other.depth - 3;
@@ -189,10 +203,6 @@ with (oPlayer) {
 		if (state == PS_RESPAWN || state == PS_DEAD) {
 	    	mamizou_trans = false;
 	    	mamizou_trans_damage = 0;
-	    	draw_y = mamizou_draw_y;
-		}
-		else {
-			draw_y = room_height + 999;
 		}
 	}
 	
@@ -203,7 +213,7 @@ with (oPlayer) {
 	}
 }
 
-if(taunt_down && shield_down)
+if(taunt_down)
 	set_victory_portrait(sprite_get("portrait2"));
 else
 	set_victory_portrait(sprite_get("portrait"));

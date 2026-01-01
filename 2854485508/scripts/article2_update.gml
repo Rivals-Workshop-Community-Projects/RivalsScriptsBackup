@@ -13,18 +13,23 @@ if (!_init) {
     hitpoints = hitpoints_max;
     _init = true;
 }
+
+if (x <= -64 || x > room_width + 64) {
+	destroyed = true;
+}
+
+if (y > room_height + 64) {
+	destroyed = true;
+}
+
 reset_variables()
 ai_update();
 state_machine();
 //print(get_state_name(state));
 physics_update();
 
-if (x <= -64 || x > room_width + 64) {
-	instance_destroy(id)
-	exit;
-}
 
-if (y > room_height + 64) {
+if (destroyed) {
 	instance_destroy(id)
 	exit;
 }
@@ -685,16 +690,22 @@ next_attack = -1;
  
 //Default hit stuff
 sound_play(hbox.sound_effect);
-var fx = spawn_hit_fx(floor(x+hbox.hit_effect_x),floor(y+hbox.hit_effect_y),floor(hbox.hit_effect == 0 ? 301 : hbox.hit_effect));
-fx.pause = 8;
+with (hbox.player_id) {
+	var fx = spawn_hit_fx(floor(other.x+hbox.hit_effect_x),floor(other.y+hbox.hit_effect_y),floor(hbox.hit_effect == 0 ? 301 : hbox.hit_effect));
+	fx.pause = 8;
+}
  
+hit_player_obj = hbox.player_id;
 hit_player_num = hbox.player;
 owned_player = hit_player_num;
  
+
 //Default Hitpause Calculation
 //You probably want this stuff because it makes the hit feel good.
+var desired_hitstop = get_hitstop_formula(0, hbox.damage, hbox.hitpause, hbox.hitpause_growth, hbox.extra_hitpause)
+var desired_hitstop = min(desired_hitstop, 20)
+
 if hbox.type == 1 {
-    var desired_hitstop = get_hitstop_formula(percent, hbox.damage, hbox.hitpause, hbox.hitpause_growth, hbox.extra_hitpause)
     with hbox.player_id {
         if !hitpause {
             old_vsp = vsp;
@@ -712,7 +723,7 @@ if hbox.type == 1 {
 // If your article does not already account for being in hitpause, either make it stop what it's doing in hitpause
 // or comment out the line below.
 hitstop = floor(desired_hitstop); 
- 
+hitstop = min(hitstop, 20)
 
 //Hit Lockout
 if article_should_lockout hit_lockout = hbox.no_other_hit;

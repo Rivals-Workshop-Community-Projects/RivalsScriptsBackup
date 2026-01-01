@@ -39,9 +39,13 @@ switch (enem_id) {
                 walk_accel = 0.5;
                 walk_turn_time = 6;
                 ground_friction = .6;
-                hitpoints_max = 10;
+                hitpoints_max = 8;
                 hitbox = noone;
                 spawn_hitbox = true;
+                reflect_player_prev = player;
+                reflect_player_id_prev = player_id;
+                reflect_player = player;
+                reflect_player_id = player_id;
                 
                 jump_start_time = 5;
                 jump_speed = 11;
@@ -244,23 +248,41 @@ switch (enem_id) {
                     }
                 }
                 
-                if (hitstun > 0) { 
-                    if (spawn_hitbox) {
-                        if (!instance_exists(hitbox))
-                        {
-                            hitbox = create_article_hitbox(AT_FSPECIAL, 1, floor(x), floor(y - 64));
+                if (hitstun > 0 && spawn_hitbox) { 
+                    if (!instance_exists(hitbox))
+                    {
+                        hitbox = create_article_hitbox(AT_FSPECIAL, 1, floor(x), floor(y - 64));
+                        hitbox.can_hit_self = true;
+                        hitbox.player = reflect_player;
+                        for (var i = 0; i < array_length(hitbox.can_hit); i++) {
+                            hitbox.can_hit[@ hitbox.player] = false;
+                        }
+                    }
+                    else {
+                        with (hitbox) {
+                            if (hitbox_timer > 1)
+                            	hitbox_timer = 1;
                         }
                     }
                     
                     if (!free) {
-                        spawn_hitbox = false
                         if (instance_exists(hitbox)) instance_destroy(hitbox);
                     }
                 }
-            break;
-            
-            case EN_EVENT.ATTACK_UPDATE:
+                else {
+                    if (instance_exists(hitbox)) instance_destroy(hitbox);
+                }
                 
+                if (x <= -64 || x > room_width + 64) {
+                	destroyed = true;
+                }
+                
+                if (y > room_height + 64) {
+                	destroyed = true;
+                }
+            break;
+            case EN_EVENT.GOT_HIT:
+                spawn_hitbox = false
             break;
             case EN_EVENT.ANIMATION:
                 if (state == PS_SPAWN) {
@@ -281,6 +303,7 @@ switch (enem_id) {
                 if (instance_exists(hitbox)) instance_destroy(hitbox);
                 mamizou_mark_id = noone;
                 standard_death()
+	    		player_id.fspecial_cooldown = player_id.fspecial_frames_killed;
             break;
         }
     break;
@@ -333,8 +356,7 @@ if hitstop > 0 {
     if (state_timer > 80)
     {
     	spawn_hit_fx(round(x), round(y - 32), player_id.hfx_leaf );
-    	instance_destroy(id);
-    	exit;
+        destroyed = true;
     }
 }
 #define enemy_sprite_get(_name,_sprite) //Get the sprite of this article

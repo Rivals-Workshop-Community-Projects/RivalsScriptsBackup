@@ -56,6 +56,8 @@ sprite_change_offset("uspecial_air", 48, 63, true);
 sprite_change_offset("dspecial", 48, 79, true);
 sprite_change_offset("taunt", 48, 63);
 sprite_change_offset("taunt2", 48, 63);
+sprite_change_offset("final_smash", 48, 63);
+sprite_change_offset("final_smash2", 48, 63, true);
 
 sprite_change_offset("plat", 56, 32);
 
