@@ -1,9 +1,9 @@
 // death.gml
 
-move_cooldown[AT_NSPECIAL] = 0;
-move_cooldown[AT_FSPECIAL] = 0;
+move_cooldown[AT_NSPECIAL] 	= 0;
+move_cooldown[AT_FSPECIAL] 	= 0;
 
-magic_meter = 50;
+magic_meter 				= 50;
 
 if (instance_exists(stormy_puff))
 {	

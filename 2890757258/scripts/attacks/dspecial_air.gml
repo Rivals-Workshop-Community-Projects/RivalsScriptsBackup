@@ -113,3 +113,4 @@ set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HITPAUSE_SCALING, 0.70);
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_DSPECIAL_AIR, 3, HG_ANGLE_FLIPPER, 6);

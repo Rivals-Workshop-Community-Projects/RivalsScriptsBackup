@@ -3,6 +3,7 @@
 muno_event_type = 1;
 user_event(14);
 
+//===============================================================================================
 //	Cheats Section
 
 //	Auto Meter
@@ -21,9 +22,9 @@ spr_dir = phone_cheats[CHEAT_WIDE] * sign(spr_dir);
 //	This pain will only make her sassier
 if phone_cheats[CHEAT_RECOIL] with pHitBox if player_id == other can_hit_self = 1;
 
-//=============================================================================
-
+//===============================================================================================
 //	Magic Meter Stuff
+
 if (state == PS_SPAWN)
 {
 	magic_meter = 100;
@@ -40,6 +41,9 @@ if (0 > magic_meter)
 { 
 	magic_meter = 0;
 }
+
+//===============================================================================================
+//  General stuff
 
 //	SFX thingy
 if (state == PS_CROUCH && state_timer == 1)
@@ -116,6 +120,8 @@ if (state == PS_IDLE)
 	}
 }
 
+//===============================================================================================
+
 //	CSS Button Toggle Control
 if (get_synced_var(player) == 1)
 {
@@ -126,6 +132,8 @@ if (get_synced_var(player) == 0)
 {
 	muted = false;
 }
+
+//===============================================================================================
 
 if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND && state_timer == 2))
 {
@@ -201,8 +209,7 @@ if has_rune("G")
 }
 
 //===============================================================================================
-
-//------------------------Dialogue Buddy-------------------------------------
+//  Dialogue Buddy
 
 if(variable_instance_exists(id,"diag"))
 {
@@ -211,34 +218,34 @@ if(variable_instance_exists(id,"diag"))
 	//	ADDING REGULAR DIALOGUE
     //	Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
     diagchoice = [
-	"Ready!",
-	"I'm ready!",
-	"Get ready!",
-	"Ret-2-Go!",
-	"I'm Ret-2-Go!",
-	"Are you ready?!",	
-	"Ready or not, here I go!",
-	"No Way!",
-	"Hold it right there!",
-	"That's far enough!",
-	"This must be the place.",
-	"You can't be serious!",
 	"Yee!",
-	"Hello...?",
-	"Aw geez...",
-	"This is dumb...",
-	"What a grump!",
-	"Come on already! I don't have all day!",
-	"You're not walking away from this!",
-	"Yeah! I've still got the moves!",
-	"What's up? You wanna fight? ",
-	"I need a vacation...",
-	"I bet Risky Boots is behind this.",
-	"Urgh... What did you get me into this time, Rottytops?",
-	"I better hurry this up before Bolo gets into trouble... Again.",
-	"Thanks for the free ride, Sky!",
+    "Ready!",
+    "No Way!",
+    "Hello...?",
+    "Ret-2-Go!",
+	"I'm ready!",
+    "Aw geez...",
+	"Get ready!",
+    "What a grump!",
+	"I'm Ret-2-Go!",
+	"Are you ready?!",
+    "This is dumb...",
+    "That's far enough!",
+    "I need a vacation...",
+    "Hold it right there!",
+    "You can't be serious!",
+    "This must be the place.",
+	"Ready or not, here I go!",
+    "What's up? You wanna fight?",
+    "Thanks for the free ride, Sky!",
 	"Shantae here! Half Genie Hero!",
-	"Whew! Life as a Half Genie is hard work!"]
+    "Yeah! I've still got the moves!",
+    "I bet Risky Boots is behind this.",
+	"You're not walking away from this!",
+    "Come on already! I don't have all day!",
+	"Whew! Life as a Half Genie is hard work!"
+	"Urgh... What did you get me into this time, Rottytops?",
+	"I better hurry this up before Bolo gets into trouble... Again."]
 
 	//--------------Specific Character Interactions
 	//  Regular dialogue
@@ -268,7 +275,7 @@ if(variable_instance_exists(id,"diag"))
 	
 	//	Rivals of the Crib
 	//	Herself 
-	if(otherUrl == 2890757258) //Change the url into a specific character's
+	if(otherUrl == url) //Change the url into a specific character's
     {
         with(pet_obj)
         {
@@ -281,6 +288,96 @@ if(variable_instance_exists(id,"diag"))
                 "Another me?!",
                 "Another me?!",
                 "Hey! Don't repeat after me, other me!"]
+            }
+        }
+    }
+
+    //	Spark
+	if(otherUrl == 3040171673)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "You have got to be the weirdest clown I've seen in a long time.",
+                "Look who's talking! What are you some sort Purple Wigged Space Elf?",
+                "HEY! You got some nerve with that wild take!"]
+            }
+        }
+    }
+
+    //	Bowsette
+	if(otherUrl == 3122481848)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "I'm sensing all sorts of wrong with you.",
+                "Ohohohoho... Is it because of my wicked beauty~?",
+                "...Yeah, sure. Let's go with that."]
+            }
+        }
+    }
+
+    //  Rayman
+    if(otherUrl == 3320958468)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Wow, a limbless... thingamajig? That's some impressive magic!",
+                "Hey! These fists took down pirates, robots, and worse.",
+                "Heh, then let's see how they handle a half-genie beatdown!"]
+            }
+        }
+    }
+
+    //  Wapeach
+    if(otherUrl == 3489846072)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Okay... So, you're like imposter of someone but... Angrier. And louder.",
+                "AN IMPOSTER?! I'M BETTER IN EVERY WAY, YA HEAR?!",
+                "Yikes. Someone needs a nap..."]
+            }
+        }
+    }
+
+    //  Raichu
+    if(otherUrl == 3630880116)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Aww, you're sooo cute! Are you lost?",
+                "Rai! Raichu-raii! Chu chu!",
+                "...Right. I have no idea what you just said, but I'm guessing it was a challenge."]
             }
         }
     }
@@ -297,7 +394,7 @@ if(variable_instance_exists(id,"diag"))
                 
 				diag_nrs_diag = [
                 "Get ready, 'cause I'm not gonna hold back!",
-                "Well then, neither am I! Let's frickin go!",
+                "Well then, neither am I! Let's jam!!",
                 "Hehe, this might actually be fun."]
             }
         }
@@ -463,24 +560,6 @@ if(variable_instance_exists(id,"diag"))
                 "Oh dear..."]
             }
         }
-    }	
-	
-	//	Kodiak DE
-	if(otherUrl == 2860398151) //Change the url into a specific character's
-    {
-        with(pet_obj)
-        {
-            if(variable_instance_exists(id,"diag_text"))
-            {
-                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
-                diag_nrs = true; //Sets the 3-Part dialogue to happen.
-                
-				diag_nrs_diag = [
-                "The way you use your magic is pretty reckless.",
-                "And yet, it gets me the results I need.",
-                "We'll see about that."]
-            }
-        }
     }
 	
 	//	Disco
@@ -519,42 +598,6 @@ if(variable_instance_exists(id,"diag"))
         }
     }
 
-    //	Spark
-	if(otherUrl == 3040171673)
-    {
-        with(pet_obj)
-        {
-            if(variable_instance_exists(id,"diag_text"))
-            {
-                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
-                diag_nrs = true; //Sets the 3-Part dialogue to happen.
-                
-				diag_nrs_diag = [
-                "You have got to be the weirdest clown I've seen in a long time.",
-                "Look who's talking! What are you some sort Purple Wigged Space Elf?",
-                "HEY! You got some nerve with that wild take!"]
-            }
-        }
-    }
-
-    //	Bowsette
-	if(otherUrl == 3122481848)
-    {
-        with(pet_obj)
-        {
-            if(variable_instance_exists(id,"diag_text"))
-            {
-                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
-                diag_nrs = true; //Sets the 3-Part dialogue to happen.
-                
-				diag_nrs_diag = [
-                "I'm sensing all sorts of wrong with you.",
-                "Ohohohoho... Is it because of my wicked beauty~?",
-                "...Yeah, sure. Let's go with that."]
-            }
-        }
-    }
-
     //	RyeGuy & Beaky
 	if(otherUrl == 3203302945)
     {
@@ -569,6 +612,96 @@ if(variable_instance_exists(id,"diag"))
                 "If that sword of yours cuts any piece of my hair off...",
                 "RyeGuy: W-What?! I would never do that!",
                 "We'll see about that, little knight wonder!"]
+            }
+        }
+    }
+
+    //	Brella
+    if(otherUrl == 3244606859)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "H-Hey! Watch where you're tossing those water balls!",
+                "Nuuh! You're not the boss of me, Miss Genie-Beanie~!",
+                "Great... The last thing I need is a bad hair day."]
+            }
+        }
+    }
+
+    //  Camic
+    if(otherUrl == 3350776556)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Oh! I didn't know the circus was in town! I could really use a good laugh!",
+                "...",
+                "...On second thought, I should get going."]
+            }
+        }
+    }
+
+    //  Geebs
+    if(otherUrl == 3432458008)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "What's... What's the creepy grin?",
+                "Come on, missy, won't you shake a poor adventurer's hand~?",
+                "Something weird is going on here and I'm gonna find out what it is!"]
+            }
+        }
+    }
+
+    //  Randalf Rhino
+    if(otherUrl == 3388038739)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Hey! You can't park... Whatever that thing is here!",
+                "Whaa...? Where else am I going to park my other self? That's just plain rude.",
+                "Well, for starters... Why are you using a copy of yourself as a vehicle in the first place?"]
+            }
+        }
+    }
+
+    //  Gordon
+    if(otherUrl == 3577828040)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "So you're the one who ate all the pies meant for Scuttle Town's contest!",
+                "Hehe, maybe I am, maybe I'm not. What's it to you, shrimp?",
+                "Then I'll make you pay it back, one bruise at a time!"]
             }
         }
     }
@@ -605,6 +738,42 @@ if(variable_instance_exists(id,"diag"))
                 "Another strange looking hedgehog.",
                 "Beat it. You're in my way in finding Roger.",
                 "Wait... That was his name?!"]
+            }
+        }
+    }
+
+	//	Cindy Appeal 
+    if(otherUrl == 3376849067)
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "Oh, great. Another one of those weird... hedgehog things.",
+                "Liek, OMG! You look, like, a total barbie doll, dollface. Liek, who's your stylish~?",
+                "...I'm sorry, but, what the heck was even any of that?"]
+            }
+        }
+    }
+
+    //	Kodiak DE
+	if(otherUrl == 2860398151) //Change the url into a specific character's
+    {
+        with(pet_obj)
+        {
+            if(variable_instance_exists(id,"diag_text"))
+            {
+                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
+                diag_nrs = true; //Sets the 3-Part dialogue to happen.
+                
+				diag_nrs_diag = [
+                "The way you use your magic is pretty reckless.",
+                "And yet, it gets me the results I need.",
+                "We'll see about that."]
             }
         }
     }

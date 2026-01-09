@@ -62,12 +62,14 @@ wave_land_adj       = 1.3;		// 1.2  -  1.5      idk what zetterburn's is
 air_dodge_speed     = 7.5;		// 7.5  -  8
 techroll_speed      = 10;		// 8    -  11
 
+//===================================================================================================================
 
 // Character-specific assets init
 
 //	Sprites
 spr_nspecial_proj 	= sprite_get("nspecial_proj");
 spr_monke_cling 	= sprite_get("monke_wallcling");
+spr_parry			= sprite_get("parry");
 
 //	SFX
 sfx_crawl			= sound_get("sfx_shantae_crawlsqueak");
@@ -96,16 +98,22 @@ wait_time 			= 440;
 wait_length 		= 100;
 wait_sprite 		= sprite_get("wait");	//	Alt Idles
 
-magic_meter 		= 0;					//	Meter
-is_crawling 		= false;				//	Crouch
+magic_meter 		= 0;					//	Meter related
+is_crawling 		= false;				//	Crouch related
+
+fireball1           = noone;                //  NSPECIAL related
+fireball2           = noone; 
+fireball3           = noone; 
+fireball_group      = 0;
 
 monke_count			= 0;					//	FSPECIAL & EXTRA
 
-stormy_puff			= noone;				//	DSPECIAL
+stormy_puff			= noone;				//	DSPECIAL related
 
-ele_loop 			= 0;					//	DSPECIAL_AIR
+ele_loop 			= 0;					//	DSPECIAL_AIR related
 ele_ouch			= false;	
 
+//===================================================================================================================
 
 // Animation Info
 
@@ -166,7 +174,7 @@ of the standing-up animation. Dan Moment
 
 */
 
-
+//===================================================================================================================
 
 // Hurtbox sprites
 hurtbox_spr         = sprite_get("sh_hurtbox");
@@ -190,8 +198,7 @@ air_dodge_sound     = asset_get("sfx_quick_dodge");
 bubble_x = 0;
 bubble_y = 8;
 
-//-------------------------------------------------------------------------------------------
-
+//===================================================================================================================
 //	Workshop stuff
 
 //	Dialogue Buddy correction
@@ -201,54 +208,54 @@ if (get_player_color(player) == 0)
 }
 
 //	Feri Costume
-feri_costume 		= sprite_get("feri_costume_shantae");
+feri_costume 		        = sprite_get("feri_costume_shantae");
 
 //	PAC-MAN
-Namco_Taunt 		= sprite_get("shantae_pacman");
-Namco_Taunt_Sound 	= asset_get("sfx_gem_collect");
+Namco_Taunt 		        = sprite_get("shantae_pacman");
+Namco_Taunt_Sound 	        = asset_get("sfx_gem_collect");
 
 //	Hikaru
-Hikaru_Title 		= "A Half-Genie Hero";
+Hikaru_Title 		        = "A Half-Genie Hero";
 
 //	Dedede Stage
-arena_title 		= "Guardian Genie";
+arena_title 		        = "Guardian Genie";
 
 //	Boxing Ring Stage
-boxing_title 		= "A Half-Genie Hero";
+boxing_title 		        = "A Half-Genie Hero";
 
 //	Soulbound Conflict Stage
-battle_text 		= "* you tried dancing through the danger";
-battle_text2 		= "* but you felt something off with your steps"
-battle_text3 		= "* and now you feel yourself slipping away..."
+battle_text 		        = "* you tried dancing through the danger";
+battle_text2 		        = "* but you felt something off with your steps"
+battle_text3 		        = "* and now you feel yourself slipping away..."
 
 //	Last Resort Stage
-resort_portrait 	= sprite_get("lastresortportrait");
+resort_portrait 	        = sprite_get("lastresortportrait");
 
 //	Miiverse Stage
-miiverse_post 		= sprite_get("miiverse");
+miiverse_post 		        = sprite_get("miiverse");
 
 //	Wily Castle Stage
-wily_robotmaster_img = sprite_get("Wily_Castle");
+wily_robotmaster_img        = sprite_get("Wily_Castle");
 
 //	Henry Stickmin
-has_fail 	= true;
-fail_text 	= "No wishes for you!";
+has_fail 	                = true;
+fail_text 	                = "No wishes for you!";
 
 //	Future Ducky
-fducky_intro1 = "Your dancing days";
-fducky_intro2 = "are coming to an end!";
+fducky_intro1               = "Your dancing days";
+fducky_intro2               = "are coming to an end!";
 
 //	Kirby Fighter Buddy	
-copy_ability_id = 3;
-kf_hud_offset 	= -23;
+copy_ability_id             = 3;
+kf_hud_offset 	            = -23;
 
 //	Solid Snake support
-sna_interrogated_line_01 = "Lemme... lemme go!";
-sna_interrogated_line_02 = "You're not getting anything out from me!";
-sna_interrogated_line_03 = "T-Transform!";
+sna_interrogated_line_01    = "Lemme... lemme go!";
+sna_interrogated_line_02    = "You're not getting anything out from me!";
+sna_interrogated_line_03    = "T-Transform!";
 
 //	Kirby Copy Ability
-TCG_Kirby_Copy = 1;
+TCG_Kirby_Copy              = 1;
 
 //	Reiga's The Knight
 knight_compat_dream = 
@@ -258,7 +265,7 @@ knight_compat_dream =
     "Ret-2-Go!"
 ]
 
-//----------------------------------------------------------------------------
+//===================================================================================================================
 
 // MunoPhone Touch code - don't touch
 // should be at BOTTOM of file, but above any #define lines

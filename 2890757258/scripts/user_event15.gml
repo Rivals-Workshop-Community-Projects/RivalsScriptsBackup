@@ -28,7 +28,7 @@ Set parameters that are used by the CSS drawing code.
 #define CORE_css_draw
 
 // The number of alt costumes your char has, up to 32.
-num_alts = 32;
+num_alts = 31;
 
 // Whether or not to display a name for each alt.
 use_alt_names = false;
@@ -243,6 +243,15 @@ in a Patch.
 */
 
 #define CORE_patches
+
+initPatch("1.15", "8 Jan, 2026");
+initHeader("General:");
+initSection("* Updated the localisation files.
+* Some minor quality of life stuff.");
+initHeader("NSPECIAL:");
+initSection("* If any of the Triple Fireballs are parried, all of them get reflected together now.");
+initHeader("~BONUS~:");
+initSection("+ Updated the Dialogue Buddy when facing against Raichu, Gordon, Wapeach, Geebs, Randalf Rhino, Camic, Brella and... Cindy Appeal.");
 
 initPatch("1.14", "12 April, 2024");
 initHeader("General:");
