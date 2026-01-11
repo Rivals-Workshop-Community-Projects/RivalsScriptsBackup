@@ -66,7 +66,7 @@ set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 1);
 
 window_num ++; //endlag - hit
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 20); //30
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16); //30
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 23);
 set_window_value(atk, window_num, AG_WINDOW_VSPEED_TYPE, 2);
@@ -99,8 +99,9 @@ set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 2);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 5);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE, 60);
 set_hitbox_value(atk, hitbox_num, HG_ANGLE_FLIPPER, 10);
-set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6); //7
-set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.4); //0.8
+set_hitbox_value(atk, hitbox_num, HG_BASE_KNOCKBACK, 6.5); //7
+set_hitbox_value(atk, hitbox_num, HG_KNOCKBACK_SCALING, 0.5); //0.8
+set_hitbox_value(atk, hitbox_num, HG_HITSTUN_MULTIPLIER, 0.8);
 set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8); //12
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.6); //1
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_windhit[1]);

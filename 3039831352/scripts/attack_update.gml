@@ -1,7 +1,7 @@
 //attack_update.gml
 
 //B-reverse - it allows the character to turn in_while using specials
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL) trigger_b_reverse();
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_DSPECIAL && has_dropdash_rune) trigger_b_reverse();
 
 custom_attack_grid();
 
@@ -25,7 +25,7 @@ switch (attack)
 		{
 			var min_spd = get_window_value(attack, window, AG_WINDOW_HSPEED);
 			var cur_spd = abs(hsp) + ground_friction;
-			var endlag_min = 12;
+			var endlag_min = 13;
 
 			set_window_value(
 				attack,
@@ -204,24 +204,53 @@ switch (attack)
 	case AT_FAIR:
 		can_wall_jump = true;
 
-		if (window == 1)
+		if (has_superform)
 		{
-			hsp /= 1.2;
-			if (!fast_falling) vsp = clamp(vsp, vsp, 0);
-
-			if (window_timer == window_end)
+			if (is_super)
 			{
-				hsp = 6 * spr_dir;
-				hsp += abs(new_hsp/1.5) * spr_dir;
+				set_hitbox_value(attack, 1, HG_ANGLE, 20);
+				set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, 8);
+				set_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER, .3);
+					
+				if (window == 1)
+				{
+					hsp /= 1.2;
+					if (!fast_falling) vsp = clamp(vsp, vsp, 0);
+		
+					if (window_timer == window_end)
+					{
+						hsp = 6 * spr_dir;
+						hsp += abs(new_hsp/1.5) * spr_dir;
+					}
+				}
+			}
+			else
+			{
+				reset_hitbox_value(attack, 1, HG_ANGLE); // 20
+				reset_hitbox_value(attack, 1, HG_BASE_KNOCKBACK); // 8
+				reset_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER); // .3
 			}
 		}
+		// if (window == 1)
+		// {
+		// 	hsp /= 1.2;
+		// 	if (!fast_falling) vsp = clamp(vsp, vsp, 0);
 
-		if (window == 4)
+		// 	if (window_timer == window_end)
+		// 	{
+		// 		hsp = 6 * spr_dir;
+		// 		hsp += abs(new_hsp/1.5) * spr_dir;
+		// 	}
+		// }
+
+		/*
+		if (window == 2)
 		{
 			fair_fx_on_landlag = true;
 			if (window_timer == window_end) spawn_hit_fx(x, y, fx_fair);
 		}
 		else fair_fx_on_landlag = false;
+		*/
 		break;
 	/////////////////////////////////////////////// SPECIALS ///////////////////////////////////////////////
     //
@@ -277,6 +306,25 @@ switch (attack)
 					next_multihome_target = 0;
 				}
 				break;
+			case 2:
+				fall_through = has_quickhome_rune || has_multihome_rune; // homing attack through plats rune
+				break;
+			case 3:
+				fall_through = has_quickhome_rune || has_multihome_rune; // homing attack through plats rune
+				if (window_timer == window_end)
+				{
+					reset_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED);
+					if (is_super) // increase nspec speed if super sonic is already moving
+					{
+						var nspec_speed_max = clamp(
+							max(get_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED), abs(hsp) + 3),
+							get_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED),
+							max_dash_spd
+						);
+						set_window_value(AT_NSPECIAL, 4, AG_WINDOW_HSPEED, nspec_speed_max);
+					}
+				}
+				break;
 			case 4: case 5: case 6: //maybe should put sonic in_pratfall?
 				can_wall_jump = true;
 
@@ -296,12 +344,22 @@ switch (attack)
 				}
 				break;
 			case 7: //homing attack
+				fall_through = has_quickhome_rune || has_multihome_rune; // homing attack through plats rune
+			
 				if (!hitpause) //movement
 				{
 					if (!has_multihome_rune)
 					{
 						var dir = point_direction(x, y-char_height/1.75, homing_target.x, homing_target.y-homing_target.char_height/1.75);
 						homing_values[1] += sin(degtorad(dir - homing_values[1])) * 10;
+						// if(x > homing_target.x && spr_dir == 1 || x < homing_target.x && spr_dir == -1) spr_dir *= -1;
+					}
+					else
+					{
+						var next_target = multihome_grid[# 0, next_multihome_target];
+						var dir = point_direction(x, y-char_height/1.75, next_target.x, next_target.y-next_target.char_height/1.75);
+						homing_values[1] += sin(degtorad(dir - homing_values[1])) * 10;
+						// if(x > next_target.x && spr_dir == 1 || x < next_target.x && spr_dir == -1) spr_dir *= -1;
 					}
 					hsp = lengthdir_x(homing_values[0], homing_values[1]);
 					vsp = lengthdir_y(homing_values[0], homing_values[1]);
@@ -328,16 +386,27 @@ switch (attack)
 					x = x + hsp*2;
 					set_window(0);
 				}
+				else if (was_parried) set_window(10);
 				else if (window_timer == window_end-1 && window_loops == get_window_value(attack, window, AG_WINDOW_LOOP_TIMES)-1 && !has_hit)
 				{
 					hsp /= 5;
-					set_window(10);
+					if (has_multihome_rune && next_multihome_target < multihome_limit-1 && multihome_grid[# 0, next_multihome_target+1] != undefined) 
+					{
+						next_multihome_target ++;
+						window = 3;
+						window_timer = 0;
+						has_hit = false;
+						y -= 20;
+					}
+					else set_window(10);
 				}
 				
 				break;
 			case 9:
+				fall_through = has_quickhome_rune;
 				manual_landing_lag();
 			case 8: case 10:
+				fall_through = has_quickhome_rune;
 				destroy_hitboxes();
 
 				if (window == 8 && !hitpause && has_multihome_rune)
@@ -348,6 +417,7 @@ switch (attack)
 						window = 3;
 						window_timer = 0;
 						has_hit = false;
+						y -= 20;
 					}
 				}
 				break;
@@ -460,6 +530,7 @@ switch (attack)
 		{
 			case 1:
 				airdash_stats[3] = -1;
+				set_window_value(attack, 2, AG_WINDOW_LOOP_TIMES, is_super ? 1 : 2);
 				break;
 			case 2: //charge - weak
 				var holding_foward = (right_down && spr_dir || left_down && -spr_dir);
@@ -479,15 +550,16 @@ switch (attack)
 
 				if (window_timer == 1 && window_loops == 0) sound_play(sound_get("sfx_charge"));
 
-				if (abs(hsp) < 2 + holding_foward) hsp = (2 + holding_foward) * spr_dir;
+				if (!dropdash_commit && abs(hsp) < 2 + holding_foward) hsp = (2 + holding_foward) * spr_dir;
 				else hsp = hsp;
 				
-				if (!special_down || window_timer == window_end-1 && window_loops >= get_window_value(attack, window, AG_WINDOW_LOOP_TIMES)-1)
+				if (!special_down || dropdash_commit || window_timer == window_end-1 && window_loops >= get_window_value(attack, window, AG_WINDOW_LOOP_TIMES)-1)
 				{
 					sound_play(sound_get("sfx_rocketaccel"));
 					set_window(8);
 					hsp = 12 * spr_dir;
 					hsp += abs(new_hsp) * spr_dir * 0.6;
+					dropdash_commit = false;
 				}
 				break;
 			case 4: case 5: //kick speed
@@ -512,6 +584,11 @@ switch (attack)
 				if (fast_falling && !hitpause) vsp = fast_fall;
 				else vsp = 0;
 				grav = 0;
+				can_move = false;
+				break;
+			case 7: case 11:
+				new_hsp = 0;
+				iasa_script();
 				break;
 		}
 
@@ -597,6 +674,7 @@ switch (attack)
 		break;
 	case AT_DSPECIAL: //bounce bracelet
 		can_wall_jump = true;
+		if (fast_falling) dspec_fastfall = true;
 
 		switch (window)
 		{
@@ -617,7 +695,22 @@ switch (attack)
 				break;
 			case 4: //landing window
 				destroy_hitboxes();
-				if (window_timer == 1 && !free) sound_play(asset_get("sfx_kragg_spike"), false, 0, 0.6)
+				if (window_timer == 1 && !free) 
+				{
+					if (has_dropdash_rune && special_down) dropdash_commit = true;
+					else sound_play(asset_get("sfx_kragg_spike"), false, 0, 0.6);
+				}
+				
+				if (dropdash_commit) // perform rocket accel out of dspecial
+				{
+					set_attack(AT_FSPECIAL);
+					window = 3;
+					window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH) - 1;
+					state_timer = 1;
+					dropdash_commit = true;
+					new_hsp = max(abs(new_hsp), 3 + 4 * dspec_fastfall + 2 * boost_mode + 4 * is_super) * sign(new_hsp);
+					if (new_hsp == 0) new_hsp = (3 + 4 * dspec_fastfall + 2 * boost_mode + 4 * is_super) * spr_dir;
+				}
 				
 				if (window_timer == window_end)
 				{
@@ -658,7 +751,7 @@ switch (attack)
 
 		if (has_rune("I") && (!trick_rune_active || trick_rune_count == 1)) //directional boosting tricks rune
 		{
-			if (window = 1)
+			if (window == 1)
 			{
 				if ("sonic_mushroom_trick" not in self || !sonic_mushroom_trick)
 				{
@@ -673,7 +766,7 @@ switch (attack)
 					{
 						case 0: //neutral
 							hsp = 0;
-							vsp = -2;
+							vsp = -8;
 							break;
 						case 1: //up
 							hsp = 0;
@@ -681,7 +774,7 @@ switch (attack)
 							break;
 						case 2: //right
 							hsp = boost;
-							vsp = -2;
+							vsp = -8;
 							break;
 						case 3: //down
 							hsp = 0;
@@ -689,7 +782,7 @@ switch (attack)
 							break;
 						case 4: //left
 							hsp = -boost;
-							vsp = -2;
+							vsp = -8;
 							break;
 					}
 				}
@@ -808,11 +901,23 @@ switch (attack)
 					);
 				}
 
-				if (!has_superform) boost_cur ++;
+				if (!has_superform) boost_cur = min(boost_cur + 2, boost_max);
 				else
 				{
-					var detected_ring = collision_circle(x, y - 16, 200, pHitBox, false, true);
+					var detected_ring = collision_circle(x, y - 16, 300, pHitBox, false, true);
 					var magnet_speed = 15;
+					
+					if (detected_ring == noone) 
+					{
+						detected_ring = create_hitbox(
+							0, 1,
+							floor(x + lengthdir_x(300, random_func_2(get_gameplay_time()%200, 360, true))),
+							floor(y - char_height / 1.75 + lengthdir_y(300, random_func_2(get_gameplay_time()%200, 360, true)))
+						);
+						detected_ring.ring_player = player;
+						detected_ring.ring_collect_time = [20, 50];
+						detected_ring.hud_col_sel = [$ffffff, $241ced, $efb700, $b1a3ff, $1de6a8, $808080];
+					}
 
 					with (pHitBox) if (attack == 0 && hbox_num == 1 && player_id.is_bar_sonic)
 					{

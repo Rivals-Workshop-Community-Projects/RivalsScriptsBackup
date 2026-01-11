@@ -282,7 +282,7 @@ if (has_blast)
 #define sprite_get_skinned
 {
 	var sprite = argument[0];
-	var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
 
 	///Gets a skinned sprite based on its name.
 	var obj = (object_index != oPlayer && object_index != oTestPlayer) ? player_id : id;

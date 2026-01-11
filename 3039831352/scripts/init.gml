@@ -305,6 +305,13 @@ active_player_slots = [];
 
 //fun alt
 secret_active = (get_player_name(player) == "461225");
+if (secret_active) //set dust colors
+{
+    var color_slor_check = 16;
+    set_color_profile_slot(alt_cur, color_slor_check, 96, 64, 162); //dust color test
+    dust_shade = color_slor_check;
+    hit_shade = dust_shade;
+}
 
 set_up_super_colors = synced_vars[1] && alt_cur != 20 && !secret_active; //if true, it will let sonic set up the super form colors instead
 uses_super_sprites = false; //applies the super skin
@@ -524,11 +531,20 @@ runeC_hbox = noone;
 runeC_hitlock = 0
 runeC_hitlock_set = 30;
 
+//quick homing rune
+has_quickhome_rune = has_rune("E");
+
+//dropdash rune
+has_dropdash_rune = has_rune("G");
+dropdash_commit = false;
+dspec_fastfall = false;
+
 //trick spam rune
-trick_rune_active = has_rune("G");
+trick_rune_active = has_rune("L");
 trick_rune_count = 0;
 doing_trick_combo_chain = false;
 
+//multihome rune
 has_multihome_rune = has_rune("H");
 if (has_multihome_rune)
 {
@@ -544,7 +560,7 @@ has_boost_atk_rune = has_rune("K");
 boost_atk_spd_mult = 0.75;
 
 //sonic overdrive (final smash)
-has_blast = has_rune("L");
+has_blast = has_rune("M");
 can_teamblast = false;
 blast_cur = 0;
 blast_max = 200;
@@ -608,8 +624,10 @@ fs_anim_pos = [
     [0, 0, "out_sine", "in_sine", 190],
 ];
 
-has_superform = has_rune("M");
+has_superform = has_rune("N");
 if (has_superform) set_up_super_colors = false;
+
+// if (trick_rune_active && has_superform) combo_display_hits = [2, 3, 4, 5, 6, 7, 9, 11, 13, 16]; //2, 3, 4, 5, 6, 7, 8, 9, 10, 11
 
 is_super = false;
 super_transform_time = 0; //transformation state timer just in case

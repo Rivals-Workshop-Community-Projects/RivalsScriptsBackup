@@ -38,6 +38,11 @@ switch (state)
         //wall bouncing
         if (solid_check() == "left" || solid_check() == "right") artc_bounce(1);
         if (solid_check() == "up" || solid_check() == "down" || plat_check() != noone && vsp > 0) artc_bounce(0);
+        if (y + vsp > get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS))
+        {
+            vsp = 0;
+            y = get_stage_data(SD_BOTTOM_BLASTZONE) + get_stage_data(SD_Y_POS) - 24;
+        }
 
         //stop on borders fun fact playtest doesn't have any lmao
         if (!player_id.playtest_active)

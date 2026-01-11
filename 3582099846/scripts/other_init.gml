@@ -1,0 +1,1 @@
+spongebob_grab_hitbox = noone;

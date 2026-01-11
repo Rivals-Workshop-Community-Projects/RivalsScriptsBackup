@@ -263,6 +263,9 @@ if ("_ssnksprites" in self)
 
 		skin_update_sprites();
 		used_super_sprites = uses_super_sprites;
+
+		dust_shade = uses_super_sprites*8;
+    	hit_shade = dust_shade;
 	}
 }
 
@@ -315,10 +318,10 @@ if (is_attacking && !hitpause) switch (attack)
         spawn_base_dust(x, y, "land", 0, 0, 8);
         break;
     case AT_FTILT:
-        spawn_base_dust(x, y, "dash_start", 0, 0, 1, 4);
+        spawn_base_dust(x, y, "dash_start", 0, 0, 1, 5);
         break;
     case AT_DTILT:
-        spawn_base_dust(x + 80 * spr_dir, y, "dash", -spr_dir, 0, 1, 3);
+        spawn_base_dust(x + 80 * spr_dir, y, "dash", -spr_dir, 0, 1, 5);
         break;
     case AT_DATTACK:
         if (!free)
@@ -361,6 +364,8 @@ if (is_attacking && !hitpause) switch (attack)
         }
         
         if (abs(hsp) > 0.75) spawn_base_dust(x + 32 * spr_dir, y, "dash", -spr_dir, 0, 11, 0);
+        
+        if (dropdash_commit) spawn_base_dust(x, y, "dash_start", spr_dir, 0);
         break;
     case AT_DSPECIAL:
         spawn_base_dust(x, y - 8, "djump_small", 0, 0, 1, 0);
@@ -414,10 +419,10 @@ with (oPlayer) if (hit_player_obj == other)
     var dfg; //fg_sprite value
     var dust_color = 0;
     var x = argument[0], y = argument[1], name = argument[2];
-    var dir = argument_count > 3 ? argument[3] : 0;
-    var angle = argument_count > 4 ? argument[4] : 0;
-    var win = argument_count > 5 ? argument[5] : -10;
-    var win_time = argument_count > 6 ? argument[6] : 0;
+var dir = argument_count > 3 ? argument[3] : 0;
+var angle = argument_count > 4 ? argument[4] : 0;
+var win = argument_count > 5 ? argument[5] : -10;
+var win_time = argument_count > 6 ? argument[6] : 0;
 
 	var check_win_time = has_boost_atk_rune && (boost_mode || is_super) ? floor(win_time * boost_atk_spd_mult) : win_time;
 	if (check_win_time >= window_end) check_win_time --;
@@ -533,7 +538,7 @@ with (oPlayer) if (hit_player_obj == other)
 #define sprite_get_skinned
 {
 	var sprite = argument[0];
-	var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
 
 	///Gets a skinned sprite based on its name.
 	var obj = (object_index != oPlayer && object_index != oTestPlayer) ? player_id : id;
@@ -598,7 +603,7 @@ with (oPlayer) if (hit_player_obj == other)
 #define skin_sprite
 {
     var spr_index = argument[0];
-    var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
+var skin = argument_count > 1 ? argument[1] : _ssnksprites.skin_active;
 
     ///Gets a skinned sprite by its unskinned sprite index.
     var str = `${spr_index}`;

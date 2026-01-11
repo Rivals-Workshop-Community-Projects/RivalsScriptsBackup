@@ -64,9 +64,9 @@ hitbox_num ++; //sourspot
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(atk, hitbox_num, HG_WINDOW, 2);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 3);
-set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 8);
+set_hitbox_value(atk, hitbox_num, HG_HITBOX_X, 0);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, -16);
-set_hitbox_value(atk, hitbox_num, HG_WIDTH, 64);
+set_hitbox_value(atk, hitbox_num, HG_WIDTH, 48);
 set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 16);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 1);
 set_hitbox_value(atk, hitbox_num, HG_DAMAGE, 7);

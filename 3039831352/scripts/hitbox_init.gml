@@ -27,6 +27,8 @@ if (attack == 0) //stray hitboxes
 
             orig_grounds = grounds;
             orig_walls = walls;
+            
+            rec_vsp = vsp;
         case 2: //flickies
             depth = -9;
             break;

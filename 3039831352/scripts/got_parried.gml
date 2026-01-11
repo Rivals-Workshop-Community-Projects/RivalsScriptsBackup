@@ -9,3 +9,5 @@ if (blast_post_timer == 0 && (my_hitboxID.orig_player != player || my_hitboxID.a
 
 //combo counter
 combo_timer = 0;
+
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) fspec_speed = 0;

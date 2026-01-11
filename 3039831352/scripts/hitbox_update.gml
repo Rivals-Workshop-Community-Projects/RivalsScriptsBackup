@@ -127,7 +127,7 @@ switch (attack)
                         sound_play(sound_get("sfx_ring"));
                         if ("is_bar_sonic" in other && other.has_superform)
                         {
-                            if (other.rings_cur < other.rings_max) other.rings_cur ++;
+                            if (other.rings_cur < other.rings_max) other.rings_cur += 2;
                             if (other.has_blast) other.blast_cur ++; //rings also increase the fs meter if it's available
                         }
                         ring_collected = true;

@@ -106,7 +106,7 @@ hugging_wall = (position_meeting(x + (spr_dir ? 19 : -20), y - 16, asset_get("pa
 #endregion
 
 #region AIR TRICKS
-if (trick_input_time > 0 && !hitpause)
+if (trick_input_time > 0 && !hitpause && state_cat != SC_HITSTUN)
 {
     //decides which trick too use: 0 = neutral | 1 = up | 2 = right | 3 = down | 4 = left
     if (up_down) next_trick = 1;
@@ -123,6 +123,13 @@ if (trick_input_time > 0 && !hitpause)
         {
             if (attack == AT_FSPECIAL) can_fspec = false;
 
+            if (trick_rune_count == 0 || !trick_rune_active)
+            {
+                //if (combo_timer > 0 && combo_hits > 0) vsp = -13;
+                //else vsp -= 2;
+                vsp = -13;
+            }
+
             destroy_hitboxes();
             attack_end();
             set_attack(AT_TAUNT_2);
@@ -134,10 +141,6 @@ if (trick_input_time > 0 && !hitpause)
             airdash_stats = [1, 0, 0, -1];
 
             sound_play(asset_get("sfx_swipe_medium1"), false, 0, 0.6, 0.8 + random_func(8, 10, true)/10);
-
-            if (trick_rune_count == 0 || !trick_rune_active) vsp = -13;
-            //vsp = vsp > -2 ? -10 : vsp - 5;
-            // ^ this code makes it so sonic adds to his already existing speed
 
             //trick rune stuff
             cur_trick = next_trick;
@@ -464,7 +467,7 @@ if (is_attacking)
                 {
                     if (special_pressed && window_timer > 0) //early release
                     {
-                        nspec_early = true;
+                        nspec_early = !has_quickhome_rune; // early homing attack
                         window_timer = 0;
                         window = 3;
                         set_attack_value(attack, AG_LANDING_LAG, 4);
@@ -509,7 +512,9 @@ if (is_attacking)
 
                         window = 7;
                         window_timer = -1;
+                        window_loops = 0;
                         sound_play(sound_get("sfx_charge_release"));
+                        fall_through = has_quickhome_rune || has_multihome_rune;
                     }
                 }
             }
@@ -520,7 +525,7 @@ if (is_attacking)
                     check_homing_range(true); //homing setup (needs a limiter too)
 
                     //charge changes how many enemies can be aimed at
-                    multihome_limit = floor(window_timer/window_end * multihome_limit_max) + 1;
+                    multihome_limit = has_quickhome_rune ? 1 + (window_timer > 0) * (multihome_limit_max * (is_super + 1) - 1) : floor(window_timer/window_end * multihome_limit_max * (is_super + 1)) + 1;
 
                     set_hitbox_value(attack, 2, HG_BASE_HITPAUSE, 6);
                     set_hitbox_value(attack, 2, HG_HITPAUSE_SCALING, 0.2);
@@ -575,6 +580,8 @@ if (is_attacking)
                         var total_length = get_window_value(attack, 7, AG_WINDOW_LENGTH) * max(1, floor((get_window_value(attack, 7, AG_WINDOW_LOOP_TIMES)-1)/1.35));
                         homing_values[0] = point_distance(x, y, next_target.x, next_target.y)/total_length;
                         homing_values[1] = point_direction(x, y-char_height/1.75, next_target.x, next_target.y-next_target.char_height/1.75);
+                        
+                        set_window_value(attack, 7, AG_WINDOW_LENGTH, home_speed);
 
                         //reset hit values if it's the last homing attack in the chair
                         if (next_multihome_target == min(multihome_limit, array_length(multihome_targets_temp))-1)
@@ -587,7 +594,9 @@ if (is_attacking)
                         //start homing attack chain
                         window = 7;
                         window_timer = -1;
+                        window_loops = 0;
                         sound_play(sound_get("sfx_charge_release"));
+                        fall_through = has_quickhome_rune || has_multihome_rune;
                     }
                 }
             }
@@ -761,6 +770,7 @@ if (has_rune("B"))
 //classic spinjump on fullhop
 if (has_rune("C"))
 {
+	if (state == PS_JUMPSQUAT) runeC_spinjump = jump_down;
     if (state == PS_FIRST_JUMP) 
     {
         if (!hitpause)
@@ -768,19 +778,33 @@ if (has_rune("C"))
             if (state_timer == 1) //check if sonic did a fullhop based on his vsp
             {
                 runeC_spinjump = (vsp == -jump_speed);
-                if (runeC_spinjump) runeC_hbox = create_hitbox(0, 4, x, y);
+                if (runeC_spinjump) runeC_hitlock = 0;
+                // if (runeC_spinjump) runeC_hbox = create_hitbox(0, 4, x, y);
             }
 
             //create jump hitbox
-            if (runeC_spinjump && runeC_hitlock == 0 && !instance_exists(runeC_hbox)) runeC_hbox = create_hitbox(0, 4, x, y);
+            if (state_timer >= 2 && runeC_spinjump && !instance_exists(runeC_hbox)) runeC_hbox = create_hitbox(0, 4, x, y);
 
             //hitbox extention + hit lockout
             with (pHitBox) if (self == other.runeC_hbox) length ++;
             if (runeC_hitlock > 0) runeC_hitlock --;
         }
+        else
+        {
+        	if (hitstop == hitstop_full - 1 && old_vsp > -7) old_vsp = -7;
+        }
     }
 
     if (!free) runeC_spinjump = false;
+}
+
+//multi homing attack hitbox lockout
+if (has_multihome_rune)
+{
+	var multihome_target_ref = multihome_grid[# 0, next_multihome_target];
+	var homing_hbox = noone;
+	with (pHitBox) if (player_id == other && attack == AT_NSPECIAL) homing_hbox = self;
+	if (homing_hbox != noone) with (oPlayer) if (self != multihome_target_ref) homing_hbox.can_hit[player] = false;
 }
 
 if (has_blast)
@@ -1551,6 +1575,7 @@ prep_hitboxes();
 	with (oPlayer) if (get_player_team(player) != get_player_team(other.player))
 	{
 		var temp_angle = point_direction(other.x, other.y-other.char_height/1.75, x, y-char_height/1.75);
+		if (temp_angle < 90 && other.spr_dir == -1) temp_angle += 360;
 
 		if (distance_to_object(other) < other.homing_dist && (check_multi || distance_to_object(other) < closest_distance) &&
 			(other.spr_dir == 1 && (temp_angle < 90 - other.homing_range[0] || temp_angle > 270 + other.homing_range[1]) ||

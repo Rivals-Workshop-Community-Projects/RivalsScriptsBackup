@@ -7,6 +7,7 @@ draw_x = 0;
 draw_y = 0;
 spr_angle = 0;
 window_loops = 0;
+dropdash_commit = false;
 
 switch (attack)
 {
@@ -15,6 +16,7 @@ switch (attack)
         if (fspec_supercharge > 0) window_loops = 3;
         break;
     case AT_DSPECIAL:
+        dspec_fastfall = false;
         //lightspeed charge rune redirect
         if (!free && !boost_mode && has_rune("D")) attack = AT_DSPECIAL_2;
         break;
@@ -45,3 +47,12 @@ if (taunt_pressed && special_down && shield_down && !get_match_setting(SET_PRACT
     if (uses_super_sprites) window = 10;
 }
 airdash_stats = [1, 0, 0, -1];
+
+//rune C lockout removal
+if (has_rune("C"))
+{
+    with (oPlayer)
+    {
+        if (can_be_hit[other.player] > 0 && other.runeC_hitlock > 0) can_be_hit[other.player] = 0;
+    }
+}

@@ -15,7 +15,7 @@ set_window_value(atk, window_num, AG_WINDOW_SFX_FRAME, 4);
 
 window_num ++; //weak charge - kick
 set_window_value(atk, window_num, AG_WINDOW_TYPE, 9);
-set_window_value(atk, window_num, AG_WINDOW_LOOP_TIMES, 1);
+set_window_value(atk, window_num, AG_WINDOW_LOOP_TIMES, 2); //1
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -47,7 +47,7 @@ set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 
 window_num ++; //endlag 1
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 12);
 
@@ -79,8 +79,8 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.2);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.2);
 
 window_num ++; //endlag 1
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 18);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 21);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -90,7 +90,7 @@ set_window_value(atk, window_num, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.5);
 window_num ++; //endlag 2 (only on the ground)
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 16);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 23);
+set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 24);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(atk, window_num, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
@@ -144,6 +144,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.4);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, fx_windhit[0]);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+set_hitbox_value(atk, hitbox_num, HG_IGNORES_PROJECTILES, 1);
 
 hitbox_num ++; //rocket accel - sweetspot
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_TYPE, 1);

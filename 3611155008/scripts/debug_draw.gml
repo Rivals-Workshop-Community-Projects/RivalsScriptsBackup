@@ -1,0 +1,1 @@
+if get_match_setting(SET_HITBOX_VIS) with pHitBox if player_id == other && attack == AT_USPECIAL && hbox_num == 3 draw_sprite_ext(mask_index, 0, x, y, image_xscale, image_yscale, image_angle*spr_dir, c_white, .5);

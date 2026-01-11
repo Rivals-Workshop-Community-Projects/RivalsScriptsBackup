@@ -55,7 +55,8 @@ switch (my_hitboxID.attack)
         old_hsp /= 2;
         break;
     case AT_FAIR:
-        if (my_hitboxID.hbox_num < get_num_hitboxes(attack) && old_vsp > 0 && state_cat != SC_HITSTUN) old_vsp = 0;
+        if (my_hitboxID.hbox_num < get_num_hitboxes(attack) && old_vsp > -1 && state_cat != SC_HITSTUN) old_vsp = (is_super ? 0 : -1);
+        // old_vsp = min(old_vsp, -6);
         break;
     case AT_EXTRA_1: //knuckles fire dunk
         if (my_hitboxID.hbox_num == 1) sound_play(asset_get("sfx_blow_heavy2"));
@@ -96,7 +97,7 @@ switch (my_hitboxID.attack)
                 sound_play(asset_get("sfx_bird_sidespecial"), false, 0, 0.6, 2);
                 break;
             case 4: //spinjump
-                if (y < hit_player_obj.y && old_vsp > -7) old_vsp = -7;
+                // if (y < hit_player_obj.y && old_vsp > -7) old_vsp = -7;
                 runeC_hitlock = runeC_hitlock_set;
                 my_hitboxID.length = 0; //kill hitbox
 
