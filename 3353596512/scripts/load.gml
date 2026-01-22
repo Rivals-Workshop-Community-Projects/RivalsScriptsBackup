@@ -115,6 +115,8 @@ sprite_change_offset("jeb_takescrap", 65, 62, true);
 sprite_change_offset("jeb_bell", 65, 62, true);
 sprite_change_offset("jeb_angry", 81, 62, true);
 sprite_change_offset("scrap_proj", 15, 15, true);
+sprite_change_offset("scrap_proj_laser", 13, 15, true);
+sprite_change_offset("scrap_proj_laseroff", 15, 15, true);
 sprite_change_offset("scrap_dropped", 15, 15, true);
 sprite_change_offset("scrap_cork_visual", 15, 15, true);
 sprite_change_offset("scrap_large", 25, 25, true);
@@ -137,6 +139,7 @@ for (i = 0; i < 3; i++) {
     sprite_change_offset(`vfx_drop_melee${i}`, 21, 42, true);
 }
 sprite_change_offset("vfx_explosion", 128, 128, true);
+sprite_change_offset("vfx_cruiser_explode", (64 + 32)*2, (79 + 32)*2, true);
 
 sprite_change_offset("plat", 64, 79);
 sprite_change_offset("plat_real", 64, 79);

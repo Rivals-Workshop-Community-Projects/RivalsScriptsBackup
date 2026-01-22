@@ -60,6 +60,7 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 2, HG_KNOCKBACK_SCALING, 1.1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITPAUSE_SCALING, 1);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HITSTUN_MULTIPLIER, .7);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("steelball2"));
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_GRAVITY, 0);

@@ -1,7 +1,7 @@
 //postdraw
 
 
-//draw_debug_text(x, y, "Bonus: " + string(overtime_bonus) + "%");
+//draw_debug_text(x, y, "playing rivals rogue?: " + string(employee_playing_rogue));
 //draw_debug_text(x, y+16, "Fine: " + string(death_fine));
 
 /*
@@ -146,15 +146,15 @@ else return;
     break;
     case 12:
     case 28:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x + 22*spr_dir, y - 38, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x + 22*spr_dir, y - 38, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 13:
     case 29:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x + 18*spr_dir, y - 42, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x + 18*spr_dir, y - 42, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 14:
     case 30:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x + 18*spr_dir, y - 44, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x + 18*spr_dir, y - 44, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 15:
     case 31:
@@ -182,19 +182,19 @@ switch (image_index){
     
     case 21:
     case 66:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x + 14*spr_dir, y - 56, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x + 14*spr_dir, y - 56, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 22:
     case 67:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 18*spr_dir, y - 86, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 18*spr_dir, y - 86, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 23:
     case 68:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 24*spr_dir, y - 82, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 24*spr_dir, y - 82, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 24:
     case 69:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 2*spr_dir, y - 84, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 2*spr_dir, y - 84, 1*spr_dir, 1, 0, c_white, 1);
     break;
     
 //UP THROW
@@ -213,19 +213,19 @@ switch (image_index){
     
     case 29:
     case 74:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x + 10*spr_dir, y - 72, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x + 10*spr_dir, y - 72, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 30:
     case 75:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 16*spr_dir, y - 70, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 16*spr_dir, y - 70, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 31:
     case 76:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 20*spr_dir, y - 66, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 20*spr_dir, y - 66, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 32:
     case 77:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 10*spr_dir, y - 84, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 10*spr_dir, y - 84, 1*spr_dir, 1, 0, c_white, 1);
     break;
     
 //DOWN THROW
@@ -244,19 +244,21 @@ switch (image_index){
     
     case 37:
     case 82:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x + 4*spr_dir, y - 58, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x + 4*spr_dir, y - 58, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 38:
     case 83:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 0*spr_dir, y - 92, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 0*spr_dir, y - 92, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 39:
     case 84:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 0*spr_dir, y - 94, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 0*spr_dir, y - 94, 1*spr_dir, 1, 0, c_white, 1);
     break;
     case 40:
     case 85:
-        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index - (current_scrap.index <= 15? 11 : 22), x - 0*spr_dir, y - 76, 1*spr_dir, 1, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("scrap_large"), current_scrap.index_large, x - 0*spr_dir, y - 76, 1*spr_dir, 1, 0, c_white, 1);
     break;
     
 }
+
+//current_scrap.index - (current_scrap.index <= 15? 11 : 22)

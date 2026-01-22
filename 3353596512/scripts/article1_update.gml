@@ -104,6 +104,22 @@ switch (state){
                 sound_play(asset_get("sfx_blow_heavy2"), false, noone, 0.3, 1.5);
                 ladder_fall_hitbox();
                 spawn_base_dust(x + (106 + (extension_size*40))*spr_dir, y + 20, "dash_start", -spr_dir);
+                switch (extension_size){
+                    case 0:
+                        spawn_base_dust(x + (80 + (extension_size*40))*spr_dir, y + 20, "bounce", spr_dir);
+                    break;
+                    case 1:
+                        spawn_base_dust(x + (60 + (extension_size*40))*spr_dir, y + 20, "bounce", spr_dir);
+                    break;
+                    case 2:
+                        spawn_base_dust(x + (70 + (extension_size*40))*spr_dir, y + 20, "bounce", spr_dir);
+                        spawn_base_dust(x + (0 + (extension_size*40))*spr_dir, y + 20, "bounce", spr_dir);
+                    break;
+                    case 3:
+                        spawn_base_dust(x + (60 + (extension_size*40))*spr_dir, y + 20, "bounce_big", spr_dir);
+                        spawn_base_dust(x + (-40 + (extension_size*40))*spr_dir, y + 20, "bounce_big", spr_dir);
+                    break;
+                }
                 depth = player_id.depth+1;
                 has_fallen = true;
                 if (!instance_exists(player_id.ladder_plat)){
@@ -199,6 +215,8 @@ switch (name) {
     case "walljump": dlen = 24; dfx = 0; dfg = 2629; dfa = dir != 0 ? -90*dir : -90*spr_dir; break;
     case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
+    case "bounce": dlen = 15; dfx = 19; dfg = 2656; dust_color = 1; break;
+    case "bounce_big": dlen = 16; dfx = 8; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
 newdust.dust_fx = dfx; //set the fx id

@@ -4,7 +4,7 @@
 
 
 if (state == 3){
-	var spinShellSprite = sprite_get("shell_drop");
+	var spinShellSprite = spr_shell_drop;
 	
 	draw_sprite_ext( spinShellSprite,		// sprite
 	0,										// image_index

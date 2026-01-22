@@ -38,5 +38,14 @@ if (instance_exists(currKoopaShell)){
 	var shellHudFrame = 1;
 }
 shader_start();
-draw_sprite(sprite_get("shell_hud"), shellHudFrame, temp_x + 10, temp_y);
+
+if (ea_alt){
+	var shellHudSpr = sprite_get("shell_hud_ea");
+} else if (gold_alt){
+	var shellHudSpr = sprite_get("shell_hud_gold");
+} else {
+	var shellHudSpr = sprite_get("shell_hud");
+}
+
+draw_sprite(shellHudSpr, shellHudFrame, temp_x + 10, temp_y);
 shader_end();

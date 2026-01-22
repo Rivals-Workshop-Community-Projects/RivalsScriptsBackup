@@ -10,7 +10,7 @@ set_color_profile_slot_range( 0, 31, 42, 31 );
 
 // green grass
 set_color_profile_slot( 0, 1, 55, 121, 96 );
-set_color_profile_slot_range( 1, 2, 13, 13 );
+set_color_profile_slot_range( 1, 2, 13, 17 );
 
 // twilight trails
 set_color_profile_slot( 0, 2, 255, 194, 79 );
@@ -303,6 +303,6 @@ set_color_profile_slot( 26, 7, 255, 250, 209 ); //temporary.2
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"blue tulip","colors":[{"r":53,"g":149,"b":242,"main":true},{"r":33,"g":100,"b":166},{"r":93,"g":203,"b":241},{"r":58,"g":173,"b":238},{"r":160,"g":255,"b":255}]},{"name":"green grass","colors":[{"r":55,"g":121,"b":96,"main":true},{"r":29,"g":89,"b":67}]},{"name":"twilight trails","colors":[{"r":255,"g":194,"b":79,"main":true},{"r":255,"g":200,"b":33}]},{"name":"twilight.2","colors":[{"r":201,"g":117,"b":51,"main":true},{"r":229,"g":134,"b":25},{"r":224,"g":60,"b":40}]},{"name":"night sky","colors":[{"r":10,"g":43,"b":112,"main":true},{"r":7,"g":17,"b":81}]},{"name":"silver cloud","colors":[{"r":117,"g":147,"b":222},{"r":70,"g":98,"b":168,"main":true},{"r":39,"g":65,"b":132}]},{"name":"temporary","colors":[{"r":22,"g":8,"b":31,"main":true}]},{"name":"temporary.2","colors":[{"r":255,"g":0,"b":255,"main":true}]}]}
+{"formatversion":1,"data":[{"name":"blue tulip","colors":[{"r":53,"g":149,"b":242,"main":true},{"r":33,"g":100,"b":166},{"r":93,"g":203,"b":241},{"r":58,"g":173,"b":238},{"r":160,"g":255,"b":255}]},{"name":"green grass","colors":[{"r":55,"g":121,"b":96,"main":true},{"r":29,"g":89,"b":67},{"r":71,"g":160,"b":127}]},{"name":"twilight trails","colors":[{"r":255,"g":194,"b":79,"main":true},{"r":255,"g":200,"b":33}]},{"name":"twilight.2","colors":[{"r":201,"g":117,"b":51,"main":true},{"r":229,"g":134,"b":25},{"r":224,"g":60,"b":40}]},{"name":"night sky","colors":[{"r":10,"g":43,"b":112,"main":true},{"r":7,"g":17,"b":81}]},{"name":"silver cloud","colors":[{"r":117,"g":147,"b":222},{"r":70,"g":98,"b":168,"main":true},{"r":39,"g":65,"b":132}]},{"name":"temporary","colors":[{"r":22,"g":8,"b":31,"main":true}]},{"name":"temporary.2","colors":[{"r":255,"g":0,"b":255,"main":true}]}]}
 === END JSON PALETTE ===
 */

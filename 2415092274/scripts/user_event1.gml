@@ -9,7 +9,9 @@ if (fake_mhID!=-4){
 
 //print(string(my_hitboxID.hbox_num==2))
 
-with(my_hitboxID.player_id){
+var fake_plr_id = my_hitboxID.player_id;
+if (my_hitboxID<=0){ var fake_plr_id = id; var my_hitboxID = id;}
+with(fake_plr_id){
 if (my_hitboxID.attack==AT_UTILT){
 	if (my_hitboxID.hbox_num==5){
 		sound_play(asset_get("sfx_holy_lightning"));
@@ -72,6 +74,15 @@ if (my_hitboxID.attack==AT_NAIR){
 		sound_play(asset_get("sfx_blow_medium1"));
 	}
 }
+if (my_hitboxID.attack==AT_FINAL){
+	if (my_hitboxID.hbox_num==9){
+		var tst = spawn_hit_fx( hit_player_obj.x, hit_player_obj.y, 156 );
+		tst.depth = depth-1;
+	}else{
+		var tst = spawn_hit_fx( hit_player_obj.x, hit_player_obj.y, 194 );
+		tst.depth = depth-1;
+	}
+}
 
 //mawralgrab
 if (my_hitboxID.attack == AT_NSPECIAL) {
@@ -108,6 +119,10 @@ if (my_hitboxID.attack==AT_JAB || my_hitboxID.attack==AT_FTILT || my_hitboxID.at
 	my_hitboxID.attack==AT_NAIR || my_hitboxID.attack==AT_FAIR || my_hitboxID.attack==AT_BAIR || 
 	my_hitboxID.attack==AT_UAIR || my_hitboxID.attack==AT_DAIR) {
 	dsp_qualified = dsp_buffer_amt;
+	if (my_hitboxID == id){
+		if (attack==AT_FTILT&&window>2){ftilt_hit = true;}
+		if (attack==AT_UTILT&&window>=4&&window_timer>2){utilt_hit = true; sound_play(asset_get("sfx_holy_lightning"));}
+	}
 }
 }
 

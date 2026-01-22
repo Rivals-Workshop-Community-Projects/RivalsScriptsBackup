@@ -89,10 +89,7 @@ switch(state) {
             my_hbox.can_hit_self = true;
             my_hbox.player = reflect_player;  
             if (_can_hit == -1) {
-				for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
-				    my_hbox.can_hit[@ i] = true;
-				}
-			    my_hbox.can_hit[@ my_hbox.player] = false;
+				my_hbox.can_hit[@ my_hbox.player] = false;
             }
             else {
             	my_hbox.can_hit = _can_hit;
@@ -106,9 +103,6 @@ switch(state) {
             my_hbox.can_hit_self = true;
             my_hbox.player = reflect_player;
             if (_can_hit == -1) {
-				for (var i = 0; i < array_length(my_hbox.can_hit); i++) {
-				    my_hbox.can_hit[@ i] = true;
-				}
 			    my_hbox.can_hit[@ my_hbox.player] = false;
             }
             else {
@@ -408,6 +402,7 @@ reflect_player_id_prev = reflect_player_id;
 reflect_player = hbox.player;
 reflect_player_id = hbox.last_player_id;
 
+if (instance_exists(my_hbox)) instance_destroy(my_hbox);
 if (hbox.no_other_hit != 0 && reflect_player_prev != 0)
 	reflect_player_id.can_be_hit[reflect_player_prev] = hbox.no_other_hit + reflect_player_id_prev.hitstop;
 

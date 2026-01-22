@@ -17,6 +17,9 @@ switch (attack){
     		jetpack_dir = 90;
     		jetpack_spindex = 0;
     		jetpack_was_parried = 0;
+    		jetpack_turn_rate = 0;
+    		jetpack_turned_right = false;
+    		jetpack_turned_left = false;
     		if ((is_double_jump && dj_state_timer < 5 //catches frame 1+ doublejumps
 				|| (prev_state != PS_JUMPSQUAT && jump_down && !jump_counter && !jump_pressed && djumps != max_djumps))) //catches frame 0 doublejumps
 			{

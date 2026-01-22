@@ -21,3 +21,12 @@ if ( attack==AT_TAUNT_4 && window==2 && (state==PS_ATTACK_GROUND||state==PS_ATTA
 		}else{ image_index = 0; }
 	}
 }
+if (state==PS_SPAWN){
+	var timemax = 120;
+	if (get_gameplay_time()<=timemax){
+		if (state_timer<timemax){
+			sprite_index = sprite_get("intro")
+			image_index = 0 + state_timer * 17 / timemax;
+		}
+	}
+}

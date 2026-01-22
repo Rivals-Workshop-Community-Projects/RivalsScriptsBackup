@@ -12,6 +12,9 @@ set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 6);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 8);
 
+//if (attack==AT_NSPECIAL){
+//	attack = AT_FINAL;
+//}
 if (attack==AT_DSPECIAL){
 	clear_button_buffer( PC_SPECIAL_PRESSED )
 	reset_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS);
@@ -40,6 +43,8 @@ if (attack==AT_TAUNT){
 	if (up_down){
 		attack = AT_TAUNT_4
 	}
+}else{
+	dsp_qualified = 0;
 }
 if (attack==AT_USPECIAL){
 	reset_attack_value(AT_USPECIAL, AG_NUM_WINDOWS);
@@ -48,4 +53,24 @@ if (attack==AT_USPECIAL){
 }
 if (attack==35 && mode=="B" && shield_down){
 	attack = 36
+}
+var whatsthis_testytest = 0;
+if (whatsthis_testytest == 1){
+	if (attack==AT_FTILT){
+		attack = AT_FTHROW;
+	}
+	if (attack==AT_JAB){
+		attack = AT_NTHROW; //(bthrow)
+	}
+	if (attack==AT_UTILT){
+		attack = AT_UTHROW;
+	}
+	if (attack==AT_DTILT){
+		attack = AT_DTHROW;
+	}
+}
+if (whatsthis_testytest == 2){
+	if (attack==AT_JAB){
+		attack = AT_NSPECIAL_2; //workbench
+	}
 }

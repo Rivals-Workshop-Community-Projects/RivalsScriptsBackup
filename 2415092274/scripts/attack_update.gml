@@ -9,9 +9,46 @@ if (free && attack==AT_USTRONG && window == 1) {
 	set_state(PS_IDLE_AIR);
 }
 
+if (attack==AT_JAB && window == 9 && window_timer == 1) {
+	sound_play( sound_get("SWE3"),false,noone,0.5,1.1 );
+	//sound_play( asset_get("sfx_ice_back_air"),false,noone,0.4,1.2 );
+}
 if (attack==AT_FAIR && window == 1 && window_timer == 14) {
 	sound_play( sound_get( "SWB1" ) );
 }
+if (attack==AT_UAIR && window == 1 && window_timer == 7) {
+	sound_play( sound_get("ao_nair"),false,noone,0.9,1.3 );
+	atk_voice();
+}
+if (attack==AT_DAIR && window == 2 && window_timer == 3) {
+	atk_voice();
+}
+if (attack==AT_NAIR && window == 1 && window_timer == 4) {
+	atk_voice();
+}
+if (attack==AT_JAB && window == 8 && window_timer == 2) {
+	atk_voice();
+}
+if (attack==AT_FTILT && window == 1 && window_timer == 4) {
+	atk_voice();
+}
+if (attack==AT_UTILT && window == 2 && window_timer == 3) {
+	atk_voice();
+}
+if (attack==AT_DTILT && window == 1 && window_timer == 4) {
+	atk_voice();
+}
+if (attack==AT_DATTACK && window == 2 && window_timer == 2) {
+	atk_voice();
+}
+if (attack==AT_FSTRONG && window == 2 && window_timer == 1) {
+	atk_voice();
+}
+if (attack==AT_DSTRONG && window == 2 && window_timer == 2) {
+	atk_voice();
+}
+//uh ustrong one is down there
+
 
 
 if (attack==AT_UAIR&&window==1&&window_timer==1) {
@@ -24,9 +61,11 @@ if (attack==AT_UAIR && has_hit_player) {
 if (attack==AT_FAIR && window == 2 && window_timer == 2) {
 	sound_play( sound_get("SWB1"),false,noone,0.5,1 );
 	sound_play( sound_get("SWL3"),false,noone,0.7,1.2 );
+	atk_voice();
 }
 if (attack==AT_BAIR && window == 1 && window_timer == 10) {
 	sound_play( sound_get("ao_nair"),false,noone,0.5,1.2 );
+	atk_voice();
 }
 if (attack==AT_BAIR && window == 2 && window_timer%2==0 ){
 	spawn_hit_fx( x-16+random_func( 2, 32, true ), y-24-24+random_func( 5, 48, true ), particle2 );
@@ -206,6 +245,7 @@ if (attack==AT_USTRONG){
 		if(window_timer==8){
 			spawn_dust_fx( x, y+8, sprite_get("starcircle_1x"), 16 );
 			sound_play(sound_get("wind5"),false,-4,1,1.5);
+			atk_voice();
 		}
 	}
 }
@@ -219,6 +259,9 @@ if (attack==AT_NSPECIAL){
 			nsp_dir_h = 0;
 			nsp_dir_v = 0;
 			nsp_direction_storage_for_post_draw = 0;
+			if (voicemode==true){
+				sound_play( sound_get("vo_atk8_A"),false,noone,vo_volume_set,1 );
+			}
 		}
 	}
 	if (window==2){
@@ -272,6 +315,9 @@ if (attack==AT_NSPECIAL){
 			if (window_timer==8){
 				sound_play(sound_get("nsp_sw"),false,-4,0.7,1.2);
 				sound_play(sound_get("dash"),false,-4,0.9,1.05);
+				if (voicemode==true){
+					sound_play( sound_get("vo_atk8_B"),false,noone,vo_volume_set,1 );
+				}
 			}
 			var tstst = get_window_value(AT_NSPECIAL, 4, AG_WINDOW_LENGTH);
 			var tmp_h = ease_cubeOut( round(nsp_dir_h), round(nsp_dir_h/5), window_timer, tstst );
@@ -419,6 +465,9 @@ if (attack==AT_USPECIAL){
 				window = 7;
 				window_timer = 0;
 				usp_d_done = true;
+				//if (voicemode==true){
+				//	sound_play( sound_get("vo_atk8_A"),false,noone,vo_volume_set,1 );
+				//}
 				if (window_timer!=15){
 					sound_play(sound_get("SWB1"))
 				}
@@ -430,10 +479,17 @@ if (attack==AT_USPECIAL){
 		hsp = clamp(hsp, -3, 3)
 		usp_did = true;
 	}
+	if (window==2){
+		spawn_hit_fx( x+(72*spr_dir)-16+random_func( 2, 32, true ), y-24-24+random_func( 5, 48, true ), particle2 );
+	}
 	if (window==3){
 		if (window_timer>=6){
 			if (!was_parried&&!hitpause){
 				can_shield = true;
+			}
+		}else{
+			if (window_timer%2==0){
+				spawn_hit_fx( x+(80*spr_dir)-12+random_func( 2, 24, true ), y-24-16+random_func( 5, 32, true ), particle2 );
 			}
 		}
 	}
@@ -449,6 +505,9 @@ if (attack==AT_USPECIAL){
 			if (!free){
 				window = 5;
 				window_timer = 0;
+				if (voicemode==true){
+					sound_play( sound_get("vo_atk8_B"),false,noone,vo_volume_set,1 );
+				}
 				//var xa = get_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_X);
 				//var ya = get_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_Y);
 				//create_hitbox( AT_USPECIAL, 1, xa, ya )
@@ -478,6 +537,9 @@ if (attack==AT_USPECIAL){
 					break;
 				}
 			}
+		}
+		if (window_timer%2==0){
+			spawn_hit_fx( x+(2*spr_dir)-12+random_func( 2, 24, true ), y+32-12+random_func( 5, 24, true ), particle2 );
 		}
 	}
 	if (window==7||window==8){
@@ -569,6 +631,37 @@ if (attack==AT_FSPECIAL){
 		can_move = false;
 	}
 }
+if (attack==AT_FINAL){
+	can_move = false;
+	if (window<4){
+		vsp = 0;
+		hsp += (walk_speed/7)*(right_down-left_down)
+		hsp = clamp(hsp, walk_speed*-0.8, walk_speed*0.8)
+	}else{
+		vsp = clamp(vsp, -620, 2);
+	}
+	if (window == 1 && window_timer == 1){
+		atk_voice();
+	}
+	if (window == 3 && !hitpause){
+		var spin_snd_amt = 7;
+		var spin_len = 60-(round(60/spin_snd_amt)*1);
+		if (window_timer<=spin_len){
+		if (window_timer==1||(window_timer%round(spin_len/spin_snd_amt)==0)){
+			//print(string(window_timer%round(spin_len/spin_snd_amt)))
+			sound_stop(sound_get("fs_maelstrom"));
+			sound_stop(sound_get("fs_maelstrom_short"));
+				//print(string(window_timer/spin_snd_amt))
+			if (window_timer/spin_snd_amt >= spin_snd_amt-2){
+				//print("ran. "+string(window_timer/spin_snd_amt))
+				sound_play(sound_get("fs_maelstrom"),false,noone,1,1);
+			}else{
+				sound_play(sound_get("fs_maelstrom_short"),false,noone,1,1);
+			}
+		}
+		}
+	}
+}
 
 
 
@@ -657,9 +750,66 @@ switch (name) {
     case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
 }
 var newdust = spawn_dust_fx(x,y,asset_get("empty_sprite"),dlen);
+if (newdust != -4){
 newdust.dust_fx = dfx; //set the fx id
 if dfg != -1 newdust.fg_sprite = dfg; //set the foreground sprite
 newdust.dust_color = dust_color; //set the dust color
 if dir != 0 newdust.spr_dir = dir; //set the spr_dir
 newdust.draw_angle = dfa;
 return newdust;
+}
+
+
+#define atk_voice
+///atk_voice()
+//set the volume and mutechance in init.gml
+if (voicemode==true){
+	var tmp_rand = random_func( 5, 6, true )+1;//1,2,3,4,5,6
+	switch (attack){
+		case AT_FSTRONG:
+			if (tmp_rand<=4){
+				sound_play( sound_get("vo_atk7"),false,noone,vo_volume_set,1 );
+			}else{
+				sound_play( sound_get("vo_atk6"),false,noone,vo_volume_set,1 );
+			}
+		break;
+		
+		case AT_USTRONG:
+			sound_play( sound_get("vo_atk5"),false,noone,vo_volume_set,1 );
+		break;
+		
+		case AT_DSTRONG:
+			if (tmp_rand<=4){
+				sound_play( sound_get("vo_atk6"),false,noone,vo_volume_set,1 );
+			}else{
+				sound_play( sound_get("vo_atk7"),false,noone,vo_volume_set,1 );
+			}
+		break;
+		
+		case 49: //AT_FINAL
+			if (tmp_rand<=3){
+				sound_play( sound_get("vo_decisive1"),false,noone,vo_volume_set,1 );
+			}else if (tmp_rand<=5){
+				sound_play( sound_get("vo_decisive3"),false,noone,vo_volume_set,1 );
+			}else{
+				sound_play( sound_get("vo_decisive2"),false,noone,vo_volume_set,1 );
+			}
+		break;
+		
+		default:
+			var tmp_rand_m = random_func( 2, 10, false )/10;
+			if (tmp_rand_m > vo_mutechance){
+				//var tmp_rand_p = 0.9+random_func( 7, 2, false )/10;
+				var tmp_rand_p = 1;
+				if (tmp_rand<=2){
+					sound_play( sound_get("vo_atk1"),false,noone,vo_volume_set,tmp_rand_p );
+				}else if (tmp_rand<=4){
+					sound_play( sound_get("vo_atk2"),false,noone,vo_volume_set,tmp_rand_p );
+				}else{
+					sound_play( sound_get("vo_atk3"),false,noone,vo_volume_set,tmp_rand_p );
+				}
+			}
+		break;
+	}
+	
+}

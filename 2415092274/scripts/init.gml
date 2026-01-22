@@ -134,7 +134,7 @@ fsp_t_max = 16;
 fsp_a_time = 0;
 fsp_a_t_max = 16;
 fsp_buffer = 0;
-fsp_buffer_amount = 16;//20
+fsp_buffer_amount = 18;//20
 fsp_jc_confirm = false;
 
 usp_did = false;
@@ -154,15 +154,38 @@ grabbed_player_relative_y = 0;
 AT_TAUNT_3 = AT_EXTRA_2;
 AT_TAUNT_4 = AT_EXTRA_3;
 skate_tmp = 0;
+AT_FINAL = 49;
 
 optimalmodeEX = false;
 fake_mhID = -4;
+hbox_num = 0;
+
+v_init = false;
+voicemode = false;
+vo_volume_set = 0.7;
+vo_mutechance = 0.65;
+vo_hurt_mutechance = 0.35;
 
 Hikaru_Title = "Lylip Magic";
 arena_title = "Stargazer Lylip"; boxing_title = arena_title; //holy frick
 arena_short_name = "Ao";
 battle_text = "* Smells like star trails.";
 greenwood_cheer = 1;
+
+TCG_Kirby_Copy = 9;//tornado
+copy_ability_id = 4;//cutter
+knight_compat_dream = 
+    [
+        "No fear, keep going.",
+        "Confidence, confidence!!",
+        "...This next moment!"
+    ]
+mo_grab_x = 0; mo_grab_y = 0;
+mo_mindName = "Ao"; mo_mindAge = "??"; mo_mindGender = "Female"; mo_mindIdent = "Lylip";
+mo_mindMessage = "Seize the moment...";
+buddy_screenko_sprite = sprite_get("etc_koscreen")
+buddy_starko_sprite = sprite_get("etc_kostar")
+
 
 steve_death_message = "Steve was slain by starryao";
 
@@ -174,4 +197,69 @@ mode = false;
 particle1 = hit_fx_create( sprite_get("particle1"), 12 );
 particle2 = hit_fx_create( sprite_get("particle2"), 12 );
 
+//demon horde compat...maybe
+hit_player_event = 1;
+demonhorde_portrait_x = -100;
 
+//victory quote thing - sscripts are unload.gml and results_post_draw.gml - scripts are taken from reiga mal but is from frtoud hypercam
+ushr_victory_quote = "Not often we dream of the past like this. Gosh. It's like a... physical retrospection.";
+ushr_handled_victory_quote = false;
+victoryicon_subimg = 0;
+
+//fs
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 160;
+fs_charge_mult = 1; //default is 1.3
+
+
+//Dracula support wow!
+dracula_portrait = sprite_get("etc_face");
+dracula_portrait2 = asset_get("empty_sprite"); dracula_portrait3 = asset_get("empty_sprite")
+var page = 0;
+
+//Page 0
+dracula_speaker[page] = 0;
+dracula_text[page] = "Who dare enter my throne room so early in the night?";
+page++;
+
+//Page 1
+dracula_speaker[page] = 1;
+dracula_text[page] = "...Oh dear. I was just training by fighting up the castle, and...";
+page++;
+
+//Page 2
+dracula_speaker[page] = 1;
+dracula_text[page] = "Now I am face to face with the master of dusk and darkness.";
+page++;
+
+//Page 3
+dracula_speaker[page] = 0;
+dracula_text[page] = "How flattering. However, it sounds to be that you've caused much damage in my very castle.";
+page++;
+
+//Page 4
+dracula_speaker[page] = 0;
+dracula_text[page] = "I am feeling generous tonight. I may let you leave alive... but not without a fight.";
+page++;
+
+//Page 5
+dracula_speaker[page] = 1;
+dracula_text[page] = "Oh dear.";
+page++;
+
+
+
+//Daroach support wow! you twos names look so similar mayn
+daroach_portrait = dracula_portrait;
+daroach_portrait2 = asset_get("empty_sprite"); daroach_portrait3 = asset_get("empty_sprite");
+var page = 0;
+
+//Page 0
+daroach_speaker[page] = 1;
+daroach_text[page] = "No need for words. Let's get to it now.";
+page++;
+
+//Page 1
+daroach_speaker[page] = 0;
+daroach_text[page] = "Alright.";
+page++;

@@ -41,7 +41,7 @@ alt_name[25] = "Rayman";
 alt_name[26] = "Dust";
 alt_name[27] = "Fleet";
 alt_name[28] = "Sybil";
-alt_name[29] = "Keith";
+alt_name[29] = "Yuri (FFCC:RoF)";
 alt_name[30] = "Champion";
 alt_name[31] = "Vortex Gallery (2025)";
 

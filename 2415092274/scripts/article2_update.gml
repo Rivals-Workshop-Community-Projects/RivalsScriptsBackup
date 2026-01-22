@@ -139,6 +139,19 @@ if (state == 1){
 					}
 					tmp_id.usp_did = false;
 					tmp_id.move_cooldown[AT_USPECIAL] = 0;
+				}else{
+					var ring = instance_create( tmp_id.x, tmp_id.y-30, "obj_article1" );
+					ring.r_dur = 20
+					tmp_id.white_flash_timer = 20;
+					sound_play(sound_get("blink"), false, noone, 0.8);
+					tmp_id.window=9;
+					tmp_id.window_timer=0;
+					with (tmp_id){
+						attack_end() 
+						destroy_hitboxes()
+					}
+					tmp_id.usp_did = false;
+					tmp_id.move_cooldown[AT_USPECIAL] = 0;
 				}
 			}
 			tmp_id.hitstop = tmp_hb_id.hitpause;//9

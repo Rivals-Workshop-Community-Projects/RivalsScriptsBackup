@@ -15,7 +15,7 @@ if (state > 2 || items_taken || array_length(scrap_on_counter) >= 5){
 
 if (!items_taken){
     for (i = 0; i < array_length(scrap_on_counter); i++){
-        draw_sprite_ext(sprite_get("hud_scrap"), scrap_on_counter[i].index, (x - 60) + scrap_on_counter[i].pos, y - 2, 2, 2, 0, c_white, 1);
+        draw_sprite_ext(sprite_get("hud_scrap_counter"), scrap_on_counter[i].index, (x - 60) + scrap_on_counter[i].pos, y - 2, 2, 2, 0, c_white, 1);
     }
 }
 

@@ -1,5 +1,9 @@
 // init_shader.gml
 
+if ("curr_alt_costume" not in self){
+	curr_alt_costume = false;
+}
+
 /*
 //Color Mapping (if needed)
 if (get_player_color(player) == 0) {

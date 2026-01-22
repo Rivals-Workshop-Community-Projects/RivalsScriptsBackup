@@ -40,7 +40,7 @@ set_window_value(AT_BAIR, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_BAIR, 2);
 
-//shot
+//shot close
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 3);
@@ -58,7 +58,7 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);
-set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT, 5);
 
 //fly backwards

@@ -74,7 +74,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_OVERTIME_CREDIT, 5);
 
 //ladder fall
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 90);
@@ -106,7 +106,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 5);
 set_hitbox_value(AT_DSTRONG, 3, HG_OVERTIME_CREDIT, 5);
 
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 4);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 90);
@@ -139,7 +139,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_OVERTIME_CREDIT, 5);
 
 //copies of the ladder hitboxes under a different attack index to fix a bug involving strong charge.
 set_hitbox_value(2, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(2, 1, HG_LIFETIME, 3);
+set_hitbox_value(2, 1, HG_LIFETIME, 4);
 set_hitbox_value(2, 1, HG_HITBOX_X, 0);
 set_hitbox_value(2, 1, HG_HITBOX_Y, 0);
 set_hitbox_value(2, 1, HG_WIDTH, 90);
@@ -171,7 +171,7 @@ set_hitbox_value(2, 1, HG_HIT_LOCKOUT, 5);
 set_hitbox_value(2, 1, HG_OVERTIME_CREDIT, 5);
 
 set_hitbox_value(2, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(2, 2, HG_LIFETIME, 3);
+set_hitbox_value(2, 2, HG_LIFETIME, 4);
 set_hitbox_value(2, 2, HG_HITBOX_X, 0);
 set_hitbox_value(2, 2, HG_HITBOX_Y, 0);
 set_hitbox_value(2, 2, HG_WIDTH, 90);

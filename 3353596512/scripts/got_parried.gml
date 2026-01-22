@@ -48,10 +48,16 @@ if (hit_player_obj != self){
 #define calculate_weight()
 
 	weight_value = passive_weight + item_weight;
-	dash_speed = lerp(7, 4, weight_value/weight_max);
-	initial_dash_speed = lerp(7.5, 4.5, weight_value/weight_max);
+	//dash_speed = lerp(7, 4, weight_value/weight_max);
+	dash_speed = (ceil(lerp(7, 4, weight_value/weight_max)*4) / 4)-0.25;
+	//initial_dash_speed = lerp(7.5, 4.5, weight_value/weight_max);
+	initial_dash_speed = (ceil(lerp(7.5, 4.5, weight_value/weight_max)*4) / 4)-0.25;
 	wave_land_adj = lerp(1.4, 1, weight_value/weight_max);
-	air_max_speed = lerp(4.5, 3, weight_value/weight_max);
+	//air_max_speed = lerp(4.5, 3, weight_value/weight_max);
+	air_max_speed = (ceil(lerp(4.5, 3, weight_value/weight_max)*4) / 4)-0.25;
 	gravity_speed = lerp(0.5, 0.65, weight_value/weight_max);
 	leave_ground_max = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 	max_jump_hsp = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
+	wave_friction = lerp(0.11, 0.2, weight_value/weight_max);
+	air_accel = (floor(lerp(0.4, 0, weight_value/weight_max)*20) / 20)-0.05;
+	air_accel = clamp(air_accel, 0.2, 0.35);

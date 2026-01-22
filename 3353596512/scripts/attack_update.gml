@@ -665,10 +665,10 @@ switch(attack)
     			smoke.depth = depth-1;
     		}
     		if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
-    			spawn_hit_fx(x + 12*spr_dir, y - 44, vfx_explosion);
+    			spawn_hit_fx(x, y, vfx_lethal_explosion);
     			sound_play(sound_get("uspec2_explode"));
     			if (!was_parried){
-				var explosion = create_hitbox(AT_USPECIAL_2, 5, x, y-56);
+				var explosion = create_hitbox(AT_USPECIAL_2, 5, x, y-52);
 				explosion.can_hit_self = true;
     			}
 				cruiser_debris_crash();
@@ -697,8 +697,8 @@ switch(attack)
     	can_fast_fall = false;
     	if (window == 1){
     		if (window_timer = 1 && !hitpause){
-    			available_scrap[31].orig_value = random_func(10, 199, true) + 1;
-    			available_scrap[31].value = available_scrap[31].orig_value;
+    			available_scrap[36].orig_value = random_func(10, 199, true) + 1;
+    			available_scrap[36].value = available_scrap[36].orig_value;
     		}
     	}
     	if (window == 2){
@@ -713,11 +713,11 @@ switch(attack)
     			if (!has_scrap){
     				scrap_found_timer = 0;
     				current_scrap = available_scrap[random_func(7, array_length(available_scrap), true)];
-    				//current_scrap = available_scrap[9]; //debug thing
+    				//current_scrap = available_scrap[36]; //debug thing
     				prev_scrap = current_scrap;
     				scrap_visual_dir = spr_dir;
 
-    				if (current_scrap.index == 31){
+    				if (current_scrap.index == 36){
     					if (random_func(9, 10, true) > 0){
     						current_scrap = available_scrap[random_func(8, array_length(available_scrap) - 1, true)];
     						prev_scrap = current_scrap;
@@ -817,14 +817,19 @@ switch(attack)
 #define calculate_weight()
 
 	weight_value = passive_weight + item_weight;
-	dash_speed = lerp(7, 4, weight_value/weight_max);
-	initial_dash_speed = lerp(7.5, 4.5, weight_value/weight_max);
+	//dash_speed = lerp(7, 4, weight_value/weight_max);
+	dash_speed = (ceil(lerp(7, 4, weight_value/weight_max)*4) / 4)-0.25;
+	//initial_dash_speed = lerp(7.5, 4.5, weight_value/weight_max);
+	initial_dash_speed = (ceil(lerp(7.5, 4.5, weight_value/weight_max)*4) / 4)-0.25;
 	wave_land_adj = lerp(1.4, 1, weight_value/weight_max);
-	air_max_speed = lerp(4.5, 3, weight_value/weight_max);
+	//air_max_speed = lerp(4.5, 3, weight_value/weight_max);
+	air_max_speed = (ceil(lerp(4.5, 3, weight_value/weight_max)*4) / 4)-0.25;
 	gravity_speed = lerp(0.5, 0.65, weight_value/weight_max);
 	leave_ground_max = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 	max_jump_hsp = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 	wave_friction = lerp(0.11, 0.2, weight_value/weight_max);
+	air_accel = (floor(lerp(0.4, 0, weight_value/weight_max)*20) / 20)-0.05;
+	air_accel = clamp(air_accel, 0.2, 0.35);
 
 
 //iasa_script (insantly as soon as, aka switch back into full control/idle) without having to check for !was_parried

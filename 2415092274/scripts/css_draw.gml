@@ -1,11 +1,26 @@
 //AO css draw
 
-
-draw_sprite_ext(sprite_get("aaa_vernum"),1,x+180,y+102,2,2,0,-1,1);
-
-if (get_player_color( player ) == 7){
-draw_sprite_ext(sprite_get("ea_outline"),1,x+8,y+8,2,2,0,-1,1);
+shader_end()
+var icon_x = 176
+var icon_y = 112
+switch(get_player_color( player )){
+	case 6:
+	draw_sprite_ext(sprite_get("z_css_icons"),3,x+icon_x,y+icon_y,2,2,0,-1,1);
+	break;
+	case 7:
+	draw_sprite_ext(sprite_get("ea_outline"),1,x+8,y+8,2,2,0,-1,1);
+	draw_sprite_ext(sprite_get("z_css_icons"),6,x+icon_x,y+icon_y,2,2,0,-1,1);
+	break;
+	case 18:
+	draw_sprite_ext(sprite_get("z_css_icons"),1,x+icon_x,y+icon_y,2,2,0,-1,1);
+	break;
+	default: break;
 }
+
+draw_sprite_ext(sprite_get("aaa_vernum"),1,x+10,y+90,2,2,0,-1,1);
+
+//vo button is below "ae code"
+
 /*
  
 There are two pictures of a
@@ -270,6 +285,29 @@ if (color_desc_activate){
 }
 
 //ae code end
+
+
+//vo button
+draw_sprite_ext(sprite_get("z_button_bg"),0,x+buttonloc_x-12,y+buttonloc_y-2,2,2,0,get_player_hud_color(player),1);
+draw_sprite_ext(sprite_get("z_button_vo"),(var_localstorage*3),x+buttonloc_x,y+buttonloc_y,2,2,0,-1,1);
+if (button_presstime){
+	draw_sprite_ext(sprite_get("z_button_vo"),(!var_localstorage*3)+2,x+buttonloc_x,y+buttonloc_y,2,2,0,-1,1);
+}else if (button_hover){
+	draw_sprite_ext(sprite_get("z_button_vo"),(var_localstorage*3)+1,x+buttonloc_x,y+buttonloc_y,2,2,0,-1,1);
+}
+if (cpu_hover>0 && cpu_hover<cpu_hover_max){
+	var prog_tmp = ease_quadIn( 0, 100, cpu_hover, cpu_hover_max )/100
+	var button_w = (13*2)-1
+	var button_h = (10*2)+1
+	draw_rectangle_colour(x+buttonloc_x+2, y+buttonloc_y+2+button_h-(button_h*prog_tmp), x+buttonloc_x+button_w+2, y+buttonloc_y+2+button_h, c_black, c_black, c_black, c_black, false);
+}
+
+
+
+
+
+
+
 
 
 

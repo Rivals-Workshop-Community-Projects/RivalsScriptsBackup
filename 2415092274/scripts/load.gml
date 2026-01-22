@@ -64,6 +64,7 @@ sprite_change_offset("bouncehurt", tx, ty);
 sprite_change_offset("spinhurt", tx, ty);
 sprite_change_offset("uphurt", tx, ty);
 sprite_change_offset("downhurt", tx, ty);
+sprite_change_offset("intro", tx, ty);
 
 sprite_change_offset("nspecial2_comettrail", round(tx/2)+32, round(ty/2)+32);
 sprite_change_offset("uspecial_slash", 54, 48);//90 102
@@ -82,6 +83,9 @@ sprite_change_offset("hfx_tackle", 96, 96);
 sprite_change_offset("hfx_tackle2", 96, 96);
 sprite_change_offset("dspecial_indicator", tx, ty);
 
+sprite_change_offset("final_hurtb", tx, ty);
+sprite_change_offset("final", tx+40, ty+480);
+
 sprite_change_offset("particle1", 16, 16);
 sprite_change_offset("particle2", 16, 16);
 sprite_change_offset("exp_ao", 84, 114);
@@ -91,6 +95,16 @@ sprite_change_offset("stars3", 40, 40);
 sprite_change_offset("stars_v2", 80, 80);
 sprite_change_offset("stars3_v2", 80, 80);
 
+sprite_change_offset("whatsthis_getupattack", tx, ty);
+sprite_change_offset("whatsthis_grab", tx, ty);
+sprite_change_offset("whatsthis_grab_hold", tx, ty);
+sprite_change_offset("whatsthis_grab_pummel", tx, ty);
+sprite_change_offset("whatsthis_item_swing", tx, ty);
+sprite_change_offset("whatsthis_ledgeattack", tx, ty);
+sprite_change_offset("whatsthis_throw_b", tx, ty);
+sprite_change_offset("whatsthis_throw_d", tx, ty);
+sprite_change_offset("whatsthis_throw_f", tx, ty);
+sprite_change_offset("whatsthis_throw_u", tx, ty);
 
 
 

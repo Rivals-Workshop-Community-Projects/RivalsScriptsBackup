@@ -599,6 +599,25 @@ if (rabbit_suit){
 	set_ui_element(UI_HUDHURT_ICON, get_char_info(player, INFO_HUDHURT));
 }
 
+//rivals rogue-specific code: don't fine him if he wins
+if (employee_playing_rogue) { //Game is rogue
+  switch(obj_stage_main.round_state) { //Round States
+    case "choose_item":
+      if (ror_employee_points == 0 || ror_employee_points == ror_points) { //If you lost a round
+        if (ror_employee_can_fine) {
+          ror_employee_can_fine = false;
+          ror_employee_points = ror_points;
+          if (state == PS_RESPAWN && state_timer == 1) fine_penalty();
+        }
+      }  
+    break;
+    default: //Every other game state
+      ror_employee_can_fine = true;
+    break;
+  }
+}
+
+
 #define calculate_weight()
 
 	weight_value = passive_weight + item_weight;
@@ -609,6 +628,38 @@ if (rabbit_suit){
 	gravity_speed = lerp(0.5, 0.65, weight_value/weight_max);
 	leave_ground_max = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 	max_jump_hsp = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
+	air_accel = (floor(lerp(0.4, 0, weight_value/weight_max)*20) / 20)-0.05;
+	air_accel = clamp(air_accel, 0.2, 0.35);
+	
+#define fine_penalty
+
+if (quota_current > 0 && quota_level > 1){
+	switch (quota_level){
+		case 2:
+		death_fine = round((quota_next*0.4)*0.2) / 0.2;
+		break;
+		case 3:
+		death_fine = round((quota_next*0.45)*0.2) / 0.2;
+		break;
+		case 4:
+		death_fine = round((quota_next*0.5)*0.2) / 0.2;
+		break;
+	}
+	if (quota_level >= 5){
+		death_fine = round((quota_next*0.5)*0.2) / 0.2;
+	}
+	if (death_fine > 999){
+		death_fine = 999;
+	}
+	if (death_fine > quota_current){
+		death_fine = quota_current;
+	}
+	if (!show_result){
+		result_queue = true;
+	}
+	show_fine += 1;
+	quota_current -= death_fine;
+}
 
 #define hitbox_stuff()
 
@@ -748,7 +799,7 @@ if (id != other.reticle_id && has_reticle){
 	}
 	if (hit_fx == other.bair_shot_linger || hit_fx == other.bair_smoke_linger || hit_fx == other.bair_gun_dropped
 	|| hit_fx == other.zapgun_small || hit_fx == other.zapgun_big || hit_fx == other.fspec2_scan_linger || hit_fx == other.fspec2_zap_linger
-	|| hit_fx == other.fspec2_drop_gun){
+	|| hit_fx == other.fspec2_drop_gun || hit_fx == other.vfx_lethal_explosion){
 		depth = other.depth-1;
 		if (hit_fx == other.bair_gun_dropped && step_timer % 3 == 0 && step_timer != 0){
 			draw_angle += -90*spr_dir;

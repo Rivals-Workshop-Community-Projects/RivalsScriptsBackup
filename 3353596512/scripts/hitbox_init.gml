@@ -80,6 +80,9 @@ if (attack == AT_DSPECIAL_2){
             case "Airhorn":
                 hit_sfx = sound_get("scrap_airhorn");
             break;
+            case "Hairdryer":
+                hit_sfx = sound_get("scrap_hairdryer");
+            break;
             case "Teeth":
                 teeth_sprite = sprite_get("scrap_teeth");
             break;
@@ -105,6 +108,12 @@ if (attack == AT_DSPECIAL_2){
             break;
             case "Old phone":
                 sound_play(sound_get("scrap_phone_scream"), false, noone, 1, 1);
+            break;
+            case "Laser pointer":
+            	sound_play(sound_get("scrap_laser_click"), false, noone, 1, 1);
+            	click_sfx = sound_get("scrap_laser_click");
+            	laser_sprite = sprite_get("scrap_proj_laser");
+            	laser_off_sprite = sprite_get("scrap_proj_laseroff");
             break;
             case "Soccer ball":
                 hit_sfx = sound_get("scrap_soccer_kick");
@@ -138,11 +147,7 @@ if (attack == AT_DSPECIAL_2){
         }
     }
     if (hbox_num == 2){
-        if (player_id.current_scrap.index <= 15){
-            image_index = player_id.current_scrap.index - 11;
-        } else {
-            image_index = player_id.current_scrap.index - 22;
-        }
+        image_index = player_id.current_scrap.index_large
         proj_scrap_id = player_id.current_scrap;
         will_explode = false;
         made_hit_sfx = false;
@@ -188,10 +193,16 @@ if (attack == AT_DSPECIAL_2){
 #define calculate_weight()
 
 	weight_value = passive_weight + item_weight;
-	dash_speed = lerp(7, 4, weight_value/weight_max);
-	initial_dash_speed = lerp(7.5, 4.5, weight_value/weight_max);
+	//dash_speed = lerp(7, 4, weight_value/weight_max);
+	dash_speed = (ceil(lerp(7, 4, weight_value/weight_max)*4) / 4)-0.25;
+	//initial_dash_speed = lerp(7.5, 4.5, weight_value/weight_max);
+	initial_dash_speed = (ceil(lerp(7.5, 4.5, weight_value/weight_max)*4) / 4)-0.25;
 	wave_land_adj = lerp(1.4, 1, weight_value/weight_max);
-	air_max_speed = lerp(4.5, 3, weight_value/weight_max);
+	//air_max_speed = lerp(4.5, 3, weight_value/weight_max);
+	air_max_speed = (ceil(lerp(4.5, 3, weight_value/weight_max)*4) / 4)-0.25;
 	gravity_speed = lerp(0.5, 0.65, weight_value/weight_max);
 	leave_ground_max = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 	max_jump_hsp = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
+	wave_friction = lerp(0.11, 0.2, weight_value/weight_max);
+	air_accel = (floor(lerp(0.4, 0, weight_value/weight_max)*20) / 20)-0.05;
+	air_accel = clamp(air_accel, 0.2, 0.35);

@@ -286,3 +286,9 @@ super_metroid_pause_menu_cool_name = sprite_get("super_metroid_pause_cool_name")
 super_metroid_pause_menu_larger_cool_name = 0;
 super_metroid_pause_menu_character = sprite_get("super_metroid_pause_character");
 super_metroid_zebes_intro_fanfare = sound_get("metroid_jingle");
+
+//aetherclacks
+aetherclacks_user_event = 5;
+aetherclacks_weapon = sprite_get("aetherclacks_wpn_gun");
+aetherclacks_weapon2 = sprite_get("aetherclacks_wpn_gun2");
+aetherclacks_weapon_hurt = sprite_get("aetherclacks_wpn_gun_hurt");

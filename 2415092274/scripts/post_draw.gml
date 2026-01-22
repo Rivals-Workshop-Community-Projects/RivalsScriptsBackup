@@ -139,11 +139,46 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//
 		//put text here.
 		
+		patch_note_title[i] = "v3.0 - (2026 Jan 21)"
+		patch_note_text[i++] = 
+		"v3.0 - (2026 Jan 21)
+		wow it's 2026 huh!
+		Ao now also available in Fraymakers and Crusade! can ya believe it!
+		
+		why did i spend 3 months doing that
+		[b]additions[/b]
+		- ...new portrait
+		- and new thumbnail for that matter, but that's not really in-game is it
+		- ... ... what? victory dialogues? is there a victory dialogue?
+		- what? voice mode?? (to be clear, voice clips not mine, nor are they for ao, theyre from some defunct game)
+		- - im kinda proud of the css button code for cpu
+		- fspecial jump cancel now has a trail of particles, it semi-indicates how long your fspecial 'combo' is kept
+		- uspecial now has a trail of particles
+		- interestingly, uspecial cutterdash didnt interact with the moon before. it now interacts the same way it does with normal uspecial, which is to say, it cancels it instantly and doesnt go to cooldown
+		- demon horde compatibility! dspecial cancel mostly works with demon horde now. kinda annoying that we can't really communicate hitbox id and stuff if it's manual detection like this... game's fault i call it, personally.
+		- star ko and screen ko and dracula boss speech portrait
+		- final smash final strong whichever you wanna call it, yes she has one now
+		- intro anim, i usually don't like putting intro anim on chars but i had one now so
+
+		[b]balances[/b]
+		-- -- idk
+		- DTILT ... base knockback increased by 1 (6 -> 7)
+		- FSPECIAL ... the buffer time for the 'chain' is now a bit longer, dunno. (16 -> 18 frames)
+		-- -- buffs
+		- UAIR ... sweetspot hitbox size increased forward! should feel better? oh yeah, a little tweak on the animation too to suit that.
+
+		[b]notes[/b]
+		ao
+		open for inputs!
+		ao loves you!"
+		
+		
 		patch_note_title[i] = "v2.7 - hotfix"
 		patch_note_text[i++] = 
 		"v2.7 - (2025 Aug 30)
 		[b]notes[/b]
 		hotfix to fix shading value because if i dont do it right now i probably never will."
+		
 		
 		patch_note_title[i] = "v2.6 - (2025 Aug 30)"
 		patch_note_text[i++] = 

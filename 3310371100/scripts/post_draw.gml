@@ -44,6 +44,36 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.14b - (2025/12/30)"
+		patch_note_text[i++] = 
+		"===v3.14b===
+		i didnt want to update because it's pi but i can just letter it up now for small patches
+
+		---changes---
+		:: added v3.14 changelog in playtest changelog, idk if anyone uses playtest changelog in practice but hey here's for completeness' sake
+		:: completed the all star heroines victory quotes
+		
+		congratulations"
+		
+		
+		patch_note_title[i] = "v3.14 - (2025/11/17)"
+		patch_note_text[i++] = 
+		"===v3.14===
+		Hey, it's Pi!
+		
+		---changes---
+		:: wow the tourney alt's really gonna date the character if i kept it there huh. crazy. sorry, it'll have to go for now, now its slot is used by Champion alt.
+
+		---fixes---
+		:: fixing this before i forget, some of the alt colors in palette D that had special sound effects had their alt color check wrong because of the re-organizing i did with last patch. now they have the right ones
+
+		---balancing---
+		-- JAB ... JAB1 has 1 more frame of startup why were you so fast
+
+		---notes---
+		there's no pies to give nor can i cook pies idk how"
+		
+		
 		patch_note_title[i] = "v3.13 - (2025/09/03)"
 		patch_note_text[i++] = 
 		"===v3.13===

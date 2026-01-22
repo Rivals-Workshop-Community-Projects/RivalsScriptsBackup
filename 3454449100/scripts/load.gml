@@ -90,13 +90,26 @@ sprite_change_offset("uspecial_wingback", mainX*2, mainY*2, true);
 sprite_change_offset("dspecial", mainX, mainY, true);
 
 // Koopa Shell
-sprite_change_offset("shell_idle", mainX*2, mainY*2);
 sprite_change_offset("shell_hurtbox", mainX*2, mainY*2);	// hurtbox
+
+sprite_change_offset("shell_idle", mainX*2, mainY*2);
 sprite_change_offset("shell_drop", mainX*2, mainY*2);
 sprite_change_offset("shell_impact",mainX*2 + 8*2, mainY*2);
 sprite_change_offset("shell_spin", mainX*2, mainY*2);
 
+sprite_change_offset("shell_idle_ea", mainX*2, mainY*2);
+sprite_change_offset("shell_drop_ea", mainX*2, mainY*2);
+sprite_change_offset("shell_impact_ea",mainX*2 + 8*2, mainY*2);
+sprite_change_offset("shell_spin_ea", mainX*2, mainY*2);
+
+sprite_change_offset("shell_idle_gold", mainX*2, mainY*2);
+sprite_change_offset("shell_drop_gold", mainX*2, mainY*2);
+sprite_change_offset("shell_impact_gold",mainX*2 + 8*2, mainY*2);
+sprite_change_offset("shell_spin_gold", mainX*2, mainY*2);
+
 sprite_change_offset("shell_hud", 12, 18);
+sprite_change_offset("shell_hud_ea", 12, 18);
+sprite_change_offset("shell_hud_gold", 12, 18);
 
 
 // Taunt(s)

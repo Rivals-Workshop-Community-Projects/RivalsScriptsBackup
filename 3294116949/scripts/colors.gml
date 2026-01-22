@@ -2,27 +2,27 @@
 
 // Fur
 set_color_profile_slot( 0, 0, 250, 251, 255 );
-set_color_profile_slot_range( 0, 3, 13, 19 );
+set_color_profile_slot_range( 0, 1, 20, 12 );
 
 // Raccoon Marks
-set_color_profile_slot( 0, 1, 67, 68, 87 );
+set_color_profile_slot( 0, 1, 82, 80, 115 );
 set_color_profile_slot_range( 1, 1, 15, 14 );
 
 // Sweater
-set_color_profile_slot( 0, 2, 152, 178, 181 );
-set_color_profile_slot_range( 2, 1, 7, 16 );
+set_color_profile_slot( 0, 2, 142, 194, 193 );
+set_color_profile_slot_range( 2, 1, 11, 12 );
 
 // Scarf
-set_color_profile_slot( 0, 3, 79, 94, 94 );
-set_color_profile_slot_range( 3, 14, 12, 18 );
+set_color_profile_slot( 0, 3, 78, 120, 92 );
+set_color_profile_slot_range( 3, 2, 1, 15 );
 
 // Axe
-set_color_profile_slot( 0, 4, 128, 36, 40 );
-set_color_profile_slot_range( 4, 1, 5, 23 );
+set_color_profile_slot( 0, 4, 171, 15, 36 );
+set_color_profile_slot_range( 4, 2, 6, 23 );
 
 // Wood
-set_color_profile_slot( 0, 5, 102, 57, 49 );
-set_color_profile_slot_range( 5, 2, 3, 14 );
+set_color_profile_slot( 0, 5, 110, 51, 0 );
+set_color_profile_slot_range( 5, 2, 1, 14 );
 
 // Sparks
 set_color_profile_slot( 0, 6, 255, 210, 0 );
@@ -60,7 +60,7 @@ set_color_profile_slot( 2, 7, 255, 255, 255 ); //Axe Blade
 set_color_profile_slot( 3, 0, 255, 255, 255 ); //Fur
 set_color_profile_slot( 3, 1, 212, 193, 193 ); //Raccoon Marks
 set_color_profile_slot( 3, 2, 112, 29, 43 ); //Sweater
-set_color_profile_slot( 3, 3, 204, 22, 72 ); //Scarf
+set_color_profile_slot( 3, 3, 201, 22, 72 ); //Scarf
 set_color_profile_slot( 3, 4, 130, 130, 130 ); //Axe
 set_color_profile_slot( 3, 5, 154, 163, 163 ); //Wood
 set_color_profile_slot( 3, 6, 214, 26, 64 ); //Sparks
@@ -187,7 +187,7 @@ set_color_profile_slot( 15, 6, 182, 205, 214 ); //Sparks
 set_color_profile_slot( 15, 7, 255, 255, 255 ); //Axe Blade
 
 // Fennie
-set_color_profile_slot( 16, 0, 255, 207, 229 ); //Fur
+set_color_profile_slot( 16, 0, 255, 230, 241 ); //Fur
 set_color_profile_slot( 16, 1, 255, 255, 255 ); //Raccoon Marks
 set_color_profile_slot( 16, 2, 171, 12, 12 ); //Sweater
 set_color_profile_slot( 16, 3, 105, 101, 101 ); //Scarf
@@ -220,7 +220,7 @@ set_color_profile_slot( 18, 7, 255, 255, 255 ); //Axe Blade
 set_color_profile_slot( 19, 0, 250, 251, 255 ); //Fur
 set_color_profile_slot( 19, 1, 235, 153, 188 ); //Raccoon Marks
 set_color_profile_slot( 19, 2, 56, 53, 66 ); //Sweater
-set_color_profile_slot( 19, 3, 171, 243, 255 ); //Scarf
+set_color_profile_slot( 19, 3, 125, 236, 255 ); //Scarf
 set_color_profile_slot( 19, 4, 255, 189, 255 ); //Axe
 set_color_profile_slot( 19, 5, 56, 53, 66 ); //Wood
 set_color_profile_slot( 19, 6, 255, 227, 115 ); //Sparks
@@ -258,9 +258,9 @@ set_color_profile_slot( 22, 7, 241, 241, 241 ); //Axe Blade
 
 // Ruin Seeker (Tunic)
 set_color_profile_slot( 23, 0, 232, 136, 72 ); //Fur
-set_color_profile_slot( 23, 1, 255, 215, 181 ); //Raccoon Marks
+set_color_profile_slot( 23, 1, 255, 230, 209 ); //Raccoon Marks
 set_color_profile_slot( 23, 2, 168, 214, 50 ); //Sweater
-set_color_profile_slot( 23, 3, 204, 84, 100 ); //Scarf
+set_color_profile_slot( 23, 3, 204, 55, 132 ); //Scarf
 set_color_profile_slot( 23, 4, 185, 199, 193 ); //Axe
 set_color_profile_slot( 23, 5, 74, 64, 53 ); //Wood
 set_color_profile_slot( 23, 6, 209, 79, 155 ); //Sparks
@@ -270,7 +270,7 @@ set_color_profile_slot( 23, 7, 255, 255, 255 ); //Axe Blade
 set_color_profile_slot( 24, 0, 247, 168, 225 ); //Fur
 set_color_profile_slot( 24, 1, 148, 59, 124 ); //Raccoon Marks
 set_color_profile_slot( 24, 2, 71, 41, 105 ); //Sweater
-set_color_profile_slot( 24, 3, 255, 202, 117 ); //Scarf
+set_color_profile_slot( 24, 3, 255, 193, 77 ); //Scarf
 set_color_profile_slot( 24, 4, 139, 144, 176 ); //Axe
 set_color_profile_slot( 24, 5, 117, 89, 154 ); //Wood
 set_color_profile_slot( 24, 6, 68, 216, 182 ); //Sparks
@@ -290,7 +290,7 @@ set_color_profile_slot( 25, 7, 230, 226, 216 ); //Axe Blade
 set_color_profile_slot( 26, 0, 152, 224, 191 ); //Fur
 set_color_profile_slot( 26, 1, 47, 64, 56 ); //Raccoon Marks
 set_color_profile_slot( 26, 2, 82, 99, 94 ); //Sweater
-set_color_profile_slot( 26, 3, 204, 145, 176 ); //Scarf
+set_color_profile_slot( 26, 3, 204, 110, 159 ); //Scarf
 set_color_profile_slot( 26, 4, 71, 85, 125 ); //Axe
 set_color_profile_slot( 26, 5, 69, 50, 30 ); //Wood
 set_color_profile_slot( 26, 6, 255, 174, 0 ); //Sparks
@@ -316,15 +316,15 @@ set_color_profile_slot( 28, 5, 255, 255, 255 ); //Wood
 set_color_profile_slot( 28, 6, 255, 218, 94 ); //Sparks
 set_color_profile_slot( 28, 7, 255, 255, 255 ); //Axe Blade
 
-// Keith
-set_color_profile_slot( 29, 0, 230, 224, 194 ); //Fur
-set_color_profile_slot( 29, 1, 48, 39, 39 ); //Raccoon Marks
-set_color_profile_slot( 29, 2, 163, 141, 207 ); //Sweater
-set_color_profile_slot( 29, 3, 179, 159, 152 ); //Scarf
-set_color_profile_slot( 29, 4, 128, 36, 40 ); //Axe
-set_color_profile_slot( 29, 5, 102, 57, 49 ); //Wood
-set_color_profile_slot( 29, 6, 136, 199, 112 ); //Sparks
-set_color_profile_slot( 29, 7, 255, 255, 255 ); //Axe Blade
+// Yuri (Ring of Fates)
+set_color_profile_slot( 29, 0, 255, 242, 235 ); //Fur
+set_color_profile_slot( 29, 1, 105, 62, 48 ); //Raccoon Marks
+set_color_profile_slot( 29, 2, 91, 163, 47 ); //Sweater
+set_color_profile_slot( 29, 3, 214, 128, 30 ); //Scarf
+set_color_profile_slot( 29, 4, 140, 73, 46 ); //Axe
+set_color_profile_slot( 29, 5, 122, 108, 94 ); //Wood
+set_color_profile_slot( 29, 6, 255, 210, 0 ); //Sparks
+set_color_profile_slot( 29, 7, 143, 150, 149 ); //Axe Blade
 
 // Champion (Astra)
 set_color_profile_slot( 30, 0, 255, 255, 255 ); //Fur
@@ -349,6 +349,6 @@ set_color_profile_slot( 31, 7, 240, 245, 247 ); //Axe Blade
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.
 === BEGIN JSON PALETTE ===
-{"formatversion":1,"data":[{"name":"Fur","colors":[{"r":250,"g":251,"b":255,"main":true},{"r":180,"g":187,"b":209}]},{"name":"Raccoon Marks","colors":[{"r":67,"g":68,"b":87,"main":true},{"r":34,"g":35,"b":54}]},{"name":"Sweater","colors":[{"r":152,"g":178,"b":181,"main":true},{"r":112,"g":140,"b":143}]},{"name":"Scarf","colors":[{"r":79,"g":94,"b":94,"main":true},{"r":37,"g":51,"b":48}]},{"name":"Axe","colors":[{"r":128,"g":36,"b":40,"main":true},{"r":72,"g":17,"b":20}]},{"name":"Wood","colors":[{"r":102,"g":57,"b":49,"main":true},{"r":69,"g":38,"b":32}]},{"name":"Sparks","colors":[{"r":255,"g":210,"b":0,"main":true}]},{"name":"Axe Blade","colors":[{"r":232,"g":232,"b":232,"main":true},{"r":204,"g":199,"b":199}]}]}
+{"formatversion":1,"data":[{"name":"Fur","colors":[{"r":250,"g":251,"b":255,"main":true},{"r":179,"g":189,"b":228}]},{"name":"Raccoon Marks","colors":[{"r":82,"g":80,"b":115,"main":true},{"r":48,"g":46,"b":82}]},{"name":"Sweater","colors":[{"r":142,"g":194,"b":193,"main":true},{"r":105,"g":167,"b":166}]},{"name":"Scarf","colors":[{"r":78,"g":120,"b":92,"main":true},{"r":54,"g":83,"b":63}]},{"name":"Axe","colors":[{"r":171,"g":15,"b":36,"main":true},{"r":115,"g":5,"b":21}]},{"name":"Wood","colors":[{"r":110,"g":51,"b":0,"main":true},{"r":77,"g":37,"b":0}]},{"name":"Sparks","colors":[{"r":255,"g":210,"b":0,"main":true}]},{"name":"Axe Blade","colors":[{"r":232,"g":232,"b":232,"main":true},{"r":204,"g":199,"b":199}]}]}
 === END JSON PALETTE ===
 */

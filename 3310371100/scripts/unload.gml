@@ -348,7 +348,7 @@ if (!ushr_handled_victory_quote)
             break;
         case "3293357713": // Ykyr
             //quote = "What did you say your name was? ...e-Equ-er, well, gosh, That was a great fight! I love your style!";
-            quote = "Love your style! What did you say your name was? ...E-Equ-er, E-keer, E...";
+            quote = "Love your style! What did you say your name was? ...E-Equ-er, Ye-keer, E...";
             break;
         case "3292951946": // Hex
             quote = "The fight was so tense, it's almost suffocating in a way...";
@@ -419,9 +419,10 @@ if (!ushr_handled_victory_quote)
         case "3382637663": // Ciela
             quote = "The hits from these swords are painful, but GOSH are they cool!! Look at those!! I wanna have swords like those!";
             break;
-        case "-": // Lumi
+        case "3633964303": // Lumi
             //quote = "I guess this was truly the experience of a contemporary guardian angel?";
-            quote = "If you are a guardian angel, where were you when people needed you?";
+            //quote = "If you are a guardian angel, where were you when people needed you?";
+            quote = "The air is so much clearer in colder seasons, wouldn't you agree?";
             break;
 		
 		
@@ -455,6 +456,7 @@ return quote
         case "2804295068": // Peashooter
         case "3582673397": // Sary
         case "3271549730": //
+        case "3633964303": // Lumi
             icon = 0;
             break;
             
@@ -624,7 +626,7 @@ return quote
         case "3273103805": // Nisae kind of
         case "2787737701": // Sinker
         case "2867341866": // Aur
-        case "-": // Lumi
+        //case "3633964303": // Lumi
             icon = 14;
             break;
         

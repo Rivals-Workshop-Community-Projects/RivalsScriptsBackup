@@ -257,6 +257,7 @@ for (i = 0; i < 3; i++) {
 }
 
 vfx_explosion = hit_fx_create(sprite_get("vfx_explosion"), 25);
+vfx_lethal_explosion = hit_fx_create(sprite_get("vfx_cruiser_explode"), 40);
 i_exploded = false;
 
 //dstrong
@@ -304,6 +305,10 @@ jetpack_smoke = hit_fx_create(sprite_get("uspec_smoke"), 15);
 
 jetpack_dir = 90;
 jetpack_spindex = 0;
+jetpack_turn_rate = 0;
+jetpack_turned_right = false;
+jetpack_turned_left = false;
+
 cant_use_jetpack = false;
 jetpack_sfx = noone;
 jetpack_used_walljump = false;
@@ -654,16 +659,26 @@ HG_MUNO_HITBOX_HPG = i; i++;			// Enter a string to override hitpause scaling
 HG_MUNO_HITBOX_MISC = i; i++;			// Enter a string to override the auto-generated misc notes (which include misc properties like angle flipper or elemental effect)
 HG_MUNO_HITBOX_MISC_ADD = i; i++;		// Enter a string to ADD TO the auto-generated misc notes, not override (line break will be auto-inserted)
 
+//rivals rogue
+employee_playing_rogue = "rivals_rogue" in obj_stage_main && obj_stage_main.rivals_rogue;
+ror_employee_points = 0;
+ror_employee_can_fine = false;
+
 calculate_weight();
 
 #define calculate_weight()
 
 	weight_value = passive_weight + item_weight;
-	dash_speed = lerp(7, 4, weight_value/weight_max);
-	initial_dash_speed = lerp(7.5, 4.5, weight_value/weight_max);
+	//dash_speed = lerp(7, 4, weight_value/weight_max);
+	dash_speed = (ceil(lerp(7, 4, weight_value/weight_max)*4) / 4)-0.25;
+	//initial_dash_speed = lerp(7.5, 4.5, weight_value/weight_max);
+	initial_dash_speed = (ceil(lerp(7.5, 4.5, weight_value/weight_max)*4) / 4)-0.25;
 	wave_land_adj = lerp(1.4, 1, weight_value/weight_max);
-	air_max_speed = lerp(4.5, 3, weight_value/weight_max);
+	//air_max_speed = lerp(4.5, 3, weight_value/weight_max);
+	air_max_speed = (ceil(lerp(4.5, 3, weight_value/weight_max)*4) / 4)-0.25;
 	gravity_speed = lerp(0.5, 0.65, weight_value/weight_max);
 	leave_ground_max = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
 	max_jump_hsp = round(lerp(7, 3, weight_value/weight_max)*2) / 2;
-	wave_friction = lerp(0.12, 0.2, weight_value/weight_max);
+	wave_friction = lerp(0.11, 0.2, weight_value/weight_max);
+	air_accel = (floor(lerp(0.4, 0, weight_value/weight_max)*20) / 20)-0.05;
+	air_accel = clamp(air_accel, 0.2, 0.35);

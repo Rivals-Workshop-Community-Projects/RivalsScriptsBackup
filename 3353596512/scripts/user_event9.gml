@@ -147,6 +147,7 @@ available_scrap = [
         value : 80,
         orig_value : 80,
         size : 1,
+        index_large : 0,
         weight : 31,
         pos : 0,
         sfx : sound_get("scrap_metal2")
@@ -158,6 +159,7 @@ available_scrap = [
         value : 80,
         orig_value : 80,
         size : 1,
+        index_large : 1,
         weight : 19,
         pos : 0,
         sfx : sound_get("scrap_bottles")
@@ -169,6 +171,7 @@ available_scrap = [
         value : 160,
         orig_value : 160,
         size : 1,
+        index_large : 2,
         weight : 84,
         pos : 0,
         sfx : sound_get("scrap_metal3")
@@ -180,6 +183,7 @@ available_scrap = [
         value : 80,
         orig_value : 80,
         size : 1,
+        index_large : 3,
         weight : 16,
         pos : 0,
         sfx : sound_get("scrap_metal3")
@@ -191,6 +195,7 @@ available_scrap = [
         value : 120,
         orig_value : 120,
         size : 1,
+        index_large : 4,
         weight : 32,
         pos : 0,
         sfx : sound_get("scrap_plasticlarge")
@@ -201,8 +206,8 @@ available_scrap = [
     {
         index : 16,
         name : "Bee hive",
-        value : 150,
-        orig_value : 150,
+        value : 160,
+        orig_value : 160,
         size : 0,
         weight : 0,
         pos : 0,
@@ -325,6 +330,7 @@ available_scrap = [
         value : 100,
         orig_value : 100,
         size : 1,
+        index_large : 5,
         weight : 32,
         pos : 0,
         sfx : sound_get("scrap_jug")
@@ -336,6 +342,7 @@ available_scrap = [
         value : 90,
         orig_value : 90,
         size : 1,
+        index_large : 6,
         weight : 16,
         pos : 0,
         sfx : sound_get("scrap_controlpad")
@@ -347,6 +354,7 @@ available_scrap = [
         value : 80,
         orig_value : 80,
         size : 1,
+        index_large : 7,
         weight : 16,
         pos : 0,
         sfx : sound_get("scrap_metal3")
@@ -365,6 +373,63 @@ available_scrap = [
     
     {
         index : 31,
+        name : "Laser pointer",
+        value : 100,
+        orig_value : 100,
+        size : 0,
+        weight : 0,
+        pos : 0,
+        sfx : sound_get("scrap_laser")
+    },
+    
+    {
+        index : 32,
+        name : "Hairdryer",
+        value : 100,
+        orig_value : 100,
+        size : 0,
+        weight : 7,
+        pos : 0,
+        sfx : sound_get("scrap_plastic2")
+    },
+    
+    {
+        index : 33,
+        name : "Coffee mug",
+        value : 80,
+        orig_value : 80,
+        size : 0,
+        weight : 5,
+        pos : 0,
+        sfx : sound_get("scrap_plastic1")
+    },
+    
+    {
+        index : 34,
+        name : "Toilet paper",
+        value : 90,
+        orig_value : 90,
+        size : 1,
+        index_large : 8,
+        weight : 5,
+        pos : 0,
+        sfx : sound_get("scrap_paper")
+    },
+    
+    {
+        index : 35,
+        name : "Fancy lamp",
+        value : 120,
+        orig_value : 120,
+        size : 1,
+        index_large : 9,
+        weight : 21,
+        pos : 0,
+        sfx : sound_get("scrap_metal2")
+    },
+    
+    {
+        index : 36,
         name : "Zed Dog",
         value : 0,
         orig_value : 0,

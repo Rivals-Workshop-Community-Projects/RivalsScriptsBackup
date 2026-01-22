@@ -285,6 +285,9 @@ if (alt_cur == 15){
 	set_victory_theme(sound_get("victory_classic"));
 }
 
+ea_alt = (get_player_color(player) == 7);
+gold_alt = (get_player_color(player) == 17);
+
 // RESETTING THESE VALUES HERE (VERY IMPORTANT)
 // eye whites, pants
 set_color_profile_slot( 0, 6, 249, 249, 240 );

@@ -54,7 +54,7 @@ if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR) && attack == 
 	if (prev_scrap.size == 0){
 		scrap_lost.image_index = prev_scrap.index;
 	} else {
-		scrap_lost.image_index = prev_scrap.index - (prev_scrap.index <= 15? 11 : 22);
+		scrap_lost.image_index = prev_scrap.index_large;
 	}
 	scrap_lost.hsp = 4*spr_dir;
 	scrap_lost.vsp = -6;

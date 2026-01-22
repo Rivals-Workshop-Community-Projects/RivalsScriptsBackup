@@ -377,7 +377,7 @@ if (shellHitLockout != 0){
 // idle
 if (state == 0){
 	wasShellParriedAtAll = false;
-	sprite_index = sprite_get("shell_idle");
+	sprite_index = spr_shell_idle;
 	
 	hsp = 0;
 	
@@ -392,7 +392,7 @@ if (state == 0){
 
 // Moving
 if (state == 1){
-	sprite_index = sprite_get("shell_spin");
+	sprite_index = spr_shell_spin;
 	
 	image_index = (exist_timer / 4);
 	
@@ -605,7 +605,7 @@ if (state == 2){
 	hsp = 0;
 	vsp = 0;
 
-	sprite_index = sprite_get("shell_impact");
+	sprite_index = spr_shell_impact;
 	
 	var baseImpactTime = 3;
 	var amtToFreezeFor = baseImpactTime;
@@ -639,7 +639,7 @@ if (state == 2){
 if (state == 3){
 	wasShellParriedAtAll = false;
 	if (state_timer == 0){
-		sprite_index = sprite_get("shell_idle");
+		sprite_index = spr_shell_idle;
 	} else {
 		sprite_index = asset_get("empty_sprite");
 	}
@@ -657,7 +657,7 @@ if (state == 3){
 	
 	if (!free && state_timer > 2){
 		setState(0);
-		sprite_index = sprite_get("shell_idle");
+		sprite_index = spr_shell_idle;
 		hsp = 0;
 		vsp = 0;
 	}

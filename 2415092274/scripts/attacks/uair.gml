@@ -81,11 +81,11 @@ set_hitbox_value(AT_UAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 //sweetspot question mark?
 set_hitbox_value(AT_UAIR, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UAIR, 5, HG_HITBOX_X, 48);
-set_hitbox_value(AT_UAIR, 5, HG_HITBOX_Y, -36);
+set_hitbox_value(AT_UAIR, 5, HG_HITBOX_Y, -30);//-36
 set_hitbox_value(AT_UAIR, 5, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 5, HG_LIFETIME, 2);
-set_hitbox_value(AT_UAIR, 5, HG_WIDTH, 25);
-set_hitbox_value(AT_UAIR, 5, HG_HEIGHT, 40);
+set_hitbox_value(AT_UAIR, 5, HG_WIDTH, 36);//25
+set_hitbox_value(AT_UAIR, 5, HG_HEIGHT, 51);//40
 set_hitbox_value(AT_UAIR, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 5, HG_DAMAGE, 11);
 set_hitbox_value(AT_UAIR, 5, HG_ANGLE, 90);

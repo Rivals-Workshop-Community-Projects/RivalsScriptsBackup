@@ -31,6 +31,22 @@ blastzone_l = get_stage_data(SD_X_POS) - get_stage_data(SD_SIDE_BLASTZONE);
 blastzone_t = get_stage_data(SD_Y_POS) - get_stage_data(SD_TOP_BLASTZONE);
 blastzone_b = get_stage_data(SD_Y_POS) + get_stage_data(SD_BOTTOM_BLASTZONE);
 
+spr_shell_idle = sprite_get("shell_idle");
+spr_shell_drop = sprite_get("shell_drop");
+spr_shell_impact = sprite_get("shell_impact");
+spr_shell_spin = sprite_get("shell_spin");
+
+if (player_id.ea_alt){
+	spr_shell_idle = sprite_get("shell_idle_ea");
+	spr_shell_drop = sprite_get("shell_drop_ea");
+	spr_shell_impact = sprite_get("shell_impact_ea");
+	spr_shell_spin = sprite_get("shell_spin_ea");
+} else if (player_id.gold_alt){
+	spr_shell_idle = sprite_get("shell_idle_gold");
+	spr_shell_drop = sprite_get("shell_drop_gold");
+	spr_shell_impact = sprite_get("shell_impact_gold");
+	spr_shell_spin = sprite_get("shell_spin_gold");
+}
 
 //other vars
 

@@ -1,5 +1,12 @@
 //update
 
+if (v_init == false){
+	if (get_synced_var( player )==1){
+		voicemode = true;
+	}
+	v_init = true;
+}
+
 if (get_player_color( player ) == 7){ //towerofheaven
 	if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
 		outline_color=[35, 67, 49]
@@ -35,6 +42,9 @@ if (fsp_buffer>0){
 	fsp_buffer--;
 	if (!free){fsp_buffer = clamp(fsp_buffer-5, 0, fsp_buffer_amount);};
 	//print(string(fsp_buffer))
+	if (fsp_buffer%2==0){
+	spawn_hit_fx( x-8+random_func( 2, 16, true ), y-16-16+random_func( 5, 32, true ), particle1 );
+	}
 }
 
 if (dsp_test_timer<dsp_test_max){

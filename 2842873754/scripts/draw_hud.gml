@@ -9,6 +9,8 @@
 //     draw_sprite(spr_hud_mask, hurt_frame ? 1 : 0, temp_x + 28, temp_y + 8);
 //     shader_end();
 // }
-
+if ("char_height" not in self) exit;
 //Drum
+shader_start();
 draw_sprite_ext(sprite_get("drum_hud"), 0, temp_x + 184, temp_y - 20, 1, 1, 0, drum_cooldown > 0 ? c_gray : c_white, 1);
+shader_end();

@@ -6,11 +6,11 @@ set_attack_value(AT_NAIR, AG_LANDING_LAG, 6);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 //startup 1
-set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_NAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light2"));
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 7);
 
 //active 1
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 4);

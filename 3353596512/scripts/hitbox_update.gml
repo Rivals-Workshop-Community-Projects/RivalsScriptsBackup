@@ -60,12 +60,19 @@ switch (attack){
             destroyed_next = true;
            }
     	if (hbox_num == 1){ //small scrap
-    		if (hitbox_timer % 4 == 0 && free){
-    			proj_angle += -90*spr_dir;
+    		if (proj_scrap_id.name != "Laser pointer"){
+    			if (hitbox_timer % 4 == 0 && free){
+    				proj_angle += -90*spr_dir;
+    			}
+    		} else {
+    			if (hitbox_timer % 2 == 0 && free){
+    				proj_angle += -45*spr_dir;
+    			}
     		}
     		
     		switch (proj_scrap_id.name){
     			case "Airhorn":
+    			case "Hairdryer":
     			if (has_hit && !made_hit_sfx){
     				sound_play(hit_sfx, false, noone, 0.75, 1);
     				made_hit_sfx = true;
@@ -82,6 +89,13 @@ switch (attack){
     			}
     			sprite_index = teeth_sprite;
     			image_index += 0.5;
+    			break;
+    			case "Laser pointer":
+    			if (!destroyed_effect){
+    				sprite_index = laser_sprite;
+    			} else {
+    				sprite_index = laser_off_sprite;
+    			}
     			break;
     			case "Whoopee cushion":
     			grounds = 0;

@@ -120,3 +120,8 @@ sprite_change_offset("super_metroid_save_sparks", 12, 48);
 sprite_change_offset("super_metroid_pause_cool_name", 24, 7);
 sprite_change_offset("super_metroid_pause_character", 30, 131);
 sprite_change_offset("super_metroid_bomb_guide_icon", 104, 24);
+
+//aetherclacks compat
+sprite_change_offset("aetherclacks_wpn_gun", 5, 9);
+sprite_change_offset("aetherclacks_wpn_gun2", 5, 9);
+sprite_change_offset("aetherclacks_snipe_collider", 0, 1);

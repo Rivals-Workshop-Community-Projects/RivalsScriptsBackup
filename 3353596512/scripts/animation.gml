@@ -159,13 +159,36 @@ if (is_attacking){
     	break;
 		case AT_USPECIAL:
 			if (window == 3){
+				if (window_timer == 0){
+					if (jetpack_turn_rate < 6){
+						if (left_down xor right_down){
+							jetpack_turn_rate += 2;
+							if (left_down){
+								jetpack_turned_left = true;
+								jetpack_turned_right = false;
+							}
+							if (right_down){
+								jetpack_turned_right = true;
+								jetpack_turned_left = false;
+							}
+						}
+					}
+					if (jetpack_turn_rate > 0){
+						if (!right_down && !left_down){
+							jetpack_turn_rate = 0;
+						}
+						if  (right_down && jetpack_turned_left) || (left_down && jetpack_turned_right){
+							jetpack_turn_rate = 2;
+						}
+					}
+				}
 				if (right_down){
-					jetpack_dir -= 6;
-					jetpack_spindex += 6*spr_dir;
+					jetpack_dir -= jetpack_turn_rate;
+					jetpack_spindex += jetpack_turn_rate*spr_dir;
 				}
 				if (left_down){
-					jetpack_dir += 6;
-					jetpack_spindex -= 6*spr_dir;
+					jetpack_dir += jetpack_turn_rate;
+					jetpack_spindex -= jetpack_turn_rate*spr_dir;
 				}
 			}
 			if (window == 3 || window == 4){
@@ -346,6 +369,9 @@ if (attack == AT_DSPECIAL_2){
 						sound_play(asset_get("sfx_blow_weak1"), false, noone, 0.5, 1);
 						sound_play(proj_scrap_id.sfx, false, noone, 0.5, 1);
 						spawn_hit_fx(x, y, 301);
+						if (proj_scrap_id.name == "Laser pointer"){
+							sound_play(click_sfx, false, noone, 1, 0.9);
+						}
 					} else {
 						sound_play(asset_get("sfx_blow_heavy2"), false, noone, 0.5, 1.6);
 						sound_play(proj_scrap_id.sfx, false, noone, 0.5, 1);

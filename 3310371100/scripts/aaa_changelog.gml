@@ -6,6 +6,16 @@
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
 ```
 
+===v3.14b===
+i didnt want to update because it's pi but i can just letter it up now for small patches
+
+---changes---
+:: added v3.14 changelog in playtest changelog, idk if anyone uses playtest changelog in practice but hey here's for completeness' sake
+:: completed the all star heroines victory quotes
+
+congratulations
+
+
 ===v3.14===
 Hey, it's Pi!
 
