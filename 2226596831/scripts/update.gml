@@ -92,6 +92,14 @@ if (t2_yes&&(state!=PS_ATTACK_GROUND||attack!=AT_TAUNT_2)){
 	sound_stop(sound_get("wii"))
 }
 
+if (init_e==false){
+	if (instance_number(oTestPlayer) > 0) {
+		set_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_DESTROY_EFFECT, 13);
+		set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_DESTROY_EFFECT, 13);
+	}
+	init_e = true;
+}
+
 with (asset_get("oPlayer")){
 	if (id != other.id){
 	//with (other){print_debug( "other id detect" )}

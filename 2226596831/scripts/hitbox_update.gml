@@ -30,6 +30,16 @@ if (hbox_num == 1||hbox_num == 2){
 }
 }
 
+/*
+if (attack==AT_DSTRONG){
+if (hbox_num == 1 || hbox_num == 2){
+	if (instance_number(oTestPlayer) > 0) {
+		destroy_fx = 13;
+	}
+}
+}
+*/
+
 if (attack==AT_USTRONG){
 if (hbox_num == 1){
 	vsp=vsp+0.3
@@ -45,7 +55,11 @@ if (hbox_num == 1){
 
 if (attack==AT_TAUNT){
 	if (!free){
-		spawn_hit_fx( x, y+48, 153 )
+		if (instance_number(oTestPlayer) > 0) {
+			spawn_hit_fx( x, y, 13 )
+		}else{
+			spawn_hit_fx( x, y+48, 153 )
+		}
 		destroyed = true;
 		sound_play(asset_get("sfx_shovel_hit_med1"))
 		if (player_id.runeL){
@@ -71,7 +85,11 @@ if (attack==AT_NSPECIAL){
 			sound_play(asset_get("sfx_ell_small_missile_ground"))
 		}
 		if (hbox_num==2){
-			spawn_hit_fx( x, y, 153 )
+			if (instance_number(oTestPlayer) > 0) {
+				spawn_hit_fx( x, y, 13 )
+			}else{
+				spawn_hit_fx( x, y, 153 )
+			}
 			sound_play(sound_get("crack"),false,noone,0.5)
 		}
 		destroyed = true;

@@ -44,12 +44,12 @@ if (attack == AT_FSPECIAL && window = 4){
     iasa_script();
 }
 
-if (attack == AT_NSPECIAL && window = 1 && window_timer = 24){
+if (attack == AT_NSPECIAL && window = 1 && window_timer = 19){
     var spawn_x = 90;
     check_spawn_knot(x + 90 * spr_dir, y);    
 }
 
-if (attack == AT_NSPECIAL && window = 1 && window_timer = 24){
+if (attack == AT_NSPECIAL && window = 1 && window_timer = 19){
     if (grassknot_exists = 0){
             if (can_spawn = false){
                 sound_play(sound_get("vileplume_grassknot_fail"))
@@ -66,7 +66,7 @@ if (attack == AT_NSPECIAL && window = 1 && window_timer = 24){
     
 }
 
-if (attack == AT_NSPECIAL && window = 1 && window_timer = 23){
+if (attack == AT_NSPECIAL && window = 1 && window_timer = 18){
         if (grassknot_exists = 1){
         window = 3;
         window_timer = 0;

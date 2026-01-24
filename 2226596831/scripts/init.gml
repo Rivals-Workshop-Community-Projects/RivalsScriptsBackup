@@ -138,9 +138,7 @@ arena_short_name = "RSNM";
 battle_text = "* A Wii Remote, watch out.";
 Hikaru_Title = "Reckless Health & Safety Notice Fox";
 
-ncode1 = "A silhouette of an unstoppable force."
-ncode2 = "Violates multiple safety protocols."
-ncode3 = "Capture and arrest if able."
+init_e = false;
 
 
 

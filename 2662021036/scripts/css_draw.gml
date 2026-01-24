@@ -1,28 +1,37 @@
 
+gpu_set_blendenable(false)
+gpu_set_colorwriteenable(false,false,false,true);
+draw_set_alpha(0);
+draw_rectangle_color(0,0, room_width,room_height, c_white, c_white, c_white, c_white, false);
 
-var temp_x = x + 8;
-var temp_y = y + 9;
+draw_set_alpha(1);
+draw_sprite(sprite_get("css_mask"),0, x + 10,y + 10);
+gpu_set_blendenable(true);
+gpu_set_colorwriteenable(true,true,true,true);
+
+alt_cur = get_player_color(player);
 
 
 
+//thanks to supersonic, we can use colors directly from init_shader.gml
+//which is useful for adding special colored outlines to our alts
+shader_end();
+prepare_shader();
+gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+gpu_set_alphatestenable(true);
+draw_sprite(sprite_get("css_bubbles"),0, x + 10 + bubblescroll_1,y + 10 + bubblescroll_1);
+gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+shader_start();
+//draw portrait again to prevent fuckups
+draw_sprite_ext(get_char_info(player, INFO_CHARSELECT), 0, x+8, y+8, 2, 2, 0, c_white, 1);
 
+shader_end();
+prepare_shader(); //resets shader
 
-
-
- 
-if get_player_color(player) == 7 {
-set_character_color_shading( 0, 0 );
-set_character_color_shading( 1, 0 );
-set_character_color_shading( 2, 0 );
-set_character_color_shading( 3, 0 );
-set_character_color_shading( 4, 0 );
-set_character_color_shading( 5, 0 );
-set_character_color_shading( 6, 0 );
-}
- 
- 
- 
-
+gpu_set_blendmode(bm_add);
+draw_sprite_ext(sprite_get("css_mask"), 0, x+10, y+10, 1, 1, 0, c_white, css_flash);
+gpu_set_blendmode(bm_normal);
 
  
  
@@ -58,7 +67,7 @@ with(asset_get("cs_playercursor_obj")){
 }
 var tmp_pt = abs(player-5)-1
 var temp_x = x + 8;
-var temp_y = y + 9;
+var temp_y = y - 2;
 var tmp_xl = 9
 var tmp_bw = 32
 var tmp_yl = 151
@@ -76,6 +85,7 @@ if (variable_instance_exists(id,"qe")){
     }
 }
  
+ 
 if (!variable_instance_exists(id,"ae") || ye == true){
     qe = qe_b
     ae = "ae"
@@ -83,7 +93,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ue = 0; //cur
     ne = 0; //tmp
     ee = 0;
-    ee_m = 60;
+    ee_m = 80;
+    eehalf = 0;
+    eehalf_max = 40;
     ie = 0;
     ye = false;
     dial_time = 0;
@@ -209,6 +221,8 @@ if (ne != ue){
     ie = (ue == col_max && ne == 0) ? -1 : (ue == 0 && ne == col_max) ? 1 : (ne < ue) ? 1 : -1 
     ne = ue;
     ae = "ne";
+    cselect_x = 0;
+    cselect_grow = 0;
     if (altsel!=0){
     sound_stop(altsel);
     sound_play(altsel);
@@ -216,9 +230,34 @@ if (ne != ue){
 }
 if (ae == "ne"){
     ee = ee_m;
+    eehalf = eehalf_max;
+    text_alpha = 1;
     ae = "ue";
 }
-if (ee > 0){
+
+if cselect_x != 14{
+    cselect_x = lerp(cselect_x, 14, 0.15);
+}
+
+if cselect_grow != 6{
+    cselect_grow = lerp(cselect_grow, 6, 0.15);
+}
+
+if ee < (ee_m / 2){
+    if eehalf > 0{
+    eehalf--;
+    }
+c_wheel_x = ease_quartOut(64, 0, eehalf, eehalf_max);
+}else{
+c_wheel_x = lerp(c_wheel_x, 0, 0.25);
+}
+
+gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+gpu_set_alphatestenable(true);
+
+
+
+
     var tw = ease_quartOut(0, 1, ee, ee_m);
     var tw_b = (ease_quartOut(0, 1, ee, ee_m)/2) - (ease_quartIn(0, 1, ee, ee_m)/2);
     var tw_c = (ease_quartOut(0, 1, ee, ee_m)/4) - (ease_quartIn(0, 1, ee, ee_m)/4);
@@ -226,40 +265,109 @@ if (ee > 0){
     var tw_e = (ease_quartOut(0, 1, ee, ee_m)/4) + (ease_quartIn(0, 1, ee, ee_m)/2);
     var tw_f = (ease_quartOut(0, 1, ee, ee_m)/6) + (ease_quartIn(0, 1, ee, ee_m)/4);
     var tw_g = (ease_quartOut(0, 1, ee, ee_m)) + (ease_quartIn(0, 1, ee, ee_m)/2);
-    var dist = 14;
-    var typ = round(ease_expoIn(0, dist, ee, ee_m-2));
+    var dist = 28;
+    var typ = round(ease_quintIn(0, dist, ee, ee_m-2));
+ 
+if c_wheel_x < 64{   
     //using muno's function;
     if (ue-2>=0){
-    rectDraw(temp_x + 2, temp_y + 77 +(0-(dist*2)-6+(typ*ie)), temp_x + 16, temp_y + 91 +(0-(dist*2)-6+(typ*ie)),
-    ce[clamp(ue-2,0,col_max),0], c_gray, (ie==-1) ? tw_c : tw_e );
+    rectDraw(temp_x - c_wheel_x + 6, temp_y + 79 +(0-(dist*2)-6+(typ*ie)), temp_x - c_wheel_x + 24, temp_y + 97 +(0-(dist*2)-6+(typ*ie)),
+    c_black, c_black, 1 );
+
+    rectDraw(temp_x - c_wheel_x + 4, temp_y + 77 +(0-(dist*2)-6+(typ*ie)), temp_x - c_wheel_x + 22, temp_y + 95 +(0-(dist*2)-6+(typ*ie)),
+    ce[clamp(ue+1,0,col_max),0], c_black, 1 );
     }
     if (ue-1>=0){
-    rectDraw(temp_x + 2, temp_y + 77 +(0-dist-3+(typ*ie)), temp_x + 16, temp_y + 91 +(0-dist-3+(typ*ie)),
-    ce[clamp(ue-1,0,col_max),0], c_gray, (ie==-1) ? tw_b : tw_d );
+    rectDraw(temp_x - c_wheel_x + 6, temp_y + 79 +(0-dist-3+(typ*ie)), temp_x - c_wheel_x + 24, temp_y + 97 +(0-dist-3+(typ*ie)),
+    c_black, c_black, 1 );        
+        
+    rectDraw(temp_x - c_wheel_x + 4, temp_y + 77 +(0-dist-3+(typ*ie)), temp_x - c_wheel_x + 22, temp_y + 95 +(0-dist-3+(typ*ie)),
+    ce[clamp(ue-1,0,col_max),0], c_black, 1 );
     }
+ 
+    rectDraw(temp_x - c_wheel_x + 8 + cselect_x - cselect_grow, temp_y + 80 +(typ*ie) - cselect_grow, temp_x - c_wheel_x + 26 + cselect_x + cselect_grow, temp_y + 99 +(typ*ie) + cselect_grow, c_black, c_black, 1); 
+
+    rectDraw(temp_x - c_wheel_x + 4 + cselect_x - cselect_grow, temp_y + 77 +(typ*ie) - cselect_grow, temp_x - c_wheel_x + 22 + cselect_x + cselect_grow, temp_y + 95 +(typ*ie) + cselect_grow, ce[ue,0], c_black, 1);
     
-    rectDraw(temp_x + 2, temp_y + 77 +(typ*ie), temp_x + 16, temp_y + 91 +(typ*ie), ce[ue,0], c_white, tw);
+    rectDraw(temp_x - c_wheel_x + 6 + cselect_x - cselect_grow, temp_y + 79 +(typ*ie) - cselect_grow, temp_x - c_wheel_x + 20 + cselect_x + cselect_grow, temp_y + 93 +(typ*ie) + cselect_grow, ce[ue,0], c_white, 1);
     
     if (ue+1<=col_max){
-    rectDraw(temp_x + 2, temp_y + 77 +(dist+3+(typ*ie)), temp_x + 16, temp_y + 91 +(dist+3+(typ*ie)),
-    ce[clamp(ue+1,0,col_max),0], c_gray, (ie==1) ? tw_b : tw_d );
+    rectDraw(temp_x - c_wheel_x + 6, temp_y + 79 +(dist+3+(typ*ie)), temp_x - c_wheel_x + 24, temp_y + 97 +(dist+3+(typ*ie)),
+    c_black, c_black, 1);
+    
+    rectDraw(temp_x - c_wheel_x + 4, temp_y + 77 +(dist+3+(typ*ie)), temp_x - c_wheel_x + 22, temp_y + 95 +(dist+3+(typ*ie)),
+    ce[clamp(ue+1,0,col_max),0], c_black, 1 );
     }
     if (ue+2<=col_max){
-    rectDraw(temp_x + 2, temp_y + 77 +((dist*2)+6+(typ*ie)), temp_x + 16, temp_y + 91 +((dist*2)+6+(typ*ie)),
-    ce[clamp(ue+2,0,col_max),0], c_gray, (ie==1) ? tw_c : tw_e );
+    rectDraw(temp_x - c_wheel_x + 6, temp_y + 79 +((dist*2)+6+(typ*ie)), temp_x - c_wheel_x + 24, temp_y + 97 +((dist*2)+6+(typ*ie)),
+    c_black, c_black, 1 );
+        
+    rectDraw(temp_x - c_wheel_x + 4, temp_y + 77 +((dist*2)+6+(typ*ie)), temp_x - c_wheel_x + 22, temp_y + 95 +((dist*2)+6+(typ*ie)),
+    ce[clamp(ue+2,0,col_max),0], c_black, 1 );
     }
     
     if (ue+(3*-ie)<=col_max && ue+(3*-ie)>=0){
-    rectDraw(temp_x + 2, temp_y + 77 +((((dist*3)+9)*-ie)+(typ*ie)),
-    temp_x + 16, temp_y + 91 +((((dist*3)+9)*-ie)+(typ*ie)),
-    ce[clamp(ue+(3*-ie),0,col_max),0], c_gray, tw_f);
+    rectDraw(temp_x - c_wheel_x + 6, temp_y + 79 +((((dist*3)+9)*-ie)+(typ*ie)),
+    temp_x - c_wheel_x + 24, temp_y + 97 +((((dist*3)+9)*-ie)+(typ*ie)),
+    c_black, c_black, 1);
+        
+        
+    rectDraw(temp_x + 4, temp_y + 77 +((((dist*3)+9)*-ie)+(typ*ie)),
+    temp_x + 22, temp_y + 95 +((((dist*3)+9)*-ie)+(typ*ie)),
+    ce[clamp(ue+(3*-ie),0,col_max),0], c_black, 1);
     }
+
+
+}
     
-textDraw(temp_x + 2 + ((player==0)?32:0), temp_y + 130, "fName", c_white, 0, 1000, 1, true, tw_g, ce[ue,1]);
-    
+
+ if (ee > 0){   
     ee--;
 }
     ue = get_player_color(player);
+    
+    gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+    
+
+shader_start();
+//animation - character
+{
+    draw_sprite_ext(
+        preview_idle,
+        css_anim_time * preview_anim_speed,
+        preview_x + 60,
+        preview_y + 138,
+        preview_scale,
+        preview_scale,
+        0,
+        c_white,
+        text_alpha
+    );
+}
+
+shader_end();
+prepare_shader(); //resets shader
+
+
+
+if ee < eehalf_max && c_wheel_x > 12 && text_alpha > 0{
+    text_alpha -= 0.1;
+}
+
+
+if text_alpha > 0{
+textDraw(temp_x + 8 + ((player==0)?32:0), temp_y + 139, "fName", c_black, 0, 1000, 1, true, text_alpha, string_replace_all(string_format(ue + 1, 2, 0), " ", "0") + string(": "));
+textDraw(temp_x + 6 + ((player==0)?32:0), temp_y + 137, "fName", c_white, 0, 1000, 1, true, text_alpha, string_replace_all(string_format(ue + 1, 2, 0), " ", "0") + string(": "));
+
+textDraw(temp_x + 32 + ((player==0)?32:0), temp_y + 139, "fName", c_black, 0, 1000, 1, true, text_alpha, string(ce[ue,1]));
+textDraw(temp_x + 30 + ((player==0)?32:0), temp_y + 137, "fName", ce[ue,0], 0, 1000, 1, true, text_alpha, string(ce[ue,1]));
+}
+
+var qe_b = string(sprite_get("idle")) //my sneaky trick to make sure every reload refreshes -supersonic
+// ! you can now scroll down until you reach "the primary part you should change."
+online_fix = player; //this is used in init_shader to fix the online init_shader bug.
+
  
 //this part does button stuff, drawing etc
  
@@ -283,7 +391,7 @@ if (color_desc_activate){
 }
  
 //ae code end
- 
+
 
  
 //--- ---
@@ -314,3 +422,23 @@ draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argumen
 draw_set_alpha(argument[6]*1.5);
 draw_rectangle_color(argument[0]+2, argument[1]+2, argument[2]-2, argument[3]-2, argument[4], argument[4], argument[4], argument[4], false);
 draw_set_alpha(1);
+
+#define prepare_shader()
+{
+    //init_shader(); fails to generate these variables for some reason,
+    //so we assign them to these completely equivalent values
+    //this allows shader_start() to be run in css_draw.gml!!!
+    static_colorB = colorB;
+    static_colorO = colorO;
+    static_colorT = colorT;
+    static_colorI = colorI;
+    init_shader();
+}
+#define set_outline(r, g, b)
+{
+    //we use this function to add custom outlines to our character's portrait
+    var start = 8*4; //outline
+    static_colorO[start] = r/255;
+    static_colorO[start+1] = g/255;
+    static_colorO[start+2] = b/255;
+}

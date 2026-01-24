@@ -116,6 +116,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_ori_seinhit_weak"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, HFX_GEN_SPIN);
 //set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_PARTICLE_NUM, 2);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.5);
 
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("nspec_proj_small"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
@@ -143,7 +144,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 50);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 40);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 3);
-set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 8);
+set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 70);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_NSPECIAL, 2, HG_SHAPE, 0);
@@ -155,6 +156,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_abyss_hazard_burst")
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, hfx_abyss_proj_hit);
 //set_hitbox_value(AT_NSPECIAL, 2, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, 1);
+set_hitbox_value(AT_NSPECIAL, 2, HG_HITSTUN_MULTIPLIER, 0.6);
 
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("nspec_proj_medium"));
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
@@ -278,6 +280,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_VISUAL_EFFECT, 0);
 //set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_PARTICLE_NUM, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 0.85);
 
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_MASK, -1);
