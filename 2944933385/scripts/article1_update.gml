@@ -32,7 +32,10 @@ if (state == 0){ //Idle
             }
         }
     }
-    create_hitbox(AT_FSPECIAL, 1, x + 8*spr_dir, y);
+    if (!instance_exists(hbox)){
+    hbox = create_hitbox(AT_FSPECIAL, 1, x + 8*spr_dir, y);
+    }
+    hbox.x = x + 8*spr_dir;
     hsp = 8*spr_dir;
     if (hit_wall){
         spawn_hit_fx(x, y, 301);
@@ -56,6 +59,8 @@ if (state == 0){ //Idle
     }
 
     //Custom idle behavior goes here
+} else if instance_exists(hbox){
+    hbox.destroyed = true;
 }
 
 if (state == 1){ //Attack
@@ -95,6 +100,9 @@ if (state == 1){ //Attack
 }
 
 if (state == 2){ //Dying
+if instance_exists(hbox){
+    hbox.destroyed = true;
+}
         instance_destroy();
         exit; //Stops execution of the script
 }

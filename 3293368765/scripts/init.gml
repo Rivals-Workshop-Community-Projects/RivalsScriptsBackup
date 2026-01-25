@@ -6,6 +6,7 @@ hitstun_hurtbox_spr = -1;
 for(var i = 0; i < 50; i++){
     for(var j = 0; j <= 15; j++){
         if(get_hitbox_value(i, j, HG_DRIFT_MULTIPLIER) == 0) set_hitbox_value(i, j, HG_DRIFT_MULTIPLIER, 1);
+        // if(has_rune("G") && get_player_color(player) == 16 && i != AT_DSPECIAL) set_hitbox_value(i, j, HG_EFFECT, 14);
     }
 }
 
@@ -134,6 +135,7 @@ spring_cooldown = 120;
 uspec_refresh = false;
 
 dspec_cancel = false;
+canceled_into_dspec = false;
 
 tn_afterimage_ledger = ds_list_create();    //Structure for keeping track of all afterimages.
 tn_max_afterimages = 8;                     //Maximum number of afterimages for dspecial.

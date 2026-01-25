@@ -80,6 +80,9 @@ switch(get_player_color(player)){
 	case 12:
 		c4beepsound = sound_get("sfx_gameboybeeps");
 		break;
+	case 14:
+		c4beepsound = sound_get("sfx_hoohah");
+		break;
 	default:
 		c4beepsound = sound_get("sfx_c4beeps");
 		break;

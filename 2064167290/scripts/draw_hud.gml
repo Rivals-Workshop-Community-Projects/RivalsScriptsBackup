@@ -2,7 +2,7 @@
 
 
 
-draw_sprite(sprite_get("nowplaying"),0,temp_x + 152,temp_y - 20);
+draw_sprite(sprite_get("nowplaying"),0,temp_x + 30,temp_y - 20);
 
 
 var is_turn = false;
@@ -42,11 +42,11 @@ if (is_turn)
         break;
     }
 
-    draw_sprite(sprite,hcd_image,temp_x + 152, temp_y - 20);
-    draw_sprite(sprite_get("number"), inst.col,temp_x + 166,temp_y - 18);
+    draw_sprite(sprite,hcd_image,temp_x + 30, temp_y - 20);
+    draw_sprite(sprite_get("number"), inst.col,temp_x + 60,temp_y - 18);
 }
 
-draw_sprite(sprite_get("nowplaying2"),0,temp_x + 156,temp_y - 34);
+draw_sprite(sprite_get("nowplaying2"),0,temp_x + 34,temp_y - 34);
 
 
 

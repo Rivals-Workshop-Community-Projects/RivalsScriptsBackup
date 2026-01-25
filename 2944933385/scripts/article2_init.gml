@@ -27,6 +27,7 @@ looped = false;
 loop_point_x = 0;
 loop_point_y = 0;
 parried = false;
+hbox = noone;
 //Terrain behavior
 can_be_grounded = true;                            //Determines if the article follows platforms when free == false.
 ignores_walls = false;                               //Determines if the article goes through walls.

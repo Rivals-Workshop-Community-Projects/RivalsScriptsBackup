@@ -8,7 +8,7 @@ var win_num = 1;
 
 //Startup
 set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_ANIM_FRAMES, 3);
 win_num++;
 
@@ -46,12 +46,11 @@ set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_ANIM_FRAME_START, 10);
 win_num++;
 
-//End
-set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_ANIM_FRAME_START, 13);
-set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_HAS_WHIFFLAG, true);
+// //End
+// set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_TYPE, 1);
+// set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_LENGTH, 4);
+// set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_ANIM_FRAMES, 2);
+// set_window_value(AT_FSPECIAL, win_num, AG_WINDOW_ANIM_FRAME_START, 13);
 
 set_num_hitboxes(AT_FSPECIAL, 6);
 
@@ -68,13 +67,13 @@ set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_WIDTH, 36);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HEIGHT, 32);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_PRIORITY, 2);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_DAMAGE, 6);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_ANGLE, 100);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_DAMAGE, 7);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_ANGLE, 90);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_KNOCKBACK_SCALING, 0.1);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITPAUSE_SCALING, 0.1);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITSTUN_MULTIPLIER, .8);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HIT_SFX, sound_get("tee_orb"));
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_VISUAL_EFFECT, fx_swirl);
@@ -92,13 +91,14 @@ set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_WIDTH, 8);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HEIGHT, 32);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_PRIORITY, 3);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_DAMAGE, 8);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_DAMAGE, 10);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_ANGLE, 90);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_KNOCKBACK_SCALING, 0.1);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITPAUSE_SCALING, 0.1);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITSTUN_MULTIPLIER, 1.1);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_EXTRA_HITPAUSE, 10);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HIT_SFX, sound_get("tee_orb2"));
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_FORCE_FLINCH, 3);
@@ -116,13 +116,13 @@ set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_WIDTH, 36);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HEIGHT, 32);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_PRIORITY, 1);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_DAMAGE, 6);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_ANGLE, 80);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_DAMAGE, 7);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_ANGLE, 90);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_KNOCKBACK_SCALING, 0.1);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_BASE_HITPAUSE, 9);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITPAUSE_SCALING, 0.1);
-set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITSTUN_MULTIPLIER, .8);
+set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_HIT_SFX, sound_get("tee_orb"));
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, hbox_num, HG_VISUAL_EFFECT, fx_swirl);

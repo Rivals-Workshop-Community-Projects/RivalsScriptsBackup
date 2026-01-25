@@ -78,7 +78,11 @@ if (state == 0){
 		} else {
 			//mask_index = asset_get("empty_sprite");
 		}
-		var fallbox = create_hitbox(AT_DSPECIAL, 1, x, y + 8);
+		if (!instance_exists(fallbox)){
+		fallbox = create_hitbox(AT_DSPECIAL, 1, x, y + 8);
+		}
+		fallbox.x = x;
+		fallbox.y = y + 8;
 		fallbox.sprite_index = asset_get("empty_sprite");
 		fallbox.no_other_hit = 30;
 		fallbox.length = 2;

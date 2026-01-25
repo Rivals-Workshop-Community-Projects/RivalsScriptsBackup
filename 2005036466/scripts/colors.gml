@@ -183,16 +183,16 @@ set_color_profile_slot( 13, 6, 166, 172, 214 ); //Belts
 set_color_profile_slot( 13, 7, 62, 59, 125 ); //That Single FUCKING HAIR PARTICLE
 set_color_profile_slot( 13, 8, 220, 113, 255 ); //Real Metal Color
 
-// Firecracker (Yang)
-set_color_profile_slot( 14, 0, 250, 224, 196 ); //Fur
-set_color_profile_slot( 14, 1, 250, 224, 196 ); //Fur Light
-set_color_profile_slot( 14, 2, 255, 231, 94 ); //Hair
-set_color_profile_slot( 14, 3, 255, 173, 31 ); //Metaru
-set_color_profile_slot( 14, 4, 117, 82, 41 ); //Shirt
-set_color_profile_slot( 14, 5, 64, 55, 72 ); //Pants
-set_color_profile_slot( 14, 6, 106, 41, 0 ); //Belts
-set_color_profile_slot( 14, 7, 199, 105, 42 ); //That Single FUCKING HAIR PARTICLE
-set_color_profile_slot( 14, 8, 255, 205, 66 ); //Real Metal Color
+// Cashbox
+set_color_profile_slot( 14, 0, 249, 196, 250 ); //Fur
+set_color_profile_slot( 14, 1, 249, 196, 250 ); //Fur Light
+set_color_profile_slot( 14, 2, 190, 139, 191 ); //Hair
+set_color_profile_slot( 14, 3, 134, 214, 113 ); //Metaru
+set_color_profile_slot( 14, 4, 69, 117, 57 ); //Shirt
+set_color_profile_slot( 14, 5, 62, 66, 65 ); //Pants
+set_color_profile_slot( 14, 6, 118, 84, 130 ); //Belts
+set_color_profile_slot( 14, 7, 119, 66, 120 ); //That Single FUCKING HAIR PARTICLE
+set_color_profile_slot( 14, 8, 134, 214, 113 ); //Real Metal Color
 
 // Hitfall
 set_color_profile_slot( 15, 0, 126, 106, 161 ); //Fur

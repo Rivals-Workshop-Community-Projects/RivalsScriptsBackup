@@ -96,3 +96,12 @@ if (attack == AT_TAUNT) and (holding_turntable)
     attack = AT_DSPECIAL_AIR;
     
 }
+
+/*switch (attack)
+{
+    case AT_DATTACK:
+        if (up_down || up_stick_down) attack = AT_UTILT;
+        else if (down_down || down_stick_down) attack = AT_DTILT;
+        else if (left_down || right_down) attack = AT_DATTACK;
+        break;
+}*/

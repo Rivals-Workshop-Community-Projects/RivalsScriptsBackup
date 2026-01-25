@@ -1,4 +1,27 @@
 //hit_player.gml
+if(has_rune("G")){
+	//if(get_player_color(player) != 16){
+	if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num = 2 hit_player_obj.teenah_shock = noone;
+	if(my_hitboxID.attack != AT_DSPECIAL && (my_hitboxID.force_flinch != 1 || (my_hitboxID.force_flinch == 1 && hit_player_obj.free))){
+		hit_player_obj.teenah_shock = self;
+		hit_player_obj.hitpause_shock = true;
+		hit_player_obj.can_bounce = false;
+		hit_player_obj.can_tech = false;
+		// hit_player_obj.can_wall_tech = false;
+	}
+	/*} else if(my_hitboxID.attack != AT_DSPECIAL){
+		if(hit_player_obj.state == PS_CRYSTALIZED) hit_player_obj.state = PS_HITSTUN;
+		if(prev_state != PS_CRYSTALIZED) hit_player_obj.crystalized_damage_remaining = 30;
+		hit_player_obj.should_make_shockwave = will_die_from_kb(
+			hit_player_obj, 
+			hit_player_obj.orig_knock,
+			point_direction(0, 0, hit_player_obj.old_hsp, hit_player_obj.old_vsp), 
+			hit_player_obj.hitstun
+		);
+	}*/
+}
+
+
 if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == tn_uspec_grab_box_num) {
 	
 	//Before grabbing the opponent, first make sure that:
@@ -44,25 +67,40 @@ if(my_hitboxID.attack == AT_NSPECIAL_2){
 
 // Will Charge Meter Gain
 // This list below will lock out the exceptions
-if(
+// if(
+// 	my_hitboxID.attack != AT_NSPECIAL &&
+// 	my_hitboxID.attack != AT_NSPECIAL_AIR && 
+// 	my_hitboxID.attack != AT_NSPECIAL_2 && // Catooken
+// 	my_hitboxID.attack != AT_FSPECIAL &&
+// 	my_hitboxID.attack != AT_FSPECIAL_AIR &&
+// 	my_hitboxID.attack != AT_DSPECIAL &&
+// 	my_hitboxID.attack != AT_USPECIAL &&
+// 	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1) && //Exclude Linker on Ustrong 
+// 	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 3) && //Exclude Linker on Ustrong
+// 	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 4) && //Exclude Linker on Ustrong
+// 	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 5) && //Exclude Linker on Ustrong
+// 	!(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1) //Exclude Linker on Fstrong 1
+// )
+
+if( 
+	!has_gained_will &&
 	my_hitboxID.attack != AT_NSPECIAL &&
 	my_hitboxID.attack != AT_NSPECIAL_AIR && 
 	my_hitboxID.attack != AT_NSPECIAL_2 && // Catooken
 	my_hitboxID.attack != AT_FSPECIAL &&
 	my_hitboxID.attack != AT_FSPECIAL_AIR &&
 	my_hitboxID.attack != AT_DSPECIAL &&
-	my_hitboxID.attack != AT_USPECIAL &&
-	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 1) && //Exclude Linker on Ustrong 
-	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 3) && //Exclude Linker on Ustrong
-	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 4) && //Exclude Linker on Ustrong
-	!(my_hitboxID.attack == AT_USTRONG && my_hitboxID.hbox_num == 5) && //Exclude Linker on Ustrong
-	!(my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1) //Exclude Linker on Fstrong 1
-)
-{
+	my_hitboxID.attack != AT_USPECIAL
+){
+	has_gained_will = true;
 	will_charge += will_gain;
 	if will_charge == 600 sound_play(sound_get("tee_lvl1"))
 	if will_charge == 1200 sound_play(sound_get("tee_lvl2"))
 }
+
+// if(my_hitboxID.hit_effect >= 700){
+// 	hit_player_obj.hitpause_shock = true;
+// }
 
 // Projectile will gain (only relivant to abyss runes and potentially extra buddies)
 // if(my_hitboxID.player_id == self && my_hitboxID.type == 2)
@@ -73,19 +111,6 @@ if(
 // }
 
 
-
-
-
-if(has_rune("G")){
-	if my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num = 2 hit_player_obj.teenah_shock = noone;
-	if(my_hitboxID.attack != AT_DSPECIAL && (my_hitboxID.force_flinch != 1 || (my_hitboxID.force_flinch == 1 && hit_player_obj.free))){
-		hit_player_obj.teenah_shock = self;
-		hit_player_obj.hitpause_shock = true;
-		hit_player_obj.can_bounce = false;
-		hit_player_obj.can_tech = false;
-		// hit_player_obj.can_wall_tech = false;
-	}
-}
 
 // Gunner's Hit SFX Controller for sound layering
 //#region Hit SFX Controller

@@ -25,6 +25,7 @@ ignores_walls = false;                               //Determines if the article
 free = true;                                        //Whether the article is in the air or not.
 hit_wall = false;                                   //If the article moves into a wall on its own, this variable will be true.
 recent_player = player_id.player;
+fallbox = noone;
 //Cope with own mortality
 should_die = false;                                 //If this is ever set to true, the article will change to state 2 (despawn animation) as soon as it's not busy. This keeps it from despawning in the middle of something
 init_free = false;

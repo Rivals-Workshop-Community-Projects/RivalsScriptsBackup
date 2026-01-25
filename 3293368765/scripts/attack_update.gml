@@ -8,12 +8,12 @@ if (has_rune("B") && move_cooldown[AT_NSPECIAL_2] <= 0 && attack_pressed && spec
 
 // Gaining Will
 // Will incriment will once Teenah has hit a player
-// if(has_hit_player && !has_gained_will && attack != AT_NSPECIAL && attack != AT_NSPECIAL_AIR && attack != AT_USPECIAL && attack != AT_FSPECIAL){
-// 	has_gained_will = true;
-// 	will_charge += will_gain;
-// 	if will_charge == 600 sound_play(sound_get("tee_lvl1"))
-// 	if will_charge == 1200 sound_play(sound_get("tee_lvl2"))
-// }
+if(has_hit_player && !has_gained_will && attack != AT_NSPECIAL && attack != AT_NSPECIAL_AIR && attack != AT_USPECIAL && attack != AT_FSPECIAL){
+	has_gained_will = true;
+	will_charge += will_gain;
+	if will_charge == 600 sound_play(sound_get("tee_lvl1"))
+	if will_charge == 1200 sound_play(sound_get("tee_lvl2"))
+}
 
 if(attack == AT_NSPECIAL_2) move_cooldown[AT_NSPECIAL_2] = 50
 
@@ -55,6 +55,8 @@ if (attack==AT_DAIR) {
 //DSPECIAL
 if(attack == AT_DSPECIAL){
 	move_cooldown[AT_DSPECIAL] = 20 + (free * 10);
+	reset_window_value(attack, 2, AG_WINDOW_VSPEED);
+	set_window_value(attack, 2, AG_WINDOW_VSPEED, get_window_value(attack, 2, AG_WINDOW_VSPEED) * !canceled_into_dspec);
 	if window == 3 && free && !has_rune("H") {
 		hsp = clamp(hsp, -6, 6);
 	}
@@ -276,6 +278,7 @@ if (attack == AT_USPECIAL) {
 
 //FSPECIAL
 if (attack == AT_FSPECIAL) {
+	move_cooldown[AT_FSPECIAL] = 20 + 20 * has_hit_player;
   // If player is holding up at end of startup, angle the move upwards.
   if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && up_down) {
     set_window(4);
@@ -286,13 +289,21 @@ if (attack == AT_FSPECIAL) {
   if(window == 2 && window_timer == 2) {
     var _x = 95 * spr_dir;
     var _y = -44;
-    spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_mid);
+    var hfx = spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_mid);
+    hfx.spr_dir = spr_dir;
+    hfx.teenah_fspec = true;
+    hfx.xoff = _x;
+    hfx.yoff = _y;
   }
   //Up
   if(window == 4 && window_timer == 2) {
     var _x = 81 * spr_dir;
     var _y = -88;
-    spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_hi);
+    var hfx = spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_hi);
+    hfx.spr_dir = spr_dir;
+    hfx.teenah_fspec = true;
+    hfx.xoff = _x;
+    hfx.yoff = _y;
   }
 
   //Move on to endlag at the end of forward snap.
@@ -333,19 +344,31 @@ if (attack == AT_FSPECIAL_AIR) {
   if(window == 2 && window_timer == 2) {
     var _x = 95 * spr_dir;
     var _y = -44;
-    spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_mid);
+    var hfx = spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_mid);
+    hfx.spr_dir = spr_dir;
+    hfx.teenah_fspec = true;
+    hfx.xoff = _x;
+    hfx.yoff = _y;
   }
   //Up
   if(window == 4 && window_timer == 2) {
     var _x = 81 * spr_dir;
     var _y = -88;
-    spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_hi);
+    var hfx = spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_hi);
+    hfx.spr_dir = spr_dir;
+    hfx.teenah_fspec = true;
+    hfx.xoff = _x;
+    hfx.yoff = _y;
   }
   //Down
   if(window == 6 && window_timer == 2) {
     var _x = 81 * spr_dir;
     var _y = -8;
-    spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_low);
+    var hfx = spawn_hit_fx(x+_x, y+_y, fx_tn_fsp_low);
+    hfx.spr_dir = spr_dir;
+    hfx.teenah_fspec = true;
+    hfx.xoff = _x;
+    hfx.yoff = _y;
   }
 
   //Move on to endlag at the end of forward or up snap.

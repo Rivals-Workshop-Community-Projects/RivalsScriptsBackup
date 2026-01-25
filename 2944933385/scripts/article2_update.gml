@@ -17,7 +17,11 @@ or place_meeting(x, y, player_id) && player_id.shield_pressed){
 
 
 if (state == 0){
-var hbox = create_hitbox(AT_NSPECIAL, fruit_num, x + (8 + hbox_x_offset)*spr_dir, y);
+if (!instance_exists(hbox)){
+hbox = create_hitbox(AT_NSPECIAL, fruit_num, x + (8 + hbox_x_offset)*spr_dir, y);
+}
+hbox.x = x + (8 + hbox_x_offset)*spr_dir;
+hbox.y = y;
 hbox.player = owner;
 if (hbox.was_parried){
     player_id.times_collected += 1;
@@ -206,7 +210,11 @@ if (hbox.was_parried){
 if (state == 1){ //Galaxian ONLY
 hsp = 0;
 vsp = 0;
-var hbox = create_hitbox(AT_NSPECIAL, fruit_num, x + (8 + hbox_x_offset)*spr_dir, y);
+if (!instance_exists(hbox)){
+hbox = create_hitbox(AT_NSPECIAL, fruit_num, x + (8 + hbox_x_offset)*spr_dir, y);
+}
+hbox.x = x + (8 + hbox_x_offset)*spr_dir;
+hbox.y = y;
 hbox.player = owner;
     if (state_timer < 6){
         if (x != loop_point_x + 32*spr_dir && y != loop_point_y - 32){
@@ -269,6 +277,9 @@ if (free == true){
 }
 
 if (should_die){
+    if (instance_exists(hbox)){
+    hbox.destroyed = true;
+    }
     sound_stop(galaxian_sound);
     spawn_hit_fx(x, y, 144);
     player_id.fruit_num = 1;
@@ -279,7 +290,9 @@ if (should_die){
 
 if (collected){
     sound_stop(galaxian_sound);
+    if (instance_exists(hbox)){
     hbox.destroyed = true;
+    }
     sound_play(sound_get("sfx_fruit"));
     spawn_hit_fx(x, y, 305);
     player_id.fruit_num = fruit_num;

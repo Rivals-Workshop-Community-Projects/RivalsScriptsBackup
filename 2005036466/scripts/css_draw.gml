@@ -65,6 +65,7 @@ if (color >= 17){
 
 switch(color){
 	case 10:
+	case 14:
 	case 15:
 	case 16:
 	case 19:
@@ -257,7 +258,7 @@ for(var c = 0; c < 32; c++){
 				break;
 				
 				case 14:
-			name = " 15: I Burn";
+			name = " 15: Cashbox";
 			var position = 14;
 			ColorPrev = fur_col[color-1];
 			ColorNext = fur_col[color+1];

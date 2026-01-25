@@ -129,7 +129,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
     ce[22,1] = "Salty"
 
     ce[23,0] = make_color_rgb(255, 0, 0)
-    ce[23,1] = "laugh"
+    ce[23,1] = "Hungry"
 
     ce[24,0] = make_color_rgb(255, 220, 180)
     ce[24,1] = "Know-It-All"

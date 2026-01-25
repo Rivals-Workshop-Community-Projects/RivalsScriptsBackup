@@ -27,7 +27,7 @@ set_num_hitboxes(AT_FSPECIAL, 1);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 2);
 //set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 9999);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_FSPECIAL, 1, HG_THROWS_ROCK, 2);

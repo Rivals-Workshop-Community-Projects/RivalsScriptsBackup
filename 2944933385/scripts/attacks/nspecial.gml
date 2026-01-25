@@ -62,7 +62,7 @@ set_hitbox_value(AT_NSPECIAL, 8, HG_HITSTUN_MULTIPLIER, 0.6);
 
 //cherry
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 99999);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 40);
@@ -82,7 +82,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);
 
 //strawberry
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 99999);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 40);
@@ -102,7 +102,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_MASK, -1);
 
 //orange
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 2);
+set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 99999);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WIDTH, 40);
@@ -122,7 +122,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_PROJECTILE_MASK, -1);
 
 //apple
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 2);
+set_hitbox_value(AT_NSPECIAL, 4, HG_LIFETIME, 99999);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 4, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 4, HG_WIDTH, 40);
@@ -142,7 +142,7 @@ set_hitbox_value(AT_NSPECIAL, 4, HG_PROJECTILE_MASK, -1);
 
 //melon
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 2);
+set_hitbox_value(AT_NSPECIAL, 5, HG_LIFETIME, 99999);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 5, HG_WIDTH, 40);
@@ -162,7 +162,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_MASK, -1);
 
 //galaxian
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 6, HG_LIFETIME, 2);
+set_hitbox_value(AT_NSPECIAL, 6, HG_LIFETIME, 99999);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 6, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 6, HG_WIDTH, 40);
@@ -182,7 +182,7 @@ set_hitbox_value(AT_NSPECIAL, 6, HG_PROJECTILE_MASK, -1);
 
 //bell
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 7, HG_LIFETIME, 2);
+set_hitbox_value(AT_NSPECIAL, 7, HG_LIFETIME, 99999);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 7, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 7, HG_WIDTH, 40);
@@ -201,7 +201,7 @@ set_hitbox_value(AT_NSPECIAL, 7, HG_PROJECTILE_MASK, -1);
 
 //key
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_NSPECIAL, 8, HG_LIFETIME, 2);
+set_hitbox_value(AT_NSPECIAL, 8, HG_LIFETIME, 99999);
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_X, 32);
 set_hitbox_value(AT_NSPECIAL, 8, HG_HITBOX_Y, -32);
 set_hitbox_value(AT_NSPECIAL, 8, HG_WIDTH, 44);

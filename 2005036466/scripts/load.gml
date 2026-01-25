@@ -11,6 +11,11 @@ sprite_change_offset("pennycrouch_hurt", xx*2, yy*2);   // Done
 // C4
 sprite_change_offset("mask_mine", 100, 100);            // Done
 
+sprite_change_offset("cashbox_mine_land", 100, 100);           // Done
+sprite_change_offset("cashbox_mine", 100, 100);                 // Done
+sprite_change_offset("cashbox_mine_det", 100, 100);             // Done
+sprite_change_offset("cashbox_mine_charged", 100, 100);         // Done
+
 sprite_change_offset("mine_plant", 100, 100);           // Done
 sprite_change_offset("mine", 100, 100);                 // Done
 sprite_change_offset("mine_det", 100, 100);             // Done

@@ -245,6 +245,10 @@ in a Patch.
 
 #define CORE_patches
 
+initPatch("1.7", "24 January, 2026");
+initHeader("BAir - Adjustments");
+initSection("Multi-hits are now techable to prevent an infinite.");
+
 initPatch("1.6", "14 April, 2023");
 initWords("Advertising");
 

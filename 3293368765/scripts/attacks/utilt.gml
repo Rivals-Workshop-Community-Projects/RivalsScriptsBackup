@@ -3,11 +3,11 @@ set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 // Start up 0 - 2
 set_window_value(AT_UTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 9);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
-set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 8);
+set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 6);
 
 // Active 3
 set_window_value(AT_UTILT, 2, AG_WINDOW_TYPE, 1);
@@ -40,4 +40,4 @@ set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, .4);
 set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-set_hitbox_value(AT_UTILT, 1, HG_ANGLE_FLIPPER, 4);
+set_hitbox_value(AT_UTILT, 1, HG_ANGLE_FLIPPER, 6);

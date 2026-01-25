@@ -1,5 +1,6 @@
 // CHARGE
 var plas_img = get_gameplay_time() / 6;
+var cashplas_img = get_gameplay_time() * .1;
 var air_img = get_gameplay_time() *.15;
 var air_ang = point_direction(x, y, x + hsp, y + vsp) + 90;
 
@@ -9,7 +10,15 @@ switch(state){
         break;
     case 1:
         if pen_c4_charged == 1{
-            draw_sprite_ext(spr_charge, plas_img, x + (0 * spr_dir), y, 1, 1, 0, c_white, 1);
+            switch(get_player_color(orig_player))
+            {
+                case 14:
+                    draw_sprite_ext(spr_charge, cashplas_img, x + (0 * spr_dir), y, 1, 1, 0, c_white, 1);
+                    break;
+                default:
+                    draw_sprite_ext(spr_charge, plas_img, x + (0 * spr_dir), y, 1, 1, 0, c_white, 1);
+                    break;
+            }
         }
         break;
 }

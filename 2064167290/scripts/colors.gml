@@ -226,35 +226,35 @@ set_color_profile_slot( 19, 5, 55, 51, 55 ); //Blue-black (hair) (light)
 set_color_profile_slot( 19, 6, 255, 195, 167 ); //Skin (Light)
 set_color_profile_slot( 19, 7, 255, 131, 111 ); //Cheek
 
-// RQ
-set_color_profile_slot( 20, 0, 49, 33, 33 ); //BLUE (Light)
-set_color_profile_slot( 20, 1, 255, 206, 0 ); //RED (light)
-set_color_profile_slot( 20, 2, 255, 187, 0 ); //YELLOW (light)
-set_color_profile_slot( 20, 3, 143, 86, 184 ); //GREEN (PALE)
-set_color_profile_slot( 20, 4, 0, 36, 99 ); //CYAN (Shirt)
-set_color_profile_slot( 20, 5, 31, 18, 18 ); //Blue-black (hair) (light)
-set_color_profile_slot( 20, 6, 219, 150, 77 ); //Skin (Light)
-set_color_profile_slot( 20, 7, 227, 93, 70 ); //Cheek
-
 // Vortex Gallery 2025
-set_color_profile_slot( 21, 0, 0, 41, 99 ); //BLUE (Light)
-set_color_profile_slot( 21, 1, 255, 221, 0 ); //RED (light)
-set_color_profile_slot( 21, 2, 253, 220, 0 ); //YELLOW (light)
-set_color_profile_slot( 21, 3, 253, 220, 0 ); //GREEN (PALE)
-set_color_profile_slot( 21, 4, 121, 255, 0 ); //CYAN (Shirt)
-set_color_profile_slot( 21, 5, 255, 221, 0 ); //Blue-black (hair) (light)
-set_color_profile_slot( 21, 6, 255, 228, 186 ); //Skin (Light)
-set_color_profile_slot( 21, 7, 255, 186, 0 ); //Cheek
+set_color_profile_slot( 20, 0, 0, 41, 99 ); //BLUE (Light)
+set_color_profile_slot( 20, 1, 255, 221, 0 ); //RED (light)
+set_color_profile_slot( 20, 2, 253, 220, 0 ); //YELLOW (light)
+set_color_profile_slot( 20, 3, 253, 220, 0 ); //GREEN (PALE)
+set_color_profile_slot( 20, 4, 121, 255, 0 ); //CYAN (Shirt)
+set_color_profile_slot( 20, 5, 255, 221, 0 ); //Blue-black (hair) (light)
+set_color_profile_slot( 20, 6, 255, 228, 186 ); //Skin (Light)
+set_color_profile_slot( 20, 7, 255, 186, 0 ); //Cheek
 
 // MEXICO
-set_color_profile_slot( 22, 0, 0, 104, 71 ); //BLUE (Light)
-set_color_profile_slot( 22, 1, 206, 17, 38 ); //RED (light)
-set_color_profile_slot( 22, 2, 255, 193, 0 ); //YELLOW (light)
-set_color_profile_slot( 22, 3, 206, 17, 38 ); //GREEN (PALE)
-set_color_profile_slot( 22, 4, 255, 255, 255 ); //CYAN (Shirt)
-set_color_profile_slot( 22, 5, 77, 42, 21 ); //Blue-black (hair) (light)
-set_color_profile_slot( 22, 6, 200, 148, 89 ); //Skin (Light)
-set_color_profile_slot( 22, 7, 245, 89, 66 ); //Cheek
+set_color_profile_slot( 21, 0, 0, 104, 71 ); //BLUE (Light)
+set_color_profile_slot( 21, 1, 206, 17, 38 ); //RED (light)
+set_color_profile_slot( 21, 2, 255, 193, 0 ); //YELLOW (light)
+set_color_profile_slot( 21, 3, 206, 17, 38 ); //GREEN (PALE)
+set_color_profile_slot( 21, 4, 255, 255, 255 ); //CYAN (Shirt)
+set_color_profile_slot( 21, 5, 77, 42, 21 ); //Blue-black (hair) (light)
+set_color_profile_slot( 21, 6, 200, 148, 89 ); //Skin (Light)
+set_color_profile_slot( 21, 7, 245, 89, 66 ); //Cheek
+
+// RQ
+set_color_profile_slot( 22, 0, 37, 99, 51 ); //BLUE (Light)
+set_color_profile_slot( 22, 1, 4, 17, 5 ); //RED (light)
+set_color_profile_slot( 22, 2, 255, 255, 255 ); //YELLOW (light)
+set_color_profile_slot( 22, 3, 4, 17, 5 ); //GREEN (PALE)
+set_color_profile_slot( 22, 4, 89, 215, 117 ); //CYAN (Shirt)
+set_color_profile_slot( 22, 5, 7, 38, 9 ); //Blue-black (hair) (light)
+set_color_profile_slot( 22, 6, 255, 255, 255 ); //Skin (Light)
+set_color_profile_slot( 22, 7, 91, 200, 117 ); //Cheek
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -123,7 +123,7 @@ switch(real_alt){
             set_character_color_shading( slot_num, 0 );
         }
         break;
-    case 14: // Yang
+    case 14: // Cashbox
         set_character_color_shading( 5, 0.5 );
         break;
     case 15: // Hitfall

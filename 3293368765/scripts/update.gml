@@ -59,6 +59,8 @@ if (state == PS_HITSTUN && state_timer == 1) {
 */
 
 
+
+
 //if on the ground, refresh USPECIAL uses
 
 if ((!free && (state != PS_ATTACK_GROUND || ((state == PS_ATTACK_GROUND && state_timer == 0 && attack != AT_USPECIAL) || 
@@ -133,6 +135,14 @@ if (hud_frame > 5){
     hud_frame = 1;
 }
 
+//Hit effect linking
+with(hit_fx_obj){
+	if("teenah_fspec" in self && player_id == other){
+		x = other.x + xoff;
+		y = other.y + yoff;
+	}
+}
+
 //RUNE CODE
 
 if(state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND){
@@ -148,6 +158,12 @@ with(oPlayer) if self != other {
 		for(var i = 0; i < 20; i++){
 			can_hit[i] = (i == player);
 		}
+	}
+}
+
+if(has_rune("G")){
+	with(oPlayer){
+		wrap_sprite = asset_get("hfx_olym_stunsparkle");
 	}
 }
 

@@ -116,7 +116,7 @@ set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_EXTRA_HITPAUSE, 0);
-set_hitbox_value(AT_DSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1.1);
+set_hitbox_value(AT_DSPECIAL, 3, HG_HITSTUN_MULTIPLIER, .9);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_oly_dspecial_armorhit"));
 set_hitbox_value(AT_DSPECIAL, 3, HG_VISUAL_EFFECT, HFX_OLY_CRYSTALIZE_END);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, HFX_OLY_CRYSTALIZE_END);

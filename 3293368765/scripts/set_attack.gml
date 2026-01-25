@@ -1,9 +1,11 @@
 has_gained_will = false;
+canceled_into_dspec = false;
 
 var is_special = (attack == AT_USPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_FSPECIAL_AIR || attack == AT_NSPECIAL_AIR)
 
 if (will_cancel && is_special && move_cooldown[attack] <= 0 && !get_match_setting(SET_TURBO)) {
 	if (attack != AT_USPECIAL || (attack == AT_USPECIAL && uspec_uses >= 1)){
+		if(attack == AT_DSPECIAL) canceled_into_dspec = true;
     	will_cancel = 0;
     	will_lvl = (will_lvl) - 1;
     	will_charge = (will_charge) - 600;

@@ -63,7 +63,7 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 3);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_shovel_hit_light1"));
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
-set_hitbox_value(AT_BAIR, 1, HG_TECHABLE, 1);
+// set_hitbox_value(AT_BAIR, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_MUNO_HITBOX_NAME, "Hit 1");
 
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 1);

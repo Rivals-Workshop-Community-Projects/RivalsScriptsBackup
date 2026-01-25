@@ -7,6 +7,10 @@ switch (state)
     case PS_DOUBLE_JUMP:
         if (jump_isBack) { sprite_index = sprite_get("doublejump_back"); }
         break;
+        
+    case PS_ATTACK_GROUND: case PS_ATTACK_AIR:
+    if(attack == AT_DSPECIAL && canceled_into_dspec) sprite_index = get_attack_value(attack, AG_SPRITE);
+    break;
 }
 
 //Intro

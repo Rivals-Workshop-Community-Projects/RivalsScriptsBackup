@@ -167,13 +167,13 @@ set_color_profile_slot( 15, 4, 179, 251, 255 ); //Body Purples
 set_color_profile_slot( 15, 5, 82, 208, 227 ); //Vfx Purples
 set_color_profile_slot( 15, 6, 176, 255, 249 ); //Vfx Orange
 
-// Vortex Gallery
-set_color_profile_slot( 16, 0, 153, 153, 153 ); //Light Blues
-set_color_profile_slot( 16, 1, 255, 255, 255 ); //Dark Greys
-set_color_profile_slot( 16, 2, 0, 120, 255 ); //Light Greys
-set_color_profile_slot( 16, 3, 144, 195, 253 ); //Dark Blues
-set_color_profile_slot( 16, 4, 0, 0, 0 ); //Body Purples
-set_color_profile_slot( 16, 5, 255, 213, 0 ); //Vfx Purples
+// Cashbox
+set_color_profile_slot( 16, 0, 87, 255, 157 ); //Light Blues
+set_color_profile_slot( 16, 1, 59, 59, 59 ); //Dark Greys
+set_color_profile_slot( 16, 2, 97, 97, 97 ); //Light Greys
+set_color_profile_slot( 16, 3, 87, 255, 147 ); //Dark Blues
+set_color_profile_slot( 16, 4, 255, 255, 255 ); //Body Purples
+set_color_profile_slot( 16, 5, 87, 255, 147 ); //Vfx Purples
 set_color_profile_slot( 16, 6, 47, 255, 0 ); //Vfx Orange
 
 // Silver Scar

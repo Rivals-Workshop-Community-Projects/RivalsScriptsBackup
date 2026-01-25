@@ -176,6 +176,11 @@ if (attack == AT_FAIR) and (window == 1)
     
 }
 
+//BAIR
+if (attack == AT_BAIR) and (window == 2)
+{
+	if (!down_down)  vsp = 0
+}
 
 // SPECIALS
 

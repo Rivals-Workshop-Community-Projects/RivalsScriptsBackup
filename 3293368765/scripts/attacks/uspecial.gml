@@ -97,13 +97,14 @@ set_window_value(AT_USPECIAL, win_num, AG_WINDOW_ANIM_FRAME_START, 29);
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_VSPEED_TYPE, 1);
+set_window_value(AT_USPECIAL, win_num, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_USPECIAL, win_num, AG_WINDOW_SFX, sound_get("us_lunge"));
+set_window_value(AT_USPECIAL, win_num, AG_WINDOW_SFX_FRAME, 5);
 win_num++;
 
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_USPECIAL, win_num, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_USPECIAL, win_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_ANIM_FRAME_START, 31);
-set_window_value(AT_USPECIAL, win_num, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, win_num, AG_WINDOW_SFX, sound_get("us_lunge"));
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_HSPEED, 7 + (has_rune("D")) * 3);
@@ -111,8 +112,8 @@ win_num++;
 
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_TYPE, 7);
 set_window_value(AT_USPECIAL, win_num, AG_WINDOW_LENGTH, 12);
-set_window_value(AT_USPECIAL, win_num, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_USPECIAL, win_num, AG_WINDOW_ANIM_FRAME_START, 36);
+set_window_value(AT_USPECIAL, win_num, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USPECIAL, win_num, AG_WINDOW_ANIM_FRAME_START, 35);
 win_num++;
 
 //Forward Attack -- Throw
@@ -266,8 +267,8 @@ hbox_num++;
 tn_uspec_grab_box_num = hbox_num;
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_WINDOW, tn_uspec_side_window + 1);
-set_hitbox_value(AT_USPECIAL, hbox_num, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_USPECIAL, hbox_num, HG_LIFETIME, 9);
+// set_hitbox_value(AT_USPECIAL, hbox_num, HG_WINDOW_CREATION_FRAME, 1);
+set_hitbox_value(AT_USPECIAL, hbox_num, HG_LIFETIME, 12);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_HITBOX_X, 40);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_HITBOX_Y, -40);
 set_hitbox_value(AT_USPECIAL, hbox_num, HG_WIDTH, 48);

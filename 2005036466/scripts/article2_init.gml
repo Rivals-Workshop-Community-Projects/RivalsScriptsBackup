@@ -8,6 +8,13 @@ switch(get_player_color(player)){
         spr_det = sprite_get("mineV_det");
         spr_charge = sprite_get("mineV_charged");
         break;
+    case 14:
+        spr_plant = sprite_get("cashbox_mine_land");
+        spr_air = sprite_get("dspecial_proj");
+        spr_ground = sprite_get("cashbox_mine");
+        spr_det = sprite_get("cashbox_mine_det");
+        spr_charge = sprite_get("cashbox_mine_charged");
+        break;
     case 16:
         spr_plant = sprite_get("mineG_plant");
         spr_air = sprite_get("dspecial_proj");
@@ -60,24 +67,34 @@ sfx_active          = asset_get("mfx_xp");
 sfx_ground          = asset_get("sfx_ell_dspecial_stick");
 switch(get_player_color(player)){
     case 10:
-        sfx_loop        = sound_get ("sfx_vaporwave_loop");
+        sfx_loop        = sound_get("sfx_vaporwave_loop");
+        sfx_explo       = asset_get("sfx_ell_explosion_medium");
+        sfx_char_explo  = asset_get("sfx_ell_dspecial_explosion_3");
+        break;
+    case 14:
+        sfx_loop        = asset_get("sfx_plasma_field_loop");
+        sfx_explo       = sound_get("sfx_hoohah_explosion");
+        sfx_char_explo  = sound_get("sfx_chargedhoohah_explosion");
         break;
     case 17:
-        sfx_loop        = sound_get ("sfx_poolparty_loop");
+        sfx_loop        = sound_get("sfx_poolparty_loop");
+        sfx_explo       = asset_get("sfx_ell_explosion_medium");
+        sfx_char_explo  = asset_get("sfx_ell_dspecial_explosion_3");
         break;
     default:
         sfx_loop        = asset_get("sfx_plasma_field_loop");
+        sfx_explo       = asset_get("sfx_ell_explosion_medium");
+        sfx_char_explo  = asset_get("sfx_ell_dspecial_explosion_3");
         break;
 }
 switch(player_id.pen_name){
     case "equi":
-        sfx_loop        = sound_get ("sfx_vaporwave_loop");
+        sfx_loop        = sound_get("sfx_vaporwave_loop");
+        sfx_explo       = asset_get("sfx_ell_explosion_medium");
+        sfx_char_explo  = asset_get("sfx_ell_dspecial_explosion_3");
         break;
 }
 sfx_charge          = asset_get("sfx_clairen_hit_med");
-
-sfx_explo           = asset_get("sfx_ell_explosion_medium");
-sfx_char_explo      = asset_get("sfx_ell_dspecial_explosion_3");
 #endregion
 
 hsp = 0;
