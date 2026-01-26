@@ -473,8 +473,8 @@ with(oPlayer){
 				galaxy_vfx_timer = 90;
 				if(chippi_sfx == noone){
 					chippi_animate_timer = 0;
-					sound_stop(sound_get("chippi"));
-					chippi_sfx = sound_play(sound_get("chippi"));
+					sound_stop(cat_sfx_array[current_galaxy]);
+					chippi_sfx = sound_play(cat_sfx_array[current_galaxy], current_galaxy);
 				} else {
 					sound_volume(chippi_sfx, 1, 0);
 				}
@@ -517,6 +517,7 @@ if(get_player_color(player) == 29){
 	}
 	if(galaxy_vfx_timer == 0){
 		chippi_sfx = noone;
+		current_galaxy = !current_galaxy;
 	}
 }
 

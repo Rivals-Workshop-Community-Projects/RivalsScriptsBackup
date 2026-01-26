@@ -66,6 +66,7 @@ sprite_change_offset("rune_proj", sprite_get_xoffset(asset_get("sword_fsmash_pro
 sprite_change_offset("rune_proj_end", sprite_get_xoffset(asset_get("sword_fsmash_proj_end")), sprite_get_yoffset(asset_get("sword_fsmash_proj_end")) - 70);
 
 sprite_change_offset("maxwell", 180, 120, true);
+sprite_change_offset("ooiiaaii", 0, 10, true);
 
 for(var i = 1; i <= 8; i++){
     sprite_change_offset("portrait_frame_" + string(i), -80, -3);

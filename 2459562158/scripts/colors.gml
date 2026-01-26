@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 28 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 11 );
+set_num_palettes( 12 );
 
 // Mitori
 set_color_profile_slot( 1, 0, 225, 86, 108 ); //Dress Top
@@ -116,7 +116,7 @@ set_color_profile_slot( 8, 5, 59, 91, 219 ); //Cap
 set_color_profile_slot( 8, 6, 84, 84, 84 ); //Bag
 set_color_profile_slot( 8, 7, 208, 58, 58 ); //Red thing in the hair
 
-// hana
+// Hana
 set_color_profile_slot( 9, 0, 255, 255, 255 ); //Dress Top
 set_color_profile_slot( 9, 1, 37, 77, 143 ); //Dress Bottom
 set_color_profile_slot( 9, 2, 0, 0, 0 ); //Eyes
@@ -126,15 +126,25 @@ set_color_profile_slot( 9, 5, 37, 77, 143 ); //Cap
 set_color_profile_slot( 9, 6, 130, 36, 31 ); //Bag
 set_color_profile_slot( 9, 7, 188, 51, 44 ); //Red thing in the hair
 
-// arachnid
-set_color_profile_slot( 10, 0, 48, 57, 77 ); //Dress Top
-set_color_profile_slot( 10, 1, 109, 45, 61 ); //Dress Bottom
-set_color_profile_slot( 10, 2, 94, 28, 122 ); //Eyes
-set_color_profile_slot( 10, 3, 155, 112, 81 ); //Skin
-set_color_profile_slot( 10, 4, 244, 236, 174 ); //Hair
-set_color_profile_slot( 10, 5, 48, 57, 77 ); //Cap
-set_color_profile_slot( 10, 6, 213, 173, 227 ); //Bag
-set_color_profile_slot( 10, 7, 235, 186, 255 ); //Red thing in the hair
+// Seesaw
+set_color_profile_slot( 10, 0, 64, 75, 103 ); //Dress Top
+set_color_profile_slot( 10, 1, 35, 38, 45 ); //Dress Bottom
+set_color_profile_slot( 10, 2, 80, 78, 79 ); //Eyes
+set_color_profile_slot( 10, 3, 255, 215, 198 ); //Skin
+set_color_profile_slot( 10, 4, 79, 90, 118 ); //Hair
+set_color_profile_slot( 10, 5, 46, 50, 51 ); //Cap
+set_color_profile_slot( 10, 6, 28, 38, 50 ); //Bag
+set_color_profile_slot( 10, 7, 232, 232, 232 ); //Red thing in the hair
+
+// Arachnid
+set_color_profile_slot( 11, 0, 48, 57, 77 ); //Dress Top
+set_color_profile_slot( 11, 1, 109, 45, 61 ); //Dress Bottom
+set_color_profile_slot( 11, 2, 94, 28, 122 ); //Eyes
+set_color_profile_slot( 11, 3, 155, 112, 81 ); //Skin
+set_color_profile_slot( 11, 4, 244, 236, 174 ); //Hair
+set_color_profile_slot( 11, 5, 48, 57, 77 ); //Cap
+set_color_profile_slot( 11, 6, 213, 173, 227 ); //Bag
+set_color_profile_slot( 11, 7, 235, 186, 255 ); //Red thing in the hair
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

@@ -58,7 +58,7 @@ if(get_player_color(player) == 28){
 }
 
 if(get_player_color(player) == 29){
-	draw_sprite_ext(sprite_get("chipi_chapa"), chippi_animate_timer/2, view_get_xview(), view_get_yview(), 4, 4, 0, c_white, min(galaxy_vfx_timer/40, .5));
+	draw_sprite_ext(cat_image_array[current_galaxy], chippi_animate_timer/2, view_get_xview(), view_get_yview(), 4, 4, 0, c_white, min(galaxy_vfx_timer/40, .5));
 }
 
 if(attack == AT_TAUNT_2 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){

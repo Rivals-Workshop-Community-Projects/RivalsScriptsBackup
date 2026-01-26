@@ -306,6 +306,9 @@ galaxy_vfx_list = [];
 galaxy_vfx_timer = 0;
 chippi_animate_timer = 0;
 chippi_sfx = noone;
+current_galaxy = random_func_2(67, 2, true); // 0 - chippi, 1 - oiia
+cat_sfx_array = [sound_get("chippi"), sound_get("oiia")];
+cat_image_array = [sprite_get("chipi_chapa"), sprite_get("ooiiaaii")];
 
 //rune variables
 rune_save_cancel_buffer = 0;

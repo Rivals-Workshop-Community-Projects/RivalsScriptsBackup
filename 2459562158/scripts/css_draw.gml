@@ -12,7 +12,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
 
-var num_alts = 11;
+var num_alts = 12;
 var alt_cur = get_player_color(player);
  
  
@@ -29,8 +29,8 @@ alt_name[6]  = "Madeline";
 alt_name[7]  = "Liz";
 alt_name[8]  = "Lode";
 alt_name[9]  = "Hana";
-alt_name[10] = "Arachnid";
-alt_name[11] = "Strange Bird";
+alt_name[10] = "Seesaw";
+alt_name[11] = "Arachnid";
 alt_name[12] = "Yuuto";
 alt_name[13] = "Zetta";
 alt_name[14] = "Abyss";
