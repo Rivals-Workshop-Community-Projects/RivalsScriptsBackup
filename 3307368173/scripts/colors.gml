@@ -311,16 +311,16 @@ set_color_profile_slot( 25, 6, 71, 90, 148 ); //Pants
 set_color_profile_slot( 25, 7, 255, 255, 255 ); //Sclera
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
-// Vortex
-set_color_profile_slot( 26, 0, 239, 141, 0 ); //Sword
-set_color_profile_slot( 26, 1, 248, 13, 0 ); //Shirt
-set_color_profile_slot( 26, 2, 235, 75, 46 ); //Hand + Hair
-set_color_profile_slot( 26, 3, 158, 45, 25 ); //Jacket
-set_color_profile_slot( 26, 4, 255, 196, 79 ); //Jacket 2
-set_color_profile_slot( 26, 5, 219, 154, 96 ); //Skin
-set_color_profile_slot( 26, 6, 99, 36, 36 ); //Pants
-set_color_profile_slot( 26, 7, 255, 255, 255 ); //Sclera
-//shading data: [-20, 2.5, 0.5, 1, 1.5, 1.5, 1, 1]
+// Cashbox
+set_color_profile_slot( 26, 0, 244, 206, 215 ); //Sword
+set_color_profile_slot( 26, 1, 50, 237, 92 ); //Shirt
+set_color_profile_slot( 26, 2, 50, 237, 92 ); //Hand + Hair
+set_color_profile_slot( 26, 3, 23, 48, 35 ); //Jacket
+set_color_profile_slot( 26, 4, 50, 237, 92 ); //Jacket 2
+set_color_profile_slot( 26, 5, 242, 150, 87 ); //Skin
+set_color_profile_slot( 26, 6, 23, 48, 35 ); //Pants
+set_color_profile_slot( 26, 7, 37, 77, 56 ); //Sclera
+//shading data: [-1, 5, 1, 1, 1.5, 1.5, 0.5, 1]
 
 // Spectral Thief
 set_color_profile_slot( 27, 0, 56, 162, 168 ); //Sword

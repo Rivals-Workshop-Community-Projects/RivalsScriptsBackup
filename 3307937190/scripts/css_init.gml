@@ -181,7 +181,7 @@ alt_name[25] = "Dreamland's Painter";
 alt_name[26] = "Limitless Palette";
 alt_name[27] = "Blueberry";
 alt_name[28] = "Spectral Thief";
-alt_name[29] = "Vortex Ink";
+alt_name[29] = "Cashbox Ink";
 alt_name[30] = "Riptide Ink";
 alt_name[31] = "All Star Glitter"
 

@@ -44,7 +44,7 @@ switch (alt_cur)
 	set_shading([1, 1, 1.5, 1, 1, 1, 1, 1])
 	break;
     case 26:
-	set_shading([-20, 2.5, 0.5, 1, 1.5, 1.5, 1, 1])
+	set_shading([-1, 5, 1, 1, 1.5, 1.5, 0.5, 1])
 	break;
     case 27:
 	set_shading([1, 1, 0.5, 0.5, 1, 2, 1, 1])

@@ -48,7 +48,7 @@ case 25:
 	    draw_sprite(sprite_get("css_allstar"),0,x+176,y+110);
 	break;
 case 26:
-	    draw_sprite(sprite_get("css_vortex"),0,x+176,y+110);
+	    draw_sprite(sprite_get("css_cashbox"),0,x+167,y+104);
 	break;
 }
 

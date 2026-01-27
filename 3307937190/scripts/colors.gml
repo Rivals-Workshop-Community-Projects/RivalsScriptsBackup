@@ -344,16 +344,16 @@ set_color_profile_slot( 28, 6, 35, 38, 43 ); //Gold
 set_color_profile_slot( 28, 7, 75, 124, 138 ); //Waist
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
 
-// Vortex Ink
-set_color_profile_slot( 29, 0, 219, 11, 0 ); //Hair
-set_color_profile_slot( 29, 1, 143, 52, 35 ); //Shirt
-set_color_profile_slot( 29, 2, 253, 221, 0 ); //Bow
-set_color_profile_slot( 29, 3, 194, 136, 85 ); //Skin
-set_color_profile_slot( 29, 4, 247, 19, 5 ); //Pants
-set_color_profile_slot( 29, 5, 252, 120, 58 ); //Sword
-set_color_profile_slot( 29, 6, 252, 120, 58 ); //Gold
-set_color_profile_slot( 29, 7, 158, 8, 0 ); //Waist
-//shading data: [-20, 1, 1, 1, -10, 1, 1, 1]
+// Cashbox Ink
+set_color_profile_slot( 29, 0, 50, 237, 92 ); //Hair
+set_color_profile_slot( 29, 1, 23, 48, 35 ); //Shirt
+set_color_profile_slot( 29, 2, 23, 48, 35 ); //Bow
+set_color_profile_slot( 29, 3, 255, 221, 170 ); //Skin
+set_color_profile_slot( 29, 4, 23, 48, 35 ); //Pants
+set_color_profile_slot( 29, 5, 50, 237, 92 ); //Sword
+set_color_profile_slot( 29, 6, 50, 237, 92 ); //Gold
+set_color_profile_slot( 29, 7, 50, 237, 92 ); //Waist
+//shading data: [1.5, 1, 1, 1, 1, 1, 1, 1.5]
 
 // Riptide Ink
 set_color_profile_slot( 30, 0, 0, 226, 247 ); //Hair
