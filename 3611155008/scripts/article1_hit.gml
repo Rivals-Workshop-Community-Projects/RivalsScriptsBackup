@@ -216,8 +216,9 @@ switch atk{
 		sound_hitbass();
 		sound_hitmetal();
 		sound_weakhitflavour();
+		if has_rune("A") && plr.grabp != noone plr.grabp2 = plr.grabp;
 		plr.grabp = self;
-		with plr destroy_hitboxes();
+		with plr if !has_rune("A") destroy_hitboxes();
 		var g = 0;
 		var t = noone;
 		repeat 25{

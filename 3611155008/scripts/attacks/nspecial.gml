@@ -66,7 +66,7 @@ set_hitbox_value(atk, num, HG_WINDOW, 2);
 set_hitbox_value(atk, num, HG_LIFETIME, 40);
 set_hitbox_value(atk, num, HG_HITBOX_X, 50);
 set_hitbox_value(atk, num, HG_HITBOX_Y, -29);
-set_hitbox_value(atk, num, HG_PROJECTILE_HSPEED, 30);
+set_hitbox_value(atk, num, HG_PROJECTILE_HSPEED, 26);
 set_hitbox_value(atk, num, HG_WIDTH, 60);
 set_hitbox_value(atk, num, HG_HEIGHT, 30);
 set_hitbox_value(atk, num, HG_PRIORITY, 5);

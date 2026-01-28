@@ -1,5 +1,9 @@
 ///#args atk
 //qi_stack = 5;
+if prev_state = PS_RESPAWN && respawn_anim < 149{
+	move_cooldown[attack] = 2;
+	exit;
+}
 if !move_cooldown[attack] switch attack{
 	case AT_FSTRONG:
 	if qi_stack attack = AT_FSTRONG_2;
@@ -16,6 +20,7 @@ if !move_cooldown[attack] switch attack{
 	
 	case AT_FSPECIAL:
 	grabp = noone;
+	grabp2 = noone;
 	fspec_charge = 0;
 	draw_fx = 0;
 	fspecial_dashhit = 0;

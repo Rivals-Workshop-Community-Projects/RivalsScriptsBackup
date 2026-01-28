@@ -1,3 +1,4 @@
+if respawn_anim >= 149 && state != PS_RESPAWN respawn_anim++;
 switch (state){
     case PS_RESPAWN:
     respawn_anim++;

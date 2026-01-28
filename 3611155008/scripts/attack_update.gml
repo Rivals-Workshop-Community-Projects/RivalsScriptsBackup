@@ -9,10 +9,10 @@ var window_end = floor(get_window_value(attack, window, AG_WINDOW_LENGTH) * ((ge
 if !hitpause switch attack{
 	//normals
 	case AT_JAB:
-	if window == 1 && window_timer == window_end-1 sound_swingmed();
+	if (window == 1 || (has_rune("C") && window == 7)) && window_timer == window_end-1 sound_swingmed();
 	if window == 4 && window_timer == window_end-1 sound_swingbig();
-	if window == 7 && window_timer == window_end-1 sound_swingbig();
-	if window == 7 && window_timer == window_end-2 sound_swingbiggest();
+	if window == 7 + 3*has_rune("C") && window_timer == window_end-1 sound_swingbig();
+	if window == 7 + 3*has_rune("C") && window_timer == window_end-2 sound_swingbiggest();
 	break;
 	
 	case AT_DATTACK:
@@ -43,6 +43,7 @@ if !hitpause switch attack{
 	//strongs
 	case AT_FSTRONG:
 	case AT_FSTRONG_2:
+	if has_rune("L") strong_charge = 60;
 	switch window{
 		case 1:
 		if window_timer == 1 sound_play(sound_get("CharSFX_JianAttack_Charging"));
@@ -65,6 +66,7 @@ if !hitpause switch attack{
 	
 	case AT_USTRONG:
 	case AT_USTRONG_2:
+	if has_rune("L") strong_charge = 60;
 	switch window{
 		case 1:
 		if window_timer == 1 sound_play(sound_get("CharSFX_JianAttack_Charging"));
@@ -88,6 +90,7 @@ if !hitpause switch attack{
 	
 	case AT_DSTRONG:
 	case AT_DSTRONG_2:
+	if has_rune("L") strong_charge = 60;
 	switch window{
 		case 1:
 		if window_timer == 1 sound_play(sound_get("CharSFX_JianAttack_Charging"));
@@ -117,6 +120,7 @@ if !hitpause switch attack{
 	case AT_NAIR:
 	if window == 1 && window_timer == window_end sound_swingmed();
 	if window == 4 && window_timer == window_end sound_swingbig();
+	if window == 7 && window_timer == window_end sound_swingbig();
 	break;
 	
 	case AT_FAIR:
@@ -151,7 +155,7 @@ if !hitpause switch attack{
 	switch window{
 		case 1: //startup
 		circletimer = 0;
-		if window_timer == window_end && special_down && qi_stack >= 2{
+		if window_timer == window_end && special_down && qi_stack >= 2-has_rune("N"){
 			window = 4;
 			window_timer = 0;
 			sound_play(sound_get("CharSFX_Bow_Preattack"), 0, noone, 1, .9);
@@ -161,7 +165,7 @@ if !hitpause switch attack{
 		
 		case 5: //charge extra
 		if window_timer == window_end{
-			qi_stack -= 2;
+			qi_stack -= 2-has_rune("N");
 			sound_play(sound_get("CharSFX_Bow_Shoot"));
 			sound_play(sound_get("CharSFX_Bow_Explode"));
 		}
@@ -170,9 +174,10 @@ if !hitpause switch attack{
 	break;
 	
 	case AT_FSPECIAL:
+	if has_rune("H") && draw_fx soft_armor = 999999;
 	can_move = 0;
 	can_fast_fall = 0;
-	move_cooldown[attack] = 30;
+	move_cooldown[attack] = 30 - 15*has_rune("K");
 	switch window{
 		case 1: //startup
 		if window_timer == 1{
@@ -206,9 +211,10 @@ if !hitpause switch attack{
 			}
 		}
 		hsp = spr_dir*30*(window_end-window_timer)/window_end;
-		if instance_exists(grabp){
+		if (has_rune("A")? (instance_exists(grabp2) || window_timer >= window_end/2) && instance_exists(grabp): instance_exists(grabp)){
 			window = 4;
 			window_timer = 0;
+			destroy_hitboxes();
 		}
 		break;
 		
@@ -231,6 +237,7 @@ if !hitpause switch attack{
 		case 6: //charge post start
 		if window_timer == window_end{
 			if "Yi_nymph" not in grabp grabp.state = (free? PS_IDLE_AIR: PS_IDLE);
+			if grabp2 != noone && "Yi_nymph" not in grabp2 grabp2.state = (free? PS_IDLE_AIR: PS_IDLE);
 			grabp.invincible = 0;
 			grabp.invince_time = 0;
 			grabp.perfect_dodging = 0;
@@ -247,6 +254,22 @@ if !hitpause switch attack{
 			g.hitpause = 5 + lvl;
 			g.hitpause_growth = .4 + .1*lvl;
 			g.extra_hitpause = 20 - 4*lvl
+			if grabp2 != noone{
+				grabp2.invincible = 0;
+				grabp2.invince_time = 0;
+				grabp2.perfect_dodging = 0;
+				grabp2.hurtboxID.dodging = 0;
+				var v = spawn_hit_fx(floor(grabp2.x), floor(grabp2.y - grabp2.char_height/2), fx_explode);
+				v.depth = grabp2.depth-1;
+				var g = create_hitbox(AT_FSPECIAL, 2, floor(grabp2.x), floor(grabp2.y - grabp2.char_height/2));
+				g.damage = lvl*5;
+				g.kb_value = 2 + 2*lvl;
+				g.kb_angle = 80 + 10*lvl;
+				g.kb_scale = .1 + .25*(lvl-1);
+				g.hitpause = 5 + lvl;
+				g.hitpause_growth = .4 + .1*lvl;
+				g.extra_hitpause = 20 - 4*lvl
+			}
 		}
 		break;
 	}
@@ -331,8 +354,9 @@ if !hitpause switch attack{
 				l++;
 			}
 		}
-		hsp = spr_dir*dcos(usp_angle)*20;
-		vsp = -dsin(usp_angle)*20;
+		var spd = 20 + 10*has_rune("K");
+		hsp = spr_dir*dcos(usp_angle)*spd;
+		vsp = -dsin(usp_angle)*spd;
 		if window_timer == window_end || y < usp_pos[1] - vsp || (spr_dir? x > usp_pos[0]: x < usp_pos[0]){
 			hsp*=.4;
 			vsp*=.4;
@@ -385,6 +409,17 @@ if !hitpause switch attack{
 		break;
 		case 4:
 		if window_timer <= 20 perfect_dodging = 1;
+		case 5:
+		if has_rune("I") && parry_hit && shield_pressed{
+			clear_button_buffer(PC_SHIELD_PRESSED);
+			parry_hit = 0;
+			invincible = 0;
+			invince_time = 0;
+			array_copy(can_be_hit, 0, array_create(array_length(can_be_hit)), 0, array_length(can_be_hit));
+			window_goto(4);
+			sound_parryrelease();
+			parrysound_stop();
+		}
 		break;
 	}
 	break;
@@ -417,10 +452,69 @@ if !hitpause switch attack{
 	
 	case AT_TAUNT:
 	if window_timer == 12 sound_heal();
-	if window_timer == 40 take_damage(player, player, -1);
+	if window_timer == 40 take_damage(player, player, -1 -4*has_rune("M"));
+	break;
+	
+	case 2: //intro
+	if (window <= 7) offset_hud(2000, 0.1); //put hud away
+	if (window_timer == window_end-1 && get_gameplay_time() <= 125) state = PS_SPAWN; //correct state to spawn if needed
+	break;
+	
+	case 49: //final smash
+	fs_using_final_smash = 0;
+	can_move = 0;
+	can_fast_fall = 0;
+	hsp = 0;
+	vsp = 0;
+	hurtboxID.sprite_index = sprite_get("finalsmash_hurt");
+	switch window{
+		case 1:
+		startpos = [x, y];
+		firepos = [room_width/2, room_height/2 - 110, 0];
+		fire_timer = 0;
+		break;
+		
+		case 2:
+		x = lerp(startpos[0], firepos[0], window_timer/window_end);		
+		y = lerp(y, firepos[1], .1);
+		firepos[@2] = y;
+		spr_angle = dsin(180*window_timer/window_end)*(point_direction(startpos[0], startpos[1], firepos[0], firepos[1]) - 90);
+		if window_timer == window_end sound_play(sound_get("CharSFX_Bow_Preattack"), 0, noone, 1, .9);
+		break;
+		
+		case 3:
+		spr_angle = 0;
+		y = lerp(firepos[2], firepos[1]-10, window_timer/window_end);
+		room_speed = lerp(room_speed, 30, .2);
+		break;
+		
+		case 4:
+		y = lerp(firepos[1]-10, firepos[1]-20, window_timer/window_end);
+		room_speed = lerp(room_speed, 20, .2);
+		if window_timer == window_end{
+			var i = 0;
+			while !position_meeting(x, y + i, asset_get("par_block")) && y + i < room_height i++;
+			boompos = [x, y + i];
+			firepos = [x, y];
+			sound_play(sound_get("CharSFX_Bow_Shoot"));
+		}
+		break;
+		
+		case 8:
+		room_speed = 60;
+		case 5:
+		case 6:
+		case 7:
+		if fire_timer == 2 sound_play(sound_get("SFX_RhyzoExplosionpre")); 
+		if fire_timer == 18 sound_play(sound_get("SFX_RhyzoExplode")); 
+		fire_timer++;
+		if window != 8 shake_camera(round(fire_timer/3), 3);
+		if fire_timer == 70 create_hitbox(49, 1, floor(firepos[0]), floor(firepos[1]));
+		break;
+	}
 	break;
 }
-
+if attack == 49 fs_hide_ball = 2;
 
 #define window_goto
 /// window_goto(win, t = 0;)

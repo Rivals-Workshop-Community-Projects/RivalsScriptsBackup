@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 27, 4, 12 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 28 );
 
 // Kuafu
 set_color_profile_slot( 1, 0, 255, 155, 66 ); //fur
@@ -226,85 +226,85 @@ set_color_profile_slot( 19, 5, 255, 247, 230 ); //shoes
 set_color_profile_slot( 19, 6, 255, 122, 92 ); //Qi
 set_color_profile_slot( 19, 7, 255, 125, 94 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 20, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 20, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 20, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 20, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 20, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 20, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 20, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 20, 7, 0, 255, 0 ); //nymph
+// Catrobat 
+set_color_profile_slot( 20, 0, 231, 228, 200 ); //fur
+set_color_profile_slot( 20, 1, 205, 225, 214 ); //jacket
+set_color_profile_slot( 20, 2, 38, 199, 39 ); //jacket details
+set_color_profile_slot( 20, 3, 40, 51, 30 ); //undershirt
+set_color_profile_slot( 20, 4, 130, 76, 44 ); //pants
+set_color_profile_slot( 20, 5, 40, 51, 30 ); //shoes
+set_color_profile_slot( 20, 6, 110, 232, 110 ); //Qi
+set_color_profile_slot( 20, 7, 38, 199, 39 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 21, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 21, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 21, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 21, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 21, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 21, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 21, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 21, 7, 0, 255, 0 ); //nymph
+// Penglai's Promised
+set_color_profile_slot( 21, 0, 254, 242, 220 ); //fur
+set_color_profile_slot( 21, 1, 106, 74, 189 ); //jacket
+set_color_profile_slot( 21, 2, 245, 206, 109 ); //jacket details
+set_color_profile_slot( 21, 3, 45, 34, 74 ); //undershirt
+set_color_profile_slot( 21, 4, 45, 34, 74 ); //pants
+set_color_profile_slot( 21, 5, 45, 34, 74 ); //shoes
+set_color_profile_slot( 21, 6, 156, 223, 182 ); //Qi
+set_color_profile_slot( 21, 7, 28, 166, 138 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 22, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 22, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 22, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 22, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 22, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 22, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 22, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 22, 7, 0, 255, 0 ); //nymph
+// Metal Claw Yi
+set_color_profile_slot( 22, 0, 244, 238, 224 ); //fur
+set_color_profile_slot( 22, 1, 22, 148, 109 ); //jacket
+set_color_profile_slot( 22, 2, 255, 191, 54 ); //jacket details
+set_color_profile_slot( 22, 3, 20, 19, 32 ); //undershirt
+set_color_profile_slot( 22, 4, 255, 243, 189 ); //pants
+set_color_profile_slot( 22, 5, 20, 19, 32 ); //shoes
+set_color_profile_slot( 22, 6, 141, 201, 164 ); //Qi
+set_color_profile_slot( 22, 7, 212, 246, 255 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 23, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 23, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 23, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 23, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 23, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 23, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 23, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 23, 7, 0, 255, 0 ); //nymph
+// Pugatory
+set_color_profile_slot( 23, 0, 231, 227, 189 ); //fur
+set_color_profile_slot( 23, 1, 184, 155, 88 ); //jacket
+set_color_profile_slot( 23, 2, 143, 108, 61 ); //jacket details
+set_color_profile_slot( 23, 3, 32, 21, 19 ); //undershirt
+set_color_profile_slot( 23, 4, 32, 21, 19 ); //pants
+set_color_profile_slot( 23, 5, 32, 21, 19 ); //shoes
+set_color_profile_slot( 23, 6, 230, 40, 2 ); //Qi
+set_color_profile_slot( 23, 7, 227, 37, 0 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 24, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 24, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 24, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 24, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 24, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 24, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 24, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 24, 7, 0, 255, 0 ); //nymph
+// Possum's Girl
+set_color_profile_slot( 24, 0, 19, 53, 77 ); //fur
+set_color_profile_slot( 24, 1, 176, 61, 22 ); //jacket
+set_color_profile_slot( 24, 2, 102, 36, 13 ); //jacket details
+set_color_profile_slot( 24, 3, 177, 77, 7 ); //undershirt
+set_color_profile_slot( 24, 4, 43, 48, 47 ); //pants
+set_color_profile_slot( 24, 5, 29, 48, 59 ); //shoes
+set_color_profile_slot( 24, 6, 89, 39, 24 ); //Qi
+set_color_profile_slot( 24, 7, 0, 214, 110 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 25, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 25, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 25, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 25, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 25, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 25, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 25, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 25, 7, 0, 255, 0 ); //nymph
+// Collage Life
+set_color_profile_slot( 25, 0, 230, 228, 200 ); //fur
+set_color_profile_slot( 25, 1, 52, 108, 120 ); //jacket
+set_color_profile_slot( 25, 2, 138, 173, 150 ); //jacket details
+set_color_profile_slot( 25, 3, 20, 19, 32 ); //undershirt
+set_color_profile_slot( 25, 4, 66, 66, 49 ); //pants
+set_color_profile_slot( 25, 5, 20, 19, 32 ); //shoes
+set_color_profile_slot( 25, 6, 156, 223, 182 ); //Qi
+set_color_profile_slot( 25, 7, 156, 223, 182 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 26, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 26, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 26, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 26, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 26, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 26, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 26, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 26, 7, 0, 255, 0 ); //nymph
+// Yin
+set_color_profile_slot( 26, 0, 255, 255, 255 ); //fur
+set_color_profile_slot( 26, 1, 255, 255, 255 ); //jacket
+set_color_profile_slot( 26, 2, 242, 242, 242 ); //jacket details
+set_color_profile_slot( 26, 3, 255, 255, 255 ); //undershirt
+set_color_profile_slot( 26, 4, 255, 255, 255 ); //pants
+set_color_profile_slot( 26, 5, 255, 255, 255 ); //shoes
+set_color_profile_slot( 26, 6, 60, 55, 97 ); //Qi
+set_color_profile_slot( 26, 7, 224, 224, 224 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 27, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 27, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 27, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 27, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 27, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 27, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 27, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 27, 7, 0, 255, 0 ); //nymph
+// Yang
+set_color_profile_slot( 27, 0, 58, 56, 92 ); //fur
+set_color_profile_slot( 27, 1, 83, 77, 133 ); //jacket
+set_color_profile_slot( 27, 2, 37, 36, 59 ); //jacket details
+set_color_profile_slot( 27, 3, 37, 36, 59 ); //undershirt
+set_color_profile_slot( 27, 4, 37, 36, 59 ); //pants
+set_color_profile_slot( 27, 5, 37, 36, 59 ); //shoes
+set_color_profile_slot( 27, 6, 255, 255, 255 ); //Qi
+set_color_profile_slot( 27, 7, 37, 36, 59 ); //nymph
 
 // unnamed alt palette
 set_color_profile_slot( 28, 0, 0, 255, 0 ); //fur
@@ -326,25 +326,25 @@ set_color_profile_slot( 29, 5, 0, 255, 0 ); //shoes
 set_color_profile_slot( 29, 6, 0, 255, 0 ); //Qi
 set_color_profile_slot( 29, 7, 0, 255, 0 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 30, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 30, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 30, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 30, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 30, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 30, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 30, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 30, 7, 0, 255, 0 ); //nymph
+// Yin
+set_color_profile_slot( 30, 0, 255, 255, 255 ); //fur
+set_color_profile_slot( 30, 1, 255, 255, 255 ); //jacket
+set_color_profile_slot( 30, 2, 242, 242, 242 ); //jacket details
+set_color_profile_slot( 30, 3, 255, 255, 255 ); //undershirt
+set_color_profile_slot( 30, 4, 255, 255, 255 ); //pants
+set_color_profile_slot( 30, 5, 255, 255, 255 ); //shoes
+set_color_profile_slot( 30, 6, 60, 55, 97 ); //Qi
+set_color_profile_slot( 30, 7, 224, 224, 224 ); //nymph
 
-// unnamed alt palette
-set_color_profile_slot( 31, 0, 0, 255, 0 ); //fur
-set_color_profile_slot( 31, 1, 0, 255, 0 ); //jacket
-set_color_profile_slot( 31, 2, 0, 255, 0 ); //jacket details
-set_color_profile_slot( 31, 3, 0, 255, 0 ); //undershirt
-set_color_profile_slot( 31, 4, 0, 255, 0 ); //pants
-set_color_profile_slot( 31, 5, 0, 255, 0 ); //shoes
-set_color_profile_slot( 31, 6, 0, 255, 0 ); //Qi
-set_color_profile_slot( 31, 7, 0, 255, 0 ); //nymph
+// Yang
+set_color_profile_slot( 31, 0, 58, 56, 92 ); //fur
+set_color_profile_slot( 31, 1, 83, 77, 133 ); //jacket
+set_color_profile_slot( 31, 2, 37, 36, 59 ); //jacket details
+set_color_profile_slot( 31, 3, 37, 36, 59 ); //undershirt
+set_color_profile_slot( 31, 4, 37, 36, 59 ); //pants
+set_color_profile_slot( 31, 5, 37, 36, 59 ); //shoes
+set_color_profile_slot( 31, 6, 255, 255, 255 ); //Qi
+set_color_profile_slot( 31, 7, 37, 36, 59 ); //nymph
 
 // nine cols
 set_color_profile_slot( 32, 0, 255, 254, 203 ); //fur

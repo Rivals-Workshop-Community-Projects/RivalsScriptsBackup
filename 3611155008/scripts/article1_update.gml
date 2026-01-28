@@ -62,9 +62,17 @@ switch state{
 		qi_repeat = 1;
 	}
 	if timer == 50 && (qi_stack || qi_repeat) sound_play(sound_get("CharSFX_Bow_Explode_Continue"));
+	if has_rune("D") && timer >= 55 + 10*qi_stack{
+		image_xscale = lerp(image_xscale, 4, .2);
+		image_yscale = lerp(image_yscale, 4, .2);
+	}
 	if timer == clamp(timer, 25, 75) && timer%10 == 5{
 		var t = create_hitbox(AT_DSPECIAL, 1 + (timer==75)*!qi_stack, x, y);
 		t.damage += qi_repeat;
+		if has_rune("D"){
+			t.image_xscale *= image_xscale/2;
+			t.image_yscale *= image_yscale/2;
+		}
 	}
 	if timer >= 95{
 		instance_destroy(self);

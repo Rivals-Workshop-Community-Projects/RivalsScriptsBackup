@@ -2,7 +2,7 @@ var atk = AT_TAUNT;
 var num = 1;
 
 set_attack_value(atk, AG_SPRITE, sprite_get("taunt"));
-set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("ex_guy_hurt_box"));
+set_attack_value(atk, AG_HURTBOX_SPRITE, hurtbox_spr);
 
 set_window_value(atk, num, AG_WINDOW_LENGTH, 80);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAMES, 16);

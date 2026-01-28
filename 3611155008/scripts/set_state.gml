@@ -6,3 +6,7 @@ if state == PS_AIR_DODGE{
 }
 if state == PS_JUMPSQUAT jump_sound = sound_get("CharSFX_Jump_v" + string(random_func(2, 11, 1) + 1));
 if state == PS_DOUBLE_JUMP djump_sound = sound_get("CharSFX_Jump_v" + string(random_func(3, 11, 1) + 1));
+if prev_state = PS_RESPAWN && respawn_anim < 149{
+	state = PS_RESPAWN;
+	state_timer = respawn_anim;
+}

@@ -11,14 +11,21 @@ if state == PS_PARRY || (state == PS_ATTACK_AIR && attack == AT_EXTRA_2){
 }
 if state == PS_ATTACK_GROUND && attack == AT_EXTRA_1{
 	sound_unbound()
-	qi_stack = min(qi_stack+1, 5);
+	qi_stack = min(qi_stack+1+has_rune("J"), 5);
 	window_timer = 0;
 	hit_player_obj.yi_parry_undo = enemy_hitboxID.type+1;
 }
 parry_hit = 1;
-qi_stack = min(qi_stack+1, 5);
+qi_stack = min(qi_stack+1+has_rune("J"), 5);
 var g = spawn_hit_fx(floor(lerp(x, enemy_hitboxID.x, .5)), floor(lerp(y - char_height/2, enemy_hitboxID.y, .5)), parry_fx);
 g.depth = depth-4;
+
+if has_rune("J") take_damage(player, hit_player_obj.player, floor(enemy_hitboxID.damage*.5));
+
+if has_rune("E") && enemy_hitboxID.type == 2{
+	enemy_hitboxID.hitbox_timer = 0;
+	enemy_hitboxID.damage *= 2;
+}
 
 
 #define sound_parry()

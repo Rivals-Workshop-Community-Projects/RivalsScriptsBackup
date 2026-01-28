@@ -6,6 +6,7 @@ if taichi_cooldown taichi_cooldown--;
 if codec_buffer codec_buffer--;
 if !free taichi_cooldown = 0;
 if !on_controller && joy_dir%45 on_controller = 1;
+if fs_hide_ball fs_hide_ball--;
 codec_avail = 0;
 with oPlayer if self != other && yi_codec_available other.codec_avail = 1;
 
@@ -49,10 +50,11 @@ if state == PS_PARRY switch window{
 	if window_timer >= 15 && shield_down set_attack(AT_EXTRA_1);
 	break;
 }
-parry_cooldown = 0;
+parry_cooldown = min(parry_cooldown, 20);
+if !free can_air_parry = 1;
 
 unbound_timer = (shield_down? unbound_timer+1: 0);
-if unbound_timer >= 30 && (state_cat == SC_GROUND_NEUTRAL || state == PS_LAND || state == PS_WALK_TURN || state == PS_WAVELAND || state == PS_DASH_START || state == PS_DASH || state == PS_DASH_TURN || state == PS_DASH_STOP) set_attack(AT_EXTRA_1);
+if unbound_timer >= 30 && (state_cat == SC_GROUND_NEUTRAL || state == PS_LAND || state == PS_WALK_TURN || state == PS_WAVELAND || state == PS_DASH_START || state == PS_DASH || state == PS_DASH_TURN || state == PS_DASH_STOP || (has_rune("I") && state_cat == SC_AIR_NEUTRAL)) set_attack(AT_EXTRA_1);
 if parryboost && !hitstop{
 	vsp = -9;
 	old_vsp = -9;
@@ -127,3 +129,32 @@ if codec_intro{
 	if codec_intro >= 260 codec_intro = 0;
 	codec_controls = 0;
 }
+
+//djump vfx
+with (asset_get("new_dust_fx_obj")) if dust_fx = 2 && player == other.player && x != -3000{
+	if step_timer == 0 with other spawn_hit_fx(floor(other.x), floor(other.y), djump_fx);
+	x = -3000;
+	y = -3000;
+	dust_length = 0;
+}
+		
+//intro
+if get_gameplay_time() <= 4 set_attack(2);
+if prev_state = PS_RESPAWN && respawn_anim < 149 hsp = 0;
+
+//last stand
+if has_rune("G") && get_player_damage(player) >= last_stand_dmg && (point_distance(0, 0, hsp, vsp) != 0 || state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) do_afterimage(0, 0, 6);
+
+#define do_afterimage //sorry lukaru
+/// do_afterimage(dir = -1, spd = -1, freq = 8, spr = sprite_index, img = image_index;)
+var dir = argument_count > 0 ? argument[0] : -1;
+var spd = argument_count > 1 ? argument[1] : -1;
+var freq = argument_count > 2 ? argument[2] : 8;
+var spr = argument_count > 3 ? argument[3] : sprite_index;
+var img = argument_count > 4 ? argument[4] : image_index;;
+if (get_gameplay_time()%freq) return;
+
+var aft = spawn_hit_fx(floor(x + hsp), floor(y + vsp), last_stand);
+variable_instance_set(aft, "is_yi_afterimage", [spr, img]);
+
+return aft

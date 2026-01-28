@@ -1,7 +1,9 @@
+if has_rune("G") && get_player_damage(player) >= last_stand_dmg take_damage(hit_player_obj.player, player, ceil(my_hitboxID.damage*.35));
+
 switch my_hitboxID.attack{
 	//normals
 	case AT_JAB:
-	if my_hitboxID.hbox_num >= 3 sound_hitfap(2);
+	if my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4 sound_hitfap(2);
 	sound_hitmetal();
 	sound_hitfap();
 	sound_hitbass();
@@ -77,7 +79,7 @@ switch my_hitboxID.attack{
 	
 	//aerials
 	case AT_NAIR:
-	if my_hitboxID.hbox_num == 1 old_vsp = min(vsp, -4);
+	if my_hitboxID.hbox_num <= (1 + has_rune("C")) old_vsp = min(vsp, -4);
 	else sound_weakhitflavour();
 	sound_hitmetal();
 	sound_hitstab();
@@ -130,10 +132,11 @@ switch my_hitboxID.attack{
 		sound_hitbass();
 		sound_hitmetal();
 		sound_weakhitflavour();
+		if has_rune("A") && grabp != noone grabp2 = grabp;
+		if !has_rune("A") destroy_hitboxes();
 		grabp = hit_player_obj;
 		grabp.hitstop += get_player_damage(grabp.player)*.2;
 		grabp.hitstop_full += get_player_damage(grabp.player)*.2;
-		destroy_hitboxes();
 		var g = 0;
 		var t = noone;
 		repeat 25{

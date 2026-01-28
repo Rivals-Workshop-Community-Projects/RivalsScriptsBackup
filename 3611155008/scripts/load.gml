@@ -42,6 +42,7 @@ sprite_change_offset("airparry", 33, 39);
 sprite_change_offset("airparry_fx", 33, 39);
 
 sprite_change_offset("jab", 47, 51, 1);
+sprite_change_offset("jabrune", 47, 65, 1);
 sprite_change_offset("dattack", 28, 54, 1);
 sprite_change_offset("ftilt", 28, 40, 1);
 sprite_change_offset("dtilt", 25, 37, 1);
@@ -57,8 +58,8 @@ sprite_change_offset("ustrong", 32, 76, 1);
 sprite_change_offset("ustrongbig", 35, 93, 1);
 sprite_change_offset("dstrong", 49, 58, 1);
 sprite_change_offset("dstrongbig", 49, 58, 1);
-sprite_change_offset("nspecial", 28, 57, 1);//
-sprite_change_offset("nspecial_air", 28, 55, 1);//
+sprite_change_offset("nspecial", 28, 57, 1);
+sprite_change_offset("nspecial_air", 28, 55, 1);
 sprite_change_offset("fspecial", 28, 41, 1);
 sprite_change_offset("fspecial_air", 24, 42, 1);
 sprite_change_offset("talismanground", 61, 57, 1);
@@ -72,6 +73,15 @@ sprite_change_offset("taunthacking", 24, 40, 1);
 sprite_change_offset("pavillon_com", 24, 40, 1);
 sprite_change_offset("platressurect", 24, 51, 1);
 sprite_change_offset("platyingyang", 39, 31, 1);
+sprite_change_offset("intro", 31, 51);
+
+sprite_change_offset("finalsmash", 39, 61);
+sprite_change_offset("finalcharge", 32, 32);
+sprite_change_offset("finalarrow", 1, 2);
+sprite_change_offset("finalarrowline", 0, 2);
+sprite_change_offset("explosionsparkle", 43, 42);
+sprite_change_offset("explosionparts", 73, 63);
+sprite_change_offset("shockwavering", 40, 40);
 
 sprite_change_offset("platmain", 45, 77);
 
@@ -125,6 +135,8 @@ sprite_change_offset("nymphspark5", 24, 24);
 sprite_change_offset("slashhit", 48, 52);
 sprite_change_offset("bigslashhit", 79, 81);
 sprite_change_offset("arrowhit", 128, 100);
+
+sprite_change_offset("jumpvfx", 38, 2);
 
 sprite_change_offset("offscreen_arrow", 16, 16);
 

@@ -3,6 +3,7 @@ var num = 1;
 
 set_attack_value(atk, AG_SPRITE, sprite_get("unbounded"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("ex_guy_hurt_box"));
+set_attack_value(atk, AG_CATEGORY, 2*has_rune("I"));
 
 //startup
 set_window_value(atk, num, AG_WINDOW_LENGTH, 16);
