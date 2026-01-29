@@ -6,7 +6,7 @@ set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
 //pre charge
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 13);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
 
 //postcharge
@@ -26,7 +26,7 @@ set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 
 //end
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 20);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 19);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, true);
@@ -70,7 +70,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_WIDTH, 40);
 set_hitbox_value(AT_DSTRONG, 3, HG_HEIGHT, 80);
 set_hitbox_value(AT_DSTRONG, 3, HG_SHAPE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 7);
+set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 9);
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 70);
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 7);
