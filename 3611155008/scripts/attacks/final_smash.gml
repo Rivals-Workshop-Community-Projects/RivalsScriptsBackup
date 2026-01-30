@@ -23,7 +23,7 @@ set_window_value(atk, num, AG_WINDOW_ANIM_FRAMES, 10);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAME_START, 4);
 
 num++; //aim slowdown
-set_window_value(atk, num, AG_WINDOW_LENGTH, 102);
+set_window_value(atk, num, AG_WINDOW_LENGTH, 289);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAME_START, 14);
 set_window_value(atk, num, AG_WINDOW_SFX, sound_get("SFX_RhyzoCharge"));
@@ -36,17 +36,13 @@ set_window_value(atk, num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAME_START, 15);
 
 num++; //fire loop
+set_window_value(atk, num, AG_WINDOW_TYPE, 9);
 set_window_value(atk, num, AG_WINDOW_LENGTH, 24);
-set_window_value(atk, num, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(atk, num, AG_WINDOW_ANIM_FRAME_START, 17);
-
-num++; //fire loop
-set_window_value(atk, num, AG_WINDOW_LENGTH, 30);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAME_START, 17);
 
 num++; //end
-set_window_value(atk, num, AG_WINDOW_LENGTH, 24);
+set_window_value(atk, num, AG_WINDOW_LENGTH, 30);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(atk, num, AG_WINDOW_ANIM_FRAME_START, 23);
 

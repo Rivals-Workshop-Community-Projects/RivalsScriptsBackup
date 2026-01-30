@@ -338,7 +338,7 @@ switch(attack) {
     			if (window_timer == window_end_time) {
 	    			claw_rel_y = 0;
 	    			claw_abs_y = y+vsp;
-	    			claw_vsp = 12;
+	    			claw_vsp = 15;
 	    			grabbed_player_obj = noone;
 	    			grabbed_bomb_obj = noone;
 	    			
@@ -446,7 +446,7 @@ switch(attack) {
     			break;
     		case 7:
     			if (window_timer == 1) {
-    				if (!hitstun) vsp = -8;
+    				if (!hitstun) vsp = -11;
     			}
     			break;
     	}
@@ -544,7 +544,8 @@ switch(attack) {
     	can_fast_fall = true;
     	if (window == 1 && window_timer == window_end_time) sound_play(asset_get("sfx_ell_utilt_cannon"), false, noone, 0.7, 1.1);
 		else if (!hitpause && window == 2 && window_timer == 1 && dair_used == false && !fast_falling) {
-    		vsp = clamp(vsp, -3, -6);
+    		if !has_hit vsp = clamp(vsp, -3, -6) 
+    		else vsp = clamp(vsp, -4, -7);
     		dair_used = true;
     	}
 		break;

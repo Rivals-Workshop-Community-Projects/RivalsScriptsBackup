@@ -452,7 +452,17 @@ if !hitpause switch attack{
 	
 	case AT_TAUNT:
 	if window_timer == 12 sound_heal();
-	if window_timer == 40 take_damage(player, player, -1 -4*has_rune("M"));
+	if window_timer == 40{
+		take_damage(player, player, -1 -4*has_rune("M"));
+		if get_match_setting(SET_PRACTICE) qi_stack = min(5, qi_stack+1);
+	}
+	break;
+	
+	case AT_TAUNT_2:
+	if get_match_setting(SET_PRACTICE) && (window_timer-40)%8 == 1 && qi_stack < 5{
+		sound_fspecqi();
+		qi_stack = min(5, qi_stack+1);
+	}
 	break;
 	
 	case 2: //intro
@@ -485,12 +495,10 @@ if !hitpause switch attack{
 		case 3:
 		spr_angle = 0;
 		y = lerp(firepos[2], firepos[1]-10, window_timer/window_end);
-		room_speed = lerp(room_speed, 30, .2);
 		break;
 		
 		case 4:
 		y = lerp(firepos[1]-10, firepos[1]-20, window_timer/window_end);
-		room_speed = lerp(room_speed, 20, .2);
 		if window_timer == window_end{
 			var i = 0;
 			while !position_meeting(x, y + i, asset_get("par_block")) && y + i < room_height i++;
@@ -500,16 +508,15 @@ if !hitpause switch attack{
 		}
 		break;
 		
-		case 8:
-		room_speed = 60;
 		case 5:
 		case 6:
 		case 7:
 		if fire_timer == 2 sound_play(sound_get("SFX_RhyzoExplosionpre")); 
 		if fire_timer == 18 sound_play(sound_get("SFX_RhyzoExplode")); 
-		fire_timer++;
-		if window != 8 shake_camera(round(fire_timer/3), 3);
-		if fire_timer == 70 create_hitbox(49, 1, floor(firepos[0]), floor(firepos[1]));
+		fire_timer += 1/3;
+		if window != 7 shake_camera(round(fire_timer/3), 3);
+		if fire_timer == 60 create_hitbox(49, 1, floor(firepos[0]), floor(firepos[1]));
+		if fire_timer >= 60 && window != 7 window_goto(7);
 		break;
 	}
 	break;

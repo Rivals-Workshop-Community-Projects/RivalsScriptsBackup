@@ -8,7 +8,7 @@ set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 
 //init pre-blueprint
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 
@@ -20,7 +20,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 
 //inbetween to spawn pipe
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 

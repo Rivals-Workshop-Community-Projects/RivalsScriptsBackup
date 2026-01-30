@@ -92,7 +92,7 @@ if state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR{
 		
 		case 49: //final smash
 		shader_start();
-		if window == 4 draw_sprite_ext(sprite_get("finalcharge"), window_timer*.33, x, y + 20, 2, 2, 0, c_white, 1);
+		if window == 4 draw_sprite_ext(sprite_get("finalcharge"), window_timer/8.5, x, y + 20, 2, 2, 0, c_white, 1);
 		shader_end();
 		break;
 	}

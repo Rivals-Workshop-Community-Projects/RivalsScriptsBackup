@@ -32,7 +32,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == 49{
 			var rad = min(sqr(fire_timer-26)*7, 1000);
 			gpu_set_blendmode(bm_add);
 			draw_primitive_begin(pr_trianglefan);
-			draw_vertex_color(boompos[0], boompos[1], nymph_color, .7 - .7*(fire_timer-67)/12)
+			draw_vertex_color(boompos[0], boompos[1], nymph_color, .7 - .7*(fire_timer-60)/12)
 			var i = 0;
 			repeat 17{
 				draw_vertex_color(boompos[0] + lengthdir_x(rad, i*22.5), boompos[1] + lengthdir_y(rad, i*22.5), nymph_color, 0)
@@ -49,7 +49,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == 49{
 			if fire_timer == clamp(fire_timer, 30, 60){
 				shader_end();
 				var boomc = make_color_hsv(color_get_hue(nymph_color), color_get_saturation(nymph_color)*1.3, color_get_value(nymph_color)*1.2);
-				var rad = ease_quadInOut(0, 200, fire_timer-30, 30);
+				var rad = ease_quadInOut(0, 200, floor(fire_timer)-30, 30);
 				var wdt = 500*max(0, 1 - rad/180);
 				draw_primitive_begin(pr_trianglestrip);
 				draw_vertex_color(boompos[0] - wdt, boompos[1], boomc, 1);
@@ -96,7 +96,7 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == 49{
 			if fire_timer >= 38{
 				rad = sqr(fire_timer-38)*10;
 				draw_primitive_begin(pr_trianglefan);
-				draw_vertex_color(boompos[0], boompos[1], c_white, 3*(1 - (fire_timer-66)/19))
+				draw_vertex_color(boompos[0], boompos[1], c_white, 3*(1 - (fire_timer-60)/8))
 				var i = 0;
 				repeat 17{
 					draw_vertex_color(boompos[0] + lengthdir_x(rad, i*22.5), boompos[1] + lengthdir_y(rad, i*22.5), c_white, 0)

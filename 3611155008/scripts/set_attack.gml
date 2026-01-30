@@ -1,5 +1,5 @@
 ///#args atk
-//qi_stack = 5;
+
 if prev_state = PS_RESPAWN && respawn_anim < 149{
 	move_cooldown[attack] = 2;
 	exit;
