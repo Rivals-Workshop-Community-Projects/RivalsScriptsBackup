@@ -148,13 +148,21 @@ if(bonus_damage){outline_color = [80, 0, 0];init_shader();}
 if(bonus_damage_flash > 0)bonus_damage_flash -= hitpause?4:8;
 
 //grab input
-if(((state == PS_PARRY_START || state == PS_PARRY && state_timer <= 0 || state == PS_AIR_DODGE && state_timer <= 1)
-|| ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window == 1 && window_timer <= 2 && attack != AT_GRAB))
-&& ((attack_down || attack_pressed) && (shield_down || shield_pressed))){
+if(((state == PS_PARRY_START || state == PS_PARRY && state_timer <= 1 || state == PS_AIR_DODGE && state_timer <= 3 || (state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD) && state_timer <= 4)
+|| ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window == 1 && window_timer <= 3 && attack != AT_GRAB))
+&& ((attack_down || attack_pressed) && (shield_down || shield_pressed)) && move_cooldown[AT_GRAB] <= 0){
+	if(state == PS_AIR_DODGE && vsp < -2)has_airdodge = false; //prevent stall with upward airdodge
+	if((state == PS_ROLL_FORWARD || state == PS_ROLL_BACKWARD)){ //some roll fixes
+		if(sign(hsp) != sign(spr_dir))spr_dir = -spr_dir;if(abs(hsp) >= 8)hsp = 8*sign(hsp);
+	}
 	attack_end();destroy_hitboxes();window = 1;window_timer = 0;
 	attack = AT_GRAB;set_attack(AT_GRAB);hurtboxID.sprite_index = sprite_get("grab_hurt");
 	grabbedtarget = noone;grabbedobject = false;grabbedarticle = false;
-	reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);
+	reset_attack_value(AT_GRAB, AG_NUM_WINDOWS);hurtboxID.dodging = false;perfect_dodging = false;init_shader();
+}
+//failsafe if grab target isnt reset
+if(instance_exists(grabbedtarget) && !phone_attacking){
+	grabbedtarget.KoB_grabbed = false;grabbedtarget = noone;
 }
 
 if(canon || BossMode){
@@ -294,9 +302,9 @@ if(state == PS_CROUCH && !hitpause){
 	}else if(state == PS_DASH_STOP && state_timer == 0 && !hitpause){
 		sound_play(sound_get("dashstop"),false,noone,0.15,0.95+(random_func(2,20,true)/100));
 	}else if(state == PS_DASH && t % 16 == 0 && !hitpause){
-		sound_play(step ? sound_get("step3") : sound_get("step4"),false,noone,0.5,0.95+(random_func(2,20,true)/100));step = !step
+		sound_play(step ? sound_get("step3") : sound_get("step4"),false,noone,0.9,0.95+(random_func(2,20,true)/100));step = !step
 	}else if(state == PS_WALK && t % 20 == 0 && !hitpause){
-		sound_play(step ? sound_get("step") : sound_get("step2"),false,noone,0.5,0.85+(random_func(2,20,true)/100));step = !step
+		sound_play(step ? sound_get("step") : sound_get("step2"),false,noone,0.9,0.85+(random_func(2,20,true)/100));step = !step
 	}
 }
 

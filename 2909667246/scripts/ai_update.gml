@@ -73,7 +73,7 @@ if (get_training_cpu_action() == CPU_FIGHT && ai_target != self){
 	|| position_meeting(x,y+50,asset_get("par_jumpthrough")) || position_meeting(x,y+100,asset_get("par_jumpthrough")) || position_meeting(x,y+200,asset_get("par_jumpthrough")));
 	
 	//use specific moves more
-	if(!phone_attacking && can_attack){
+	if(!phone_attacking && can_attack && ready_to_attack && temp_level >= 5){
 		if(!free){
 			if (abs((y-60)-ai_target.y) < 50 && abs(x-ai_target.x) < 50 && random_func(0,2,true) == 0){
 		        cpu_attack(AT_UTILT, false);

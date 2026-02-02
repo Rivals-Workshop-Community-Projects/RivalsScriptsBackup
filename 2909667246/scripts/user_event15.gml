@@ -259,6 +259,20 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.60", "1st February, 2026");
+initHeader("Buffs");
+initSection("+ UTilt finisher is slightly stronger (0.95->1.0 kbs)
++ DTilt front sourspot is a bit wider, now sends more inward, and has less kbs
++ Grounded DThrow has slightly better stats for comboing, and cancelling out of it with attacks is a bit more reliable (previously you'd often just do an aerial and get landing lag, now it pops you up a bit to prevent that)");
+initHeader("Nerfs");
+initSection("- Holding parry to use DSpecial Axe without the tree out has been removed and instead combined with rune E (it was fun, but I decided he didn't really need it)");
+initHeader("Fixes / Other Changes");
+initSection("+ Improved DTilt animation a little + added some dirt vfx
++ UTilt is now a 3-hit (yes this is technically inaccurate, but it looks like it should be one lol). Stats such as damage and knocback stay the same
++ Added more SFX from Smash, making some attacks feel more custom (mainly affects Jab, UTilt, DSpecial axe, etc)
++ Grab input is more lenient, can b-reverse, accounts for rolls, etc. A stall with it was also fixed, and throws work with c-stick. In short, the grab is now more refined and up to date, like the ICs grab input
++ Added stock icon");
+
 initPatch("1.59", "24th November, 2025");
 initHeader("Fixes / Other Changes");
 initSection("+ Added more custom SFX from Smash for stuff like jumping, landing, walking, etc
@@ -567,91 +581,6 @@ initPatch("1.1", "20 September, 2021");
 initHeader("DStrong - Adjustments, Bugfixes");
 initSection("Angle 290 --> 280.
 Fixed hurtbox.");
-
-initPatch("1.0", "19 September, 2021");
-initWords_ext("(Changes from Vanilla Sandbert)", fa_center, c_white, 0, false);
-initHeader("Stats - Nerfs");
-initSection("Most stats made identical to Zetterburn's.
-Prat land time 3 --> 10.");
-initHeader("NSpecial - Reworks");
-initSection("Replaced entirely with a Kamehameha.");
-initHeader("FSpecial - Adjustments, Nerfs, Buffs");
-initSection("Movement code retooled.
-Now has pratfall.
-Damage 6 --> 5.
-Endalg 16 --> 15.
-Can now be canceled into a wall jump.");
-initHeader("USpecial - Reworks, Nerfs, Buffs");
-initSection("Flight now lasts a fixed, much shorter amount of time, and cannot be canceled into pratfall.
-Flight period begins with a bit of initial upward speed, and can now go downward through platforms.
-Hitbox timings adjusted.
-Multihit damage 2 --> 1.
-Multihit active frames no longer leave blind spots.
-Finisher damage 8 --> 6.
-Finisher angle flipper 1 --> 8. (acts pretty much the same)
-Can now be canceled into a wall jump.");
-initHeader("DSpecial - Nerfs");
-initSection("Startup 1 --> 3.
-Can now be jump-canceled only on hit.
-Base knockback 10 --> 8.
-Base hitpause 3 --> 6.");
-initHeader("Jab - Buffs, Nerfs");
-initSection("Now ignores parry stun.
-Endlag 6 --> 9.
-Damage 8 --> 3.");
-initHeader("FTilt - Nerfs");
-initSection("Endlag 9 --> 12.
-Damage 9 --> 6.");
-initHeader("UTilt - Buffs, Nerfs");
-initSection("Hitbox width increased.
-Damage 5 --> 2.");
-initHeader("DTilt - Nerfs");
-initSection("Endlag 10 --> 12.
-Damage 7 --> 5.");
-initHeader("Dash Attack - Nerfs");
-initSection("Endlag 7 --> 10.
-Damage 6 --> 4.
-Hitbox size reduced.");
-initHeader("NAir - Nerfs, Adjustments");
-initSection("Final hit damage 5 --> 2.
-Final hit knockback growth 0.2 --> 0.4.
-Startup 4 --> 8.
-Endlag 7 --> 8.
-Landing lag 4 --> 5.");
-initHeader("FAir - Nerfs");
-initSection("Startup 4 --> 10.
-Endlag 8 --> 12.
-Landing lag 6 --> 7.
-Angle 30 --> 40.
-Base hitpause 6 --> 11.
-Knockback growth 0.25 --> 0.4.");
-initHeader("BAir - Nerfs");
-initSection("Endlag 7 --> 9.
-Landing lag 4 --> 7.
-Angle 30 --> 40.
-Base hitpause 6 --> 11.
-Knockback growth 0.25 --> 0.4.");
-initHeader("UAir - Nerfs");
-initSection("Damage 5 --> 2.
-Endlag 6 --> 9.");
-initHeader("DAir - Nerfs");
-initSection("Startup 9 --> 12.
-Landing lag 4 --> 9.
-Damage 18 --> 10.
-Base knockback 10 --> 7.
-Knockback growth 1.0 --> 0.8.");
-initHeader("FStrong - Nerfs");
-initSection("Damage 10 --> 8.
-Startup 12 --> 14.");
-initHeader("UStrong - Nerfs");
-initSection("Startup 7 --> 13.
-Knockback growth 1.2 --> 1.1.
-Base hitpause 8 --> 12.
-Hitpause growth 0.5 --> 0.6.");
-initHeader("DStrong - Nerfs");
-initSection("Damage 11 --> 9.
-Knockback growth 1.3 --> 0.65.
-Base hitpause 7 --> 10.");
 
 initPatch("About Sandbert", "");
 initWords("Sandbert was originally released as an overpowered April Fools' joke character, and was later used as a template Steam Workshop character - as an example of how to create a custom fighter.");

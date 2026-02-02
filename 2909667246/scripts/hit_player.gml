@@ -69,7 +69,7 @@ if (my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 2){
 }
 
 if(my_hitboxID.attack == AT_FSTRONG && attack == AT_FSTRONG || my_hitboxID.attack == AT_USTRONG && attack == AT_USTRONG){
-    has_hit = true;
+    has_hit = true;has_hit_player = true;
 }
 
 //hitboxes that cause custom bury status effect
@@ -95,7 +95,7 @@ if(my_hitboxID.attack == AT_FAIR || my_hitboxID.attack == AT_BAIR){
     	if(my_hitboxID.hitbox_timer < 3){
     		hitpause = true;hitstop = hit_player_obj.hitstop/2;hitstop_full = hit_player_obj.hitstop_full/2;old_vsp = vsp;old_hsp = hsp;
     	}
-        if(my_hitboxID.hitbox_timer <= 5){has_hit = true;}
+        if(my_hitboxID.hitbox_timer <= 5){has_hit = true;has_hit_player = true;}
     }
     my_hitboxID.hsp = -0.5*my_hitboxID.spr_dir;my_hitboxID.vsp = -4;
     my_hitboxID.hit_priority = 0;my_hitboxID.hitbox_timer = 0;
@@ -107,7 +107,7 @@ if(my_hitboxID.attack == AT_DTILT){
 
 if(my_hitboxID.attack == AT_DATTACK){
     if(attack == AT_DATTACK){
-        has_hit = true;
+        has_hit = true;has_hit_player = true;
     }
     sound_play(sound_get("dattack_bounce"));
 }
@@ -117,7 +117,7 @@ if(my_hitboxID.attack == AT_GRAB){
     	window = 4;window_timer = 0;if(free && vsp > 0 && !position_meeting(x,y+20,asset_get("par_block")) && !position_meeting(x,y+20,asset_get("par_jumpthrough"))
 		&& !position_meeting(x,y+80,asset_get("par_block")) && !position_meeting(x,y+80,asset_get("par_jumpthrough")))old_vsp = -5;
         hit_player_obj.free = true;hit_player_obj.orig_knock = 0;
-        grabbedtarget = hit_player_obj;soft_armor = 9999;
+        grabbedtarget = hit_player_obj;soft_armor = 9999;grabbedtarget.KoB_grabbed = true;
         hit_player_obj.y = y;hit_player_obj.x = x+(75*spr_dir);
         hit_player_obj.should_make_shockwave = false;grabbedobject = false;
         var playerdmg = get_player_damage(hit_player_obj.player)/2;

@@ -1,6 +1,6 @@
 //
 
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_GRAB){
     trigger_b_reverse();
 }
 
@@ -208,7 +208,7 @@ if (attack == AT_NSPECIAL){
 	}
 	
 	if(window == 1 || window == 3){
-		if(shield_down){
+		if(shield_down && runeE){
 			set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 9);
 			window = 6;window_timer = 0;
 		}
@@ -271,14 +271,16 @@ if (attack == AT_NSPECIAL){
 				}
 			}if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){ //only happens if uncharged
 				window = 8;window_timer = 0;
+				sound_play(sound_get("villager_swing_l"),false,noone,0.9,1.0+(random_func(0,2,true)/10));
 			}
 		}else if(window == 10){
 			force_depth = true;depth = -7;
 		}
+		if(window == 7 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			sound_play(sound_get("villager_swing_l"),false,noone,1.0,0.9+(random_func(0,2,true)/10));
+		}
 	}
 }else if (attack == AT_FSTRONG){
-	//FStrong if it was made by ExW
-	
 	/*if(window == 4 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
         free = true;set_state(PS_PRATFALL);hsp = 10*spr_dir;vsp = -6;
     }*/
@@ -306,7 +308,9 @@ if (attack == AT_NSPECIAL){
         cancelattack();
     }
 }else if(attack == AT_JAB){
-	if(window == 3){
+	if(window == 1){
+		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause)sound_play(sound_get("villager_swing_s"),false,noone,0.95,0.95+(random_func(0,2,true)/10));
+	}else if(window == 3){
 		if(attack_down){
 			window = 4;
 			window_timer = 0;
@@ -316,11 +320,13 @@ if (attack == AT_NSPECIAL){
 	        dusteff = spawn_hit_fx(x-5*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
 	    }
 	}else if(window == 5){
+		if(window_timer == 1 && !hitpause)sound_play(sound_get("villager_swing_m"),false,noone,0.9,1.0+(random_func(0,2,true)/10));
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 	        dusteff = spawn_hit_fx(x-5*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
 	    }
 	}else if(window == 6){
-		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) /*&& has_hit*/){
+		if(window_timer == 1 && !hitpause)sound_play(sound_get("villager_swing_s"),false,noone,0.9,1.05+(random_func(0,2,true)/10));
+		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) /*&& has_hit_player*/){
     		if(attack_down && !was_parried){
     		    window = 5;
     	    	window_timer = 0;
@@ -329,7 +335,8 @@ if (attack == AT_NSPECIAL){
 	}else if(window == 7){
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 	        dusteff = spawn_hit_fx(x-5*spr_dir,y,fx_dust_sharp_big);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
-	        if(kewtmode >= 1){sound_play( sound_get("heavyattack") );shake_camera(5, 5);}
+	        sound_play(sound_get("villager_swing_l"),false,noone,0.95,0.95+(random_func(0,2,true)/10));
+	        if(kewtmode >= 1){sound_play(sound_get("heavyattack"),false,noone,0.7,0.95+(random_func(0,2,true)/10));shake_camera(5, 5);}
 	    }
 	}if(window == 5 || window == 6){
 		if(window_timer == 6){
@@ -389,11 +396,11 @@ if (attack == AT_NSPECIAL){
         }
     }
     if(window >= 3 && runeJ){
-        if(attack_down || right_stick_pressed || left_stick_pressed || right_strong_pressed || left_strong_pressed){
+        if(attack_down || right_stick_down || left_stick_down || right_strong_down || left_strong_down){
         	window = 1;window_timer = 0;
         }
     }
-	if(window == 3 && window_timer >= 4 || has_hit || runeJ){
+	if(window == 3 && window_timer >= 4 || has_hit_player || runeJ){
         set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);set_attack_value(AT_BAIR, AG_LANDING_LAG, 8);
     }
 }else if (attack == AT_UAIR || attack == AT_DAIR){
@@ -411,9 +418,18 @@ if (attack == AT_NSPECIAL){
 	if(window == 3 && window_timer >= 6 || window == 4){
         cancelattack();
     }
+    if(window == 1 && window_timer == 3 && !hitpause){
+        sound_play(sound_get("villager_swing_s"),false,noone,1.15,0.95+(random_func(0,2,true)/10));
+    }if(window == 2 && window_timer == 6 && !hitpause){
+    	create_hitbox(attack, 1, round(x), round(y));create_hitbox(attack, 2, round(x), round(y));attack_end();
+        sound_play(sound_get("villager_swing_s"),false,noone,0.95,0.95+(random_func(0,2,true)/10));
+    }if(window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+        sound_play(sound_get("villager_swing_m"),false,noone,0.95,0.95+(random_func(0,2,true)/10));
+    }
 }else if (attack == AT_DTILT){
 	if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
-        shake_camera(3, 3);sound_play(sound_get("dtilt"),false,noone,1.5);
+        shake_camera(4, 3);sound_play(sound_get("dtilt"),false,noone,2.0,0.9+(random_func(0,2,true)/10));
+        var buryeffect = spawn_hit_fx(x+55*spr_dir,y,fx_bury);buryeffect.depth = depth-1;
         dusteff = spawn_hit_fx(x+(70*spr_dir), y, fx_dust_sharp);dusteff.depth = depth-1;
 		dusteff2 = spawn_hit_fx(x-(20*spr_dir), y, fx_dust_sharp);dusteff2.spr_dir = -spr_dir;dusteff2.depth = depth-1;
 		if(sol){
@@ -439,9 +455,9 @@ if (attack == AT_NSPECIAL){
 			hsp *= .95;
 		}
 		if(attack_down){
-			if(!has_hit && window_timer == 19){
+			if(!has_hit_player && window_timer == 19){
 				window_timer = 18;
-			}else if(has_hit && window_timer == 13){
+			}else if(has_hit_player && window_timer == 13){
 				window_timer = 12;
 			}
 		}
@@ -507,9 +523,9 @@ if (attack == AT_NSPECIAL){
 	    	}
 		}
 	}else if(window == 3){
-		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)/2 && !hitpause && free && vsp > 4){
+		/*if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)/2 && !hitpause && free && vsp > 4){
 			cancelattack3();
-		}
+		}*/
 	}else if(window == 4){ //grabbed
 		window_timer = 0;can_move = false;
 		grabbedposX = 75;grabbedposY = -2;
@@ -517,19 +533,20 @@ if (attack == AT_NSPECIAL){
 			grabtimer -= 1;
 			if(free && vsp > 0 && !position_meeting(x,y+20,asset_get("par_block")) && !position_meeting(x,y+20,asset_get("par_jumpthrough"))
 			&& !position_meeting(x,y+80,asset_get("par_block")) && !position_meeting(x,y+80,asset_get("par_jumpthrough")))grabtimer -= 4;
-			if(right_pressed || left_pressed){
+			/*if(attack_pressed || special_pressed){
+				window = 14;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 16);
+				instance_exists(grabbedtarget){grabbedtarget.y = y;grabbedtarget.x = x+(35*spr_dir);}
+			}else*/ if((right_pressed || left_pressed || right_down || left_down) && (joy_dir <= 45 || joy_dir >= 135) || right_stick_down || left_stick_down){
 				window = 5;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 7);
 				if(right_pressed){spr_dir = 1;}else{spr_dir = -1;}instance_exists(grabbedtarget){grabbedtarget.y = y;grabbedtarget.x = x-(65*spr_dir);grabbedtarget.grabbed_invisible = true;}
-			}else if(up_pressed){
+			}else if(up_pressed || up_down || up_stick_down){
 				window = 8;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 10);
 				instance_exists(grabbedtarget){grabbedtarget.y = y+15;grabbedtarget.x = x+(75*spr_dir);grabbedtarget.grabbed_invisible = true;}
-			}else if(down_pressed){
+			}else if(down_pressed || down_down || down_stick_down){
 				window = 11;set_attack_value(AT_GRAB, AG_NUM_WINDOWS, 13);
 				instance_exists(grabbedtarget){grabbedtarget.y = y+5;grabbedtarget.x = x-(55*spr_dir);grabbedtarget.grabbed_invisible = true;}
 				if(free && vsp > -7){vsp = -7;}else if(!free){vsp = -6;}
-			}/*else if(special_pressed){
-				
-			}*/
+			}
 			if(!grabbedobject){
 				if(grabbedtarget.villager_bury_cooldown > 0){
 			    	grabbedtarget.villager_bury_cooldown = max(grabbedtarget.villager_bury_cooldown, 30);
@@ -542,7 +559,7 @@ if (attack == AT_NSPECIAL){
 	        	if(!grabbedobject){
 	            	grabbedtarget.hsp = -5*grabbedtarget.spr_dir;grabbedtarget.vsp = -4;grabbedtarget.visible = true;
 	        	}else{
-	        		grabbedobject = false;grabbedtarget.KoB_grabbed = false;
+	        		grabbedobject = false;
 	            	if(grabbedarticle){
 	                    grabbedtarget.length = 1;
 	                }else{
@@ -553,7 +570,7 @@ if (attack == AT_NSPECIAL){
 			    		if("StarterBlock" in grabbedtarget){grabbedtarget.state = 2;}
 			    		grabbedtarget.visible = true;
 	                }
-	        	}grabbedtarget = noone;
+	        	}grabbedtarget.KoB_grabbed = false;grabbedtarget = noone;
 			}
         }
 	}else if(window >= 5 && window <= 7){ //fthrow / bthrow
@@ -567,7 +584,7 @@ if (attack == AT_NSPECIAL){
 					if(!grabbedobject){
 	        			grabbedtarget.visible = true;grabbedtarget.y = y-10;
 	        		}else{
-						grabbedtarget.y = y-30;grabbedtarget.hsp = 10*spr_dir;grabbedtarget.vsp = -5;grabbedtarget.KoB_grabbed = false;
+						grabbedtarget.y = y-30;grabbedtarget.hsp = 10*spr_dir;grabbedtarget.vsp = -5;
 				    	if(!grabbedarticle){
 		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
 		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
@@ -576,7 +593,7 @@ if (attack == AT_NSPECIAL){
 						    	if("MattPlanet" in self){state = 2;}
 				        	}grabbedtarget.visible = true;
 		            	}
-					}grabbedtarget = noone;
+					}grabbedtarget.KoB_grabbed = false;grabbedtarget = noone;
 				}
 			}
 		}
@@ -591,7 +608,7 @@ if (attack == AT_NSPECIAL){
 					if(!grabbedobject){
 	        			grabbedtarget.visible = true;grabbedtarget.y = y-65;
 	        		}else{
-						grabbedtarget.y = y-85;grabbedtarget.hsp = 2*spr_dir;grabbedtarget.vsp = -16;grabbedtarget.KoB_grabbed = false;
+						grabbedtarget.y = y-85;grabbedtarget.hsp = 2*spr_dir;grabbedtarget.vsp = -16;
 				    	if(!grabbedarticle){
 		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
 		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
@@ -600,7 +617,7 @@ if (attack == AT_NSPECIAL){
 						    	if("MattPlanet" in self){state = 2;}
 				        	}grabbedtarget.visible = true;
 		            	}
-					}grabbedtarget = noone;
+					}grabbedtarget.KoB_grabbed = false;grabbedtarget = noone;
 				}
 			}
 		}
@@ -617,7 +634,7 @@ if (attack == AT_NSPECIAL){
 	        			grabbedtarget.visible = true;grabbedtarget.y = y+35;
 	        			if(runeC && grounded){grabbedtarget.y = y+38;}
 	        		}else{
-						grabbedtarget.y = y+55;grabbedtarget.hsp = 2*spr_dir;grabbedtarget.vsp = 14;grabbedtarget.KoB_grabbed = false;
+						grabbedtarget.y = y+55;grabbedtarget.hsp = 2*spr_dir;grabbedtarget.vsp = 14;
 				    	if(!grabbedarticle){
 		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
 		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
@@ -626,8 +643,7 @@ if (attack == AT_NSPECIAL){
 						    	if("MattPlanet" in self){state = 2;}
 				        	}grabbedtarget.visible = true;
 		            	}
-					}
-					grabbedtarget = noone;
+					}grabbedtarget.KoB_grabbed = false;grabbedtarget = noone;
 				}
 			}
 		}
@@ -725,7 +741,7 @@ else if (attack == AT_TAUNT_2){ // beeg taunt
 //rune K balance
 if (runeK) {
 	if(window >= get_attack_value(attack, AG_NUM_WINDOWS)-1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)
-	&& !hitpause && !has_hit && bonus_damage < 1.25)kob_bonus_damage(1.25);
+	&& !hitpause && !has_hit_player && bonus_damage < 1.25)kob_bonus_damage(1.25);
 }
 
 if (canon || op) strong_charge = 61;
@@ -744,13 +760,14 @@ if (canon || op) strong_charge = 61;
 	}
 
 #define cancelattack
-    if(has_hit && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
+    if(has_hit_player && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
 	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)){
+		if(attack == AT_GRAB && window == 13 && free)vsp = -4;
 		window = 20;
 	}
 
 #define cancelattack2
-    if(/*has_hit &&*/ (attack_pressed || special_pressed || jump_pressed || shield_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
+    if(/*has_hit_player &&*/ (attack_pressed || special_pressed || jump_pressed || shield_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
 	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)){
 		window = 20;
 	}

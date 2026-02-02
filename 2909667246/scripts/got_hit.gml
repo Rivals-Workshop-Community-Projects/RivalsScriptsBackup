@@ -14,7 +14,7 @@ if((state == PS_HITSTUN || state == PS_HITSTUN_LAND) && hitpause){
 	    	}//grabbedtarget.sprite_index = grabbedtargetsprite;
 	    }else{
 	    	grabbedtarget.visible = true;
-		}
+		}grabbedtarget.KoB_grabbed = false;grabbedtarget = noone;
     }
 }
 

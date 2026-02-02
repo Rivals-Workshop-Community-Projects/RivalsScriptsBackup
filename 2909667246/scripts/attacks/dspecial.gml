@@ -37,7 +37,7 @@ set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 6, AG_WINDOW_SFX_FRAME, 5);
-set_window_value(AT_DSPECIAL, 6, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+//set_window_value(AT_DSPECIAL, 6, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 //charge release
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_LENGTH, 6);
@@ -45,7 +45,7 @@ set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 30);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_SFX_FRAME, 5);
-set_window_value(AT_DSPECIAL, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+//set_window_value(AT_DSPECIAL, 7, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
 
 set_window_value(AT_DSPECIAL, 8, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL, 8, AG_WINDOW_LENGTH, 6);

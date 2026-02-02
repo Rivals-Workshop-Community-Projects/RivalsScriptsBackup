@@ -2,11 +2,10 @@
 
 move_cooldown[AT_USPECIAL] = 0;uspec_fuel = 300;uspec_landed = true;uspec_landed = false;
 Lloid_Rocket_Ride = false;
+hud_death_timer = 44;
 
-bells -= 10000;
-if(bells < 0){
-    bells = 0;
-}
+//bells -= 10000;
+//if(bells < 0)bells = 0;
 
 if(instance_exists(Pocketed_Projectile)){
     Pocketed_Projectile.x = 9000;
@@ -16,7 +15,7 @@ if(instance_exists(Pocketed_Projectile)){
 
 if(instance_exists(grabbedtarget)){
     if(grabbedobject){
-    	grabbedobject = false;grabbedtarget.KoB_grabbed = false;
+    	grabbedobject = false;
     	if(instance_exists(grabbedtarget)){
     		grabbedtarget.state = 1;grabbedtarget.timer = 60;
     	}
@@ -29,7 +28,7 @@ if(instance_exists(grabbedtarget)){
     	}//grabbedtarget.sprite_index = grabbedtargetsprite;
     }else{
     	grabbedtarget.visible = true;
-	}
+	}grabbedtarget.KoB_grabbed = false;grabbedtarget = noone;
 }
 
 sound_stop(voice);

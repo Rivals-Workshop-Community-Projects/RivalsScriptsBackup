@@ -163,15 +163,14 @@ KoBWeaknesses =
 }
 
 AT_GRAB = AT_EXTRA_1;
-grabbedtarget = noone;
-grabbedtarget2 = noone;
-grabbedobject = false;
-grabbedarticle = false;
-grabbedposX = 0;
-grabbedposY = 0;
-grabtimer = 0;
-grabbedtargetsprite = asset_get("empty_sprite");
-grabbedtargetsprite_imageindex = 0;
+grabbedtarget = noone;grabbedtarget2 = noone;
+grabbedobject = false;grabbedarticle = false;
+grabbedposX = 0;grabbedposY = 0;grabtimer = 0;
+grabbedtargetsprite = asset_get("empty_sprite");grabbedtargetsprite_imageindex = 0;
+
+stock_icon = sprite_get("stockicon");
+stock_pixel =  asset_get("hud_black_pixel");
+hud_death_timer = 0;
 
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
 //runeK = true;runesUpdated = true;
@@ -228,7 +227,7 @@ wily_robotmaster_img = sprite_get("Wily_Castle");
 ncode1 = "Mayor of a small town";
 ncode2 = "Seemingly has endless pockets";
 ncode3 = "Whatever you do, don't turn your back to him";
-wiimote_compat_sprite = sprite_get("wiimote");if(kewtmode>=1 && random_func(0,2,true) == 0)wiimote_compat_sprite = sprite_get("wiimote_kewt");
+wiimote_compat_sprite = sprite_get("wiimote");//if(kewtmode>=1 && random_func(0,2,true) == 0)wiimote_compat_sprite = sprite_get("wiimote_kewt");
 oohEeOohAhAhTingTangWallaWallaBingBang = 1;
 //Toadie_Ability = 1;
 TCG_Kirby_Copy = 7;
