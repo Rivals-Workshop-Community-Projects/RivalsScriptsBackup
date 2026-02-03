@@ -63,10 +63,16 @@ set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 2);
+if (attack_button == 0){
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 2);
+set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 2);
+}
+if (attack_button == 1){
+set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
+set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
+}
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_HAS_SFX, true);
-set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_SFX_FRAME, 15);
+set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_SFX_FRAME, 18);
 set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 
 /*

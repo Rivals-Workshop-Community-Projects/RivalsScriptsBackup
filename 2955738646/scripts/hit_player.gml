@@ -1,7 +1,12 @@
 air_time = 22; //For the aerial directional dashes
 
 if (move_cooldown[AT_TAUNT_2] > 10){ move_cooldown[AT_TAUNT_2] -= 10; }
-if (move_cooldown[AT_EXTRA_1] > 20){ move_cooldown[AT_EXTRA_1] -= 5; }
+//if (move_cooldown[AT_EXTRA_1] > 20){ move_cooldown[AT_EXTRA_1] -= 5; }
+if (random_mecha == 2 && voice_clips == true && move_cooldown[AT_EXTRA_3] == 0){ move_cooldown[AT_EXTRA_3] = 100; }
+
+if (my_hitboxID.attack == AT_EXTRA_1){
+	other.should_make_shockwave = false;
+}
 
 if (my_hitboxID.attack == AT_DAIR){
 	if (my_hitboxID.hbox_num == 1 && random_mecha == 2 && voice_clips == true){
@@ -12,13 +17,13 @@ if (my_hitboxID.attack == AT_DAIR){
 	}
 	if (my_hitboxID.hbox_num == 2){ has_hit = false; }
 	if (other.should_make_shockwave == true && voice_clips == true){
-		if (get_player_color(player) != 8){ sound_play(sound_get("Dair_sweetspot")); }
+		if (get_player_color(player) != 8){ sound_play(sound_get("dair_sweetspot")); }
 		if (get_player_color(player) == 8){ sound_play(sound_get("EA_dair_hithard")); }
 	}
 }
 
 if (my_hitboxID.attack == AT_USPECIAL){
-	if (my_hitboxID.hbox_num == 1){
+	if (my_hitboxID.hbox_num == 1 && attack_button == 0){
 		window = 5;
 		window_timer = 0;
 	}
@@ -51,7 +56,20 @@ if (my_hitboxID.attack == AT_USPECIAL_2){
 	}
 }
 
+if (my_hitboxID.attack == AT_USPECIAL_GROUND){
+	my_hitboxID.super_beam_id = hit_player_obj;
+	other.should_make_shockwave = false;
+}
+
+if (my_hitboxID.attack == AT_JAB){
+	if (SuperMecha == true){ retaliate_id = noone; }
+	if (my_hitboxID.hbox_num == 5){
+		//x = other.x - 20 * spr_dir;
+	}
+}
+
 if (my_hitboxID.attack == AT_DATTACK){
+	if (SuperMecha == true){ retaliate_id = noone; }
 if (random_mecha == 2 && voice_clips == true){
 		sound_play(sound_get("Mecha_NO_USE"));
 		random_mecha = 0;
@@ -64,16 +82,22 @@ if (my_hitboxID.attack == AT_UTILT){
 		random_mecha = 0;
 		}
 	flyforward = false;
+	if (SuperMecha == true){ retaliate_id = noone; }
 }
 
+	//if (attack_button == 1){
 if (my_hitboxID.attack == AT_FTILT){
 	if (my_hitboxID.hbox_num == 1){
+		ftilt_hit_id = hit_player_obj;
 		//hit_player_obj = ftilt_hit_id;
 		if (random_mecha == 2 && voice_clips == true){
 			if (get_player_color(player) =! 8){ sound_play(sound_get("Mecha_ThisIsNothing")); random_mecha = 0;}
 		}
 	}
-		ftilt_hit_id = hit_player_obj;
+	if (my_hitboxID.hbox_num == 2){ ftilt_hit_id = noone; }
+	//ftilt_hit_id = hit_player_obj;
+	if (SuperMecha == true){ retaliate_id = noone; }
+	//}
 }
 
 if (my_hitboxID.attack == AT_DTILT){
@@ -85,9 +109,11 @@ if (my_hitboxID.attack == AT_DTILT){
 		other.should_make_shockwave = false;
 		other.hsp = 0;
 	}
+	if (SuperMecha == true){ retaliate_id = noone; }
 }
 
 if (my_hitboxID.attack == AT_NAIR){
+	retaliate_id = noone;
 	if (my_hitboxID.hbox_num == 6){
 		if (random_mecha == 2 && voice_clips == true){
 		sound_play(sound_get("Mecha_DontRun"));
@@ -97,6 +123,7 @@ if (my_hitboxID.attack == AT_NAIR){
 }
 
 if (my_hitboxID.attack == AT_UAIR){
+	retaliate_id = noone;
 	if (my_hitboxID.hbox_num == 2){
 		if (random_mecha == 2 && voice_clips == true){
 		sound_play(sound_get("Mecha_HowsThis"));
@@ -106,6 +133,7 @@ if (my_hitboxID.attack == AT_UAIR){
 }
 
 if (my_hitboxID.attack == AT_FAIR){
+	retaliate_id = noone;
 	other.white_flash_timer = 5;
 	//if (random_mecha == 2 && voice_clips == true && (get_player_color(player) =! 8) ){ sound_play(sound_get("Mecha_Farewell")); random_mecha = 0; }
 	if (my_hitboxID.hbox_num >= 6){
@@ -117,6 +145,7 @@ if (my_hitboxID.attack == AT_FAIR){
 }
 
 if (my_hitboxID.attack == AT_BAIR){
+	retaliate_id = noone;
 	if (random_mecha == 2 && voice_clips == true){
 		sound_play(sound_get("Mecha_YoureTrash"));
 		random_mecha = 0;
@@ -124,6 +153,7 @@ if (my_hitboxID.attack == AT_BAIR){
 }
 
 if (my_hitboxID.attack == AT_FSTRONG){
+	if (attack_button == 0){
 	if (my_hitboxID.hbox_num == 1){
 		grabbedid = hit_player_obj;
 		destroy_hitboxes();
@@ -147,6 +177,7 @@ if (my_hitboxID.attack == AT_FSTRONG){
 	}
 	if (grabbedid.should_make_shockwave == false){
 	spawn_hit_fx(my_hitboxID.x+25 * spr_dir, my_hitboxID.y-20, (204));
+			}
 		}
 	}
 }
@@ -177,19 +208,21 @@ if (attack == AT_FSPECIAL){
 }
 
 if (attack == AT_FSPECIAL_2){
-	//if (random_mecha == 2 && voice_clips == true && (get_player_color(player) =! 8) ){ sound_play(sound_get("Mecha_Die2")); }
-	if (my_hitboxID.hbox_num == 1){
-	destroy_hitboxes();
-	fspecial_id = other.id;
-	window = 5;
-	window_timer = 0;
-	}
-	if (my_hitboxID.hbox_num == 2){
-	fspecial_id = noone;
+		if (attack_button == 0){
+		//if (random_mecha == 2 && voice_clips == true && (get_player_color(player) =! 8) ){ sound_play(sound_get("Mecha_Die2")); }
+		if (my_hitboxID.hbox_num == 1){
+		destroy_hitboxes();
+		fspecial_id = other.id;
+		window = 5;
+		window_timer = 0;
+		}
+		if (my_hitboxID.hbox_num == 2){
+		fspecial_id = noone;
+		}
 	}
 }
 
-if (attack == AT_FSPECIAL_2 && SuperMecha == true){
+if (attack == AT_FSPECIAL_AIR && SuperMecha == true){
 	if (my_hitboxID.hbox_num == 1){
 		window = 4;
 		window_timer = 0;
@@ -222,16 +255,23 @@ if (attack == AT_NSPECIAL){
 		can_fast_fall = true;
 		can_jump = true;
 	}
+	if (my_hitboxID.hbox_num == 5){
+		other.should_make_shockwave = false;
+	}
 }
 
 if (attack == AT_DSPECIAL){
 	if (was_parried == false){
+		if (attack_button == 0){
 	if (my_hitboxID.hbox_num == 1){
 		y = y-4;
 		window = 4;
 		window_timer = 0;
 		dspecial_id = hit_player_obj;
 		destroy_hitboxes();
+	}
+	if (my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 10){
+		dspecial_id = noone;
 	}
 	if (my_hitboxID.hbox_num == 3){
 		if (random_mecha == 2 && voice_clips == true){ sound_play(sound_get("Mecha_Enough")); random_mecha = 0; }
@@ -243,6 +283,20 @@ if (attack == AT_DSPECIAL){
 		hsp = -10 * spr_dir;
 		vsp = -2;
 		move_cooldown[AT_DSPECIAL] = 5;
+		}
+	}
+	if (my_hitboxID.hbox_num == 7){
+		y = y-4;
+		window = 13;
+		window_timer = 0;
+		dspecial_id = hit_player_obj;
+		destroy_hitboxes();
+	}
+	if (my_hitboxID.hbox_num == 10){
+		//spr_dir = spr_dir * -1;
+	}
+	if (my_hitboxID.hbox_num == 12){
+		dspecial_id = noone;
 		}
 	}
 }
@@ -257,7 +311,7 @@ if (attack == AT_EXTRA_2){
 	y = y-0.5 * hit_player_obj.char_height;
 }
 
-if(my_hitboxID.attack == AT_DSPECIAL_2){
+if (my_hitboxID.attack == AT_DSPECIAL_2){
 	if (my_hitboxID.hbox_num == 1){
 		if (random_mecha == 2 && voice_clips == true){ sound_play(sound_get("Mecha_NoUseRunning")); random_mecha = 0; }
 	if (window == 2 && hit_player_obj.state != PS_RESPAWN && hit_player_obj.invincible == false and hit_player_obj.soft_armor == 0 and !hit_player_obj.super_armor){
@@ -266,20 +320,29 @@ if(my_hitboxID.attack == AT_DSPECIAL_2){
 	window_timer = 0;
 		}
 	}
+	if (my_hitboxID.hbox_num == 8){  other.should_make_shockwave = false; }
+	if (my_hitboxID.hbox_num == 9){
+		other.should_make_shockwave = false;
+	var harsh_hit = spawn_hit_fx(x,y,Harsh_Hit3);
+	harsh_hit.x = my_hitboxID.x-310;
+	harsh_hit.y = my_hitboxID.y-5;
+	harsh_hit.draw_angle = 90;
+	}
 }
 
-//Forward Special cancelling
+//Forward Special cancelling?
 if (my_hitboxID.attack == AT_UTILT
 || my_hitboxID.attack == AT_FTILT && my_hitboxID.hbox_num == 2
 || my_hitboxID.attack == AT_DTILT && my_hitboxID.hbox_num == 7){
 	if (special_down && joy_pad_idle == false){
-	attack = AT_FSPECIAL_2;
-	window = 7;
-	window_timer = -1;
+	//attack = AT_FSPECIAL_2;
+	//window = 7;
+	//window_timer = -1;
 	}
 }
 
 //if (other.has_emerald && OverallEmeralds > 0){
+if (emerald_hud == true){
 if (other.has_emerald){
 	sound_play(sound_get("emerald_flyingout"));
 	other.has_emerald = false
@@ -290,6 +353,7 @@ if (other.has_emerald){
 	emerald.state_timer = 0;
 	emerald.hsp = random_dir;
 	emerald.vsp = -6;
+	}
 }
 
 //Timestop hitboxes
@@ -302,7 +366,7 @@ if (timestop == true && timestop_amount > 0){
 		}
 	}
 	if (other.timestop_hit == false){
-		if !(attack == AT_DSPECIAL_2 && hbox_num > 0){
+		if !(attack == AT_DSPECIAL_2 && hbox_num > 0 && hbox_num < 7){
 		other.timestop_hit = true;
 		var timestop_hb = create_hitbox(AT_DSPECIAL_2, 2, other.x+2, other.y-9);
 		timestop_hb.follow = hit_player_obj.id;
@@ -314,7 +378,7 @@ if (my_hitboxID.attack == AT_DSPECIAL_2){ //Down Special lightspeed attack hitti
 	my_hitboxID.fx_particles = 1;
 	if (my_hitboxID.hbox_num == 3 || my_hitboxID.hbox_num == 4){
 	harsh_hitt2 = spawn_hit_fx(x,y+50,Harsh_Hit2);
-	harsh_hitt2.x = my_hitboxID.x-10;
+	harsh_hitt2.x = my_hitboxID.x-1 * spr_dir;
 	harsh_hitt2.y = my_hitboxID.y-10;
 	harsh_num = random_func(0, 120, true);
 	harsh_hitt2.draw_angle = harsh_num;
@@ -323,16 +387,19 @@ if (my_hitboxID.attack == AT_DSPECIAL_2){ //Down Special lightspeed attack hitti
 }
 
 if (my_hitboxID.attack == AT_DATTACK){
+		if (attack_button == 0){
 	if (my_hitboxID.hbox_num == 1){
 	dattack_id = hit_player_obj;
-	harsh_hitt = spawn_hit_fx(x,y,Harsh_Hit);
-	harsh_hitt.x = my_hitboxID.x-300;
-	harsh_hitt.y = my_hitboxID.y;
-	harsh_hitt.draw_angle = 90;
+	//harsh_hitt = spawn_hit_fx(x,y,Harsh_Hit);
+	//harsh_hitt.x = my_hitboxID.x-250;
+	//harsh_hitt.y = my_hitboxID.y;
+	//harsh_hitt.draw_angle = 90;
 	}
+	if (my_hitboxID.hbox_num < 9){ other.should_make_shockwave = false; }
 	if (my_hitboxID.hbox_num == 9){
-	fire_hitt = spawn_hit_fx(x+40 * spr_dir,y-75,148);
-	fire_hitt.draw_angle = 400 * spr_dir;
+	//fire_hitt = spawn_hit_fx(x+40 * spr_dir,y-75,148);
+	//fire_hitt.draw_angle = 400 * spr_dir;
 	soft_armor = 0;
 	}
+		}
 }

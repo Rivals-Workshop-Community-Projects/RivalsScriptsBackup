@@ -75,7 +75,7 @@ set_hitbox_value(AT_NAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_NAIR, 1, HG_BASE_HITPAUSE, 2);
 set_hitbox_value(AT_NAIR, 1, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_VISUAL_EFFECT, 302);
-set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("Nair_hit"));
+set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, sound_get("nair_hit"));
 set_hitbox_value(AT_NAIR, 1, HG_TECHABLE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, -1);
 
@@ -129,5 +129,5 @@ set_hitbox_value(AT_NAIR, 6, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_NAIR, 6, HG_VISUAL_EFFECT_Y_OFFSET, -20);
-set_hitbox_value(AT_NAIR, 6, HG_HIT_SFX, sound_get("Nair_finalhit"));
+set_hitbox_value(AT_NAIR, 6, HG_HIT_SFX, sound_get("nair_finalhit"));
 set_hitbox_value(AT_NAIR, 6, HG_HITBOX_GROUP, -1);

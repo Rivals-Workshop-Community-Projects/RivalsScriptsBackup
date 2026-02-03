@@ -279,6 +279,8 @@ if(attack == AT_DSTRONG){
 		if(window == 1 && window_timer = 1){
 		dstrong_charged = false;
 		dstrong_var = false;
+		reset_hitbox_value(AT_DSTRONG, 4, HG_WIDTH);
+		reset_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT);
 	}if (window == 1 && strong_charge > 25 && dstrong_var == false){
 		dstrong_charged = true;
 		spawn_hit_fx(x + -6*spr_dir, y, dstrong_vfx);

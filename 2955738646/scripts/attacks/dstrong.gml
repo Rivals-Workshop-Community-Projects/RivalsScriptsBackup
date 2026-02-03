@@ -1,9 +1,15 @@
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
+if (attack_button == 0){
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 3);
+}
+if (attack_button == 1){
+set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 5);
+}
 set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
+if (attack_button == 0){
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1); //Readying to grab
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 5);
@@ -44,6 +50,35 @@ set_window_value(AT_DSTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 31);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
 set_window_value(AT_DSTRONG, 6, AG_WINDOW_SFX_FRAME, 9);
+}
+
+if (attack_button == 1){
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1); //Readying hand
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 7);
+
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_TYPE, 1); //Preping the swing
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 6);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, sound_get("dstrong_swosh"));
+
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1); //In-between
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 9);
+
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_TYPE, 1); //Swing
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 10);
+
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_TYPE, 1); //Endlag
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_LENGTH, 25);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 11);
+}
 
 set_num_hitboxes(AT_DSTRONG, 6);
 
@@ -73,11 +108,20 @@ set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1); //Slam down
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 4);
-set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 3);
+if (attack_button == 0){
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 18);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y, -31);
 set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 70);
 set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 105);
+set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 3);
+}
+if (attack_button == 1){
+set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 30);
+set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_Y,-45);
+set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 70);
+set_hitbox_value(AT_DSTRONG, 2, HG_HEIGHT, 90);
+set_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME, 3);
+}
 set_hitbox_value(AT_DSTRONG, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 7);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 280);
@@ -92,6 +136,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_DSTRONG, 2, HG_TECHABLE, 1);
 
+if (attack_button == 0){
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1); //Prepping Blast
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 5);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 1);
@@ -122,9 +167,9 @@ set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 64);
 set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 64);
 set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 5);
 set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 6);
-set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 30);
+set_hitbox_value(AT_DSTRONG, 4, HG_ANGLE, 40);
 set_hitbox_value(AT_DSTRONG, 4, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_DSTRONG, 4, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_DSTRONG, 4, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 4, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, 3);
@@ -134,6 +179,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, sound_get("dstrong_blastaway"));
 set_hitbox_value(AT_DSTRONG, 4, HG_HIT_LOCKOUT, 10);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, -1);
 //set_hitbox_value(AT_DSTRONG, 4, HG_TECHABLE, 1);
+}
 
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_TYPE, 1); //Preping throw away
 set_hitbox_value(AT_DSTRONG, 5, HG_WINDOW, 6);
@@ -167,7 +213,7 @@ set_hitbox_value(AT_DSTRONG, 6, HG_DAMAGE, 6);
 set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE, 30);
 set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE_FLIPPER, 5);
 set_hitbox_value(AT_DSTRONG, 6, HG_BASE_KNOCKBACK, 7);
-set_hitbox_value(AT_DSTRONG, 6, HG_KNOCKBACK_SCALING, .4);
+set_hitbox_value(AT_DSTRONG, 6, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_DSTRONG, 6, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 6, HG_EXTRA_HITPAUSE, 1);
 set_hitbox_value(AT_DSTRONG, 6, HG_VISUAL_EFFECT, 303);

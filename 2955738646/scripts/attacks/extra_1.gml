@@ -45,6 +45,41 @@ set_window_value(AT_EXTRA_1, 3, AG_WINDOW_INVINCIBILITY, 0);
 
 set_num_hitboxes(AT_EXTRA_1, 1);
 
+//Super form rapid hit of foresight
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_EXTRA_1, 1, HG_WINDOW, 10);
+set_hitbox_value(AT_EXTRA_1, 1, HG_LIFETIME, 3);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_X, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_Y, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_WIDTH, 90);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HEIGHT, 90);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PRIORITY, 10);
+set_hitbox_value(AT_EXTRA_1, 1, HG_DAMAGE, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_EXTRA_1, 1, HG_BASE_HITPAUSE, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HITSTUN_MULTIPLIER, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_EXTRA_1, 1, HG_ANGLE_FLIPPER, 2);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_SFX, asset_get("mfx_star"));
+set_hitbox_value(AT_EXTRA_1, 1, HG_VISUAL_EFFECT, 305);
+set_hitbox_value(AT_EXTRA_1, 1, HG_VISUAL_EFFECT_Y_OFFSET, -1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_SPRITE, sprite_get("empty"));
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_ANIM_SPEED, .2);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GRAVITY, .2);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GROUND_FRICTION, 0.1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_AIR_FRICTION, 0.01);
+set_hitbox_value(AT_EXTRA_1, 1, HG_EXTRA_CAMERA_SHAKE, -1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_UNBASHABLE, true);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_PLASMA_SAFE, true);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_HSPEED, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DESTROY_EFFECT, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_HIT_LOCKOUT, 2);
+
 //Emerald spawning
 /*
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITBOX_TYPE, 2);

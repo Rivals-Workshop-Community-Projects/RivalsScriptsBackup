@@ -35,6 +35,13 @@ if(my_hitboxID.attack == AT_DSTRONG){
     sound_play(sound_get("se_common_magic_hit_l"), 0, noone, 0.75); 
     sound_play(asset_get("sfx_absa_uair"), 0, noone, 0.75);
     }
+    
+    //make finisher large
+    if(my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 3){
+    	set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 150);
+		set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 75);
+    	
+    }
 }
 
 if(my_hitboxID.attack == AT_BAIR){

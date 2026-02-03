@@ -22,3 +22,17 @@ if(nspec_charge == 180 && played_fanfare){
     draw_sprite_ext(sprite_index, image_index, x + 2, y + 2, spr_dir * 2, 2, 0 , c_black , 1);
     gpu_set_fog(false, c_white, 0, 0);  
 }
+
+with(pHitBox){
+	if(player == other.player and attack == AT_NSPECIAL and (hbox_num == 3 || hbox_num == 4)){
+	gpu_set_fog(true, c_white, 0, 0);
+	var outlinetrans = 0.5;
+    draw_sprite_ext(sprite_index, image_index, x + 2, y - 2, spr_dir * 1, 1, 0 , c_black , outlinetrans);
+    draw_sprite_ext(sprite_index, image_index, x - 2, y + 2, spr_dir * 1, 1, 0 , c_black , outlinetrans);
+    draw_sprite_ext(sprite_index, image_index, x - 2, y - 2, spr_dir * 1, 1, 0 , c_black , outlinetrans);
+    draw_sprite_ext(sprite_index, image_index, x + 2, y + 2, spr_dir * 1, 1, 0 , c_black , outlinetrans);
+    draw_sprite_ext(sprite_index, image_index, x + 2, y, spr_dir * 1, 1, 0 , c_black , outlinetrans);
+    draw_sprite_ext(sprite_index, image_index, x - 2, y, spr_dir * 1, 1, 0 , c_black , outlinetrans);
+    gpu_set_fog(false, c_white, 0, 0);  
+	}
+}

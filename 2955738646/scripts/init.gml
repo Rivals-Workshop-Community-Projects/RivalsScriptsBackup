@@ -18,7 +18,7 @@ pratfall_anim_speed = .25;
 walk_speed = 2.25;
 walk_accel = 0.5;
 walk_turn_time = 6;
-initial_dash_time = 11;
+initial_dash_time = 10;
 initial_dash_speed = 9;
 dash_speed = 10;
 dash_turn_time = 16;
@@ -33,22 +33,22 @@ jump_speed = 11;
 short_hop_speed = 6;
 djump_speed = 10;
 leave_ground_max = 8; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-air_max_speed = 8; //the maximum hsp you can accelerate to when in a normal aerial state
+max_jump_hsp = 4; //the maximum hsp you can have when jumping from the ground
+air_max_speed = 7; //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 6; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = .50;
+air_accel = .25;
 prat_fall_accel = .40; //multiplier of air_accel while in pratfall
-air_friction = .03;
+air_friction = .05;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 7;
 walljump_vsp = 9;
 walljump_time = 40;
-max_fall = 11; //maximum fall speed without fastfalling
+max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
 gravity_speed = .6;
 hitstun_grav = .5;
-knockback_adj = 0.8; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 0.9; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 6; //normal landing frames
 prat_land_time = 35;
@@ -78,23 +78,25 @@ techroll_speed = 12;
 
 //airdodge animation frames
 air_dodge_startup_frames = 1;
-air_dodge_active_frames = 2;
+air_dodge_active_frames = 1;
 air_dodge_recovery_frames = 3;
 air_dodge_speed = 11;
+//air_dodge_active_time = 1;
+//air_dodge_recovery_time = 1;
 
 //roll animation frames
 roll_forward_startup_frames = 1;
-roll_forward_active_frames = 3;
-roll_forward_recovery_frames = 1;
+roll_forward_active_frames = 1;
+roll_forward_recovery_frames = 2;
 roll_back_startup_frames = 1;
-roll_back_active_frames = 3;
-roll_back_recovery_frames = 1;
+roll_back_active_frames = 1;
+roll_back_recovery_frames = 2;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
 land_sound = sound_get("FootSound1");
 landing_lag_sound = sound_get("FootSound2");
-waveland_sound = sound_get("Wavelanding");
+waveland_sound = sound_get("wavelanding");
 jump_sound = sound_get("GroundJump");
 djump_sound = sound_get("DoubleJump");
 air_dodge_sound = asset_get("sfx_quick_dodge");
@@ -102,6 +104,8 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
 bubble_y = 8;
+
+SuperRocket = 0;
 
 prevous_x = noone; //warping back
 prevous_y = noone; //to previous position 
@@ -111,7 +115,6 @@ fassfall = 0; //0 ~ 20
 fassfall_check = false; //If it happened
 grabbedid = noone;
 dspecial_charge = 0;
-//Uspecial_Charge = 0;
 EmeraldAmount = 0; //The amount of Emeralds YOU have
 EmeraldSense = 0; //Sensing the enemy ID
 Emerald1 = noone; //Checking the number
@@ -162,8 +165,8 @@ flyforward = false;
 face_opp = false; //face the opponent
 timestop_ready = false;
 timestop = false;
-timestop_amount = 20; //the amount of hits
-timestop_time = 207; //the amount of time left
+timestop_amount = 1; //the amount of hits
+timestop_time = 0; //the amount of time left
 EmeraldChance = false;
 dashing = 0;
 dashsound = sound_get("dashing");
@@ -176,23 +179,82 @@ marked_id = false; //Picking up the player's id for grounded Up Special rockets
 marked_id1 = noone; //Picking up the player's id for grounded Up Special rockets
 marked_id2 = noone; //Picking up the player's id for grounded Up Special rockets
 marked_id3 = noone; //Picking up the player's id for grounded Up Special rockets
-utilt_id = noone; //Picking up the player's id for Up Tilt Up
+retaliate_id = noone; //Picking up the player's id for Super Up Tilt Up & Forward Tilt
 dattack_id = noone //Pick up player's id for Dash Attack
 chasedodge = 0;
 target_addup = 0;
+Beam_id = noone; //Super Up Special beam for the middle part pre_draw
 turnbackaround = false; //Jab turn around
 ftilt_hit_id = false; //Grabbing people with FTilt
 fspecial_canceltime = 0;
 teleportback = noone; //Teleporting AirDodge
 fspecial_flash_timer = 5; //Background visual for FSpecial being back
 grounded = noone; //Down Special little explosion timer
+floating = 0; //During Super Mecha form he can 'float'
+floatTimer = 0; //How long he has been in the air
 
 TauntElec = 0; //The little eletricity after taunting
 TauntSuper = 0; //The little color change after taunting
 
 air_time = 0; //Checking for how long Mecha Sonic is in the air so he can air dash
 
-emerald_platform = 0; //Delete later? For the emerald platform to slowly show up
+emerald_platform = 0; //The article platform that flies away
+
+attack_button = !get_synced_var(player); //If attacking stuff has a command grab
+emerald_hud = 1; //The Emeralds are in play or not
+voice_clips = 1; //Voice button so Mecha speaks
+
+/*
+//Attack_Onhit is zero for 'yes' and one for 'no'
+if (get_synced_var(player) == 0){
+	voice_clips = 0;
+	attack_onhit = 0;
+	emerald_hud = 0;
+	//Everything is off
+}
+if (get_synced_var(player) == 1){
+	voice_clips = 1;
+	attack_onhit = 0;
+	emerald_hud = 1;
+	//Everything is on, as by default
+}
+if (get_synced_var(player) == 2){
+	voice_clips = 0;
+	attack_onhit = 0;
+	emerald_hud = 1;
+	//Emeralds and Attacks are on
+}
+if (get_synced_var(player) == 3){
+	voice_clips = 0;
+	attack_onhit = 0;
+	emerald_hud = 0;
+	//Attacks only on
+}
+if (get_synced_var(player) == 4){
+	voice_clips = 0;
+	attack_onhit = 1;
+	emerald_hud = 1;
+	//Emeralds only on
+}
+if (get_synced_var(player) == 5){
+	voice_clips = 1;
+	attack_onhit = 1;
+	emerald_hud = 1;
+	//Voice and Emeralds only on
+}
+if (get_synced_var(player) == 6){
+	voice_clips = 1;
+	attack_onhit = 1;
+	emerald_hud = 0;
+	//Voice and Attacks only on
+}
+if (get_synced_var(player) == 7){
+	voice_clips = 1;
+	attack_onhit = 0;
+	emerald_hud = 0;
+	//Voice only
+}
+*/
 
 scanner_color = -1;
 switch (get_player_color(player)){ //Player color - Scan color
@@ -260,6 +322,8 @@ introTimer2 = 0;
 
 //Early Access sound change
 if (get_player_color(player) == 8) {
+	voice_clips = false;
+	
 	land_sound = sound_get("EA_land");
 	landing_lag_sound = sound_get("EA_landinglag");
 	waveland_sound = sound_get("EA_wavedash");
@@ -394,25 +458,49 @@ if (get_player_color(player) == 8) {
 	set_hitbox_value(AT_DSPECIAL_2, 4, HG_HIT_SFX, sound_get("EA_timestop_finalhit"));
 	set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_SFX, sound_get("EA_spinout"));
 	
+	set_window_value(AT_NSPECIAL, 10, AG_WINDOW_SFX, sound_get("EA_super_nspecial_beam"));
+	set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, sound_get("EA_fair_finalhit"));
+	
+	set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_SFX, sound_get("EA_super_chargeup"));
+	set_window_value(AT_USPECIAL_GROUND, 4, AG_WINDOW_SFX, sound_get("EA_super_beam"));
+	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HIT_SFX, sound_get("EA_uspecial_rocket_hit"));
+	
+	//set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, sound_get("EA_fspecial_start"));
+	set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_SFX, sound_get("EA_fspecial_forward"));
+	set_window_value(AT_FSPECIAL_AIR, 4, AG_WINDOW_SFX, sound_get("EA_fspecial_rapidswipes"));
+	set_window_value(AT_FSPECIAL_AIR, 5, AG_WINDOW_SFX, sound_get("EA_final_hit"));
+	set_window_value(AT_FSPECIAL_AIR, 7, AG_WINDOW_SFX, sound_get("EA_fstrong"));
+	set_hitbox_value(AT_FSPECIAL_AIR, 8, HG_HIT_SFX, sound_get("EA_fstrong_hardhit"));
+	
+	set_window_value(AT_DSPECIAL_2, 10, AG_WINDOW_SFX, sound_get("EA_super_dspecial_chaosblast"));
+	set_window_value(AT_DSPECIAL_2, 14, AG_WINDOW_SFX, sound_get("EA_dspecial_turnhit"));
+	
+	set_window_value(AT_DSPECIAL, 10, AG_WINDOW_SFX, sound_get("EA_ftilt2"));
+	set_window_value(AT_DSPECIAL, 15, AG_WINDOW_SFX, sound_get("EA_spinout"));
+	set_window_value(AT_DSPECIAL, 17, AG_WINDOW_SFX, sound_get("EA_ftilt"));
+	
+	set_window_value(AT_NSPECIAL_2, 1, AG_WINDOW_SFX, sound_get("EA_jab4"));
+	set_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_SFX, sound_get("EA_nspecial2_unibeam"));
+	
 	set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("EA_tauntpowerup"));
 }
 
 set_hit_particle_sprite( 1, asset_get( "empty_sprite" ) );
 
-loopingwindow = 0; //Down Special holding onto the window
+loopingwindow = 0; //Down Special holding onto the windoww
 
-//voice_button = !get_synced_var(player); //Voice button syncing
-voice_clips = !get_synced_var(player); //Voice button syncing
-
+Gigabeam = hit_fx_create( sprite_get( "gigabeam" ), 18);
+Gigabeam_Stretched = hit_fx_create( sprite_get( "gigabeam_stretch" ), 11);
 Shine = hit_fx_create( sprite_get( "shine" ),20);
 AirDashAfter = hit_fx_create( sprite_get( "airdodge_afterimage" ),15);
 Shockwave = hit_fx_create( sprite_get( "shockwave" ),14);
 Explosive = hit_fx_create( sprite_get( "explode" ),30);
 Explosive_Punch = hit_fx_create( sprite_get( "fstrong_explode" ),27);
 Burst_Tail = hit_fx_create( sprite_get( "fstrong_burst_tail" ),18);
-Burst_Tail1 = hit_fx_create( sprite_get( "fstrong_burst_trail" ),8);
-Burst_Tail2 = hit_fx_create( sprite_get( "dspecial_burst_tail" ),16);
+Burst_Tail2 = hit_fx_create( sprite_get( "fstrong_burst_trail" ),8);
+//Burst_Tail2 = hit_fx_create( sprite_get( "dspecial_burst_tail" ),16);
 Burst_Trail_End = hit_fx_create( sprite_get( "dspecial_burst_trail_end" ),10);
+NSpecial_explode = hit_fx_create( sprite_get( "nspecial_ball_explode" ),30);
 Skrt = hit_fx_create( sprite_get( "skrt_skrt" ),7);
 TauntAura = hit_fx_create( sprite_get( "taunt_transform_aura" ),38);
 Bullets = noone;
@@ -421,15 +509,29 @@ BulletHit2 = hit_fx_create( sprite_get( "nspecial_gunhit2" ),4);
 DashTail = hit_fx_create( sprite_get( "super_dash_tail2" ),3);
 DashTail2 = hit_fx_create( sprite_get( "super_dash_tail2" ),4);
 DashTail3 = hit_fx_create( sprite_get( "super_dash_tail2" ),5);
+Harsh_Hit3 = hit_fx_create( sprite_get( "harsh_hit" ),59);
 Harsh_Hit2 = hit_fx_create( sprite_get( "harsh_hit2" ),6);
-Harsh_Hit = hit_fx_create( sprite_get( "harsh_hit" ),11);
+Harsh_Hit = hit_fx_create( sprite_get( "harsh_hit" ),19);
+Second_Unibeam = hit_fx_create( sprite_get( "super_uspecial_beam_stretch2" ),5);
 Lightspeed_Particle = hit_fx_create( sprite_get( "lightspeed_particle" ),29);
 Dusty = hit_fx_create( sprite_get( "dust" ),10);
 UpSpecialSparks = hit_fx_create( sprite_get( "uspecial_proj_sparks" ),15);
 Afterimage_particle = hit_fx_create( sprite_get( "afterimage_charge" ),20);
 FSpecial_particle = hit_fx_create( sprite_get( "fspecial_charge" ),34);
-FSpecial_afterimage = hit_fx_create( sprite_get( "fspecial2_afterimage" ), 7);
+FSpecial_afterimage = hit_fx_create( sprite_get( "super_fspecial2_afterimage" ), 15);
 DSpecial_lightspeed_trail = hit_fx_create( sprite_get( "lighspeed_line" ), 12);
+USpecial_teleport = hit_fx_create( sprite_get( "uspecial_teleportout" ), 20);
+Unibeam = hit_fx_create( sprite_get( "unibeam" ), 35);
+Unibeam_stretch = hit_fx_create( sprite_get( "unibeam_stretch" ), 35);
+Electric_1 = hit_fx_create( sprite_get( "electric_1" ), 20);
+Electric_2 = hit_fx_create( sprite_get( "electric_2" ), 20);
+Electric_3 = hit_fx_create( sprite_get( "electric_3" ), 20);
+Electric_4 = hit_fx_create( sprite_get( "electric_4" ), 20);
+Electric_5 = hit_fx_create( sprite_get( "electric_5" ), 20);
+RedEyes = hit_fx_create( sprite_get( "super_fspecial2_redeye" ), 7);
+SuperMechaBurst = hit_fx_create( sprite_get( "super_burst" ), 10);
 
+airdodge_away = hit_fx_create( sprite_get( "airdodge3" ),6);
+roll_away = hit_fx_create( sprite_get( "roll2" ),6);
 airdodge_afterimage = hit_fx_create( sprite_get( "airdodge_ai" ),20);
 roll_afterimage = hit_fx_create( sprite_get( "roll_forward_ai" ),20);

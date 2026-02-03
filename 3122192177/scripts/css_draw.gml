@@ -2,8 +2,8 @@ var temp_x = x + 8;
 var temp_y = y + 9;
  
 patch_ver = "0.1";
-patch_day = "25";
-patch_month = "OCT";
+patch_day = "2";
+patch_month = "FEB";
  
 var num_alts = 31;
 var alt_cur = get_player_color(player);
@@ -28,6 +28,7 @@ prev_alt = alt;
 //Alt name init. var doesn't work with arrays lol
 var read_alts = 0;
 if(read_alts = 0){
+alt_name = array_create(31,"");
 alt_name[0]  = "Flower Girl"; 
 alt_name[1]  = "Kingdom Hearts"; 
 alt_name[2]  = "Crisis Core"; 

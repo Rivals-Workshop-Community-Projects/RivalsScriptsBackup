@@ -9,16 +9,21 @@ set_window_value(AT_TAUNT, 1, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_TAUNT, 1, AG_WINDOW_ANIM_FRAMES, 6);
 
 set_window_value(AT_TAUNT, 2, AG_WINDOW_TYPE, 2);
-set_window_value(AT_TAUNT, 2, AG_WINDOW_INVINCIBILITY, 1);
+//set_window_value(AT_TAUNT, 2, AG_WINDOW_INVINCIBILITY, 1);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_TAUNT, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("TauntPowerup"));
+if (get_player_color(player) != 8){
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("taunt_powerup"));
+}
+if (get_player_color(player) == 8){
+set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX, sound_get("EA_taunt_powerup"));
+}
 set_window_value(AT_TAUNT, 2, AG_WINDOW_SFX_FRAME, 5);
 
 set_window_value(AT_TAUNT, 3, AG_WINDOW_TYPE, 3);
-set_window_value(AT_TAUNT, 3, AG_WINDOW_INVINCIBILITY, 1);
+//set_window_value(AT_TAUNT, 3, AG_WINDOW_INVINCIBILITY, 1);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 9);

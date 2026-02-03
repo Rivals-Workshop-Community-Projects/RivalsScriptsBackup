@@ -44,7 +44,8 @@ switch (state){
 	uses_shader = true;
 	player_id.invincible = true;
 	player_id.invince_time = 5;
-	sprite_index = sprite_get("foresight");
+	if (player_id.SuperMecha == true){ sprite_index = sprite_get("super_foresight"); }
+	if (player_id.SuperMecha == false){ sprite_index = sprite_get("foresight"); }
 	mask_index = sprite_get("idle");
 	depth = -20;
 	
@@ -57,31 +58,31 @@ switch (state){
 	}
 	break;
 	
-	case 2:
-	//Spawn platform emerald
+	case 2: //Spawn platform emerald
 	mask_index = asset_get("empty_sprite");
 	sprite_index = sprite_get("plat");
 
-	if (player_id.state == PS_RESPAWN && state_timer < 20){
+	if (player_id.state == PS_RESPAWN && state_timer < 10 || player_id.attack == AT_TAUNT){
 		state_timer = 0; vsp = 0;
+		//image_xscale = 1;
 		if (player_id.spr_dir == 1){ image_xscale = 1; }
 		if (player_id.spr_dir == -1){ image_xscale = -1; }
 	}
 	else
-	if (state_timer > 20 || state_timer > 2 && !(player_id.state == PS_RESPAWN)){
+	if (state_timer > 1){
 		vsp -= 0.001 * state_timer;
 	}
-	if (state_timer > 250){ instance_destroy(); exit; }
+	if (state_timer > 150){ instance_destroy(); exit; }
 	break;
 	
 	case 3: //Emeralds that fly out of enemies
 	uses_shader = false;
 	can_be_grounded = true;
 	ignores_walls = false;
-	
-	//Emerald flying out after parrying or respawning
 	sprite_index = sprite_get("emrl");
 	mask_index = sprite_get("emrl_mask");
+	
+	spr_dir = 1;
 	
 	if (state_timer <= 1){
     with (asset_get("oPlayer")){
@@ -144,19 +145,19 @@ switch (state){
 		break;
 	}
 	
-	if (state_timer > 20){
+	if (state_timer > 20 && state_timer < 800){
 	if (free == true){ vsp += .3; } // image_angle += 2;
 	if (vsp > 8){ vsp = 8; }
 	}
 	
 	if (bounced > 0 && free == false){
-	vsp = -bounced; hsp = hsp / 2; bounced -= 1; spawn_hit_fx(x+14, y+18, 259);
+	vsp = -bounced; hsp = hsp / 2; bounced -= 1; spawn_hit_fx(x+20, y+28, 259);
 	sound_play(sound_get("emerald_bounce"));
 	}
 	
 	if (abs(hsp) < 0.5){ hsp = 0; }
 	
-	if ((abs(vsp)) > 0 && state_timer > 190 && GiveBack == false){
+	if ((abs(vsp)) > 0 && state_timer > 350 && GiveBack == false){
 	GiveBack = true;
 	with (asset_get("oPlayer")){
 	OverallEmeralds += 1;
@@ -178,7 +179,10 @@ switch (state){
 	//Kill it anyways
 	}
 	
-	if (bounced <= 0){ vsp = 0; bounced = 0;
+	if (state_timer > 800){ vsp -= 0.1; }
+	if (state_timer > 1000){ instance_destroy(); exit; }
+	
+	if (bounced <= 0 && state_timer < 800){ vsp = 0; bounced = 0;
 	//if (image_angle > 90 && image_angle < 180){ image_angle -= 1; }
 	//if (image_angle > 90 && image_angle < 180){ image_angle = 135; }
 	}
@@ -186,7 +190,7 @@ switch (state){
 	if (state_timer > 21){
 	with (asset_get("oPlayer")){
 	if (place_meeting( x, y, other.id)){
-		if (EmeraldAmount < 7 && OverallEmeralds < 8){
+		if (EmeraldAmount < 4 && OverallEmeralds < 8){
 	with (other.id){ sound_play(sound_get("S3&K_emerald")); }
 	if (EmeraldAmount == 0){ Emerald1 = other.ChaosEmerald; }
 	if (EmeraldAmount == 1){ Emerald2 = other.ChaosEmerald; }
@@ -197,6 +201,7 @@ switch (state){
 	if (EmeraldAmount == 6){ Emerald7 = other.ChaosEmerald; }
 	spawn_hit_fx(x+8, y-18, 310);
 	EmeraldAmount += 1;
+	move_cooldown[AT_NTHROW] = 50; //Making the emerald on the HUD blinkuses_shader
 	if (Blue == 1 && other.image_index == 0){ Blue = 2; }
 	if (Red == 1 && other.image_index == 1){ Red = 2; }
 	if (Pink == 1 && other.image_index == 2){ Pink = 2; } 

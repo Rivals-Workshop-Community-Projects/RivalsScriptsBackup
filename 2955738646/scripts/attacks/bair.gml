@@ -43,12 +43,14 @@ set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 50);
 set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 50);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 5);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 5);
-set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 135);
+set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 125);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .1);
+set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .7);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .1);
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 306);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, -38);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, -9);
-set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("Bair_hit"));
+set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, sound_get("bair_hit"));
+set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, -1);
+

@@ -42,9 +42,11 @@ if (maintarget == true){
 
 if (has_emerald){
     with (other_player_id){
+    if (emerald_hud == true){
         if (OverallEmeralds <= 7){
     draw_sprite_ext(sprite_get("emrl_meter_black"), 0, other.x+28, other.y-44 - other.char_height, 2, 2, 0, scanner_color, 0.6);
     draw_sprite_ext(sprite_get("target_indicator"), 0, other.x, other.y+64  - other.char_height, 2, 2, 0, scanner_color, 0.6);
+            }
         }
     }
 }

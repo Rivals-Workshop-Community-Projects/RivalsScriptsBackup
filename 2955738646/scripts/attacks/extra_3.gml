@@ -18,7 +18,8 @@ set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_SFX, 1);
 //set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX, sound_get("S3K_3C"));
 //set_window_value(AT_EXTRA_3, 1, AG_WINDOW_SFX_FRAME, 1);
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.05);
+if (SuperMecha == false){ set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.05); }
+if (SuperMecha == true){ set_window_value(AT_EXTRA_3, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.03); }
 set_window_value(AT_EXTRA_3, 1, AG_WINDOW_GOTO, 3);
 
 set_window_value(AT_EXTRA_3, 2, AG_WINDOW_TYPE, 1); //Sliding back after attacking

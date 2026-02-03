@@ -6,7 +6,7 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_TYPE, 1);//Crouching
 set_window_value(AT_DTILT, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("Dtilt_Lazer"));
+set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("dtilt_laser"));
 set_window_value(AT_DTILT, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, 1);
 
@@ -146,7 +146,7 @@ set_hitbox_value(AT_DTILT, 5, HG_HEIGHT, 50);
 set_hitbox_value(AT_DTILT, 5, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 5, HG_PRIORITY, 1);
 set_hitbox_value(AT_DTILT, 5, HG_DAMAGE, 1);
-set_hitbox_value(AT_DTILT, 5, HG_ANGLE, 10);
+set_hitbox_value(AT_DTILT, 5, HG_ANGLE, 360);
 set_hitbox_value(AT_DTILT, 5, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(AT_DTILT, 5, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DTILT, 5, HG_KNOCKBACK_SCALING, 0);
@@ -173,7 +173,7 @@ set_hitbox_value(AT_DTILT, 6, HG_HEIGHT, 45);
 set_hitbox_value(AT_DTILT, 6, HG_SHAPE, 2);
 set_hitbox_value(AT_DTILT, 6, HG_PRIORITY, 1);
 set_hitbox_value(AT_DTILT, 6, HG_DAMAGE, 1);
-set_hitbox_value(AT_DTILT, 6, HG_ANGLE, 10);
+set_hitbox_value(AT_DTILT, 6, HG_ANGLE, 360);
 set_hitbox_value(AT_DTILT, 6, HG_EXTRA_CAMERA_SHAKE, -1);
 set_hitbox_value(AT_DTILT, 6, HG_BASE_KNOCKBACK, 8);
 set_hitbox_value(AT_DTILT, 6, HG_KNOCKBACK_SCALING, 0);
