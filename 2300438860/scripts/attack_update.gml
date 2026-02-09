@@ -313,7 +313,7 @@ if !hitpause {
         
         if window == 1 && window_timer == 10{
             sound_play(sound_get("hstrong"))
-            take_damage (player, -1, 12)
+            // take_damage (player, -1, 12)
         }
         
         if window == 2 && window_timer == 1{
@@ -345,7 +345,7 @@ if !hitpause {
         	window_timer = 10
 
             sound_play(sound_get("fstrong2"))
-            take_damage (player, -1, -12)
+            // take_damage (player, -1, -12)
             x = savex
             y = savey
             savex = 0
@@ -355,8 +355,8 @@ if !hitpause {
         	sound_play(sound_get("fstrong2"))
         	 sound_play(sound_get("uspec"))
         	 set_state(PS_PRATFALL)
-                    take_damage (player, -1, -33)
-                    hsp = 0
+                    // take_damage (player, -1, -33)
+             hsp = 0
             x = savex
             y = savey
             savex = 0
