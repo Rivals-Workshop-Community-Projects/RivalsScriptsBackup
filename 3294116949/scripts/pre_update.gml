@@ -1,4 +1,4 @@
-axeless = instance_exists(axe);
+axeless = instance_exists(axe) && !has_rune("A");
 if(axeless)
 {
     clear_button_buffer(PC_ATTACK_PRESSED);
@@ -12,6 +12,6 @@ if(axeless)
     clear_button_buffer(PC_LEFT_STRONG_PRESSED);
     move_cooldown[AT_DSPECIAL] = 2;
     move_cooldown[AT_DSPECIAL_2] = 2;
-    move_cooldown[AT_USPECIAL] = 2;
+    // move_cooldown[AT_USPECIAL] = 2;
     move_cooldown[AT_TAUNT] = 2;
 }

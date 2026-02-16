@@ -30,6 +30,7 @@ if (attack == AT_FSPECIAL){
 
 //dspecial throw
 if (attack == AT_DSPECIAL_2){
+	uses_shader = false;
     if (hbox_num == 1){
     	player_id.small_scrap_obj = self;
         image_index = player_id.current_scrap.index;
@@ -88,6 +89,11 @@ if (attack == AT_DSPECIAL_2){
             break;
             case "Whoopee cushion":
                 hit_sfx = sound_get("scrap_fart" + string(random_func(0, 3, true) + 1) );
+                rand_sfx = [
+                	"scrap_fart1",
+                	"scrap_fart2",
+                	"scrap_fart3"
+                	]
                 whoopee_ground_mask = sprite_get("scrap_whoopee_mask");
                 whoopee_sprite = sprite_get("scrap_whoopee");
                 whoopee_hit = false;

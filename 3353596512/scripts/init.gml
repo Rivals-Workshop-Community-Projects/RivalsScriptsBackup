@@ -634,6 +634,11 @@ fine_index = 0;
 should_make_shockwave = false;
 HG_OVERTIME_CREDIT = 69; //multiplier for overtime credits.
 
+extra_col = 0;
+champ_alt = false;
+champ_name = get_player_name(player);
+squidward_step = 1;
+
 //woodcock support
 i = 80;
 

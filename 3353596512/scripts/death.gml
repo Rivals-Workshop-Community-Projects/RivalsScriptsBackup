@@ -21,6 +21,10 @@ if (!employee_playing_rogue){
 	fine_penalty();
 }
 
+if (champ_alt && extra_col == 1){
+	sound_play(sound_get("squidward_scream"));
+}
+
 #define calculate_weight()
 
 	weight_value = passive_weight + item_weight;

@@ -427,6 +427,8 @@ draw_hud_event = 14;
 //hit_fx_create(sprite_get("sprite"), time in frames); //create hit effect
 //set_hit_particle_sprite(1-6, sprite_get("sprite")); //create hit particles
 
+has_unpressed = false;
+
 draw_article = instance_create(0, 0, "obj_article1");
 
 #define voice_init(_voice)

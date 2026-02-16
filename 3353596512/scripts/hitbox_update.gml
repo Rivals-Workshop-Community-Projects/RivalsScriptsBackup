@@ -113,7 +113,7 @@ switch (attack){
     				}
     				if (grounded_timer == 1){
     					hitbox_timer = 0;
-    					length = 480;
+    					length = 600;
     					is_animating = true;
     					sound_play(proj_scrap_id.sfx, false, noone, 0.7, 1);
     				}
@@ -133,7 +133,8 @@ switch (attack){
     						stepped_on_whoopee = true;
     						whoopee_id = other;
     						with (other) {
-    							sound_play(hit_sfx, false, noone, 0.75, 1);
+    							var rand_fart = random_func(0, 3, true);
+    							sound_play(sound_get(rand_sfx[rand_fart]), false, noone, 0.75, 1);
     							is_animating = true;
     						}
     					}

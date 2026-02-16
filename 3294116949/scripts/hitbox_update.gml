@@ -16,6 +16,15 @@ if attack == AT_NSPECIAL && hbox_num != 5 {
 	}
 	transcendent = !other_hit;
 	
+	if(hitbox_timer >= 1){
+		if hbox_num == 1 {
+			kb_value -= 0.2;
+		}
+		if hbox_num == 4 {
+			kb_value -= 0.3;
+		}
+	}
+	
    // if hbox_num == 1 {
   	//   if hitbox_timer % 10 == 0{
   	// sound_play(asset_get("sfx_swipe_medium1"),false,noone,0.8) 
@@ -30,7 +39,7 @@ if attack == AT_NSPECIAL && hbox_num != 5 {
 
 if(attack == AT_DSPECIAL && hbox_num == 1){
 	if player_id.state == PS_DEAD || player_id.state == PS_RESPAWN || player_id.respawn_taunt { destroyed = true; spawn_hit_fx(x, y, HFX_SHO_FLAME_SMALL); }
-	player_id.move_cooldown[AT_DSPECIAL] = 30 + was_parried * 60;
+	player_id.move_cooldown[AT_DSPECIAL] = 30 + (was_parried || player != player_id.player) * 70;
 	if (vsp >= 0 && has_bounced) || (!was_parried && hitbox_timer > 6 && player_id.down_down && player_id.special_pressed){
 		if (hitbox_timer > 6 && player_id.down_down && player_id.special_pressed) with(player_id) clear_button_buffer(PC_SPECIAL_PRESSED);
 		destroyed = true;
@@ -48,6 +57,19 @@ if(attack == AT_DSPECIAL && hbox_num == 1){
 		sound_play(asset_get("sfx_zap"));
 		sound_play(asset_get("sfx_shovel_hit_med2"));
 		spawn_hit_fx(x, y, HFX_SHO_FLAME_SMALL);
+	}
+	if !destroyed with(pHitBox) if(self != other && player != other.player && player_id != other.player_id && place_meeting(x, y, other) && type == 1) {
+		other.player = player;
+		other.was_parried = true;
+		other.has_bounced = false;
+		other.vsp = min(other.vsp, -other.vsp);
+		other.hsp *= -1;
+		other.spr_dir *= -1;
+		other.draw_xscale *= -1;
+		other.free = true;
+		other.y -= other.vsp;
+		sound_play(asset_get("sfx_shovel_hit_med2"));
+		var hfx = spawn_hit_fx((player_id.x + other.x)/2, (player_id.y - player_id.char_height/2 + other.y)/2, HFX_SHO_FLAME_SMALL);
 	}
 	if(!free && !has_bounced){
 		vsp = -6;

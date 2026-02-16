@@ -19,22 +19,22 @@ switch (attack){
 			if (window_timer == 9){ turnbackaround = true; }
 		}
 		if (window == 6 && hit_player_obj > 0 && instance_exists(hit_player_obj) ){
-			if (window_timer < 15){ x = lerp(x, hit_player_obj.x - (10 * spr_dir), 0.1); }
-			if (hit_player_obj.x > x){ spr_dir = 1; 
+			if (window_timer < 15 && attack_button == 0){ x = lerp(x, hit_player_obj.x - (10 * spr_dir), 0.1); }
+			if (hit_player_obj.x > x && attack_button == 0){ spr_dir = 1; 
 				if (random_mecha == 2 && voice_clips == true){ sound_play(sound_get("Mecha_Imbecile")); random_mecha = 0; }
 				}
-			if (hit_player_obj.x < x){ spr_dir = -1;
+			if (hit_player_obj.x < x && attack_button == 0){ spr_dir = -1;
 				if (random_mecha == 2 && voice_clips == true){ sound_play(sound_get("Mecha_Imbecile")); random_mecha = 0; }
 				}
 		}
 		if (window == 7 && hit_player_obj > 0 && instance_exists(hit_player_obj) ){
-			if (free == false && has_hit == false){ x = lerp(x, hit_player_obj.x - 5 * spr_dir, 0.2); }
+			if (free == false && has_hit == false && attack_button == 0){ x = lerp(x, hit_player_obj.x - 5 * spr_dir, 0.2); }
 		move_cooldown[AT_JAB] = 20;
 			if (window_timer < 3){
-			if (hit_player_obj.x > x){ spr_dir = 1;
+			if (hit_player_obj.x > x && attack_button == 0){ spr_dir = 1;
 				if (random_mecha == 2 && voice_clips == true){ sound_play(sound_get("Mecha_Imbecile")); random_mecha = 0; }
 				}
-			if (hit_player_obj.x < x){ spr_dir = -1;
+			if (hit_player_obj.x < x && attack_button == 0){ spr_dir = -1;
 				if (random_mecha == 2 && voice_clips == true){ sound_play(sound_get("Mecha_Imbecile")); random_mecha = 0; }
 				}
 			}
@@ -202,8 +202,9 @@ break;
 			//vsp = -8 - (strong_charge / 10);
 			vsp = -8 - (strong_charge / 50);
 		}
-		if (window_timer > 7 && has_hit == true && hitpause == false){
+		if (window_timer > 6 && has_hit == true && hitpause == false){
 			can_special = true;
+			can_attack = true;
 		}
 	}
 	if (window == 3){
@@ -214,7 +215,7 @@ break;
 	}
 	if (has_hit_player == true && hitpause == false){
 		hit_player_obj.spr_dir = spr_dir;
-		vsp += hit_player_obj.vsp / 40;
+		vsp += hit_player_obj.vsp / 20;
 		hit_player_obj.hsp = hsp;
 		}
 	}
@@ -345,7 +346,7 @@ break;
 	grabbedid = noone;
     }
     	if (attack_button == 0){
-    	if (window == 3 && window_timer == 18 && random_mecha == 2 && voice_clips == true){ sound_play(sound_get("Mecha_Useless")); }
+    	if (window == 3 && window_timer == 18 && random_mecha == 2 && voice_clips == true && hitpause == false){ sound_play(sound_get("Mecha_Useless")); }
 	if (window == 1 || window == 2 || window == 3){
 		if (grabbedid != noone){
 			if(!instance_exists(grabbedid)){
@@ -742,7 +743,8 @@ break;
 			Unibeaming_stretch.image_yscale = 3;
 			*/
 		}
-		if (window_timer == 20){ spawn_hit_fx(x+5 * spr_dir, y-50, 66); }
+		if (window_timer == 20 && (get_player_color(player) != 8)){ spawn_hit_fx(x+5 * spr_dir, y-50, 66); }
+		if (window_timer == 20 && (get_player_color(player) == 8)){ spawn_hit_fx(x+5 * spr_dir, y-50, 116); }
 		if (window_timer > 19){
 			//create_hitbox(AT_NSPECIAL_2, 1, x+5 * spr_dir, y-80);
 			//create_hitbox(AT_NSPECIAL_2, 1, x-180 * spr_dir, y-160);
@@ -1443,6 +1445,8 @@ break;
 		}
 	}
 	
+	}
+	if (attack_button == 0 || attack_button == 1){
 	if (window == 10){
 	set_window_value(AT_DSPECIAL, 13, AG_WINDOW_VSPEED, 27);
 	set_window_value(AT_DSPECIAL, 13, AG_WINDOW_HSPEED, 27);
@@ -1489,12 +1493,12 @@ break;
 			var burst = spawn_hit_fx(x+25 * spr_dir, y-40, SuperMechaBurst);
 			burst.draw_angle = -45 * spr_dir;
 			burst.force_depth = true;
-			burst.depth = depth-2;
+			burst.depth = depth-1;
 		}
 		var burstTrail = spawn_hit_fx(x-15 * spr_dir, y-45, Burst_Tail2);
 		burstTrail.draw_angle = -45 * spr_dir;
-		//burstTrail.force_depth = true;
-		//burstTrail.depth = depth-1;
+		burstTrail.force_depth = true;
+		burstTrail.depth = depth-1;
 		white_flash_timer = 5;
 		}
 	}
@@ -1732,7 +1736,7 @@ break;
 	
 	}
 	
-	if (attack_button == 1){
+	if (attack_button == 0 || attack_button == 1){
 		can_fast_fall = false;
 		can_shield = false;
 		can_shield = false;
@@ -1975,7 +1979,7 @@ break;
 	if (get_player_color(player) == 8){ var charge_loop = (sound_get("EA_charge_loop")); }
 	move_cooldown[AT_TAUNT] = 100;
 	//attack = AT_TAUNT_2; window = 1; window_timer = -1;
-	if (window == 1 || window == 2 && window_timer < 5){
+	if (window == 1 && move_cooldown[AT_EXTRA_1] < 1 || window == 2 && window_timer < 5 && move_cooldown[AT_EXTRA_1] < 1){
 		can_taunt = false;
 		can_dash = true;
 		can_attack = true;
@@ -1987,8 +1991,10 @@ break;
 	if (window == 2 && window_timer > 4){ TauntSuper = 300; }
 	if (window == 1 && EmeraldAmount == 4 && SuperMecha == false && emerald_hud == true){ attack = AT_TAUNT_2; window = 1; window_timer = -1; }
 	
-	//if (window == 2 && window_timer < 7 && taunt_down && SuperMecha == false){ SuperMecha = true; white_flash_timer = 10; move_cooldown[AT_TAUNT_2] = 900; }
-	//^ Super Debug ^
+	if (get_match_setting( SET_PRACTICE )){
+	if (window == 2 && window_timer < 7 && taunt_down && SuperMecha == false){ SuperMecha = true; white_flash_timer = 10; move_cooldown[AT_TAUNT_2] = 1200; }
+	}
+	//^ Instant Super Debug ^
 	
 	if (window == 3){
 		can_dash = false;
@@ -2063,7 +2069,8 @@ break;
 case AT_FTHROW: //Yeah Taunt
 
 	if (window == 1 && window_timer == 1){
-		EmeraldAmount += 1;
+		//EmeraldAmount += 1;
+		//^ Debug Emerald spawning ^
 	}
 
 break;
@@ -2271,16 +2278,16 @@ if (SuperMecha == true){
 		if (attack_button == 0){
 		if (window < 3){
 			if (retaliate_id > 0){
-			//x = lerp(x, retaliate_id.x-10 * spr_dir, 0.01);
+			x = lerp(x, retaliate_id.x-10 * spr_dir, 0.01);
 			if (retaliate_id.x > x){ spr_dir = 1; }
 			if (retaliate_id.x < x){ spr_dir = -1; }
 			}
 		}
 		if (window == 5){
 			if (retaliate_id > 0){
-			//x = lerp(x, retaliate_id.x-125 * spr_dir, 0.1);
-			//if (retaliate_id.x > x){ spr_dir = 1; }
-			//if (retaliate_id.x < x){ spr_dir = -1; }
+			x = lerp(x, retaliate_id.x-125 * spr_dir, 0.1);
+			if (retaliate_id.x > x){ spr_dir = 1; }
+			if (retaliate_id.x < x){ spr_dir = -1; }
 			}
 		}
 		if (window == 1 && window_timer < 2 || window == 3 || window == 4 || window == 5){ retaliate_id = noone; }

@@ -418,7 +418,7 @@ switch (attack)
 		hurtboxID.image_angle = spr_angle;
 		
 		// Armor
-		if (window == 2) soft_armor = 12;
+		if (window == 2) soft_armor = 20;
 		else soft_armor = 0;
 		
 		// Reset on attack start

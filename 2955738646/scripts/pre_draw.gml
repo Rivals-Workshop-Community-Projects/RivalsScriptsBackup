@@ -5,7 +5,7 @@ shader_start();
 //draw_debug_text(x-60, y-190, "window: " + string(window));
 //draw_debug_text(x-60, y-170, "window timer: " + string(window_timer));
 //draw_debug_text(x-60, y-150, "state timer: " + string(state_timer));
-//draw_debug_text(x-60, y-170, "state: " + string(state));
+//draw_debug_text(x-60, y-130, "state: " + string(state));
 //draw_debug_text(x-60, y-130, "parry distance / 30: " + string(floor(parry_distance/30)));
 //draw_debug_text(x-60, y-110, "parry distance: " + string(floor(parry_distance)));
 //draw_debug_text(x-60, y-90, "parry cooldown: " + string(parry_cooldown));
@@ -27,6 +27,8 @@ shader_start();
 
 //var taunt_check = move_cooldown[AT_TAUNT_2];
 //draw_debug_text(x-30, y-140, "Taunt 2: " + string(taunt_check));
+
+
 
 if (instance_exists(teleportback) && teleportback >= 0 && teleportback.teleporting_amount < 4){
 	draw_debug_text( teleportback.x-1, teleportback.y-110, string( teleportback.teleporting_amount ));
@@ -333,7 +335,7 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.8, x-5 * spr_dir, y-40, 2, 1, -270, booster_color, 1);
 		}
 		if (move_cooldown[AT_FSTRONG] < 1 && window == 4 && window_timer < 20){
-			if (attack_onhit == 0){
+			if (attack_button == 0){
 			draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.2, x-4 * spr_dir, y-45, 2 - (window_timer / 10), 2 + (window_timer / 29), 265 * spr_dir, c_white, 1 - (window_timer / 23 ));
 			draw_sprite_ext(sprite_get("boosters"), get_gameplay_time()*.2, x-4 * spr_dir, y-45, 2 - (window_timer / 10), 2 + (window_timer / 29), 265 * spr_dir, booster_color, 1 - (window_timer / 23 ));
 			}
@@ -365,6 +367,13 @@ if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
 	}
 }
 
+if (move_cooldown[AT_EXTRA_1] > 1 && move_cooldown[AT_EXTRA_1] < 30){
+	var EXTRA_COOLDOWN = move_cooldown[AT_EXTRA_1];
+	draw_sprite_ext(sprite_get("afterimage_charge"), 30 - (EXTRA_COOLDOWN / 3), x, y, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("afterimage_charge"), 30 - (EXTRA_COOLDOWN / 4), x, y+20, 1.5, 1.5, 0, c_white, 0.5);
+	draw_sprite_ext(sprite_get("afterimage_charge"), 30 - (EXTRA_COOLDOWN / 5), x, y+60, 2, 2, 0, c_white, 0.2);
+}
+
 if(attack == AT_TAUNT && state == PS_ATTACK_GROUND){
 	if (window >= 2 && window <= 5 &&  move_cooldown[AT_EXTRA_1] == 0){
 	draw_sprite_ext(sprite_get("taunt_aura"), get_gameplay_time()*.5, x - 120, y - 180, 2, 2, 0, c_white, 1);
@@ -376,7 +385,7 @@ if (attack == AT_FSTRONG && state == PS_ATTACK_GROUND){
 	if (window > 1 && grabbedid != noone){
 	draw_sprite_ext(sprite_get("fstrong_burst"), window_timer * .4, x - 60 * spr_dir, y-104, 1 * spr_dir, 1, 1, c_white, 1);
 	}
-	if (attack_onhit == 1 && strong_charge >= 60){
+	if (attack_button == 1 && strong_charge >= 60){
 		if (window < 4){ draw_sprite_ext(sprite_get("fstrong_burst"), 1, x - 60 * spr_dir, y-104, 1 * spr_dir, 1, 1, c_white, 1); }
 		if (window == 4){ draw_sprite_ext(sprite_get("fstrong_burst"), window_timer * .1, x - 60 * spr_dir, y-104 + window_timer * 3, 1 * spr_dir, 1 - (window_timer / 20), 1, c_white, 1 - (window_timer / 25) ); }
 	}
@@ -407,8 +416,14 @@ if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 				
 				while (rope_length < max_rope_length-25){
 					//draw_sprite_ext(sprite_get("super_uspecial_beam_stretch"), 0, rope_x, rope_y-7, 1, 1, arm_dir, c_white, 1);
+						if (get_player_color(player) != 8){
 					if (player_id.window < 5){ draw_sprite_ext(sprite_get("super_uspecial_beam_stretch"), 0, rope_x-6 * spr_dir, rope_y-8, 1, 1, arm_dir + 180, c_white, 1); }
 					if (player_id.window == 5){ draw_sprite_ext(sprite_get("super_uspecial_beam_stretch"), player_id.window_timer / 4, rope_x-6 * spr_dir, rope_y-8, 1, 1, arm_dir + 180, c_white, 1); }
+					}
+						if (get_player_color(player) == 8){
+					if (player_id.window < 5){ draw_sprite_ext(sprite_get("super_uspecial_beam_stretch"), 0, rope_x-6 * spr_dir, rope_y-8, 1, 1, arm_dir + 180, 1688209, 1); }
+					if (player_id.window == 5){ draw_sprite_ext(sprite_get("super_uspecial_beam_stretch"), player_id.window_timer / 4, rope_x-6 * spr_dir, rope_y-8, 1, 1, arm_dir + 180, 1688209, 1); }
+					}
 					rope_x += lengthdir_x(14, arm_dir); //How far apart each beam is
 					rope_y += lengthdir_y(14, arm_dir);
 					rope_length += 14;

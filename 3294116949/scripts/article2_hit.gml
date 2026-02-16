@@ -1,8 +1,17 @@
 //article1_init
 //Variables defined when the article spawns
 
+var attackable = (!in_use && !on_cooldown && state == 1);
+var fennek_fspec_hit = (hit_player_obj.url == player_id.url && enemy_hitboxID.attack == AT_FSPECIAL && enemy_hitboxID.hbox_num == 1);
+var fennek_uspec_hit = (hit_player_obj.url == player_id.url && enemy_hitboxID.attack == AT_USPECIAL && enemy_hitboxID.hbox_num <= 4);
+if(attackable && hit_player_obj != player_id && enemy_hitboxID.type == 1 && !on_cooldown && !fennek_fspec_hit && !fennek_uspec_hit){
+	on_cooldown = 120;
+	var hfx = spawn_hit_fx(x, y, 302);
+	hfx.depth = depth - 1;
+	sound_play(asset_get("sfx_burnend"));
+	sound_play(asset_get("sfx_shovel_hit_med2"));
+}
 
-//print ("oof");
 //print(get_char_info( hit_player_obj.player, INFO_STR_NAME));
 
 // //print(hit_player_obj.myName);

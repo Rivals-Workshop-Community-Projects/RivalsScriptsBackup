@@ -15,7 +15,8 @@ state_timer_pause=false; //hitpause logic variables
 anim_timer_pause=false;
 freeze=0; //freeze frames, this helps with hitpause logic for rishi
 uses_shader=true;
-is_hittable=false;
+is_hittable=true;
+hittable_hitpause_mult = 0;
 ignores_walls = false;
 
 can_be_grounded = false;
@@ -50,3 +51,5 @@ spr_dir=player_id.spr_dir;
 in_use = false;
 
 imalamp = true;
+
+on_cooldown = 0;

@@ -131,7 +131,7 @@ set_window_value(AT_NSPECIAL, 10, AG_WINDOW_ANIM_FRAMES, 9);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_SFX, sound_get("super_nspecial_beam"));
-set_window_value(AT_NSPECIAL, 10, AG_WINDOW_SFX_FRAME, 17);
+set_window_value(AT_NSPECIAL, 10, AG_WINDOW_SFX_FRAME, 3);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_HSPEED_TYPE, 0);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_VSPEED_TYPE, 0);
 set_window_value(AT_NSPECIAL, 10, AG_WINDOW_HSPEED, 0);

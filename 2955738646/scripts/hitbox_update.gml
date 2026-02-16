@@ -35,7 +35,7 @@ switch(attack){
 			destroyed = true;
 		}
 	}
-if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
+	if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 	instance_destroy();
 	}
 	break;
@@ -137,12 +137,21 @@ if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 			gigabeam_stretch.image_yscale = 20;
 			gigabeam_stretch.force_depth = true;
 			gigabeam_stretch.depth = depth-4;
-			if (get_player_color(player_id.player) != 8) { gigabeam_stretch.uses_shader = false; }
+			if (get_player_color(player_id.player) != 8) {
+			gigabeam_stretch.uses_shader = false;
 			
 			//sound_play(sound_get("gigabeam_hitground"), false, noone, 0.3);
 			sound_play(asset_get("sfx_abyss_seed_land"), false, noone, 0.7, 0.3);
 			sound_play(asset_get("sfx_forsburn_combust"), false, noone, 0.7, 0.4);
 			sound_play(asset_get("sfx_land_heavy"), false, noone, 0.9, 0.5);
+			}
+			if (get_player_color(player_id.player) == 8) {
+			
+			//sound_play(sound_get("gigabeam_hitground"), false, noone, 0.3);
+			sound_play(asset_get("sfx_metal_hit_weak"), false, noone, 1);
+			sound_play(sound_get("EA_missilefire2"), false, noone, 0.6);
+			sound_play(sound_get("EA_missilefire3"), false, noone, 0.6);
+			}
 		}
 		
 		if (hitbox_timer < 3){ hsp += random_func(0, 170, true) * spr_dir; }
@@ -439,6 +448,9 @@ if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 	case AT_USPECIAL_GROUND:
 	
 	proj_angle = 45 * spr_dir;
+	
+	sprite_index = sprite_get( "empty" );
+	
 	//if (hbox_num == 1){
 		//change the chains knot drawing offset
 		rope_offset_x = 15 * spr_dir;
@@ -572,10 +584,6 @@ if (hbox_num == 4 && !(player_id.state == PS_ATTACK_AIR)){
 	break;
 	
 	case AT_FAIR:
-	if (hitbox_timer == 1){
-		if (get_player_color(player_id.player) != 8) { sound_play(sound_get("gun")); }
-		if (get_player_color(player_id.player) == 8) { sound_play(sound_get("EA_gun")); }
-	}
 	if ((place_meeting( x, y+9, asset_get("par_block"))) || (place_meeting( x, y+1, asset_get("par_jumpthrough"))) ||
 	!(player_id.attack == AT_FAIR)){ destroyed = true; }
 	

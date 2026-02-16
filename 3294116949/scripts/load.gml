@@ -69,6 +69,7 @@ sprite_change_offset("alt_tech", 50, 78);
 
 sprite_change_offset("alt_fspecial", 66, 88);
 sprite_change_offset("alt_nspecial2", 76, 88);
+sprite_change_offset("alt_uspecial", 72, 228)
 
 //Attacks
 sprite_change_offset("nair", 80, 120);
@@ -112,6 +113,7 @@ sprite_change_offset("spinning_axe2", 45, 45);
     sprite_change_offset("spinaxe2", 45, 45);
     sprite_change_offset("spinning_axe2_mask", 49, 49);
 sprite_change_offset("lamp", 49, 49);
+    sprite_change_offset("lamp_off", 49, 49);
     sprite_change_offset("old_lamp", 34, 34);
     sprite_change_offset("lamp_explode", 34, 34);
     sprite_change_offset("lamp_spin", 34, 34);

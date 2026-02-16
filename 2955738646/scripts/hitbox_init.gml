@@ -17,6 +17,11 @@ if (attack == AT_NSPECIAL){
 	if (player_id.state == PS_ATTACK_AIR && player_id.window == 2){ spawn_hit_fx(x-16 * spr_dir, y-5, 259); }
 }
 
+if (attack == AT_FAIR){
+	if (get_player_color(player_id.player) != 8) { sound_play(sound_get("gun")); }
+	if (get_player_color(player_id.player) == 8) { sound_play(sound_get("EA_gun")); }
+}
+
 if (attack == AT_NSPECIAL_2){ //Super Mecha
 	//image_yscale = 10;
 	//sprite_width += 1; 
@@ -27,7 +32,7 @@ if (attack == AT_NSPECIAL_2){ //Super Mecha
 	//spawn_hit_fx(x+5 * spr_dir, y-20, 66 );
 }
 
-if (attack == AT_USPECIAL_2 ){
+if (attack == AT_USPECIAL_2){
 	if (hbox_num >= 3 && hbox_num <= 6){
     var particleeffect = spawn_hit_fx(x, y-20, 109);
     //particleeffect.force_depth = true;
@@ -59,8 +64,6 @@ if (attack == AT_USPECIAL_2 ){
 	}
 	
 }
-
-
 
 if (attack == AT_USPECIAL_GROUND){
 	if (player_id.window == 1){ destroyed = true; }

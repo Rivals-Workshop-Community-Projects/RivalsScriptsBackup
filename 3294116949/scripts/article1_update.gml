@@ -1,11 +1,11 @@
 //article1_update
 //i forgor
 
-player_id.move_cooldown[AT_NSPECIAL] = 80; // 40
-if returning player_id.move_cooldown[AT_NSPECIAL] = 90; // 60
-if was_hit player_id.move_cooldown[AT_NSPECIAL] = 100; // 80
-if was_parried player_id.move_cooldown[AT_NSPECIAL] = 120; // 120
-if ignited player_id.move_cooldown[AT_DSPECIAL] = 80;
+player_id.move_cooldown[AT_NSPECIAL] = 90; // 40
+if returning player_id.move_cooldown[AT_NSPECIAL] = 100; // 60
+if was_hit player_id.move_cooldown[AT_NSPECIAL] = 120; // 80
+if was_parried player_id.move_cooldown[AT_NSPECIAL] = 140; // 120
+if ignited player_id.move_cooldown[AT_DSPECIAL] = 100;
 
 if(place_meeting(x, y, asset_get("plasma_field_obj"))){
 	if(instance_exists(axe_hitbox)) axe_hitbox.destroyed = true;
@@ -49,6 +49,52 @@ if(!hitstop){
 			axe_hitbox.hitbox_timer = state_timer;
 			break;
 		}
+	}
+	var fspec_collision = false;
+	with(pHitBox) if(player_id == other.player_id && attack == AT_FSPECIAL && hbox_num == 1 && place_meeting(x, y, other)) fspec_collision = true;
+	if(state < 3 && fspec_collision){
+        with(player_id){
+    	    var _xx = lengthdir_x(point_distance(x, y-char_height/2, other.x, other.y)/2, point_direction(x, y-char_height/2, other.x, other.y));
+    	    var _yy = lengthdir_y(point_distance(x, y-char_height/2, other.x, other.y)/2, point_direction(x, y-char_height/2, other.x, other.y));
+        }
+        player_id.has_hit = true;
+        if ignited spawn_hit_fx(x - _xx, y + _yy, HFX_ZET_FIRE) else spawn_hit_fx(x - _xx, y - _yy, 302);
+        sound_play(asset_get("sfx_shovel_hit_med2"));
+        with(player_id){
+            set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
+    		window = 9;
+    		window_timer = 0;
+    		destroy_hitboxes();
+    		move_cooldown[AT_NSPECIAL] = 70;
+    		fspec_grounded = true;
+    		if(left_down && spr_dir == 1 || right_down && spr_dir == -1){
+	    		hsp = 4 * spr_dir;
+		    	vsp = -9;
+		    	if(hitpause) {
+		    		old_hsp = 7 * spr_dir;
+			    	old_vsp = -8;
+		    	}
+    		} else {
+	    		hsp = 7 * spr_dir;
+		    	vsp = -8;
+		    	if(hitpause) {
+		    		old_hsp = 7 * spr_dir;
+			    	old_vsp = -8;
+		    	}
+    		}
+    		// hitpause = true;
+    		// hitstop = 4;
+    		// hitstop_full = 4;
+    		if other.ignited {
+    // 			burned = true;
+    //     		burnt_id = self;
+    //     		burn_timer = 0;
+        		sound_play(asset_get("sfx_burnapplied"));
+    		}
+        }
+        if(instance_exists(axe_hitbox)) axe_hitbox.destroyed = true;
+        instance_destroy(self)
+        exit;
 	}
 	switch(state){
 		case 1:
@@ -122,8 +168,8 @@ if(!hitstop){
 				vsp = 0;
 				if(instance_exists(axe_hitbox)) axe_hitbox.destroyed = true;
 			}
-			return_aim_strength  = min(return_aim_strength + 0.02, 1);
-			return_magnintude += .25;
+			return_aim_strength  = min(return_aim_strength + 0.02 * (1 + (dist < 100) * 5), 1);
+			return_magnintude += .25 * (1 + (dist < 100) * 2);
 		break;
 		case 4:
 		break;

@@ -342,11 +342,12 @@ if (my_hitboxID.attack == AT_UTILT
 }
 
 //if (other.has_emerald && OverallEmeralds > 0){
-if (emerald_hud == true){
-if (other.has_emerald){
+//if (emerald_hud == true){
+if (hitpause == true){
+if (other.has_emerald == true){
 	sound_play(sound_get("emerald_flyingout"));
-	other.has_emerald = false
-	var emerald = instance_create(other.x, other.y-10 - other.char_height, "obj_article1");
+	other.has_emerald = false;
+	var emerald = instance_create(my_hitboxID.x+1 * spr_dir, my_hitboxID.y-1, "obj_article1");
 	var random_dir = random_func(-4, 4, true);
 	var random_color = random_func(0, 7, true);
 	emerald.state = 3;

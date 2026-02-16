@@ -5,6 +5,10 @@ sound_stop(ea_dspecial_charge_sound);
 
 has_hit_id = noone;
 
+if (SuperMecha == true){
+hitpause = false;
+}
+
 if (state == PS_AIR_DODGE && state_timer < 5){
 	state = PS_ATTACK_AIR;
 	attack = AT_EXTRA_1;
@@ -29,7 +33,9 @@ if (shield_pressed && (state == PS_HITSTUN || state == PS_TUMBLE) ){
 	//window_timer = 0;
 }
 
-move_cooldown[AT_USPECIAL] = 1;
+move_cooldown[AT_FSPECIAL] = 5;
+move_cooldown[AT_USPECIAL] = 5;
+move_cooldown[AT_DSPECIAL] = 5;
 
 retaliate_id = hit_player_obj.id;
 

@@ -463,7 +463,9 @@ if (get_player_color(player) == 8) {
 	
 	set_window_value(AT_USPECIAL_GROUND, 1, AG_WINDOW_SFX, sound_get("EA_super_chargeup"));
 	set_window_value(AT_USPECIAL_GROUND, 4, AG_WINDOW_SFX, sound_get("EA_super_beam"));
-	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HIT_SFX, sound_get("EA_uspecial_rocket_hit"));
+	set_hitbox_value(AT_USPECIAL_GROUND, 1, HG_HIT_SFX, sound_get("EA_missilefire3"));
+	
+	set_hitbox_value(AT_USPECIAL, 4, HG_HIT_SFX, sound_get("EA_missilefire3"));
 	
 	//set_window_value(AT_FSPECIAL_AIR, 1, AG_WINDOW_SFX, sound_get("EA_fspecial_start"));
 	set_window_value(AT_FSPECIAL_AIR, 2, AG_WINDOW_SFX, sound_get("EA_fspecial_forward"));
@@ -487,7 +489,7 @@ if (get_player_color(player) == 8) {
 
 set_hit_particle_sprite( 1, asset_get( "empty_sprite" ) );
 
-loopingwindow = 0; //Down Special holding onto the windoww
+loopingwindow = 0; //Down Special holding onto the window
 
 Gigabeam = hit_fx_create( sprite_get( "gigabeam" ), 18);
 Gigabeam_Stretched = hit_fx_create( sprite_get( "gigabeam_stretch" ), 11);
@@ -501,6 +503,7 @@ Burst_Tail2 = hit_fx_create( sprite_get( "fstrong_burst_trail" ),8);
 //Burst_Tail2 = hit_fx_create( sprite_get( "dspecial_burst_tail" ),16);
 Burst_Trail_End = hit_fx_create( sprite_get( "dspecial_burst_trail_end" ),10);
 NSpecial_explode = hit_fx_create( sprite_get( "nspecial_ball_explode" ),30);
+EA_NSpecial_explode = hit_fx_create( sprite_get( "EA_nspecial_ball_explode" ),30);
 Skrt = hit_fx_create( sprite_get( "skrt_skrt" ),7);
 TauntAura = hit_fx_create( sprite_get( "taunt_transform_aura" ),38);
 Bullets = noone;

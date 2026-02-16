@@ -226,13 +226,13 @@ set_color_profile_slot( 19, 5, 57, 57, 69 ); //Mask2
 set_color_profile_slot( 19, 6, 102, 110, 138 ); //Eye
 set_color_profile_slot( 19, 7, 141, 118, 173 ); //Spike
 
-// esix
-set_color_profile_slot( 20, 0, 0, 84, 157 ); //Fur1
-set_color_profile_slot( 20, 1, 3, 0, 125 ); //Fur2
-set_color_profile_slot( 20, 2, 0, 46, 86 ); //AltFur1
-set_color_profile_slot( 20, 3, 0, 2, 69 ); //AltFur2
-set_color_profile_slot( 20, 4, 255, 188, 47 ); //Mask1
-set_color_profile_slot( 20, 5, 219, 88, 24 ); //Mask2
+// ikea
+set_color_profile_slot( 20, 0, 0, 88, 163 ); //Fur1
+set_color_profile_slot( 20, 1, 0, 23, 110 ); //Fur2
+set_color_profile_slot( 20, 2, 240, 240, 240 ); //AltFur1
+set_color_profile_slot( 20, 3, 185, 185, 185 ); //AltFur2
+set_color_profile_slot( 20, 4, 251, 217, 20 ); //Mask1
+set_color_profile_slot( 20, 5, 222, 111, 0 ); //Mask2
 set_color_profile_slot( 20, 6, 0, 84, 157 ); //Eye
 set_color_profile_slot( 20, 7, 199, 165, 94 ); //Spike
 

@@ -53,7 +53,7 @@ if (jeb_cooldown > 0){
 }
 
 if (has_scrap){
-    draw_sprite_ext(sprite_get("hud_has_scrap"), 0, x + 20 + (string_length(string(get_player_name(player)) ) > 4? (string_length(string(get_player_name(player)))*2) - 6 : 0), y - (48 + char_height + hud_offset), 2, 2, 0, c_white, 1)
+    draw_sprite_ext(sprite_get("hud_has_scrap"), 0, x + 20 + (string_length(string(get_player_name(player)) ) > 4? (string_length(string(get_player_name(player)))*2) - 6 : 0), y - (48 + char_height + hud_offset), 2, 2, 0, c_white, 1);
 }
 
 }

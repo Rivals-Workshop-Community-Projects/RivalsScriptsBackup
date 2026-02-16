@@ -1,4 +1,5 @@
 if (state == PS_SPAWN){
+	emerald_hud = 1;
 	ChaosEmerald = 0;
 	EmeraldAmount = 0;
 	EmeraldSense = 0;
@@ -44,7 +45,7 @@ if (timestop == true){
 		//The left end
 		draw_sprite_ext(sprite_get("bar_time_left"), 0 + timestop_time, temp_x+1, temp_y-26, 2, 2, 0, c_gray, 1);
 		}
-	if (timestop_time >= 185 && h){
+	if (timestop_time >= 185){
 		//The middle part done
 		draw_sprite_ext(sprite_get("bar_time_bit"), 1, temp_x+16, temp_y-26, 90, 2, 0, c_gray, 1);
 		
@@ -149,5 +150,40 @@ if (EmeraldAmount > 3){
 draw_sprite_ext(sprite_get("emrl_blink"), 0, temp_x+104, temp_y-20, (blink_cooldown / 8) + 1, (blink_cooldown / 8) + 1, 0, c_white, 0 + (blink_cooldown / 30));
 	}
 }
+
+}
+
+//Sound control for turning Super
+var volume = get_local_setting(3);
+var DoomsdayZoneStart = sound_get("DoomsdayZone_Start");
+var DoomsdayZoneLoop = sound_get("DoomsdayZone_Loop");
+var EA_DoomsdayZoneStart = sound_get("EA_DoomsdayZone_Start");
+var EA_DoomsdayZoneLoop = sound_get("EA_DoomsdayZone_Loop");
+
+if (get_player_color(player) != 8) {
+if (attack == AT_TAUNT_2 && window == 1 && window_timer == 1
+	&& (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) ){
+	sound_play(DoomsdayZoneStart, false, noone, volume + 1);
+}
+
+if (move_cooldown[AT_TAUNT_2] == 2985){
+	sound_play(DoomsdayZoneLoop, true, noone, volume + 1);
+}
+
+if (SuperMecha == false && white_flash_timer > 0 && move_cooldown[AT_TAUNT_2] > 1){ sound_stop(DoomsdayZoneLoop); }
+
+}
+
+if (get_player_color(player) == 8) {
+if (attack == AT_TAUNT_2 && window == 1 && window_timer == 1
+	&& (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) ){
+	sound_play(EA_DoomsdayZoneStart, false, noone, volume + 1);
+}
+
+if (move_cooldown[AT_TAUNT_2] == 2985){
+	sound_play(EA_DoomsdayZoneLoop, true, noone, volume + 1);
+}
+
+if (SuperMecha == false && white_flash_timer > 0 && move_cooldown[AT_TAUNT_2] > 1){ sound_stop(EA_DoomsdayZoneLoop); }
 
 }

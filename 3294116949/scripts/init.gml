@@ -25,6 +25,12 @@ uspec_orig_y = y;
 uspec_grounded = false;
 lamp_prev_x = 0;
 lamp_prev_y = 0;
+uspec_grabs = [ // x, y, w/2, h/2
+    [60, 174, 25, 36],
+    [35, 118, 25, 30],
+    [15, 68, 20, 30],
+    [15, 24, 12, 15]
+]
 
 fspec_grounded = false;
 
@@ -105,9 +111,9 @@ ground_friction = .5;//1.2
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 12;
-short_hop_speed = 7;
-djump_speed = 11;
+jump_speed = 11; //12
+short_hop_speed = 6.5; //7
+djump_speed = 10; //10
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 4; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -118,12 +124,12 @@ air_friction = .03;
 max_djumps = 1;
 double_jump_time = 36; //the number of frames to play the djump animation. Can't be less than 31.
 walljump_hsp = 5;
-walljump_vsp = 10;//12
+walljump_vsp = 9;//12
 walljump_time = 24;
 wall_frames = 1;
-max_fall = 12; //maximum fall speed without fastfalling
+max_fall = 10; //maximum fall speed without fastfalling
 fast_fall = 16; //fast fall speed
-gravity_speed = .6;
+gravity_speed = .5;
 hitstun_grav = .5;
 knockback_adj = 1.0; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 

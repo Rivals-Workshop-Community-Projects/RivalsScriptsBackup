@@ -9,19 +9,20 @@ var window_end = get_window_value(attack, window, AG_WINDOW_LENGTH);
 
 if (attack == AT_DTILT){
 	can_fast_fall = false;
+	if(was_parried) hsp = 0;
         // set_attack_value(42,AG_CATEGORY,2);
     if window == 2 && window_timer == 1{
     	var slidedust = hit_fx_create( sprite_get( "slide_fx" ), 14 );
     	spawn_hit_fx( x-50*spr_dir, y-58, slidedust);
     }
     if ((window == 3)){
-    	if (attack_pressed) or (down_strong_pressed) or (down_stick_pressed){
+    	if ((attack_pressed) or (down_strong_pressed) or (down_stick_pressed)) {
     		destroy_hitboxes();
     		window = 5;
     		window_timer = 0;
 		}
 	}
-    if window == 6 && window_timer == 1{
+    if window == 6 && window_timer == 1 {
     		var slidejumpdust = hit_fx_create( sprite_get( "slidejump_fx" ), 21 );
     		spawn_hit_fx( x-10*spr_dir, y-58, slidejumpdust);
     }
@@ -82,7 +83,7 @@ if (attack == AT_DSPECIAL) {
 // }
 
 if(attack == AT_DSPECIAL_2){
-	if(window == 2 && window_timer == 1 && !hitpause && instance_exists(lamp) && lamp.state == 1){
+	if(window == 2 && window_timer == 1 && !hitpause && instance_exists(lamp) && lamp.state == 1 && !lamp.on_cooldown){
 		lamp.state = 2;
 		lamp.state_timer = 0;
 	}
@@ -165,6 +166,10 @@ if (!axeless){
 
 if (attack == AT_USPECIAL){
 	can_fast_fall = false;
+	for(var i = 1; i <= 4; i++) {
+		reset_hitbox_value(attack, i, HG_PRIORITY);
+		if axeless set_hitbox_value(attack, i, HG_PRIORITY, 0);
+	}
 	if(window == 1) uspec_grounded = !free;
 	if(window > 1) off_edge = false;
 	if(window < 4){
@@ -172,7 +177,7 @@ if (attack == AT_USPECIAL){
 		hsp *= .92;
 		if !uspec_grounded && window == 2 && window_timer == window_end && uspec_bounce && !hitpause {
 			uspec_bounce = false;
-			vsp = -7;
+			vsp = -6; // -7
 		}
 		has_hit = false;
 		if window_timer > window_end has_hit_player = false;
@@ -192,13 +197,13 @@ if (attack == AT_USPECIAL){
 	
 	with(pHitBox){
 		if(player_id == other && attack == AT_USPECIAL && hbox_num <= 3){
-			if(instance_exists(other.lamp) && place_meeting(x, y, other.lamp)){
+			if(instance_exists(other.lamp) && place_meeting(x, y, other.lamp) && !other.lamp.in_use){
 				other.lamp.x = x;
 				other.lamp.y = y;
 			}
 		}
 		if(player_id == other && attack == AT_USPECIAL && hbox_num == 4 && hbox != noone){
-			if(instance_exists(other.lamp) && place_meeting(x, y, other.lamp)){
+			if(instance_exists(other.lamp) && place_meeting(x, y, other.lamp) && !other.lamp.in_use){
 				other.lamp.x = hbox.x;
 				other.lamp.y = hbox.y;
 			}
@@ -216,9 +221,9 @@ if (attack == AT_USPECIAL){
 	}
 	
 	if(uspec_lamp_id != noone && window == 4 && window_timer >= 1 + has_hit_player && !uspec_should_tether && !uspec_grabbed_lamp){
-		var lamp_1 = collision_ellipse(x + (60 * spr_dir) - 25, y - 178 - 30, x + (60 * spr_dir) + 25, y - 168 + 30, uspec_lamp_id, false, true);
-	    var lamp_2 = collision_ellipse(x + (35 * spr_dir) - 25, y - 118 - 30, x + (35 * spr_dir) + 25, y - 118 + 30, uspec_lamp_id, false, true);
-	    var lamp_3 = collision_ellipse(x + (15 * spr_dir) - 20, y - 68 - 30, x + (15 * spr_dir) + 20, y - 68 + 30,   uspec_lamp_id, false, true);
+		var lamp_1 = collision_ellipse(x + (uspec_grabs[0][0] * spr_dir) - uspec_grabs[0][2], y - uspec_grabs[0][1] - uspec_grabs[0][3], x + (uspec_grabs[0][0] * spr_dir) + uspec_grabs[0][2], y - uspec_grabs[0][1] + uspec_grabs[0][3], uspec_lamp_id, false, true);
+	    var lamp_2 = collision_ellipse(x + (uspec_grabs[1][0] * spr_dir) - uspec_grabs[1][2], y - uspec_grabs[1][1] - uspec_grabs[1][3], x + (uspec_grabs[1][0] * spr_dir) + uspec_grabs[1][2], y - uspec_grabs[1][1] + uspec_grabs[1][3], uspec_lamp_id, false, true);
+	    var lamp_3 = collision_ellipse(x + (uspec_grabs[2][0] * spr_dir) - uspec_grabs[2][2], y - uspec_grabs[2][1] - uspec_grabs[2][3], x + (uspec_grabs[2][0] * spr_dir) + uspec_grabs[2][2], y - uspec_grabs[2][1] + uspec_grabs[2][3], uspec_lamp_id, false, true);
 	    
 	    if(lamp_1 || lamp_2 || lamp_3){
 	    	destroy_hitboxes();
@@ -240,15 +245,16 @@ if (attack == AT_USPECIAL){
 	}
 	
 	if(!uspec_grounded && window == 4 && window_timer >= 1 + has_hit_player && !instance_exists(fennek_uspec_grab) && !uspec_should_tether && !uspec_grabbed_lamp){
-		var sol_1 = collision_ellipse(x + (60 * spr_dir) - 25, y - 178 - 30, x + (60 * spr_dir) + 25, y - 168 + 30, asset_get("par_block"), false, true);
-	    var sol_2 = collision_ellipse(x + (35 * spr_dir) - 25, y - 118 - 30, x + (35 * spr_dir) + 25, y - 118 + 30, asset_get("par_block"), false, true);
-	    var sol_3 = collision_ellipse(x + (15 * spr_dir) - 20, y - 68 - 30, x + (15 * spr_dir) + 20, y - 68 + 30,   asset_get("par_block"), false, true);
+		var sol_1  = collision_ellipse(x + (uspec_grabs[0][0] * spr_dir) - uspec_grabs[0][2], y - uspec_grabs[0][1] - uspec_grabs[0][3], x + (uspec_grabs[0][0] * spr_dir) + uspec_grabs[0][2], y - uspec_grabs[0][1] + uspec_grabs[0][3], asset_get("par_block"), false, true);
+	    var sol_2  = collision_ellipse(x + (uspec_grabs[1][0] * spr_dir) - uspec_grabs[1][2], y - uspec_grabs[1][1] - uspec_grabs[1][3], x + (uspec_grabs[1][0] * spr_dir) + uspec_grabs[1][2], y - uspec_grabs[1][1] + uspec_grabs[1][3], asset_get("par_block"), false, true);
+	    var sol_3  = collision_ellipse(x + (uspec_grabs[2][0] * spr_dir) - uspec_grabs[2][2], y - uspec_grabs[2][1] - uspec_grabs[2][3], x + (uspec_grabs[2][0] * spr_dir) + uspec_grabs[2][2], y - uspec_grabs[2][1] + uspec_grabs[2][3],   asset_get("par_block"), false, true);
+	    var sol_4  = collision_ellipse(x + (uspec_grabs[3][0] * spr_dir) - uspec_grabs[3][2], y - uspec_grabs[3][1] - uspec_grabs[3][3], x + (uspec_grabs[3][0] * spr_dir) + uspec_grabs[3][2], y - uspec_grabs[3][1] + uspec_grabs[3][3],   asset_get("par_block"), false, true);
 	    
-	    var plat_1 = collision_ellipse(x + (60 * spr_dir) - 25, y - 178 - 30, x + (60 * spr_dir) + 25, y - 168 + 30, asset_get("par_jumpthrough"), false, true);
-	    var plat_2 = collision_ellipse(x + (35 * spr_dir) - 25, y - 118 - 30, x + (35 * spr_dir) + 25, y - 118 + 30, asset_get("par_jumpthrough"), false, true);
-	    var plat_3 = collision_ellipse(x + (15 * spr_dir) - 20, y - 68 - 30, x + (15 * spr_dir) + 20, y - 68 + 30,   asset_get("par_jumpthrough"), false, true);
+	    var plat_1 = collision_ellipse(x + (uspec_grabs[0][0] * spr_dir) - uspec_grabs[0][2], y - uspec_grabs[0][1] - uspec_grabs[0][3], x + (uspec_grabs[0][0] * spr_dir) + uspec_grabs[0][2], y - uspec_grabs[0][1] + uspec_grabs[0][3], asset_get("par_jumpthrough"), false, true);
+	    var plat_2 = collision_ellipse(x + (uspec_grabs[1][0] * spr_dir) - uspec_grabs[1][2], y - uspec_grabs[1][1] - uspec_grabs[1][3], x + (uspec_grabs[1][0] * spr_dir) + uspec_grabs[1][2], y - uspec_grabs[1][1] + uspec_grabs[1][3], asset_get("par_jumpthrough"), false, true);
+	    var plat_3 = collision_ellipse(x + (uspec_grabs[2][0] * spr_dir) - uspec_grabs[2][2], y - uspec_grabs[2][1] - uspec_grabs[2][3], x + (uspec_grabs[2][0] * spr_dir) + uspec_grabs[2][2], y - uspec_grabs[2][1] + uspec_grabs[2][3],   asset_get("par_jumpthrough"), false, true);
 	    
-	    if(sol_1 || sol_2 || sol_3 || plat_1 || plat_2 || plat_3){
+	    if(sol_1 || sol_2 || sol_3 || sol_4 || plat_1 || plat_2 || plat_3){
 	    	sound_play(asset_get("sfx_hod_ustrong_whip"))
 	    	destroy_hitboxes();
 	    	if(sol_1 || plat_1){
@@ -260,6 +266,9 @@ if (attack == AT_USPECIAL){
 	    	} else if(sol_3 || plat_3){
 	    		spawn_hit_fx(x + 15 * spr_dir, y - 68, HFX_GEN_SWEET);
 	    		uspec_should_tether = 3;
+	    	} else if(sol_4){
+	    		spawn_hit_fx(x + 15 * spr_dir, y - 44, HFX_GEN_SWEET);
+	    		uspec_should_tether = 4;
 	    	}
 	    }
 	}
@@ -268,8 +277,7 @@ if (attack == AT_USPECIAL){
 		hsp = 0;
 		can_move = false;
 		if(window_timer == window_end && uspec_should_tether){
-			vsp = -16 + 3 * (uspec_should_tether-1);
-			vsp = max(vsp, -15);
+			vsp = -14 + 2 * (uspec_should_tether-1); // -16 + 3, -15
 		}
 	}
 	
@@ -318,7 +326,7 @@ if (attack == AT_USPECIAL){
 				if !uspec_grounded {
 					set_window_value(AT_USPECIAL, 7, AG_WINDOW_TYPE, 1); //up special pratfall
 					//set_window_value(AT_USPECIAL, 7, AG_WINDOW_HAS_WHIFFLAG, 1); //up special whifflag
-					vsp = -10; //formerly -14
+					vsp = -9.5; //formerly -14, -10
 					hsp = 2 * spr_dir;
 					create_hitbox(AT_USPECIAL, 7, round(x), round(y + char_height/2));
 		    		// burned = true;
@@ -364,7 +372,7 @@ if (attack == AT_USPECIAL){
 			if uspec_did_grab_lamp move_cooldown[AT_USPECIAL] = 60;
 		} else {
 			if has_hit_player move_cooldown[AT_USPECIAL] = 60;
-			if uspec_should_tether move_cooldown[AT_USPECIAL] = 90;
+			if uspec_should_tether move_cooldown[AT_USPECIAL] = 120;
 			if uspec_did_grab_lamp move_cooldown[AT_USPECIAL] = 120;
 		}
 	}
@@ -461,7 +469,7 @@ if (attack == AT_USTRONG) {
 //DSTRONG SPIN CHARGE
 if(attack == AT_DSTRONG){
 	can_move = false;
-	if(window == 2) spin_count = round(strong_charge/50);
+	if(window == 2) spin_count = 1 + floor(strong_charge/40);
 	if(window == 2 && window_timer == window_end && !hitpause){
 		// sound_play(asset_get("sfx_spin_longer"), false, noone, true, .9);
 	}
@@ -553,17 +561,20 @@ if (attack == AT_NSPECIAL) && (airstall == 1){
 }*/
 
 if (attack == AT_DSPECIAL){
-	if ((window == 1) && window_timer == 14) && (vsp > 12){
-		airstall = 1;
+	can_fast_fall = false;
+	do_a_fast_fall = false;
+	fast_falling = false;
+	if ((window == 1) && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) && (special_down && free) {
+		vsp = min(vsp, -6);
 	}
 }
 
-if (attack == AT_DSPECIAL) && (airstall == 1){
+// if (attack == AT_DSPECIAL) && (airstall == 1){
 	//if (airstall_timer <= 4){
-		vsp *= 0.7;
-		hsp *= 0.7;
+		// vsp = min(vsp, 2);
+		// hsp *= 0.7;
 	//}
-}
+// }
 
 //UP SPECIAL AIRTALL
 if (attack == AT_USPECIAL){
@@ -574,14 +585,15 @@ if (attack == AT_USPECIAL){
 
 if (attack == AT_USPECIAL) && (airstall == 1){
 	//if (airstall_timer <= 4){
-		vsp *= 0.7;
+		if vsp > 0 vsp *= 0.7;
 	//}
 }
 
 if(attack == AT_FAIR){
+	if(window == 5) did_hit = true;
 	if(hitpause && has_hit && !did_hit && !fast_falling){
 		did_hit = true;
-		old_vsp = min(-4, old_vsp);
+		old_vsp = min(-4.5, old_vsp);
 	}
 	if(window == 3 || window == 5){
 		if(attack_pressed || attack_down || strong_down || 
@@ -590,7 +602,7 @@ if(attack == AT_FAIR){
 			window++;
 			window_timer = 0;
 			has_hit = false;
-			did_hit = false
+			if window < 5 did_hit = false;
 		}
 	}
 }
@@ -784,6 +796,9 @@ if (attack == AT_FSPECIAL) {
 		set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
 		set_window_value(AT_FSPECIAL, 6, AG_WINDOW_HSPEED, 0);
 	}
+	if(window == 9){
+		if(window_timer > 13) iasa_script();
+	}
 }
 
 #define find_lamp
@@ -792,9 +807,9 @@ var lamps = argument0;
 var the_lamp = noone;
 var end_it = false;
 for(var i = 0; i < array_length(lamps); i++){
-	var lamp_1 = collision_ellipse(x + (60 * spr_dir) - 25, y - 178 - 30, x + (60 * spr_dir) + 25, y - 168 + 30, lamps[@i], false, true);
-    var lamp_2 = collision_ellipse(x + (35 * spr_dir) - 25, y - 118 - 30, x + (35 * spr_dir) + 25, y - 118 + 30, lamps[@i], false, true);
-    var lamp_3 = collision_ellipse(x + (15 * spr_dir) - 20, y - 68 - 30, x + (15 * spr_dir) + 20, y - 68 + 30,   lamps[@i], false, true);
+		var lamp_1 = collision_ellipse(x + (uspec_grabs[0][0] * spr_dir) - uspec_grabs[0][2], y - uspec_grabs[0][1] - uspec_grabs[0][3], x + (uspec_grabs[0][0] * spr_dir) + uspec_grabs[0][2], y - uspec_grabs[0][1] + uspec_grabs[0][3], lamps[@i], false, true);
+	    var lamp_2 = collision_ellipse(x + (uspec_grabs[1][0] * spr_dir) - uspec_grabs[1][2], y - uspec_grabs[1][1] - uspec_grabs[1][3], x + (uspec_grabs[1][0] * spr_dir) + uspec_grabs[1][2], y - uspec_grabs[1][1] + uspec_grabs[1][3], lamps[@i], false, true);
+	    var lamp_3 = collision_ellipse(x + (uspec_grabs[2][0] * spr_dir) - uspec_grabs[2][2], y - uspec_grabs[2][1] - uspec_grabs[2][3], x + (uspec_grabs[2][0] * spr_dir) + uspec_grabs[2][2], y - uspec_grabs[2][1] + uspec_grabs[2][3], lamps[@i], false, true);
     
     if !lamps[@i].in_use && window == 4 && window_timer >= 1 + has_hit_player && (lamp_1 || lamp_2 || lamp_3) { 
     	end_it = true 
@@ -820,7 +835,7 @@ if !end_it return noone;
 	var dfa = 0; //draw_angle value
 	var dust_color = 0;
 	var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 	
 	switch (name) {
 		default: 

@@ -75,7 +75,12 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_waveland_eta"));
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 0.5);
+if (get_player_color(player) != 8) {
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get( "super_nspecial_ball" ));
+}
+if (get_player_color(player) == 8) {
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get( "EA_super_nspecial_ball" ));  
+}
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_ANIM_SPEED, 0);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_VSPEED, 0.01);
@@ -90,7 +95,12 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, false);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_EXTENDED_PARRY_STUN, false);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_GROUND_BEHAVIOR, -1);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+if (get_player_color(player) != 8) {
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, NSpecial_explode);
+}
+if (get_player_color(player) == 8) {
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, EA_NSpecial_explode);
+}
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HIT_LOCKOUT, 1);
 
 set_hitbox_value(AT_NSPECIAL_2, 2, HG_HITBOX_TYPE, 2); //After Explosion

@@ -215,7 +215,7 @@ if (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD){
 }
 
 if (move_cooldown[AT_EXTRA_1] > 1 && move_cooldown[AT_EXTRA_1] < 6){
-	var ai_image = spawn_hit_fx(x, y-1, Afterimage_particle);
+	//var ai_image = spawn_hit_fx(x, y-1, Afterimage_particle);
 	has_airdodge = true;
 }
 if (move_cooldown[AT_EXTRA_1] == 2){
@@ -856,21 +856,6 @@ if (get_player_color(player) == 8){ //EA / Gameboy
 }
 	
 }
-
-//Sound control for turning Super
-var volume = get_local_setting(3);
-var DoomsdayZoneStart = sound_get("DoomsdayZone_Start");
-var DoomsdayZoneLoop = sound_get("DoomsdayZone_Loop");
-if (attack == AT_TAUNT_2 && window == 1 && window_timer == 1
-	&& (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) ){
-	sound_play(DoomsdayZoneStart, false, noone, volume + 1);
-}
-
-if (move_cooldown[AT_TAUNT_2] == 2985){
-	sound_play(DoomsdayZoneLoop, true, noone, volume + 1);
-}
-
-if (SuperMecha == false && white_flash_timer > 0 && move_cooldown[AT_TAUNT_2] > 1){ sound_stop(DoomsdayZoneLoop); }
 
 //this increments introTimer every few frames, depending on the number entered
 if (introTimer < 25) {

@@ -71,6 +71,7 @@ set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT_X_OFFSET, 20);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, sound_get("ftilt_elbow"));
 
+if (attack_button == 0){
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1); //two
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 5);
 set_hitbox_value(AT_FTILT, 2, HG_WINDOW_CREATION_FRAME, 13);
@@ -96,3 +97,32 @@ set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 19);
 set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_ori_ustrong_launch"));
 set_hitbox_value(AT_FTILT, 2, HG_EXTRA_CAMERA_SHAKE, 1);
 set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, -1);
+}
+
+if (attack_button == 1){
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_TYPE, 1); //two
+set_hitbox_value(AT_FTILT, 2, HG_WINDOW, 5);
+set_hitbox_value(AT_FTILT, 2, HG_WINDOW_CREATION_FRAME, 13);
+set_hitbox_value(AT_FTILT, 2, HG_LIFETIME, 3);
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_X, 25);
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_Y, -42);
+set_hitbox_value(AT_FTILT, 2, HG_WIDTH, 90);
+set_hitbox_value(AT_FTILT, 2, HG_HEIGHT, 90);
+set_hitbox_value(AT_FTILT, 2, HG_SHAPE, 2);
+set_hitbox_value(AT_FTILT, 2, HG_PRIORITY, 1);
+set_hitbox_value(AT_FTILT, 2, HG_DAMAGE, 3);
+set_hitbox_value(AT_FTILT, 2, HG_ANGLE, 40);
+set_hitbox_value(AT_FTILT, 2, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_FTILT, 2, HG_KNOCKBACK_SCALING, 0.6);
+set_hitbox_value(AT_FTILT, 2, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0.6);
+set_hitbox_value(AT_FTILT, 2, HG_HITPAUSE_SCALING, 0);
+set_hitbox_value(AT_FTILT, 2, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_FTILT, 2, HG_DRIFT_MULTIPLIER, 0.001);
+set_hitbox_value(AT_FTILT, 2, HG_SDI_MULTIPLIER, 0.001);
+set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT, 3);
+set_hitbox_value(AT_FTILT, 2, HG_VISUAL_EFFECT_X_OFFSET, 19);
+set_hitbox_value(AT_FTILT, 2, HG_HIT_SFX, asset_get("sfx_ori_ustrong_launch"));
+set_hitbox_value(AT_FTILT, 2, HG_EXTRA_CAMERA_SHAKE, 1);
+set_hitbox_value(AT_FTILT, 2, HG_HITBOX_GROUP, -1);
+}

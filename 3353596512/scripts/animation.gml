@@ -31,6 +31,27 @@ if (state == PS_SPAWN) && state_timer <= (11/0.2) + 44
     }
 }
 
+if (champ_alt && extra_col == 1){
+	if (state == PS_WALK && state_timer % 26 == 0 && state_timer != 0 && !hitpause){
+		squidward_step = (squidward_step == 1? 2 : 1);
+		sound_play(sound_get("squidward_step" + string(squidward_step)), false, noone, 0.75, 1);
+	}
+
+
+	if (state == PS_DASH && state_timer % 13 == 1 && !hitpause){
+		squidward_step = (squidward_step == 1? 2 : 1);
+		sound_play(sound_get("squidward_step" + string(squidward_step)), false, noone, 0.75, 1);
+	}
+	
+	if (state == PS_LAND || state == PS_WAVELAND || state == PS_PRATLAND && !was_parried || state == PS_LANDING_LAG){
+		if (state_timer == 0 && !hitpause){
+			squidward_step = (squidward_step == 1? 2 : 1);
+			sound_play(sound_get("squidward_step" + string(squidward_step)), false, noone, 0.75, 1);
+		}
+	}
+	
+}
+
 //when you want to use animation.gml during attacks, you need to first check if youre in an attack state
 //otherwise these frames would appear outside of attack states
 /*if state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND

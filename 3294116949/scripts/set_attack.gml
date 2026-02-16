@@ -22,7 +22,7 @@ set_num_hitboxes(AT_FSPECIAL, 4);
 reset_window_value(AT_FSPECIAL, 6, AG_WINDOW_HSPEED);
 
 if(attack == AT_DAIR){
-    set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, min(-7, vsp));
+    set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, min(-5, vsp));
 }
 
 if (instance_exists(axe) && attack==AT_NSPECIAL && axe.state == 2){
@@ -55,6 +55,10 @@ if(attack == AT_USPECIAL){
 if(attack == AT_FSPECIAL){
     reset_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED);
     reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED);
+}
+
+if(attack == AT_DTILT){
+    reset_window_value(AT_DTILT, 6, AG_WINDOW_HSPEED_TYPE);
 }
 
 

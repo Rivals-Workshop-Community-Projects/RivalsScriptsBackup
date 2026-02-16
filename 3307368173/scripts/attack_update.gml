@@ -164,12 +164,13 @@ switch (attack)
         break;
 	case AT_FSPECIAL:
         can_fast_fall = false;
-
+        if (right_down - left_down != spr_dir) has_unpressed = true;
         if (window == 1) 
         {
             has_ledgesnapped = false;
             reset_attack_value(attack, AG_NUM_WINDOWS);
             saro_fspec_used = true;
+            has_unpressed = false;
         }
         else if (window <= 4)
         {
@@ -208,12 +209,12 @@ switch (attack)
                     grab_pos_x = 34;
                     grab_pos_y = -5;
                     if((left_down || left_stick_down) && spr_dir == 1
-                    || (right_down || right_stick_down) && spr_dir == -1)
+                    || (right_down || right_stick_down) && spr_dir == -1 ) && has_unpressed
                     {   window = 6; window_timer = 0; 
                         set_attack_value(attack, AG_NUM_WINDOWS, 8);
                     }
-                    else if((right_down || right_stick_down) && spr_dir == 1
-                    ||  (left_down || left_stick_down) && spr_dir == -1
+                    else if((right_down || right_stick_down) && spr_dir == 1 && has_unpressed
+                    ||  (left_down || left_stick_down) && spr_dir == -1 && has_unpressed
                     || window_timer == 21)
                     {   window = 9; window_timer = 0; 
                         set_attack_value(attack, AG_NUM_WINDOWS, 11);

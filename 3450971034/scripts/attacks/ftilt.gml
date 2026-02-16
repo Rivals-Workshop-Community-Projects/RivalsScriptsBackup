@@ -16,6 +16,8 @@ window_num ++;//attack
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED, 2);
 
 
 window_num ++;//endlag
@@ -40,6 +42,8 @@ window_num ++;//attack
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 3);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 11);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED_TYPE, 2);
+set_window_value(atk, window_num, AG_WINDOW_HSPEED, 4);
 
 window_num ++;//endlag
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 13);

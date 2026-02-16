@@ -31,10 +31,13 @@ if (explosion_cd>180&&chi>0){
     draw_debug_text( x +40, y - 80,"explosion_cd: READY ");
  }*/
  
+if(on_cooldown) draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, image_yscale, image_angle, c_black, .5);
+ 
  //Indicator for if especials can be used
  
 var col = get_player_hud_color(player);
 draw_sprite_ext(sprite_get("indicator"), 0, x - 7, y - 38, 1, 1, 0, col, 1);
+if(on_cooldown) draw_sprite_ext(sprite_get("indicator"), 0, x - 7, y - 38, 1, 1, 0, c_black, .5);
 
 
 

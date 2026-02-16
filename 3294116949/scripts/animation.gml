@@ -7,8 +7,17 @@ switch (state) {
             }
         break;
         case PS_ATTACK_GROUND: case PS_ATTACK_AIR:
+        if(attack == AT_FSPECIAL){
+            hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+        }
         if(attack == AT_USPECIAL){
-            if has_hit_player sprite_index = sprite_get("uspecial") else sprite_index = sprite_get("uspecial_miss");
+            if axeless {
+                sprite_index = sprite_get("alt_uspecial");
+                hurtboxID.sprite_index = sprite_get("alt_uspecial_hurt");
+            } else {
+                if has_hit_player sprite_index = sprite_get("uspecial") else sprite_index = sprite_get("uspecial_miss");
+                hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+            }
         }
         break;
 }

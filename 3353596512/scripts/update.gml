@@ -617,6 +617,21 @@ if (employee_playing_rogue) { //Game is rogue
   }
 }
 
+if (get_player_name(player) == "BURGER"){
+	champ_alt = true;
+}
+
+if (state == PS_SPAWN && extra_col == 0 && taunt_down && down_down && champ_alt){
+	switch (champ_name){
+		case "BURGER":
+		extra_col = 1;
+		break;
+	}
+	white_flash_timer = 18;
+	sound_play(sound_get("terminal_confirm"));
+	init_shader();
+}
+
 
 #define calculate_weight()
 

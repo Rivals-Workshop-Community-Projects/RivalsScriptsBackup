@@ -90,6 +90,14 @@ if (attack == AT_NSPECIAL_2 && (state == PS_ATTACK_AIR || state == PS_ATTACK_GRO
 	if (state_timer < 40){ draw_sprite_ext(sprite_get("ring"), 0, x+1, y-40, 40 - state_timer, 40 - state_timer, 0, c_white, 0.7); }
 }
 
+if (attack == AT_NSPECIAL && SuperMecha == true && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) ){
+	if (window == 10 && window_timer < 14){ draw_sprite_ext(sprite_get("ring"), 0, x+1, y-40, 14 - state_timer, 14 - state_timer, 0, c_white, 0.1); }
+	if (window == 10 && window_timer < 13){ draw_sprite_ext(sprite_get("ring"), 0, x+1, y-40, 13 - state_timer, 13 - state_timer, 0, c_white, 0.3); }
+	if (window == 10 && window_timer < 12){ draw_sprite_ext(sprite_get("ring"), 0, x+1, y-40, 12 - state_timer, 12 - state_timer, 0, c_white, 0.5); }
+	if (window == 10 && window_timer < 11){ draw_sprite_ext(sprite_get("ring"), 0, x+1, y-40, 11 - state_timer, 11 - state_timer, 0, c_white, 0.7); }
+	if (window == 10 && window_timer < 10){ draw_sprite_ext(sprite_get("ring"), 0, x+1, y-40, 10 - state_timer, 10 - state_timer, 0, c_white, 0.9); }
+}
+
 if (attack == AT_JAB && state == PS_ATTACK_GROUND && window == 6 && window_timer < 15){
 	if (hsp > 0){
 	draw_sprite_ext(sprite_get("boosters_light"), get_gameplay_time()*.4, x-6 * spr_dir, y-42, 1.5, 2, -90, c_white, 1);
@@ -112,10 +120,26 @@ if (attack == AT_USPECIAL_2 && window == 2 && (state == PS_ATTACK_AIR || state =
 if (attack == AT_USPECIAL_GROUND){
 	if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR){
 	if (state_timer < 15){ draw_sprite_ext(sprite_get("ring"), 0, x+1, y-40, 15 - state_timer, 15 - state_timer, 0, c_white, 0.6); }
+		if (get_player_color(player) != 8){
 	if (window == 3 && window_timer >= 3 || window == 4){
     draw_sprite_ext(sprite_get("super_uspecial_beam_start"), 0, x+20 * spr_dir, y-92, 1 * spr_dir, 1, 45 * spr_dir, c_white, 1);
 	}
 	if (window == 5){ draw_sprite_ext(sprite_get("super_uspecial_beam_start"), window_timer / 4, x+20 * spr_dir, y-92, 1 * spr_dir, 1, 45 * spr_dir, c_white, 1); }
+	
+	if (Beam_id > 0 && instance_exists(Beam_id)){
+	draw_sprite_ext(sprite_get("super_uspecial_beam_end"), 0, Beam_id.x, Beam_id.y, 1 * spr_dir, 1, 45 * spr_dir, c_white, 1);
+		}
+	}
+		if (get_player_color(player) == 8){
+	if (window == 3 && window_timer >= 3 || window == 4){
+    draw_sprite_ext(sprite_get("super_uspecial_beam_start"), 0, x+20 * spr_dir, y-92, 1 * spr_dir, 1, 45 * spr_dir, 1688209, 1);
+	}
+	if (window == 5){ draw_sprite_ext(sprite_get("super_uspecial_beam_start"), window_timer / 4, x+20 * spr_dir, y-92, 1 * spr_dir, 1, 45 * spr_dir, 1688209, 1); }
+	
+	if (Beam_id > 0 && instance_exists(Beam_id)){
+	draw_sprite_ext(sprite_get("super_uspecial_beam_end"), 0, Beam_id.x, Beam_id.y, 1 * spr_dir, 1, 45 * spr_dir, 1688209, 1);
+			}
+		}
 	}
 }
 

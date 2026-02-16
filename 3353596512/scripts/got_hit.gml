@@ -51,6 +51,7 @@ if (prev_state == PS_ATTACK_GROUND || prev_state == PS_ATTACK_AIR) && attack == 
 	}
 	var scrap_lost = create_hitbox(2, 3 + prev_scrap.size, x + 26*spr_dir, y - 28);
 	scrap_lost.init = false;
+	scrap_lost.uses_shader = false;
 	if (prev_scrap.size == 0){
 		scrap_lost.image_index = prev_scrap.index;
 	} else {

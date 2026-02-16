@@ -36,31 +36,32 @@ if (enemy_hitboxID.type == 1 && (state < 3 || (state == 3 && returning))){
     	    other.hitpause = true;
     	}
     } else if state < 3 {
-        if(enemy_hitboxID.attack == AT_FSPECIAL && enemy_hitboxID.hbox_num == 1){
-            with(enemy_hitboxID){
-        	    var _xx = lengthdir_x(point_distance(x, y, other.x, other.y)/2, point_direction(x, y, other.x, other.y));
-        	    var _yy = lengthdir_y(point_distance(x, y, other.x, other.y)/2, point_direction(x, y, other.x, other.y));
-            }
-            player_id.has_hit = true;
-            if ignited spawn_hit_fx(x + _xx, y + _yy, HFX_ZET_FIRE) else spawn_hit_fx(x + _xx, y + _yy, 302);
-            sound_play(asset_get("sfx_shovel_hit_med2"));
-            with(player_id){
-                set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
-        		window = 5;
-        		window_timer = 0;
-        		destroy_hitboxes();
-        		move_cooldown[AT_NSPECIAL] = 70;
-        		fspec_grounded = true;
-        		if other.ignited {
-        // 			burned = true;
-        //     		burnt_id = self;
-        //     		burn_timer = 0;
-            		sound_play(asset_get("sfx_burnapplied"));
-        		}
-            }
-            if(instance_exists(axe_hitbox)) axe_hitbox.destroyed = true;
-            instance_destroy(self)
-            exit;
-        }
+        // if(enemy_hitboxID.attack == AT_FSPECIAL && enemy_hitboxID.hbox_num == 1){
+        //     with(enemy_hitboxID){
+        // 	    var _xx = lengthdir_x(point_distance(x, y, other.x, other.y)/2, point_direction(x, y, other.x, other.y));
+        // 	    var _yy = lengthdir_y(point_distance(x, y, other.x, other.y)/2, point_direction(x, y, other.x, other.y));
+        //     }
+        //     player_id.has_hit = true;
+        //     if ignited spawn_hit_fx(x + _xx, y + _yy, HFX_ZET_FIRE) else spawn_hit_fx(x + _xx, y - _yy, 302);
+        //     sound_play(asset_get("sfx_shovel_hit_med2"));
+        //     with(player_id){
+        //         set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
+        // 		window = 5;
+        // 		window_timer = 0;
+        // 		destroy_hitboxes();
+        // 		move_cooldown[AT_NSPECIAL] = 70;
+        // 		fspec_grounded = true;
+        // 		hsp = clamp(hsp, -3, 3);
+        // 		if other.ignited {
+        // // 			burned = true;
+        // //     		burnt_id = self;
+        // //     		burn_timer = 0;
+        //     		sound_play(asset_get("sfx_burnapplied"));
+        // 		}
+        //     }
+        //     if(instance_exists(axe_hitbox)) axe_hitbox.destroyed = true;
+        //     instance_destroy(self)
+        //     exit;
+        // }
     }
 }
