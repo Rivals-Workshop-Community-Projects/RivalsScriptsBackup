@@ -2,7 +2,6 @@
 // Used for gameplay mechanics
 // Runs every frame
 
-
 with(oPlayer){
 
 	if ("mimikyu_curse" in self && mimikyu_curse_tick >= 3){
@@ -84,6 +83,8 @@ if (state == PS_WALL_JUMP){
 	move_cooldown[AT_FSPECIAL] = 0;
 	move_cooldown[AT_USPECIAL] = 0;
 }
+
+if (!free) move_cooldown[AT_DSPECIAL] = 0;
 
 // Determines Fspecial Air Time Usage / Cooldown
 if (fspec_per_air == 0){
@@ -180,11 +181,7 @@ if (mim_wisp != noone){
 		}
 	}
 }
-else {
-	if (touched_wisp){
-		touched_wisp = false;
-	}
-}
+
 
 // Fspecial attacking random fx
 if (attack == AT_FSPECIAL_2){
@@ -420,6 +417,7 @@ with(pHitBox){
 				with (player_id.mim_wisp){
 					if (active){
 						if (place_meeting(x, y, other)){
+							state = 6;
 							if (other.hbox_num <= 2){
 								
 								if (other.hbox_num == 2 && !other.is_new_ball){

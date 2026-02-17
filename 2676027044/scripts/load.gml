@@ -16,7 +16,7 @@ sprite_change_offset("hitfx_wood_big", 128, 128);
 sprite_change_offset("hitfx_wood_small", 80, 80);
 
 sprite_change_offset("hitfx_nail", 128, 128);
-sprite_change_offset("hitfx_mimibig", 128, 128);
+sprite_change_offset("hitfx_mimibig", 128, 144);
 
 sprite_change_offset("fx_fire1", 112, 112);
 sprite_change_offset("fx_fire2", 64, 64);

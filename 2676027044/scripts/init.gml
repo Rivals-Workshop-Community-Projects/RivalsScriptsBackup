@@ -31,18 +31,18 @@ vfx_pos4 = 20;
 
 vfx_list = [vfx_cloud, vfx_play1, vfx_play2, vfx_play3, vfx_play4];
 
-hfx_shadow_small = hit_fx_create( sprite_get("hitfx_shadow_small"), 35);
-hfx_shadow_mid = hit_fx_create( sprite_get("hitfx_shadow_mid"), 35);
-hfx_shadow_big = hit_fx_create( sprite_get("hitfx_shadow_big"), 35);
+hfx_shadow_small = hit_fx_create( sprite_get("hitfx_shadow_small"), 15);
+hfx_shadow_mid = hit_fx_create( sprite_get("hitfx_shadow_mid"), 20);
+hfx_shadow_big = hit_fx_create( sprite_get("hitfx_shadow_big"), 25);
 
-hfx_fire1 = hit_fx_create( sprite_get("fx_fire1"), 35);
-hfx_fire2 = hit_fx_create( sprite_get("fx_fire2"), 35);
-hfx_fire3 = hit_fx_create( sprite_get("fx_fire3"), 20);
+hfx_fire1 = hit_fx_create( sprite_get("fx_fire1"), 25);
+hfx_fire2 = hit_fx_create( sprite_get("fx_fire2"), 25);
+hfx_fire3 = hit_fx_create( sprite_get("fx_fire3"), 40);
 
-hfx_wood_big = hit_fx_create( sprite_get("hitfx_wood_big"), 35);
-hfx_wood_small = hit_fx_create( sprite_get("hitfx_wood_small"), 25);
+hfx_wood_big = hit_fx_create( sprite_get("hitfx_wood_big"), 20);
+hfx_wood_small = hit_fx_create( sprite_get("hitfx_wood_small"), 20);
 
-hfx_nail = hit_fx_create( sprite_get("hitfx_nail"), 40);
+hfx_nail = hit_fx_create( sprite_get("hitfx_nail"), 20);
 hfx_mimibig = hit_fx_create( sprite_get("hitfx_mimibig"), 40);
 
 set_hit_particle_sprite(1, sprite_get("blank"));
@@ -106,8 +106,8 @@ gravity_speed = .42;
 hitstun_grav = .45;
 air_friction = .04;
 air_accel = .3;
-max_fall = 8; //maximum fall speed without fastfalling
-fast_fall = 14; //fast fall speed
+max_fall = 9; //maximum fall speed without fastfalling
+fast_fall = 13; //fast fall speed
 
 // Movement
 ground_friction = .45;
@@ -133,11 +133,11 @@ jump_speed = 10.5;
 djump_speed = 10.5;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
 short_hop_speed = 5;
-max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground
+max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
 walljump_vsp = 8;
 walljump_hsp = 6;
 walljump_time = 32;
-prat_fall_accel = 1; //multiplier of air_accel while in pratfall
+prat_fall_accel = .5; //multiplier of air_accel while in pratfall
 prat_land_time = 16;
 land_time = 4; //normal landing frames
 

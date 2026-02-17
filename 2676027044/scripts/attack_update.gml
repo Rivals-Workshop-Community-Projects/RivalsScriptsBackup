@@ -84,6 +84,7 @@ switch(attack){
 						spawn_hit_fx(x + (50 * spr_dir), y - 36, hfx_shadow_small);
 					}
 					else {
+						move_cooldown[AT_DSPECIAL] = 9999;
 						mim_wisp = instance_create(x, y + 50, "obj_article1");	
 						spawn_hit_fx(x, y +32, hfx_shadow_small);
 						if (!hitpause){
@@ -119,11 +120,6 @@ switch(attack){
 		}
 	break;
 	
-	//case AT_FSTRONG:
-	//	if (window == 3){
-	//		shake_camera(3,5);
-	//	}
-	break;
 	
 	// Forward Special - Normal Multihit
 	case AT_FSPECIAL:
@@ -167,7 +163,7 @@ switch(attack){
 					window = 1;
 					window_timer = 8;
 					fspec_flip = true;
-					set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+					//set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
 					touched_wisp = false;
 				}
 
@@ -184,7 +180,7 @@ switch(attack){
 		}
 		
 		//morpeko alt
-		if (get_player_color(player) == 11 && window == 1 && window_timer == 1) {
+		if (get_player_color(player) == 12 && window == 1 && window_timer == 1) {
 			if (aurawheel == true)
 				aurawheel = false;
 			else 
@@ -297,6 +293,7 @@ switch(attack){
 	
 	case AT_USPECIAL:
 		if (atk_air || atk_ground){
+			
 			can_fast_fall = false;
 			
 			// Checks if touching ledge and slides the character upward
@@ -318,12 +315,14 @@ switch(attack){
 				uspec_touched_ground = true;
 			}
 			
+			print_debug(touched_wisp);
 			
 			if (!uspec_pratfall){
 				set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
 			}
 			else {
 				set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 7);
+				
 			}
 			
 			// First Zip

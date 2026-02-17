@@ -4,6 +4,7 @@
 // can be article1, article2, article3, articlesolid, articleplatform
 
 life_timer = 600;
+death_timer = 30;
 wisp_alpha = .85;
 
 state = 0;

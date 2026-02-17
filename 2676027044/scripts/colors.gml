@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 15, 16, 45 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 30 );
 
 // Shiny
 set_color_profile_slot( 1, 0, 189, 151, 188 ); //Ghost Purp
@@ -256,55 +256,85 @@ set_color_profile_slot( 22, 5, 150, 219, 221 ); //Tail
 set_color_profile_slot( 22, 6, 150, 219, 221 ); //Cheeks
 set_color_profile_slot( 22, 7, 201, 180, 204 ); //Will-O
 
-// Sinistcha
-set_color_profile_slot( 23, 0, 106, 167, 106 ); //Ghost Purp
-set_color_profile_slot( 23, 1, 209, 206, 201 ); //Body
-set_color_profile_slot( 23, 2, 209, 206, 201 ); //Belly (ColorMap)
-set_color_profile_slot( 23, 3, 68, 102, 79 ); //Shadows
-set_color_profile_slot( 23, 4, 110, 101, 107 ); //Ears (ColorMap)
-set_color_profile_slot( 23, 5, 207, 202, 141 ); //Tail
-set_color_profile_slot( 23, 6, 246, 220, 150 ); //Cheeks
-set_color_profile_slot( 23, 7, 202, 207, 176 ); //Will-O
-
 // Flutter Mane
-set_color_profile_slot( 24, 0, 230, 149, 164 ); //Ghost Purp
-set_color_profile_slot( 24, 1, 58, 120, 136 ); //Body
-set_color_profile_slot( 24, 2, 58, 120, 136 ); //Belly (ColorMap)
-set_color_profile_slot( 24, 3, 217, 70, 119 ); //Shadows
-set_color_profile_slot( 24, 4, 209, 150, 200 ); //Ears (ColorMap)
-set_color_profile_slot( 24, 5, 209, 150, 200 ); //Tail
-set_color_profile_slot( 24, 6, 137, 191, 185 ); //Cheeks
-set_color_profile_slot( 24, 7, 193, 208, 217 ); //Will-O
+set_color_profile_slot( 23, 0, 230, 149, 164 ); //Ghost Purp
+set_color_profile_slot( 23, 1, 58, 120, 136 ); //Body
+set_color_profile_slot( 23, 2, 58, 120, 136 ); //Belly (ColorMap)
+set_color_profile_slot( 23, 3, 217, 70, 119 ); //Shadows
+set_color_profile_slot( 23, 4, 209, 150, 200 ); //Ears (ColorMap)
+set_color_profile_slot( 23, 5, 209, 150, 200 ); //Tail
+set_color_profile_slot( 23, 6, 137, 191, 185 ); //Cheeks
+set_color_profile_slot( 23, 7, 193, 208, 217 ); //Will-O
+
+// Sinistcha
+set_color_profile_slot( 24, 0, 106, 167, 106 ); //Ghost Purp
+set_color_profile_slot( 24, 1, 209, 206, 201 ); //Body
+set_color_profile_slot( 24, 2, 209, 206, 201 ); //Belly (ColorMap)
+set_color_profile_slot( 24, 3, 68, 102, 79 ); //Shadows
+set_color_profile_slot( 24, 4, 110, 101, 107 ); //Ears (ColorMap)
+set_color_profile_slot( 24, 5, 207, 202, 141 ); //Tail
+set_color_profile_slot( 24, 6, 246, 220, 150 ); //Cheeks
+set_color_profile_slot( 24, 7, 202, 207, 176 ); //Will-O
+
+// Substitute
+set_color_profile_slot( 25, 0, 163, 191, 151 ); //Ghost Purp
+set_color_profile_slot( 25, 1, 163, 191, 151 ); //Body
+set_color_profile_slot( 25, 2, 242, 243, 241 ); //Belly (ColorMap)
+set_color_profile_slot( 25, 3, 69, 65, 62 ); //Shadows
+set_color_profile_slot( 25, 4, 88, 121, 91 ); //Ears (ColorMap)
+set_color_profile_slot( 25, 5, 88, 121, 91 ); //Tail
+set_color_profile_slot( 25, 6, 242, 243, 241 ); //Cheeks
+set_color_profile_slot( 25, 7, 163, 191, 151 ); //Will-O
+
+// "Sylveon"
+set_color_profile_slot( 26, 0, 180, 223, 242 ); //Ghost Purp
+set_color_profile_slot( 26, 1, 243, 228, 230 ); //Body
+set_color_profile_slot( 26, 2, 247, 156, 173 ); //Belly (ColorMap)
+set_color_profile_slot( 26, 3, 76, 125, 186 ); //Shadows
+set_color_profile_slot( 26, 4, 247, 156, 173 ); //Ears (ColorMap)
+set_color_profile_slot( 26, 5, 247, 156, 173 ); //Tail
+set_color_profile_slot( 26, 6, 135, 208, 244 ); //Cheeks
+set_color_profile_slot( 26, 7, 113, 157, 210 ); //Will-O
 
 // BLW
-set_color_profile_slot( 25, 0, 39, 40, 46 ); //Ghost Purp
-set_color_profile_slot( 25, 1, 75, 76, 77 ); //Body
-set_color_profile_slot( 25, 2, 75, 76, 77 ); //Belly (ColorMap)
-set_color_profile_slot( 25, 3, 255, 217, 0 ); //Shadows
-set_color_profile_slot( 25, 4, 255, 217, 0 ); //Ears (ColorMap)
-set_color_profile_slot( 25, 5, 125, 124, 120 ); //Tail
-set_color_profile_slot( 25, 6, 255, 217, 0 ); //Cheeks
-set_color_profile_slot( 25, 7, 77, 72, 50 ); //Will-O
+set_color_profile_slot( 27, 0, 39, 40, 46 ); //Ghost Purp
+set_color_profile_slot( 27, 1, 75, 76, 77 ); //Body
+set_color_profile_slot( 27, 2, 75, 76, 77 ); //Belly (ColorMap)
+set_color_profile_slot( 27, 3, 255, 217, 0 ); //Shadows
+set_color_profile_slot( 27, 4, 255, 217, 0 ); //Ears (ColorMap)
+set_color_profile_slot( 27, 5, 125, 124, 120 ); //Tail
+set_color_profile_slot( 27, 6, 255, 217, 0 ); //Cheeks
+set_color_profile_slot( 27, 7, 77, 72, 50 ); //Will-O
 
 // Tomo
-set_color_profile_slot( 26, 0, 225, 233, 246 ); //Ghost Purp
-set_color_profile_slot( 26, 1, 255, 103, 112 ); //Body
-set_color_profile_slot( 26, 2, 255, 103, 112 ); //Belly (ColorMap)
-set_color_profile_slot( 26, 3, 86, 102, 130 ); //Shadows
-set_color_profile_slot( 26, 4, 88, 252, 104 ); //Ears (ColorMap)
-set_color_profile_slot( 26, 5, 214, 152, 36 ); //Tail
-set_color_profile_slot( 26, 6, 88, 252, 104 ); //Cheeks
-set_color_profile_slot( 26, 7, 248, 250, 255 ); //Will-O
+set_color_profile_slot( 28, 0, 225, 233, 246 ); //Ghost Purp
+set_color_profile_slot( 28, 1, 255, 103, 112 ); //Body
+set_color_profile_slot( 28, 2, 255, 103, 112 ); //Belly (ColorMap)
+set_color_profile_slot( 28, 3, 86, 102, 130 ); //Shadows
+set_color_profile_slot( 28, 4, 88, 252, 104 ); //Ears (ColorMap)
+set_color_profile_slot( 28, 5, 214, 152, 36 ); //Tail
+set_color_profile_slot( 28, 6, 88, 252, 104 ); //Cheeks
+set_color_profile_slot( 28, 7, 248, 250, 255 ); //Will-O
 
 // Mimi Echo
-set_color_profile_slot( 27, 0, 61, 116, 238 ); //Ghost Purp
-set_color_profile_slot( 27, 1, 247, 248, 250 ); //Body
-set_color_profile_slot( 27, 2, 247, 248, 250 ); //Belly (ColorMap)
-set_color_profile_slot( 27, 3, 152, 217, 213 ); //Shadows
-set_color_profile_slot( 27, 4, 101, 188, 255 ); //Ears (ColorMap)
-set_color_profile_slot( 27, 5, 61, 116, 238 ); //Tail
-set_color_profile_slot( 27, 6, 101, 188, 255 ); //Cheeks
-set_color_profile_slot( 27, 7, 61, 116, 238 ); //Will-O
+set_color_profile_slot( 29, 0, 61, 116, 238 ); //Ghost Purp
+set_color_profile_slot( 29, 1, 247, 248, 250 ); //Body
+set_color_profile_slot( 29, 2, 247, 248, 250 ); //Belly (ColorMap)
+set_color_profile_slot( 29, 3, 152, 217, 213 ); //Shadows
+set_color_profile_slot( 29, 4, 101, 188, 255 ); //Ears (ColorMap)
+set_color_profile_slot( 29, 5, 61, 116, 238 ); //Tail
+set_color_profile_slot( 29, 6, 101, 188, 255 ); //Cheeks
+set_color_profile_slot( 29, 7, 61, 116, 238 ); //Will-O
+
+// Malice
+set_color_profile_slot( 30, 0, 169, 79, 77 ); //Ghost Purp
+set_color_profile_slot( 30, 1, 159, 176, 136 ); //Body
+set_color_profile_slot( 30, 2, 215, 216, 232 ); //Belly (ColorMap)
+set_color_profile_slot( 30, 3, 56, 46, 52 ); //Shadows
+set_color_profile_slot( 30, 4, 56, 46, 52 ); //Ears (ColorMap)
+set_color_profile_slot( 30, 5, 169, 79, 77 ); //Tail
+set_color_profile_slot( 30, 6, 215, 216, 232 ); //Cheeks
+set_color_profile_slot( 30, 7, 169, 79, 77 ); //Will-O
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

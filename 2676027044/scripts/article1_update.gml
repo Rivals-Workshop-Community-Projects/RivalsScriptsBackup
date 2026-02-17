@@ -12,9 +12,8 @@ switch(state){
 
 	// Idle State
 	case 1:
-		life_timer--;
-		
 		if (life_timer <= 60){
+			life_timer--;
 			wisp_alpha = wisp_alpha - 0.01
 		}
 		
@@ -251,28 +250,17 @@ switch(state){
 
 	// Whiff/Hit
 	case 6:
-		vsp = 0;
-		hsp = 0;
-		wisp_alpha = 0.6;
-		if (cooldown_timer <= 1){
-			var hitfx = spawn_hit_fx(x, y - 35, player_id.hfx_fire3);
-			player_id.mim_wisp = noone;
-			instance_destroy();
-			exit;
-		}
-	break;
-
 	// Parried
 	case 7:
 		vsp = 0;
 		hsp = 0;
-		wisp_alpha = 0.6;
-		if (cooldown_timer <= 1){
-			var hitfx = spawn_hit_fx(x, y - 35, player_id.hfx_fire3);
-			player_id.mim_wisp = noone;
-			instance_destroy();
-			exit;
-		}
+		
+
+		var hitfx = spawn_hit_fx(x, y - 35, player_id.hfx_fire3);
+		hitfx.image_alpha = 0.5
+		player_id.mim_wisp = noone;
+		instance_destroy();
+		exit;
 	break;
 
 }
@@ -282,7 +270,7 @@ switch(active){
 	case true:
 
 		if (not_held && state < 3){
-			if (current_sprite_index != sprite_curse_active && life_timer > 60){current_sprite_index = sprite_curse_active;}
+			if (current_sprite_index != sprite_curse_active /*&& life_timer > 60*/ ){current_sprite_index = sprite_curse_active;}
 			
 			with(oPlayer){
 /*
@@ -357,5 +345,7 @@ switch(active){
 		}
 	break;
 }
+
+print_debug(cooldown_timer)
 
 state_timer++;

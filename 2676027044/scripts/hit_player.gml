@@ -5,6 +5,7 @@
 // Use my_hitboxID to reference the hitbox you hit them with
 // To change the knockback given, edit hit_player_obj.orig_knock
 
+
 switch(my_hitboxID.attack){
 	
 	case AT_DSPECIAL:
@@ -47,6 +48,9 @@ switch(my_hitboxID.attack){
 			// Play Sound
 			sound_play( sound_get("getboosted"));
 
+			//Enhanced visual
+			var mimi_hfx = spawn_hit_fx( my_hitboxID.x, my_hitboxID.y, hfx_mimibig); mimi_hfx.depth = -20;
+
 			with(hit_player_obj){
 				take_damage(player, other, 5);
 			}
@@ -88,6 +92,8 @@ switch(my_hitboxID.attack){
 	
 	case AT_USTRONG:
 		if (my_hitboxID.orig_player == player){
+			// NO LONGER IS ENHANCED BY CURSE
+			/*
 			if (my_hitboxID.hbox_num == 1){
 				landed_curse_tipper = true;
 					
@@ -114,17 +120,26 @@ switch(my_hitboxID.attack){
 					}
 				}
 					
-			}	
+			}
+			*/
 			if (my_hitboxID.hbox_num == 2){ 
 				sound_play(asset_get("sfx_blow_heavy1"), 0, noone, 1, 1)  	
 			}
 		}
 	break;
 	
+	case AT_FSTRONG:
+		//if (my_hitboxID.orig_player == player){
+		//	set_player_damage(player, clamp(get_player_damage(player) + 3, 0, 999) )
+		//}
+	break;
+	
 	case AT_DSTRONG:
 		if (my_hitboxID.orig_player == player){
-			if (hit_player_obj.mimikyu_curse){
+			if (hit_player_obj.mimikyu_curse && my_hitboxID.hbox_num != 1){
 				
+				//Enhanced visual
+				var mimi_hfx = spawn_hit_fx( my_hitboxID.x, my_hitboxID.y , hfx_mimibig); mimi_hfx.depth = -20;
 				// Play Sound
 				sound_play( sound_get("getboosted"));
 				sound_play( asset_get("mfx_hp_spawn"));
@@ -136,9 +151,9 @@ switch(my_hitboxID.attack){
 				}
 				
 				// Change KB
-				if (my_hitboxID.hbox_num == 1){
+				if (my_hitboxID.hbox_num == 3){
 					with (hit_player_obj){
-						orig_knock = 8 + get_player_damage(player) * 1.1 * 0.12 * other.hit_player_obj.knockback_adj;
+						orig_knock = 8.5 + get_player_damage(player) * 1.1 * 0.12 * other.hit_player_obj.knockback_adj;
 					}
 
 				}
@@ -158,7 +173,7 @@ switch(my_hitboxID.attack){
 		if (my_hitboxID.orig_player == player){
 //			print("hit player")
 			if (self.state == PS_HITSTUN_LAND || self.state == PS_HITSTUN){
-//				print("exiting attack")				
+//				print("exiting attack")			c	
 				with(hit_player_obj){
 					hitstun = false;
 					hitstop = 0;
@@ -171,7 +186,7 @@ switch(my_hitboxID.attack){
 //				print("successful hit")
 				set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
 				
-				if (!hit_player_obj.super_armor){
+				if (!hit_player_obj.super_armor && !hit_player_obj.custom_clone && !hit_player_obj.clone){
 					attack_end();
 					window = 1;
 					window_timer = 1;
@@ -247,8 +262,8 @@ switch(my_hitboxID.attack){
 				// Play Sound
 				sound_play( sound_get("getboosted"));
 				
-				var nail_hfx = spawn_hit_fx( my_hitboxID.x - 32 * spr_dir, my_hitboxID.y - 10, hfx_nail) 
-				nail_hfx.depth = -20;
+				//Enhanced visual
+				var mimi_hfx = spawn_hit_fx( my_hitboxID.x, my_hitboxID.y, hfx_mimibig); mimi_hfx.depth = -20;
 				
 				with(hit_player_obj){
 					take_damage(player, other, 7);
