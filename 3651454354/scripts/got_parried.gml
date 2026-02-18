@@ -1,0 +1,1 @@
+sound_stop(sound_get("snd_chain_extend"))
