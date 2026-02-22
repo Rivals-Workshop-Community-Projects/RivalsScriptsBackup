@@ -352,17 +352,23 @@ if (attack == AT_NAIR){
 		
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			
-				window = 5;
-				window_timer = 0;
-				
-				if (!free){
-					vsp = -5 - (has_hit * 2.5); // go a little higher if you hit the finishing hit - would be ideal for some combos.
-					// clamp hsp so you don't go flying
-					hsp = clamp(hsp, leave_ground_max*-0.85, leave_ground_max*0.85);
-					spawn_base_dust( x + (0 * spr_dir), y, "n_wavedash", spr_dir);
-					sound_play(djump_sound, false, noone, 0.25, 1.25);
-					move_cooldown[AT_NAIR] = 30;
+				if (!was_parried){
+					window = 5;
+					window_timer = 0;
+					
+					if (!free){
+						vsp = -5 - (has_hit * 2.5); // go a little higher if you hit the finishing hit - would be ideal for some combos.
+						// clamp hsp so you don't go flying
+						hsp = clamp(hsp, leave_ground_max*-0.85, leave_ground_max*0.85);
+						spawn_base_dust( x + (0 * spr_dir), y, "n_wavedash", spr_dir);
+						sound_play(djump_sound, false, noone, 0.25, 1.25);
+						move_cooldown[AT_NAIR] = 30;
+					}
+				} else {
+					set_state(PS_PRATLAND);
+					sound_play(landing_lag_sound);
 				}
+				
 			}
 		}
 	}
@@ -384,7 +390,7 @@ if (attack == AT_NAIR){
 					set_state(PS_LANDING_LAG);
 				} else {
 					set_state(PS_PRATLAND);
-					sound_play(landing_lag_sound);
+					// sound_play(landing_lag_sound);
 				}
 			}
 		}
@@ -1232,7 +1238,15 @@ if (attack == AT_USPECIAL){
 			hsp *= 0.5;
 			spr_angle = 0;
 			landing_lag_time = 28;
-			set_state(PS_LANDING_LAG);
+			
+			if (!was_parried){
+				set_state(PS_LANDING_LAG);
+			} else {
+				set_state(PS_PRATLAND);
+				sound_play(landing_lag_sound);
+				sound_play(asset_get("sfx_blow_heavy1"), false, noone, 0.5, 1);
+				spawn_base_dust( x + (0 * spr_dir), y, "land", spr_dir);
+			}
 			//sound_play(landing_lag_sound);
 			//sound_play(asset_get("sfx_blow_heavy1"));
 			//spawn_base_dust( x + (0 * spr_dir), y, "land", spr_dir);
