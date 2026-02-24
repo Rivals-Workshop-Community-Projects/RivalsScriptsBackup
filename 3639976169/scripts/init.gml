@@ -110,6 +110,7 @@ spr_orb_frost = sprite_get("frost_orb");
 spr_orb_dark = sprite_get("dark_orb");
 spr_orb_plasma = sprite_get("plasma_orb");
 spr_arrow = asset_get("triangle_spr");
+spr_meteor_fire = sprite_get("meteor_fire");
 
 orb1 = instance_create(x, y, "obj_article1");
 orb2 = instance_create(x, y, "obj_article1");
@@ -144,6 +145,8 @@ position_delay =
 vfx_dark_orb = hit_fx_create(sprite_get("dark_orb_attack"), 30);
 vfx_lightning_aura = hit_fx_create(sprite_get("lightning_aura"), 6);
 vfx_hologram_vanish = hit_fx_create(sprite_get("hologram_vanish"), 20);
+vfx_meteor_explode = hit_fx_create(sprite_get("meteor_explode"), 22);
+vfx_meteor_land = hit_fx_create(sprite_get("meteor_land"), 22);
 
 anim_landinglag = sprite_get("landinglag");
 
@@ -158,16 +161,34 @@ prev_attack_endlag = 0;
 
 hologram_valid_attack = AT_JAB;
 hologram = noone;
-hologram_was_alive = false;
 
 energized = false;
 energized_attack = false;
+
+meteor_fx_obj = noone;
+channeled_plasma = false;
+charge_amount = 0;
 
 
 // Enable the old frost orb behavior by setting this to true.
 old_ice = has_rune("A");
 
+// this should fix replay desync
+//temp_clone = noone;
+if (!custom_clone && !instance_exists(oTestPlayer))
+{
+    //temp_clone = instance_create(x, y-60, "oPlayer");
+    //temp_clone.jump_to_attack = 0;
+    hologram = instance_create(x, y, "oPlayer");
+    hologram.owner = self;
+    hologram.jump_to_attack = 0;
+    hologram.super_armor = true;
+    hologram.hologram_active = false;
+    with (hologram)
+    {
+        user_event(3);
+    }
+}
+
 // Character Compatibilities
 TCG_Kirby_Copy = 15;
-
-

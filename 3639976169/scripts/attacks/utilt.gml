@@ -4,7 +4,7 @@ set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 3);
 
 set_window_value(AT_UTILT, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 11);
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 
@@ -19,7 +19,7 @@ set_window_value(AT_UTILT, 2, AG_WINDOW_VSPEED, -5);
 
 
 set_window_value(AT_UTILT, 3, AG_WINDOW_TYPE, 5);
-set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_UTILT, 3, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_UTILT, 3, AG_WINDOW_ANIM_FRAME_START, 9);
 set_window_value(AT_UTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
@@ -34,7 +34,7 @@ set_hitbox_value(AT_UTILT, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_UTILT, 1, HG_EXTRA_HITPAUSE, -4);
 set_hitbox_value(AT_UTILT, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_UTILT, 1, HG_DAMAGE, 6);
-set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_UTILT, 1, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_UTILT, 1, HG_KNOCKBACK_SCALING, 0.35);
 set_hitbox_value(AT_UTILT, 1, HG_HITSTUN_MULTIPLIER, 1.2);
 set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -40);

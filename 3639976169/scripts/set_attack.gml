@@ -35,14 +35,20 @@ if (old_ice)
         damage_scaling = 0.5;
     }
 }
-
 switch (attack)
 {
     case AT_TAUNT:
         if (down_down) attack = AT_TAUNT_2;
         break;
 }
-if (attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_DSPECIAL && attack != AT_FSPECIAL && attack != AT_NSPECIAL)
+
+if (custom_clone)
+{
+    if (attack != AT_TAUNT && attack != AT_TAUNT_2)
+        attack = hologram_valid_attack;
+}
+
+if (attack != AT_TAUNT && attack != AT_TAUNT_2 && attack != AT_DSPECIAL && attack != AT_FSPECIAL && attack != AT_NSPECIAL && attack != AT_DSPECIAL_2)
 {
     hologram_valid_attack = attack;
 }
@@ -55,7 +61,7 @@ if (frame_multiplier != 1.0 && attack != AT_TAUNT && attack != AT_TAUNT_2)
     set_window_value(attack, 1, AG_WINDOW_LENGTH, round(prev_attack_startup * frame_multiplier));
     set_window_value(attack, 3, AG_WINDOW_LENGTH, round(prev_attack_endlag  * frame_multiplier));
 }
-
+var hologram_was_alive = instance_exists(hologram) ? hologram.hologram_active : false;
 switch (attack)
 {
     case AT_FSPECIAL:
@@ -63,6 +69,7 @@ switch (attack)
         orb_slots = [orb_slots[1], orb_slots[2], 0];
         break;
     case AT_DSPECIAL:
-        hologram_was_alive = instance_exists(hologram);
+        if (hologram_was_alive)
+            attack = AT_DSPECIAL_2;
         break;
 }

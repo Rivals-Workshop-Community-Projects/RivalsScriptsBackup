@@ -48,6 +48,7 @@ sprite_change_offset("nspecial", 0, 0, true);
 sprite_change_offset("fspecial", 28, 55, true);
 sprite_change_offset("uspecial", 18, 63, true);
 sprite_change_offset("dspecial", 19, 44, true);
+sprite_change_offset("dspecial_2", 18, 79, true);
 sprite_change_offset("taunt", 18, 47);
 sprite_change_offset("taunt_2", 18, 47);
 
@@ -55,6 +56,7 @@ sprite_change_offset("plat", 40, 47);
 
 sprite_change_offset("orb_slot", 8, 7);
 sprite_change_offset("orb_slot_primary", 8, 7);
+sprite_change_offset("orb_slot_outline", 8, 7);
 sprite_change_offset("light_orb", 8, 7);
 sprite_change_offset("frost_orb", 8, 7);
 sprite_change_offset("dark_orb", 8, 7);
@@ -65,7 +67,11 @@ sprite_change_offset("dark_orb_attack", 24, -16);
 sprite_change_offset("lightning_aura", 80, 80);
 sprite_change_offset("hologram_vanish", 48, 94);
 sprite_change_offset("meteor", 32, 32);
+sprite_change_offset("meteor_fire", 80, 128);
+sprite_change_offset("meteor_land", 80, 128);
+sprite_change_offset("meteor_explode", 80, 128);
 sprite_change_offset("spawn", 12, 39);
 sprite_change_offset("boot_sequence", 12, 39);
 
 set_victory_theme(sound_get("victory"));
+set_victory_bg(sprite_get("victory_bg"));

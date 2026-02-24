@@ -11,7 +11,7 @@ switch (orb_to_add)
     case 2:
         sound_play(asset_get("sfx_ice_burst_up"), false, noone, 1, 1);
         break;
-    case 23:
+    case 23: case 43: case 63: case 83: case 103:
         sound_play(sound_get("dark_orb"), false, noone, 1, 1);
         break;
     case 4:

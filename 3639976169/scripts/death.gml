@@ -9,14 +9,13 @@ if (custom_clone)
 }
 
 if (instance_exists(hologram))
-{
-    with (hologram) spawn_hit_fx(x, y, vfx_hologram_vanish);
-    instance_destroy(hologram.orb1);
-    instance_destroy(hologram.orb2);
-    instance_destroy(hologram.orb3);
-    instance_destroy(hologram);
+{   
+    with (hologram) user_event(3);
 }
 
 armor_duration = 0;
 armor_temp = 0;
 soft_armor = 0;
+
+energized = false;
+energized_attack = false;

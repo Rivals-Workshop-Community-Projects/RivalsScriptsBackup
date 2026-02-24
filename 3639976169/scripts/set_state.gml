@@ -3,13 +3,14 @@ if (custom_clone && variable_instance_exists(self, "jump_to_attack"))
 {
     if (jump_to_attack = -1 && (state_cat == SC_AIR_NEUTRAL || state_cat == SC_GROUND_NEUTRAL))
     {
-        spawn_hit_fx(x, y, vfx_hologram_vanish);
-        instance_destroy(orb1);
-        instance_destroy(orb2);
-        instance_destroy(orb3);
-        instance_destroy(self);
+        //print_debug("i did my thingy now leave me");
+        user_event(3);
         exit;
     }
+}
+if (!free)
+{
+    channeled_plasma = false;
 }
 if (state != PS_DEAD && state != PS_RESPAWN)
 {
@@ -18,7 +19,7 @@ if (state != PS_DEAD && state != PS_RESPAWN)
         visible = true;
     if ((prev_state == PS_ATTACK_AIR || prev_state == PS_ATTACK_GROUND))
     {
-        if (attack == AT_FSTRONG)
+        if (attack == AT_FSTRONG && (!has_hit_player || state_cat == SC_HITSTUN))
         {
             var orbs = 0;
             for (var i = 0; i < 3; i++)
@@ -34,6 +35,7 @@ if (state != PS_DEAD && state != PS_RESPAWN)
             switch (attack)
             {
                 case AT_UAIR:
+                case AT_USTRONG:
                     if (has_hit_player)
                     {
                         orb_to_add = 1;
@@ -43,14 +45,21 @@ if (state != PS_DEAD && state != PS_RESPAWN)
                 case AT_DSTRONG:
                     if (has_hit_player)
                     {
+                        
                         orb_to_add = 23;
+                        orb_to_add += (floor(charge_amount / 15) * 20)
                         user_event(2);
                     }
                     break;
                 case AT_USPECIAL:
-                    orb_to_add = 4;
-                    user_event(2);
-                    break;
+                    if (!channeled_plasma)
+                    {
+                        channeled_plasma = true;
+                        orb_to_add = 4;
+                        user_event(2);
+                        break;
+                    }
+                case AT_NAIR:
                 case AT_FTILT:
                     if (has_hit_player)
                     {
@@ -61,7 +70,7 @@ if (state != PS_DEAD && state != PS_RESPAWN)
         }
     }
 }
-if (!old_ice && (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL) && armor_duration == 0)
+if (!old_ice && (state != PS_PRATFALL && state != PS_PRATLAND) && armor_duration == 0)
 {
     armor_temp = 0;
     soft_armor = 0;

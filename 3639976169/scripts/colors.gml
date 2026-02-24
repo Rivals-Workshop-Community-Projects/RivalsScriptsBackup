@@ -90,8 +90,8 @@ set_color_profile_slot( 5, 7, 110, 110, 110 ); //neck shadow
 set_color_profile_slot( 6, 0, 82, 47, 196 ); //bronze
 set_color_profile_slot( 6, 1, 31, 0, 84 ); //bronze shadow
 set_color_profile_slot( 6, 2, 255, 38, 38 ); //cloak
-set_color_profile_slot( 6, 3, 255, 201, 8 ); //cloak shadow
-set_color_profile_slot( 6, 4, 237, 139, 19 ); //cloak shadow 2
+set_color_profile_slot( 6, 3, 255, 140, 8 ); //cloak shadow
+set_color_profile_slot( 6, 4, 237, 197, 19 ); //cloak shadow 2
 set_color_profile_slot( 6, 5, 255, 0, 0 ); //core
 set_color_profile_slot( 6, 6, 133, 69, 0 ); //neck
 set_color_profile_slot( 6, 7, 92, 37, 0 ); //neck shadow

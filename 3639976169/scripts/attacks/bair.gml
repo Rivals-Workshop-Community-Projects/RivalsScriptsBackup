@@ -23,6 +23,7 @@ set_num_hitboxes(AT_BAIR, 1);
 
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_BAIR, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.2);

@@ -39,3 +39,7 @@ if (orb_evoke_time < 60)
     }
     draw_sprite_ext(sprite, 0, round(x), round(y), scale, scale, 0, c_white, alpha);
 }
+if (instance_exists(attached_projectile))
+{
+    draw_sprite_ext(sprite_get("orb_slot_outline"), 0, round(x), round(y), 2, 2, 0, c_white, 1);
+}

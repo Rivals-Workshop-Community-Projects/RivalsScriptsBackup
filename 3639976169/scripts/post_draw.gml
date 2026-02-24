@@ -7,12 +7,15 @@ if (state == PS_SPAWN)
         round(y), 
         2 * spr_dir, 2, 0, c_white, 1.0 - clamp((state_timer - 60) / 30.0, 0.0, 1.0));
 }
-if (soft_armor > 0)
+if (armor_temp > 0)
 {
 	gpu_set_fog(1, make_color_rgb(40, 140, 255), 0, 1);
 	draw_outline(0.25);
 	gpu_set_fog(0, c_white, 0, 0);
-	draw_sprite_ext(sprite_index, image_index, floor(x), floor(y), 2 * spr_dir, 2, image_angle, make_color_rgb(30, 248, 255), 0.9);
+	var col = make_color_rgb(30, 248, 255);
+	if (soft_armor < 10)
+		col = make_color_rgb(15, 100, 180);
+	draw_sprite_ext(sprite_index, image_index, floor(x), floor(y), 2 * spr_dir, 2, image_angle, col, 0.9);
 	gpu_set_fog(1, make_color_rgb(125, 210, 255), 0, 1);
     draw_sprite_ext(sprite_index, image_index, floor(x), floor(y), 2 * spr_dir, 2, image_angle, c_white, 0.3);
 	gpu_set_fog(0, c_white, 0, 0);

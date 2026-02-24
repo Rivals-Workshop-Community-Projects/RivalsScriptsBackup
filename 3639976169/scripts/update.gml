@@ -1,8 +1,18 @@
 //update
 if (!instance_exists(self)) // Holograms will sometimes throw errors when being destroyed; this prevents it
     exit;
+/*if (instance_exists(temp_clone)) // Temp clone is used for anti-replay-desync
+{
+    instance_destroy(temp_clone.orb1);
+    instance_destroy(temp_clone.orb2);
+    instance_destroy(temp_clone.orb3);
+    instance_destroy(temp_clone);
+}*/
+// disable fast fall in pratfall
+if (state == PS_PRATFALL)
+    can_fast_fall = false;
 // Handle position delay for orb movement
-array_insert(position_delay, 0, y + (state == PS_CROUCH ? 30 : 0)); 
+array_insert(position_delay, 0, y + ((state == PS_CROUCH || ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_TAUNT_2)) ? 30 : 0)); 
 array_insert(position_delay, 0, x);
 position_delay = array_slice(position_delay, 0, 20);
 
@@ -28,7 +38,10 @@ else
 {
     if (armor_temp > 0)
     {
-        soft_armor = armor_temp;
+        if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
+            soft_armor = min(armor_temp, 5);
+        else
+            soft_armor = armor_temp;
         armor_cooldown = 30;
     }
     else
@@ -56,10 +69,12 @@ if (custom_clone) // Hologram
     orb_slots[1] = 0;
     orb_slots[2] = 0;
     damage_scaling = 0;
+    super_armor = true;
     if (jump_to_attack == 1)
     {
-        attack = hologram_valid_attack;
-        if (state_cat == SC_AIR_NEUTRAL && get_attack_value(hologram_valid_attack, AG_CATEGORY) != 0)
+        //hologram_valid_attack
+        //ai_disabled = false;
+        /*if (state_cat == SC_AIR_NEUTRAL && get_attack_value(hologram_valid_attack, AG_CATEGORY) != 0)
         {
             window = 1;
             window_timer = 0;
@@ -70,10 +85,37 @@ if (custom_clone) // Hologram
             window = 1;
             window_timer = 0;
             set_state(PS_ATTACK_GROUND);
-        }
+        }*/
+        
         jump_to_attack = -1;
     }
     if (jump_to_attack >= 1) jump_to_attack--;
+    if (!hologram_active && !hitpause)
+    {
+        hitpause = true;
+        hitstop = 2147483647;
+        hitstop_full = 2147483647;
+        x = 0; y = 0;
+        invincible = true;
+        invince_time = 2147483647;
+    }
+    
+    visible = hologram_active;
+    ignore_camera = !hologram_active;
+    
+    var will_die = false;
+    if (x + hsp >= get_stage_data(SD_RIGHT_BLASTZONE_X))
+        will_die = true;
+    if (x + hsp <= get_stage_data(SD_LEFT_BLASTZONE_X))
+        will_die = true;
+    if (y + vsp >= get_stage_data(SD_BOTTOM_BLASTZONE_Y))
+        will_die = true;
+    if (y + vsp <= get_stage_data(SD_TOP_BLASTZONE_Y))
+        will_die = true;
+    if (will_die)
+    {
+        user_event(3);
+    }
 }
 else
 {
@@ -122,7 +164,6 @@ with oPlayer // Handle lightning orbs
         continue;
     if (defect_orb_zap < 10)
     {
-        
         var xPos = x;
         var yPos = y-20;
         var hb = noone;

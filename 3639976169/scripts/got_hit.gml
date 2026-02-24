@@ -12,9 +12,24 @@ if (armor_temp > 0)
 if (custom_clone)
 {
     sound_play(asset_get("sfx_clairen_tip_weak"), false, noone, 1, 1);
-    spawn_hit_fx(x, y, vfx_hologram_vanish);
-    instance_destroy(orb1);
-    instance_destroy(orb2);
-    instance_destroy(orb3);
-    instance_destroy(self);
+    if (hit_player_obj.hitpause)
+    {
+        hit_player_obj.hitstop += 25;
+        hit_player_obj.hitstop_full += 25;
+    }
+    // considered making hologram reflect projectiles; no longer
+    /*if (enemy_hitboxID.type == 2 && !enemy_hitboxID.does_not_reflect)
+    {
+        with (enemy_hitboxID)
+        {
+            reflected = true;
+            destroyed = false;
+            destroyed_next = false;
+            last_player_id = other;
+            player = other.player;
+            hsp = -hsp;
+            vsp = -vsp;
+        }
+    }*/
+    user_event(3);
 }

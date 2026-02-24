@@ -30,6 +30,7 @@ if (state_timer == 6 && !old_ice
     && attack != AT_FSPECIAL
     && attack != AT_DSPECIAL
     && attack != AT_FTILT
+    && attack != AT_NAIR
     && attack != AT_TAUNT
     && attack != AT_TAUNT_2)
 {
@@ -77,17 +78,19 @@ switch (attack)
         can_up_b = false;
         break;
     case AT_DSTRONG:
+        charge_amount = strong_charge;
         if (state_timer == 19 && window == 1)
             sound_play(asset_get("sfx_boss_charge"), false, noone, 1, 1);
         break;
     case AT_DSPECIAL:
         if (window == 2 && window_timer == 2)
         {
+            //print_debug(string(hologram_was_alive));
             if (instance_exists(oTestPlayer))
             {
                 sound_play(asset_get("mfx_tut_fail"), false, noone, 1, 1);
             }
-            else if (!instance_exists(hologram))
+            /*else if (!instance_exists(hologram))
             {
                 if (!hologram_was_alive)
                 {
@@ -97,7 +100,7 @@ switch (attack)
                     {
                         hologram_valid_attack = other.hologram_valid_attack;
                         jump_to_attack = 0;
-                        ai_disabled = true;
+                        //ai_disabled = true;
                         damage_scaling = 0;
                         jump_speed = 10;
                         short_hop_speed = 10;
@@ -105,19 +108,51 @@ switch (attack)
                         invince_time = 25;
                     }
                 }
-            }
-            else
+            }*/
+            else if (!hologram.hologram_active)
             {
+                sound_play(asset_get("sfx_clairen_tip_weak"), false, noone, 1, 1);
                 with (hologram)
                 {
-                    if (state_cat == SC_GROUND_NEUTRAL && get_attack_value(hologram_valid_attack, AG_CATEGORY) == 1)
-                    {
-                        set_state(PS_JUMPSQUAT);
-                        jump_to_attack = 6;
-                    }
-                    else
-                        jump_to_attack = 1;
+                    hologram_active = true;
+                    visible = true;
+                    ignore_camera = false;
+                    jump_to_attack = 0;
+                    set_state(PS_IDLE);
+                    free = false;
+                    x = other.x;
+                    y = other.y;
+                    hsp = 0;
+                    vsp = 0;
+                    old_hsp = 0;
+                    old_vsp = 0;
+                    hitpause = false;
+                    hitstop = 0;
+                    hitstop_full = 0;
+                    hitstun = 1;
+                    hitstun_full = 1;
+                    spr_dir = other.spr_dir;
+                    hologram_valid_attack = other.hologram_valid_attack;
+                    damage_scaling = 0;
+                    jump_speed = 10;
+                    short_hop_speed = 10;
+                    invincible = true;
+                    invince_time = 25;
                 }
+            }
+        }
+        break;
+    case AT_DSPECIAL_2:
+        if (window == 2 && window_timer == 2)
+        {
+            with (hologram)
+            {
+                if (state_cat == SC_GROUND_NEUTRAL && get_attack_value(hologram_valid_attack, AG_CATEGORY) == 1)
+                {
+                    jump_to_attack = 6;
+                }
+                else
+                    jump_to_attack = 1;
             }
         }
         break;
@@ -191,4 +226,21 @@ switch (attack)
             window = 4;
         }
         break;
+    case AT_NAIR:
+        if (armor_temp == 0 && window == 2 && window_timer < 5)
+        {
+            soft_armor = 5;
+        }
+        if (armor_temp == 0 && window == 2 && window_timer > 10)
+        {
+            soft_armor = 0;
+        }
+    break;
+}
+if (window == get_attack_value(attack, AG_NUM_WINDOWS) && armor_temp == 10 && attack != AT_USPECIAL && attack != AT_FSPECIAL)
+{
+    armor_temp = 5;
+    soft_armor = 5;
+    knockback_scaling = 0.825;
+    damage_scaling = 0.75;
 }

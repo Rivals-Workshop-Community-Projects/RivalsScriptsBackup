@@ -17,7 +17,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, true);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("beam1"));
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 30);
+set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 23);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
@@ -25,7 +25,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 9);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW_CREATION_FRAME, 8);
-set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_FSTRONG, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 0.7);
 set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 5);
 set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 4.9);

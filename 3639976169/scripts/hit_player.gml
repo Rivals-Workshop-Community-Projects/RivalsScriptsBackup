@@ -1,4 +1,8 @@
-if (my_hitboxID.attack == AT_EXTRA_1 || my_hitboxID.attack == AT_EXTRA_2 || my_hitboxID.attack == AT_NSPECIAL)
+if (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2)
+{
+    hit_player_obj.hurt_img = 5;
+}
+if (my_hitboxID.attack == AT_EXTRA_1 || my_hitboxID.attack == AT_EXTRA_2 || my_hitboxID.attack == AT_NSPECIAL || (my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 2))
     exit;
 var light_orbs = 0;
 for (var i = 0; i < 3; i++)
