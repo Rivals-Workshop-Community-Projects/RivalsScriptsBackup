@@ -1,4 +1,5 @@
 // animation sprites and etc
+
 if (plus_active = true)
 {
     switch (state) 
@@ -23,6 +24,7 @@ if (plus_active = true)
         {
             sprite_index = sprite_get("z_dashstop");
         }
+        break;
         case PS_DASH_TURN:
         {
             sprite_index = sprite_get("z_dashturn");
@@ -129,6 +131,11 @@ if (plus_active = true)
         {
             switch (attack) 
             {
+                case 49:
+                {
+                    sprite_index = sprite_get("z_azula_ultimate");
+                }
+                break;
                 case AT_NAIR:
                 {
                     sprite_index = sprite_get("z_nair");
@@ -149,6 +156,11 @@ if (plus_active = true)
                     sprite_index = sprite_get("z_uair");
                 }
                 break;
+                case AT_FSTRONG:
+                {
+                    sprite_index = sprite_get("fstrong");
+                }
+                break;
                 case AT_DAIR:
                 {
                     sprite_index = sprite_get("z_dair");
@@ -159,7 +171,7 @@ if (plus_active = true)
                     sprite_index = sprite_get("z_fspecial");
                 }
                 break;
-                case AT_DSPECIAL_AIR:
+                case AT_DSPECIAL:
                 {
                     sprite_index = sprite_get("z_dspecial_air");
                 }
@@ -171,10 +183,16 @@ if (plus_active = true)
                 break;
             }
         }
+        break;
         case PS_ATTACK_GROUND:
         {
             switch (attack) 
             {
+                case 49:
+                {
+                    sprite_index = sprite_get("z_azula_ultimate");
+                }
+                break;
                 case AT_TAUNT:
                 {
                     sprite_index = sprite_get("z_taunt");
@@ -225,7 +243,6 @@ if (plus_active = true)
                     sprite_index = sprite_get("z_fspecial");
                 }
                 break;
-
                 case AT_NSPECIAL:
                 {
                     sprite_index = sprite_get("z_nspecial");
@@ -243,6 +260,7 @@ if (plus_active = true)
                 break;
             }
         }
+        break;
     }
 }
 else
@@ -269,6 +287,7 @@ else
         {
             sprite_index = sprite_get("dashstop");
         }
+        break;
         case PS_DASH_TURN:
         {
             sprite_index = sprite_get("dashturn");
@@ -375,6 +394,11 @@ else
         {
             switch (attack) 
             {
+                case 49:
+                {
+                    sprite_index = sprite_get("azula_ultimate");
+                }
+                break;
                 case AT_NAIR:
                 {
                     sprite_index = sprite_get("nair");
@@ -422,6 +446,11 @@ else
         {
             switch (attack) 
             {
+                case 49:
+                {
+                    sprite_index = sprite_get("azula_ultimate");
+                }
+                break;
                 case AT_TAUNT:
                 {
                     sprite_index = sprite_get("taunt");
@@ -489,5 +518,15 @@ else
                 break;
             }
         }
+        break;
     }
+}
+
+if wallSlide && has_rune("A"){
+    sprite_index = sprite_get("wall_slide");
+    image_index = 0;
+}
+
+if attack == 49 && window == 1{
+    with hurtboxID sprite_index = sprite_get("azula_ultimate_hurt");
 }

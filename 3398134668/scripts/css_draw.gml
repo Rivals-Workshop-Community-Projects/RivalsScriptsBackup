@@ -85,7 +85,31 @@ if (css_anim_time < 140)
     );
 }
 
+var cursorPos = [get_instance_x(cursor_id)-cursorPosOffset, get_instance_y(cursor_id)-cursorPosOffset];
+var onButton = (abs(cursorPos[0]-(buttonPos[0]-buttonOffset)) < buttonRadius && abs(cursorPos[1]-(buttonPos[1]-buttonOffset)) < buttonRadius);
 
+draw_sprite_ext(sprite_get("inputbutton"), projectEWallJump, buttonPos[0], buttonPos[1], 2, 2, 0, c_white, 1);
+if onButton{
+	
+	draw_sprite_ext(sprite_get("inputoverlay"), projectEWallJump, buttonPos[0], buttonPos[1], 2, 2, 0, c_white, 0.5 + (menu_a_down/3));
+	
+	var commsOffset = [-120, -20];
+	
+	if projectEWallJump draw_debug_text(floor(buttonPos[0]+commsOffset[0]), floor(buttonPos[1]+commsOffset[1]), 
+	
+	"Disable Project: Evolve 
+	walljump input"
+	
+	);	
+	
+	else draw_debug_text(floor(buttonPos[0]+commsOffset[0]), floor(buttonPos[1]+commsOffset[1]), 
+	
+	"Enable Project: Evolve 
+	walljump input"
+	
+	);
+	
+}
 
 //functions by supersonic
 #define prepare_shader()

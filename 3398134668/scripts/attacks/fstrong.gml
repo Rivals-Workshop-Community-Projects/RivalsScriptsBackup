@@ -1,4 +1,5 @@
 set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
+set_attack_value(AT_FSTRONG, AG_CATEGORY, 2);
 set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);

@@ -25,3 +25,7 @@ neutral_attacks[0] = AT_NAIR;
 neutral_attacks[1] = AT_BAIR;
 neutral_attacks[2] = AT_UAIR;
 neutral_attacks[3] = AT_DSPECIAL;
+waveState = 0;
+movementICD = 0;
+grabICD = 0;
+pickRandom = 0;

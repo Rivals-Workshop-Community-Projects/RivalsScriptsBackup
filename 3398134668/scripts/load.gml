@@ -15,6 +15,26 @@ sprite_change_offset("z_dash", 48, 94);//
 sprite_change_offset("z_dashstart", 48, 94);//
 sprite_change_offset("z_dashstop", 48, 94);
 sprite_change_offset("z_dashturn", 48, 94);
+sprite_change_offset("livewire", 36, 84);
+sprite_change_offset("bair_plus", 112, 100);
+sprite_change_offset("wall_slide", 32, 72);
+sprite_change_offset("dspecial_shine", 16, 16);
+
+sprite_change_offset("levelup_green", 86, 24);
+sprite_change_offset("levelup_yellow", 86, 24);
+sprite_change_offset("levelup_red", 86, 24);
+sprite_change_offset("levelup_purple", 86, 24);
+sprite_change_offset("levelup_blue", 86, 24);
+sprite_change_offset("levelup_damage", 164, 66);
+
+sprite_change_offset("azula_itemselect", 16, 16);
+sprite_change_offset("bowlingshine", 8, 8);
+sprite_change_offset("azula_pickuparrow", 8, 8);
+
+sprite_change_offset("azula_ultimate", 104, 176);
+sprite_change_offset("azula_ultimate_hit", 50, 50);
+sprite_change_offset("azula_ultimate_flash", 100, 100);
+sprite_change_offset("z_azula_ultimate", 104, 176);
 
 sprite_change_offset("z_jumpstart", 48, 94);//
 sprite_change_offset("z_jump", 48, 94);//
@@ -114,11 +134,14 @@ sprite_change_offset("dair", 48, 94);
 sprite_change_offset("fstrong", 38, 94);
 sprite_change_offset("ustrong", 48, 94);
 sprite_change_offset("dstrong", 132, 94);
+sprite_change_offset("rune_dstrongair", 48, 94);
+sprite_change_offset("rune_dstrong_effect", 104, 132);
 sprite_change_offset("nspecial", 48, 94);
 sprite_change_offset("fspecial", 44, 94);
 sprite_change_offset("uspecial", 48, 94);
 sprite_change_offset("uspecial_air", 48, 94);
 sprite_change_offset("dspecial", 48, 94);
+sprite_change_offset("dspecial_reflectbox3", 48, 76);
 sprite_change_offset("dspecial_air", 48, 94);
 sprite_change_offset("taunt", 48, 94);
 sprite_change_offset("phone_open", 32, 64);
@@ -137,4 +160,4 @@ sprite_change_offset("gauge_bar", 0, 0);
 
 sprite_change_offset("proj_trail", 68, 48);
 sprite_change_offset("nspecial_proj", 68, 48);
-sprite_change_offset("ion_explosion", 72, 92);
+sprite_change_offset("ion_explosion", 64, 64);

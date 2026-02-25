@@ -1,5 +1,11 @@
 //css_init.gml
 
+projectEWallJump = get_synced_var(player);
+buttonPos = [x+168, y+84];
+buttonOffset = 10;
+buttonRadius = 20;
+cursorPosOffset = 24;
+
 css_anim_time = 0;
 
 icon_x_pos = x + 174;

@@ -119,6 +119,3 @@ set_hitbox_value(AT_JAB, 3, HG_KNOCKBACK_SCALING, 0.55);
 set_hitbox_value(AT_JAB, 3, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_JAB, 3, HG_HITPAUSE_SCALING, 0.3);
 set_hitbox_value(AT_JAB, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
-
-
-set_attack_value(AT_JAB, AG_MUNO_ATTACK_MISC_ADD, "Does NOT ignore parry stun. (fix this if you make your own character)");

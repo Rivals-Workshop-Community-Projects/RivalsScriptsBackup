@@ -4,7 +4,24 @@
  * docs.google.com/spreadsheets/d/19UtK7xG2c-ehxdlhCFKMpM4_IHSG-EXFgXLJaunE79I
  */
 
+fs_char_chosen_final_smash = "custom";
+fs_char_portrait_y = 80;
+fs_meter_y = -18;
+fs_meter_x = 26;
+fs_attack_index = 49;
+ultimateTarget = [];
+ultimateDarkness = 0;
+blacksprite = sprite_get("blacksprite");
+ultimateLoop = 1;
+ultimateLoops = 1;
+ultimateTargetPos = [0,0];
+ultimateMaxLoops = 8;
+
+pkmn_stadium_front_img = sprite_get("birdzulafront");
+pkmn_stadium_back_img = sprite_get("birdzulaback");
+
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
+
 
 // Physical size
 char_height         = 52;       //                  not zetterburn's. this is just cosmetic anyway
@@ -60,23 +77,83 @@ air_dodge_speed     = 7.5;      // 7.5  -  8
 techroll_speed      = 10;       // 8    -  11
 
 meter = 0;
+maxMeter = 50;
+if has_rune("M") maxMeter = 100;
 meter_tick = 0;
 meter_subtract = 30;
 metermax = 50;
-max_bar_width = 144;
+max_bar_width = 1.44;
 
 plus_ab_use = false;
 plus_ready = false;
 plus_active = false;
 plus_dmg = 0;
+defaultDMG = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 zap_vfx = 0;
 timer_vfx = 0;
 proj_vfx = 0;
-up_b_used = false;
+up_b_used = 0;
+up_b_max = 1+has_rune("K");
 side_b_used = false;
 sub_gauge = 0;
 sub_tick = 0;
+
+// Abyss and buddies
+unlock_potential = false; // For unlock potential buddy
+wallSlide = false;
+wallSlideDir = 1;
+projectEWallJump = get_synced_var(player);
+projectEWallJumpBuffer = 0;
+wallJumpRefund = true;
+incrementDspecial = 0;
+reflectarticle = noone;
+doAerialDattack = false;
+
+afterImageTimer = 0;
+afterImageArray = [];
+afterImageArrayTimer = [];
+afterImageCols = [$fafafa, $09ff00, $00fffa, $0006ff, $ff00fc, $ffe508]; // white, green, yellow, red, purple, azula blue
+
+comboCount = 0;
+comboLevel = 0;
+comboPB = 0;
+comboTimeoutAmount = 140;
+extendedEffect = false;
+airDstrongTimer = 0;
+comboPulseXY = [0,0];
+comboTimeout = 0;
+levelupEffects = [sprite_get("levelup_green"), sprite_get("levelup_yellow"), sprite_get("levelup_red"), sprite_get("levelup_purple"), sprite_get("levelup_blue")];
+levelupEffectTimer = 0;
+
+liveWireBox = noone;
+liveWirePos = [x, y];
+liveWireICD = 0;
+
+inEndlessAbyss = 0;
+abyssTimer = 400;
+grabFlash = 0;
+azulaArmor = 0;
+prevDamage = 0;
+abyssItemSpawned = false;
+abyssUIOffset = 0;
+abyssItem = noone;
+TESTVARIABLE = 0;
+
+itemType = "rainbowball";
+itemAmount = 6;
+nspecialCycleTimer = 0;
+itemIndex = 0;
+closestItem = noone;
+closestDistance = 0;
+itemCycleFrequency = 15;
+solverPlayer = 0;
+globalItemSolver = noone;
+ownItemOut = [noone, noone, noone, noone, noone, noone];
+globalItemOut = [noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone,noone];
+itemDestroyEffect = [hit_fx_create(sprite_get("rainbow_destroy"),15), hit_fx_create(sprite_get("ion_explosion"),15), hit_fx_create(sprite_get("empty"),15), hit_fx_create(sprite_get("empty"),15), hit_fx_create(sprite_get("snowball_destroy"),15)];
+itemSodaEffect = hit_fx_create(sprite_get("rune_dstrong_effect"), 15);
+itemPickupDist = 50;
 //After Image
 //afi_opacity = 0.9;
 // Character-specific assets init
@@ -86,7 +163,7 @@ spr_nspecial_proj = sprite_get("nspecial_proj");
 spr_example = sprite_get("example"); // sprites/example_stripX.png
 
 spr_gauge = sprite_get("gauge");
-spr_gauge_bar = sprite_get("gauge_bar");
+spr_gauge_bar = [sprite_get("gauge_bar"),sprite_get("gauge_bar2")];
 
 spr_p_idle = sprite_get("plus_idle");
 
@@ -102,6 +179,7 @@ ion_explosion_vfx = hit_fx_create(sprite_get("ion_explosion"),15);
 zappy1 = hit_fx_create(sprite_get("zappy_1"),15);
 zappy2 = hit_fx_create(sprite_get("zappy_2"),15);
 plus_wave_vfx = hit_fx_create(sprite_get("plus_wave"),25);
+vfxTimer = 0;
 // Variables
 rainbow_color = c_white; // (used for one of Sandbert w/ a Phone's cheat codes)
 

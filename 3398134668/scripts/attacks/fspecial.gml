@@ -50,7 +50,3 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, elec_vfx);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("ElectricHit"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
-
-
-
-//set_attack_value(AT_FSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Shorten during frames " + string(get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH) + 1) + "-" + string(get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH) + get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)) + ", skipping to endlag and destroying hitbox.");
