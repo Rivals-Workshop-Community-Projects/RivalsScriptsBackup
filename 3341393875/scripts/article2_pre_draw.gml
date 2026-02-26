@@ -1,7 +1,6 @@
 for (var i = 0; i < array_length_1d(afterimage_array); ++i)
 {
 
-
     shader_end();
     var obj = afterimage_array[i];
     var spriteSize = obj.smallSprites;

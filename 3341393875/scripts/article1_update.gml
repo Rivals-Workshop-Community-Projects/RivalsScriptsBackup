@@ -1,9 +1,15 @@
 can_be_hit[player_id.player] = 2;
 state_timer++;
 
-if hitstop = 1{
-    hsp = -5 * spr_dir;
-    vsp = -7;
+if (hitstop == 1){
+	
+    hsp = -4 * spr_dir;
+    vsp = -8;
+
+	if (minion_name == "minijohn" && has_rune("L")){
+		hsp = 0;
+		vsp = -10;
+	}
 }
 
 
@@ -107,6 +113,7 @@ switch state{
         ignores_walls = 0;
         
         vsp = clamp(vsp + 0.3, -7, 12);
+		hsp *= 0.98;
         
         if !hitstop && vsp > 0 && !free{
 			state = "WALK";
@@ -158,12 +165,15 @@ switch minion_name{
 					}
 					cheesed_timer = 3;
                 }
-                if cheesed_timer{
+                if (cheesed_timer){
+					with (other){
+						var pizzaHasRune = has_rune("L");
+					}
 					if state == PS_JUMPSQUAT && state_timer == jump_start_time - 1{
 						with other sound_play(sound_get("cheesejump" + string(random_func_2(get_gameplay_time() % 200, 4, true) + 1)));
 					}
-					x -= hsp * 0.33;
-                    vsp -= vsp * 0.33;
+					x -= hsp * (0.33 + (pizzaHasRune * 0.33));
+                    vsp -= vsp * (0.33 + (pizzaHasRune * 0.33));
 					cheesed_timer--;
                 }
             }
@@ -175,40 +185,67 @@ switch minion_name{
         }
     break;
     case "forknight":
-        if state == "WALK"{
+        if (state == "WALK"){
             var fork = create_hitbox(AT_DSPECIAL, 1, x + (36 * spr_dir), y - 18);
             for (var f = 0; f < 20; f++;){
-                if hit_timer[f] > 0{
+                if (hit_timer[f] > 0){
                     hit_timer[f]--;
-                }
-                else{
+                } else {
                 	has_hit[f] = false;
                 }
                 fork.can_hit[f] = !has_hit[f];
                 fork.hbox_owner = self;
             }
+
+			if (get_gameplay_time() % 70 == 0 && has_rune("L")){
+				if (!has_rune("H")){
+					var forkProjectile = create_hitbox(AT_DSPECIAL_2, 5, x + 36 * spr_dir, y);
+					forkProjectile.max_fall = 30;
+				} else {
+					var forkProjectile = create_hitbox(AT_DSPECIAL_2, 6, x + 36 * spr_dir, y - 20);
+					forkProjectile.vsp = -15;
+					forkProjectile.hsp = 0;
+					forkProjectile.length = 300;
+				}
+			}
         }
     break;
     case "banditochicken":
-		if state == "WALK"{
-			if (state_timer % jump_timer == 0 && (place_meeting(x + 185 * spr_dir, y + 10, asset_get("par_block")) || place_meeting(x + 185 * spr_dir, y + 10, asset_get("par_jumpthrough"))) ){
-				vsp = -6;
-				sound_play(sound_get("banditochicken"), false, false, 2);
-				jumps++;
+		if (state == "WALK"){
+			if (state_timer % jump_timer == 0 && ((place_meeting(x + 185 * spr_dir, y + 10, asset_get("par_block")) || place_meeting(x + 185 * spr_dir, y + 10, asset_get("par_jumpthrough"))) || has_rune("L"))){
+					vsp = -6 * (has_rune("L") + 1);
+					sound_play(sound_get("banditochicken"), false, false, 2);
+					jumps++;
 				if (jumps == bombjump){
-					var facing = orig_player_id.spr_dir;
-					orig_player_id.spr_dir = spr_dir;
-					var dynamite = create_hitbox(AT_DSPECIAL, 2, x - (24 * spr_dir), y - 30);
-					dynamite.spr_dir = spr_dir;
-					dynamite.draw_xscale = spr_dir;
-					orig_player_id.spr_dir = facing;
-					sound_play(asset_get("sfx_bubblepop"));
 					
-					dynamite.hbox_owner = self;
-					
+					if (has_rune("L")){
+						hsp = 0;
+					} else {
+						var dynamite = create_hitbox(AT_DSPECIAL, 2, x - (24 * spr_dir), y - 30);
+						dynamite.spr_dir = spr_dir;
+						dynamite.draw_xscale = spr_dir;
+						dynamite.hsp = -3 * spr_dir;
+						sound_play(asset_get("sfx_bubblepop"));
+						
+						dynamite.hbox_owner = self;
+					}
 					jumps = 0;
 				}
 				state = "JUMP";
+			}
+		}
+
+		if (state == "JUMP"){
+			if (has_rune("L")){
+				if (vsp < 0 && state_timer % 12 == 0){
+					var dynamite = create_hitbox(AT_DSPECIAL, 2, x - (24 * spr_dir), y - 30);
+					dynamite.spr_dir = spr_dir;
+					dynamite.draw_xscale = spr_dir;
+					dynamite.hsp = vsp * 0.5 * spr_dir;
+					sound_play(asset_get("sfx_bubblepop"));
+					
+					dynamite.hbox_owner = self;
+				}
 			}
 		}
     break;
@@ -216,8 +253,9 @@ switch minion_name{
 		attack_timer--;
 		
 		if state == "WALK"{
+			var pizzaHasRune2 = has_rune("L");
 			with oPlayer{
-				if (self != other.orig_player_id && ((other.spr_dir == 1 && x > other.x && x <= other.x + 150) || (other.spr_dir == -1 && x < other.x && x >= other.x - 150)) && y < other.y && y >= other.y - 50) && other.attack_timer <= 0{
+				if (self != other.orig_player_id && (other.spr_dir == 1 && x > other.x && x <= other.x + (140 + (pizzaHasRune2 * 450)) || (other.spr_dir == -1 && x < other.x && x >= other.x - (140 + (pizzaHasRune2 * 450)) )) && y < other.y && y >= other.y - 50) && other.attack_timer <= 0{
 					with (other){
 						state = "ATTACK";
 						state_timer = 0;
@@ -238,8 +276,8 @@ switch minion_name{
 					has_hit[f] = false;
 				}
 			}
-			else if (state_timer <= 29){
-				hsp = 7 * spr_dir;
+			else if (state_timer <= 31){
+				hsp = (7 + (has_rune("L") * 21)) * spr_dir;
 				vsp = 0;
 				
 				if (state_timer % 3 == 0){
@@ -277,6 +315,10 @@ switch minion_name{
 					sprite_index = sprite_get(minion_name + "_walk");
 				}
 			}
+
+			if (has_rune("L") && !(place_meeting(x + 50 * spr_dir, y + 10, asset_get("par_block")) || place_meeting(x + 50 * spr_dir, y + 10, asset_get("par_jumpthrough")))){
+				hsp = 0;
+			}
 			image_index = floor((state_timer + 1) / 4);
 			attack_timer = attack_cooldown;
 		}
@@ -285,6 +327,7 @@ switch minion_name{
 		attack_timer--;
 		
 		if state == "WALK"{
+
 			var nearest = noone;
 			var dist = 10000;
 			with oPlayer{
@@ -325,6 +368,9 @@ switch minion_name{
 					spr_dir *= -1;
 				}
             }
+			if (has_rune("L") && !(place_meeting(x + (hsp * 10), y + 10, asset_get("par_block")) || place_meeting(x + (hsp * 10), y + 10, asset_get("par_jumpthrough")))){
+				hsp = 0;
+			}
 		}
 		if state == "ATTACK"{
 			
@@ -346,7 +392,7 @@ switch minion_name{
 						if state_timer % 6 == 2{
 							has_hit[f] = false;
 							if state_timer >= 39{
-								kickflurry.damage = 5;
+								kickflurry.damage = 3;
 								kickflurry.kb_value = 7;
 								kickflurry.kb_scale = 0.7;
 								kickflurry.hitpause = 7;
@@ -421,6 +467,10 @@ switch minion_name{
 					image_index = 0;
 					spr_dir *= -1;
 				}
+				var dx = nearest.x - (x + (34 * spr_dir));
+				if ((dx < 0 && spr_dir == 1) || (dx > 0 && spr_dir == -1)){
+					spit_timer--;
+				}
             }
             spit_timer++;
             if spit_timer >= spit_time{
@@ -447,14 +497,47 @@ switch minion_name{
 				spit.draw_xscale = spr_dir;
 				orig_player_id.spr_dir = facing;
 				spit.max_fall = 30;
-				var orgProjHsp = 0;
-				var orgProjVsp = 0;
-				with (player_id){
-					orgProjHsp = get_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_HSPEED);
-					orgProjVsp = get_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_VSPEED);
+
+				if (!has_rune("L")){
+					//var orgProjHsp = 0;
+					//var orgProjVsp = 0;
+					//with (player_id){
+					//	orgProjHsp = get_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_HSPEED);
+					//	orgProjVsp = get_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_VSPEED);
+					//}
+					//spit.hsp = (orgProjHsp + (abs(nearest.x - x)/80)) * spr_dir;
+					//spit.vsp = (orgProjVsp - (abs(nearest.x - x)/80));
+					var g = 0.5;
+
+					var orgProjHsp = 0;
+					var orgProjVsp = 0;
+					
+					with (player_id) {
+					    orgProjHsp = get_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_HSPEED);
+					    orgProjVsp = get_hitbox_value(AT_DSPECIAL, 7, HG_PROJECTILE_VSPEED);
+					}
+					
+					// Distance to target
+					var dx = nearest.x - (x + (24 * spr_dir));
+					var dy = nearest.y - y;
+					
+					// Horizontal speed (keeps your original scaling)
+					spit.hsp = (orgProjHsp + abs(dx) / 80) * sign(dx);
+					
+					// Time to reach target horizontally
+					var t = abs(dx) / abs(spit.hsp);
+					
+					// Vertical speed needed to land on target height
+					spit.vsp = (dy - 0.5 * g * t * t) / t;
+
+				} else {
+					var spitAngle = point_direction(x + (24 * spr_dir), y, nearest.x, nearest.y);
+					spit.hsp = lengthdir_x(20, spitAngle);
+					spit.vsp = lengthdir_y(20, spitAngle);
+					spit.grav = 0;
+					spit.grounds = 1;
+					spit.walls = 1;
 				}
-				spit.hsp = (orgProjHsp + (abs(nearest.x - x)/80)) * spr_dir;
-				spit.vsp = (orgProjVsp - (abs(nearest.x - x)/80));
 				sound_play(asset_get("sfx_bubblepop"));
 				
 				spit.hbox_owner = self;
@@ -500,12 +583,16 @@ switch minion_name{
 				}
 				hsp = johnhsp;
 				vsp = johnvsp;
+
+				if (has_rune("L") && !(place_meeting(x + (hsp * 10), y + 10, asset_get("par_block")) || place_meeting(x + (hsp * 10), y + 10, asset_get("par_jumpthrough")))){
+					hsp = 0;
+				}
             }
 		}
 		if state == "ATTACK"{
 			image_index = floor((state_timer+2) / 3);
 			
-			johnhsp *= 0.925;
+			johnhsp *= 0.90;
 			hsp = johnhsp;
 			
 			if state_timer <= 12{
@@ -526,7 +613,7 @@ switch minion_name{
 				punch.hbox_owner = self;
 				
 				if (state_timer % 3 == 0){
-					CreateAfterimage(18);
+					CreateAfterimage(21);
 				}
 			}
 			else if state_timer >= 24{

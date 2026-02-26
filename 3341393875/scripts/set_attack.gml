@@ -68,16 +68,19 @@ if stance == "pizzahead"{
 			attack = AT_FSPECIAL_2;
 		break;
 		case AT_DSPECIAL:
-			if (free){
-				attack = AT_DSPECIAL_AIR;
-			} else {
-				attack = AT_DSPECIAL_2;
-			
-				if (move_cooldown[attack] == 0){
-					sound_play(sound_get("pizzaheadfishingbase"));
+			if (!has_rune("K")){
+				if (free){
+					attack = AT_DSPECIAL_AIR;
+				} else {
+					attack = AT_DSPECIAL_2;
+
+					if (move_cooldown[attack] == 0){
+						sound_play(sound_get("pizzaheadfishingbase"));
+					}
 				}
+			} else {
+				attack = AT_DSPECIAL;
 			}
-			
 		break;
 		case AT_USPECIAL:
 			cameFromTaunt = false;
@@ -117,8 +120,6 @@ else{
 			cameFromTaunt = false;
 		break;
 		case AT_DAIR:
-			reset_window_value(AT_DAIR, 2, AG_WINDOW_HSPEED);
-			reset_window_value(AT_DAIR, 2, AG_WINDOW_VSPEED);
 			dair_angle = 0;
 		break;
 		case AT_TAUNT:
@@ -130,7 +131,7 @@ else{
 			} else {
 				times_through = 0;
 
-				if (down_down && get_player_damage(player) >= 100){
+				if (down_down){
 					set_attack_value(AT_TAUNT, AG_SPRITE, sprite_get("mogface"));
 					sound_play(sound_get("rizz"));
 	
@@ -138,8 +139,20 @@ else{
 					reset_attack_value(AT_TAUNT, AG_SPRITE);
 				}
 			}
-        	
         break;
+		case AT_DSPECIAL:
+			if (has_rune("K")){
+				if (free){
+					attack = AT_DSPECIAL_AIR;
+				} else {
+					attack = AT_DSPECIAL_2;
+
+					if (move_cooldown[attack] == 0){
+						sound_play(sound_get("pizzaheadfishingbase"));
+					}
+				}
+			}
+		break;
 	}
 }
 

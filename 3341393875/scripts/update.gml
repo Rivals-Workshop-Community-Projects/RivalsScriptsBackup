@@ -2,7 +2,7 @@ if ((state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR) || (attack == AT_DAIR 
   sound_stop(ram_sound)
 }
 
-if (has_rune("N") && taunt_pressed && y > get_stage_data(SD_TOP_BLASTZONE_Y) && !was_parried){
+if (has_rune("N") && taunt_pressed && y > get_stage_data(SD_TOP_BLASTZONE_Y) + 200 && !was_parried && !hitstun){
     hurtboxID.dodging = false;
     set_attack(AT_TAUNT);
 }
@@ -123,4 +123,3 @@ if (hasAltCloth && state != PS_IDLE && state != PS_SPAWN){
 }
 
 if state != PS_ATTACK_GROUND && state != PS_ATTACK_AIR && "machswat_sfx" in self sound_stop(machswat_sfx);
-

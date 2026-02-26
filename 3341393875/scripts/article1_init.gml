@@ -4,7 +4,7 @@ switch minion_number{
     case 0:
         minion_name = "cheeseslime";
         minion_health = 1;
-        minion_speed = 1.2;
+        minion_speed = 1.2 + (has_rune("L") * 1.2);
         minion_turn = 0;
         minion_walkanim_speed = 0.2;
         minion_turnanim_speed = 0;
@@ -21,7 +21,7 @@ switch minion_number{
     case 1:
         minion_name = "forknight";
         minion_health = 1;
-        minion_speed = 1.2;
+        minion_speed = 1.2 - (has_rune("L") * 0.6);
         minion_turn = 10;
         minion_walkanim_speed = 0.2;
         minion_turnanim_speed = 0.5;
@@ -80,7 +80,7 @@ switch minion_number{
     break;
     case 6:
         minion_name = "minijohn";
-        minion_health = 10;
+        minion_health = 10 + (has_rune("L") * 90);
         minion_speed = 0;
         minion_turn = 0;
         minion_walkanim_speed = 0.33;

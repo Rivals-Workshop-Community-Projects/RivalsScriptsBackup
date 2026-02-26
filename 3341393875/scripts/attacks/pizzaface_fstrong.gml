@@ -53,4 +53,4 @@ set_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING, 1.0);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_bite"));
-set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT, 6);

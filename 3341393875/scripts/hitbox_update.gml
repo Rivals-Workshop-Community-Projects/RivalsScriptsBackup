@@ -25,7 +25,7 @@ switch (attack){
 			}
 
 			if (hitbox_timer % 4 == 0){
-				CreateAfterimage(12);
+				CreateAfterimage(12 * (has_rune("I") + 1));
 			}
 
 			player_id.move_cooldown[AT_NSPECIAL] = 60;
@@ -54,10 +54,10 @@ switch (attack){
 					CreateAfterimage(12);
 				}
 
-    		    if (place_meeting(x + hsp, y + vsp, asset_get("par_block")) || has_hit){
+    		    if (!free || has_hit){
     		        var facing = orig_player_id.spr_dir;
 					orig_player_id.spr_dir = spr_dir;
-					var dynamite = create_hitbox(AT_DSPECIAL, 3, x, y - 10);
+					var dynamite = create_hitbox(AT_DSPECIAL, 3, x, y);
 					dynamite.spr_dir = spr_dir;
 					dynamite.draw_xscale = spr_dir;
 					orig_player_id.spr_dir = facing;
@@ -69,8 +69,8 @@ switch (attack){
     		    }
     		break;
     		case 7:
-    		    if (hitbox_timer % 2 == 0){
-					CreateAfterimage(10);
+    		    if (hitbox_timer % 3 == 0){
+					CreateAfterimage(12 * (has_rune("L") + 1));
 				}
     		break;
     	}
@@ -188,9 +188,15 @@ switch (attack){
 					spawn_hit_fx(x, y, player_id.ratGroundVFX);
 					shake_camera(3, 9);
 					sound_play(sound_get("sfx_groundpound"));
+
+					if (has_rune("M") && abs(vsp) < 1 && abs(prevVsp) < 1){
+						vsp = -18;
+						sound_play(sound_get("Pizzahead1"))
+						sound_play(sound_get("Pizzahead3"))
+					}
 				}
 
-				if (hitbox_timer == length-1 || destroyed == true || has_hit == true || ((x < view_get_xview()) || (x > view_get_xview() + view_get_wview()))){
+				if (hitbox_timer == length-1 || destroyed == true || (has_hit == true && !has_rune("M")) || ((x < view_get_xview()) || (x > view_get_xview() + view_get_wview()))){
     		        var deadRat = create_hitbox(AT_DSPECIAL_2, 10, x, y);
     		        deadRat.spr_dir = spr_dir;
     		        deadRat.draw_xscale = draw_xscale;
@@ -200,7 +206,39 @@ switch (attack){
 				prevVsp = vsp;
 
 				if (hitbox_timer % 6 == 0){
-					CreateAfterimage(18);
+					CreateAfterimage(18 + (has_rune("M") * 6));
+				}
+
+				if (has_rune("M")){
+					if (instance_place(x, y, pHitBox) != noone && hitbox_timer > 8){
+						var smacker = instance_place(x, y, pHitBox);
+						if (smacker.player_id == player_id){
+							//var tempAngle = point_direction(x + (6 * spr_dir), y - 76, nearest.x, nearest.y - round(nearest.char_height/2));
+							hsp = lengthdir_x(smacker.kb_value, get_hitbox_angle(smacker));
+							vsp = lengthdir_y(smacker.kb_value, get_hitbox_angle(smacker));
+
+							if (sign(hsp) != 0){
+    						    spr_dir = sign(hsp) * -1;
+    						}
+
+    						spawn_hit_fx(lerp(smacker.x, x, 0.5), lerp(smacker.y, y, 0.5), smacker.hit_effect);
+    						spawn_hit_fx(x, y + 40, orig_player_id.minion_hit);
+    						sound_play(smacker.sound_effect);
+
+							hitbox_timer = 0;
+							has_hit = false;
+							for (var i = 0; i < 20; i++) can_hit[i] = true;
+
+							if (smacker.attack == AT_DTHROW){
+								smacker.player_id.vsp = -7;
+							}
+						}
+					}
+
+					if (has_hit){
+						has_hit = false;
+						hsp *= -1;
+					}
 				}
 
 			break;

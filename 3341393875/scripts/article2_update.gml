@@ -10,16 +10,18 @@ if (life_timer % 8 == 0){
 
 
 if (!instance_exists(TVbox)){
-    TVbox = create_hitbox(AT_DSPECIAL_2, 1, round((x + hsp) + (10 * spr_dir)), round((y + vsp ) - 60))
+    TVbox = create_hitbox(AT_DSPECIAL_2, 1, round((x + hsp) + (3 * spr_dir)), round((y + vsp ) - 58))
 } else {
     TVbox.length += 1;
-    TVbox.x = round((x + hsp) + (2 * spr_dir));
-    TVbox.y = round((y + vsp ) - 60);
+    TVbox.x = round((x + hsp) + (3 * spr_dir));
+    TVbox.y = round((y + vsp) - 58);
 }
 
 if (state == "idle"){
     article_anim_speed = 0.33;
-    sprite_index = sprite_get("pizzahead_dspecial2_TV");
+
+    sprite_index = sprite_get("pizzahead_dspecial2_TV_frame");
+    
     image_index = state_timer * article_anim_speed;
     hsp = 2.5 * spr_dir;
     
@@ -42,8 +44,10 @@ if (state == "idle"){
 }
 
 if (state == "bounce"){
-    article_anim_speed = 0.5;
-    sprite_index = sprite_get("pizzahead_dspecial2_TV_bounce");
+    article_anim_speed = 0.4;
+
+    sprite_index = sprite_get("pizzahead_dspecial2_TV_bounce_frame");
+    
     image_index = state_timer * article_anim_speed;
 
     if (image_index > image_number){
@@ -82,7 +86,7 @@ if (y >= get_stage_data(SD_BOTTOM_BLASTZONE_Y)){
     exit;
 }
 
-if (life_timer == 600){
+if (life_timer == 600 && !has_rune("M")){
     var debris1 = spawn_hit_fx(x, y - 60, player_id.TV_debrisVFX);
 	debris1.originalImage = 0;
 	debris1.hsp = 5;

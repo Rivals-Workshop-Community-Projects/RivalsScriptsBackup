@@ -29,21 +29,27 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
                 if (window != 11){
 
                 switch (current_item_tossing){
+                    //Dynamite
                     case 0:
-                        sprite_index = sprite_get("pizzahead_dspecial2");
-                    break;
-                    case 1:
-                        sprite_index = sprite_get("pizzahead_dspecial5");
-                    break;
-                    case 2:
-                        sprite_index = sprite_get("pizzahead_dspecial4");
-                    break;
-                    case 3:
-                        sprite_index = sprite_get("pizzahead_dspecial_pull");
-                    break;
-                    case 4:
                         sprite_index = sprite_get("pizzahead_dspecial3");
                     break;
+                    //Uzi
+                    case 1:
+                        sprite_index = sprite_get("pizzahead_dspecial4");
+                    break;
+                    //Rat
+                    case 2:
+                        sprite_index = sprite_get("pizzahead_dspecial5");
+                    break;
+                    //TV
+                    case 3:
+                        sprite_index = sprite_get("pizzahead_dspecial2");
+                    break;
+                    //Knights
+                    case 4:
+                        sprite_index = sprite_get("pizzahead_dspecial_pull");
+                    break;
+                    
                 }
 
                 } else {
@@ -199,8 +205,8 @@ switch state{
 }
 
 if (stance == "pizzahead"){
-
-    if (state == PS_IDLE && prev_state == PS_WALK && round(image_index) < sprite_get_number(sprite_get("pizzahead_ftilt"))){
+    
+    if (state == PS_IDLE && prev_state == PS_WALK && prev_prev_state != PS_WALK_TURN && round(image_index) < sprite_get_number(sprite_get("pizzahead_ftilt"))){
         sprite_index = sprite_get("pizzahead_ftilt");
         image_index += idle_anim_speed + 0.1;
     }

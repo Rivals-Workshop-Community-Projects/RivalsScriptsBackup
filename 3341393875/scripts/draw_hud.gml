@@ -4,16 +4,29 @@ shader_start();
 
 if (stance == "pizzaface"){
 
-    if (move_cooldown[AT_DSPECIAL] > 0){
-        draw_sprite_ext(sprite_get("hud_minions"), (minion_number + 7 - 1) % 7, temp_x - 24, temp_y - 64, 1, 1, 0, c_white, 1);
+    if (has_rune("K")){
+        draw_sprite_ext(sprite_get("pizzaheadItems_hud"), next_item_tossed, temp_x + 28, temp_y - 12, 1, 1, 0, -1, 1);
+    } else {
+        if (move_cooldown[AT_DSPECIAL] > 0){
+            draw_sprite_ext(sprite_get("hud_minions"), (minion_number + 7 - 1) % 7, temp_x - 24, temp_y - 64, 1, 1, 0, c_white, 1);
+        }
+
+        draw_sprite_ext(sprite_get("hud_minions"), minion_number, temp_x - 24 + floor(move_cooldown[AT_DSPECIAL]), temp_y - 64, 1, 1, 0, move_cooldown[AT_DSPECIAL]? c_gray:c_white, 1);
     }
     
-    draw_sprite_ext(sprite_get("hud_minions"), minion_number, temp_x - 24 + floor(move_cooldown[AT_DSPECIAL]), temp_y - 64, 1, 1, 0, move_cooldown[AT_DSPECIAL]? c_gray:c_white, 1);
-
     draw_sprite_ext(sprite_get("hud_cog"), 0, temp_x + 156, temp_y - 64, 1, 1, 0, move_cooldown[AT_NSPECIAL]? c_gray:c_white, 1);
 
 } else {
-    draw_sprite_ext(sprite_get("pizzaheadItems_hud"), next_item_tossed, temp_x - 24, temp_y - 64, 1, 1, 0, -1, 1);
+
+    if (has_rune("K")){
+        if (move_cooldown[AT_DSPECIAL] > 0){
+            draw_sprite_ext(sprite_get("hud_minions"), (minion_number + 7 - 1) % 7, temp_x - 24, temp_y - 64, 1, 1, 0, c_white, 1);
+        }
+
+        draw_sprite_ext(sprite_get("hud_minions"), minion_number, temp_x - 24 + floor(move_cooldown[AT_DSPECIAL]), temp_y - 64, 1, 1, 0, move_cooldown[AT_DSPECIAL]? c_gray:c_white, 1);
+    } else {
+        draw_sprite_ext(sprite_get("pizzaheadItems_hud"), next_item_tossed, temp_x + 28, temp_y - 12, 1, 1, 0, -1, 1);
+    }
 }
 
 shader_end();

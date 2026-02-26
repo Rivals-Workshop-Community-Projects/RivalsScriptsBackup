@@ -9,4 +9,3 @@ if (instance_exists(active_minion)){
 if (instance_exists(pizzaHeadTV)){
     instance_destroy(pizzaHeadTV);
 }
-

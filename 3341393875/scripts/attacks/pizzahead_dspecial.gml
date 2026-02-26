@@ -5,11 +5,11 @@ set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("pizzahead_dspecia
 
 //Searching
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_TYPE, 0);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 33);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 33 - (has_rune("J") * 32));
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 11);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, air_friction);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_CUSTOM_AIR_FRICTION, ground_friction * 0.75);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, ground_friction * 0.75);
 
 //////////
@@ -201,7 +201,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_Y, 0);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WIDTH, 115);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HEIGHT, 105);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_SHAPE, 2);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_SHAPE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_DAMAGE, 10);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE, 90);
@@ -516,8 +516,8 @@ set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("r
 set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_DESTROY_EFFECT, 1);
 set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_ANIM_SPEED, 0.5);
 set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_GRAVITY, 0.25);
-set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_HSPEED, -4);
-set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_VSPEED, -4);
+set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_HSPEED, -4 + (has_rune("M") * 3));
+set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_VSPEED, -4 + (has_rune("M") * -4));
 set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_GROUND_BEHAVIOR, 0); // 2
 set_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

@@ -25,11 +25,12 @@ switch(my_hitboxID.attack){
 	break;
 
 	case AT_UAIR:
-		old_vsp -= 1;
+		old_vsp = -1.5;
+		old_hsp *= 0.5;
 	break;
 
 	case AT_NAIR:
-		old_vsp -= 1.5;
+		old_vsp -= 1;
 	break;
 	
 	case AT_DSTRONG_2:

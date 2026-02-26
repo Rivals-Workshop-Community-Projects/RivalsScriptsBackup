@@ -8,7 +8,7 @@ if get_match_setting(SET_HITBOX_VIS) && state != "DEATH"{
 
 switch minion_name{
     case "banditochicken":
-        if (get_match_setting(SET_HITBOX_VIS) && state == "WALK"){
+        if (!has_rune("L") && get_match_setting(SET_HITBOX_VIS) && state == "WALK"){
             draw_sprite_ext(sprite_get("summon_mask"), 0, x + 185 * spr_dir, y + 10, 2 * spr_dir, 2, 0, c_blue, 1);
         }
     break;
@@ -21,9 +21,9 @@ switch minion_name{
     break;
     case "badrat":
         if (get_match_setting(SET_HITBOX_VIS) && state == "WALK"){
-            draw_rectangle_color(x, y, x + (150 * spr_dir), y, c_red, c_red, c_red, c_red, false);
-            draw_rectangle_color(x + (150 * spr_dir), y, x + (150 * spr_dir), y - 50, c_red, c_red, c_red, c_red, false);
-            draw_rectangle_color(x, y - 50, x + (150 * spr_dir), y - 50, c_red, c_red, c_red, c_red, false);
+            draw_rectangle_color(x, y, x + (140 + (has_rune("L") * 450)) * spr_dir, y, c_red, c_red, c_red, c_red, false);
+            draw_rectangle_color(x + (140 + (has_rune("L") * 450)) * spr_dir, y, x + (140 + (has_rune("L") * 450)) * spr_dir, y - 50, c_red, c_red, c_red, c_red, false);
+            draw_rectangle_color(x, y - 50, x + (140 + (has_rune("L") * 450)) * spr_dir, y - 50, c_red, c_red, c_red, c_red, false);
             draw_rectangle_color(x, y, x, y - 50, c_red, c_red, c_red, c_red, false);
         }
     break;
@@ -38,6 +38,10 @@ switch minion_name{
             draw_rectangle_color(x + (50 * spr_dir), y, x + (50 * spr_dir), y - 150, c_blue, c_blue, c_blue, c_blue, false);
             draw_rectangle_color(x, y - 150, x + (50 * spr_dir), y - 150, c_blue, c_blue, c_blue, c_blue, false);
             draw_rectangle_color(x, y, x, y - 150, c_blue, c_blue, c_blue, c_blue, false);
+
+            if (has_rune("L")){
+                draw_sprite_ext(sprite_get("summon_mask"), 0, x + (hsp * 10), y + 10, 2 * spr_dir, 2, 0, c_blue, 1);
+            }
         }
     break;
     case "minijohn":
@@ -46,7 +50,12 @@ switch minion_name{
             draw_rectangle_color(x + (150 * spr_dir), y, x + (150 * spr_dir), y - 50, c_red, c_red, c_red, c_red, false);
             draw_rectangle_color(x, y - 50, x + (150 * spr_dir), y - 50, c_red, c_red, c_red, c_red, false);
             draw_rectangle_color(x, y, x, y - 50, c_red, c_red, c_red, c_red, false);
+
+            if (has_rune("L")){
+                draw_sprite_ext(sprite_get("summon_mask"), 0, x + (hsp * 10), y + 10, 2 * spr_dir, 2, 0, c_blue, 1);
+            }
         }
+        
     break;
 }
 

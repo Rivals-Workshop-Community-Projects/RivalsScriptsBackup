@@ -45,7 +45,7 @@ sprite_change_offset("pizzaface_nair", 48, 100, true);
 sprite_change_offset("pizzaface_fair", 48, 100, true);
 sprite_change_offset("pizzaface_bair", 108, 100, true);
 sprite_change_offset("pizzaface_uair", 48, 124, true);
-sprite_change_offset("pizzaface_dair", 48, 100, true);
+sprite_change_offset("pizzaface_dair", 48, 99, true);
 sprite_change_offset("pizzaface_fstrong", 48, 100, true);
 sprite_change_offset("pizzaface_ustrong", 79, 103, true);
 sprite_change_offset("pizzaface_dstrong", 84, 100, true);
@@ -101,7 +101,7 @@ sprite_change_offset("pizzahead_tech", 48, 99, true);
 sprite_change_offset("pizzahead_jab", 48, 99, true);
 sprite_change_offset("pizzahead_dattack", 48, 99, true);
 sprite_change_offset("pizzahead_ftilt", 54, 99, true);
-sprite_change_offset("pizzahead_ftilt2", 43, 99, true);
+sprite_change_offset("pizzahead_ftilt2", 44, 99, true);
 sprite_change_offset("pizzahead_dtilt", 48, 99, true);
 sprite_change_offset("pizzahead_utilt", 48, 99, true);
 sprite_change_offset("pizzahead_nair", 48, 99, true);
@@ -141,6 +141,7 @@ sprite_change_offset("pizzaface_hud",          0, -2);
 sprite_change_offset("pizzaface_hurt_hud",     0, -2);
 sprite_change_offset("pizzahead_hud",          0, -2);
 sprite_change_offset("pizzahead_hurt_hud",     0, -2);
+sprite_change_offset("pizzaheadItems_hud", 16, 18);
 
 sprite_change_offset("explosion", 95, 198);
 
@@ -176,7 +177,7 @@ sprite_change_offset("banditochicken_walk", 48, 101);
 sprite_change_offset("banditochicken_death", 48, 101);
 
 sprite_change_offset("banditochicken_dynamite", 84, 160);
-sprite_change_offset("dynamite_explosion_grounded", 40, 85);
+sprite_change_offset("dynamite_explosion_grounded", 40, 100);
 
 sprite_change_offset("badrat_summon", 48, 101);
 sprite_change_offset("badrat_fall", 48, 101);
@@ -214,6 +215,10 @@ sprite_change_offset("minijohn_trail", 95, 200);
 //TV Stuff
 sprite_change_offset("pizzahead_dspecial2_TV", 40, 80);
 sprite_change_offset("pizzahead_dspecial2_TV_bounce", 40, 80);
+sprite_change_offset("pizzahead_dspecial2_TV_content", 40, 80);
+sprite_change_offset("pizzahead_dspecial2_TV_bounce_content", 40, 80);
+sprite_change_offset("pizzahead_dspecial2_TV_frame", 40, 80);
+sprite_change_offset("pizzahead_dspecial2_TV_bounce_frame", 40, 80);
 sprite_change_offset("TV_stompvfx", 166, 162);
 sprite_change_offset("pizzahead_dspecial2_TV_debris", 100, 100);
 

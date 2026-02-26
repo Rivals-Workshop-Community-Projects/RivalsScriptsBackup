@@ -15,9 +15,16 @@ switch(attack) {
 	break;
 
 	case AT_UAIR:
-		if (window != 5){
+		if (window != 4){
 			can_wall_jump = true;
 			hud_offset = 140;
+		}
+	break;
+
+	case AT_DATTACK:
+		if (window == 2 && has_rune("E") && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && attack_down){
+			//attack_end();
+			window_timer = 0;
 		}
 	break;
 
@@ -43,7 +50,7 @@ switch(attack) {
             break;
 
             case 2:
-                ledge_snap(16);
+                ledge_snap(32);
                 can_wall_jump = true;
                 can_jump = has_hit_player;
 
@@ -74,9 +81,9 @@ switch(attack) {
 				window = get_attack_value(AT_FSPECIAL_2, AG_NUM_WINDOWS) + 1;
 			}
 
-			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause && free){
 
-            	vsp = min(vsp, -1);
+            	vsp = min(vsp, -2);
 
 			}
 
@@ -158,7 +165,7 @@ switch(attack) {
 		//we put landing lag here because the move is AG_CATEGORY 2 (a ground an air attack)
 		if (window > 4 && !free){
 			set_state(PS_LANDING_LAG);
-			landing_lag_time = 10 * (!has_hit ? 1.5 : 1);
+			landing_lag_time = 12 * (!has_hit ? 1.5 : 1);
 		}
 	break;
 
@@ -194,7 +201,7 @@ switch(attack) {
 				for (var a = 1; a <= floor(nspecial2_charge/10) + 3; a += 1){
 				//If he is not in the air, check in front, if he is then check diagonally.
 					if (!free){
-						var xDetection = ((22 + (28 * a)) * spr_dir)
+						var xDetection = ((21 + (28 * a)) * spr_dir)
 						var yDetection = -31
 					} else {
 						var xDetection = ((20 + (20 * a)) * spr_dir)
@@ -216,12 +223,12 @@ switch(attack) {
 			set_hitbox_value(AT_NSPECIAL_2, b, HG_WINDOW, 3);
 			set_hitbox_value(AT_NSPECIAL_2, b, HG_LIFETIME, 3);
 		if (!free){
-			set_hitbox_value(AT_NSPECIAL_2, b, HG_HITBOX_X, 22 + (28 * b));
+			set_hitbox_value(AT_NSPECIAL_2, b, HG_HITBOX_X, 21 + (28 * b));
 			set_hitbox_value(AT_NSPECIAL_2, b, HG_HITBOX_Y, -31);
 
-			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HITBOX_X, 22 + (28 * (b + 1)));
+			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HITBOX_X, 20 + (28 * (b + 1)));
 			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HITBOX_Y, -26);
-			set_hitbox_value(AT_NSPECIAL_2, 20, HG_WIDTH, 26);
+			set_hitbox_value(AT_NSPECIAL_2, 20, HG_WIDTH, 30);
 			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HEIGHT, 38);
 			set_hitbox_value(AT_NSPECIAL_2, 20, HG_ANGLE, 65);
 			set_hitbox_value(AT_NSPECIAL_2, 20, HG_BASE_KNOCKBACK, 7);
@@ -230,9 +237,9 @@ switch(attack) {
 			set_hitbox_value(AT_NSPECIAL_2, b, HG_HITBOX_Y, -17 + (20 * b));
 
 			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HITBOX_X, 5 + (20 * (b + 1)));
-			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HITBOX_Y, -12 + (20 * (b + 1)));
+			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HITBOX_Y, -15 + (20 * (b + 1)));
 			set_hitbox_value(AT_NSPECIAL_2, 20, HG_WIDTH, 38);
-			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HEIGHT, 26);
+			set_hitbox_value(AT_NSPECIAL_2, 20, HG_HEIGHT, 30);
 			set_hitbox_value(AT_NSPECIAL_2, 20, HG_ANGLE, -65);
 			set_hitbox_value(AT_NSPECIAL_2, 20, HG_BASE_KNOCKBACK, 5);
 		}
@@ -346,6 +353,8 @@ switch(attack) {
 					dair_angle += 180;
 					dair_angle = clamp(dair_angle, 130, 230);
 					dair_angle -= 180;
+
+					vsp = 12;
 				}
 				can_wall_jump = true;
 
@@ -362,7 +371,7 @@ switch(attack) {
 				draw_y = -round(abs(spr_angle) / 6);
 				spr_angle = dair_angle;
 				set_window_value(AT_DAIR, 2, AG_WINDOW_HSPEED, 15 * sin(dair_angle * pi/180) * spr_dir); //change 20 to the desired speed of the gp
-				set_window_value(AT_DAIR, 2, AG_WINDOW_VSPEED, 15 * cos(dair_angle * pi/180)); //change 20 to the desired speed of the g
+				//set_window_value(AT_DAIR, 2, AG_WINDOW_VSPEED, 15 * cos(dair_angle * pi/180)); //change 20 to the desired speed of the g
 
 				if(!free){
 					window = 3;
@@ -382,454 +391,472 @@ switch(attack) {
 				}
 				break;
 		}
-		break;
-		case AT_NSPECIAL:
-			can_fast_fall = false;
-		break;
-		case AT_DSPECIAL:
-			if vsp > 0{
-				vsp = clamp(vsp - 0.2, 0, 3);
+	break;
+	case AT_NSPECIAL:
+		can_fast_fall = false;
+	break;
+	case AT_DSPECIAL:
+		if vsp > 0{
+			vsp = clamp(vsp - 0.2, 0, 3);
+		}
+		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			
+			if (instance_exists(active_minion)){
+				active_minion.state = "DEATH";
 			}
-			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-				
-				if (instance_exists(active_minion)){
-					active_minion.state = "DEATH";
-				}
+			active_minion = instance_create(round(x + hsp), round(y + vsp), "obj_article1");
+			active_minion.minion_number = minion_number;
+			active_minion.spr_dir = spr_dir;
+
+			if (has_rune("L") && minion_number = 4){
+				//first minion
+				active_minion.x = get_stage_data(SD_X_POS) + 20;
+
 				active_minion = instance_create(round(x + hsp), round(y + vsp), "obj_article1");
 				active_minion.minion_number = minion_number;
-				active_minion.spr_dir = spr_dir;
-				
-				minion_number = (minion_number + 1) % 7;
-				next_item_tossed = random_func(0, 5, true);
-
-				move_cooldown[AT_DSPECIAL] = 120;
+				active_minion.spr_dir = spr_dir * -1;
+				active_minion.x = room_width - get_stage_data(SD_X_POS) - 20;
 			}
-			can_fast_fall = false;
-			can_move = false
-		break;
+			
+			minion_number = (minion_number + 1) % 7;
+			next_item_tossed = (current_item_tossing + 1) % 5;
 
-		case AT_DSPECIAL_AIR:
-			can_fast_fall = false;
+			move_cooldown[AT_DSPECIAL] = 120;
+		}
+		can_fast_fall = false;
+		can_move = false
+	break;
 
-			if (window == 2){
-				cameFromNspecial = false;
-				if (has_hit_player){
+	case AT_DSPECIAL_AIR:
+		can_fast_fall = false;
 
-					if (!hitpause){
-						window = 4;
-						window_timer = 0;
-						djumps = 0;
-					} else {
-						hit_player_obj.x = ease_linear(x + 16 * spr_dir, hit_player_obj.x, round(hit_player_obj.hitstop), round(hit_player_obj.hitstop_full));
-						hit_player_obj.y = ease_linear(y + 125 + round(char_height/2), hit_player_obj.y, round(hit_player_obj.hitstop), round(hit_player_obj.hitstop_full)); // + round(hit_player_obj.char_height/2)
-					}
+		if (window == 2){
+			cameFromNspecial = false;
+			if (has_hit_player){
 
-				} else if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-					
-					window = 3;
+				if (!hitpause){
+					window = 4;
 					window_timer = 0;
+					djumps = 0;
+				} else {
+					hit_player_obj.x = ease_linear(x + 16 * spr_dir, hit_player_obj.x, round(hit_player_obj.hitstop), round(hit_player_obj.hitstop_full));
+					hit_player_obj.y = ease_linear(y + 125 + round(char_height/2), hit_player_obj.y, round(hit_player_obj.hitstop), round(hit_player_obj.hitstop_full)); // + round(hit_player_obj.char_height/2)
 				}
+
+			} else if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				
+				window = 3;
+				window_timer = 0;
+			}
+		}
+
+		//if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+		//	set_state(PS_PRATFALL);
+		//}
+
+		if (window == 4 && has_hit_player && instance_exists(hit_player_obj)){
+			destroy_hitboxes();
+			can_move = false;
+			hsp = 0;
+			vsp = 0;
+
+			hit_player_obj.hitpause = true;
+			hit_player_obj.hitstop = 2;
+
+			if (window_timer > 0 && window_timer < 5){
+				hit_player_obj.x = x + 16 * spr_dir;
+				hit_player_obj.y = y + 125 + round(char_height/2);
 			}
 
-			//if (window == 3 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-			//	set_state(PS_PRATFALL);
-			//}
+			if (window_timer >= 5 && window_timer < 10){
+				hit_player_obj.x = x + 26 * spr_dir;
+				hit_player_obj.y = y + 44 + round(char_height/2);
+			}
 
-			if (window == 4 && has_hit_player && instance_exists(hit_player_obj)){
-				can_move = false;
-				hsp = 0;
-				vsp = 0;
+			if (window_timer >= 10 && window_timer < 15){
+				hit_player_obj.x = x + 32 * spr_dir;
+				hit_player_obj.y = y - 40 + round(char_height/2);
+			}
+
+			if (window_timer >= 15 && window_timer < 20){
+				hit_player_obj.x = x + 35 * spr_dir;
+				hit_player_obj.y = y - 110 + round(char_height/2);
+			}
+
+			if (window_timer >= 20 && window_timer < 25){
+				hit_player_obj.x = x + 35 * spr_dir;
+				hit_player_obj.y = y - 106 + round(char_height/2);
+			}
+
+			if (window_timer >= 25){
+				hit_player_obj.x = x + 35 * spr_dir;
+				hit_player_obj.y = y - 102 + round(char_height/2);
+			}
+
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				hit_player_obj.grabbed_invisible = true;
+				hit_player_obj.x = x;
+				hit_player_obj.y = y;
+			}
+		}
+
+		if (window == 5 && has_hit_player && instance_exists(hit_player_obj)){
+			can_move = false;
+			hsp = 0;
+			vsp = 0;
+
+			if (window_timer < 5){
+				hit_player_obj.grabbed_invisible = true;
+				hit_player_obj.x = x;
+				hit_player_obj.y = y;
 
 				hit_player_obj.hitpause = true;
 				hit_player_obj.hitstop = 2;
-
-				if (window_timer > 0 && window_timer < 5){
-					hit_player_obj.x = x + 16 * spr_dir;
-					hit_player_obj.y = y + 125 + round(char_height/2);
-				}
-
-				if (window_timer >= 5 && window_timer < 10){
-					hit_player_obj.x = x + 26 * spr_dir;
-					hit_player_obj.y = y + 44 + round(char_height/2);
-				}
-
-				if (window_timer >= 10 && window_timer < 15){
-					hit_player_obj.x = x + 32 * spr_dir;
-					hit_player_obj.y = y - 40 + round(char_height/2);
-				}
-
-				if (window_timer >= 15 && window_timer < 20){
-					hit_player_obj.x = x + 35 * spr_dir;
-					hit_player_obj.y = y - 110 + round(char_height/2);
-				}
-
-				if (window_timer >= 20 && window_timer < 25){
-					hit_player_obj.x = x + 35 * spr_dir;
-					hit_player_obj.y = y - 106 + round(char_height/2);
-				}
-
-				if (window_timer >= 25){
-					hit_player_obj.x = x + 35 * spr_dir;
-					hit_player_obj.y = y - 102 + round(char_height/2);
-				}
-
-				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-					hit_player_obj.grabbed_invisible = true;
-					hit_player_obj.x = x;
-					hit_player_obj.y = y;
-				}
 			}
 
-			if (window == 5 && has_hit_player && instance_exists(hit_player_obj)){
-				can_move = false;
+			if (window_timer == 5){
+				hit_player_obj.x = x - 36 * spr_dir;
+				hit_player_obj.y = y - 98 + round(char_height/2);
+				hit_player_obj.hurtboxID.x = x - 36 * spr_dir;
+				hit_player_obj.hurtboxID.y = y - 98 + round(char_height/2);
+
+				hit_player_obj.hitpause = true;
+				hit_player_obj.hitstop = 2;
+			}
+
+			if (has_rune("I") && !free && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				set_state(PS_IDLE);
+			}
+		}
+
+		if (!free && cameFromNspecial == false){
+        	landing_lag_time = get_attack_value(AT_DSPECIAL_AIR, AG_LANDING_LAG);
+        	set_state(PS_LANDING_LAG);
+        }
+	break;
+
+	case AT_USPECIAL:
+		can_move = false;
+		if (window == 1){
+			rising = true;
+			hsp *= 0.5;
+			vsp *= 0.5;
+			vsp -= 0.5;
+		}
+		if (window == 2){
+			
+			if (cameFromTaunt){
+				window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH);
+			} else {
 				hsp = 0;
 				vsp = 0;
-
-				if (window_timer < 5){
-					hit_player_obj.grabbed_invisible = true;
-					hit_player_obj.x = x;
-					hit_player_obj.y = y;
-
-					hit_player_obj.hitpause = true;
-					hit_player_obj.hitstop = 2;
-				}
-
-				if (window_timer == 5){
-					hit_player_obj.x = x - 36 * spr_dir;
-					hit_player_obj.y = y - 98 + round(char_height/2);
-					hit_player_obj.hurtboxID.x = x - 36 * spr_dir;
-					hit_player_obj.hurtboxID.y = y - 98 + round(char_height/2);
-
-					hit_player_obj.hitpause = true;
-					hit_player_obj.hitstop = 2;
-				}
-
-				if (has_rune("I") && !free && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-					set_state(PS_IDLE);
-				}
 			}
 
-			if (!free && cameFromNspecial == false){
-            	landing_lag_time = get_attack_value(AT_DSPECIAL_AIR, AG_LANDING_LAG);
-            	set_state(PS_LANDING_LAG);
-        	}
-		break;
-
-		case AT_USPECIAL:
-			can_move = false;
-			if (window == 1){
-				rising = true;
-				hsp *= 0.5;
-				vsp *= 0.5;
-				vsp -= 0.5;
-			}
-			if (window == 2){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				set_victory_theme(sound_get("headVictory")); 
+				stance = "pizzahead";
+				hurtbox_spr = sprite_get("pizzahead_hurtbox");
+				crouchbox_spr = sprite_get("pizzahead_crouchbox");
+				mask_index = sprite_get("pizzahead_mask");
+				air_hurtbox_spr = -1;
+				hitstun_hurtbox_spr = -1;
+				set_ui_element(UI_HUD_ICON, sprite_get("pizzahead_hud"));
+				set_ui_element(UI_HUDHURT_ICON, sprite_get("pizzahead_hurt_hud"));
+				set_ui_element(UI_OFFSCREEN, sprite_get("pizzahead_offscreen"));
+				sprite_change_offset("plat", 75, 112);
 				
-				if (cameFromTaunt){
-					window_timer = get_window_value(attack, window, AG_WINDOW_LENGTH);
-				} else {
-					hsp = 0;
-					vsp = 0;
-				}
-
-				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-					set_victory_theme(sound_get("headVictory")); 
-					stance = "pizzahead";
-					hurtbox_spr = sprite_get("pizzahead_hurtbox");
-					crouchbox_spr = sprite_get("pizzahead_crouchbox");
-					mask_index = sprite_get("pizzahead_mask");
-					air_hurtbox_spr = -1;
-					hitstun_hurtbox_spr = -1;
-					set_ui_element(UI_HUD_ICON, sprite_get("pizzahead_hud"));
-					set_ui_element(UI_HUDHURT_ICON, sprite_get("pizzahead_hurt_hud"));
-					set_ui_element(UI_OFFSCREEN, sprite_get("pizzahead_offscreen"));
-					sprite_change_offset("plat", 75, 112);
-					
-					char_height = 95;
-					idle_anim_speed = .23;
-					crouch_anim_speed = .2;
-					walk_anim_speed = .37;
-					dash_anim_speed = .27;
-					pratfall_anim_speed = .25;
-					crouch_startup_frames = 2;
-					crouch_active_frames = 1;
-					crouch_recovery_frames = 2;
-					
-					walk_speed = 4.00;
-					walk_accel = 0.5;
-					walk_turn_time = 6;
-					initial_dash_time = 8;
-					initial_dash_speed = 9;
-					dash_speed = 7;
-					dash_turn_time = 8;
-					dash_turn_accel = 2;
-					dash_stop_time = 6;
-					dash_stop_percent = 0.5; //the value to multiply your hsp by when going into idle from dash or dashstop
-					ground_friction = .5;
-					moonwalk_accel = 1.3;
-					
-					jump_start_time = 5;
-					jump_speed = 12;
-					short_hop_speed = 5.5;
-					djump_speed = 10;
-					leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
-					max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
-					air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
-					jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
-					air_accel = 0.3;
-					prat_fall_accel = 1; //multiplier of air_accel while in pratfall
-					air_friction = 0.02;
-					max_djumps = 1;
-					double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
-					walljump_hsp = 7;
-					walljump_vsp = 8;
-					walljump_time = 30;
-					max_fall = 11; //maximum fall speed without fastfalling
-					fast_fall = 16; //fast fall speed
-					gravity_speed = 0.6;
-					hitstun_grav = 0.5;
-					knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
-					
-					land_time = 4; //normal landing frames
-					prat_land_time = 12;
-					wave_land_time = 8;
-					wave_land_adj = 1.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-					wave_friction = 0.05; //grounded deceleration when wavelanding
-					
-					//airdodge animation frames
-					air_dodge_startup_frames = 1;
-					air_dodge_active_frames = 2;
-					air_dodge_recovery_frames = 2;
-					air_dodge_speed = 9;
+				char_height = 95;
+				idle_anim_speed = .23;
+				crouch_anim_speed = .2;
+				walk_anim_speed = .37;
+				dash_anim_speed = .27;
+				pratfall_anim_speed = .25;
+				crouch_startup_frames = 2;
+				crouch_active_frames = 1;
+				crouch_recovery_frames = 2;
+				
+				walk_speed = 4.00;
+				walk_accel = 0.5;
+				walk_turn_time = 6;
+				initial_dash_time = 8;
+				initial_dash_speed = 9;
+				dash_speed = 7;
+				dash_turn_time = 8;
+				dash_turn_accel = 2;
+				dash_stop_time = 6;
+				dash_stop_percent = 0.5; //the value to multiply your hsp by when going into idle from dash or dashstop
+				ground_friction = 0.5;
+				moonwalk_accel = 1.3;
+				
+				jump_start_time = 5;
+				jump_speed = 12;
+				short_hop_speed = 5.5;
+				djump_speed = 10;
+				leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping
+				max_jump_hsp = 6; //the maximum hsp you can have when jumping from the ground
+				air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
+				jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+				air_accel = 0.3;
+				prat_fall_accel = 1; //multiplier of air_accel while in pratfall
+				air_friction = 0.04;
+				max_djumps = 1;
+				double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
+				walljump_hsp = 7;
+				walljump_vsp = 8;
+				walljump_time = 30;
+				max_fall = 11; //maximum fall speed without fastfalling
+				fast_fall = 16; //fast fall speed
+				gravity_speed = 0.6;
+				hitstun_grav = 0.5;
+				knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+				
+				land_time = 4; //normal landing frames
+				prat_land_time = 12;
+				wave_land_time = 8;
+				wave_land_adj = 1.25; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+				wave_friction = 0.05; //grounded deceleration when wavelanding
+				
+				//airdodge animation frames
+				air_dodge_startup_frames = 1;
+				air_dodge_active_frames = 2;
+				air_dodge_recovery_frames = 2;
+				air_dodge_speed = 9;
 	
-					//parry animation frames
-					dodge_startup_frames = 1;
-					dodge_active_frames = 6;
-					dodge_recovery_frames = 5;
-					
-					//tech animation frames
-					tech_active_frames = 3;
-					tech_recovery_frames = 2;
+				//parry animation frames
+				dodge_startup_frames = 1;
+				dodge_active_frames = 6;
+				dodge_recovery_frames = 5;
+				
+				//tech animation frames
+				tech_active_frames = 3;
+				tech_recovery_frames = 2;
 
-					//tech roll animation frames
-					techroll_startup_frames = 1
-					techroll_active_frames = 4;
-					techroll_recovery_frames = 3;
-					techroll_speed = 10;
+				//tech roll animation frames
+				techroll_startup_frames = 1
+				techroll_active_frames = 4;
+				techroll_recovery_frames = 3;
+				techroll_speed = 10;
 
-										//roll animation frames
-					roll_forward_startup_frames = 1;
-					roll_forward_active_frames = 4;
-					roll_forward_recovery_frames = 3;
-					roll_back_startup_frames = 1;
-					roll_back_active_frames = 4;
-					roll_back_recovery_frames = 3;
-					roll_forward_max = 9; //roll speed
-					roll_backward_max = 9;
-					
-					land_sound = asset_get("sfx_land_med");
-					landing_lag_sound = asset_get("sfx_land");
-					waveland_sound = asset_get("sfx_waveland_zet");
-					jump_sound = sound_get("sfx_jump");
-					djump_sound = sound_get("pizzaheadjump");
-					air_dodge_sound = asset_get("sfx_quick_dodge");
-					
+									//roll animation frames
+				roll_forward_startup_frames = 1;
+				roll_forward_active_frames = 4;
+				roll_forward_recovery_frames = 3;
+				roll_back_startup_frames = 1;
+				roll_back_active_frames = 4;
+				roll_back_recovery_frames = 3;
+				roll_forward_max = 9; //roll speed
+				roll_backward_max = 9;
+				
+				land_sound = asset_get("sfx_land_med");
+				landing_lag_sound = asset_get("sfx_land");
+				waveland_sound = asset_get("sfx_waveland_zet");
+				jump_sound = sound_get("sfx_jump");
+				djump_sound = sound_get("pizzaheadjump");
+				air_dodge_sound = asset_get("sfx_quick_dodge");
+				
 
-					hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
-					if (cameFromTaunt){
-						clear_button_buffer(PC_TAUNT_PRESSED);
-						sound_stop(sound_get("sfx_explosion"));
-						if (free){
-							set_state(PS_IDLE_AIR);
-						} else {
-							set_state(PS_IDLE);
-						}
+				hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
+				if (cameFromTaunt){
+					clear_button_buffer(PC_TAUNT_PRESSED);
+					sound_stop(sound_get("sfx_explosion"));
+					if (free){
+						set_state(PS_IDLE_AIR);
 					} else {
-
-						create_hitbox(AT_USPECIAL, 1, x, y - 60);
-						spawn_hit_fx(x - (16 * spr_dir), y + 16, uspecialBoom);
-						var bit_number = 3 + random_func_2(get_gameplay_time() % 200, 5, true);
-						for (var b = 0; b < bit_number; b++){
-							bits[b] = spawn_hit_fx(x, y, hit_fx_create(sprite_get("pizzabits" + string(random_func_2((get_gameplay_time() + (b * 10)) % 200, 11, true))), 120));
-							var bit_angle = ((360 / bit_number) * b) + random_func_2((get_gameplay_time() + 100) % 200, 30, true) - 15;
-							bits[b].hsp = lengthdir_x(10, bit_angle);
-							bits[b].vsp = lengthdir_y(10, bit_angle);
-						}
-
-						vsp = -20 + (has_rune("D") * -5);
+						set_state(PS_IDLE);
 					}
+				} else {
+
+					create_hitbox(AT_USPECIAL, 1, x, y - 60);
+					spawn_hit_fx(x - (16 * spr_dir), y + 16, uspecialBoom);
+					var bit_number = 3 + random_func_2(get_gameplay_time() % 200, 5, true);
+					for (var b = 0; b < bit_number; b++){
+						bits[b] = spawn_hit_fx(x, y, hit_fx_create(sprite_get("pizzabits" + string(random_func_2((get_gameplay_time() + (b * 10)) % 200, 11, true))), 120));
+						var bit_angle = ((360 / bit_number) * b) + random_func_2((get_gameplay_time() + 100) % 200, 30, true) - 15;
+						bits[b].hsp = lengthdir_x(10, bit_angle);
+						bits[b].vsp = lengthdir_y(10, bit_angle);
+					}
+
+					vsp = -20 + (has_rune("D") * -5);
 				}
 			}
-			if window == 3{
-				can_wall_jump = true;
-				
-				//draw_y = -100;
-				spr_angle = (state_timer * 20 * -spr_dir) % 360;
-				can_move = true;
-				
-				hsp += right_down + (left_down * -1);
-				hsp = clamp(hsp, -air_max_speed, air_max_speed);
-
-				if (!free){
-					spr_angle = 0;
-					sound_play(sound_get("ground_hit"));
-
-					if (right_down && !left_down){
-						hsp = air_max_speed;
-					}
-					if (left_down && !right_down){
-						hsp = -air_max_speed;
-					}
-
-					set_attack(AT_USPECIAL_GROUND);
-				}
-			}
-			break;
+		}
+		if window == 3{
+			can_wall_jump = true;
 			
-			case AT_DSTRONG_2:
-            if (window == 2 && window_timer == 3){
-                shake_camera(4, 10);
+			//draw_y = -100;
+			spr_angle = (state_timer * 19 * -spr_dir) % 360;
+			can_move = true;
+			
+			hsp += right_down + (left_down * -1);
+			hsp = clamp(hsp, -air_max_speed, air_max_speed);
+
+			if (!free){
+				spr_angle = 0;
+				sound_play(sound_get("ground_hit"));
+
+				if (right_down && !left_down){
+					hsp = air_max_speed;
+				}
+				if (left_down && !right_down){
+					hsp = -air_max_speed;
+				}
+
+				set_attack(AT_USPECIAL_GROUND);
+			}
+		}
+	break;
+			
+	case AT_DSTRONG_2:
+        if (window == 2 && window_timer == 3){
+            shake_camera(4, 10);
 
 
-                /*with (oPlayer){ use this for a Rune or something
-                    if (self != other && free == false){
-                        with (other){
-                            create_hitbox(AT_DSTRONG_2, 2, other.x, other.y - round(other.char_height/2));
-                        }
+            /*with (oPlayer){ use this for a Rune or something
+                if (self != other && free == false){
+                    with (other){
+                        create_hitbox(AT_DSTRONG_2, 2, other.x, other.y - round(other.char_height/2));
                     }
-                }*/
-            }
+                }
+            }*/
+        }
 		
-		break;
+	break;
 
-		case AT_USPECIAL_GROUND:
-            spr_angle = 0;
+	case AT_USPECIAL_GROUND:
+        spr_angle = 0;
 
-			if (!was_parried){
-				if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) || window == 3 || window == 4){
-                	iasa_script();
-                	if window == 3 && window_timer == 1{
-                	    if (get_gameplay_time() % 2 == 0){
-                	      sound_play(sound_get("Pizzahead3"), false, false, 1, 1 - (0.05 * random_func_2(get_gameplay_time() % 200, 6, true)));
-                	    } else {
-                	      sound_play(sound_get("Pizzahead1"), false, false, 1, 1 - (0.05 * random_func_2(get_gameplay_time() % 200, 6, true)));    
-                	    }
-                	}
+		if (!was_parried){
+			if (window == 2 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) || window == 3 || window == 4){
+            	iasa_script();
+            	if window == 3 && window_timer == 1{
+            	    if (get_gameplay_time() % 2 == 0){
+            	      sound_play(sound_get("Pizzahead3"), false, false, 1, 1 - (0.05 * random_func_2(get_gameplay_time() % 200, 6, true)));
+            	    } else {
+            	      sound_play(sound_get("Pizzahead1"), false, false, 1, 1 - (0.05 * random_func_2(get_gameplay_time() % 200, 6, true)));    
+            	    }
             	}
-			} else {
-				//nothing
+        	}
+		} else {
+			//nothing
+		}
+    break;
+
+	case AT_TAUNT_2:
+		if (window == 2 && sprite_index != sprite_get("rizzahead") && sprite_index != sprite_get("rizzaheadSketch")){
+
+			if (window_timer == 1){
+				if (random_func(0, 2, true) % 2 == 0){
+                	sound_play(sound_get("Pizzahead3"), false, false, 1, 1 - (0.05 * random_func_2(get_gameplay_time() % 200, 6, true)));
+            	} else {
+                	sound_play(sound_get("Pizzahead1"), false, false, 1, 1 - (0.05 * random_func_2(get_gameplay_time() % 200, 6, true)));    
+            	}
 			}
+
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && taunt_down){
+				window_timer = 0;
+			}
+		}
+	break;
+
+	case AT_DSPECIAL_2:
+		switch (window){
+		
+		case 1:
+
+			if (window_timer < 18 && b_reversed == false){
+        		if (spr_dir == 1 && left_down){
+        		    spr_dir = -1;
+        		    b_reversed = true;
+        		}
+
+        		if (spr_dir == -1 && right_down){
+        		    spr_dir = 1;
+        		    b_reversed = true;
+        		}
+        	}
 			
-        break;
 
-		case AT_TAUNT_2:
-			if (window == 2 && sprite_index != sprite_get("rizzahead") && sprite_index != sprite_get("rizzaheadSketch")){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				if (has_rune("M")) times_through = 0;
+				switch (next_item_tossed){
+					//Dynamite
+					case 0:
+						window = 17;
+						window_timer = 0;
+						hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
+					break;
 
-				if (window_timer == 1){
-					if (random_func(0, 2, true) % 2 == 0){
-                    	sound_play(sound_get("Pizzahead3"), false, false, 1, 1 - (0.05 * random_func_2(get_gameplay_time() % 200, 6, true)));
-                	} else {
-                    	sound_play(sound_get("Pizzahead1"), false, false, 1, 1 - (0.05 * random_func_2(get_gameplay_time() % 200, 6, true)));    
-                	}
+					//Uzi
+					case 1:
+						window = 8;
+						window_timer = 0;
+						hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
+						times_through = 0;
+					break;
+
+					//Rat throw
+					case 2:
+						window = 19;
+						window_timer = 0;
+						hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
+					break;
+
+					//TV Throw
+					case 3:
+						window = 2;
+						window_timer = 0;
+						hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
+					break;
+
+					//Fork Knights
+					case 4:
+						window = 12;
+						window_timer = 0;
+						hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
+
+						towerX = x;
+						towerY = y;
+						towerLifetime = 0;
+						towerSprDir = spr_dir;
+
+						if (has_rune("M")){
+							with (obj_article1){
+                				if (orig_player_id == other){
+                    				state = "DEATH";
+                				}
+           					}
+						}
+					break;
 				}
 
-				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && taunt_down){
-					window_timer = 0;
-				}
+				current_item_tossing = next_item_tossed;
+				//attempts = 0;
+				
+				next_item_tossed = (current_item_tossing + 1) % 5;
+				minion_number = (minion_number + 1) % 7;
+				/*
+				while (next_item_tossed == current_item_tossing && attempts < 30){
+					next_item_tossed = random_func_2(attempts, 5, true);
+					attempts += 1;
+				}*/
+
 			}
+    	break;
 
+		//TV Throw
+		case 4:
+			hud_offset = 84;
+
+			if (window_timer == 3){
+				pizzaHeadTV = instance_create(x + 30 * spr_dir, y - 20, "obj_article2");
+			}
 		break;
 
-		case AT_DSPECIAL_2:
-			switch (window){
+		//Uzi pause
+		case 9:
 
-			case 1:
-
-				if (window_timer < 18 && b_reversed == false){
-            		if (spr_dir == 1 && left_down){
-            		    spr_dir = -1;
-            		    b_reversed = true;
-            		}
-
-            		if (spr_dir == -1 && right_down){
-            		    spr_dir = 1;
-            		    b_reversed = true;
-            		}
-        		}
-				
-
-				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-
-					switch (next_item_tossed){
-						//TV Throw
-						case 0:
-							window = 2;
-							window_timer = 0;
-							hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
-						break;
-
-						//Rat throw
-						case 1:
-							window = 19;
-							window_timer = 0;
-							hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
-						break;
-
-						//Uzi
-						case 2:
-							window = 8;
-							window_timer = 0;
-							hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
-							times_through = 0;
-						break;
-
-						//Fork Knights
-						case 3:
-							window = 12;
-							window_timer = 0;
-							hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
-
-							towerX = x;
-							towerY = y;
-							towerLifetime = 0;
-							towerSprDir = spr_dir;
-						break;
-
-						//Dynamite
-						case 4:
-							window = 17;
-							window_timer = 0;
-							hurtboxID.sprite_index = sprite_get("pizzahead_hurtbox");
-						break;
-					}
-
-					current_item_tossing = next_item_tossed;
-					attempts = 0;
-					
-					next_item_tossed = random_func(0, 5, true);
-					minion_number = (minion_number + 1) % 7;
-
-					while (next_item_tossed == current_item_tossing && attempts < 30){
-						next_item_tossed = random_func_2(attempts, 5, true);
-						attempts += 1;
-					}
-
-				}
-            break;
-
-			//TV Throw
-			case 4:
-				hud_offset = 84;
-
-				if (window_timer == 3){
-					pizzaHeadTV = instance_create(x + 30 * spr_dir, y - 20, "obj_article2");
-				}
-			break;
-
-			//Uzi pause
-			case 9:
-
-				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				if (!has_rune("M")){
 					var uziAngle = 180 + (sin(times_through * 0.5) * 15);
 
     				var uziX = lengthdir_x(10, uziAngle);
@@ -841,17 +868,38 @@ switch(attack) {
             		sound_play(sound_get("sfx_killingblow"), false, noone, 1, 2);
 
 					times_through += 1;
+				} else {
+					var nearest = noone;
+					var dist = 10000;
+					with (oPlayer){
+						if (player != other.player && point_distance(x, y, other.x, other.y) < dist){
+							nearest = self;
+							dist = point_distance(x, y, other.x, other.y);
+						}
+					}
+
+					var uziAngle = point_direction(x + (6 * spr_dir), y - 76, nearest.x + nearest.hsp, nearest.y + nearest.vsp - round(nearest.char_height/2));
+					var uziBullet = create_hitbox(AT_DSPECIAL_2, 2, x + 6 * spr_dir, y - 76);
+					uziBullet.hsp = lengthdir_x(10, uziAngle);
+					uziBullet.vsp = lengthdir_y(10, uziAngle);
+					uziBullet.grav = 0;
+					uziBullet.grounds = 1;
+					uziBullet.walls = 1;
+					sound_play(sound_get("sfx_killingblow"), false, noone, 1, 2);
+
+					times_through += 1;
 				}
+			}
+		break;
 
-			break;
+		//Uzi loop
+		case 10:
 
-			//Uzi loop
-			case 10:
+			can_shield = true;
 
-				can_shield = true;
-
-				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-					if (times_through != 20){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				if (times_through != 20){
+					if (!has_rune("M")){
 						var uziAngle = 180 + (sin(times_through * 0.5) * 15);
 
     					var uziX = lengthdir_x(10, uziAngle);
@@ -865,22 +913,55 @@ switch(attack) {
 						window_timer = 0;
 						times_through += 1;
 					} else {
+						var nearest = noone;
+						var dist = 10000;
+						with (oPlayer){
+							if (player != other.player && point_distance(x, y, other.x, other.y) < dist){
+								nearest = self;
+								dist = point_distance(x, y, other.x, other.y);
+							}
+						}
 
-						var uziGun = create_hitbox(AT_DSPECIAL_2, 3, x - 15 * spr_dir, y - 50);
-            			sound_play(asset_get("sfx_swipe_weak1"), false, noone, 1, 1);
+						var uziAngle = point_direction(x + (6 * spr_dir), y - 76, nearest.x, nearest.y - round(nearest.char_height/2));
+						var uziBullet = create_hitbox(AT_DSPECIAL_2, 2, x + 6 * spr_dir, y - 76);
+						uziBullet.hsp = lengthdir_x(10, uziAngle);
+						uziBullet.vsp = lengthdir_y(10, uziAngle);
+						uziBullet.grav = 0;
+						uziBullet.grounds = 1;
+						uziBullet.walls = 1;
 
-						window = 11; //Item toss
+						sound_play(sound_get("sfx_killingblow"), false, noone, 1, 2);
+
 						window_timer = 0;
+						times_through += 1;
 					}
+					
+				} else {
+
+					var uziGun = create_hitbox(AT_DSPECIAL_2, 3, x - 15 * spr_dir, y - 50);
+            		sound_play(asset_get("sfx_swipe_weak1"), false, noone, 1, 1);
+
+					window = 11; //Item toss
+					window_timer = 0;
 				}
+			}
+		break;
 
-			break;
+		//Item toss
+		case 11:
+			if (has_rune("M") && throwingDynamite == true && window_timer == 16 && times_through < 2){
+				times_through += 1;
+				window = 18;
+				window_timer = 0
+			}
+		break;
 
-			//Knight Startup
-			case 12:
-				shake_camera(3, 3);
+		//Knight Startup
+		case 12:
+			shake_camera(3, 3);
 
-				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+				if (!has_rune("M")){
 					for (var l = 0; l < 8; l += 1){
 						var bottom = get_stage_data(SD_BOTTOM_BLASTZONE_Y);
 						var randomX = get_stage_data(SD_X_POS) + random_func_2(l, get_stage_data(SD_WIDTH), true)
@@ -890,17 +971,30 @@ switch(attack) {
 						dyingKnight.knightBounced = false;
 						dyingKnight.prevVsp = vsp;
 						dyingKnight.max_fall = 30;
-
 					}
+				} else {
+					for (var l = 0; l < 4; l += 1){
+						var top = get_stage_data(SD_TOP_BLASTZONE_Y);
+						var randomX = get_stage_data(SD_X_POS) + random_func_2(l, get_stage_data(SD_WIDTH), true)
 
+						//var dyingKnight = create_hitbox(AT_DSPECIAL_2, 4, randomX, bottom);
+						var prevMini0n = minion_number;
+
+						minion_number = 1;
+						var tempMinion = instance_create(randomX, top, "obj_article1");
+						tempMinion.spr_dir = spr_dir * -1;
+
+						minion_number = prevMini0n;
+					}
 				}
-			break;
+			}
+		break;
 
-			//Dynamite throw
-			case 18:
+		//Dynamite throw
+		case 18:
 
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-				for (var a = 0; a < 4; a += 1){
+				for (var a = 0; a < 4 - has_rune("M"); a += 1){
 
 					var dynamiteToss = create_hitbox(AT_DSPECIAL_2, 6, x - 5 * spr_dir, y - 50);
 					dynamiteToss.hsp = spr_dir * (get_hitbox_value(AT_DSPECIAL_2, 6, HG_PROJECTILE_HSPEED) - (random_func_2(a, 5, false)));
@@ -911,24 +1005,25 @@ switch(attack) {
 
 				window = 11; //Item toss
 				window_timer = 0;
+				sound_play(asset_get("sfx_swipe_weak1"), false, noone, 1, 1);
+				if (has_rune("M")) then throwingDynamite = true;
 			}
-
-			break;
-
-			//Rat throw
-			case 21:
-
-				if (window_timer == 18){
-					var ratThrow = create_hitbox(AT_DSPECIAL_2, 9, x - 25 * spr_dir, y - 50);
-					ratThrow.prevVsp = get_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_VSPEED);
-				}
-
-			break;
-
-			}
-
 
 		break;
+
+		//Rat throw
+		case 21:
+
+			if (window_timer == 18){
+				var ratThrow = create_hitbox(AT_DSPECIAL_2, 9, x - 25 * spr_dir, y - 50);
+				ratThrow.prevVsp = get_hitbox_value(AT_DSPECIAL_2, 9, HG_PROJECTILE_VSPEED);
+			}
+
+		break;
+
+		}
+
+	break;
 		
 		case AT_EXTRA_1: // pizzahead jab
 
@@ -958,6 +1053,22 @@ switch(attack) {
 			if (window == 5 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 				window_timer = 0;
 				window = get_attack_value(AT_EXTRA_1, AG_NUM_WINDOWS) + 1;
+			}
+
+		break;
+
+		case AT_EXTRA_2: //pizzahead dattack
+		
+			if (window == 1 && window_timer < 4){
+				can_ustrong = true;	
+				set_attack_value(AT_EXTRA_2, AG_OFF_LEDGE, 0);
+			}
+
+			if (window == 2 && has_rune("E") && window_timer == get_hitbox_value(AT_EXTRA_2, 3, HG_WINDOW_CREATION_FRAME) && attack_down){
+				attack_end();
+				window_timer = 0;
+				sound_play(sound_get("pspin"));
+				set_attack_value(AT_EXTRA_2, AG_OFF_LEDGE, 1);
 			}
 
 		break;
@@ -1156,11 +1267,15 @@ switch(attack) {
 
 			}
 
-			if (window == 5 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+			if (window == 5){
 				if (free){
 					set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_TYPE, 7);
 				} else {
 					set_window_value(AT_USPECIAL_2, 5, AG_WINDOW_TYPE, 0);
+
+					if (window_timer >= 15){
+						iasa_script();
+					}
 				}
 			}
 		break;
@@ -1172,9 +1287,10 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+//Ledge snap originally by Mawral. Edited by Maraslumunus.
 #define ledge_snap(maximum) {
 var step = maximum; //the maximum distance to move up from the ledge. must be a power of 2. '16' or '32' is recommended.
-var xx = x + spr_dir; //use 'xx = x - spr_dir' if the attack moves backwards.
+var xx = x + hsp;
 
 var par_block = asset_get("par_block");
 if (!place_meeting(xx, y, par_block) || place_meeting(xx, y - step, par_block))

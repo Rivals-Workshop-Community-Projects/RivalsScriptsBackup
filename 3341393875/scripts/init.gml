@@ -238,8 +238,10 @@ afterimage_array = 0;
 nspecial2_charge = 0;
 nspecial2_real_length = 0;
 
-next_item_tossed = random_func(0, 5, true);
+//next_item_tossed = random_func(0, 5, true);
+next_item_tossed = 0;
 current_item_tossing = next_item_tossed;
+throwingDynamite = true;
 pizzaHeadTV = noone;
 TV_stompVFX = hit_fx_create(sprite_get("TV_stompvfx"), 24);
 TV_debrisVFX = hit_fx_create(sprite_get("pizzahead_dspecial2_TV_debris"), 3);
