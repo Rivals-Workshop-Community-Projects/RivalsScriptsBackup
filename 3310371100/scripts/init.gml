@@ -99,8 +99,8 @@ roll_forward_recovery_frames = 2;
 roll_back_startup_frames = 1;
 roll_back_active_frames = 2;
 roll_back_recovery_frames = 2;
-roll_forward_max = 8; //roll speed
-roll_backward_max = 8;
+roll_forward_max = 7.5; //roll speed
+roll_backward_max = 7.5;
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
@@ -229,6 +229,8 @@ fx_ice_mist_B = hit_fx_create( sprite_get("ice_mist_B"), 96 );
 fx_ice_mist_C = hit_fx_create( sprite_get("ice_mist_C"), 96 );
 fx_ice_mist_D = hit_fx_create( sprite_get("ice_mist_D"), 96 );
 fx_ashe_trail = hit_fx_create(sprite_get("etc_ashe_trail"), 20);
+ex_pseudogenesis = false;
+ex_pseudogenesis_snd = -4;
 
 //victory quote thing - sscripts are unload.gml and results_post_draw.gml - scripts are taken from reiga mal but is from frtoud hypercam
 ushr_victory_quote = "-4";

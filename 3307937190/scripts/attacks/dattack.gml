@@ -29,6 +29,7 @@ window_num ++; //bounce
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 14);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 9);
+set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 6);
 
 
 set_attack_value(atk, AG_NUM_WINDOWS, 3);

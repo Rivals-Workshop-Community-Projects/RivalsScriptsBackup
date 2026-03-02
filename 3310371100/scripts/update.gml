@@ -277,9 +277,9 @@ if (get_synced_var( player )==0){//A
 }
 
 if (get_synced_var( player )==0){//A
-	if (get_player_color( player ) == 9){//radialvortex
-		init_shader();
-	}
+	//if (get_player_color( player ) == 9){//radialvortex
+	//	init_shader();
+	//}
 }
 if (get_synced_var( player )==2){//C
 	if (get_player_color( player ) == 2){//starburst
@@ -287,7 +287,12 @@ if (get_synced_var( player )==2){//C
 	}
 }
 if (get_synced_var( player )==3){//D
-	if (get_player_color( player ) == 1){//sorbet
+	if (get_player_color( player ) == 1||//sorbet
+		get_player_color( player ) == 2){//radialvortex
+		init_shader();
+	}
+	if (get_player_color( player ) == 3){//pseudogenesis
+		ex_pseudogenesis = true;
 		init_shader();
 	}
 	if (get_player_color( player ) == 10){//asayzll
@@ -299,6 +304,7 @@ if (get_synced_var( player )==4){//EXTRA??
 		madeonfinale = true;
 	}
 	if (get_player_color( player ) == 1){//ultragenesis
+		ex_pseudogenesis = true;
 		//print("yeah?")
 		init_shader();
 	}
@@ -313,6 +319,18 @@ if (get_synced_var( player )==4){//EXTRA??
 	}
 	if (get_player_color( player ) == 11){//hymn
 		init_shader();
+	}
+}
+if (ex_pseudogenesis_snd != -4){
+	if (hitpause){
+		if (get_gameplay_time()%2==0){
+			sound_stop(ex_pseudogenesis_snd);
+			sound_play(ex_pseudogenesis_snd,false,noone,0.4);
+		}else{
+			sound_play(ex_pseudogenesis_snd,false,noone,0.1,0.9);
+		}
+	}else{
+		ex_pseudogenesis_snd = -4;
 	}
 }
 

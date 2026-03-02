@@ -1,6 +1,9 @@
 //post_draw.gml
 
-shader_start();
+//Draw over Pastelle Inks!
+var past_ink_color = ink_colors[0];
+if (past_ink_b > 0) past_ink_color = ink_colors[1];
+else if (past_ink_y > 0) past_ink_color = ink_colors[2];
 
 //respawn platform
 if (state == PS_RESPAWN || respawn_taunt > 0)
@@ -8,12 +11,9 @@ if (state == PS_RESPAWN || respawn_taunt > 0)
     draw_sprite_ext(sprite_get("plat_post"), game_time * plat_speed, x, y, small_sprites + 1, small_sprites + 1, 0, c_white, 1);
 }
 
-shader_end();
-
-//Draw over Pastelle Inks!
-var past_ink_color = ink_colors[0];
-if (past_ink_b > 0) past_ink_color = ink_colors[1];
-else if (past_ink_y > 0) past_ink_color = ink_colors[2];
+if trap_cooldown && (get_local_setting(SET_HUD_SIZE) || get_local_setting(SET_HUD_NAMES)) {
+    draw_sprite_ext(sprite_get("hud_thunder"), 0, x+20, y - 40 - char_height - floor(hud_offset), 2, 2, 0, -1, 0.5)
+}
 
 if ((past_ink_r > 0 || past_ink_b > 0 || past_ink_y > 0) && visible && !perfect_dodging && !strong_flashing)
 {

@@ -563,6 +563,18 @@ if (attack==AT_FSPECIAL){
 			
 			default: break;
 		}
+		if (let_me_go=="https://soundcloud.com/miphyll/possession_beta"){
+			sound_stop(sound_get("omega_j3"));
+			switch (fsp_level){
+				case 0: sound_play(sound_get("omega_j3"),false,noone,1,1); break;
+				case 1: sound_play(sound_get("omega_j3"),false,noone,1,0.8); break;
+				case 2: sound_play(sound_get("omega_j3"),false,noone,1,0.7); break;
+				case 3: sound_play(sound_get("omega_j3"),false,noone,1,0.6); break;
+				case 4: sound_play(sound_get("omega_j3"),false,noone,1,0.5); break;
+				
+				default: break;
+			}
+		}
 	}
 	if (window==1&&window_timer==tmp_dur){
 		fsp_time = fsp_t_max;
@@ -585,6 +597,7 @@ if (attack==AT_FSPECIAL){
 	}
 	if (window==4){//5
 		if (fsp_level<4){
+			if (!was_parried){
 			if (special_pressed){
 				window=1;
 				window_timer=0;
@@ -594,6 +607,7 @@ if (attack==AT_FSPECIAL){
 				has_hit_player = false;
 				set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.6+(0.1*fsp_level));
 				set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.6+(0.1*fsp_level));
+			}
 			}
 		}
 		vsp = clamp(vsp, (tmp_v+2)*-1, tmp_v+2)

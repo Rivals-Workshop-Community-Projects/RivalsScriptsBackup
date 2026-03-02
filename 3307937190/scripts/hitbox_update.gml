@@ -32,9 +32,17 @@ else if(attack == AT_NSPECIAL)
                     with (oPlayer) if (place_meeting(x,y,other) && id != other.player_id)
                     {
                         sound_play(asset_get("sfx_absa_whip_charge"), false, noone, 1.5);
-                        other.hbox_state = (state_cat == SC_HITSTUN ?3:1);
+                        other.hbox_state = 3;
                         other.anim_timer = 0;
                         other.hitbox_timer = 0;
+                    }
+                } else {
+                    if (player_id.state_cat == SC_HITSTUN) {
+                        hbox_state = 2;
+                        hitbox_timer = 0;
+                        anim_timer = 0;
+                        image_index = 8;
+                        sound_play(asset_get("sfx_absa_jab1"), false, noone, 0.2, 0.7);
                     }
                 }
 
@@ -61,10 +69,11 @@ else if(attack == AT_NSPECIAL)
             //THUNDER STRUCK
             case 1:
                 player_id.move_cooldown[AT_NSPECIAL] = 25;
+                player_id.trap_cooldown = player_id.trap_cd_on_trigger;
                 if(sprite_index != sprite_get("nspecial_thunder"))
                 {
                     sprite_index = sprite_get("nspecial_thunder");
-                    y += 50;
+                    y += 25;
                 }
 
                 var end_time = 48;
@@ -93,19 +102,20 @@ else if(attack == AT_NSPECIAL)
                 var end_time = 16;
                 if (anim_timer >= 16) destroyed_next = true;
                 image_index = lerp(8, image_number-1, anim_timer/end_time);
+                player_id.trap_cooldown = player_id.trap_cd_on_fade;
                 break;
-            //THUNDER SPAWN FASTER WHEN HITSTUN DETECTED
+            //THUNDER SPAWN FASTER WHEN PLAYER DETECTED
             case 3:
                 if(sprite_index != sprite_get("nspecial_thunder"))
                 {
                     sprite_index = sprite_get("nspecial_thunder");
-                    y += 50;
+                    y += 25;
                 }
 
-                image_index = anim_timer;
+                image_index = anim_timer / 7 * 6;
 
                 if (anim_timer == 1) sound_play(asset_get("sfx_clairen_swing_weak"),false,noone,1,1.5); 
-                else if (anim_timer == 5)
+                else if (anim_timer == 7)
                 {
                     hbox_state = 1;
                     anim_timer = 20;

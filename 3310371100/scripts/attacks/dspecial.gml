@@ -2,32 +2,34 @@ set_attack_value(AT_DSPECIAL_2, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("dspecial_v2"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_v2_hurt"));
 set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 5);
-set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "true startup of 8 frames. hitbox startup is 12 frames. 80 frames inbetween is the max duration of umbrella hold. after that, endlag of 9 frames excluding whifflag.");
+set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "true startup of 11 frames. hitbox startup is 15 frames. 80 frames inbetween is the max duration of umbrella hold. after that, endlag of 9 frames excluding whifflag.");//8,12
 
 //start
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 8);//8
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 11);//8
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAME_START, 0);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_SFX, asset_get("sfx_waveland_wra"));
 
 //ease
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 1);
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
 
 //hold
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 80);
-set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
 
 //end
 set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_LENGTH, 6);//7
-set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 4);
-set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //end
 set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_LENGTH, 3);//4
-set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 //set_window_value(AT_DSPECIAL_2, 5, AG_IASA_THIS_WINDOW, 1);
@@ -35,14 +37,14 @@ set_window_value(AT_DSPECIAL_2, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 //end
 set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_TYPE, 8);
 set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_LENGTH, 200);
-set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_DSPECIAL_2, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL_2, 6, AG_MUNO_WINDOW_EXCLUDE, 1);
 //wait what is this window- oh yeah, parried thing attempt
 
 //DOWNPOUR
 set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_LENGTH, 15);
-set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSPECIAL_2, 8, AG_MUNO_WINDOW_EXCLUDE, 1);
 set_window_value(AT_DSPECIAL_2, 8, AG_WINDOW_GOTO, 7);
@@ -57,10 +59,10 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW_CREATION_FRAME, 4);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_LIFETIME, 82);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_X, 16);//14
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_Y, -17);//-8
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_WIDTH, 55);//50
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_HEIGHT, 46);//28
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_X, 11);//14//16
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_Y, -18);//-8//-17
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_WIDTH, 45);//50//55
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HEIGHT, 36);//28//46
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_DAMAGE, 4);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_ANGLE, 60);

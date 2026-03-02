@@ -121,7 +121,7 @@ set_hitbox_value(atk, hitbox_num, HG_HITBOX_GROUP, -1);
 set_hitbox_value(atk, hitbox_num, HG_LIFETIME, 600);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_Y, 20);
 set_hitbox_value(atk, hitbox_num, HG_WIDTH, 88);
-set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 88);
+set_hitbox_value(atk, hitbox_num, HG_HEIGHT, 44);
 set_hitbox_value(atk, hitbox_num, HG_SHAPE, 2);
 set_hitbox_value(atk, hitbox_num, HG_PRIORITY, 0);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("nspecial_trap"));

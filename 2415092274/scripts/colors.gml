@@ -38,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 27 );
+set_num_palettes( 28 );
 
 // blue
 set_color_profile_slot( 1, 0, 69, 86, 199 ); //blue tulip
@@ -280,25 +280,35 @@ set_color_profile_slot( 24, 5, 106, 163, 73 ); //silver cloud
 set_color_profile_slot( 24, 6, 0, 0, 0 ); //temporary
 set_color_profile_slot( 24, 7, 255, 153, 0 ); //temporary.2
 
-// Suzuran-not
-set_color_profile_slot( 25, 0, 227, 196, 255 ); //blue tulip
-set_color_profile_slot( 25, 1, 130, 176, 153 ); //green grass
-set_color_profile_slot( 25, 2, 187, 146, 224 ); //twilight trails
-set_color_profile_slot( 25, 3, 68, 107, 173 ); //twilight.2
-set_color_profile_slot( 25, 4, 55, 54, 143 ); //night sky
-set_color_profile_slot( 25, 5, 216, 173, 255 ); //silver cloud
+// o-pleaze-heven-let-me-GO
+set_color_profile_slot( 25, 0, 250, 37, 37 ); //blue tulip
+set_color_profile_slot( 25, 1, 105, 16, 16 ); //green grass
+set_color_profile_slot( 25, 2, 250, 37, 37 ); //twilight trails
+set_color_profile_slot( 25, 3, 0, 0, 0 ); //twilight.2
+set_color_profile_slot( 25, 4, 54, 46, 46 ); //night sky
+set_color_profile_slot( 25, 5, 232, 232, 232 ); //silver cloud
 set_color_profile_slot( 25, 6, 0, 0, 0 ); //temporary
-set_color_profile_slot( 25, 7, 216, 173, 255 ); //temporary.2
+set_color_profile_slot( 25, 7, 0, 0, 0 ); //temporary.2
+
+// Suzuran-not
+set_color_profile_slot( 26, 0, 227, 196, 255 ); //blue tulip
+set_color_profile_slot( 26, 1, 130, 176, 153 ); //green grass
+set_color_profile_slot( 26, 2, 187, 146, 224 ); //twilight trails
+set_color_profile_slot( 26, 3, 68, 107, 173 ); //twilight.2
+set_color_profile_slot( 26, 4, 55, 54, 143 ); //night sky
+set_color_profile_slot( 26, 5, 216, 173, 255 ); //silver cloud
+set_color_profile_slot( 26, 6, 0, 0, 0 ); //temporary
+set_color_profile_slot( 26, 7, 216, 173, 255 ); //temporary.2
 
 // Durian
-set_color_profile_slot( 26, 0, 199, 127, 46 ); //blue tulip
-set_color_profile_slot( 26, 1, 158, 126, 106 ); //green grass
-set_color_profile_slot( 26, 2, 199, 153, 99 ); //twilight trails
-set_color_profile_slot( 26, 3, 120, 74, 49 ); //twilight.2
-set_color_profile_slot( 26, 4, 72, 64, 125 ); //night sky
-set_color_profile_slot( 26, 5, 107, 73, 66 ); //silver cloud
-set_color_profile_slot( 26, 6, 0, 0, 0 ); //temporary
-set_color_profile_slot( 26, 7, 255, 250, 209 ); //temporary.2
+set_color_profile_slot( 27, 0, 199, 127, 46 ); //blue tulip
+set_color_profile_slot( 27, 1, 158, 126, 106 ); //green grass
+set_color_profile_slot( 27, 2, 199, 153, 99 ); //twilight trails
+set_color_profile_slot( 27, 3, 120, 74, 49 ); //twilight.2
+set_color_profile_slot( 27, 4, 72, 64, 125 ); //night sky
+set_color_profile_slot( 27, 5, 107, 73, 66 ); //silver cloud
+set_color_profile_slot( 27, 6, 0, 0, 0 ); //temporary
+set_color_profile_slot( 27, 7, 255, 250, 209 ); //temporary.2
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

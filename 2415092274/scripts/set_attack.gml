@@ -4,6 +4,7 @@ dsp_modeii_buffer = false;
 utilt_hit = false;
 ftilt_hit = false;
 nsp_hit = false;
+moonhit = false;
 
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 4);

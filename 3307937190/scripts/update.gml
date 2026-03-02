@@ -81,6 +81,13 @@ else
 
 if(past_fspec_used && move_cooldown[AT_FSPECIAL] < 2) move_cooldown[AT_FSPECIAL] = 2;
 
+if trap_cooldown > 0 {
+    trap_cooldown--;
+    if ink_hold == 2 {
+        move_cooldown[AT_NSPECIAL] = max(move_cooldown[AT_NSPECIAL], 2);
+    }
+}
+
 if(state_cat == SC_HITSTUN || state == PS_WALL_JUMP || !free) 
 {
     past_nspec_used = false;

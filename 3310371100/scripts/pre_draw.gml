@@ -105,10 +105,62 @@ if (get_synced_var( player )==3){//EXTRA??
 		}
 		maskFooter();
 	}
+	if (get_player_color( player ) == 2){//radialvortex
+		shader_end();
+		maskHeader();
+		draw_sprite_ext( sprite_index, image_index, x-4, y, 1*spr_dir, 1, 0, -1, 0.15 )
+		//draw_self();
+		maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
+			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+		}
+		maskFooter();
+		maskHeader();
+		draw_sprite_ext( sprite_index, image_index, x+4, y, 1*spr_dir, 1, 0, -1, 0.15 )
+		//draw_self();
+		maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
+			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+		}
+		maskFooter();
+		maskHeader();
+		draw_sprite_ext( sprite_index, image_index, x, y, 1*spr_dir, 1, 0, -1, 1 )
+		//draw_self();
+		maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
+			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+		}
+		maskFooter();
+	}
+	if (get_player_color( player ) == 3){//pseudogenesis
+		if (hitpause){
+			draw_sprite_ext( sprite_index, image_index, x, y, 1*spr_dir, 1, 0, c_black, 0.8 );
+		}
+		gpu_set_blendmode(bm_add);
+		var ctest = c_red;
+		draw_sprite_ext( sprite_index, image_index, x-3-hsp, y-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-hsp, y-3-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x+3-hsp, y-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-hsp, y+3-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-1-hsp, y-1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x+1-hsp, y-1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x+1-hsp, y+1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x-1-hsp, y+1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		gpu_set_blendmode(bm_normal);
+	}
 }
 if (get_synced_var( player )==4){//EXTRA??
 	if (get_player_color( player ) == 1){//ultragenesis
-		if (get_player_name( player )!="KYOUKO"){
+		if (true){
 			shader_end();
 			maskHeader();
 			draw_self();
@@ -122,7 +174,7 @@ if (get_synced_var( player )==4){//EXTRA??
 			maskFooter();
 			
 			maskHeader();
-			draw_sprite_ext(sprite_index,image_index,x-hsp*2,y-vsp*2, spr_dir,1,0,-1,0.3)
+			draw_sprite_ext(sprite_index,image_index,x-hsp*3,y-vsp*3, spr_dir*1.1,1,0,-1,0.3)
 			maskMidder();
 			if (mask_wait==0){
 				draw_sprite_tiled_ext(sprite_get("etc_field_genesis"), 0, view_get_xview()+(get_gameplay_time()*0.5), view_get_yview()+(get_gameplay_time()*0.3), 1, 1, c_white, 1)
@@ -130,7 +182,7 @@ if (get_synced_var( player )==4){//EXTRA??
 			maskFooter();
 			
 			maskHeader();
-			draw_sprite_ext(sprite_index,image_index,x-hsp*1,y-vsp*1, spr_dir,1,0,-1,0.3)
+			draw_sprite_ext(sprite_index,image_index,x-hsp*1.5,y-vsp*1.5, spr_dir*1.1,1,0,-1,0.3)
 			maskMidder();
 			if (mask_wait==0){
 				draw_sprite_tiled_ext(sprite_get("etc_field_genesis"), 0, view_get_xview()+(get_gameplay_time()*0.5), view_get_yview()+(get_gameplay_time()*0.3), 1, 1, c_white, 1)

@@ -117,5 +117,40 @@ if (!music_init){
 	music_init = true;
 }
 
-
+if (get_player_color( player ) == 25) { //444444
+	//44444444
+	let_me_go = "https://soundcloud.com/miphyll/possession_beta"
+}
+if (let_me_go=="https://soundcloud.com/miphyll/possession_beta"){
+	//<@> <@>
+	//https://www.youtube.com/watch?v=4_SNsSJbewE
+	init_shader();
+	if (state!=PS_HITSTUN&&state!=PS_HITSTUN_LAND){
+	if (!moonhit){
+	if (!was_parried && has_hit_player){
+	if (hitpause){
+		//this method is bound to have glitches. but that's on-brand isn't it. so be it.
+		let_me_go_="https://soundcloud.com/toryfox2/mus_undynex_ogg";
+		if (get_gameplay_time()%2==0){
+			sound_play(sound_get("g_1"),false,noone,1,1)
+		}
+		if (get_gameplay_time()%3==get_gameplay_time()%2){
+			sound_stop(sound_get("g_5"))
+			sound_play(sound_get("g_5"),false,noone,1,1)
+			sound_stop(sound_get("ARSlash"))
+			sound_play(sound_get("ARSlash"),false,noone,1,1)
+		}
+		//so be it.
+	}else{
+		if (let_me_go_="https://soundcloud.com/toryfox2/mus_undynex_ogg"){
+			sound_stop(sound_get("ARSlash"))
+			sound_stop(sound_get("g_5"))
+			let_me_go_="-4"
+		}
+	}
+	}
+	}
+	}
+	//<@> <@>
+}
 

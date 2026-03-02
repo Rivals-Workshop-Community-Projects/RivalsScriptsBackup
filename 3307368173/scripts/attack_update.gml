@@ -188,6 +188,9 @@ switch (attack)
             hsp = 0;
             vsp = 0;
         }
+        if window == 14 && !hitpause && my_grab_id == noone {
+            can_jump = true;
+        }
 
         if (my_grab_id != noone)
         {

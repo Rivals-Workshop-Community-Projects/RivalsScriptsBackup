@@ -207,9 +207,6 @@ if (!ushr_handled_victory_quote)
         case "3079776883": // Kumaki
             quote = "Gosh, that was scary! With that big scythe and all that! Sometimes humans scare me more...";
             break;
-        case "3079776883": // Kumaki
-            quote = "Gosh, that was scary! With that big scythe and all that! Sometimes humans scare me more...";
-            break;
         case "3297740928": // Mii Gunner
             quote = "My combat role-model!! I love your outfit!";
             break;
@@ -327,8 +324,12 @@ if (!ushr_handled_victory_quote)
         case "2012934808": // Every Single Mr. Game And Watch
         case "1890285023": // Every Single Mr. Game And Watch
         case "3380395299": // and Ms. Game And Watch
+        case "3643252122": // and Mrs. Game And Watch
         case "2848199264": // Every Single Mr. Game And Watch
             quote = "What the - How are you moving like that? It's so hard to keep track of you...";
+            break;
+        case "3634804592": // Snowé i feel like her name coulda've been Snowée or something or is that my french-learning brain speaking
+            quote = "Wha-? Miss, are you like, my, distant aunt, maybe?";
             break;
         case "2817605804": // Jerma
             quote = "Hey, y'know- don't say, s-swears!"; //LET'S GO! jerma vs star_ jerma vs star_ everybody wants to see this happen jerma vs star_

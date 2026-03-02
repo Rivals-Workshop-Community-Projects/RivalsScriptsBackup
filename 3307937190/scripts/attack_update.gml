@@ -27,24 +27,35 @@ switch (attack)
 	case AT_FAIR:
 		if(window == 1)
 			reset_attack_value(attack, AG_NUM_WINDOWS);
-		if((window == 3 || window == 6 || window == 9) && 
-			(attack_pressed || strong_down || right_stick_pressed || up_stick_pressed  || left_stick_pressed || down_stick_pressed ||
-			 right_strong_pressed || up_strong_pressed  || left_strong_pressed  || down_strong_pressed) && window_timer >= 3 && has_hit)
-		{
-			if ((right_strong_pressed || right_down && attack_pressed || right_stick_pressed ) && spr_dir == 1 ||
-			(left_strong_pressed || left_down && attack_pressed || left_stick_pressed ) && spr_dir == -1)
-			{
-				clear_button_buffer(PC_ATTACK_PRESSED);
-				set_attack_value(attack, AG_NUM_WINDOWS, window+3);
-				window = window+1;
-				window_timer = 0;
-			}
-			else
-			{
-				can_attack	= true;
-			}
-			has_hit = false;
-			has_hit_player = false;
+		if((window == 3 || window == 6) && window_timer >= get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME)) {
+		    var continue_input = (
+		        ( (attack_pressed || attack_down || strong_down) ) ||
+		        (
+		            (right_strong_down || right_stick_down) - 
+		            (left_strong_down || left_stick_down) == spr_dir
+                ) ||
+                is_attack_pressed(DIR_FORWARD)
+		    );
+		    var any_attack = ( is_attack_pressed(DIR_ANY) && !is_attack_pressed(DIR_FORWARD) && has_hit)
+			if (any_attack || continue_input)
+    		{
+    		    if any_attack 
+    		    {
+    		        print(is_attack_pressed(DIR_ANY))
+    		        can_attack = has_hit;
+    		        move_cooldown[AT_FAIR] = 2;
+    		    }
+    			else if continue_input
+    			{
+    				clear_button_buffer(PC_ATTACK_PRESSED);
+    				set_attack_value(attack, AG_NUM_WINDOWS, window+3);
+    				window = window+1;
+    				window_timer = 0;
+    				has_hit = false;
+    			    has_hit_player = false;
+    			}
+
+    		}
 		}
 		if (window == 7 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
 			sound_play(asset_get("sfx_frog_dstrong"), false, noone, 1, 1.15);
@@ -66,7 +77,7 @@ switch (attack)
 			vsp = -7;
 			spawn_base_dust( x - (0 * spr_dir), y, "jump", spr_dir);
 		}
-		if (window == 4 && window_timer > 3)
+		if (window == 4 && window_timer > get_window_value(attack, window, AG_WINDOW_CANCEL_FRAME))
 			iasa_script();
 		break;
 	case AT_UAIR:	
@@ -272,14 +283,16 @@ switch (attack)
 					{
 						with(thunder_hbox)
 						{
-							sound_play(asset_get("sfx_absa_whip_charge"));
-							hbox_state = 1;
-							anim_timer = 0;
-							hitbox_timer = 0;
+						    if (hbox_state == 0) {
+    							sound_play(asset_get("sfx_absa_whip_charge"));
+    							hbox_state = 1;
+    							anim_timer = 0;
+    							hitbox_timer = 0;
+						    }
 						}
 					}
 					else 
-						hbox = create_hitbox(AT_NSPECIAL, 3, x, y-50);
+						hbox = create_hitbox(AT_NSPECIAL, 3, x, y-25);
 				}
 			}
 			else if(!past_ff_nspec) past_nspec_used = true;

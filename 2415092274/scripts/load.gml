@@ -105,6 +105,7 @@ sprite_change_offset("whatsthis_throw_b", tx, ty);
 sprite_change_offset("whatsthis_throw_d", tx, ty);
 sprite_change_offset("whatsthis_throw_f", tx, ty);
 sprite_change_offset("whatsthis_throw_u", tx, ty);
+sprite_change_offset("z_g_a", 3, 32);
 
 
 

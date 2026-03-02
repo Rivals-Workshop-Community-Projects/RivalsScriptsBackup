@@ -48,3 +48,29 @@ if (state == PS_ATTACK_AIR && attack == AT_USPECIAL){
 		}
 	}
 }
+if (state == PS_ATTACK_AIR && attack == AT_DSPECIAL_2){
+	if (window==3){
+		if (spr_dir==1){
+			if (left_down&&right_down){
+				image_index = 5;
+			}else if (left_down){
+				image_index = 4;
+			}else if(right_down){
+				image_index = 6;
+			}else{
+				image_index = 5;
+			}
+		}
+		if (spr_dir==-1){
+			if (left_down&&right_down){
+				image_index = 5;
+			}else if (left_down){
+				image_index = 6;
+			}else if(right_down){
+				image_index = 4;
+			}else{
+				image_index = 5;
+			}
+		}
+	}
+}

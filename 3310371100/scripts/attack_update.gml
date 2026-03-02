@@ -157,7 +157,7 @@ if ( attack == AT_NAIR ){
 if ( attack == AT_FAIR ){
 	if (window == 1 && window_timer == 1){
 		if (!hitpause){
-			sound_play(asset_get("sfx_shovel_swing_light1"),false,noone,1,1.2)
+			sound_play(asset_get("sfx_shovel_swing_light1"),false,noone,1,1.5)
 			sound_play(asset_get("sfx_grass_creature"),false,noone,0.6,2.5)
 			if (get_synced_var( player )==3){//D
 				if (get_player_color( player ) == 9){
@@ -169,9 +169,10 @@ if ( attack == AT_FAIR ){
 	if (window == 2 && window_timer == 2){
 		if (!hitpause){
 			sound_play(asset_get("sfx_waterhit_heavy"),false,noone,0.7,1.1)
+			sound_play(asset_get("sfx_shovel_swing_heavy2"),false,noone,0.7,1.3)
 			//sound_play(sound_get("SWB2"),false,noone,0.7,1)
 			if (get_synced_var( player )==3){//D
-				if (get_player_color( player ) == 6){
+				if (get_player_color( player ) == 7){
 					sound_play(sound_get("dash"),false,noone,1,1)
 					var sfxdid = true;
 				}
@@ -185,7 +186,8 @@ if ( attack == AT_FAIR ){
 				}
 			}
 			if (sfxdid == false){
-				sound_play(sound_get("SWB2"),false,noone,0.7,1)
+				//sound_play(sound_get("SWB2"),false,noone,0.7,1)
+				sound_play(sound_get("SWB2"),false,noone,0.7,1.25)
 			}
 			//spawn_hit_fx( x+(90*spr_dir), y, hfx_splash )//yea this is where it woulda've been used, but it wasnt very good
 		}
@@ -330,7 +332,7 @@ if ( attack == AT_NSPECIAL ){
 		if (!hitpause){
 			var tmp_hfx = spawn_hit_fx(x+(39*spr_dir), y-28, 27)
 			tmp_hfx.depth = 30;
-			if (get_synced_var( player )==3 && (get_player_color( player ) == 5||get_player_color( player ) == 16)){
+			if (get_synced_var( player )==3 && (get_player_color( player ) == 6||get_player_color( player ) == 16)){
 					sound_play(sound_get("dr_1"),false,noone,0.7,1)
 			}else{
 				sound_play(sound_get("ice_short"),false,noone,0.7,1.2)
@@ -349,7 +351,7 @@ if ( attack == AT_NSPECIAL_2 ){
 		if (window == 3 && window_timer == 1){
 			var tmp_hfx = spawn_hit_fx(x+(30*spr_dir), y-30, 27)
 			tmp_hfx.depth = 30;
-			if (get_synced_var( player )==3 && (get_player_color( player ) == 5||get_player_color( player ) == 16)){
+			if (get_synced_var( player )==3 && (get_player_color( player ) == 6||get_player_color( player ) == 16)){
 					sound_play(sound_get("dr_1"),false,noone,0.7,1.2)
 			}else{
 				sound_play(asset_get("sfx_buzzsaw_throw"),false,noone,0.8,1.15)
@@ -396,6 +398,14 @@ if ( attack == AT_NSPECIAL_2 ){
 if ( attack == AT_FSPECIAL_2 ){
 	if (!hitpause){
 		var fsp_loop_atk_charge = fsp_loop_count_max;//8
+		/*if (window == 1){
+			if (window_timer==1){
+				if (fsp_loop_count_storage>=fsp_loop_count_max){
+					//if max charge, startup faster
+					set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH, 3);
+				}
+			}
+		}*/
 		if (window == 2 || window == 3){
 			if (state_timer > 10){//16
 				if (!special_down){
@@ -800,14 +810,15 @@ if ( attack == AT_DSPECIAL_2 ){
 			dsp_bounce_count = 0;
 			//hsp = 6*spr_dir;
 			//vsp = -6;
-			invincible = true;
-			invince_time = 3;
+			//invincible = true;
+			//invince_time = 3;
 		}
 		var dspecial_speed_timer_max = 24;
 		if (window == 2 && window_timer == 1){
 			dspecial_speed_timer = dspecial_speed_timer_max;
 		}
 		if (window == 2 || window == 3){
+			soft_armor = 6;
 			//print(string(has_hit))
 			if (dspecial_speed_timer > 0){
 				var dsp_spd_h = ease_quadIn( 4, 8, dspecial_speed_timer, dspecial_speed_timer_max );
@@ -836,14 +847,23 @@ if ( attack == AT_DSPECIAL_2 ){
 				}else{
 					dsp_downpour = false;
 					if (window==8){window=3;}
-					vsp = -6;
 					hsp = clamp(hsp+2*(right_down-left_down),-6,6);
 					dsp_bounce_count++;
 					//print(string(dsp_bounce_count))
 					spawn_base_dust(x-(10*spr_dir), y, "dash", spr_dir)
 					spawn_base_dust(x+(10*spr_dir), y, "dash", spr_dir*-1)
-					sound_play(sound_get("bounce"),false,noone,1,1)
-					sound_play(sound_get("bounce2"),false,noone,0.9,1.2)
+					if (jump_down){
+						vsp = -10;
+						spawn_base_dust(x, y, "jump", spr_dir)
+						sound_play(asset_get("sfx_watergun_splash"),false,noone,0.5,1.1)
+						sound_play(sound_get("bounce"),false,noone,1,1.25)
+						sound_play(sound_get("bounce2"),false,noone,0.9,1.75)
+					}else{
+						vsp = -6;
+						sound_play(asset_get("sfx_watergun_splash"),false,noone,0.5,1.1)
+						sound_play(sound_get("bounce"),false,noone,1,1)
+						sound_play(sound_get("bounce2"),false,noone,0.9,1.2)
+					}
 				}
 			}
 			/*if (has_hit){//this isnt working??????????????
@@ -892,6 +912,7 @@ if ( attack == AT_DSPECIAL_2 ){
 			can_fast_fall = false;
 		}
 		if (window == 4){
+			soft_armor = 0;
 			if (window_timer == 1){
 				sound_play(asset_get("sfx_pigeon_spin"),false,noone,0.6,3)
 				destroy_hitboxes()

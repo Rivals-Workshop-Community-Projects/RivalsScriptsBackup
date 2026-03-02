@@ -113,7 +113,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = sound_get("altsel"); // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = false; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 26;
+	col_max = 27;
 	
 	ce[0,0] = make_color_rgb(53, 149, 242)
 	ce[0,1] = "Ao"
@@ -190,12 +190,15 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[24,0] = make_color_rgb(189, 50, 45)
 	ce[24,1] = "SHU"
 	ce[24,2] = ""
-	ce[25,0] = make_color_rgb(227, 196, 255)
-	ce[25,1] = "Gestaltzerfall"
-	ce[25,2] = ""
-	ce[26,0] = make_color_rgb(107, 73, 66)
-	ce[26,1] = "Future Holds The Key"
+	ce[25,0] = make_color_rgb(105, 16, 16)
+	ce[25,1] = "0-pleaze-heven-let-me-GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG0#4_SNsSJbewE"
+	ce[25,2] = "444444444444444444444444444444444444444444444444444444444444444444444"
+	ce[26,0] = make_color_rgb(227, 196, 255)
+	ce[26,1] = "Gestaltzerfall"
 	ce[26,2] = ""
+	ce[27,0] = make_color_rgb(107, 73, 66)
+	ce[27,1] = "Future Holds The Key"
+	ce[27,2] = ""
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
 	// you can ignore the mess below...

@@ -134,3 +134,6 @@ if (my_hitboxID.attack == AT_DSPECIAL) {
 
 
 
+if (ex_pseudogenesis){
+	ex_pseudogenesis_snd = my_hitboxID.sound_effect;
+}

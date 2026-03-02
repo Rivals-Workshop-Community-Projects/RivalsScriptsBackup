@@ -160,6 +160,7 @@ if (state == 1){
 			state_end = round(4+tmp_hb_id.hitpause);
 			tmp_id.has_hit = true;
 			tmp_id.has_hit_player = true;
+			tmp_id.moonhit = true;
 			fake_mhID = tmp_hb_id;
 			fake_hpo = id;
 			shake_camera(4, 2)

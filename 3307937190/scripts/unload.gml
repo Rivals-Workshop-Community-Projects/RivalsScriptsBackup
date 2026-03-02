@@ -155,7 +155,7 @@ if (!pastelle_handled_victory_quote)
 	    icon = 6;
 	    break;
 	case "2843521167": // Pastelle (Legacy)
-	    quote = "Woahhh so this is what I looked like two years ago. How did I shrink?!";
+	    quote = "Woahhh so this is what I looked like years ago. How did I shrink?!";
 	    icon = 7;
 	    break;
 	case "2983344228": // Kiku
@@ -182,6 +182,10 @@ if (!pastelle_handled_victory_quote)
 	case "3382637663": // Ciela
 		quote = "Oh my gosh, you look so pretty! Can I have your autograph?";
 		icon = 9;
+		break;
+	case "3633964303": // Lumi
+		quote = "I-I'd be d-d-dancing too if I w-wasn't pelted with ice m-m-magic!";
+		icon = 12;
 		break;
 	    //===========================================================================
 
@@ -312,6 +316,10 @@ if (!pastelle_handled_victory_quote)
 		quote = "What to drink? Oh I'll take a tall glass of glue if ya got any!";
 		icon = 3;
 		break;
+	case "3635435066": // Heavyblade Rabbit
+		quote = "See? You lost cause the pen truly IS mightier than the sword.";
+		icon = 4;
+		break;
 	case "3292951946": // Hex
 		quote = "Aww why are your hearts broken? I hope that wasn't because of me!";
 		icon = 10;
@@ -408,6 +416,10 @@ if (!pastelle_handled_victory_quote)
 		quote = "Nighty night ghosty! What a nice halloween costume!";
 		icon = 3;
 		break;
+	case "3004515855": // Ness
+		quote = "Sorry, but my magic is better. No thinking required!";
+		icon = 4;
+		break;
 	case "2459562158": // Nitori
 	    quote = "Haha, I love you grabby hand! It reminds me of the ones at book fair!";
 	    icon = 1;
@@ -421,6 +433,10 @@ if (!pastelle_handled_victory_quote)
 	    quote = "Nonari? Looks like I'm having non-of-that! Hahaha...yeahhh..."
 	    icon = 2;
 	    break;
+	case "3455896058": // Pauline
+		quote = "Man... I wanna throw merch of my friends at people too...";
+		icon = 10;
+		break;
 	case "2904498757": // Peppino
 	case "2990315396": // Noise
 	case "2885762133": // Brook
@@ -457,6 +473,10 @@ if (!pastelle_handled_victory_quote)
 	    quote = "How are you going so fast! Heck, how was I able to beat you?!";
 	    icon = 7;
 	    break;
+	case "3623869706": // Static Miku
+		quote = "Woaaahhh I'm on TV! Hai Mom! Hai Dad!";
+		icon = 9;
+		break;
 	case "1996010699": // Suitcase
 		quote = "Oh there's my suitcase! I was wondering where I left it!";
 		icon = 1;
@@ -484,6 +504,10 @@ if (!pastelle_handled_victory_quote)
 	case "3118007135": // Wren
 		quote = "A yo-yo?! Woah I could use this as a pool toy!";
 		icon = 9;
+		break;
+	case "3635233098": // Yingo
+		quote = "Oh so you're a mechanic? Quick, tell me why your skills were so rusty.";
+		icon = 2;
 		break;
 	case "3118659566": // Yono
 		quote = "What a waste of mail! Someone could report you for this!";

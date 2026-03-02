@@ -5,7 +5,7 @@ set_attack_value(atk, AG_SPRITE, sprite_get("dspecial"));
 set_attack_value(atk, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 
 window_num = 1;
-set_window_value(atk, window_num, AG_WINDOW_LENGTH, 8);
+set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, window_num, AG_WINDOW_HAS_SFX, 1);
 set_window_value(atk, window_num, AG_WINDOW_SFX, asset_get("sfx_shovel_swing_light1"));
@@ -52,7 +52,7 @@ set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_SPRITE, sprite_get("dspecial_red
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_ANIM_SPEED, .3);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_HSPEED, -3);
-set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_VSPEED, -5);
+set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_VSPEED, -7);
 set_hitbox_value(atk, hitbox_num, HG_PROJECTILE_GRAVITY, 0.5);
 set_hitbox_value(atk, hitbox_num, HG_HITBOX_COLOR, hb_color[1]);
 

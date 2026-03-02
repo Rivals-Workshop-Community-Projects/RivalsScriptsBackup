@@ -70,9 +70,16 @@ if (get_player_color( player ) == 22) { //sundews
 set_character_color_shading( 0, 0.5 );
 set_character_color_shading( 5, -1 );
 }
-if (get_player_color( player ) == 26) { //durian
+if (get_player_color( player ) == 27) { //durian
 set_character_color_shading( 4, 1.5 );
 set_character_color_shading( 5, 0.5 );
+}
+if(variable_instance_exists(id,"let_me_go")){
+if (let_me_go=="https://soundcloud.com/miphyll/possession_beta"){
+	set_article_color_slot(1,0,0,0);
+	set_article_color_slot(4,0,0,0);
+	set_article_color_slot(5,0,0,0);
+}
 }
 
 

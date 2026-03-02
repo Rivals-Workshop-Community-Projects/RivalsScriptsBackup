@@ -424,6 +424,10 @@ var tmp_sync_vars = split_synced_var(2, 2, 2);
 voice_init(tmp_sync_vars[0]);
 ink_hold = tmp_sync_vars[2];
 
+trap_cooldown = 0;
+trap_cd_on_trigger = 120;
+trap_cd_on_fade = 40;
+
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
 
 //adventure mode hit_player redirect

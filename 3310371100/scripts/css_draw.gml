@@ -56,11 +56,14 @@ if (var_localstorage==3){//D
 		draw_sprite_ext(sprite_get("z_css_icons"),10,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 2:
-		case 3:
-		draw_sprite_ext(sprite_get("z_css_icons"),7,x+icon_x,y+icon_y,2,2,0,-1,1);
+		draw_sprite_ext(sprite_get("etc_css_radialvortex_2x"),1,x+8,y+8,1,1,0,-1,1);
+		draw_sprite_ext(sprite_get("z_css_icons"),13,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
-		case 5:
+		case 3:
+		draw_sprite_ext(sprite_get("z_css_icons"),14,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
 		case 6:
+		case 7:
 		case 8:
 		case 9:
 		case 16:
@@ -313,8 +316,8 @@ if (reset_color_list == true){
 	ce[5,1] = "The sun is deeply sick"
 	ce[6,0] = make_color_rgb(25, 25, 112)
 	ce[6,1] = "Magitech"
-	ce[7,0] = make_color_rgb(175, 143, 181)
-	ce[7,1] = "Surging Fate"
+	ce[7,0] = make_color_rgb(158, 43, 43)
+	ce[7,1] = "For The Flowers"
 	ce[8,0] = make_color_rgb(242, 123, 32)
 	ce[8,1] = "Clockwork Fate"
 	ce[9,0] = make_color_rgb(133, 127, 227)
@@ -328,7 +331,7 @@ if (reset_color_list == true){
 	ce[13,0] = make_color_rgb(240, 96, 102)
 	ce[13,1] = "Raincoat Poppy"
 	ce[14,0] = make_color_rgb(189, 64, 78)
-	ce[14,1] = "Syndrome"
+	ce[14,1] = "Syndrome+"
 	ce[15,0] = make_color_rgb(79, 104, 214)
 	ce[15,1] = "Snowball"
 	ce[16,0] = make_color_rgb(49, 184, 155)
@@ -343,18 +346,18 @@ if (reset_color_list == true){
 	ce[0,1] = "Usher : D"
 	ce[1,0] = make_color_rgb(255, 213, 0)
 	ce[1,1] = "Sorbet ~ Riptide"
-	ce[2,0] = make_color_rgb(51, 255, 242)
-	ce[2,1] = "Infamous"
-	ce[3,0] = make_color_rgb(124, 135, 135)
-	ce[3,1] = "Steampunk"
-	ce[4,0] = make_color_rgb(176, 80, 74)
-	ce[4,1] = "Ashveil"
-	ce[5,0] = make_color_rgb(64, 76, 247)
-	ce[5,1] = "Cora Overwater"
-	ce[6,0] = make_color_rgb(146, 255, 51)
-	ce[6,1] = "Heartbeat of Havoc"
-	ce[7,0] = make_color_rgb(158, 43, 43)
-	ce[7,1] = "For The Flowers"
+	ce[2,0] = make_color_rgb(0, 88, 240)
+	ce[2,1] = "Radial Vortex"
+	ce[3,0] = make_color_rgb(255, 77, 77)
+	ce[3,1] = "Pseudogenesis"
+	ce[4,0] = make_color_rgb(51, 255, 242)
+	ce[4,1] = "Infamous"
+	ce[5,0] = make_color_rgb(176, 80, 74)
+	ce[5,1] = "Ashveil"
+	ce[6,0] = make_color_rgb(64, 76, 247)
+	ce[6,1] = "Cora Overwater"
+	ce[7,0] = make_color_rgb(146, 255, 51)
+	ce[7,1] = "Heartbeat of Havoc"
 	ce[8,0] = make_color_rgb(151, 199, 48)
 	ce[8,1] = "Hometown's Heart"
 	ce[9,0] = make_color_rgb(255, 133, 33)

@@ -76,7 +76,7 @@ sprite_change_offset("fx_nspecial_ink_b",   38, 55, true);
 sprite_change_offset("nspecial_frost",      32, 18, true);
 sprite_change_offset("nspecial3",           26, 63, true);
 sprite_change_offset("fx_nspecial_ink_y",   26, 63, true);
-sprite_change_offset("nspecial_trap",       48, 12, true);
+sprite_change_offset("nspecial_trap",       48, 36, true);
 sprite_change_offset("nspecial_thunder",    64, 236, true);
 sprite_change_offset("uspecial",            30, 55, true);
 sprite_change_offset("fx_uspecial_ink_r",   30, 55, true);
@@ -94,9 +94,9 @@ sprite_change_offset("dspecial_yellow",     22, 20, true);
 //misc
 sprite_change_offset("taunt",           28, 54, true);
 sprite_change_offset("intro",           24, 47, true);
-sprite_change_offset("plat_post",       32, 47); //draws platform over the player
 sprite_change_offset("plat",            32, 47); //don't use this
 sprite_change_offset("plat_pre",        32, 47); //draws platform behind the player
+sprite_change_offset("plat_post",        32, 47); //draws platform behind the player
 
 sprite_change_offset("hud_player_arrow",3, 2);
 sprite_change_offset("hud_inks", 4, 16);

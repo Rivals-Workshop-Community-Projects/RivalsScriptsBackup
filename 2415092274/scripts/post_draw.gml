@@ -24,6 +24,22 @@ if (attack==AT_FSPECIAL&&(state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR)){
 }
 
 if (attack==36&&(state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR)&&mode=="B"){if (window==1||window==3){repeat(200){draw_sprite_ext(sprite_get("wave_buffer"),0,x+(-2*spr_dir),y,2*spr_dir,-2,0,-1,1);draw_sprite_ext(sprite_get("wave_buffer"),6,x+(-2*spr_dir),y,2*spr_dir,-2,0,-1,1);}}if (window==2){repeat(200){draw_sprite_ext(sprite_get("wave_buffer"),1,x+(-2*spr_dir),y,2*spr_dir,-2,0,-1,1);draw_sprite_ext(sprite_get("wave_buffer"),7,x+(-2*spr_dir),y,2*spr_dir,-2,0,-1,1);}}}
+if (let_me_go=="https://soundcloud.com/miphyll/possession_beta"){
+	if (let_me_go_=="https://soundcloud.com/toryfox2/mus_undynex_ogg"){
+		draw_sprite_ext( sprite_index, image_index, x, y, 1*spr_dir, 1, 0, c_black, 0.8 );
+	}
+	gpu_set_blendmode(bm_add);
+	var ctest = c_red;
+	draw_sprite_ext( sprite_index, image_index, x-3-hsp, y-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+	draw_sprite_ext( sprite_index, image_index, x-hsp, y-3-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+	draw_sprite_ext( sprite_index, image_index, x+3-hsp, y-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+	draw_sprite_ext( sprite_index, image_index, x-hsp, y+3-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+	draw_sprite_ext( sprite_index, image_index, x-1-hsp, y-1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+	draw_sprite_ext( sprite_index, image_index, x+1-hsp, y-1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+	draw_sprite_ext( sprite_index, image_index, x+1-hsp, y+1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+	draw_sprite_ext( sprite_index, image_index, x-1-hsp, y+1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+	gpu_set_blendmode(bm_normal);
+}
 
 if ((state==PS_ATTACK_GROUND || state==PS_ATTACK_AIR) && attack==AT_NSPECIAL){
 	if (window == 4){
@@ -138,6 +154,18 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//like just for recent few patch notes maybe? but it's up to you how you use it!
 		//
 		//put text here.
+		
+		patch_note_title[i] = "v3.1 - (2026 Mar 02)"
+		patch_note_text[i++] = 
+		"v3.1 - (2026 Mar 02)
+		an unannounced update. hi to you who read this, thanks for reading the playtest changelog.
+		[b]additions[/b]
+		- new Genesis alt '0-pleaze-heven-let-me-GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG0#4_SNsSJbewE' sorely for the sake that i like the colors and concept of genesis alt even if ao is not getting in or anything i just like it.
+
+		[b]fixes[/b]
+		- somehow keep forgetting about this. FSPECIAL now no longer can be cancelled into itself if it was parried. i keep coming across it on my own playtests and its baffling each time. well fixed it now"
+		
+		
 		
 		patch_note_title[i] = "v3.0 - (2026 Jan 21)"
 		patch_note_text[i++] = 

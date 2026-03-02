@@ -23,6 +23,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 3);
 
 window_num ++; //attack 2 start
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 4);
@@ -44,6 +45,7 @@ set_window_value(atk, window_num, AG_WINDOW_LENGTH, 12);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(atk, window_num, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(atk, window_num, AG_WINDOW_HAS_WHIFFLAG, 1);
+set_window_value(atk, window_num, AG_WINDOW_CANCEL_FRAME, 3);
 
 window_num ++; //attack 3 start
 set_window_value(atk, window_num, AG_WINDOW_LENGTH, 6);

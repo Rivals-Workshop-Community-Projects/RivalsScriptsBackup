@@ -166,6 +166,13 @@ vo_volume_set = 0.7;
 vo_mutechance = 0.65;
 vo_hurt_mutechance = 0.35;
 
+moonhit = false;
+
+let_me_go = "-4";
+let_me_go_= "-4";
+let_meee_go = 0;
+let_meeee_go = 0;
+
 Hikaru_Title = "Lylip Magic";
 arena_title = "Stargazer Lylip"; boxing_title = arena_title; //holy frick
 arena_short_name = "Ao";

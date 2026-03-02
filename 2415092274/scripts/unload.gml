@@ -126,7 +126,7 @@ if (!ushr_handled_victory_quote)
             icon = 12;
             break;
         case CH_ELLIANA:
-            quote = "Oh, I've heard the rumors. But, vengefulness and dejection... They don't come out of just nowhere, I know.";
+            quote = "Oh, I've heard the rumors. Vengefulness and dejection... They don't come out of just nowhere, I know.";
             icon = 0;
             break;
         case CH_SYLVANOS:
@@ -297,7 +297,7 @@ if (!ushr_handled_victory_quote)
 			icon = 4;
             break;
         case "3002542949": // Tsukumo Sana
-            quote = "What orbits now were often what once was one. I want to believe they still share the spirit.";
+            quote = "What orbits now were often what once was one. I like to believe they still share the spirit.";
 			icon = 2;
             break;
         case "2226876875": // Kitsuga

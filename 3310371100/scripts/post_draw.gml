@@ -17,6 +17,47 @@ if (state==PS_ATTACK_GROUND && attack==AT_NSPECIAL_2){
 	}
 }
 
+if (get_synced_var( player )==3){//D
+	if (get_player_color( player ) == 3){//pseudogenesis
+		shader_start() 
+		if (hitpause){
+			draw_sprite_ext( sprite_index, image_index, x-old_hsp, y-old_hsp, 1*spr_dir, 1, 0, c_red, 0.5 );
+		}
+		gpu_set_blendmode(bm_add);
+		var ctest = c_red;
+		draw_sprite_ext( sprite_index, image_index, x-3-hsp, y-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-hsp, y-3-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x+3-hsp, y-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-hsp, y+3-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-1-hsp, y-1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x+1-hsp, y-1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x+1-hsp, y+1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x-1-hsp, y+1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		gpu_set_blendmode(bm_normal);
+		shader_end() 
+	}
+}
+if (get_synced_var( player )==4){//extra
+	if (get_player_color( player ) == 1){//ultragenesis
+		shader_start() 
+		if (hitpause){
+			draw_sprite_ext( sprite_index, image_index, x-old_hsp, y-old_hsp, 1*spr_dir, 1, 0, c_red, 0.5 );
+		}
+		gpu_set_blendmode(bm_add);
+		var ctest = c_red;
+		draw_sprite_ext( sprite_index, image_index, x-3-hsp, y-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-hsp, y-3-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x+3-hsp, y-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-hsp, y+3-vsp, 1*spr_dir, 1, 0, ctest, 0.05 );
+		draw_sprite_ext( sprite_index, image_index, x-1-hsp, y-1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x+1-hsp, y-1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x+1-hsp, y+1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		draw_sprite_ext( sprite_index, image_index, x-1-hsp, y+1-vsp, 1*spr_dir, 1, 0, ctest, 0.2 );
+		gpu_set_blendmode(bm_normal);
+		shader_end() 
+	}
+}
+
 
 //*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*^+._.+^*
 //       Playtest Changelog Template by hyuponia. change the code as much you'd like
@@ -42,6 +83,41 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//like just for recent few patch notes maybe? but it's up to you how you use it!
 		//
 		//put text here.
+		
+		
+		patch_note_title[i] = "v3.15 - (2026/03/02)"
+		patch_note_text[i++] = 
+		"===v3.15===
+		---lesser changes---
+		:: portrait tweaked??
+		:: alt color ''surging fate'' and ''steampunk'' gone.
+		:: alt color ''for the flowers'' and ''syndrome'' adjusted.
+		:: and did some re-ordering on colors so now the alt color ''Radial Vortex'' is now available off-season... as well as ''Pseudogenesis''? what's that?
+		:::: hopefully i didnt mess up any reordering.
+		but that doesn't matter. check out this cool gem i found on ebay for 7 dollars
+
+		---changes---
+		:: added 1 more startup animation frame for DSPECIAL, along with forward/backward leaning frame for DSPECIAL hold.
+		++ DSPECIAL, upon bouncing with ground, you can now hold JUMP to bounce higher.
+		:: FAIR sound adjusted i guess
+		:: FAIR now has sourspot at the tip of it. sorry!
+
+		---balances---
+		-- STATS ... roll speed decreased (8 -> 7.5)
+		++ FSPECIAL ... true startup reduced by 4 frames (7 -> 3)
+		:::: in practice it adds 9 because it has to ''spin'' once which is 9 frames
+		:: DSPECIAL ... removed invincible time, and added a longer soft armor of 6KB.
+		:::: i uhhhhhhh dont know how soft armor works very well. hope this value is ok
+		-- DSPECIAL ... startup increased by 3 frames (8 -> 11)
+		-- DSPECIAL ... hitbox size reduced. as i fought against dspecial it really felt unintuitive to fight against, i think this was my main motivator for the nerf
+		:: FAIR ... the big hitboxes now has a sourspot (lower priority) at the tip.
+		-- FTILT ... startup decreased by 1 frame (7 -> 6)
+		-- UTILT ... startup increased by 1 frame (5 -> 6)
+		-- UAIR ... startup increased by 2 frames (5 -> 7)
+		:::: .....i feel it could be more given how big the move is relatively
+
+		---notes---
+		sorry for any confusions"
 		
 		
 		patch_note_title[i] = "v3.14b - (2025/12/30)"

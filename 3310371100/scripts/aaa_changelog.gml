@@ -6,6 +6,40 @@
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
 ```
 
+===v3.15===
+---lesser changes---
+:: portrait tweaked??
+:: alt color ''surging fate'' and ''steampunk'' gone.
+:: alt color ''for the flowers'' and ''syndrome'' adjusted.
+:: and did some re-ordering on colors so now the alt color ''Radial Vortex'' is now available off-season... as well as ''Pseudogenesis''? what's that?
+:::: hopefully i didnt mess up any reordering.
+but that doesn't matter. check out this cool gem i found on ebay for 7 dollars
+
+---changes---
+:: added 1 more startup animation frame for DSPECIAL, along with forward/backward leaning frame for DSPECIAL hold.
+++ DSPECIAL, upon bouncing with ground, you can now hold JUMP to bounce higher.
+:: FAIR sound adjusted i guess
+:: FAIR now has sourspot at the tip of it. sorry!
+
+---balances---
+-- STATS ... roll speed decreased (8 -> 7.5)
+++ FSPECIAL ... true startup reduced by 4 frames (7 -> 3)
+:::: in practice it adds 9 because it has to "spin" once which is 9 frames
+:: DSPECIAL ... removed invincible time, and added a longer soft armor of 6KB.
+:::: i uhhhhhhh dont know how soft armor works very well. hope this value is ok
+-- DSPECIAL ... startup increased by 3 frames (8 -> 11)
+-- DSPECIAL ... hitbox size reduced. as i fought against dspecial it really felt unintuitive to fight against, i think this was my main motivator for the nerf
+:: FAIR ... the big hitboxes now has a sourspot (lower priority) at the tip.
+-- FTILT ... startup decreased by 1 frame (7 -> 6)
+-- UTILT ... startup increased by 1 frame (5 -> 6)
+-- UAIR ... startup increased by 2 frames (5 -> 7)
+:::: .....i feel it could be more given how big the move is relatively
+
+---notes---
+sorry for any confusions
+
+
+
 ===v3.14b===
 i didnt want to update because it's pi but i can just letter it up now for small patches
 

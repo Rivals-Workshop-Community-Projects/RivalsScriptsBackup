@@ -69,7 +69,7 @@ if(attack == AT_DSPECIAL)
                     if(place_meeting(x,y,other) && id != other.player_id)
                     {
                         //hit players inside if detected!
-                        if(state_cat == SC_HITSTUN && state != PS_HITSTUN_LAND && other.player_id.my_grab_id == noone && (last_attack != AT_DSPECIAL && other.player_id.attack != AT_DSPECIAL))
+                        if(state_cat == SC_HITSTUN && state != PS_HITSTUN_LAND && other.player_id.my_grab_id != self && (last_attack != AT_DSPECIAL && other.player_id.attack != AT_DSPECIAL))
                         {
                             with(other)
                             {
@@ -102,10 +102,12 @@ if(attack == AT_DSPECIAL)
                         }
                     }
                     //If this is UAIR, detonate!!
-                    else if(place_meeting(x-10*other.player_id.spr_dir,y-40,other) && other.player_id.vsp > 1 && id == other.player_id && other.player_id.my_grab_id != noone && other.player_id.attack == AT_UAIR)
+                    else if(id == other.player_id && attack == AT_UAIR && vsp > 1 && my_grab_id != noone )
                     {
-                        with(other.player_id)
-                        {
+                        var close_enough;
+                        var black_hole = other;
+                        with my_grab_id close_enough = place_meeting(x+hsp, y+vsp, black_hole);
+                        if close_enough {
                             window = 6;
                             window_timer = 0;
                         }
