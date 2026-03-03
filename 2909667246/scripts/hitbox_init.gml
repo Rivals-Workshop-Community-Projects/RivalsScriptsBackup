@@ -20,14 +20,14 @@ if(attack == AT_NSPECIAL){
 	if(hbox_num == 1){
 		Is_Lloid_Rocket = true;
 	    Pocketable = true;Pocket_hsp = hsp;Pocket_vsp = vsp;Pocketed = false;PocketBuff = 0;
-	    Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 3;
+	    Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 3;
 	    if((player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1)
 	    && (sprite_index == sprite_get("fspecial_lloid_mjau") || sprite_index == sprite_get("fspecial_lloid_mjau_alts"))){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        	Pocket_hud = player_id.Pocket_hud_alts;
         	if(player_id.alt != 0)Pocket_hud_imageindex = 18;
         }
         if(player_id.alt == 30){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 17;
+        	Pocket_hud = player_id.Pocket_hud_alts;Pocket_hud_imageindex = 17;
         }
 	    MattCanGrab = true;
 	    MorshuCanGrab = true;
@@ -90,10 +90,10 @@ if(attack == AT_NSPECIAL){
 		sfx_explode = sound_get("fspecial_explode");
 		
 		Pocketable = true;Pocket_hsp = 1;Pocket_vsp = 2;Pocketed = false;
-        Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 7;
+        Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 7;
         if((player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1 || player_id.alt == 22 || player_id.alt == 25)
 	    && (sprite_index == sprite_get("uspecial_balloon_sol") || sprite_index == sprite_get("uspecial_balloon_sol_alts"))){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        	Pocket_hud = player_id.Pocket_hud_alts;
         	if(player_id.alt == 0){Pocket_hud_imageindex = 16;}
         }
 		MattCanGrab = true;MorshuCanGrab = true;
@@ -116,10 +116,10 @@ if(attack == AT_NSPECIAL){
 		Is_Villager_Sapling = true;
 	}else if(hbox_num == 2){ //water
         Pocketable = true;Pocket_hsp = 8;Pocket_vsp = -1;
-        Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 8;
+        Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 8;
         CalCanSnack = 1;WaterHitbox = true;Toadie_Ability = 6;SellValue = 50;
 	}else if(hbox_num == 3){ //tree
-		hp = 60;
+		hp = 60;followground = true;
 		image_index = 1;
         knockback_power = 0;knockback_angle = 0;
         hitpausehit = 0;timer = 0;timer2 = 0;cuts = 0;
@@ -137,11 +137,11 @@ if(attack == AT_NSPECIAL){
     	Villager_Tree = true;
     	Pocketable = true;PocketableByOwner = 0;
         Pocketed = false;waspocketed = false;waspocketed2 = false;
-        Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 9;
+        Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 9;
         if(player_id.alt == 31){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 15;
+        	Pocket_hud = player_id.Pocket_hud_alts;Pocket_hud_imageindex = 15;
         }else if(player_id.alt != 0){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        	Pocket_hud = player_id.Pocket_hud_alts;
         }
         despawning = false;
         prev_player = player;
@@ -157,14 +157,14 @@ if(attack == AT_NSPECIAL){
         hsp = 1.5*spr_dir;vsp = -5;prev_vsp = vsp;
         Pocket_hsp = 2;Pocket_vsp = -12;SellValue = 1000;
     }else if(hbox_num == 8){ //tree stump
-    	image_index = 23;SellValue = 100;
+    	image_index = 23;SellValue = 100;followground = true;
     }
 }else if (attack == AT_FSTRONG){
     if(hbox_num == 1){
     	Villager_Bowling_Ball = true;
         Pocketable = true;Pocket_hsp = 6;Pocket_vsp = -6;
         Pocketed = false;waspocketed = false;waspocketed2 = false;
-        Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 2;
+        Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 2;
         despawning = false;
         prev_player = player;
         MattCanGrab = true;MorshuCanGrab = true;
@@ -173,14 +173,14 @@ if(attack == AT_NSPECIAL){
         landtimer = 0;
         landsfx = sound_get("fstrong_land");
         if(sprite_index == sprite_get("bowlingball_planet")){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        	Pocket_hud = player_id.Pocket_hud_alts;
         }
         if(player_id.alt == 25){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 10;
+        	Pocket_hud = player_id.Pocket_hud_alts;Pocket_hud_imageindex = 10;
         }else if(player_id.alt == 30){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 11;
+        	Pocket_hud = player_id.Pocket_hud_alts;Pocket_hud_imageindex = 11;
         }else if(player_id.alt == 31 && sprite_index == player_id.fstrong_proj_sprite){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 12;
+        	Pocket_hud = player_id.Pocket_hud_alts;Pocket_hud_imageindex = 12;
         	landsfx = sound_get("fstrong_land_anvil");
         }
         image_xscale += 0.1;image_yscale += 0.1;
@@ -191,16 +191,16 @@ if(attack == AT_NSPECIAL){
 	Pocketable = false;Pocketed = false;waspocketed = false;UnReflectable = true;
 	if(hbox_num == 1 || hbox_num == 5){ //initial hit
 		AriaCantAbsorb = true;CalCanSnack = 0;
-		Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 1;
+		Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 1;
 	}else if(hbox_num == 4){ //fireworks
 		PocketBuff = 0;
 		MattCanGrab = false;
         MorshuCanGrab = false;
         CalCanSnack = 0;
         Pocket_hsp = 1;Pocket_vsp = -3;
-        Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 5;
+        Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 5;
         if(player_id.alt == 31){
-        	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+        	Pocket_hud = player_id.Pocket_hud_alts;
         }
         
         playercharge = 0;
@@ -213,20 +213,20 @@ if(attack == AT_NSPECIAL){
 	}else{ //fireworks explosions
 		Pocketable = true;Pocket_hsp = 0;Pocket_vsp = 0;
 		UnReflectable = false;AriaCantAbsorb = false;
-		Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 6;
+		Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 6;
 		FireHitbox = true;Toadie_Ability = 3;
 	}
 }else if (attack == AT_FAIR || attack == AT_BAIR){
 	Villager_Slingshot = true;
     Pocketable = true;Pocket_hsp = hsp;Pocket_vsp = vsp;
-    Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 1;
+    Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 1;
     if(player_id.alt >= 15 && player_id.alt <= 21 || player_id.kewtmode >= 1){
-    	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+    	Pocket_hud = player_id.Pocket_hud_alts;
     }
     if(player_id.alt == 25){
-    	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 13;
+    	Pocket_hud = player_id.Pocket_hud_alts;Pocket_hud_imageindex = 13;
     }else if(player_id.alt == 30){
-    	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");Pocket_hud_imageindex = 14;
+    	Pocket_hud = player_id.Pocket_hud_alts;Pocket_hud_imageindex = 14;
     }
     MattCanGrab = true;
     MorshuCanGrab = true;
@@ -248,9 +248,9 @@ if(attack == AT_NSPECIAL){
 	}
 }else if(attack == AT_DATTACK){
     Pocketable = true;
-    Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_imageindex = 4;
+    Pocket_hud = player_id.Pocket_hud;Pocket_hud_imageindex = 4;
     if(player_id.alt == 30){
-    	Pocket_hud = sprite_get("nspecial_pocket_hud_icons_alt");
+    	Pocket_hud = player_id.Pocket_hud_alts;
     }
     MattCanGrab = true;
     MorshuCanGrab = true;

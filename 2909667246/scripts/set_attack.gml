@@ -42,7 +42,7 @@ if(attack == AT_USPECIAL && move_cooldown[attack] <= 0){
 if(attack == AT_DSPECIAL && move_cooldown[attack] <= 0){
 	set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 2);
 	//reset_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS);
-	if(instance_exists(tree) || shield_down){
+	if(instance_exists(tree) || shield_down && runeE){
 		set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 9);
 		window = 6;window_timer = 0;
 	}else if(instance_exists(sapling) || free){

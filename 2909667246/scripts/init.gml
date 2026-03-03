@@ -129,6 +129,7 @@ pocket_projectile_sprite = asset_get("empty_sprite");pocket_projectile_sprite_im
 pocket_projectile_hud_sprite_original = sprite_get("nspecial_pocket_hud_icons");pocket_hud_slot = sprite_get("nspecial_pocket_hud");
 pocket_projectile_hud_sprite = sprite_get("nspecial_pocket_hud_icons");pocket_projectile_hud_sprite_imageindex = 0;
 pocket_projectile_hud_sprite_basic = sprite_get("nspecial_pocket_hud_icons_basic");pocket_projectile_hud_sprite_basic_imageindex = 0;
+Pocket_hud = sprite_get("nspecial_pocket_hud_icons");Pocket_hud_alts = sprite_get("nspecial_pocket_hud_icons_alt");
 pocket_hsp = 0;pocket_vsp = 0;pocket_transcendent = 0;
 pocket_grounds = 0;pocket_walls = 0;pocket_buff = false;pocket_release = 0;pocket_handle_state = false;
 Lloid_Rocket = noone;

@@ -259,6 +259,14 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.61", "2nd March, 2026");
+initHeader("Fixes / Other Changes");
+initSection("+ Somewhat improved DSpecial seed, tree, and tree stump on vertically moving platforms (mainly they just won't float anymore now)
++ Fixed shield to always to Axe still being possible if you pressed it early enough
++ Fixed Tree sometimes spawning multiple trees if multiple tree-cutting hitboxes cut it down at the same time
++ Fixed Pocket icons sometimes being weird if a different player cut down the tree
++ Fixed misc stuff (mainly integer errors)");
+
 initPatch("1.60", "1st February, 2026");
 initHeader("Buffs");
 initSection("+ UTilt finisher is slightly stronger (0.95->1.0 kbs)

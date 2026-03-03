@@ -488,7 +488,7 @@ if (attack == AT_NSPECIAL){
 		    	    with (asset_get("oPlayer")) {
 						if(place_meeting(x,y,other) && /*state != PS_HITSTUN && state != PS_HITSTUN_LAND &&*/ get_player_team(player) != get_player_team(other.player)){
 							with (other) {
-								var dspechit = create_hitbox(AT_DSPECIAL, 10, x, y);
+								var dspechit = create_hitbox(AT_DSPECIAL, 10, round(x), round(y));
 								hit_timer = 60;
 							}
 						}
@@ -499,7 +499,7 @@ if (attack == AT_NSPECIAL){
 			if(get_gameplay_time() % 4 == 0){
 				if(image_index == 1){
 					if(watr >= 40){
-						player_id.tree = create_hitbox(AT_DSPECIAL, 3, x, y+7);player_id.tree.player = player;
+						player_id.tree = create_hitbox(AT_DSPECIAL, 3, round(x), round(y+7));player_id.tree.player = player;
 						with(player_id){
 	    	            	sound_play(sound_get("dspecial_tree"),false,noone,1);
 	    	        	}
@@ -617,7 +617,7 @@ if (attack == AT_NSPECIAL){
 						        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
 	    	                			with(other){
 	    	                				if(player_id.runeG){
-	    	                					var treecounter = create_hitbox(AT_DSPECIAL, 11, x, y-55);treecounter.player = player;
+	    	                					var treecounter = create_hitbox(AT_DSPECIAL, 11, round(x), round(y-55));treecounter.player = player;
 	    	                					var hitboxpower = round(other.damage*(1+(other.player_id.strong_charge/100)));
 	    	                					treecounter.damage += hitboxpower;treecounter.kb_scale += (hitboxpower/24);
 	    	                				}
@@ -632,13 +632,13 @@ if (attack == AT_NSPECIAL){
 	    	    	                	other.num = 3;other.image_index = 14;
 	    	    	                }else if(other.cuts == 2){
 	    	    	                	other.num = 4;other.image_index = 18;
-	    	    	                }else{
+	    	    	                }else if(!other.destroyed){
 	    	    	                	with(other){
 		    	    	                	if(instance_exists(hitcollision)){
 												hitcollision.destroyed = true;
 											}destroyed = true;
-											var tree = create_hitbox(AT_DSPECIAL, 7, x, y-75);tree.spr_dir = spr_dir;tree.player = player;
-											create_hitbox(AT_DSPECIAL, 8, x, y);
+											var tree = create_hitbox(AT_DSPECIAL, 7, round(x), round(y-75));tree.spr_dir = spr_dir;tree.player = player;
+											create_hitbox(AT_DSPECIAL, 8, round(x), round(y));
 	    	    	                	}sound_play(other.fallsfx,false,noone,1);shake_camera(4, 14);
 	    	    	                }
 	    	    	                with(other){
@@ -657,9 +657,9 @@ if (attack == AT_NSPECIAL){
 			if(timer % 5 == 0 && image_index < 2 || timer % 3 == 0 && image_index >= 2 && image_index < 9){
 				image_index += 1;
 				if(image_index == 3){
-					var hitbox = create_hitbox(AT_DSPECIAL, 5, x, y-65);hitbox.player = player;hitbox.tree = self;
+					var hitbox = create_hitbox(AT_DSPECIAL, 5, round(x), round(y-65));hitbox.player = player;hitbox.tree = self;
 				}else if(image_index == 4){
-					var hitbox = create_hitbox(AT_DSPECIAL, 6, x, y-55);hitbox.player = player;hitbox.tree = self;
+					var hitbox = create_hitbox(AT_DSPECIAL, 6, round(x), round(y-55));hitbox.player = player;hitbox.tree = self;
 				}
 			}
 			if(image_index >= 9){
