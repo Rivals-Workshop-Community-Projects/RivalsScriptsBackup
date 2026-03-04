@@ -1,5 +1,5 @@
 
-if (hit_player_obj != player_id && enemy_hitboxID.damage != 0 && enemy_hitboxID.hit_priority != 0 && state == "idle"){
+if (hit_player_obj != player_id && enemy_hitboxID.damage != 0 && enemy_hitboxID.kb_value != 0 && enemy_hitboxID.hit_priority != 0 && state == "idle"){
 	
 	var midpoint_x = (x + enemy_hitboxID.x) / 2;
 	var midpoint_y = (y + enemy_hitboxID.y) / 2;

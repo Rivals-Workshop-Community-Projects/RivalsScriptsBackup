@@ -2,7 +2,16 @@ if free then vsp = min(vsp + article_gravity, article_max_fall_speed);
 state_timer++;
 image_index = state_timer * article_anim_speed;
 depth = -6;
-can_be_hit[player_id.player] = 2;
+//can_be_hit[player_id.player] = 2;
+
+with (oPlayer){
+if (id != other.orig_player_id.id || (get_match_setting(SET_TEAMS) && !get_match_setting(SET_TEAMATTACK) && get_player_team(player) == get_player_team(other.player) )){
+	other.can_be_hit[player] = 0;
+} else {
+other.can_be_hit[player]= 2;
+
+}
+}
 
 if (state == "idle"){
 
@@ -33,7 +42,7 @@ if (state == "idle"){
         ghostTarget = player_id;
     }
 
-    var projectileSpeed = 3 + (has_rune("I") * 1.5);
+    var projectileSpeed = 2.5 + (has_rune("B") * 1.25);
     var targetAngle = point_direction(x, y, ghostTarget.x, ghostTarget.y - round(ghostTarget.char_height/2));
 
     if (sign(x - ghostTarget.x) != 0){

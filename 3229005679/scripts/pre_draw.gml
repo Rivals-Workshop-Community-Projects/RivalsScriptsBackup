@@ -16,7 +16,6 @@ if (attack = AT_TAUNT && (state = PS_ATTACK_GROUND || state = PS_ATTACK_AIR)){
 
 }
 
-
 if (attack == AT_EXTRA_1 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
 
     

@@ -9,8 +9,14 @@ image_xscale *= 2;
 image_yscale *= 2;
 small_sprites = 1;
 sprite_index = sprite_get("weenieSpawn");
-mask_index = sprite_get("weenieMask")
-hurtbox_spr = sprite_get("weenieMask");
+if (!has_rune("N")){
+    mask_index = sprite_get("weenieMask");
+    hurtbox_spr = sprite_get("weenieMask");
+} else {
+    mask_index = sprite_get("cowMask");
+    hurtbox_spr = sprite_get("cowMask");
+}
+
 article_anim_speed = 0.2;
 visible = true;
 image_alpha = 1;
@@ -23,7 +29,7 @@ state_timer = 0;                                    //The point in time during t
 hitstop = 0;                                        //The frames remaining in hitpause. Hitpause automatically prevents movement
 hsp = 0;                                            //The horizontal speed of the article. Multiply by spr_dir to correctly handle forward (+) or backward (-) movement
 vsp = 0;                                            //The vertical speed of the article.
-is_hittable = true;
+is_hittable = 1 - has_rune("N");
 hittable_hitpause_mult = 0.5;
 
 //Terrain behavior

@@ -62,10 +62,10 @@ sprite_change_offset("dair",            108, 77, true);
 sprite_change_offset("nspecial",        48, 99, true);
 sprite_change_offset("uspecial",        41, 58, true);
 sprite_change_offset("uspecialGround",  53, 88, true);
-sprite_change_offset("fspecialSpawn",   45, 99, true);
-sprite_change_offset("fspecialDash",    45, 99, true);
+sprite_change_offset("fspecialSpawn",   45, 99 + (has_rune("N") * 30), true);
+sprite_change_offset("fspecialDash",    45, 99 + (has_rune("N") * 30), true);
 sprite_change_offset("fspecialJump",    48, 90, true);
-sprite_change_offset("fspecialTurn",    45, 99, true);
+sprite_change_offset("fspecialTurn",    45, 99 + (has_rune("N") * 30), true);
 sprite_change_offset("fspecial2",       50, 99, true);
 sprite_change_offset("dspecial",        48, 91, true);
 
@@ -118,13 +118,14 @@ sprite_change_offset("plank",                  50,  50);
 sprite_change_offset("stompVFX",               166, 162);
 
 sprite_change_offset("weenieMask",             45, 100);
+sprite_change_offset("cowMask",             45, 100);
 sprite_change_offset("weenieSpawn",            45, 99);
 sprite_change_offset("weenieDash",             45, 99);
 sprite_change_offset("weenieDashEffect",       45, 99);
 sprite_change_offset("weenieIdle",             45, 99);
 sprite_change_offset("weenieTurn",             45, 99);
 sprite_change_offset("weenieDie",              50, 70);
-sprite_change_offset("fspecial_hurt",          62, 70); //67
+sprite_change_offset("fspecial_hurt",          62, 70 + (has_rune("N") * 60)); //67
 
 //Hud
 sprite_change_offset("hud",                    0, -2);

@@ -16,7 +16,7 @@ dash_turn_accel         = 1.5;		            // 0.1  -  2
 dash_stop_time          = 6;		            // 4    -  6        zetterburn's is 4
 dash_stop_percent       = 0.5;		            // 0.25 -  0.5
 ground_friction         = 0.5;		            // 0.3  -  1
-moonwalk_accel          = 1.2;		            // 1.2  -  1.4
+moonwalk_accel          = 1.4;		            // 1.2  -  1.4
 
 // Air movement
 leave_ground_max        = 6;		            // 4    -  8
@@ -24,7 +24,7 @@ max_jump_hsp            = 6;		            // 4    -  8
 air_max_speed           = 4;  		            // 3    -  7
 jump_change             = 3;		            // 3
 air_accel               = 0.3;		            // 0.2  -  0.4
-prat_fall_accel         = 1;		            // 0.25 -  1.5
+prat_fall_accel         = 1.2;		            // 0.25 -  1.5
 air_friction            = 0.04;		            // 0.02 -  0.07
 max_fall                = 9;		            // 6    -  11
 fast_fall               = 13;		            // 11   -  16
@@ -103,6 +103,7 @@ techroll_recovery_frames    = roll_forward_recovery_frames;
 
 // Hurtbox sprites
 hurtbox_spr         = sprite_get("vigilante_hurt");//asset_get("ferret_hurtbox");
+mask_index          = asset_get("ex_guy_collision_mask");
 crouchbox_spr       = asset_get("orca_crouchbox");
 air_hurtbox_spr     = -1; // -1 = use hurtbox_spr
 hitstun_hurtbox_spr = -1; // -1 = use hurtbox_spr
@@ -126,7 +127,7 @@ bubble_y = 8;
 
 small_sprites = 1
 
-wait_time = 180;                      // if wait_time is over 0, staying in idle for the amount of frames specified the character will do a wait animation
+wait_time = 240;                      // if wait_time is over 0, staying in idle for the amount of frames specified the character will do a wait animation
 wait_length = 70;                    // this values sets how long the character is animated for in the wait animation
 wait_sprite = sprite_get("wait0");   // handled elsewhere
 
@@ -188,6 +189,8 @@ vigiStep = sound_get("vigistep2");
 //Compat and Alts
 miiverse_post = sprite_get("miiverse");
 sonic_rainbowring_atk = 46;
+//pizzaTVcontent = sprite_get("pizzaTV_content");
+//pizzaTVbounce = sprite_get("pizzaTV_bounce");
 
 
 

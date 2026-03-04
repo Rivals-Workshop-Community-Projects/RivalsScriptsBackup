@@ -6,7 +6,13 @@ can_be_hit[player_id.player] = 2;
 
 //Spawn
 if (state == 1){
-    sprite_index = sprite_get("weenieSpawn");
+    if (!has_rune("N")){
+        sprite_index = sprite_get("weenieSpawn");
+    } else {
+        sprite_index = sprite_get("cow");
+        image_index = 0;
+    }
+
 
     if (player_id.attack == AT_FSPECIAL && (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR)){
         player_id.x = x;
@@ -21,7 +27,11 @@ if (state == 1){
 
 //Dash
 if (state == 2){
-    sprite_index = sprite_get("weenieDash");
+    if (!has_rune("N")){
+        sprite_index = sprite_get("weenieDash");
+    } else {
+        sprite_index = sprite_get("cow");
+    }
     
     if (player_id.attack == AT_FSPECIAL && (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR)){
         player_id.x = x;
@@ -64,7 +74,13 @@ if (state == 2){
 
 //Turn
 if (state == 3){
-    sprite_index = sprite_get("weenieTurn");
+    if (!has_rune("N")){
+        sprite_index = sprite_get("weenieTurn");
+    } else {
+        sprite_index = sprite_get("cow");
+        image_index = 0;
+    }
+
     if (player_id.attack == AT_FSPECIAL && (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR)){
         player_id.x = x;
         player_id.y = y;
@@ -83,8 +99,13 @@ if (state == 3){
 
 //Idle
 if (state == 4 || state == 5){
-    sprite_index = sprite_get("weenieIdle");
-    image_index = round(state_timer * article_anim_speed % image_number);
+    if (!has_rune("N")){
+        sprite_index = sprite_get("weenieIdle");
+        image_index = round(state_timer * article_anim_speed % image_number);
+    } else {
+        sprite_index = sprite_get("cow");
+        image_index = 0;
+    }
 
     if (floor(hsp) > article_friction && free == false) then hsp -= article_friction
     if (floor(hsp) < -article_friction && free == false) then hsp += article_friction;
@@ -93,7 +114,12 @@ if (state == 4 || state == 5){
 
 //Death
 if (state == 6 || destroyed == true){
-    sprite_index = sprite_get("weenieDie");
+    if (!has_rune("N")){
+        sprite_index = sprite_get("weenieDie");
+    } else {
+        sprite_index = sprite_get("cow");
+    }
+
     ignores_walls = true;
     is_hittable = false;
 
@@ -105,17 +131,23 @@ if (state == 6 || destroyed == true){
 
 //Ram
 if (state == 7){
-    sprite_index = sprite_get("weenieDash");
-    image_index = 5 + (state_timer / 3);
+
+    if (!has_rune("N")){
+        sprite_index = sprite_get("weenieDash");
+        image_index = 5 + (state_timer / 3);
+    } else {
+        sprite_index = sprite_get("cow");
+        image_index = 1 + (state_timer / 3);
+    }
 
     if (abs(hsp) > 1){
         if (!instance_exists(weenieBox2)){
-            weenieBox2 = create_hitbox(AT_FSPECIAL_2, 1, x + hsp + 10 * spr_dir, y - 18);
+            weenieBox2 = create_hitbox(AT_FSPECIAL_2, 1, x + hsp + 10 * spr_dir, y - 18 - (has_rune("N") * 30));
 
         } else {
 
             weenieBox2.x = x + hsp + 10 * spr_dir;
-            weenieBox2.y = y - 18;
+            weenieBox2.y = y - 18 - (has_rune("N") * 30);
             weenieBox2.length += 1;
 
         }
@@ -131,8 +163,6 @@ if (state == 7){
     if (floor(hsp) < -article_friction) then hsp += article_friction * 2;
     if (floor(hsp) < article_friction && floor(hsp) > -article_friction) then hsp = 0;
 }
-
-
 
 var newArray = 0;
 for (var i = 0; i < array_length_1d(afterimage_array); ++i)

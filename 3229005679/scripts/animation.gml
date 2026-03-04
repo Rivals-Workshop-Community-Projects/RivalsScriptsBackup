@@ -31,22 +31,38 @@ if (attack == AT_FSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AI
 
         if (window == 1){
             sprite_index = sprite_get("fspecialSpawn");
-            vigiWeenie.sprite_index = sprite_get("weenieSpawn");
-            vigiWeenie.image_index = image_index;
+            if (!has_rune("N")){
+                vigiWeenie.sprite_index = sprite_get("weenieSpawn");
+                vigiWeenie.image_index = image_index;
+            } else {
+                vigiWeenie.sprite_index = sprite_get("cow");
+                vigiWeenie.image_index = image_index;
+            }
         }
 
         if (window == 2){
             sprite_index = sprite_get("fspecialDash");
-            vigiWeenie.sprite_index = sprite_get("weenieDash");
             image_index = floor((window_timer * min(max((abs(hsp)) / 2.5, 1), 4)) * (image_number/get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)));
-            
-            vigiWeenie.image_index = image_index;
+
+            if (!has_rune("N")){
+                vigiWeenie.sprite_index = sprite_get("weenieDash");
+                vigiWeenie.image_index = image_index;
+            } else {
+                vigiWeenie.sprite_index = sprite_get("cow");
+                vigiWeenie.image_index = image_index * 0.5;
+            }
         }
 
         if (window == 3){
             sprite_index = sprite_get("fspecialTurn");
-            vigiWeenie.sprite_index = sprite_get("weenieTurn");
-            vigiWeenie.image_index = image_index;
+            
+            if (!has_rune("N")){
+                vigiWeenie.sprite_index = sprite_get("weenieTurn");
+                vigiWeenie.image_index = image_index;
+            } else {
+                vigiWeenie.sprite_index = sprite_get("cow");
+                vigiWeenie.image_index = image_index;
+            }
         }
 
         if (window == 4){

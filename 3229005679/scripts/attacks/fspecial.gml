@@ -37,7 +37,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_GOTO, 2);
 
 //Jumping off
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 0);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_GOTO, 5);
@@ -56,10 +56,10 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, -1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 2);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -20);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 18);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 56);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 44);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -20 - (has_rune("N") * 30));
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 18 - (has_rune("N") * 18));
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 56 + (has_rune("N") * 40));
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 44 + (has_rune("N") * 50));
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 7);

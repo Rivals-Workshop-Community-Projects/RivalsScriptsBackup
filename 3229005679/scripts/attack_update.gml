@@ -1,6 +1,6 @@
 
 
-if (attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_GROUND || attack == AT_FSPECIAL) {
+if (attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_GROUND || attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) {
     trigger_b_reverse();
 }
 
@@ -36,7 +36,7 @@ case AT_JAB:
         hud_offset = 46;
         has_hit_player = false;
 
-        if (window_timer % 10 == 0 && !hitpause){
+        if (window_timer % 9 == 0 && !hitpause){
             sound_play(sound_get("pistolstart2"));
         }
 
@@ -189,11 +189,19 @@ case AT_UAIR:
         }
 
         if (window_timer == get_window_value(AT_UAIR, 1, AG_WINDOW_LENGTH) && !hitpause){
-            spawn_hit_fx(x + 4 * spr_dir, y - 56, uairExplosion); //96,  156
-            sound_play(sound_get("sfx_explosion"));
-            create_hitbox(AT_UAIR, 1, x + 6 * spr_dir, y - 66);
+            if (has_rune("I")){
+                vigiDynamite = create_hitbox(AT_DSTRONG, 1, x + 3 * spr_dir, y - 60);
+                vigiDynamite.hsp = hsp;
+                vigiDynamite.vsp = -10;
+                vigiDynamite.proj_angle = -90 * spr_dir;
+                vigiDynamite.hitbox_timer = 3;
+                vigiDynamite.length += 2;
+            } else {
+                spawn_hit_fx(x + 4 * spr_dir, y - 56, uairExplosion); //96,  156
+                sound_play(sound_get("sfx_explosion"));
+                create_hitbox(AT_UAIR, 1, x + 6 * spr_dir, y - 66);
+            }
         }
-        
     }
 
     if (window == 2){
@@ -334,7 +342,7 @@ case AT_BAIR:
             sound_play(asset_get("sfx_ell_cooldown"));
             set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bairEmpty"));
 
-            set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 8);
+            set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 7);
             set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 7);
             set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.7);
             set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 7);
@@ -375,18 +383,22 @@ case AT_DSTRONG:
 
         if (has_rune("H") && times_through == 0){
             if (strong_charge < 30){
-                strong_charge = 0;
                 vigiDstrongType = 0;
             } else {
-                strong_charge = 60;
                 vigiDstrongType = 1;
             }
         }
 
         vigiDynamite = create_hitbox(AT_DSTRONG, 1, x + 40 * spr_dir, y - 20);
-        vigiDynamite.hsp = (get_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_HSPEED) * ( 1 + (ease_linear(0, 1, strong_charge, 60) / 2) )) * spr_dir;
-        vigiDynamite.vsp = (get_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_VSPEED) * ( 1 + (ease_linear(0, 1, strong_charge, 60) / 2) ));
-        vigiDynamite.length = round(get_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME) * ( 1 + (ease_linear(0, 1, strong_charge, 60) / 2) ));
+        if (has_rune("H")){
+            vigiDynamite.hsp = (get_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_HSPEED) * ( 1 + (ease_linear(0, 1, abs(vigiDstrongType * 2 - times_through), 2) / 2) )) * spr_dir;
+            vigiDynamite.vsp = (get_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_VSPEED) * ( 1 + (ease_linear(0, 1, abs(vigiDstrongType * 2 - times_through), 2) / 2) ));
+            vigiDynamite.length = round(get_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME) * ( 1 + (ease_linear(0, 1, abs(vigiDstrongType * 2 - times_through), 2) / 2) ));
+        } else {
+            vigiDynamite.hsp = (get_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_HSPEED) * ( 1 + (ease_linear(0, 1, strong_charge, 60) / 2) )) * spr_dir;
+            vigiDynamite.vsp = (get_hitbox_value(AT_DSTRONG, 1, HG_PROJECTILE_VSPEED) * ( 1 + (ease_linear(0, 1, strong_charge, 60) / 2) ));
+            vigiDynamite.length = round(get_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME) * ( 1 + (ease_linear(0, 1, strong_charge, 60) / 2) ));
+        }
         vigiDynamite.originalStrong_charge = strong_charge;
 
     }
@@ -395,7 +407,6 @@ case AT_DSTRONG:
         window = 2;
         window_timer = 0;
         times_through += 1;
-        strong_charge = vigiDstrongType ? strong_charge - 30 : strong_charge + 30;
     }
 
 break;
@@ -465,11 +476,6 @@ case AT_USPECIAL:
         hsp = 0;
         vsp = 0;
         can_move = false;
-
-        if (window_timer == get_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH)){
-            vsp = -10;
-            hsp = -2.5 * spr_dir;
-        }
     }
 
     if (window == 3){
@@ -487,7 +493,7 @@ case AT_FSPECIAL:
 
         if (window == 1){
 
-            hud_offset = 30;
+            hud_offset = 30 + (has_rune("N") * 60);
             can_move = false;
             if (hitpause == false){
                 hsp = min(abs(hsp) + 0.2 + (has_rune("J") * 0.2), 6.9) * spr_dir;
@@ -497,7 +503,7 @@ case AT_FSPECIAL:
 
         if (window == 2){
 
-            hud_offset = 46;
+            hud_offset = 46 + (has_rune("N") * 60);
             can_move = false;
 
             if (hitpause == false){
@@ -535,7 +541,7 @@ case AT_FSPECIAL:
 
                     hsp = vigiWeenie.hsp + (1 * spr_dir);
                     vsp = -jump_speed * 0.8;
-                    y -= 15;
+                    y -= 15 + (has_rune("N") * 60);
 
                     hurtboxID.sprite_index = hurtbox_spr;
                     sound_stop(weenieSound);
@@ -547,7 +553,7 @@ case AT_FSPECIAL:
 
         if (window == 3){
 
-            hud_offset = 36;
+            hud_offset = 36 + (has_rune("N") * 60);
             hsp = vigiWeenie.hsp;
             vsp = vigiWeenie.vsp;
             can_move = false;
@@ -593,11 +599,17 @@ case AT_FSPECIAL_2:
 
     can_wall_jump = true;
 
-    if (instance_exists(vigiWeenie) && window == 1 && window_timer == get_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH)){
-        vigiWeenie.hsp = 15 * spr_dir
+    if (instance_exists(vigiWeenie) && window == 1 && window_timer == get_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH) && vigiWeenie.state != 6 && vigiWeenie.destroyed == false){
+        vigiWeenie.spr_dir = spr_dir;
+        vigiWeenie.hsp = (15 + (has_rune("N") * 5)) * spr_dir
 
-        vigiWeenie.sprite_index = sprite_get("weenieDash");
-        vigiWeenie.image_index = 5;
+        if (!has_rune("N")){
+            vigiWeenie.sprite_index = sprite_get("weenieDash");
+            vigiWeenie.image_index = 5;
+        } else {
+            vigiWeenie.sprite_index = sprite_get("cow");
+            vigiWeenie.image_index = 1;
+        }
 
         vigiWeenie.state = 7;
         vigiWeenie.state_timer = 0;

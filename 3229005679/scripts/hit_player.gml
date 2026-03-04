@@ -1,7 +1,7 @@
 if (my_hitboxID.player != my_hitboxID.orig_player) exit;
 
 if (my_hitboxID.attack == AT_FSTRONG && my_hitboxID.hbox_num == 1){
-    old_hsp -= 3*spr_dir;
+    old_hsp -= 3 * spr_dir;
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hit_priority == 3.1 && instance_exists(vigiGhost)){
@@ -15,6 +15,10 @@ if (my_hitboxID.attack == AT_DSTRONG && my_hitboxID.hbox_num == 4){
     hit_player_obj.hurt_img = 5;
 }
 
-if( my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 1){
+if(my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num == 1){
     clear_button_buffer(PC_ATTACK_PRESSED);
+}
+
+if (my_hitboxID.type == 1){
+    bear_uspecial = true;
 }

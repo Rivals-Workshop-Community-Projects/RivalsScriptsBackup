@@ -1,7 +1,7 @@
 
 if (attack == AT_FSPECIAL && instance_exists(vigiWeenie) && vigiWeenie.state != 6 && vigiWeenie.destroyed == false){
 
-    if (place_meeting(x + (hsp * 2), y + (vsp * 2), vigiWeenie) || place_meeting(x + hsp, y + vsp, vigiWeenie)){
+    if (place_meeting(x + (hsp * 3), y + (vsp * 3), vigiWeenie) || place_meeting(x + (hsp * 2), y + (vsp * 2), vigiWeenie) || place_meeting(x + hsp, y + vsp, vigiWeenie)){
         window = 2;
         window_timer = 0;
         vigiWeenie.spr_dir = spr_dir;
@@ -21,7 +21,7 @@ if (attack == AT_FSPECIAL && instance_exists(vigiWeenie) && vigiWeenie.state != 
     }
 }
 
-//Everyting needs to stop if it is on cooldown, except for AT_FSPECIAL.
+//Everything needs to stop if it is on cooldown, except for AT_FSPECIAL.
 if move_cooldown[attack] > 0 then exit;
 
 
@@ -73,7 +73,10 @@ switch (attack){
 
         if (!instance_exists(vigiWeenie)){
             vigiWeenie = instance_create(x, y, "obj_article3");
-            vsp = min(0, vsp) - 1;
+
+            if (free){
+                vsp = min(-4.5, vsp);
+            }
         }
 
     break;

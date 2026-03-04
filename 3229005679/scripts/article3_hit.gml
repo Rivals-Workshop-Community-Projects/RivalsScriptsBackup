@@ -8,12 +8,16 @@ if (hit_player_obj != player_id && enemy_hitboxID.damage != 0 && enemy_hitboxID.
 	state = 6;
 	state_timer = 0;
 	is_hittable = false;
+	if (has_rune("N")){
+		image_angle = 180;
+		y -= 100;
+	}
 
 	hit_player_obj.has_hit = true;
 	sound_play(enemy_hitboxID.sound_effect);
 
 	var enemyKnock = get_kb_formula(get_player_damage(player_id.player), 1, 1.0, enemy_hitboxID.damage, enemy_hitboxID.kb_value, enemy_hitboxID.kb_scale) * (1 + (ease_linear( 0, 25, hit_player_obj.strong_charge, 60 ) * 0.01));
 	hsp = lengthdir_x(max(enemyKnock, 5), get_hitbox_angle(enemy_hitboxID));
-	vsp = lengthdir_y(max(enemyKnock, 5), get_hitbox_angle(enemy_hitboxID));
+	vsp = lengthdir_y(max(enemyKnock, 5), get_hitbox_angle(enemy_hitboxID)) - 1;
 	hitstop = hit_player_obj.hitstop;
 }

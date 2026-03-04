@@ -36,7 +36,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 0);
-set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 60);
+set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 45);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1);
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_MASK, -1);

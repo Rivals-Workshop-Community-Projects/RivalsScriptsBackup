@@ -112,6 +112,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, fakeEmpty);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 4);
 
 //Air Explosion
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, -1);
@@ -150,18 +151,18 @@ set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, fakeEmpty);
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 4);
 
-if (has_rune("B")){
 //Melee
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 3);
 set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME, 3);
-set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_Y, -28);
-set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, 35);
-set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 50);
-set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 35);
+set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_Y, -23);
+set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_X, 36);
+set_hitbox_value(AT_DSTRONG, 4, HG_WIDTH, 48);
+set_hitbox_value(AT_DSTRONG, 4, HG_HEIGHT, 36);
 set_hitbox_value(AT_DSTRONG, 4, HG_SHAPE, 0);
 set_hitbox_value(AT_DSTRONG, 4, HG_PRIORITY, 3);
 set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 1);
@@ -173,4 +174,3 @@ set_hitbox_value(AT_DSTRONG, 4, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_DSTRONG, 4, HG_TECHABLE, 3);
 set_hitbox_value(AT_DSTRONG, 4, HG_VISUAL_EFFECT, HFX_GEN_OMNI);
 set_hitbox_value(AT_DSTRONG, 4, HG_HIT_SFX, asset_get("sfx_birdclap"));
-}

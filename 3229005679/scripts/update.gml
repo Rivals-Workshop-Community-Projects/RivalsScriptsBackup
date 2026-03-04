@@ -4,8 +4,14 @@ with (hit_fx_obj){
         depth = other.depth - 1;
 
         if (hit_fx == other.plankFlying){
-            vsp = min(vsp + 1, 10);
+            vsp = min(vsp + 0.5, 15);
             draw_angle = step_timer * 10 * -sign(hsp);
+
+            if (-sign(hsp) == 0){
+                spr_dir = 1;
+            } else {
+                spr_dir = -sign(hsp);
+            }
         }
 
         if (hit_fx == other.ghostHit || hit_fx == other.ghostCloud || hit_fx == other.uairExplosion || hit_fx == other.dynamiteBoomGround || hit_fx == other.rocketBoomGround || hit_fx == other.crateExplosion || hit_fx == other.stompVFX){
@@ -14,6 +20,7 @@ with (hit_fx_obj){
     }
 
 } 
+
 
 if (bear_uspecial == false){
     move_cooldown[AT_TAUNT] = 2;
