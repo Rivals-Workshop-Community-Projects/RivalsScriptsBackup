@@ -1,5 +1,5 @@
 if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1){
-    set_attack_value(AT_DAIR, AG_LANDING_LAG, 4);
+    set_attack_value(AT_DAIR, AG_LANDING_LAG, 10);
     set_window_value(AT_DAIR, 4, AG_WINDOW_CUSTOM_GRAVITY, .33);
     set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 6);
 }

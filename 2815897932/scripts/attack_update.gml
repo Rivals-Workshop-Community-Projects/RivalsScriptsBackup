@@ -48,7 +48,7 @@ if (attack == AT_DSPECIAL){
             set_num_hitboxes(AT_DSPECIAL, 1);
     }
     if window == 3{
-    move_cooldown[AT_DSPECIAL]+= 4
+    move_cooldown[AT_DSPECIAL]+= 2
     }
     if window == 4{
     move_cooldown[AT_DSPECIAL]+= 2
@@ -67,7 +67,7 @@ if (attack == AT_FSPECIAL){
             set_num_hitboxes(AT_FSPECIAL, 1);
     }
         if window == 3{
-    move_cooldown[AT_FSPECIAL]+= 4
+    move_cooldown[AT_FSPECIAL]+= 2
     }
         if window == 4{
     hsp = 0
@@ -83,10 +83,10 @@ if (attack == AT_NSPECIAL){
     can_jump = true
     can_strong = true
     can_ustrong = true
-    move_cooldown[AT_NSPECIAL] = 120
+    move_cooldown[AT_NSPECIAL] = 75
     }
     if !has_hit_player && window == 3{
-    move_cooldown[AT_NSPECIAL] = 60
+    move_cooldown[AT_NSPECIAL] = 40
     }
 }
 
@@ -103,6 +103,7 @@ if (attack == AT_DSTRONG){
         set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 4);
         set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 11);
         set_attack_value(AT_DSTRONG, AG_OFF_LEDGE, 0);
+        set_window_value(AT_DSTRONG, 5, AG_WINDOW_SFX, sound_get("sfx_bounce_light"));
         wowza = false
     }
     
@@ -113,6 +114,10 @@ if (attack == AT_DSTRONG){
     if window == 4 && window_timer == 12 && free{
     window_timer = 1
     wowza = true
+    }
+
+    if wowza == true{
+        set_window_value(AT_DSTRONG, 5, AG_WINDOW_SFX, sound_get("sfx_bounce_heavy"));
     }
 
     if window == 4 && !free{
@@ -150,7 +155,7 @@ if attack == AT_USPECIAL{
         }        
         if window == 4{
             boost_accel = true
-            move_cooldown[AT_USPECIAL] = 30
+            move_cooldown[AT_USPECIAL] = 24
         }
         if window == 5{
             boost_accel = false
@@ -231,6 +236,6 @@ if (attack == AT_UTILT){
     can_special = true
     can_jump = true
     }
-    move_cooldown[AT_UTILT] = 20
+    move_cooldown[AT_UTILT] = 12
 }
 

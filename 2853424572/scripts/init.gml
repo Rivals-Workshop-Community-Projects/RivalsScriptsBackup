@@ -42,9 +42,9 @@ ground_friction = .7;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 12.5;
+jump_speed = 12;
 short_hop_speed = 6.75;
-djump_speed = 10;
+djump_speed = 9.75;
 leave_ground_max = 6.25; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 6.25; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 5; //the maximum hsp you can accelerate to when in a normal aerial state
@@ -57,9 +57,9 @@ double_jump_time = 32; //the number of frames to play the djump animation. Can't
 walljump_hsp = 7;
 walljump_vsp = 11;
 walljump_time = 32;
-max_fall = 9.5; //maximum fall speed without fastfalling
-fast_fall = 12.5; //fast fall speed
-gravity_speed = .5;
+max_fall = 11.25; //maximum fall speed without fastfalling
+fast_fall = 15; //fast fall speed
+gravity_speed = .621;
 hitstun_grav = .48;
 knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 

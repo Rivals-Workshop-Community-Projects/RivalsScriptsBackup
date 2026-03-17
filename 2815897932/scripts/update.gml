@@ -9,7 +9,6 @@ if state == PS_DASH_STOP{
   ground_friction = .05;
 }
 
-
 if state != PS_DASH_STOP{
   ground_friction = .625;
 }
