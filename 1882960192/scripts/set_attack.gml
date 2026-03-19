@@ -1,5 +1,6 @@
 //set_attack
 
+/*
 if attack == AT_DSPECIAL && free && !((spr_dir == 1 && right_down || spr_dir == -1 && left_down) && !down_down) {
 	attack = AT_DSPECIAL_AIR;
 }
@@ -7,6 +8,7 @@ if attack == AT_DSPECIAL && free && !((spr_dir == 1 && right_down || spr_dir == 
 if attack == AT_DSPECIAL || attack == AT_DSPECIAL_2 || attack == AT_DSPECIAL_AIR || attack == AT_DTHROW {
 	shaboingboing = 0;
 }
+*/
 
 if attack == AT_TAUNT {
 	if down_down {

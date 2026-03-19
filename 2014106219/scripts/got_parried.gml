@@ -1,6 +1,6 @@
 // got_parried.gml
 
-if (my_hitboxID.attack == AT_NSPECIAL) {
+if (my_hitboxID.attack == AT_NSPECIAL || my_hitboxID.attack == AT_DSPECIAL_2 && hbox_num == 2) {
     my_hitboxID.hitbox_timer = 1;
 	my_hitboxID.hsp = 8*my_hitboxID.spr_dir;
 	my_hitboxID.vsp = 0;
@@ -8,31 +8,19 @@ if (my_hitboxID.attack == AT_NSPECIAL) {
 	my_hitboxID.damage += 2;
 	}
 
-if !(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 || my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
+if !(my_hitboxID.type == 2) {
 	wblastcharge = 0;
 }
 
-if (my_hitboxID.attack == AT_DSPECIAL || AT_DSPECIAL_2 || AT_DSPECIAL_AIR || AT_DTHROW) {
-	vsp = clamp(vsp, -5, 5);
-	hsp = clamp(hsp, -5, 5);
+if (my_hitboxID.attack == AT_FSPECIAL) {
+	hsp = clamp(hsp, -2, 2);
+	vsp = -6;
+	attack_end();
+	destroy_hitboxes();
+	set_attack(AT_EXTRA_1);
 }
 
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
-    my_hitboxID.hitbox_timer = 1;
-	my_hitboxID.grav += .3;
-	my_hitboxID.hsp *= 1.5;
-	my_hitboxID.damage += 2;
-	my_hitboxID.grounds = 2;
-}
-
-if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
-		if !my_hitboxID.smacked {
-		my_hitboxID.hitbox_timer = 1;
-		my_hitboxID.grav += .35;
-		my_hitboxID.hsp *= 1.5;
-		my_hitboxID.damage += 1;
-		my_hitboxID.grounds = 2;
-	} else {
-		my_hitboxID.hitbox_timer = 1;	
-	}
+if (my_hitboxID.attack == AT_DSPECIAL_AIR || AT_DTHROW) {
+	vsp = clamp(vsp, -5, -2);
+	hsp = clamp(hsp, -3, 3);
 }

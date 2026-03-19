@@ -7,6 +7,11 @@ old_hsp = 0;
 landedground = false;
 bounce = 3;
 
+if attack == AT_DSPECIAL || attack == AT_DSPECIAL_2 {
+hook_state = 0; //0 = flying, 1 = latched, 2 = returning
+}
+state_timer = 0;
+
 //G&W can't absorb explosion
 if attack == AT_NSPECIAL {
 	if hbox_num == 1 {

@@ -5,7 +5,7 @@ if (attack == AT_NSPECIAL) {
 			if hitbox_timer == 1 || hitbox_timer mod 4 == 0 {
 				spawn_hit_fx(x+2*spr_dir, y, player_id.nspecialAfter);
 			}
-			
+
 			if !free {
 				if bounce > 0 {
 					with player_id sound_play(sound_get("magicbounce"));
@@ -151,4 +151,168 @@ if (attack == AT_NSPECIAL) {
 			}
 		}
 	}
+}
+
+if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) && hbox_num == 1 {
+
+	if (player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR && (player_id.attack != AT_DSPECIAL || player_id.attack != AT_DSPECIAL_2)) {
+			hitbox_timer = length;
+	}
+	
+	if hitbox_timer == length || destroyed {
+			player_id.hookOut = false;
+	}
+		
+	state_timer++;
+	
+    if (hook_state == 0) { //shoot
+        // latch
+        if 17 > hitbox_timer { 
+			if ((place_meeting(x + hsp - 10*spr_dir, y + vsp - 10, asset_get("par_block"))) || !free)  {
+				hook_state = 1;
+				state_timer = 0;
+				hsp = 0;
+				vsp = 0;
+				grav = 0;
+				with player_id sound_play(sound_get("ghook-latch"));
+				spawn_hit_fx(x, y, 303);	
+				grounds = 0;
+				player_id.hook_is_latched = true;
+				player_id.hook_target_x = x;
+				player_id.hook_target_y = y;
+				hitbox_timer = length - 30;
+			}
+			
+			proj_angle -= vsp*spr_dir;
+			if attack == AT_DSPECIAL_2 {
+				if hitbox_timer == 1 || hitbox_timer mod 2 == 0 {
+					spawn_hit_fx(x+2*spr_dir, y, player_id.nspecialAfter);
+				}
+			}
+			with (asset_get("pHitBox")) {
+				if (player_id == other.player_id &&	(attack == AT_NSPECIAL && hbox_num == 3) && place_meeting(x,y,other.id)) {
+					hitbox_timer = length-2;
+					other.hook_state = 1;
+					other.state_timer = 0;
+					other.hsp = 0;
+					other.vsp = 0;
+					other.grav = 0;
+					with player_id sound_play(sound_get("ghook-latch"));
+					spawn_hit_fx(x, y, 303);	
+					other.grounds = 0;
+					other.player_id.hook_is_latched = true;
+					other.player_id.hook_target_x = x;
+					other.player_id.hook_target_y = y;
+					other.hitbox_timer = length - 15;
+				}
+			}
+		}
+		
+        // whiff
+        else if (abs(hsp) <= 0.2) {
+			state_timer = 0;
+            hsp = 0;
+            vsp = 0;
+            grav = 0;
+            hook_state = 2;
+        }
+		
+		if hitbox_timer > 16 {
+			if attack == AT_DSPECIAL {
+			hsp = clamp(hsp, -1, 1);
+			vsp = clamp(vsp, -1, 1);
+			}
+			hsp = clamp(hsp, -4, 4);
+			vsp = clamp(vsp, -4, 4);
+			
+			image_index = 1;
+			if hitbox_timer == 17 {
+				with player_id sound_play(sound_get("ghook-bite"));
+			}
+			image_xscale = 0;
+			image_yscale = 0;
+			hit_priority = 0;
+			grounds = 1;
+		}
+		
+		vsp = clamp(vsp, -6, 6);
+		if 16 > hitbox_timer {
+			with player_id if up_down {
+				other.vsp -= .2;
+			}
+			with player_id if down_down {
+				other.vsp += .2;
+			}
+		}
+    }
+	
+	if hook_state != 0 {
+		with player_id sound_stop(sound_get("ghook-fly"));
+	}
+
+    if (hook_state == 1) { //hooked
+        hsp = 0;
+        vsp = 0;
+		grounds = 1;
+		image_index = 1;
+		image_xscale = 0;
+		image_yscale = 0;
+		hit_priority = 0;
+		
+		if state_timer == 1 {
+			with player_id sound_play(sound_get("ghook-return"));
+		}
+        
+        // Tell azure it's time to pull
+        player_id.hook_is_latched = true;
+        player_id.hook_target_x = x;
+        player_id.hook_target_y = y;
+		
+        // Destroy the hitbox when azure attack cancels
+		if !(player_id.attack == AT_DSPECIAL || player_id.attack == AT_DSPECIAL_2) {
+			hitbox_timer = length;
+		}
+    }
+
+    if (hook_state == 2) { //returning
+	
+		image_index = 1;
+		image_xscale = 0;
+		image_yscale = 0;
+		hit_priority = 0;
+		grounds = 1;
+		
+		if state_timer == 1 {
+			with player_id sound_play(sound_get("ghook-return"));
+		}
+		
+		if proj_angle > 0 {
+			proj_angle += .2*spr_dir;
+		}
+		
+		if 0 > proj_angle {
+			proj_angle -= .2*spr_dir;
+		}
+		
+        // aim for azure's center
+        var dir = point_direction(x, y, player_id.x + 40 * player_id.spr_dir, player_id.y - 30);
+		
+		if 20 > state_timer {
+        hsp += lengthdir_x(1, dir);
+        vsp += lengthdir_y(1, dir);
+		} else {
+        hsp = lengthdir_x(20, dir);
+        vsp = lengthdir_y(20, dir);
+		}
+		
+        player_id.hook_is_latched = false;
+
+        // Destroy the hitbox when azure gets close to it
+        if (point_distance(x, y, player_id.x + 40 * player_id.spr_dir, player_id.y - 30) < 20) {
+			player_id.window = 5;
+			player_id.window_timer = 0;
+			with player_id if hookOut other.hitbox_timer = other.length-1;
+			player_id.hookOut = false;
+        }
+    }
 }

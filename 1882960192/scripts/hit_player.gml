@@ -3,8 +3,7 @@
 //Stun effect
 if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 2 || 
 	my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 1 || 
-	my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 2 ||
-	my_hitboxID.attack == AT_DTHROW && my_hitboxID.hbox_num == 9 ||
+	my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 1 ||
 	my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
 	
 	spawn_hit_fx(other.x-40*other.spr_dir, other.y+6, stung2);
@@ -25,6 +24,22 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 3) {
 	my_hitboxID.hsp = 0;	
 	my_hitboxID.vsp = 0;	
 }
+
+//DSpecial
+if ((my_hitboxID.attack == AT_DSPECIAL || my_hitboxID.attack == AT_DSPECIAL_2) && my_hitboxID.hbox_num == 1) {
+    // Tell the hook it grabbed someone
+    my_hitboxID.hook_state = 1;
+    my_hitboxID.latched_target = hit_player_obj;
+    my_hitboxID.hsp = 0;
+    my_hitboxID.vsp = 0;
+	sound_play(sound_get("ghook-latch"));
+	
+	has_hit = true;
+    hook_is_latched = true;
+    hook_target_x = hit_player_obj.x;
+    hook_target_y = hit_player_obj.y - (hit_player_obj.char_height / 2);
+}
+
 
 if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num != 2) {
 	sound_play(sound_get("hammer-hit"));

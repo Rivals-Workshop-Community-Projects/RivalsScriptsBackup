@@ -124,6 +124,12 @@ shaboingboing = 0;
 stupidstall = true;
 dashactivated = true;
 
+//grapple
+hook_is_latched = false;    // tells Azure if the hook hit something
+hook_target_x = 0;       // the X coordinate azure needs to pull towards
+hook_target_y = 0;       // the Y coordinate azure needs to pull towards
+hookOut = false;
+
 //Character support
 miiverse_post = sprite_get("miiverse");
 tcoart = sprite_get("azuretcoart");
@@ -181,6 +187,27 @@ page++;
 pronouns = ["he","him","his","is"];
 am_is_guest = true;
 
-azure_victory_quote = "Trying to copy my flow? At least you're better at it than a certain robot, I'll give you that.";
+azure_victory_quote = "Trying to copy my flow? At least you're better at it than a certain robot...";
 azure_handled_victory_quote = false;
 azure_victory_icon = 5;
+
+//codec
+codec_playing = false;
+codec_is_closing = false;
+codec_page = 0;
+codec_text_timer = 0;
+codec_box_frame = 0;
+codec_max_pages = 0;
+codec_target = noone;
+codec_dialogue = [];
+codec_input_cooldown = 0;
+codec_trigger_timer = 0;
+codec_auto_timer = 0;
+codec_prev_length = 0;
+speaker_config = [
+    ["codec_azure",  "dialogue-azu", 0.95, 10], // 0 = Azure
+    ["codec_cinna",  "dialogue-cin", 0.95, 10], // 1 = Cinna
+    ["codec_bbot",   "dialogue-bot", 1.00,  0], // 2 = BBot (0 variance = monotone)
+    ["codec_mozza",  "dialogue-moz", 1.05, 10], // 3 = Mozza
+    ["codec_troops", "dialogue-tro", 0.85, 15] // 4 = Troops (Lower pitch, high variance)
+];

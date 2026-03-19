@@ -16,8 +16,22 @@ if (attack == AT_NSPECIAL) {
 	}
 }
 
+if (attack == AT_DSPECIAL_2) {
+	if hbox_num == 2 {
+		vsp = 0;
+		if hitbox_timer == length-1 {
+			spawn_hit_fx(x+20*spr_dir, y, player_id.nspecialAfter3);
+		}
+		if hitbox_timer == 1 || hitbox_timer mod 5 == 0 {
+			spawn_hit_fx(x+2*spr_dir, y, player_id.nspecialAfter);
+			spawn_hit_fx(x-20*spr_dir, y+18, player_id.nspecialAfter);
+			spawn_hit_fx(x-20*spr_dir, y-18, player_id.nspecialAfter);
+		}
+	}
+}
 
 
+/*
 if (attack == AT_FSPECIAL) {
 	if hbox_num == 1 {
 		img_spd = hsp/6*spr_dir;
@@ -300,3 +314,4 @@ if (attack == AT_FSPECIAL_2) {
 		}
 	}
 }
+*/

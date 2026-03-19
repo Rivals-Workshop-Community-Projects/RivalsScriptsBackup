@@ -15,32 +15,24 @@ if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_
 	spawn_hit_fx(other.x-20*other.spr_dir, other.y-70, stung);
 }
 
-//FSpecial bounce
-if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = my_hitboxID.length-7;
-	my_hitboxID.vsp = -2;
-	my_hitboxID.hsp = 0;
-}
-
-if (my_hitboxID.attack == AT_FSPECIAL_2 && my_hitboxID.hbox_num == 1) {
-	my_hitboxID.hitbox_timer = my_hitboxID.length-8;
-	my_hitboxID.vsp = -2;
-	my_hitboxID.hsp = 0;	
-}
-
-if (my_hitboxID.attack == AT_DAIR) {
-	old_vsp = -5;
+//DSpecial
+if (my_hitboxID.attack == AT_DSPECIAL) {
 	attack_end();
 }
 
-//DSpecial double jump restore
 if (my_hitboxID.attack == AT_DSPECIAL_AIR || my_hitboxID.attack == AT_DTHROW) {
-	djumps = 0;
-}
-
-if (my_hitboxID.attack == AT_FSPECIAL || my_hitboxID.attack == AT_FSPECIAL_2) {
-	move_cooldown[AT_FSPECIAL] = 8;
+	sound_play(sound_get("parasol-bounce"));
+	if my_hitboxID.attack == AT_DSPECIAL_AIR {
+		attack_end();
+		old_vsp = -6;
 	}
+	if my_hitboxID.attack == AT_DTHROW {
+		window = 6;
+		window_timer = 0;
+		old_vsp = -10;
+		old_hsp /= 2;
+	}
+}
 
 if (( my_hitboxID.attack == AT_USTRONG || my_hitboxID.attack == AT_USTRONG_2) && my_hitboxID.hbox_num =! 4) {
 	hit_player_obj.should_make_shockwave = false;

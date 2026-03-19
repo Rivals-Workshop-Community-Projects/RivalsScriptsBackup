@@ -57,9 +57,10 @@ sprite_change_offset("fspecial_air", 76, 102);
 	sprite_change_offset("fspecial_overlay2", 76, 102);
 sprite_change_offset("uspecial", 64, 102);
 	sprite_change_offset("uspecial_thingy", 64, 126);
-sprite_change_offset("dspecial", 56, 68);
-sprite_change_offset("dspecial_air", 56, 68);
-sprite_change_offset("dspecial2", 62, 90);
+sprite_change_offset("dspecial", 56, 70);
+sprite_change_offset("dspecial_air", 56, 70);
+	sprite_change_offset("dspecial_hook", 4, 8);
+	sprite_change_offset("dspecial_chain", 3, 3);	
 sprite_change_offset("taunt", 64, 96);
 sprite_change_offset("tauntd", 36, 68);
 sprite_change_offset("tauntd_l", 36, 68);
@@ -94,18 +95,11 @@ sprite_change_offset("kirbyicon", 10, 10);
 sprite_change_offset("mamizou_compat", 30, 70);
 sprite_change_offset("msgwsprite", 32, 68);
 
-sprite_change_offset("fspecial_proj_socc", 24, 24);
-sprite_change_offset("fspecial_proj_socc2", 28, 28);
-sprite_change_offset("fspecial_overlay_socc", 76, 102);
-sprite_change_offset("fspecial_overlay2_socc", 76, 102);
+sprite_change_offset("codec_azure", 36, 64);
+sprite_change_offset("codec_cinna", 36, 64);
+sprite_change_offset("codec_bbot", 36, 64);
+sprite_change_offset("codec_mozza", 36, 64);
+sprite_change_offset("codec_troops", 36, 64);
+sprite_change_offset("codecbox", 8, 74);
 
-sprite_change_offset("fspecial_proj_voll", 24, 24);
-sprite_change_offset("fspecial_proj_voll2", 28, 28);
-sprite_change_offset("fspecial_overlay_voll", 76, 102);
-sprite_change_offset("fspecial_overlay2_voll", 76, 102);
-
-sprite_change_offset("fspecial_proj_gen", 24, 24);
-sprite_change_offset("fspecial_proj_gen2", 28, 28);
-sprite_change_offset("fspecial_overlay_gen", 76, 102);
-sprite_change_offset("fspecial_overlay2_gen", 76, 102);
 sprite_change_offset("rc", 6, 6);

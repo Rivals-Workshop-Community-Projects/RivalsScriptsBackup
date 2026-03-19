@@ -241,7 +241,7 @@ if (attack == AT_TAUNT) {
 	}
 	
 	if window == 3 && window_timer == 12 {
-		sound_play(sound_get("bluey_taunt"), false, noone, 1, .95);
+		sound_play(sound_get("bluey_taunt"), false, noone, 1, 1);
 	}
 	if window == 5 {
 		if window_timer == 12 && taunt_down {

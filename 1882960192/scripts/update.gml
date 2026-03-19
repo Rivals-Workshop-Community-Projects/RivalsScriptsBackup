@@ -28,6 +28,16 @@ if !free {
 	}
 }
 
+with (asset_get("pHitBox")) {
+	if (player_id == other.id && (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) && hbox_num == 1) {
+        player_id.hookOut = true;
+    }
+} 
+
+if state == PS_WALL_JUMP {
+	move_cooldown[AT_DSPECIAL] = 0;
+}
+
 if (get_player_color( player ) == 16) {
 	if (wblastcharge >= 35) and ((get_gameplay_time() mod 20) >= 5) {
 		outline_color = [ 40, 100, 255];
@@ -51,33 +61,88 @@ if !(url == 1882960192) {
 	set_state(PS_DEAD);
 }
 
-///runes thing
-if has_rune("G") { //Rune G: Charging NSpecial boosts stats.
-	if wblastcharge >= 35 {
-	walk_anim_speed = .31;
-	dash_anim_speed = .5;
-	
-	walk_speed = 5;
-	walk_accel = 0.4;		
-	initial_dash_speed = 8;
-	dash_speed = 8;
-	
-	air_max_speed = 6;
-	jump_speed = 11.9;
-	djump_speed = 11;
-	max_jump_hsp = 7.5;
-} else { //reset
-		walk_anim_speed = .21;
-		dash_anim_speed = .35;
-		
-		walk_speed = 4;
-		walk_accel = 0.3;		
-		initial_dash_speed = 7.5;
-		dash_speed = 6.5;
-		
-		air_max_speed = 5;
-		jump_speed = 10.9;
-		djump_speed = 10;
-		max_jump_hsp = 6;
+if (codec_playing) {
+	if (!codec_is_closing) {
+			//startup
+			if codec_box_frame == 2 sound_play(sound_get("dialogue-open"));
+			if (codec_box_frame < 8) {
+				codec_box_frame += 0.5;
+			} else { 
+				//idle and typing
+				codec_box_frame = 8; 
+				
+				var speaker = codec_dialogue[codec_page][0];
+				var full_text = codec_dialogue[codec_page][2];
+				var text_len = string_length(full_text);
+
+				if (codec_text_timer < text_len) {
+					codec_text_timer += 0.4;
+					var current_floor = floor(codec_text_timer);
+					
+					if (current_floor > codec_prev_length && current_floor <= text_len) {
+						var current_char = string_char_at(full_text, current_floor);
+						
+						if (current_char != " " && current_char != "|") {
+						 
+							var sfx_vol = 0.5; 
+							var sfx_pitch = 1.2;
+							var sfx = sound_get("dialogue-bot");
+							
+							// 2. Adjust Pitch and Sound per Speaker
+							if (speaker == 0) { //zuzu
+								sfx_pitch = 0.95 + (random_func(1, 10, false) / 100)
+								var sfx = sound_get("dialogue-azu");
+							} else if (speaker == 1) { //cinna-pie
+								sfx = sound_get("dialogue-cin");
+								sfx_pitch = 0.95 + (random_func(1, 10, false) / 100)
+							} else if (speaker == 2) { //BlueyBot
+								sfx = sound_get("dialogue-bot");
+								sfx_pitch = 1.0; // bbot stays monotone
+							} else if (speaker == 3) { //Mozza
+								sfx = sound_get("dialogue-moz");
+								sfx_pitch = 0.95 + (random_func(1, 10, false) / 100)
+							} else if (speaker == 4) { //Troops
+								sfx = sound_get("dialogue-tro");
+								sfx_pitch = 0.95 + (random_func(1, 10, false) / 100)
+							}
+							
+							sound_stop(sfx);
+							sound_play(sfx, false, 0, sfx_vol, sfx_pitch);
+						}
+						codec_prev_length = current_floor;
+					}
+				} else {
+					codec_auto_timer++;
+				}
+
+				var manual_skip = (down_down && shield_pressed);
+				var auto_skip = (codec_auto_timer >= 180); // 180 frames = 3 seconds wait time
+
+				if (manual_skip || auto_skip) {
+					if (codec_text_timer < text_len && manual_skip) {
+						codec_text_timer = text_len;
+						codec_prev_length = text_len;
+					} else {
+						codec_page++;
+						codec_text_timer = 0;
+						codec_prev_length = 0;
+						codec_auto_timer = 0;
+						
+						if (codec_page >= codec_max_pages) {
+							codec_is_closing = true;
+							codec_box_frame = 9; 
+						}
+					}
+					if (manual_skip) clear_button_buffer(PC_SHIELD_PRESSED);
+				}
+			}
+		} else {
+			//end
+			if codec_box_frame == 9  sound_play(sound_get("dialogue-close"));
+			if (codec_box_frame < 14) {
+				codec_box_frame += 0.5;
+			} else {
+				codec_playing = false;
+		}
 	}
 }

@@ -12,9 +12,10 @@ if !(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 || my_hitbox
 	wblastcharge = 0;
 }
 
-if (my_hitboxID.attack == AT_DSPECIAL || AT_DSPECIAL_2 || AT_DSPECIAL_AIR || AT_DTHROW) {
-	vsp = clamp(vsp, -5, 5);
-	hsp = clamp(hsp, -5, 5);
+if (my_hitboxID.attack == AT_DSPECIAL) {
+	if my_hitboxID.hbox_num == 1 {
+		my_hitboxID.destroyed = true;
+	}
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
