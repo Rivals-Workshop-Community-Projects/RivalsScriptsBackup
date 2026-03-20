@@ -222,8 +222,8 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) && hbox_num == 1 {
 			hsp = clamp(hsp, -1, 1);
 			vsp = clamp(vsp, -1, 1);
 			}
-			hsp = clamp(hsp, -4, 4);
-			vsp = clamp(vsp, -4, 4);
+			hsp = clamp(hsp, -3, 3);
+			vsp = clamp(vsp, -3, 3);
 			
 			image_index = 1;
 			if hitbox_timer == 17 {
@@ -301,8 +301,8 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) && hbox_num == 1 {
         hsp += lengthdir_x(1, dir);
         vsp += lengthdir_y(1, dir);
 		} else {
-        hsp = lengthdir_x(20, dir);
-        vsp = lengthdir_y(20, dir);
+        hsp = lengthdir_x(30, dir);
+        vsp = lengthdir_y(30, dir);
 		}
 		
         player_id.hook_is_latched = false;

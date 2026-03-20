@@ -117,7 +117,7 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && window == 4 {
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 	can_move = false;
 	
-	if 4 >= window {
+	if (window == 3 || window == 4) {
 		if !hitpause {
 			hsp = clamp(hsp, -1, 1);
 			vsp = clamp(vsp, -3, 3);
@@ -158,7 +158,7 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 			spawn_base_dust(x-12, y, "dash", spr_dir);
 		}
 		
-		if window_timer == 9 {
+		if (window_timer >= 5 || !free) {
 			can_jump = true;
 			can_attack = true;
 		}
@@ -758,7 +758,6 @@ if 	(attack == AT_EXTRA_2 && window == 2 && window_timer == 6 ||
 
 //codec
 if (attack == AT_TAUNT_2) {
-    // Check if we are in Window 2
     if (window == 4) {
             codec_trigger_timer++;
             if (codec_trigger_timer == 240 && !codec_playing) {

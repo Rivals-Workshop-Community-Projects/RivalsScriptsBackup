@@ -1,1 +1,13 @@
-wblastcharge = 0
+wblastcharge = 0;
+codec_playing = false;
+codec_is_closing = false;
+codec_page = 0;
+codec_text_timer = 0;
+codec_box_frame = 0;
+codec_max_pages = 0;
+codec_target = noone;
+codec_dialogue = [];
+codec_input_cooldown = 0;
+codec_trigger_timer = 0;
+codec_auto_timer = 0;
+codec_prev_length = 0;

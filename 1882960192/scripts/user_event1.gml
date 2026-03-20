@@ -335,18 +335,23 @@ switch (opp_url) {
         ];
     break;
 
-    case "2014106219": // Cinna
-        codec_dialogue = [
-            [CIN, 4, "Omigosh. We're gonna|fight each other, Azu?!"],
-            [AZU, 6, "Seems like it.|           |Unless you don't want to."],
-            [CIN, 7, "O-of course I don't... |I'd never--"],
-            [CIN, 4, "WAIT. You scamp, you're|trying to make me forfeit|the match, aren't you?!"],
-            [AZU, 8, "......."], 	
-            [CIN, 7, "...Wait. Why are we talking|in earpieces while we're|right next to each other?"],
-            [AZU, 3, "...Beats me."],
-			[BOT, 0, "i too am in this|codec conversation"]
-        ];
-    break;
+	case "2014106219": // Cinna
+		codec_dialogue = [
+			[CIN, 4, "Omigosh. We're gonna|fight each other, Azu?!"],
+			[AZU, 6, "Seems like it.|           |Unless you don't want to."],
+			[CIN, 7, "O-of course I don't... |I'd never--"],
+			[CIN, 8, "WAIT. You scamp, you're|trying to make me forfeit|the match, aren't you?!"],
+			[AZU, 9, "......."],																			// holding back laughter
+			[CIN, 4, "Well... if we ARE fighting,|don't expect me to go easy|just 'cause we're siblings."],
+			[AZU, 2, "Wouldn't dream of it. You do|have your own style with|the Multi-Rod, after all."],
+			[AZU, 1, "...Still impressive that Dr. |Fowl managed to make an|exact copy of the original."],
+			[CIN, 3, "Yeah... He's a real smart |dude, isn't he?"],
+			[CIN, 2, "...But nevermind that, 'cause|you're about to find out|who's the cooler sibling."],			
+			[AZU, 9, "...Pfft."],
+			[CIN, 4, "I HEARD THAT."],
+			[BOT, 0, "i too am in this|codec conversation"],
+		];
+	break;
 
 
 	//My other WS characters
@@ -471,7 +476,24 @@ switch (opp_url) {
         ];
     break;
 	
-	
+
+	case "2193855004": // EXW1 Bluey (old azure build)
+			codec_dialogue = [
+				[AZU, 7, "Holy crap, I looked ROUGH|back then."],
+				[CIN, 0, "Whoa. Pretty sure that was|from when I still wore|a purple shirt."],
+				[BOT, 2, "and when we were just|taunt cameos"],
+				[AZU, 8, "...Oh, yeah, that was a thing."],
+				[AZU, 1, "Y'know, I had completely|forgotten I used a|Suitcase Mode back then."],
+				[CIN, 3, "Don't forget the Dumbbell |Mode! And the weird spiky |balls. Or Hand Mode--"],
+				[CIN, 7, "Oh, wait, we still|use that one."],
+				[AZU, 6, "...That's the beauty of the|Multi-Rod."],
+				[CIN, 1, "Mm. Y'think the Multi-Rod's|creator has any idea of|what it's been used for?"],
+				[AZU, 1, "If they do..."],
+				[AZU, 8, "...I hope they don't ask if|it's been used with a|Plunger Mode."],
+			];
+    break;
+		
+
 	//WS characters I contributed to but don't consider "mine"
 	case "2839808881": // Kirby (Dream Collection)
 			codec_dialogue = [
@@ -489,7 +511,7 @@ switch (opp_url) {
 			];
     break;
 	
-	case "3139883935": // Ms. Sandbert
+	case "3139883935": // Mrs. Sandbert
         codec_dialogue = [
 				[CIN, 1, "Is that... |Sandbert's wife?"],
 				[AZU, 1, "I think so. Same, uh, |rectangular build."],
