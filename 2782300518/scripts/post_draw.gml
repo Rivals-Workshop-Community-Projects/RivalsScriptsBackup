@@ -148,6 +148,19 @@ if (object_index == asset_get("oTestPlayer"))
         //
         //put text here.
 
+        patch_note_title[i] = "2.26"
+        patch_note_text[i++] =  
+
+"FSpecial and Bike FSpecial Air now have custom friction for consistent speed on air and ground.
+
+Both Up Stongs how have .3 Custom friction before charge.
+
+FStrong on bike now has .3 Custom friction before charge
+
+NSpecial has been resprited to be an actual kick flurry once again like it was in 1.0 version
+
+Added win quote for Dr. Eggman"
+
         patch_note_title[i] = "2.25"
         patch_note_text[i++] =  
 

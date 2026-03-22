@@ -2,14 +2,28 @@
 
 if (my_hitboxID.attack == AT_FSPECIAL) {
 	if (my_hitboxID.hbox_num == 1) {
+		my_hitboxID.angle = point_direction(my_hitboxID.x, my_hitboxID.y, x, y-32);	
 		my_hitboxID.eggBounce = 3;
-		my_hitboxID.hitbox_timer = 2;
-		my_hitboxID.grav = .6;
-		my_hitboxID.air_friction = 0;	
-		my_hitboxID.hsp = sign(my_hitboxID.x - my_hitboxID.player_id.x) * 12;
-		my_hitboxID.vsp = sign(my_hitboxID.y - my_hitboxID.player_id.y) * 10;
+		my_hitboxID.hitbox_timer = 0;
 	}
 	if (my_hitboxID.hbox_num == 2) {
 		my_hitboxID.hitbox_timer = 0;
 	}
+}
+
+if (my_hitboxID.attack == AT_NSPECIAL) {
+	if (my_hitboxID.hbox_num == 1) {
+		my_hitboxID.hitbox_timer = my_hitboxID.length;
+		tongueOutcome = 0;
+	}
+}
+
+
+
+if (my_hitboxID.attack == AT_DSPECIAL) {
+
+    my_hitboxID.y -= 4;
+    var dir = point_direction(my_hitboxID.x, my_hitboxID.y, x, y - 42);
+    my_hitboxID.hsp = -lengthdir_x(14, dir);
+    my_hitboxID.vsp = lengthdir_y(14, dir);
 }

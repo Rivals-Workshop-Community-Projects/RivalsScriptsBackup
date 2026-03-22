@@ -1,9 +1,18 @@
 // called when the character gets KO'd
 
-//Cookie Aid
+// Refill the cookie inventory
+cookie_inventory = [0, 1, 2];
+
+// Reset pickup visual variables to prevent an accidental popup on respawn
+cookieGet = 0;
+lastCookieGained = -1;
+
+
 cookieAid = 0;
 cookieTimer = 0;
-if 3 > cookieMeter {
-	cookieMeter++;
+
+with (pHitBox) {
+	if (attack == AT_DSPECIAL && hbox_num == 1 && player_id == other.id) {
+		destroyed = true;
 	}
-move_cooldown[AT_DSPECIAL] = 1;
+}

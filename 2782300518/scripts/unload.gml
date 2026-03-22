@@ -187,6 +187,10 @@ if (!handled_victory_quote)
         case "1870613993":
             quote = "OK can you grant my wish now? I wish for a solid gold motorbike and all the riches in the world.";
         break;
+        case "3671732195": //Dr. Eggman
+        case "2989776522":
+            quote = "What is it with evil villains and big pointy exaggerated hair features? Brevon was bad enough...";
+		break;
         case "3339921915": //SD-V
         case "3365226307": //Serial N
         case "2007375819": //Blueybot

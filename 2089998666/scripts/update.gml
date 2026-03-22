@@ -45,9 +45,16 @@ if !(url == 2089998666) {
 //Cookie Aid
 if cookieTimer > 0 {
 	cookieAid = 1;
-	}	else {
+} else {
 	cookieAid = 0;
-	}
+}
+
+// Automatically sync the meter to the number of filled slots in the inventory
+var count = 0;
+for (var i = 0; i < 3; i++) {
+    if (cookie_inventory[i] != -1) count++;
+}
+cookieMeter = count;
 
 if cookieTimer == 1 {
 	sound_play(sound_get("smw2_pipe"));
@@ -104,101 +111,4 @@ if (cookieAid) {
 
 if spincool > 0 {
 	spincool--;
-}
-
-if (move_cooldown[AT_DSPECIAL] == 1) {
-	sound_play(sound_get("smw2_message_block"));
-	spawn_hit_fx(x+30*spr_dir, y-60, cookieRestore);
-}
-
-if (has_rune("H")){
-
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED, 10);
-set_window_value(AT_FSTRONG, 3, AG_WINDOW_HSPEED_TYPE, 1);
-
-}
-
-if (has_rune("E")){
-
-set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 8);
-set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE_FLIPPER, 8);
-
-}
-
-if (has_rune("I")){
-    
-set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 104);
-set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 30);    
-set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 180);
-
-
-set_hitbox_value(AT_NSPECIAL, 2, HG_WIDTH, 200);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HEIGHT, 30);
-set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 180);
-
-    
-}
-
-if (has_rune("J")){
-	set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_DSPECIAL, 4, AG_WINDOW_LENGTH, 1);
-	
-	set_window_value(AT_DSPECIAL, 5, AG_WINDOW_LENGTH, 1);
-}
-
-
-
-
-if (has_rune("K")){
-
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1.5);
-set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 1.5);
-
-set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, 1.5);
-set_hitbox_value(AT_DAIR, 2, HG_KNOCKBACK_SCALING, 1.5);
-set_hitbox_value(AT_DAIR, 3, HG_KNOCKBACK_SCALING, 1.5);
-set_hitbox_value(AT_DAIR, 4, HG_KNOCKBACK_SCALING, 1.5);
-
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 1.5);
-set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 1.5);
-
-set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, 1.5);
-}
-
-if (has_rune("D")){
-	
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 3);
-	
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 2);
-set_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED, -25);
-}
-
-if (has_rune("N")){
-
-set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 60);
-
-set_hitbox_value(AT_JAB, 2, HG_ANGLE, 90);
-set_hitbox_value(AT_JAB, 2, HG_BASE_KNOCKBACK, 999);
-set_hitbox_value(AT_JAB, 2, HG_KNOCKBACK_SCALING, 1);
-set_hitbox_value(AT_JAB, 2, HG_LIFETIME, 30);
-set_hitbox_value(AT_JAB, 2, HG_BASE_HITPAUSE, 999);
-set_hitbox_value(AT_JAB, 2, HG_VISUAL_EFFECT, 143);
-}
-
-if(variable_instance_exists(id,"diag"))
-{
-//Change their name whenever
-    diag_name = "Big Yoshi"
-//  ADDING REGULAR DIALOGUE
-
-    //Diagchoice is variable that keeps default interactions in array! Feel free to put as much as you would want!
-    diagchoice = [
-    "(snore)",
-    "(...Yoshi.)",
-    "big yoshi"]
 }

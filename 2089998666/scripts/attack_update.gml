@@ -274,6 +274,8 @@ if (attack == AT_USPECIAL) {
 		hsp = clamp(hsp, -2, 2);
 	}
 	
+	if 4 > window && cookieAid { super_armor = 1; } else {super_armor = 0; }
+	
 	if window == 2 {
 		if special_down && 10 > eggcharge {
 			eggcharge++;
@@ -296,6 +298,8 @@ if (attack == AT_USPECIAL) {
 			reset_window_value(AT_USPECIAL, 3, AG_WINDOW_VSPEED);
 			reset_hitbox_value(AT_USPECIAL, 1, HG_DAMAGE);
 			reset_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK);
+			
+			if cookieAid vsp *= 1.25;
 		}
 	}
 	if window == 4 {
@@ -385,177 +389,146 @@ if (attack == AT_EXTRA_2) {
 
 //NSpecial stuff
 if (attack == AT_NSPECIAL) {
-	if (has_hit_player && !hitpause && hit_player_obj.super_armor == 0){
-		hit_player_obj.hsp = lerp(hit_player_obj.hsp,hsp,0.5);
-        hit_player_obj.vsp = lerp(hit_player_obj.vsp,vsp,0.1);
-        hit_player_obj.x = lerp(hit_player_obj.x,x,0.1);
-        hit_player_obj.y = lerp(hit_player_obj.y,y,0.1);
-		attack_end();
-		destroy_hitboxes();
-		vsp = 0;
-		hsp = 0;
-		
-		if window == 4 && window_timer == 12 {
-		set_attack(AT_NSPECIAL_2);
-		move_cooldown[AT_NSPECIAL] = 50;
-		}
+	can_fast_fall = false;
+	can_move = false;
+    if (window == 3) {
+        var tongue_exists = false;
+        with (pHitBox) {
+            if (player_id == other.id && attack == AT_NSPECIAL && hbox_num == 1) {
+                tongue_exists = true;
+            }
+        }
+		if tongueOutcome == 1 {
+			hsp = clamp(hsp, 0,0);
+			vsp = clamp(vsp, 0,0);
+		}		
+        if (tongue_exists) {
+            if (window_timer >= get_window_value(AT_NSPECIAL, 3, AG_WINDOW_LENGTH) - 1) {
+                window_timer = 1;
+            }
+        } else {
+            if (tongueOutcome == 1) {
+                set_attack(AT_FTHROW);
+            } else if (tongueOutcome == 2) {
+                set_attack(AT_DTHROW);
+            } else {
+                window = 4;
+                window_timer = 0;
+            }
+        }
     }
 }
-	
-if (attack == AT_NSPECIAL_2) {
+
+if (attack == AT_FTHROW) {
 	can_fast_fall = false;
-	if (2 > window && has_hit_player && !hitpause && hit_player_obj.super_armor == 0){
-		hit_player_obj.hsp = lerp(hit_player_obj.hsp,hsp,0.5);
-        hit_player_obj.vsp = lerp(hit_player_obj.vsp,vsp,0.1);
-        hit_player_obj.x = lerp(hit_player_obj.x,x,0.1);
-        hit_player_obj.y = lerp(hit_player_obj.y,y,0.1);
-		vsp = 0;
-		hsp = 0;
-	}
+	can_move = false;
+	hsp = clamp(hsp, 0,0);
+	vsp = clamp(vsp, 0,0);
+    if (instance_exists(grabbed_player_obj)) {
+        grabbed_player_obj.hitstop = 2;
+        grabbed_player_obj.hitpause = true;
+        
+        grabbed_player_obj.x = x + (22 * spr_dir);
+        grabbed_player_obj.y = y - 6;
+    }
+    
+    if (window == 3) {
+        grabbed_player_obj = noone;
+        tongueOutcome = 0;
+    }
 }
+
+// attack_update.gml
+if (attack == AT_DTHROW) {
+    if (window == 2 && window_timer == 6) {
+			cookieAid = true;
+			cookieTimer = 600;
+			sound_play(sound_get("smrpg_battle_vigorup"));
+    }
+    
+    if (window == get_attack_value(AT_DTHROW, AG_NUM_WINDOWS) && window_timer == get_window_value(AT_DTHROW, window, AG_WINDOW_LENGTH) - 1) {
+        tongueOutcome = 0;
+    }
+}
+
 
 
 //FSpecial stuff
 if (attack == AT_FSPECIAL) {
-	if window == 1 && window_timer == 1 && cookieTimer > 0 {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -60);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -1);
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 7);
-	} else if cookieTimer == 0 {
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y);
-	}
-	if window == 2 {
-		if special_down {
-			//loop
-			if window_timer == 5 {
-				window_timer = 2;
-				sound_play(sound_get("smw2_co"));
-			}
-			
-			if eggrising == 1 {
-				eggcharge2 += .9;
-				if down_down {
-					eggcharge2 -= .9;
-				}
-			} 
-			if eggrising == 0 {
-				eggcharge2 -= .9;
-				if down_down {
-					eggcharge2 += .9;
-				}
-			}
-			
-			//Check if the egg arrow is going up or down
-			if eggcharge2 == 20.7 {
-				eggrising = 0;
-			} else
-			if eggcharge2 == -.9 {
-				eggrising = 1;
-			}
-			
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, -1-(eggcharge2*.65));
-			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, 8-(eggcharge2*.35));
-			
-			set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_VSPEED, -1-(eggcharge2*.65));
-            set_hitbox_value(AT_FSPECIAL, 9, HG_PROJECTILE_HSPEED, 8-(eggcharge2*.35));	
-		} 
-	}
 	
+	can_fast_fall = false;
 	
-	if free && window == 3 && window_timer == 1 {
-	vsp = clamp(vsp, -100, -5);
-	}
-	
-	if window == 3 && window_timer == 7 {
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED);
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED);
-	}
-	
-	if window == 5 {	
-		move_cooldown[AT_FSPECIAL] = 60;	
-	}
-} else {
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED);
-		reset_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED);
-}
-
-
-//DSpecial stuff
-if (attack == AT_DSPECIAL) {
-	can_fast_fall = false;	
 	if (window == 1) {
-		can_shield = true;
+		if (window_timer == 1) {
+			egg_aim_angle = -45;
+			egg_aim_dir = 1;
+			is_aiming_egg = false;
+		}
+
+		if (window_timer == get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH)) {
+			if (special_down) {
+				is_aiming_egg = true;
+			} else {
+				window = 3; 
+				window_timer = 0;
+			}
+		}
+	}
 		
-		if down_pressed {
-			window = 5;
+	if (window == 2 && is_aiming_egg) {
+		var aim_speed = 4;
+
+		if window_timer mod 4 == 0 {
+			sound_stop(sound_get("smw2_co"));
+			sound_play(sound_get("smw2_co"));
+		}
+		
+		if !down_down {
+			// Modify the angle
+			egg_aim_angle += aim_speed * egg_aim_dir;
+			
+			// angle cap (60 = steep upward, -45 = diagonally downward)
+
+				if (egg_aim_angle >= 60) {
+					egg_aim_angle = 60;
+					egg_aim_dir = -1; // reverse to sweep down
+				} else if (egg_aim_angle <= -45) {
+					egg_aim_angle = -45;
+					egg_aim_dir = 1;  // reverse to sweep up
+				}
+			}
+			
+		if (window_timer == get_window_value(AT_FSPECIAL, 2, AG_WINDOW_LENGTH)) {
+			window_timer = 0; 
+		}
+			
+		if (!special_down) {
+			window = 3;
 			window_timer = 0;
 		}
 	}
+		
+	if (window == 3) {
+		var creation_frame = get_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME);
 	
-	if free && vsp > 0 {
-	vsp -= .5;
-	hsp = clamp(hsp, -1.5, 1.5);
-	}
-	
-	if window == 4 {
-		if window_timer == 10 {
-			cookieTimer = 480;
-			cookieMeter -= 1;
-			move_cooldown[AT_DSPECIAL] = 960;
-		}
-		if window_timer > 11 {
-			can_attack = true;
-			can_jump = true;
-			can_move = true;
-			can_shield = true;
-		}
-	}
-}
-
-if has_rune("A") {
-	set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE_FLIPPER, 10);
-	set_hitbox_value(AT_USPECIAL, 2, HG_ANGLE_FLIPPER, 10);	
-	set_hitbox_value(AT_USPECIAL, 2, HG_BASE_KNOCKBACK, 7);
-}
-	
-if has_rune("C") {
-	set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_AIR_FRICTION, -.05);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_DAMAGE, 14);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_KNOCKBACK, 9);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_ANGLE_FLIPPER, 8);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_WIDTH, 150);
-	set_hitbox_value(AT_FSPECIAL, 2, HG_HEIGHT, 150);
-}
-
-if has_rune("D") {
-	set_num_hitboxes(AT_DSTRONG,3);
-	set_num_hitboxes(AT_FTILT,3);
-}
-
-if has_rune("G") && move_cooldown[AT_DSPECIAL] > 0 && cookieTimer == 0 {
-	set_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE, 18);
-	set_hitbox_value(AT_FSTRONG, 1, HG_BASE_KNOCKBACK, 12);
-	set_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE, 21);
-	set_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK, 13);
-	set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 21);
-	set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 13);
-	set_hitbox_value(AT_USTRONG, 1, HG_DAMAGE, 16);
-	set_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK, 12);
-}
-
-if (has_rune("J")){
-	if (attack == AT_DSPECIAL) {
-	if window == 1 {
-		if window_timer == 1 {
-		cookieTimer = 480;
-		cookieMeter -= 1;
-		move_cooldown[AT_DSPECIAL] = 960;
+	if (window_timer == creation_frame - 1) {
+		if free vsp = clamp(vsp, -6, -3);
+			var throw_speed = 11;
+		
+			// calculate horizontal (X) and vertical (Y) momentum. dcos/dsin use degrees
+			var calc_hsp = throw_speed * dcos(egg_aim_angle);
+			var calc_vsp = -throw_speed * dsin(egg_aim_angle);
+		
+			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_HSPEED, calc_hsp);
+			set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_VSPEED, calc_vsp);
+		
+		sound_play(sound_get("egg_throw"));
 		}
 	}
 }
-}
-if (has_rune("F")){
-	cookieMeter = 3;
+
+if (attack == AT_DSPECIAL) {
+	//Idk
 }
 
 #define spawn_base_dust

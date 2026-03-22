@@ -45,16 +45,17 @@ sprite_change_offset("dairs", 126, 164);
 sprite_change_offset("fstrong", 50, 102);
 sprite_change_offset("ustrong", 42, 98);
 sprite_change_offset("dstrong", 42, 98);
-sprite_change_offset("nspecial", 30, 82);
+sprite_change_offset("nspecial", 44, 82);
 	sprite_change_offset("fthrow", 42, 82);
 	sprite_change_offset("bthrow", 42, 82);	
 sprite_change_offset("fspecial", 62, 102);
 	sprite_change_offset("fspecialproj", 20, 22);
 sprite_change_offset("uspecial", 60, 100);
 sprite_change_offset("dspecial", 42, 102);
-	sprite_change_offset("dspecial_overlay1", 42, 102);
-	sprite_change_offset("dspecial_overlay2", 42, 102);
-	sprite_change_offset("dspecial_overlay3", 42, 102);
+	sprite_change_offset("dspecial_underlay1", 42, 102);
+	sprite_change_offset("dspecial_underlay2", 42, 102);
+	sprite_change_offset("dspecial_underlay3", 42, 102);
+	sprite_change_offset("dspecial_proj", 16, 16);
 sprite_change_offset("taunt", 42, 82);
 	sprite_change_offset("taunt_crouch", 42, 82);
 	sprite_change_offset("taunt_sakk", 42, 82);
@@ -63,11 +64,18 @@ set_victory_bg( sprite_get( "victorybg" ));
 
 sprite_change_offset("plat", 64, 100);
 
+sprite_change_offset("tonguetip", 8, 8);
+sprite_change_offset("tongue", 0, 2);
+
 sprite_change_offset("glow", 42, 94);
 
 sprite_change_offset("eggbreak", 60, 100);
+sprite_change_offset("eggsmoke", 16, 16);
 sprite_change_offset("eggbreak2", 60, 55);
+sprite_change_offset("cookiearrow", 8, 8);
 
+sprite_change_offset("cookierestore", 10, 10);
+sprite_change_offset("cookiemeter", 12, 12);
 sprite_change_offset("eggburst", 40, 40);
 
 sprite_change_offset("arrow", 0, 16);

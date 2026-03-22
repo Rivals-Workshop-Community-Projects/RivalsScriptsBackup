@@ -78,7 +78,7 @@ wave_land_adj = default_wave_land_adj;	//the multiplier to your initial hsp when
 wave_friction = .1; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 4;
+crouch_startup_frames = 3;
 crouch_active_frames = 11;
 crouch_recovery_frames = 1;
 
@@ -136,13 +136,30 @@ eggcharge = 0;
 eggcharge2 = 0;
 eggBreak = hit_fx_create(sprite_get("eggbreak"), 15);
 eggBreak2 = hit_fx_create(sprite_get("eggbreak2"), 10);
+eggDust = hit_fx_create(sprite_get("eggsmoke"), 8);
 eggrising = 1;
+
+egg_aim_angle = 0;   // Starts straight forward (0 degrees)
+egg_aim_dir = 1;     // 1 = sweeping up, -1 = sweeping down
+is_aiming_egg = false;
+
 
 //Cookie Aid
 cookieAid = 0;
 cookieTimer = 0;
-cookieMeter = 3;
+cookieMeter = 3; // Keep this for the HUD
+
+cookie_inventory = [0, 1, 2]; //0 = flower cookie, 1 = checker cookie, 2 = yoshi-face cookie
+
+//grab things
+tongueOutcome = 0; // 0 = nothing, 1 = pulling opponent, 2 = eating cookie
+grabbed_player_obj = noone;
+grabbed_cookie_obj = noone;
+
 cookieRestore = hit_fx_create(sprite_get("cookierestore"), 15);
+lastCookieGained = -1; // -1 means no cookie was recently gained
+cookieGet = 0;
+
 sax = 1;
 
 //Spin charge rune
@@ -154,6 +171,11 @@ set_victory_theme(sound_get("victory_bigyoster"));
 //this has nothing to do with the GTA character
 beegsmokeL = hit_fx_create(sprite_get("smoke_l"), 23);
 beegsmokeR = hit_fx_create(sprite_get("smoke_r"), 23);
+
+//tongue mechanics
+tongue_is_latched = false;    // tells yoshi if the hook hit something
+tongueOut = false;
+
 
 //Character support variables
 kirbyability = 11;

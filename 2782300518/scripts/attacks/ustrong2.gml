@@ -11,10 +11,14 @@ av(atk, AG_MUNO_ATTACK_NAME, "UStrong2 (Bike Handstand)");
 
 win(atk, 1, AG_WINDOW_LENGTH, 12);
 win(atk, 1, AG_WINDOW_ANIM_FRAMES, 4);
+win(atk, 1, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+win(atk, 1, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
 
 win(atk, 2, AG_WINDOW_LENGTH, 3);
 win(atk, 2, AG_WINDOW_ANIM_FRAMES, 1);
 win(atk, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+win(atk, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+win(atk, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, .3);
 
 win(atk, 3, AG_WINDOW_LENGTH, 4);
 win(atk, 3, AG_WINDOW_ANIM_FRAMES, 1);
