@@ -54,9 +54,7 @@ if(state == 1){
 			}
 			sound_play(asset_get("sfx_kragg_roll_start"))
 			if (!bypass_cost) player_id.steam -= player_id.dspec_cost
-			player_id.geysers += 1
 		}else{
-			player_id.geysers -= 1
 			instance_destroy();
 			exit;
 		}
@@ -77,8 +75,24 @@ if(state == 2){
 	detection_hitbox.geyser_id = self
 	if(lifetime > player_id.geyser_duration){
 		image_index = 2
-		state = 4
+		state = 3
 		state_timer = 0
+		
+		//Shoot mortar(s)
+		var player_distance = -1
+		var tracked_player_coords = [x, y]
+		with(oPlayer){
+			if((player_distance == -1 || player_distance > distance_to_object(other)) && self != other.player_id){
+				player_distance = distance_to_object(other)
+				tracked_player_coords = [x, y]
+			}
+		}
+						
+		for(i = 0; i < player_id.geyser_mortars; i++){
+			var mortar = create_hitbox(AT_DSPECIAL, 7, x, y + 64)
+			mortar.vsp = (min(-15 + (tracked_player_coords[1] - (y + 54)) / 75, -5)) + ((-3 + random_func_2(i, 6, false)) * clamp(i, 0, 1))
+			mortar.hsp = ((tracked_player_coords[0] - x) / 75) + ((-3 + random_func_2(i + 10, 6, false)) * clamp(i, 0, 1))
+		}
 	}
 	if(place_meeting(x, y, player_id)){
 		if(player_id.big_geysers){
@@ -119,7 +133,6 @@ if(state == 3){
 		image_index = 2
 	}
 	if(image_index >= 9){
-		player_id.geysers -= 1
 		instance_destroy();
 		exit;
 	}
@@ -130,7 +143,6 @@ if(state == 4){
 	sprite_index = sprite_get("geyser_start")
 	image_index -= 0.25
 	if(image_index <= 0){
-		player_id.geysers -= 1
 		instance_destroy();
 		exit;
 	}

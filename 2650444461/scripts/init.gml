@@ -138,6 +138,10 @@ KoBWeaknesses =
     Nature: true
 }
 
+stock_icon = sprite_get("stockicon");
+stock_pixel =  asset_get("hud_black_pixel");
+hud_death_timer = 0;
+
 //runeF = true;runesUpdated = true;
 
 toonlink_photo = sprite_get("toonlink_photo");

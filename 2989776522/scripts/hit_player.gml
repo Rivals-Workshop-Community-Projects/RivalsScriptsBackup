@@ -52,7 +52,10 @@ if(my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 1){
 	my_hitboxID.hitbox_timer = max(my_hitboxID.hitbox_timer, 45);
 }
 
+if(my_hitboxID.attack == AT_NAIR)set_attack_value(AT_NAIR, AG_LANDING_LAG, 10);
+
 if(my_hitboxID.attack == AT_FAIR){
+	set_attack_value(AT_FAIR, AG_LANDING_LAG, 13);set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 14);
 	if(my_hitboxID.hbox_num >= 2 && my_hitboxID.hbox_num <= 4){
 		sound_play(sound_get("groundhit"),false,noone,1.0);
 	}

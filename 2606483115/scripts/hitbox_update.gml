@@ -1,6 +1,8 @@
 //hitbox_update
 
 if(attack == AT_DSPECIAL && hbox_num == 7){
+	through_platforms = 2 //Dont stop at plats
+	
 	if(hitbox_timer mod 4 == 0){
 		switch(clamp(random_func_2(0, 3, true), 0, 2)){
 			case 0:
@@ -36,14 +38,19 @@ if(attack == AT_DSPECIAL && hbox_num == 7){
 				}
 			}
     	}
-    	if(!relaunch && vsp >= 0){
-	    	spawn_hit_fx(x, y, player_id.vfx_steam_large)
-	    	if(player_id.geysers < player_id.max_geysers){
-				var geyser = instance_create(x, y - 64, "obj_article1")
-				geyser.state = 1
-				geyser.bypass_cost = true
-				array_push(player_id.geyser_array, geyser)
-			}
+    	if(vsp >= 0){
+    		sound_play(player_id.sfx_steam_cloth)
+    		sound_play(asset_get("sfx_waterhit_medium"))
+    		var explosion_hitbox = create_hitbox(AT_DSPECIAL, 5, x, y)
+    		explosion_hitbox.kb_value = kb_value
+    		explosion_hitbox.kb_scale = kb_scale
+    		explosion_hitbox.hitpause = hitpause
+    		explosion_hitbox.extra_hitpause = extra_hitpause
+    		explosion_hitbox.hitpause_growth = hitpause_growth
+    		explosion_hitbox.hitstun_factor = hitstun_factor
+    		explosion_hitbox.damage = damage
+    		
+	    	spawn_hit_fx(x, y, player_id.vfx_steam_explosion_large)
 	    	instance_destroy()
     	}
     }else{

@@ -1,5 +1,6 @@
 nspecialcharge = 0;nspecialcharge2 = 0;nspec_timer = 0;
 upb = false;move_cooldown[AT_USPECIAL] = 0;fspecialcooldown = false;
+hud_death_timer = 44;
 
 for(var i = 0; i < ds_grid_width(mud_puddles); i++){
 	//if(ds_grid_get(mud_puddles,i,0) == 0)continue;

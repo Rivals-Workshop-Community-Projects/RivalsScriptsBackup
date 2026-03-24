@@ -44,8 +44,15 @@ if(my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 2){
 	}
 }
 
+//Overheating moves
 if(my_hitboxID.attack == AT_DSPECIAL && (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 5 || my_hitboxID.hbox_num == 7)){
 	hit_player_obj.overheat = 99
+	if(my_hitboxID.hbox_num == 7){ //Mortar
+		with(my_hitboxID){
+			sound_play(player_id.sfx_steam_cloth)
+			spawn_hit_fx(x, y, player_id.vfx_steam_explosion_large)
+		}
+	}
 }
 
 //Steam Through Damage

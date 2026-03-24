@@ -11,8 +11,9 @@ if(my_hitboxID.attack == AT_FSPECIAL){
 
 if(my_hitboxID.attack == AT_DTILT && attack == AT_DTILT){
 	if(window == 2 || window == 3){
-	window = 5
-	window_timer = 0
+		destroy_hitboxes();
+		window = 5
+		window_timer = 0
 	}
 }
 

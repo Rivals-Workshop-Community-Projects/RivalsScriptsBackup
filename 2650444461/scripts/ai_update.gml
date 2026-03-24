@@ -45,14 +45,15 @@ if(ai_recovering && (phone_attacking && (attack == AT_FSPECIAL || attack == AT_U
 if (get_training_cpu_action() == CPU_FIGHT && ai_target != self){
 	//increase aggression if lvl is high & opponent is in hitstun or close
 	var targetdist = point_distance(x, y, ai_target.x, ai_target.y);
-	if(temp_level == 9 && (ai_target.state_cat == SC_HITSTUN || ai_target.state == PS_PRATFALL || ai_target.state == PS_PRATLAND || targetdist < 120))ai_attack_time = 0;
+	if(temp_level == 9 && (ai_target.state_cat == SC_HITSTUN || ai_target.state == PS_PRATFALL || ai_target.state == PS_PRATLAND || targetdist < 120)){ai_attack_time = 0;ready_to_attack = true;}
 	
 	var target_dmg = get_player_damage(ai_target.player);
 	var groundbelow = (position_meeting(x,y+50,asset_get("par_block")) || position_meeting(x,y+100,asset_get("par_block")) || position_meeting(x,y+200,asset_get("par_block"))
-	|| position_meeting(x,y+50,asset_get("par_jumpthrough")) || position_meeting(x,y+100,asset_get("par_jumpthrough")) || position_meeting(x,y+200,asset_get("par_jumpthrough")));
+	|| position_meeting(x,y+50,asset_get("par_jumpthrough")) || position_meeting(x,y+100,asset_get("par_jumpthrough")) || position_meeting(x,y+200,asset_get("par_jumpthrough")))
+	&& state != PS_DEAD && state != PS_RESPAWN;
 	
 	//use specific moves more
-	if(!phone_attacking && can_attack){
+	if(!phone_attacking && can_attack && ready_to_attack && temp_level >= 5){
 		if(!free){
 			if (abs((y-60)-ai_target.y) < 50 && abs(x-ai_target.x) < 50 && random_func(0,2,true) == 0){
 		        cpu_attack(AT_UTILT, false);

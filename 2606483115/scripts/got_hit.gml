@@ -15,3 +15,7 @@ if(has_rune("O") || all_runes){
         }
     }
 }
+
+//Getting hit makes the other person instantly lose some overheat and begin regressing
+hit_player_obj.overheat_timer = 0
+hit_player_obj.overheat -= enemy_hitboxID.damage

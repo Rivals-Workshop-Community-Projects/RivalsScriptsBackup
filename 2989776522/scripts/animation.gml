@@ -146,10 +146,7 @@ if(floating && !attacking && lookuptime == 0){
 }
 
 #define changeAnim
-	
 	var old_spr = argument[1];
 	var new_spr = argument[0];
+	if (sprite_index == old_spr && old_spr != new_spr)sprite_index = new_spr;
 	
-	if (sprite_index == old_spr && old_spr != new_spr){
-	    sprite_index = new_spr;
-	}

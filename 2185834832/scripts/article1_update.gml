@@ -31,9 +31,9 @@ if (state == 0){
     if(free){
     	x -= spr_dir*8
     }
-    if(state_timer > 18 && player_id.special_down && startMoving == true){
-		startMoving = false
-	}
+    
+	startMoving = false
+	
     if(!free){
     	image_index += 0.2	
     	if(image_index == 1){
@@ -65,13 +65,13 @@ if (state == 1){
 			}
 		}
 	}
-	if(hsp > -5 && hsp < 5 && startMoving = true){
+	if(hsp > -7 && hsp < 7 && startMoving = true){
 		var turn = spr_dir / 8
 		hsp = hsp + turn
 	}else if(startMoving == false){
 		hsp /= 1.2
-	}else if(hsp < -5 || hsp > 5){
-		if(hsp > 5 && spr_dir == -1 || hsp < -5 && spr_dir == 1){
+	}else if(hsp < -7 || hsp > 7){
+		if(hsp > 7 && spr_dir == -1 || hsp < -7 && spr_dir == 1){
 			var turn = spr_dir / 8
 			hsp = hsp + turn
 		}

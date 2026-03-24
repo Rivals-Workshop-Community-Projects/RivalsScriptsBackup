@@ -103,7 +103,7 @@ if(player_id.player == orig_player){
 	            image_index += 1;
 	            if(image_index > 11)image_index = 0;
 	        }
-			if(pokeball == 0 && y >= player_id.y){
+			if(pokeball == 0 && y >= player_id.y && hitbox_timer >= 10){
 				x = player_id.x;y = player_id.y-4;
 				image_index = 12;pokeball = 1;hsp = 0;vsp = 0;grav = 0;
 			}

@@ -101,11 +101,11 @@ with (asset_get("pHitBox")){
 		            player_id.old_hsp = player_id.hsp;
 					player_id.old_vsp = player_id.vsp;
 		            player_id.hitpause = true
-		            player_id.hitstop = 4
-		            player_id.hitstop_full = 4
+		            player_id.hitstop = hitpause
+		            player_id.hitstop_full = hitpause
 		            other.old_vsp = other.vsp
 		        	other.old_hsp = other.hsp
-		        	other.hitstun = 4
+		        	other.hitstun = hitpause
 		            other.got_hit_timer = other.hitstun + 3
 		            if(attack == AT_DTILT){
 			            if(player_id.window == 2 || player_id.window == 3){

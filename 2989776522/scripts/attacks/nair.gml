@@ -3,7 +3,7 @@ set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_NAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_NAIR, AG_LANDING_LAG, 10);
+set_attack_value(AT_NAIR, AG_LANDING_LAG, 14);
 
 set_window_value(AT_NAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 12);
@@ -69,3 +69,4 @@ set_hitbox_value(AT_NAIR, 2, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_NAIR, 2, HG_VISUAL_EFFECT, 303);
 set_hitbox_value(AT_NAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_NAIR, 2, HG_IGNORES_PROJECTILES, true);
+set_hitbox_value(AT_NAIR, 2, HG_HITSTUN_MULTIPLIER, .75);

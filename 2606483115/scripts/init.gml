@@ -30,13 +30,13 @@ walk_accel = 0.2;
 walk_turn_time = 4;
 initial_dash_time = 9;
 initial_dash_speed = 8.5;
-dash_speed = 8;
+dash_speed = 8.5;
 dash_turn_time = 5;
 dash_turn_accel = 2.5;
 dash_stop_time = 4;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
 ground_friction = .4;
-moonwalk_accel = 1.2;
+moonwalk_accel = 1.4;
 
 jump_start_time = 5;
 jump_speed = 12.5;
@@ -63,8 +63,8 @@ knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighte
 land_time = 4; //normal landing frames
 prat_land_time = 7;
 wave_land_time = 8;
-wave_land_adj = 1.2; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
-wave_friction = .4; //grounded deceleration when wavelanding
+wave_land_adj = 1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
+wave_friction = .25; //grounded deceleration when wavelanding
 
 //crouch animation frames
 crouch_startup_frames = 1;
@@ -130,6 +130,7 @@ vfx_steam_bar_red = hit_fx_create( sprite_get( "vfx_steam_bar_red" ), 30);
 vfx_steam_hit_small = hit_fx_create( sprite_get( "vfx_steam_small" ), 20);
 vfx_steam_hit_large = hit_fx_create( sprite_get( "vfx_steam_large" ), 24);
 vfx_steam_hit_large_tired = hit_fx_create( sprite_get( "vfx_steam_large_tired" ), 24);
+vfx_steam_explosion_large = hit_fx_create( sprite_get( "vfx_steam_explosion_large" ), 18);
 vfx_rocket_trail = hit_fx_create( sprite_get( "rocket_trail" ), 18);
 vfx_firework = hit_fx_create( sprite_get( "firework" ), 24);
 vfx_firework2 = hit_fx_create( sprite_get( "firework2" ), 24);
@@ -186,17 +187,17 @@ col_b_outline = 0
 //Tweakable variables
 
 //Overheat
-overheat_gen_multiplier = 1
+overheat_gen_multiplier = 1.2
 
 //Specials
-nspec_cooldown = 90
+nspec_cooldown = 75
 nspec_cost = 34 //Costs for each special (Negative adds steam)
 uspec_cost = 25
 fspec_cost = 25
 dspec_cost = 20
 
 //Steam
-steam_generation = 1.5 //Rate of passive Steam generation
+steam_generation = 1.75 //Rate of passive Steam generation
 
 //Steam Jumps
 steam_jump_vsp = -8.5
@@ -204,7 +205,7 @@ jump_cost = 20
 
 //Geysers
 max_geysers = 2
-geyser_duration = 900
+geyser_duration = 420
 geyser_mortars = 1 //How many mortars are shot by a geyser
 
 //Abyss Variables
@@ -398,7 +399,7 @@ if(has_rune("A") || all_runes){
 }
 
 if(has_rune("B") || all_runes){
-	overheat_gen_multiplier = 1.5
+	overheat_gen_multiplier *= 1.5
 }
 
 if(has_rune("C") || all_runes){

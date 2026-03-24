@@ -596,6 +596,14 @@ if(player == galega_players[0]){
 	}
 }
 
+//Geysers
+geysers = 0
+with(asset_get("obj_article1")){
+	if(player_id == other){
+		other.geysers += 1
+	}
+}
+
 outline_color = [col_r_outline, col_g_outline, col_b_outline]
 
 col_r_outline = lerp(col_r_outline, 0, 0.05)

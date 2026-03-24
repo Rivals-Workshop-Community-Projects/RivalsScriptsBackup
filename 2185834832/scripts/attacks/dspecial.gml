@@ -42,7 +42,7 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_weak"));
-set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 2.5);
+set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 30);
 set_hitbox_value(AT_DSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("empty"));

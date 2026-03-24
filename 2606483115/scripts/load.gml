@@ -99,6 +99,7 @@ sprite_change_offset("cr_hurtbox", 125, 152);
 sprite_change_offset("vfx_steam_small", 48, 48);
 sprite_change_offset("vfx_steam_large", 140, 140);
 sprite_change_offset("vfx_steam_large_tired", 140, 140);
+sprite_change_offset("vfx_steam_explosion_large", 140, 140);
 sprite_change_offset("rocket_trail", 8, 8);
 sprite_change_offset("steam_rocket", 8, 8);
 sprite_change_offset("steam_mortar", 16, 16);

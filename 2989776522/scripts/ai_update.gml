@@ -48,11 +48,11 @@ if(!inside_mech && ai_recovering && can_summon_mech){
 if (get_training_cpu_action() == CPU_FIGHT && ai_target != self){
 	//increase aggression if lvl is high & opponent is in hitstun or close
 	var targetdist = point_distance(x, y, ai_target.x, ai_target.y);
-	if(temp_level == 9 && (ai_target.state_cat == SC_HITSTUN || ai_target.state == PS_PRATFALL || ai_target.state == PS_PRATLAND || targetdist < 120))ai_attack_time = 0;
-	
+	if(temp_level == 9 && (ai_target.state_cat == SC_HITSTUN || ai_target.state == PS_PRATFALL || ai_target.state == PS_PRATLAND || targetdist < 120)){ai_attack_time = 0;ready_to_attack = true;}
 	var target_dmg = get_player_damage(ai_target.player);
 	var groundbelow = (position_meeting(x,y+50,asset_get("par_block")) || position_meeting(x,y+100,asset_get("par_block")) || position_meeting(x,y+200,asset_get("par_block"))
-	|| position_meeting(x,y+50,asset_get("par_jumpthrough")) || position_meeting(x,y+100,asset_get("par_jumpthrough")) || position_meeting(x,y+200,asset_get("par_jumpthrough")));
+	|| position_meeting(x,y+50,asset_get("par_jumpthrough")) || position_meeting(x,y+100,asset_get("par_jumpthrough")) || position_meeting(x,y+200,asset_get("par_jumpthrough")))
+	&& state != PS_DEAD && state != PS_RESPAWN;
 	
 	//better nspec usage
 	if(phone_attacking && attack == AT_NSPECIAL && instance_exists(ai_target)){
@@ -108,9 +108,30 @@ if (get_training_cpu_action() == CPU_FIGHT && ai_target != self){
 		move_cooldown[AT_DSPECIAL] = 2;
 	}
 	
-	//float if aerials connect, or if low off-stage and doing an aerial
-	if(state == PS_ATTACK_AIR && (has_hit || y >= room_height-100)){
-		//jump_down = true;
+	//use specific moves more
+	if(!phone_attacking && can_attack && ready_to_attack && temp_level >= 5){
+		if(!free){
+			if (abs((y-60)-ai_target.y) < 50 && abs(x-ai_target.x) < 50 && random_func(0,2,true) == 0){
+		        cpu_attack(AT_UTILT, false);
+			}else if (abs((y-20)-ai_target.y) < 50 && abs((x+(50*spr_dir))-ai_target.x) < 30 && random_func(0,2,true) == 0){
+		        cpu_attack(AT_FTILT, true);
+			}
+		}else if(free && (!ai_recovering || has_walljump || move_cooldown[AT_USPECIAL] <= 0)){
+			if (ai_target.y < y-30 && ai_target.y > y-80 && abs(x-ai_target.x) < 60){
+		        cpu_attack(AT_UAIR, false);
+			}else if (abs((y-20)-ai_target.y) < 50 && abs((x+(60*spr_dir))-ai_target.x) < 30){
+		        cpu_attack(AT_FAIR, false);
+			}else if (abs(y-ai_target.y) < 50 && abs((x-(50*spr_dir))-ai_target.x) < 30){
+		        cpu_attack(AT_BAIR, false);
+			}else if (abs((y+60)-ai_target.y) < 50 && abs(x-ai_target.x) < 70){
+		        cpu_attack(AT_DAIR, false);
+			}
+		}
+	}
+	
+	//better cancels
+	if(phone_attacking && temp_level > 5){
+		//if(attack == AT_DATTACK && has_hit){attack_pressed = random_func(0,2,true) == 0;jump_pressed = !attack_pressed;}
 	}
 	
 	//epic patented KoB parry technology (trademark)

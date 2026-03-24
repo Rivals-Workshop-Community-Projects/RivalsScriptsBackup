@@ -255,6 +255,12 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.24", "23rd March, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ CPU should now attack much less at lower CPU levels
++ Fixed Pokeball intro possibly bugging out if a stage has a janky spawn point and/or moves the player vertically on spawn (should rarely matter, but just in case)
++ Added stock icon");
+
 initPatch("1.23", "19th November, 2025");
 initHeader("Buffs");
 initSection("+ Weight change (1.3->1.25)");

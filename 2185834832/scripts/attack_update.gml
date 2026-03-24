@@ -33,9 +33,9 @@ if (attack == AT_DAIR){
 }
 
 if(attack == AT_DTILT){
-	if(window == 4 && window_timer == 15 && !was_parried){
+	if(window == 4 && window_timer == 16 && !was_parried){
 		set_state(PS_IDLE);
-	}else if(window == 4 && window_timer == 15 && was_parried){
+	}else if(window == 4 && window_timer == 16 && was_parried){
 		set_state(PS_PRATLAND)
 	}
 	if(window == 6){
@@ -105,22 +105,13 @@ if(attack == AT_EXTRA_1){
 		saw_blade.startMoving = false
 		saw_blade.hitboxReal = 0
 	}
-	if(window == 1 && window_timer == 21){
+	if(window == 1 && window_timer == 30){
 		if(instance_exists(saw_blade) && !was_parried){
 		spawn_hit_fx(x, y, waterPort);
 		x = saw_blade.x
 		y = saw_blade.y + 69
 		}
 		instance_destroy(saw_blade)
-	}
-	if(window == 2 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
-		set_state(PS_PRATLAND);
-		was_parried = true;
-		if(has_hit){
-			parry_lag = 20;
-		}else{
-			parry_lag = 30;
-		}
 	}
 }
 
@@ -233,19 +224,13 @@ if(attack == AT_FSPECIAL){
 		if(window == 6 && window_timer == 1){
 			hsp = 4 * spr_dir
 		}
-	}else if(free && fspecVar > 0){
-		if(window == 1 && window_timer == 5){
-			if(vsp > -3){
-				vsp = -3
-				hsp += 1 * spr_dir
-			}
-			fspecVar -= 1
-			spawn_hit_fx(x, y, bouncePad)
-			sound_play(asset_get("sfx_watergun_fire"))
-		}
-		if(window == 4 && window_timer == 2 || window == 6 && window_timer == 2 || window == 8 && window_timer == 2){
+	}
+	
+	//First water hop
+	if(window == 1 && window_timer == 5){
+		if(fspecVar > 0 && free && vsp > -2.5){
 			if(double_jump_timer <= 0){
-				vsp -= 3
+				vsp = -2.5
 			}
 			hsp += 0.5 * spr_dir
 			fspecVar -= 1
@@ -268,7 +253,18 @@ if(attack == AT_FSPECIAL){
 					window = 4
 					window_timer = 0
 				}
-			}
+				
+				//Water Hop
+				if(fspecVar > 0 && free && vsp > -2.5){
+					if(double_jump_timer <= 0){
+						vsp = -2.5
+					}
+					hsp += 0.5 * spr_dir
+					fspecVar -= 1
+					spawn_hit_fx(x, y, bouncePad)
+					sound_play(asset_get("sfx_watergun_fire"), false, noone, 1, 1.05)
+				}
+			}	
 			if(window_timer > 5){
 				can_attack = true
 				can_jump = true
@@ -290,6 +286,17 @@ if(attack == AT_FSPECIAL){
 			}else{
 				window = 10
 				window_timer = 0
+			}
+			
+			//Water Hop
+			if(fspecVar > 0 && free && vsp > -2.5){
+				if(double_jump_timer <= 0){
+					vsp = -2.5
+				}
+				hsp += 0.5 * spr_dir
+				fspecVar -= 1
+				spawn_hit_fx(x, y, bouncePad)
+				sound_play(asset_get("sfx_watergun_fire"), false, noone, 1, 1.1)
 			}
 		}
 	}
@@ -339,6 +346,7 @@ if(attack == AT_FSPECIAL){
 
 if(attack == AT_USTRONG){
 	can_fast_fall = false
+	can_move = false
 	if(window == 1){
 		ustrong_cycle = false
 		can_action = false
@@ -524,35 +532,10 @@ if(attack == AT_NSPECIAL){
 			window = 3
 			window_timer = 0
 		}
-		if(!special_down){
-			vsp = -2
+		if(!special_down || state_timer > 60){
+			vsp = -5
 			window = 3
 			window_timer = 20
-		}else if(state_timer > 100 /* || state_timer > 10 && distance_to_object(saw_blade) < 20 || state_timer > 10 && distance_to_object(waterBomb) < 20*/){
-		/*	if(state_timer > 10 && distance_to_object(saw_blade) < 20){
-				instance_destroy(saw_blade)
-			}else if(state_timer > 10 && distance_to_object(waterBomb) < 20){
-				instance_destroy(waterBomb)
-			}*/
-			vsp = -3
-			hsp = 0
-			window = 3
-			window_timer = 20
-			set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 14);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_KNOCKBACK, 8);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, 0.95);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 12);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, 1);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE_FLIPPER, 3);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, 50);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_waterhit_heavy"));
-			set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_full"));
-			set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air_full"));
-			sound_play(asset_get("sfx_ell_fist_explode"))
-			spawn_hit_fx(x, y - 45, nspec_large)
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, -4);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_WIDTH, 200);
-			set_hitbox_value(AT_NSPECIAL, 1, HG_HEIGHT, 200);
 		}
 	}
 	combatTimer = 5
@@ -602,7 +585,7 @@ if(attack == AT_DSTRONG){
 			}
 		}
 		if(!free){
-			if(hsp < 2 && hsp > -2){
+			if(hsp < 3 && hsp > -3){
 				if(left_pressed || left_down){
 					hsp -= 1
 				}else if(right_pressed || right_down){
@@ -612,7 +595,7 @@ if(attack == AT_DSTRONG){
 				}
 			}
 		}else{
-			if(hsp < 2 && hsp > -2){
+			if(hsp < 3 && hsp > -3){
 				if(left_pressed || left_down){
 					hsp -= 0.5
 				}else if(right_pressed || right_down){
@@ -626,6 +609,16 @@ if(attack == AT_DSTRONG){
 				}else if(hsp < -3){
 					hsp = -3
 				}
+			}
+		}
+		//Vertical movement
+		if(vsp < 3 && vsp > -3){
+			if(up_down){
+				vsp -= 2
+			}else if(down_down){
+				vsp += 2
+			}else{
+				vsp /= 2
 			}
 		}
 	}

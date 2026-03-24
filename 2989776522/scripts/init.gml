@@ -118,7 +118,7 @@ eggpawn_icon = 0;eggpawn_destroyed = false;eggpawn_health_multiplier = 1.0;eggpa
 ftilt_hitbox = noone;
 dattack_timer = 0;dattack_hitbox = noone;
 dattack_anim = 0;dattack_alpha = 0;dattack_hit = false;
-nair_loop = 0;
+nair_loop = 0;holdinput = true;
 hit_timer = 0;
 eff_offset_X = 0;eff_offset_Y = 0;
 strongstall = false;strong_free = false;
@@ -143,6 +143,10 @@ crawling = false;
 
 inside_mech = true;inside_mech2 = true;eggmobile_icon_spr = sprite_get("eggmobile_icon");
 can_summon_mech = true;
+
+stock_icon = sprite_get("stockicon");
+stock_pixel =  asset_get("hud_black_pixel");
+hud_death_timer = 0;
 
 //Ground
 spr_idle = sprite_get("idle");

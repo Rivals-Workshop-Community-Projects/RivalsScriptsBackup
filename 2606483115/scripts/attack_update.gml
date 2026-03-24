@@ -7,15 +7,15 @@ if (attack == AT_DSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL){
 if(attack == AT_DSPECIAL_AIR){
 	if(window == 2){
 		if(steam <= 0 && !hitpause){
-			vsp = 14
-			hsp = 3.5*spr_dir
+			vsp = 17
+			hsp = 3.75*spr_dir
 			if(window_timer == 1){
 				spawn_hit_fx(x - ((30 - random_func(1, 15, true))* spr_dir), y - (30 + random_func(1, 20, true)), vfx_steam_small)
 			}
 			set_num_hitboxes(AT_DSPECIAL_AIR, 0);
 		}else if(!hitpause){
-			vsp = 16
-			hsp = 4*spr_dir
+			vsp = 18
+			hsp = 4.25*spr_dir
 			steam--
 			spawn_hit_fx(x - ((30 - random_func(1, 15, true))* spr_dir), y - (30 + random_func(1, 20, true)), vfx_steam_small)
 			set_num_hitboxes(AT_DSPECIAL_AIR, 1);
@@ -99,7 +99,7 @@ if(attack == AT_NAIR){
 				window = 5
 				window_timer = 0
 				old_vsp = 9
-				vsp = 9
+				vsp = 13
 				hsp /= 2
 			}
 		}
@@ -125,6 +125,9 @@ if(attack == AT_NAIR){
 			shake_camera( 8, 4)
 			create_hitbox(AT_NAIR, 5, x, y - 10)
 		}
+	}
+	if(window >= 5){
+		can_fast_fall = false
 	}
 }
 
@@ -330,7 +333,6 @@ if(attack == AT_DSTRONG){
 
 //Fstrong Steam Wall
 if(attack == AT_FSTRONG){
-	print_debug(steam)
 	if(window == 1){
 		steam_wall_dismiss = false
 		if(!instance_exists(steam_wall) && steam_wall_timer <= 0 || steam_wall == noone && steam_wall_timer <= 0){
@@ -422,11 +424,11 @@ if(attack == AT_FSPECIAL){
 		if(steam > 0){
 			sound_play(sfx_steam_cloth)
 			if(!free){
-				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 11);
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 13);
 				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 				spawn_hit_fx(x - 40*spr_dir, y - 40, vfx_fspecial_steam)
 			}else{
-				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 8.5);
+				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 10);
 				set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 1);
 				spawn_hit_fx(x - 40*spr_dir, y - 50, vfx_fspecial_steam)
 			}
@@ -582,13 +584,14 @@ if(attack == AT_USPECIAL){
 			can_wall_jump = true
 		}
 		if(!hitpause){
+			var max_drift = 7
 			if(left_down){
-				if(hsp > -5){
-					hsp = lerp(hsp, -5, 0.2)
+				if(hsp > max_drift * -1){
+					hsp = lerp(hsp, max_drift * -1, 0.2)
 				}
 			}else if(right_down){
-				if(hsp < 5){
-					hsp = lerp(hsp, 5, 0.2)
+				if(hsp < max_drift){
+					hsp = lerp(hsp, max_drift, 0.2)
 				}
 			}else{
 				hsp /= 1.2

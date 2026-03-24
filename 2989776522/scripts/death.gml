@@ -14,6 +14,7 @@ voicecooldown2 = 0; //hurt sounds
 voicecooldown3 = 0; //galaxy hit sounds
 
 nspecial_charge = round(nspecial_charge/1.25);
+hud_death_timer = 44;
 
 var sonic = false;
 var tails = false;

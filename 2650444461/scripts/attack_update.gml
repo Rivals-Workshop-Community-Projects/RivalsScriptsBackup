@@ -230,7 +230,7 @@ if (attack == AT_NSPECIAL){
         }
     }
     if(window >= 6 && jump_pressed){
-		cancelattack();has_hit = true;
+		cancelattack();has_hit_player = true;
 	}
 }else if (attack == AT_FAIR){
     if(window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
@@ -358,7 +358,7 @@ if (attack == AT_NSPECIAL){
         dusteff = spawn_hit_fx(x+50*spr_dir,y,fx_dust_sharp);dusteff.depth = depth-1;dusteff.spr_dir = -spr_dir;
     }
 }else if (attack == AT_JAB){
-    if(window == 2 && window_timer == 3 && !hitpause && !has_hit){
+    if(window == 2 && window_timer == 3 && !hitpause && !has_hit_player){
         sound_play(sound_get("Bite"));
     }
 }else if (attack == AT_TAUNT){
@@ -376,7 +376,7 @@ if (attack == AT_NSPECIAL){
 }
 
 #define cancelattack
-    if(has_hit && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
+    if(has_hit_player && (attack_pressed || special_pressed || jump_pressed || right_stick_pressed || left_stick_pressed || up_stick_pressed || down_stick_pressed
 	|| right_strong_pressed || left_strong_pressed || up_strong_pressed || down_strong_pressed)){
 		window = 20;
 	}

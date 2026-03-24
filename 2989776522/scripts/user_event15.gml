@@ -260,6 +260,34 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.34", "23rd March, 2026");
+initHeader("Nerfs");
+initSection("- FAir hitboxes are once again a bit smaller, and late hit is noticably weaker. Latest hitbox at the bottom also removed
+- BAir is slightly weaker and tap BAir has a smaller sweetspot and more landing lag
+- DAir sourspot no longer spikes and instead sends upward (280->60), and the move has a bit more endlag (9/13->12/18)
+- Made some hitboxes slightly smaller for FTilt, Jab, etc (mainly hits less far behind Eggman)");
+initHeader("Fixes / Other Changes");
+initSection("+ Added stock icon
++ Tweaked some hitpause");
+
+initPatch("1.33", "11th September, 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Forgor to update newer AI aggression scaling");
+
+initPatch("1.32", "11th September, 2025");
+initHeader("Buffs?");
+initSection("+ NAir lasts shorter now, but can be held to make it last the old length");
+initHeader("Nerfs");
+initSection("- NAir sourspot does a bit less hitstun (1.0x->0.75x), and the move now has more landing lag on whiff (10 if hit, but 14 on whiff)
+- FAir now has more landing lag (13->15) and endlag (21->24) on whiff
+- BAir has a bit more landing lag (7->10)
+- FSpecial is now slightly slower overall, and projectile does less hitstun (1.0x->0.9x)
+- FStrong has a little bit more hurtbox at the front, making it slightly easier to challenge/punish");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed missing white flash effect when hit during bonus damage windows (oopsie)
++ Fixed several things about the angle 0 effect
++ Fixed some misc things");
+
 initPatch("1.31", "8th April, 2025");
 initHeader("Buffs");
 initSection("+ UStrong finisher kills a little bit better (0.95->1.05 kbs)

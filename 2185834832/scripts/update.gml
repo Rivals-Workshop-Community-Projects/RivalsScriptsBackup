@@ -95,7 +95,7 @@ if(attack == AT_NSPECIAL_2 && window > 1){
 
 if(!free){
 	uspecVar = 1
-	fspecVar = 2
+	fspecVar = 3
 	dspecFlying = false
 	//emergencyCount = 0
 }

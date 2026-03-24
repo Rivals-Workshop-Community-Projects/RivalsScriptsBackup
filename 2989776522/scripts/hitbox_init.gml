@@ -88,11 +88,7 @@ if(attack == AT_DSPECIAL){
 if(attack == AT_UAIR){
 	if(hbox_num == 7){
 		//ignore teammates
-		with(oPlayer){
-			if(get_player_team(player) == get_player_team(other.player)){
-		    	other.can_hit[player] = false;
-			}
-		}
+		with(oPlayer)if(get_player_team(player) == get_player_team(other.player))other.can_hit[player] = false;
 		
 	    MattCanGrab = true;MorshuCanGrab = true;
 		CalCanSnack = 1;

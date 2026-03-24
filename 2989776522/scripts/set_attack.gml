@@ -1,6 +1,6 @@
 ///#args attack // this line makes code editors not freak out for some reason
 
-b_reversed = false;
+b_reversed = false;holdinput = true;
 
 //aerial strong stuff
 if(phone_cheats[CHEAT_Air_Strongs]){
@@ -17,6 +17,12 @@ if(phone_cheats[CHEAT_Air_Strongs]){
 			if (attack == AT_USTRONG)vsp -= 3;
 		}*/strong_free = free;
 	}
+}
+
+if (attack == AT_NAIR)reset_attack_value(AT_NAIR, AG_LANDING_LAG);
+
+if (attack == AT_FAIR){
+	reset_attack_value(AT_FAIR, AG_LANDING_LAG);reset_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH);
 }
 
 if (attack == AT_BAIR){
