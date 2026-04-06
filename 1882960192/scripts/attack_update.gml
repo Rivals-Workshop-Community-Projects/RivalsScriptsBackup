@@ -17,6 +17,12 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2){
 		}
 	}
 	
+	if attack == AT_FSPECIAL_2 && 4 >= window {
+		super_armor = true;
+	} else {
+		super_armor = false;
+	}
+	
 	if window == 3 || window == 4 {
 		if !hitpause {
 			if attack == AT_FSPECIAL {
@@ -97,7 +103,7 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && window == 4 {
 							spr_dir = other.spr_dir;
 							hsp *= -1.2;
 							if other.attack == AT_FSPECIAL_2 {
-								damage *= 1.25;
+								damage *= 1.5;
 								kb_value *= 1.1;
 								hsp *= 1.1;
 							}
@@ -494,10 +500,10 @@ if (attack == AT_BAIR && window == 2 && window_timer == 2 && (attack_down || str
 	sound_play(asset_get("sfx_may_arc_cointoss"));		
 	}
 
-if (attack == AT_FSPECIAL && window == 1 && window_timer == 5 && special_down && wblastcharge >= 35) {
+if (attack == AT_FSPECIAL && window == 1 && window_timer == 8 && special_down && wblastcharge >= 35) {
 	attack = AT_FSPECIAL_2;
 	window = 1;
-	window_timer = 5;
+	window_timer = 8;
 	sound_play(asset_get("sfx_may_arc_cointoss"));
 	}
 	
@@ -721,27 +727,6 @@ if (attack == AT_USTRONG_2) && !hitpause {
 	if (window == 8 && window_timer == 2) {
 		spawn_hit_fx( x+( (get_hitbox_value(AT_USTRONG_2, 4, HG_HITBOX_X)) *spr_dir), y+(get_hitbox_value(AT_USTRONG_2, 4, HG_HITBOX_Y)), 112);
 	}
-}
-
-
-//Change fspecial's projectile depending on the alt
-if attack == AT_FSPECIAL && window == 1 && window_timer == 1 {
-	if (get_player_color( player ) == 15) {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_socc"));
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_socc2"));
-	}
-
-
-	if (get_player_color( player ) == 20) {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_gen"));
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_gen2"));
-	}
-
-	if (get_player_color( player ) == 21) {
-		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_voll"));
-		set_hitbox_value(AT_FSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("fspecial_proj_voll2"));
-	}
-
 }
 
 //sfx things because the window indexes kinda suck

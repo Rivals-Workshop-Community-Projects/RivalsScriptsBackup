@@ -28,7 +28,6 @@ if savex != 0 {
     x = savex
     y = savey
     hitstop += 20
-    take_damage(player,-1, -33)
     sound_play(sound_get("fstrong1"),false,noone,0.6)
      set_state (PS_HITSTUN)
          savex = 0

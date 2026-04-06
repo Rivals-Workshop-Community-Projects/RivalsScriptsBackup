@@ -6,9 +6,10 @@ if (my_hitboxID.attack == AT_DAIR && my_hitboxID.hbox_num == 1) {
 	window_timer = 20;
 }
 
-if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
+if (my_hitboxID.attack == AT_DSPECIAL) {
 	sound_play(sound_get("metal"));
-	old_vsp = -1;
+	old_vsp = -5;
+	old_hsp = 3*spr_dir;
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL) {

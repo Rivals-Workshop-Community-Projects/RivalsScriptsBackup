@@ -1,0 +1,2 @@
+// other init
+taped = false;

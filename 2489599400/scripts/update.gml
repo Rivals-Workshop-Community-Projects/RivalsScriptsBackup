@@ -1,6 +1,6 @@
 //update
 
-if !((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL) {
+if !((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_FSPECIAL_2) {
 	sound_stop( sound_get( "vroom"));
 }
 
@@ -50,8 +50,7 @@ if nodispenser {
 	set_attack_value(AT_USTRONG_2, AG_HURTBOX_SPRITE, sprite_get("nodispenser_ustrong_hurt"));
 	set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("nodispenser_fair_hurt"));
 	set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("nodispenser_uair_hurt"));
-	set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nodispenser_fspecial_hurt"));
-	set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nodispenser_dspecial_hurt"));
+	set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("nodispenser_dspecial_hurt"));
 	
 } else { 				//Regular stats
 	hurtbox_spr = sprite_get("ex_tape_hurt_box");
@@ -90,8 +89,7 @@ if nodispenser {
 	reset_attack_value(AT_USTRONG_2, AG_HURTBOX_SPRITE);
 	reset_attack_value(AT_FAIR, AG_HURTBOX_SPRITE);
 	reset_attack_value(AT_UAIR, AG_HURTBOX_SPRITE);
-	reset_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE);
-	reset_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE);
+	reset_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE);
 	
 }
 
@@ -129,6 +127,10 @@ if tapecool > 0 {
 	tapecool--;
 }
 
+if tapes > 3 {
+	move_cooldown[AT_DSPECIAL] = 10;
+}
+
 if tapecool == 1 {
 	sound_play(asset_get("mfx_coin"));
 }
@@ -137,21 +139,27 @@ if !(url == 2489599400) {
 	set_state(PS_DEAD);
 }
 
-with asset_get("pHitBox") {
-	if (attack == AT_EXTRA_2 && hbox_num == 1 && player_id.attack_down && 5 > player_id.tapes && player_id.tapecool == 0) {
-		if (place_meeting(x,y-4,asset_get("par_block")) || place_meeting(x,y-4,asset_get("par_jumpthrough"))) && !player_id.has_hit {
-			player_id.has_hit = 1;
-			spawn_hit_fx(x, y-10, 19);
-			create_hitbox(AT_EXTRA_2, 3, x, y-10);
-			player_id.old_vsp = -6;	
-			player_id.old_hsp = player_id.hsp;
-			player_id.hitpause = 1;
-			player_id.hitstop = 5;
-			player_id.hitstop_full = 5;		
-			player_id.tapes += 1;		
-			player_id.tapecool = 180;		
-			take_damage( player, -1, 2);
-			sound_play(sound_get("sfx-tape-2"));
-		}
-	}
+//taped state
+with (oPlayer) {
+    if (id != other.id) {
+        // If they have the variable and it's set to true
+        if ("taped" in self && taped) {
+            // Check if they are NO LONGER in hitpause or hitstun
+            if (state != PS_HITSTUN_LAND && state != PS_HITSTUN) {
+                taped = false;
+            }
+        }
+    }
+}
+
+tapes = 0;
+with (pHitBox) {
+    if (player_id == other.id) {
+        
+        if ((attack == AT_DSPECIAL && hbox_num == 1) || 
+            (attack == AT_EXTRA_2 && hbox_num == 3)) {
+            
+            other.tapes++; 
+        }
+    }
 }

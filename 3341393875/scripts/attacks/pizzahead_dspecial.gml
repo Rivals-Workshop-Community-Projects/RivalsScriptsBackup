@@ -210,7 +210,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.25);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITPAUSE_SCALING, 0.25);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITSTUN_MULTIPLIER, 1);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_HIT_LOCKOUT, 3);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_COLLISION_SPRITE, asset_get("empty_sprite"));

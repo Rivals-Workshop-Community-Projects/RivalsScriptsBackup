@@ -401,7 +401,7 @@ switch(attack) {
 		}
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			
-			if (instance_exists(active_minion)){
+			if (instance_exists(active_minion) && !has_rune("O")){
 				active_minion.state = "DEATH";
 			}
 			active_minion = instance_create(round(x + hsp), round(y + vsp), "obj_article1");
@@ -419,6 +419,7 @@ switch(attack) {
 			}
 			
 			minion_number = (minion_number + 1) % 7;
+			current_item_tossing = next_item_tossed;
 			next_item_tossed = (current_item_tossing + 1) % 5;
 
 			move_cooldown[AT_DSPECIAL] = 120;

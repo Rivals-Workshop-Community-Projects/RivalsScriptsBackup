@@ -11,13 +11,13 @@ if (attack == AT_USPECIAL) {
 
 if (attack == AT_NSPECIAL) {
 	if hbox_num == 1 {
-		if !boomerstop && !was_parried {
+		if !boomerstop && !was_parried && !boomerdenied {
 			hsp = clamp(hsp, -20, 20);
 			hsp -= .5*spr_dir;
 			vsp = clamp(vsp, -4, 4);
 		}
 
-		with player_id if special_down && (other.hsp>=-0.2 && other.hsp<=0.2) && !other.was_parried {
+		with player_id if special_down && (other.hsp>=-0.2 && other.hsp<=0.2) && !other.was_parried && !other.boomerdenied {
 		other.boomerstop = 1;
 		other.hsp = 0;
 		other.vsp = 0;
@@ -86,7 +86,7 @@ if (attack == AT_NSPECIAL) {
 		for(var i = 0; i < 20; i++) can_hit[i] = true;
 		}
 		
-		if place_meeting(x+26*spr_dir,y,player_id) && !was_parried && hitbox_timer > 20 && !(player_id.state == PS_AIR_DODGE || player_id.state == PS_ROLL_BACKWARD || player_id.state == PS_ROLL_FORWARD) {
+		if place_meeting(x+26*spr_dir,y,player_id) && !was_parried && !boomerdenied && hitbox_timer > 20 && !(player_id.state == PS_AIR_DODGE || player_id.state == PS_ROLL_BACKWARD || player_id.state == PS_ROLL_FORWARD) {
 		hitbox_timer = 999;
 		with player_id {
 			spawn_hit_fx(x-14*spr_dir,y-38,14);
@@ -144,12 +144,12 @@ if (attack == AT_NSPECIAL) {
 		}
 		
 		hsp = clamp(hsp, -20, 20);
-		if hitbox_timer > 10 {
+		if hitbox_timer > 10 && !boomerdenied {
 			hsp -= .45*spr_dir;
 		}
-		vsp = clamp(vsp, -4.5, 4.5);
+		if !boomerdenied vsp = clamp(vsp, -4.5, 4.5);
 		
-		with player_id if !other.was_parried && other.boomerstop == 0 {
+		with player_id if !other.was_parried && other.boomerstop == 0 && !other.boomerdenied {
 			if up_down {
 			other.vsp -= .4;
 			}
@@ -176,7 +176,7 @@ if (attack == AT_NSPECIAL) {
 		for(var i = 0; i < 20; i++) can_hit[i] = true;
 		}
 		
-		if place_meeting(x+26*spr_dir,y,player_id) && !was_parried && hitbox_timer > 20 && !(player_id.state == PS_AIR_DODGE || player_id.state == PS_ROLL_BACKWARD || player_id.state == PS_ROLL_FORWARD) {
+		if place_meeting(x+26*spr_dir,y,player_id) && !was_parried && !boomerdenied && hitbox_timer > 20 && !(player_id.state == PS_AIR_DODGE || player_id.state == PS_ROLL_BACKWARD || player_id.state == PS_ROLL_FORWARD) {
 		hitbox_timer = 999;
 		with player_id {
 			spawn_hit_fx(x-14*spr_dir,y-38,14);
@@ -200,6 +200,51 @@ if (attack == AT_NSPECIAL) {
 			if (state_cat == SC_GROUND_NEUTRAL || state_cat == SC_AIR_NEUTRAL) {
 				attack_end();
 				set_attack(AT_NSPECIAL_2);
+				}
+			}
+		}
+	}
+	
+	if hbox_num == 1 || hbox_num == 2 {
+	
+		with (asset_get("pHitBox")) {
+			if (player_id == other.player_id && attack == AT_USPECIAL
+			&& place_meeting(x,y,other.id) && !other.was_parried && !has_hit && !(hbox_num == 3 || hbox_num == 4 && hitbox_timer >= 3)) {
+				
+				has_hit = true;
+				with player_id sound_play(sound_get("sfx_hit_sharp"));
+				spawn_hit_fx(x, y, 301);
+				other.grounds = -1;
+				
+				if hbox_num == 1 { 
+						other.x = x;
+						other.y = y;
+						other.vsp = player_id.vsp*0.75;
+						other.hsp = player_id.hsp;
+						other.grav = .5;
+						other.hitbox_timer = 0;
+						other.boomerdenied = true;
+				}
+				
+				if hbox_num == 2 { 
+						other.y += 10;
+						other.vsp = player_id.vsp*2;
+						other.hsp = player_id.hsp;
+						other.hitbox_timer = 0;
+						other.boomerdenied = true;
+				}
+				
+				if hbox_num == 4 { 
+						other.x = x;
+						other.y = y-4;
+						other.hsp = 17*spr_dir;
+						other.vsp = 0;
+						other.grav = 0;
+						if other.hbox_num == 1 other.boomerdenied = false;
+						if other.hbox_num == 2 other.hsp = clamp(hsp, -10,10);
+						other.hitbox_timer = length/2;
+						other.grounds = 0;
+						destroyed = true;
 				}
 			}
 		}

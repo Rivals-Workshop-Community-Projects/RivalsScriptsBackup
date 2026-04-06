@@ -140,4 +140,4 @@ set_hitbox_value(AT_UAIR, 5, HG_KNOCKBACK_SCALING, 0.7);
 set_hitbox_value(AT_UAIR, 5, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_UAIR, 5, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_UAIR, 5, HG_HIT_SFX, asset_get("sfx_clairen_hit_strong"));
-
+set_hitbox_value(AT_UAIR, 5, HG_HIT_LOCKOUT, 4);

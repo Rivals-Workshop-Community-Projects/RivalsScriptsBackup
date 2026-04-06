@@ -4,6 +4,7 @@ upb = false;move_cooldown[AT_USPECIAL] = 0;
 fspec_stall = 0;ustrongstall = false;
 fair_pin = false;
 uairused = false;uairboost = 1;
+hud_death_timer = 44;
 
 with(obj_article1){
 	if(player_id == other && player == other.player){

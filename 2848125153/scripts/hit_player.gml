@@ -213,6 +213,8 @@ if("fs_charge" in self && my_hitboxID.type == 2 && finalsmashtimer <= 0){
     fs_charge += my_hitboxID.damage;
 }
 
+if(my_hitboxID.type == 2 && "re_hittimer" in my_hitboxID)my_hitboxID.hittimer = my_hitboxID.re_hittimer;
+
 #define PlayVoiceClip
 	/// PlayVoiceClip(name,?volume)
 	//Plays SFX

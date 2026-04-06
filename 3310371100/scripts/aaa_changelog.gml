@@ -6,6 +6,61 @@
 +--.+*'"'*+.,.+*'"'*+.usher changelog.+*'"'*+.,.+*'"'*+.,--+
 ```
 
+===v3.141 (vPI.2)===
+hey, it's PI day.
+
+---changes---
+:: reordered alt colors and Steampunk color is back (as 'rivals-y steampunk')
+:: i think i added a results dialogue for Snowé i feel like her name coulda've been Snowée or something or is that my french-learning brain speaking. huh. may as well add more for like pi-related something. uh. Amarelle. and. Cheese Wheel. sure.
+:: added dust vfx to jab
+:: FSPECIAL RAINCLOUD ... now rises quicker (-0.035 -> -0.05), but stops after 5 seconds. (300 frames.)
+
+--balances--
+:: all balance changes have been reverted back to v3.14 except a few little things.
+:: here are changes FROM the point of v3.14.
+
+-- BAIR ... startup increased by 1 frame. (5 -> 6)
+:: BAIR ... hitpause scaling increased (0.5 -> 0.6)
+++ FSPECIAL ... startup decreased by 2 frames. (5 -> 7)
+-- DSPECIAL ... the awkward amount of invincible time removed.
+-- DSPECIAL ... startup increased by 2 frames (8 -> 10)
+-- DSPECIAL ... hitbox size reduced, matching the visual a bit more.
+
+:: i can't let go, but i have to.
+:: what is usher? melancholy?
+
+
+
+===v3.16===
+technically speaking im glad i did a weird change because i got to peek at what some people think are bigger problems because it didnt feel like i - actually i never really asked directly.
+i think theres valid reasons on my side why i haven't but what a roundabout way i go about things.
+
+---changes---
+:: dspecial ... THIS IS NOT IN THE PATCH but forgot to do it last patch, i tried to make it so dspecial can now have a higher max fall speed while holding direction-down, but upon testing it out in practice, i realized that it's a bit beyond my aim for the character. ended up not doing this.
+
+--balances--
+-- dspecial ... i do agree in that damage armor is probably weird to deal with for everyone involved. removed.
+:: tilts ... theyre back to where they were. i dont actually mind them very much.
+:: uair ... theyre mostly back to where they were. in retrospect it's not something ushers do all the time, just sometimes.
+:: fair ... theyre back to where they were.
+-- fair ... startup increased by 2 frames. semi-reverted the sfx change accordingly.
+-- fair ... knockback growth reduced. (0.95 -> 0.8)
+-- bair ... startup increased by 3 frames. welp, surprised i havent done this yet cause it sure still feels like a bair to me
+:: bair ... hitpause scaling increased by 0.1 (0.5 -> 0.6)
+:::: maybe i should also or rather adjust endlag/landinglag but i'll just see it with this for now.
+
+https://youtu.be/uDHfL8goKKs
+:: interesting. how do i put this.
+:: it's like at one point, a character stops being mine.
+:: only the people who know how to play knows what works.
+:: maybe that's why i felt this way about regretting making usher playable.
+
+:: i don't want it to be anyone else's, i guess.
+:: my aim is to make people leave her alone.
+
+
+
+
 ===v3.15===
 ---lesser changes---
 :: portrait tweaked??

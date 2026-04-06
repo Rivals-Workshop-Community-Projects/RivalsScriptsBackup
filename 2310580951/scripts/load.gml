@@ -49,6 +49,7 @@ sprite_change_offset("fspecial", 36, 82);
 	sprite_change_offset("fspecial_air", 36, 82);
 sprite_change_offset("uspecial", 48, 94);
 sprite_change_offset("dspecial", 50, 82);
+	sprite_change_offset("dspecial_air", 50, 82);
 sprite_change_offset("taunt", 36, 102);
 sprite_change_offset("taunt2", 36, 82);
 sprite_change_offset("groundpound", 84, 78);

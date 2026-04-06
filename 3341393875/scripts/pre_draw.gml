@@ -10,8 +10,13 @@ shader_start();
 if (attack == AT_DSPECIAL_2 && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)){
     if (window == 4 && window_timer < 3){
             draw_sprite_ext(sprite_get("pizzahead_dspecial2_TV_frame"), 0, x + 50 * spr_dir, y + 100, -2 * spr_dir, 2, 0, -1, 1);
+            shader_end();
         if (instance_exists(hit_player_obj) && "pizzaTVcontent" in hit_player_obj){
-            draw_sprite_ext(hit_player_obj.pizzaTVcontent, 0, x + 130 * spr_dir, y - 60, -2 * spr_dir, 2, 0, -1, 1);
+            with (hit_player_obj){
+                shader_start();
+                draw_sprite_ext(pizzaTVcontent, 0, other.x + 130 * other.spr_dir, other.y - 60, -2 * other.spr_dir, 2, 0, -1, 1);
+                shader_end();
+            }
         } else {
             draw_sprite_ext(sprite_get("pizzahead_dspecial2_TV_content"), 0, x + 50 * spr_dir, y + 100, -2 * spr_dir, 2, 0, -1, 1);
         }

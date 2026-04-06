@@ -1,7 +1,7 @@
 // attack_update
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_USPECIAL_2 || attack == AT_DSPECIAL_2 || attack == AT_NSPECIAL_2){
+if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_FSPECIAL_2 || attack == AT_DSPECIAL || attack == AT_DSPECIAL_2 || attack == AT_USPECIAL || attack == AT_USPECIAL_2 || attack == AT_EXTRA_1 || attack == AT_NSPECIAL_2){
     trigger_b_reverse();
 }
 
@@ -16,6 +16,108 @@ if attack == AT_DTILT {
 		window = 4;
 		window_timer = 0;
 	}
+}
+
+//dspecial stuff
+if attack == AT_DSPECIAL {
+	if window == 2 && window_timer == 6 {
+		tapecool = 180;
+		take_damage( player, -1, 3);
+		spawn_hit_fx(x+32*spr_dir, y-36, 16);
+		move_cooldown[AT_DSPECIAL] = tapecool;
+	}
+}
+
+//Dust stuff
+if !hitpause {
+	if attack == AT_FSTRONG && window == 3 && window_timer == 4 {
+		spawn_base_dust(x+70*spr_dir, y, "dash_start", -spr_dir);
+	}
+	
+	if attack == AT_FSTRONG_2 && window == 2 && window_timer == 4 {
+		spawn_base_dust(x+70*spr_dir, y, "dash_start", -spr_dir);
+	}
+	
+	if attack == AT_DSTRONG {
+		if (window == 2 && window_timer == 1) {
+			spawn_base_dust(x, y, "jump", 1);
+		}
+		
+		if (window == 3 && window_timer == 3) {
+			spawn_base_dust(x-20, y, "dash_start", 1);
+			spawn_base_dust(x+20, y, "dash_start", -1);
+		}
+	}
+	
+	if attack == AT_DSTRONG_2 {
+		if (window == 2 && window_timer == 6) {
+			spawn_base_dust(x+30*spr_dir, y, "dash_start", -spr_dir);
+		}
+		
+		if (window == 4 && window_timer == 3) {
+			spawn_base_dust(x-30, y, "dash_start", spr_dir);
+		}
+	}
+	
+	if attack == AT_USTRONG && window == 3 && window_timer == 3 {
+		spawn_base_dust(x, y, "jump", spr_dir);
+	}
+	
+	if attack == AT_USPECIAL_2 && window == 1 && window_timer == 6 {
+		spawn_base_dust(x, y, "jump", spr_dir);
+	}
+}
+
+
+
+//Fspecial stuff
+if attack == AT_FSPECIAL {
+	can_fast_fall = false;
+	if 2 >= window {
+		hsp = clamp(hsp, -3, 3);
+		vsp = clamp(vsp, -3, 3);
+	
+	}
+	
+	if window == 2 {
+		move_cooldown[AT_FSPECIAL] = 40;
+		can_move = false
+		hsp = clamp (hsp, 0, 0);
+		vsp = clamp (vsp, 0, 0);
+		if up_down {
+			fspecialangle = 1;
+		} else if down_down {
+			fspecialangle = 2;
+		} else {
+			fspecialangle = 0;
+		}
+		
+		switch (fspecialangle) {
+			case 0:
+				reset_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y);
+				reset_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y);
+				reset_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y);
+				reset_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_Y);
+				reset_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_Y);
+			break;
+			
+			case 1:
+				set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -70);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y));
+				set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y)+6);
+				set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_Y, get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y)+10);
+				set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_Y, get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y)+14);
+			break;
+			
+			case 2:
+				set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -16);
+				set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_Y, get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y));
+				set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y)-6);
+				set_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_Y, get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y)-14);
+				set_hitbox_value(AT_FSPECIAL, 5, HG_HITBOX_Y, get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y)-22);
+			break;
+		}
+	} else can_move = true;
 }
 
 //Taunt stuff
@@ -198,12 +300,12 @@ if nodispenser {
 
 //FSpecial stuff
 
-if attack == AT_FSPECIAL {
+if attack == AT_FSPECIAL_2 {
 	can_fast_fall = false;
 	if nodispenser {
-	set_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH, 5);
+	set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH, 5);
 	} else {
-	reset_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH);
+	reset_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH);
 	}
 	
 	if (window == 1 && window_timer == 1) { 
@@ -327,7 +429,8 @@ if attack == AT_FSPECIAL {
 			}
 		}
 	}
-	move_cooldown[AT_FSPECIAL] = 50;	
+	move_cooldown[AT_FSPECIAL_2] = 50;	
+	move_cooldown[AT_FSPECIAL] = 50;		
 }
 
 
@@ -383,7 +486,7 @@ if (attack == AT_NSPECIAL_2){
 }
 
 //DSpecial stuff
-if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
+if (attack == AT_DSPECIAL_2 || attack == AT_EXTRA_1){
 	can_wall_jump = true;
 	can_fast_fall = false;
 //	if window > 2 {
@@ -418,8 +521,8 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2){
 			window = 6;
 			window_timer = 0;
 			spawn_base_dust(x, y, "land");
-			move_cooldown[AT_DSPECIAL] = 60;
 			move_cooldown[AT_DSPECIAL_2] = 60;
+			move_cooldown[AT_EXTRA_1] = 60;
 		}
 	}
 }
@@ -515,11 +618,11 @@ if (attack == AT_USTRONG_2 && instance_exists(grabbed_player_obj)) {
 if (attack == AT_USPECIAL){
 	can_wall_jump = true;
 	can_fast_fall = false;
+	hsp = clamp(hsp, -1, 1);
 	move_cooldown[AT_USPECIAL] = 999;
 	if window == 1 && window_timer == 8 {
 		move_cooldown[AT_NSPECIAL_2] = 150;
 		nodispenser = 1;
-		spawn_hit_fx(x,y,dispenserDisappear);
 		user_event(1);
 	}
 }

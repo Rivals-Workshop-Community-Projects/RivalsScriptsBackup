@@ -219,11 +219,11 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) && hbox_num == 1 {
 		
 		if hitbox_timer > 16 {
 			if attack == AT_DSPECIAL {
-			hsp = clamp(hsp, -1, 1);
-			vsp = clamp(vsp, -1, 1);
+			hsp = clamp(hsp, -.5, .5);
+			vsp = clamp(vsp, -.5, .5);
 			}
-			hsp = clamp(hsp, -3, 3);
-			vsp = clamp(vsp, -3, 3);
+			hsp = clamp(hsp, -2, 2);
+			vsp = clamp(vsp, -2, 2);
 			
 			image_index = 1;
 			if hitbox_timer == 17 {

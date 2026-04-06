@@ -49,8 +49,7 @@ if (state == "bounce"){
     sprite_index = sprite_get("pizzahead_dspecial2_TV_bounce_frame");
     
     image_index = state_timer * article_anim_speed;
-
-    if (image_index > image_number){
+    if (ceil(image_index) > image_number){
         state = "idle";
         state_timer = 0;
     }

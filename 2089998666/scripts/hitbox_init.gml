@@ -1,7 +1,7 @@
 //hitbox_init
 if attack == AT_FSPECIAL {
+	eggBounce = 0;
 	if hbox_num == 1 {
-		eggBounce = 0;
 		angle = 0;
 		
 		if player_id.cookieAid {
@@ -11,15 +11,22 @@ if attack == AT_FSPECIAL {
 		}
 		
 	with player_id move_cooldown[AT_FSPECIAL] = 80;
+	
 	}
+	
+	
 	if hbox_num == 2 {
-		kb_angle = 90;
-		kb_scale += .25;
+		with (asset_get("pHitBox")) {
+			if (attack == AT_FSPECIAL && hbox_num == 1) {
+					if was_parried other.player = player;
+					other.eggBounce = eggBounce;
+			}
+		}
 	}
 	
 	if hbox_num != 2 {
-	no_absorb = 1;
-	proj_reflectable = 1;
+		no_absorb = 1;
+		proj_reflectable = 1;
 	}
 }
 

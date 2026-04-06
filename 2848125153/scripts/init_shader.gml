@@ -3,8 +3,8 @@
 var true_player = (room == asset_get("network_char_select")) ? 0 : player;var alt_cur = get_player_color(true_player); //Replace the old alt_fix thing with this
 
 if(alt_cur == 0){
-    set_character_color_slot(1, 47, 54, 82); //Hat
-    set_character_color_slot(4, 47, 54, 82); //Pants
+    set_character_color_slot(1, 47, 54, 82);set_article_color_slot(1, 47, 54, 82); //Hat
+    set_character_color_slot(4, 47, 54, 82);set_article_color_slot(4, 47, 54, 82); //Pants
 }else if (alt_cur == 1 || alt_cur == 2) {
     for (var slot_num = 0; slot_num < 8; slot_num++) {
         set_character_color_shading( slot_num, 0 );

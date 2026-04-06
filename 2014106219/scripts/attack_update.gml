@@ -13,17 +13,17 @@ if (attack == AT_FSPECIAL) && !hitpause {
 		}
 		
 		if (wblastcharge >= 35) {
-			if window_timer == 9 && special_down {
+			if window_timer == 10 && special_down {
 				sound_play(asset_get("sfx_may_arc_cointoss"));
 				boosttrigger = true;
 			}
 		}
-		if window_timer == 13 {
+		if window_timer == 15 {
 			spawn_base_dust(x+2*spr_dir, y, "dash_start", spr_dir);
 			sound_play(asset_get("sfx_oly_fspecial_dash"));
 			if boosttrigger {
 				hsp = 10*spr_dir;
-				vsp = -6;
+				vsp = -7;
 				window = 3;
 				window_timer = 6;
 				spawn_hit_fx(x+(((get_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_X))+2) *spr_dir), y+(get_hitbox_value(AT_FSPECIAL, 4, HG_HITBOX_Y)-2), 115);
@@ -35,6 +35,7 @@ if (attack == AT_FSPECIAL) && !hitpause {
 				shake_camera(6,6);
 				create_hitbox(AT_FSPECIAL, 4, x-16*spr_dir, y-36);
 				sound_play(sound_get("magicshoot3"));
+				sound_play(asset_get("sfx_absa_kickhit"));
 				wblastcharge = 0;
 			}
 			else  {
@@ -58,29 +59,26 @@ if (attack == AT_FSPECIAL) && !hitpause {
 		
 		if (spr_dir == 1) {
 			if (hsp < 9) {
-				hsp = min(hsp + 0.5, 9);  // Accelerate right, cap at 9
+				hsp = min(hsp + 0.5, 9);
 			} else if (hsp > 9) {
-				hsp = max(hsp - 0.25, 9); // Decelerate if overshot
+				hsp = max(hsp - 0.25, 9);
 			}
 		}
 
 		if (spr_dir == -1) {
 			if (hsp > -9) {
-				hsp = max(hsp - 0.5, -9); // Accelerate left (more negative), cap at -9
+				hsp = max(hsp - 0.5, -9);
 			} else if (hsp < -9) {
-				hsp = min(hsp + 0.25, -9); // Decelerate if overshot negative
+				hsp = min(hsp + 0.25, -9);
 			}
 		}
 		
 		if free {
 			window = 3;
 			window_timer = 6;
-			destroy_hitboxes();
-			create_hitbox(AT_FSPECIAL, 3, x+6*spr_dir, y-24);
 		}
 		
-		if scootertimer > 10 && jump_pressed && !free {
-			destroy_hitboxes();
+		if jump_pressed && !free {
 			window = 3;
 			window_timer = 0;
 		}
@@ -91,12 +89,17 @@ if (attack == AT_FSPECIAL) && !hitpause {
 		can_attack = false;
 		can_shield = false;
 		
+		if 90 >= scootertimer {
+			if window_timer == 11 {
+				window_timer = 1;
+			}
 
+		}
 	}
 	
 	if (window == 2 || window == 3) {
-		if (spr_dir == 1 && left_down || spr_dir == -1 && right_down || attack_pressed || down_down) {
-			if (scootertimer > 5 || has_hit) {
+		if (left_pressed || right_pressed || attack_pressed || special_pressed) {
+			if (scootertimer > 5 || has_hit || has_hit_player) {
 				destroy_hitboxes();
 				window = 4;
 				window_timer = 0;
@@ -105,21 +108,20 @@ if (attack == AT_FSPECIAL) && !hitpause {
 		
 		can_wall_jump = true;
 		
-		if gravity_speed > vsp {
-			vsp += .15;		
-		}
 		scootertimer++;
-		if 70 >= scootertimer {
-			if window_timer == 11 {
-				destroy_hitboxes();
-				window_timer = 0;
-				attack_end();
-			}
-
-		} else {
+		
+		if scootertimer > 90 {
 			destroy_hitboxes();
 			window = 4;
 			window_timer = 0;
+		}
+		
+		if fast_fall > vsp && free {
+			vsp += .25;
+		}
+		
+		if has_hit_player {
+			attack_end();
 		}
 		
 		if (scootertimer mod 5 == 0) {		
@@ -130,24 +132,23 @@ if (attack == AT_FSPECIAL) && !hitpause {
 	if window == 3 { //jump
 
 		if window_timer == 5 {
-			vsp = -10;
+			vsp = -11.5;
 			hsp *= .75;
 			spawn_base_dust(x, y, "jump", spr_dir);
 			sound_play(asset_get("sfx_jumpair"));
 		}
 
 		if window_timer > 5 && !free {
-			attack_end();
-			destroy_hitboxes();
 			window = 2;
-			window_timer = 0;		
+			window_timer = 1;
 		}
 		
 		if window_timer == 9 {
 			window_timer = 6;
+			attack_end();
 		}
 		
-		if window_timer > 5 && vsp > 0 && scootertimer > 20 {
+		if window_timer > 5 && vsp > 0 && scootertimer >= 20 {
 			can_jump = true;
 			can_attack = true;
 			can_shield = true;
@@ -476,8 +477,8 @@ if (attack == AT_DSPECIAL_AIR) {
 }
 
 //FSpecial cooldown
-if (attack == AT_FSPECIAL) and (window == 3) {
-    move_cooldown[AT_FSPECIAL] = 70;
+if (attack == AT_FSPECIAL) and (window == 2) {
+    move_cooldown[AT_FSPECIAL] = 90;
 }
 
 //Attacks deplete wblastcharge

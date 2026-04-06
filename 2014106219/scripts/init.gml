@@ -125,7 +125,7 @@ boosttrigger = false;
 //Character support
 tcoart = sprite_get("cinnytcoart");
 nspecialstun = hit_fx_create(sprite_get("nspecial_stun"), 40); 
-arena_title = "The Red Wonder";
+arena_title = "The Red Marvel";
 otto_bobblehead_sprite = sprite_get("hudbobblehead");
 otto_bobblehead_body_sprite = sprite_get("hudbobblebody");
 kirbyability = 16;

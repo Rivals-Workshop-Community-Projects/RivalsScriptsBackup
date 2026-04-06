@@ -13,6 +13,10 @@ if attack == AT_USTRONG {
 	set_attack_value(AT_USTRONG, AG_CATEGORY, 2);
 }
 
+if attack == AT_FSPECIAL {
+	fspecialangle = 0;
+}
+
 //Stance change: change attacks depending on whether Tape has the dispenser or not
 if nodispenser {
 
@@ -47,12 +51,23 @@ if nodispenser {
 	}
 	
 	if attack == AT_DSPECIAL {
-		if free {
-			attack = AT_DSPECIAL_2;
-			window = 1;
-			window_timer = 0;
-		}
+		attack = AT_DSPECIAL_2;
+		window = 1;
+		window_timer = 0;
 	}
+	
+	if attack == AT_DSPECIAL_2 && free {
+		attack = AT_EXTRA_1;
+		window = 1;
+		window_timer = 0;
+	}
+	
+	if attack == AT_FSPECIAL {
+		attack = AT_FSPECIAL_2;
+		window = 1;
+		window_timer = 0;
+	}	
+	
 	if attack == AT_NAIR {
 		attack = AT_NTHROW;
 		window = 1;

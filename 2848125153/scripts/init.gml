@@ -205,11 +205,8 @@ takearideontherailroad = false;
 dattackboost =  false;
 sfx_rest = sound_get("rest_hit");
 sfx_dice1 = sound_get("dice 1");
-moneysfx1 = sound_get("money_pickup2");
-moneysfx2 = sound_get("money_pickup3");
-moneybaghitsfx = sound_get("moneybag_hit");
-moneybaghitsfx2 = sound_get("moneybag_hit2");
-moneybagsfx = sound_get("moneybag_money");
+moneysfx1 = sound_get("money_pickup2");moneysfx2 = sound_get("money_pickup3");moneylandsfx = sound_get("money_land");
+moneybaghitsfx = sound_get("moneybag_hit");moneybaghitsfx2 = sound_get("moneybag_hit2");moneybagsfx = sound_get("moneybag_money");
 soldsfx = sound_get("soldsfx");
 upb = false;
 dairhitbox = noone;DairBounce = 0;DairBounceHits = 0;
@@ -235,6 +232,10 @@ fs_meter_x = 0;
 fs_meter_y = -26;
 finalsmashnum = 0;
 finalsmashtimer = 0;
+
+stock_icon = sprite_get("stockicon");
+stock_pixel =  asset_get("hud_black_pixel");
+hud_death_timer = 0;
 
 runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF = false; runeG = false; runeH = false; runeI = false; runeJ = false; runeK = false; runeL = false; runeM = false; runeN = false; runeO = false; runesUpdated = false;
 //runeK = true;runesUpdated = true;

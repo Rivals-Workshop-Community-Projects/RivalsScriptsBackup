@@ -7,7 +7,7 @@ set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FAIR, AG_MUNO_ATTACK_MISC_ADD, "hello - this move has AUTOCANCEL at window 5. because of the way it is implemented, it might look wrong in munobird. i assure you it works. FAIR LANDING LAG IS 9, AND AUTOCANCEL MAKES IT 4.");
 
 //start
-set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 13);//13//15//14
+set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 13);//13//15//14//13
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 1, AG_WINDOW_HAS_SFX, 1);
@@ -45,7 +45,7 @@ set_window_value(AT_FAIR, 5, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 
 
-set_num_hitboxes(AT_FAIR, 7); 
+set_num_hitboxes(AT_FAIR, 5); 
 
 var hb_damage = 13;//10
 var hb_angle = 45;//50
@@ -53,6 +53,7 @@ var hb_bkb = 6;
 var hb_kbg = 0.95;//1.0
 var hb_bhp = 8;
 var hb_hpg = 0.5;
+var hb_hsm = 1;//0.95;
 
 //cleanhit
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
@@ -72,6 +73,7 @@ set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, hb_bhp);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, hb_hpg);
+set_hitbox_value(AT_FAIR, 1, HG_HITSTUN_MULTIPLIER, hb_hsm);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
@@ -80,10 +82,10 @@ set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 2);
-set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 34);//46
-set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -55);//-56
-set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 47);//72
-set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 59);//57
+set_hitbox_value(AT_FAIR, 2, HG_HITBOX_X, 46);//46//34
+set_hitbox_value(AT_FAIR, 2, HG_HITBOX_Y, -56);//-56//-55
+set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 72);//72//47
+set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 57);//57//59
 set_hitbox_value(AT_FAIR, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, hb_damage);
 set_hitbox_value(AT_FAIR, 2, HG_ANGLE, hb_angle);
@@ -94,9 +96,10 @@ set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_FAIR, 2, HG_BASE_HITPAUSE, hb_bhp);
 set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, hb_hpg);
+set_hitbox_value(AT_FAIR, 2, HG_HITSTUN_MULTIPLIER, hb_hsm);
 set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-//weak
+//weak, deactivated
 set_hitbox_value(AT_FAIR, 6, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 6, HG_WINDOW, 3);
 set_hitbox_value(AT_FAIR, 6, HG_LIFETIME, 2);
@@ -122,10 +125,10 @@ set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 3);
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 2);
-set_hitbox_value(AT_FAIR, 3, HG_HITBOX_X, 38);//52
-set_hitbox_value(AT_FAIR, 3, HG_HITBOX_Y, -13);//-14
-set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 40);//68
-set_hitbox_value(AT_FAIR, 3, HG_HEIGHT, 62);//66
+set_hitbox_value(AT_FAIR, 3, HG_HITBOX_X, 52);//52//38
+set_hitbox_value(AT_FAIR, 3, HG_HITBOX_Y, -14);//-14//-13
+set_hitbox_value(AT_FAIR, 3, HG_WIDTH, 68);//68//40
+set_hitbox_value(AT_FAIR, 3, HG_HEIGHT, 66);//66//62
 set_hitbox_value(AT_FAIR, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, hb_damage);
 set_hitbox_value(AT_FAIR, 3, HG_ANGLE, hb_angle);
@@ -136,9 +139,10 @@ set_hitbox_value(AT_FAIR, 3, HG_BASE_KNOCKBACK, hb_bkb);
 set_hitbox_value(AT_FAIR, 3, HG_KNOCKBACK_SCALING, hb_kbg);
 set_hitbox_value(AT_FAIR, 3, HG_BASE_HITPAUSE, hb_bhp);
 set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, hb_hpg);
+set_hitbox_value(AT_FAIR, 3, HG_HITSTUN_MULTIPLIER, hb_hsm);
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-//weak
+//weak, deactivated
 set_hitbox_value(AT_FAIR, 7, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 7, HG_WINDOW, 3);
 set_hitbox_value(AT_FAIR, 7, HG_WINDOW_CREATION_FRAME, 2);

@@ -9,7 +9,6 @@ if (cookieGet > 0) cookieGet -= .35;
 if (cookieGet > 0 && lastCookieGained != -1) {
     var draw_y = y - 80 - (5 - cookieGet); 
     
-    // Alpha fade out
     var draw_alpha = 1; 
 
     draw_sprite_ext(sprite_get("cookiemeter"), lastCookieGained * 2, x, draw_y, 1, 1, 0, c_white, draw_alpha);
@@ -40,9 +39,14 @@ if ((state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && attack == AT_NSPECI
 	}
 }
 
-
-
 /*
+with (asset_get("pHitBox")) {
+	if (attack == AT_FSPECIAL) {
+			draw_debug_text(x, y + 60, string(eggBounce));
+	}
+}
+
+
 draw_debug_text( x, y + 20, string(spincharge));
 draw_debug_text( x, y + 40, string(spincool));
 */

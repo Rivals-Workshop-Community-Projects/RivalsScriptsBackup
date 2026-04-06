@@ -15,3 +15,11 @@ if (state == PS_LAND) and (state_timer == 1) {
 if risestopstupid == 1 && !free || (state == PS_RESPAWN) {
 	risestopstupid = 0;
 }
+
+with (pHitBox) {
+    if (player_id == other.id) {
+        if (attack == AT_NSPECIAL) {
+            other.move_cooldown[AT_NSPECIAL] = 20; 
+        }
+    }
+}

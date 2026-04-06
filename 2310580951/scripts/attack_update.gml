@@ -381,8 +381,21 @@ if (attack == AT_DSPECIAL) {
 	if (window == 3 && window_timer == 1) {
 		super_armor = false;
 	}
+	
+	if (window == 3 && window_timer == 3 && !hitpause) {
+		if free vsp = clamp(vsp, -100, -1);
+	}
+	
 	if (window == 4 && window_timer == 3 && !hitpause && !has_hit) {
 		sound_play(sound_get("metal3"));
+	}
+	
+	if (window == 8) && has_hit {
+		can_attack = true;
+		can_jump = true;
+		can_shield = true;
+		can_strong = true;
+		can_ustrong = true;
 	}
 }
 
@@ -612,6 +625,13 @@ if !hitpause {
 			}
 		if window == 7 && window_timer == 6 {
 			spawn_base_dust(x+10*spr_dir, y, "dash", spr_dir);
+			}
+	}
+	
+	if attack == AT_DSPECIAL && !free {
+		if window == 3 && window_timer == 2 {
+			spawn_base_dust(x, y, "land", spr_dir);
+			spawn_base_dust(x+30*spr_dir, y, "dash_start", -spr_dir);
 			}
 	}
 	

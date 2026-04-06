@@ -1,4 +1,5 @@
 //USHR ARTICLE1 UPDATE
+//this is the raincloud
 
 if (!init){
 	sound_play(asset_get("sfx_absa_cloud_place"))
@@ -13,12 +14,20 @@ if (applied_player_id != -4){
 	y = applied_player_id.y+applied_player_id.vsp;
 }
 
+if (cloud_lifetimer>0){
+	print(string(cloud_lifetimer));
+	cloud_lifetimer--;
+}
 //hsp = hsp-(cloud_air_friction*sign(hsp));
 //vsp = vsp-(cloud_air_friction*sign(vsp));
 hsp = hsp*cloud_air_friction_mult;
 vsp = vsp*cloud_air_friction_mult;
 if (ice_timer==0){
-vsp += -0.035;
+	if (cloud_lifetimer>0){
+		//vsp += -0.06;
+		//vsp += -0.035;
+		vsp += -0.05;
+	}
 }
 
 //distance calculator

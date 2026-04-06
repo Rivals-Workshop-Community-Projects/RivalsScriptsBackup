@@ -68,7 +68,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 12);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FSPECIAL, 1, HG_THROWS_ROCK, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_THROWS_ROCK, 1);
 
 set_hitbox_value(AT_FSPECIAL, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 1);
@@ -96,6 +96,7 @@ set_hitbox_value(AT_FSPECIAL, 3, HG_THROWS_ROCK, 2);
 
 //reflector
 set_hitbox_value(AT_FSPECIAL, 2, HG_PARENT_HITBOX, 0);
+set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_FSPECIAL, 2, HG_LIFETIME, 4);

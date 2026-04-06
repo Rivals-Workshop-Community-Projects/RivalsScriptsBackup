@@ -331,6 +331,12 @@ if (!ushr_handled_victory_quote)
         case "3634804592": // Snowé i feel like her name coulda've been Snowée or something or is that my french-learning brain speaking
             quote = "Wha-? Miss, are you like, my, distant aunt, maybe?";
             break;
+        case "2199519462": // Amarelle
+            quote = "Umm, I think the pie is burnt. It smells like burnt food...";
+            break;
+        case "2262715898": // Cheese Wheel
+            quote = "That was a high-calorie battle!";
+            break;
         case "2817605804": // Jerma
             quote = "Hey, y'know- don't say, s-swears!"; //LET'S GO! jerma vs star_ jerma vs star_ everybody wants to see this happen jerma vs star_
             break;
@@ -597,6 +603,7 @@ return quote
         case "3349586897": // Tekt
         case "2282173822": // Trummel Alto 2
         case "1933111975": // Trummel Alto 1
+        case "2262715898": // Cheese Wheel
             icon = 10;
             break;
             
@@ -628,6 +635,7 @@ return quote
         case "2787737701": // Sinker
         case "2867341866": // Aur
         //case "3633964303": // Lumi
+        case "2199519462": // Amarelle
             icon = 14;
             break;
         

@@ -4,11 +4,56 @@ if (my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num == 3) {
 	tapes -= 1;
 }
 
+if (hit_player_obj.taped == true) {
+	if (my_hitboxID.attack == AT_JAB)
+	|| (my_hitboxID.attack == AT_UTILT)
+	|| (my_hitboxID.attack == AT_DTILT)
+	|| (my_hitboxID.attack == AT_FAIR)
+	|| (my_hitboxID.attack == AT_UAIR)
+	|| (my_hitboxID.attack == AT_USTRONG)
+	|| (my_hitboxID.attack == AT_FSPECIAL)
+	
+	|| (my_hitboxID.attack == AT_FTHROW)
+	|| (my_hitboxID.attack == AT_DTHROW)
+	|| (my_hitboxID.attack == AT_NTHROW)
+	|| (my_hitboxID.attack == AT_UTHROW)
+	|| (my_hitboxID.attack == AT_DSTRONG_2)
+	|| (my_hitboxID.attack == AT_FSTRONG_2)
+	|| (my_hitboxID.attack == AT_AT_EXTRA_2 && 2 >= my_hitboxID.hbox_num)
+	|| (my_hitboxID.attack == AT_USPECIAL_2)
+	|| (my_hitboxID.attack == AT_FSPECIAL_2) {
+		take_damage( player, -1, -3);
+		sound_play(sound_get("sfx-tape-3"));
+	}
+}
+
+//taped
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1)
+	|| (my_hitboxID.attack == AT_EXTRA_2 && my_hitboxID.hbox_num >= 3)
+	|| (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) {
+	hit_player_obj.taped = true;
+	sound_play(sound_get("sfx-tape-1"));
+}	else {
+	hit_player_obj.taped = false;
+}
+
 //FSpecial
-if (my_hitboxID.attack == AT_FSPECIAL) {
+if (my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) {
+	take_damage( player, -1, 3);
+}
+
+if (my_hitboxID.attack == AT_FSPECIAL_2) {
 	attack_end();
 	move_cooldown[AT_USPECIAL_2] = 20;
 }
+
+if (my_hitboxID.attack == AT_USPECIAL) {
+	if my_hitboxID.hbox_num == 1 {
+			my_hitboxID.vsp = -6;
+			my_hitboxID.hitbox_timer = my_hitboxID.length-10;
+	}
+}
+
 
 //hit_player.gml
 if (my_hitboxID.attack == AT_USTRONG) {

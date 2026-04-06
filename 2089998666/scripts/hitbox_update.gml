@@ -39,9 +39,10 @@ if (attack == AT_FSPECIAL) {
 		//bounce
 		if (bounce_occurred) {
 				if (!was_parried) {
-					eggBounce += 1;
+					eggBounce++;
 					damage += 1;
 					kb_value += 1;
+					hitbox_timer -= 5;
 			}
 			with player_id sound_play(sound_get("smrpg_mario_kick"), false, noone, 1, 1 + (other.eggBounce * 0.1));
 		}
@@ -61,7 +62,7 @@ if (attack == AT_FSPECIAL) {
 			if other.hitbox_timer == 1 {
 			other.hitbox_timer += 18;
 			other.damage += 1;
-			other.eggBounce += 1;
+			other.eggBounce++;
 			other.hsp *= 1.5;
 			other.vsp *= .9;
 			}
@@ -75,15 +76,6 @@ if (attack == AT_FSPECIAL) {
 				create_hitbox(AT_FSPECIAL, 2, round(other.x), round(other.y));
 			}
 			destroyed = true;
-		}
-		
-
-	}
-	if hbox_num == 2 {
-		with (asset_get("pHitBox")) {
-			if (attack == AT_FSPECIAL && hbox_num == 1 && was_parried) {
-				other.player = player;
-			}
 		}
 	}
 }
@@ -186,7 +178,12 @@ if (attack == AT_DSPECIAL && hbox_num == 1) {
 				for (var i = 0; i < 5; i++) can_hit[i] = 1;
 				hsp = lengthdir_x(incoming_hbox.kb_value, get_hitbox_angle(incoming_hbox)) * 1.2;
 				vsp = lengthdir_y(incoming_hbox.kb_value, get_hitbox_angle(incoming_hbox)) * 1.2;
-				
+
+
+				hit_flipper = 3;		
+				damage = 4;
+				kb_value = 7;
+				kb_scale = .45;
 				cookie_state = 0; 
 				hit_priority = 1; // Becomes dangerous again
 				hitbox_timer = 0;

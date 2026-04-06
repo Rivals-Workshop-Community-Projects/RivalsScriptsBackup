@@ -259,6 +259,15 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.94", "3rd April, 2026");
+initHeader("Buffs");
+initSection("+ Added a silly upwards windbox to UTilt
++ DSpecial rift is now unpocketable after a bit of time (it was somehow still pocketable the whole time so uh)");
+initHeader("Nerfs");
+initSection("- Nerfed size and knockback scaling a bit on the BAir windbox (it's been a bit too good for a while lol)");
+initHeader("Fixes / Other Changes");
+initSection("+ Added stock icon");
+
 initPatch("1.93", "19th November, 2025");
 initHeader("Buffs");
 initSection("+ Added windbox immunity to DSpecial time rift");

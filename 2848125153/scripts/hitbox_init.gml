@@ -1,8 +1,7 @@
 //hitbox_init
 
 dir = player_id.spr_dir;
-num = 0;
-num2 = 0;
+num = 0;num2 = 0;
 
 originalplayer = player_id;
 reflect = false;
@@ -10,6 +9,7 @@ reflect_distance = 0;
 reflected = 0;
 last_player_reflected = [];
 
+hittimer = -1;re_hittimer = 30;
 MattCanGrab = false;
 MattStar = false;
 CalCanSnack = false;
@@ -19,14 +19,9 @@ UnReflectable = false;
 playerurl = 0;
 if("thedice" not in self)thedice = noone;
 landtimer = 0;
-dicearmororig = 1;
-dicearmor = 1;
-dicearmor2 = 0;
-dicetimer = 0;
+dicearmororig = 1;dicearmor = 1;dicearmor2 = 0;dicetimer = 0;
 
-crit = false;
-critboost_dmg = 1;
-critboost_kb_scale = 1;
+crit = false;critboost_dmg = 1;critboost_kb_scale = 1;
 
 if("KoB_grabbed" not in self)KoB_grabbed = false;
 KoB_was_grabbed = false;

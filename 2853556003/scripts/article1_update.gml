@@ -250,7 +250,7 @@ if(state == 0){
 							other.hurricane_hitbox.destroyed = true
 						}
 		    		}
-		    	}else if(attack == AT_FSPECIAL && hbox_num == 1 && other.lifetime > 10){
+		    	}else if(attack == AT_FSPECIAL && hbox_num == 1 && other.lifetime > 10 && has_rune("J")){ //Riptide
 		    		if(!player_id.hitpause){
 						player_id.old_hsp = player_id.hsp;
 						player_id.old_vsp = player_id.vsp;

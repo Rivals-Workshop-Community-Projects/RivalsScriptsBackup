@@ -12,7 +12,7 @@ if (attack == AT_NSPECIAL){
     if(window == 1 && !hitpause){
     	if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)-8 && special_down){
     		window_timer -= 1;
-    	}else{KoB_reverse();}
+    	}if(window_timer <= 8)KoB_reverse();
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         	if(!instance_exists(thedice1) || !instance_exists(thedice2)){
         		sound_play(asset_get("sfx_swipe_medium1"));
@@ -108,7 +108,7 @@ if (attack == AT_NSPECIAL){
 	if(window == 1){
 		if(window_timer == 1){
 			move_cooldown[AT_USPECIAL] = 999;uspectime = 0;
-		}KoB_reverse();
+		}if(window_timer <= 8)KoB_reverse();
 		if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			//if(!jailcard){
 				uspecnum = random_func(0, 100, true);
@@ -397,7 +397,7 @@ if (attack == AT_NSPECIAL){
 }else if (attack == AT_DSPECIAL){
 	can_fast_fall = false;
     if(window == 1){
-        KoB_reverse();
+        if(window_timer <= 8)KoB_reverse();
     }else if(window == 2 && !hitpause){
     	dspec_charge += 1;
     	if(dspec_charge < 30 && current_money >= 5000*discount || current_money < 10000*discount){

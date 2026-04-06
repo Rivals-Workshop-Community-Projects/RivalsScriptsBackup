@@ -2,7 +2,7 @@ sound_stop(voice);
 
 upb = false;move_cooldown[AT_USPECIAL] = 0;
 diceluck = 0;takearideontherailroad = false;
-//jailcard = false;
+hud_death_timer = 44;
 
 current_money2 = current_money;
 

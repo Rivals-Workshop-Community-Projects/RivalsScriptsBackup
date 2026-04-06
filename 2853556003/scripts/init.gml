@@ -631,12 +631,7 @@ if(has_rune("H") || all_runes){
 
 //I Wavesplash
 
-//Whetstone, RIPTIDE stronger across the board and summon on hit from Fspecial
-if(has_rune("J") || all_runes){
-	sawblade_speed += 5 //Riptide groundspeed
-	sawblade_jumpspeed -= 2 //Riptide jumpspeed
-	sawblade_damage += 1 //Damage for each sawblade hit
-}
+//Whetstone, RIPTIDE
 
 //K Spacesuit
 if(has_rune("K") || all_runes){

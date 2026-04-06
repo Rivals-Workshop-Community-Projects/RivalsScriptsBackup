@@ -17,7 +17,7 @@ if(!runeL || runeL && (state > 2 || state == 2 && timer >= 110)){
 if(player_id.time_rift_dmg >= 25 && state != 5 && !waspocketed && !runeA){
 	state = 5;timer = 0;
 }
-
+Pocketable = state == 0 && timer <= 90;
 if(state == 0){ //waiting
     if(timer % 2 == 0 && image_index < 5){
 		image_index += 1;

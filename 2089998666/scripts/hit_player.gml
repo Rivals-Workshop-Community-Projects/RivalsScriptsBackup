@@ -57,4 +57,5 @@ if (my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1) {
 
 if (my_hitboxID.attack == AT_FTHROW) {
     djumps = 0;
+	move_cooldown[AT_NSPECIAL] = 10;
 }

@@ -189,8 +189,8 @@ vigiStep = sound_get("vigistep2");
 //Compat and Alts
 miiverse_post = sprite_get("miiverse");
 sonic_rainbowring_atk = 46;
-//pizzaTVcontent = sprite_get("pizzaTV_content");
-//pizzaTVbounce = sprite_get("pizzaTV_bounce");
+pizzaTVcontent = sprite_get("pizzaTV_content");
+pizzaTVbounce = sprite_get("pizzaTV_bounce");
 
 
 

@@ -62,6 +62,10 @@ if (var_localstorage==3){//D
 		case 3:
 		draw_sprite_ext(sprite_get("z_css_icons"),14,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
+		case 4:
+		case 5:
+		draw_sprite_ext(sprite_get("z_css_icons"),7,x+icon_x,y+icon_y,2,2,0,-1,1);
+		break;
 		case 6:
 		case 7:
 		case 8:
@@ -330,8 +334,10 @@ if (reset_color_list == true){
 	ce[12,1] = "Windrose"
 	ce[13,0] = make_color_rgb(240, 96, 102)
 	ce[13,1] = "Raincoat Poppy"
-	ce[14,0] = make_color_rgb(189, 64, 78)
-	ce[14,1] = "Syndrome+"
+	//ce[14,0] = make_color_rgb(189, 64, 78)
+	//ce[14,1] = "Syndrome+"
+	ce[14,0] = make_color_rgb(176, 80, 74)
+	ce[14,1] = "Ashveil"
 	ce[15,0] = make_color_rgb(79, 104, 214)
 	ce[15,1] = "Snowball"
 	ce[16,0] = make_color_rgb(49, 184, 155)
@@ -351,9 +357,9 @@ if (reset_color_list == true){
 	ce[3,0] = make_color_rgb(255, 77, 77)
 	ce[3,1] = "Pseudogenesis"
 	ce[4,0] = make_color_rgb(51, 255, 242)
-	ce[4,1] = "Infamous"
-	ce[5,0] = make_color_rgb(176, 80, 74)
-	ce[5,1] = "Ashveil"
+	ce[4,1] = "Rivals-y Infamous"
+	ce[5,0] = make_color_rgb(124, 135, 135)
+	ce[5,1] = "Rivals-y Steampunk"
 	ce[6,0] = make_color_rgb(64, 76, 247)
 	ce[6,1] = "Cora Overwater"
 	ce[7,0] = make_color_rgb(146, 255, 51)

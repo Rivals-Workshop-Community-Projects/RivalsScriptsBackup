@@ -138,6 +138,10 @@ runeA = false; runeB = false; runeC = false; runeD = false; runeE = false; runeF
 runeC_charge_multiplier = 1.0;
 runeC_charge_multiplier2 = 1.0;
 
+stock_icon = sprite_get("stockicon");
+stock_pixel =  asset_get("hud_black_pixel");
+hud_death_timer = 0;
+
 //runeN = true;runeO = true;runesUpdated = true;
 //runeA = true; runeB = true runeC = true; runeD = true; runeE = true; runeF = true; runeG = true; runeH = true; runeI = true; runeJ = true; runeK = true; runeL = true; runeM = true; runeN = true; runeO = true;
 

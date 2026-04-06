@@ -7,12 +7,12 @@ set_attack_value(AT_BAIR, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_BAIR, AG_MUNO_ATTACK_MISC_ADD, "hello - this move has AUTOCANCEL at window 5. because of the way it is implemented, it might look wrong in munobird. i assure you it works. BAIR LANDING LAG IS 8, AND AUTOCANCEL MAKES IT 4.");
 
 //start
-set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 5);//3//4
+set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 6);//3//4//5
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_BAIR, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_BAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
-set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 3);//1//2
+set_window_value(AT_BAIR, 1, AG_WINDOW_SFX_FRAME, 4);//1//2//3
 
 //anticipation
 set_window_value(AT_BAIR, 2, AG_WINDOW_LENGTH, 2);
@@ -69,7 +69,8 @@ set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);//5//6.5
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.75);//0.75
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 10);//ranno bair value
-set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.5);//3
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, 0.6);//3
+set_hitbox_value(AT_BAIR, 1, HG_HITSTUN_MULTIPLIER, 0.9);
 set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 304);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 

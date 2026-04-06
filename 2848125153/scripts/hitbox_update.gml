@@ -801,7 +801,7 @@ if(attack == AT_DSPECIAL){
 
 if(attack == AT_JAB){
 	through_platforms = 999;fall_through = true;money_timer += 1;
-	if(hbox_num == 10){
+	if(hbox_num == 10){ //aerial riches
 		hsp *= 0.95;vsp *= 0.95;spr_dir = hsp>0?1:-1;
 		if(!KoB_grabbed && hit_priority > 0)projectile_trail();
 		if(hitbox_timer >= 10){
@@ -812,19 +812,16 @@ if(attack == AT_JAB){
 			destroyed = true;
 			var pile = create_hitbox(AT_JAB, 11, round(x), round(y+8));
             pile.value = value;pile.hitbox_timer = hitbox_timer;pile.init = false;
-			sound_play(sound_get("money_land"),false,noone,2);
+			sound_play(player_id.moneylandsfx,false,noone,2);
 		}
 		var distance = point_distance(x, y, player_id.x, player_id.y - 30);
 		if(hitbox_timer >= 70 && (!player_id.runeK && distance < 90 || player_id.runeK && distance < 300)
 		&& player_id.state != PS_HITSTUN && player_id.state != PS_HITSTUN_LAND && player_id.state != PS_PRATFALL && player_id.state != PS_PRATLAND && player_id.state != PS_DEAD && player_id.state != PS_RESPAWN){
 			var angle = point_direction(x, y, player_id.x, player_id.y - 30);
-			hsp = lengthdir_x(5, angle);
-			vsp = lengthdir_y(5, angle);
+			hsp = lengthdir_x(5, angle);vsp = lengthdir_y(5, angle);
 		}
-		if (y >= room_height+500 || x >= room_width+1000 || x < -1000) {
-			destroyed = true;
-		}
-	}else if(hbox_num == 11){
+		if (y >= room_height+500 || x >= room_width+1000 || x < -1000) destroyed = true;
+	}else if(hbox_num == 11){ //pile
 		if(hitbox_timer >= 100)depth = -2;
 		if(free){
 			num += 1;
@@ -901,20 +898,13 @@ if(attack == AT_JAB){
 }
 
 if(attack == AT_DATTACK){
-	if("Pocketed" not in self){Pocketed = false;}
+	if("Pocketed" not in self)Pocketed = false;
+	projectile_rehit();
 	if(hbox_num == 4 && !Pocketed){
 		hitbox_timer = 0;
 		if(!KoB_grabbed)projectile_trail();
-		with(player_id){
-			move_cooldown[AT_DATTACK] = 30;
-		}
-		/*if(abs(hsp) < 10){
-			hsp += 0.3*spr_dir;
-		}else if(abs(hsp) < 16){
-			hsp += 0.15*spr_dir;*/
-		//}else{
-			hsp += 0.05*spr_dir;
-		//}
+		with(player_id)move_cooldown[AT_DATTACK] = 30;
+		hsp += 0.05*spr_dir;
 		if(abs(hsp) > 14 || abs(vsp) > 14){
 			kb_value = 8;kb_scale = 1.0*critboost_kb_scale;
             hitstun_factor = 1;damage = 8*critboost_dmg;kb_angle = 361;if(player_id.runeJ){random_angle();}
@@ -937,12 +927,7 @@ if(attack == AT_DATTACK){
 			num = 3;
 			hit_priority = 0;
 		}
-		/*if(!instance_exists(thedice) || instance_exists(thedice) && thedice.hbox_num != num+4){
-			if(instance_exists(thedice)){
-				thedice.destroyed = true;
-			}
-			thedice = create_hitbox(AT_DATTACK, num+4, x, y);
-		}*/
+		
 		if(instance_exists(thedice)){
 			thedice.x = x;thedice.y = y-16;thedice.spr_dir = spr_dir;
 			thedice.hsp = round(hsp);thedice.vsp = vsp;
@@ -955,64 +940,61 @@ if(attack == AT_DATTACK){
 			destroyed = true;
 		}
 		
-		/*if(instance_exists(thedice) && hit_priority > 0){*/
-	    	//thedice.x = x; thedice.y = y;
-    	    with(asset_get("pHitBox")){
-    	    	if(place_meeting(x,y,other/*.thedice*/)){
-    	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
-    	            && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack && (hbox_group != other.lasthitbox_group || hbox_group == -1))
-    	            || player_id != other.lasthitbox_player_id)
-    	            && other != self && effect != 100){
-    	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 /*&& !proj_break*/){
-	    	                other.hitplayertimer -= 10;
-	    	                other.hitlockout = 6;other.hitlockout2 = 10;
-	    	        		if(type <= 1){
-	    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
-	    	        			if(other.hitpausehit <= 0){
-	    	        				other.hitpausehit = 5;
-	    	        			}
-	    	        			other.hitstop = other.hitpausehit;
-	    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
-	                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
-	                			//player_id.has_hit = true;
-	                			//to make certain characters bounce
-				        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
-				   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
-				        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
-	    	        		}
-	    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
-	    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
-    	    		            other.current_player = player;other.player = player;
-    	    		            knockback_angle = kb_angle;
-	    	        			other.knockback_power = kb_value;
-    	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
-    	    		            if(other.hsp > 0){
-    	    		            	other.spr_dir = 1;
-    	    		            }else if(other.hsp < 0){
-    	    		            	other.spr_dir = -1;
-    	    		            }
-    	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
-    	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
-    	    		            }else{
-    	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
-    	    		            }
-    	    		            //if(other.vsp < 0 && !other.free){
-    	    		            	//other.y -= 5;
-    	    		            //}
-	    	        		}
-	    	                spawn_hit_fx(other.x, other.y, hit_effect);
-	    					sound_play(sound_effect);
-	    	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
-	    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
-    	            	}
-    	            }
-    	        }
-    	    }
-    	    if(instance_exists(lasthitbox_player_id)){
-    	    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
-    	    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
-    	    }
-	    //}
+	    with(asset_get("pHitBox")){
+	    	if(place_meeting(x,y,other/*.thedice*/)){
+	            if(other.hitlockout <= 0 && other.hitlockout2 <= 0 && self != other.lasthitbox
+	            && (player_id == other.lasthitbox_player_id && (attack != other.lasthitbox_attack || attack == other.lasthitbox_attack && (hbox_group != other.lasthitbox_group || hbox_group == -1))
+	            || player_id != other.lasthitbox_player_id)
+	            && other != self && effect != 100){
+	            	if(damage > 0 && kb_value > 0 && hit_priority > 0 /*&& !proj_break*/){
+    	                other.hitplayertimer -= 10;
+    	                other.hitlockout = 6;other.hitlockout2 = 10;
+    	        		if(type <= 1){
+    	        			other.hitpausehit = hitpause;other.in_hitpause = true;
+    	        			if(other.hitpausehit <= 0){
+    	        				other.hitpausehit = 5;
+    	        			}
+    	        			other.hitstop = other.hitpausehit;
+    	        			player_id.hitpause = true;player_id.hitstop = other.hitpausehit;
+                			player_id.old_hsp = player_id.hsp;player_id.old_vsp = player_id.vsp;
+                			//player_id.has_hit = true;
+                			//to make certain characters bounce
+			        		if("dairhitbox" in player_id && player_id.dairhitbox == self){with(player_id){
+			   		    		if(!up_down && !down_down){vsp = -9;old_vsp = vsp;}else if(up_down){vsp = -12;old_vsp = vsp;}else if(down_down){vsp = -7;old_vsp = vsp;}     				
+			        		}}if("DairBounce" in player_id){player_id.DairBounce = 1;}
+    	        		}
+    	        		if(player_id == other.originalplayer || player_id != other.originalplayer && type <= 1
+    	        		&& kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2 || type == 2 && kb_value+(kb_scale*6) > other.dicearmor+other.dicearmor2){
+	    		            other.current_player = player;other.player = player;
+	    		            knockback_angle = kb_angle;
+    	        			other.knockback_power = kb_value;
+	    		            other.hsp = cos(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5)*spr_dir;
+	    		            if(other.hsp > 0){
+	    		            	other.spr_dir = 1;
+	    		            }else if(other.hsp < 0){
+	    		            	other.spr_dir = -1;
+	    		            }
+	    		            if(!other.free && (knockback_angle > 180 && knockback_angle < 360)){
+	    		                other.vsp = -sin(degtorad(-knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+	    		            }else{
+	    		                other.vsp = -sin(degtorad(knockback_angle))*(other.knockback_power+(kb_scale*6)*1.5);
+	    		            }
+	    		            //if(other.vsp < 0 && !other.free){
+	    		            	//other.y -= 5;
+	    		            //}
+    	        		}
+    	                spawn_hit_fx(other.x, other.y, hit_effect);
+    					sound_play(sound_effect);
+    	                other.lasthitbox = id;other.lasthitbox_player_id = player_id;other.lasthitbox_group = hbox_group;other.lasthitbox_attack = attack;other.hitbox_timer = 0;
+    	                other.can_hit[1] = true;other.can_hit[2] = true;other.can_hit[3] = true;other.can_hit[4] = true;
+	            	}
+	            }
+	        }
+	    }
+	    if(instance_exists(lasthitbox_player_id)){
+	    	if(lasthitbox_player_id.state != PS_ATTACK_GROUND && lasthitbox_player_id.state != PS_ATTACK_AIR 
+	    	|| (lasthitbox_player_id.state == PS_ATTACK_GROUND || lasthitbox_player_id.state == PS_ATTACK_AIR) && lasthitbox_player_id.window == 1 && lasthitbox_player_id.window_timer == 1)lasthitbox_player_id = noone;
+	    }
 	    if(hitstop <= 0){
 	    	in_hitpause = false;hitlockout -= 1;
 	    	if (instance_exists(lasthitbox)) {
@@ -1098,7 +1080,7 @@ if(attack == AT_BAIR){
 		angle = darctan2(-vsp * spr_dir, hsp * spr_dir);proj_angle = angle;
 		if(!KoB_grabbed)projectile_trail();
 		if(vsp > 5){ //spike
-			kb_angle = 270;if(player_id.runeJ){random_angle();}
+			kb_angle = 270;if(player_id.runeJ)random_angle();
 	    	if(hbox_num == 3){
 	    		kb_value = 4;kb_scale = 0.3*critboost_kb_scale;
 	    	}else if(hbox_num == 4){
@@ -1116,9 +1098,9 @@ if(attack == AT_BAIR){
 	    	}
 		}
 		if(vsp < -5){ //up angle
-			kb_angle = 90;if(player_id.runeJ){random_angle();}
+			kb_angle = 90;if(player_id.runeJ)random_angle();
 		}else if(vsp < 5){ //horizontal angle
-			kb_angle = 45;if(player_id.runeJ){random_angle();}
+			kb_angle = 45;if(player_id.runeJ)random_angle();
 		}
 		
 		with(asset_get("pHitBox")){
@@ -1159,7 +1141,6 @@ if(attack == AT_BAIR){
 		    	}
         	}
         }
-        //print(Pocket_hud_imageindex);
 	}
 }
 
@@ -1251,6 +1232,11 @@ draw_xscale = spr_dir;
         	var trail = spawn_hit_fx(x, y, traileff2);trail.spr_dir = spr_dir;trail.draw_angle = angle;
         }
     }
+
+#define projectile_rehit
+	if(hittimer > -1 && hitstop <= 0){
+		hittimer -= 1;if(hittimer <= 0){for (var i = 0; i < 20; i++) can_hit[i] = true;}
+	}
 
 #define random_angle
 	kb_angle = random_func(0, 360, true);

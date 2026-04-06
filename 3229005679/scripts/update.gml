@@ -59,7 +59,7 @@ if (state == PS_IDLE && state_timer == wait_time - 1){
     }
 }
 
-if (state_cat == SC_AIR_NEUTRAL && taunt_pressed && move_cooldown[AT_TAUNT] == 0 && !down_down){
+if ((state_cat == SC_AIR_NEUTRAL || (attack == AT_FSPECIAL && window == 5)) && taunt_pressed && move_cooldown[AT_TAUNT] == 0 && !down_down){
     set_attack(AT_TAUNT);
 }
 

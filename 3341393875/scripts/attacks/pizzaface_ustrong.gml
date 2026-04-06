@@ -180,7 +180,7 @@ set_hitbox_value(atk, hitbox_num, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(atk, hitbox_num, HG_HITPAUSE_SCALING, 0.9);
 set_hitbox_value(atk, hitbox_num, HG_VISUAL_EFFECT, 204);
 set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
-set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(atk, hitbox_num, HG_HIT_LOCKOUT, 4);
 //set_hitbox_value(atk, hitbox_num, HG_HIT_SFX, 0); //done on hit_player.gml
 
 set_num_hitboxes(atk, hitbox_num);

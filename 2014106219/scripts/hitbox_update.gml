@@ -30,7 +30,6 @@ if (attack == AT_DSPECIAL_2) {
 	}
 }
 
-
 /*
 if (attack == AT_FSPECIAL) {
 	if hbox_num == 1 {

@@ -6,6 +6,7 @@ hitstop = 0;
 old_vsp = 0;
 old_hsp = 0;
 obaboDirection = 1;
+boomerdenied = false;
 
 if (attack == AT_NSPECIAL) {
 	if hbox_num == 1 {

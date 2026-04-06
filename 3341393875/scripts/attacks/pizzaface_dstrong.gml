@@ -51,7 +51,7 @@ set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, HFX_MAY_WHIP);
 set_hitbox_value(AT_DSTRONG, 1, HG_HIT_SFX, asset_get("sfx_may_whip1"));
 set_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITSTUN_MULTIPLIER, 1.0);
-set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DSTRONG, 1, HG_HIT_LOCKOUT, 4);
 
 set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
@@ -75,7 +75,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, HFX_MAY_WHIP);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_may_whip1"));
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITSTUN_MULTIPLIER, 1.0);
-set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DSTRONG, 2, HG_HIT_LOCKOUT, 4);
 
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 3);
@@ -97,4 +97,4 @@ set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, HFX_MAY_LEAF_BIG);
 set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_may_whip2"));
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE_FLIPPER, 0);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITSTUN_MULTIPLIER, 1.0);
-set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 6);
+set_hitbox_value(AT_DSTRONG, 3, HG_HIT_LOCKOUT, 4);

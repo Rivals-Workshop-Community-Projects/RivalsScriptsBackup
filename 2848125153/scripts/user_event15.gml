@@ -318,6 +318,13 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.44", "3rd April, 2026");
+initHeader("Skillful Buffs");
+initSection("+ DAttack choo choo can now hit multiple times");
+initHeader("Fixes / Other Changes");
+initSection("+ Shortened the b-reverse windows for NSpecial, FSpecial, and DSpecial a little bit
++ Added stock icon");
+
 initPatch("1.43", "26th November, 2025");
 initHeader("Skillful Buffs");
 initSection("+ DSpecial property no longer sets has_hit on players when hit by attacks");

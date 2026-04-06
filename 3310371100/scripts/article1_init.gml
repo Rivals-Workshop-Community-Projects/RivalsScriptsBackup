@@ -23,6 +23,8 @@ rain_bottom_dist = 0;
 applied_player_id = -4;
 stored_spr_dir = 0;
 
+cloud_lifetimer = 60*5;
+
 is_iced = false;
 ice_timer = 0;
 ice_timer_max = 40;//cooldown length basically

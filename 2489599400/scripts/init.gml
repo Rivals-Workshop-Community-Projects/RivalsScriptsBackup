@@ -106,6 +106,7 @@ tapes = 0;
 tapecool = 0;
 
 //init.gml
+fspecialangle = 0;
 grabbed_player_obj = noone;    //the player object currently being grabbed.
 grabbed_player_relative_x = 0; //the relative x and y position of the grabbed player, at the point they were grabbed.
 grabbed_player_relative_y = 0;   //we store this coordinate to smoothly reposition the grabbed player later.

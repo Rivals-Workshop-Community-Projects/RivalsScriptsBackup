@@ -4,7 +4,7 @@ set_attack_value(AT_UTILT, AG_HURTBOX_SPRITE, sprite_get("utilt_hurt"));
 set_attack_value(AT_UTILT, AG_NUM_WINDOWS, 5);
 
 //start
-set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 6);//4//5
+set_window_value(AT_UTILT, 1, AG_WINDOW_LENGTH, 5);//4//5
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_UTILT, 1, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_UTILT, 1, AG_WINDOW_HAS_SFX, 1);

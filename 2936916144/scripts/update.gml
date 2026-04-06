@@ -176,10 +176,23 @@ if ((x >= get_marker_x(3) && x <= get_marker_x(4)) || (x >= get_marker_x(5) && x
 }
 
 if (timer = 1) {
-    print(timer)
+    //print(timer)
     if (get_gameplay_time()%660 == 0){
         glados_taunt = 19
         timer = 0
-        print(timer)
+        //print(timer)
+}
+}
+
+//Code by Bulbaquaza to prevent characters from getting stuck on the top of the wall on Basic.
+if !is_aether_stage() {
+with (oPlayer) {
+            if (!free && y=-784) {
+                if (x<640) x = 540 else x = 740;{
+                y = -20;
+                vsp = 4;
+                print(y)
+            }
+        }
 }
 }

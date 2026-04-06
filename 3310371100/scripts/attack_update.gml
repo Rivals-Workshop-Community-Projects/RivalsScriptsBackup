@@ -28,6 +28,12 @@ if ( attack == AT_JAB ){
 	if (window == 2 && window_timer == 1){
 		if (!hitpause){
 			sound_play(sound_get("SWS1"),false,noone,0.5,1.1)
+			spawn_base_dust(x-(6*spr_dir), y, "dash")
+		}
+	}
+	if (window == 7 && window_timer == 1){
+		if (!hitpause){
+			spawn_base_dust(x-(6*spr_dir), y, "dash")
 		}
 	}
 	/*if (window == 4 && window_timer == 3){
@@ -187,7 +193,7 @@ if ( attack == AT_FAIR ){
 			}
 			if (sfxdid == false){
 				//sound_play(sound_get("SWB2"),false,noone,0.7,1)
-				sound_play(sound_get("SWB2"),false,noone,0.7,1.25)
+				sound_play(sound_get("SWB2"),false,noone,0.7,1.1)
 			}
 			//spawn_hit_fx( x+(90*spr_dir), y, hfx_splash )//yea this is where it woulda've been used, but it wasnt very good
 		}
@@ -798,6 +804,7 @@ if ( attack == AT_DSPECIAL_2 ){
 		}
 		var tmp_frame = get_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH);
 		if (window == 1 && window_timer == 1){
+			spawn_base_dust(x+(16*spr_dir), y, "dash_start", spr_dir)
 			move_is_fresh = true;
 			sound_play(asset_get("sfx_jumpground"),false,noone,1,1.1)
 			//sound_play(asset_get("sfx_charge_blade_ready"),false,noone,1,1.3)
@@ -818,7 +825,7 @@ if ( attack == AT_DSPECIAL_2 ){
 			dspecial_speed_timer = dspecial_speed_timer_max;
 		}
 		if (window == 2 || window == 3){
-			soft_armor = 6;
+			//soft_armor = 6;
 			//print(string(has_hit))
 			if (dspecial_speed_timer > 0){
 				var dsp_spd_h = ease_quadIn( 4, 8, dspecial_speed_timer, dspecial_speed_timer_max );
@@ -835,6 +842,13 @@ if ( attack == AT_DSPECIAL_2 ){
 		if (window >= 3 || window == 8){
 			can_wall_jump = true;
 		}
+		/*if (window == 3 || window == 4 || window == 5){
+			if (down_down){
+				vsp = min(vsp+0.2,max_fall+2);
+			}else{
+				vsp = min(vsp,max_fall);
+			}
+		}*/
 		if (window == 3 || window == 8){
 			if (!free){
 				if (dsp_bounce_count>=1 || !special_down){
@@ -912,7 +926,7 @@ if ( attack == AT_DSPECIAL_2 ){
 			can_fast_fall = false;
 		}
 		if (window == 4){
-			soft_armor = 0;
+			//soft_armor = 0;
 			if (window_timer == 1){
 				sound_play(asset_get("sfx_pigeon_spin"),false,noone,0.6,3)
 				destroy_hitboxes()

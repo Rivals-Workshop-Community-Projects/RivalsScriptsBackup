@@ -15,6 +15,17 @@ if (my_hitboxID.attack == AT_EXTRA_3 || my_hitboxID.attack == AT_NSPECIAL && my_
 	spawn_hit_fx(other.x-20*other.spr_dir, other.y-70, stung);
 }
 
+//FSpecial
+if (my_hitboxID.attack == AT_FSPECIAL) {
+	if my_hitboxID.hbox_num == 1 {
+		sound_stop(sound_get("scooter-vroom"));
+		if my_hitboxID.damage >= 2 {
+			my_hitboxID.damage--;
+		}
+		attack_end(AT_FSPECIAL);
+	}
+}
+
 //DSpecial
 if (my_hitboxID.attack == AT_DSPECIAL) {
 	attack_end();
