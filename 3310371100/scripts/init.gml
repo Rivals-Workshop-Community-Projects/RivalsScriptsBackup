@@ -191,6 +191,7 @@ steve_death_message = "Steve was slain by MooncakeFan2012"; //Thats Not Her Birt
 arena_title = "Pluvio Snowstroll"; boxing_title = arena_title; //holy frick
 battle_text = "* Today's weather is rain with a chance of rain.";
 I_would_not_like_Sephiroth_to_impale_my_character = true; //yes
+is_gorable = false; blood_col = make_colour_rgb(0, 0, 0);
 
 //alright char's done almost releasing waiting for trailer reveals it's time for more compats ya
 TCG_Kirby_Copy = 6; //water.
@@ -230,7 +231,9 @@ fx_ice_mist_C = hit_fx_create( sprite_get("ice_mist_C"), 96 );
 fx_ice_mist_D = hit_fx_create( sprite_get("ice_mist_D"), 96 );
 fx_ashe_trail = hit_fx_create(sprite_get("etc_ashe_trail"), 20);
 ex_pseudogenesis = false;
+ex_pseudogenesis_qual = false;
 ex_pseudogenesis_snd = -4;
+taunt_parry_storage = false;
 
 //victory quote thing - sscripts are unload.gml and results_post_draw.gml - scripts are taken from reiga mal but is from frtoud hypercam
 ushr_victory_quote = "-4";

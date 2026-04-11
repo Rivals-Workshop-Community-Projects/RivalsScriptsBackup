@@ -42,15 +42,15 @@ set_window_value(AT_DTILT, 6, AG_WINDOW_ANIM_FRAMES, 1);
 //hold
 set_window_value(AT_DTILT, 7, AG_WINDOW_LENGTH, 8);//6
 set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAME_START, 6);
-set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAMES, 1);
+set_window_value(AT_DTILT, 7, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 7, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //end
 set_window_value(AT_DTILT, 8, AG_WINDOW_LENGTH, 8);
-set_window_value(AT_DTILT, 8, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_DTILT, 8, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_DTILT, 8, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DTILT, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
-set_window_value(AT_DTILT, 8, AG_IASA_THIS_WINDOW, 1);
+//set_window_value(AT_DTILT, 8, AG_IASA_THIS_WINDOW, 1);
 set_window_value(AT_DTILT, 8, AG_MUNO_WINDOW_EXCLUDE, 1);
 
 

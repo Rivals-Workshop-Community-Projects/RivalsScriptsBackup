@@ -70,7 +70,7 @@ alt_names = [
 	"Catto",
 	"Dumb",
 	"Dan Backslide",
-	"Very Skillful",
+	"Skillager",
 	"Match My Shot",
 	"Emeralds",
 	];
@@ -259,10 +259,18 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.62", "4th April, 2026");
+initHeader("Nerfs");
+initSection("- If Villager grabs his own fireworks with the net, it will despawn quicker after firing (mostly just to prevent repeated use with net)
+- Fixed Villager's grab making his own projectiles stronger after being thrown (also particularly fixes so bowling ball properly has its stats set too, as this was meant to be weaker when doing this)");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed throws not actually playing any sfx (usually was masked by a hit sound, but more noticeable when throwing a projectile)
++ Renamed Mr. Monopoly alt");
+
 initPatch("1.61", "2nd March, 2026");
 initHeader("Fixes / Other Changes");
 initSection("+ Somewhat improved DSpecial seed, tree, and tree stump on vertically moving platforms (mainly they just won't float anymore now)
-+ Fixed shield to always to Axe still being possible if you pressed it early enough
++ Fixed shield to always use Axe still being possible if you pressed it early enough
 + Fixed Tree sometimes spawning multiple trees if multiple tree-cutting hitboxes cut it down at the same time
 + Fixed Pocket icons sometimes being weird if a different player cut down the tree
 + Fixed misc stuff (mainly integer errors)");

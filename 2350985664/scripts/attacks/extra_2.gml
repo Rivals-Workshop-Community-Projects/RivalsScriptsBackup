@@ -3,7 +3,7 @@ set_attack_value(AT_EXTRA_2, AG_CATEGORY, 1);
 set_attack_value(AT_EXTRA_2, AG_SPRITE, sprite_get("grab_endlag"));
 set_attack_value(AT_EXTRA_2, AG_HURTBOX_SPRITE, sprite_get("grab_endlag_hurt"));
 set_attack_value(AT_EXTRA_2, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_EXTRA_2, AG_LANDING_LAG, 15);
+set_attack_value(AT_EXTRA_2, AG_LANDING_LAG, 12);
 
 set_attack_value(AT_EXTRA_2, AG_NUM_WINDOWS, 1)
 

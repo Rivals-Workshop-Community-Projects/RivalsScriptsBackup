@@ -174,23 +174,23 @@ if(attack == AT_FSPECIAL){
         originalnum = token_num;
         
         if(token_num == 0){ //top hat
-        	hsp = 2*spr_dir;vsp = -7;
+        	hsp += 2*spr_dir;vsp += -7;
         }else if(token_num == 1){ //dog
-        	hsp = 4*spr_dir;vsp = -4;
+        	hsp += 4*spr_dir;vsp += -4;
         }else if(token_num == 2){ //cat
-        	hsp = 3*spr_dir;vsp = -6;
+        	hsp += 3*spr_dir;vsp += -6;
         }else if(token_num == 3){ //car
-			hsp = 1*spr_dir;vsp = -4;
+			hsp += 1*spr_dir;vsp += -4;
 			damage = 7+(statboost*10);dicearmor += 2;dicearmor2 += 2;
         }else if(token_num == 4){ //plane
-        	hsp = 0*spr_dir;vsp = -2;grav = 0;
+        	hsp += 0*spr_dir;vsp += -2;grav = 0;
         	damage = 8+(statboost*10);dicearmor += 3;dicearmor2 += 3;
         }else if(token_num == 5){ //duck
-        	hsp = 3*spr_dir;vsp = -4;grav = 0;num2 = 1;
+        	hsp += 3*spr_dir;vsp += -4;grav = 0;num2 = 1;
         }else if(token_num == 6){ //iron
-        	hsp = 3*spr_dir;vsp = -4;
+        	hsp += 3*spr_dir;vsp += -4;
         }else if(token_num == 7){ //shoe
-        	damage = 2+(statboost*10);hsp = 1*spr_dir;vsp = -6;grav = 0.3;
+        	damage = 2+(statboost*10);hsp += 1*spr_dir;vsp += -6;grav = 0.3;
         }
         Pocket_hud_imageindex = token_num+1;
         originaldamage = damage;

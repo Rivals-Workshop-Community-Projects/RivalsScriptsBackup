@@ -829,11 +829,7 @@ if (attack == AT_NSPECIAL){
 			}
             landtimer = 6;hit_priority = 0;
             vsp *= 0.5;hsp *= 0.75;
-            //create_hitbox(AT_FSTRONG, 2, x, y);
-            //destroyed = true;
-            //if(!waspocketed){
-            	timer = 0;despawning = true;
-            //}
+            timer = 0;despawning = true;
         }landtimer -= 1;
         angle = darctan2(-vsp * spr_dir, hsp * spr_dir);
         proj_angle -= 2*hsp;
@@ -858,7 +854,6 @@ if (attack == AT_NSPECIAL){
 	        	}
 	        }
         }
-        //print_debug(string(kb_scale));
         if(get_gameplay_time() % 3 == 0 && (abs(vsp) >= 2 || abs(hsp) >= 2)){
             var fallfx = spawn_hit_fx(x, y, player_id.fx_bowlingball_fall);fallfx.draw_angle = angle;
         }
@@ -941,6 +936,7 @@ if (attack == AT_NSPECIAL){
 			MorshuCanGrab = true;
 		    CalCanSnack = 2;
 			UnReflectable = false;
+			if(!Pocketed && !KoB_grabbed && grabbedbyself && timer < 60)timer = 60;
 		}
 		if(!used && (num2 == 0 || num2 == 1)){
 			if(player_id.state == PS_ATTACK_GROUND && player_id.attack == AT_USTRONG){
@@ -963,7 +959,7 @@ if (attack == AT_NSPECIAL){
 			destroyed = true;
 		}
 		if(Pocketed || KoB_grabbed){
-			num2 = 0;image_index = 0;timer = 0;waspocketed = true;
+			num2 = 0;image_index = 0;timer = 0;waspocketed = true;if(KoB_grabbed)grabbedbyself = player == orig_player;
 		}
 	}else if(hbox_num != 1 && hbox_num != 5){ //fireworks explosions
 		if(hitbox_timer >= 2){

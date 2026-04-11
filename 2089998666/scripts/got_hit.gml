@@ -10,6 +10,12 @@ if attack == AT_NSPECIAL {
 	destroy_hitboxes();
 }
 
+with (asset_get("pHitBox")) {
+	if (player_id == other.id && (attack == AT_NSPECIAL) {
+        destroyed = true;
+    }
+}
+
 tongueOutcome = 0;
 
 grabbed_player_obj = noone;

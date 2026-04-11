@@ -500,6 +500,7 @@ if (attack == AT_NSPECIAL){
 			                		if("Villager_Bowling_Ball" in self){
 			                			if(!waspocketed && !waspocketed2 && player_id == other){ //if its your own bowling ball and it hasnt been pocketed or anything yet, make it weaker
 							    			damage = 8;kb_value = 7;kb_scale = 0.9;waspocketed2 = true;
+							    			print("matty");
 							    		}
 							    	}
 		                	    }	 
@@ -578,6 +579,7 @@ if (attack == AT_NSPECIAL){
 			grabbedposX = -55;grabbedposY = -10;
 			if(instance_exists(grabbedtarget))grabbedtarget.grabbed_invisible = true;
 			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+				sound_play(sound_get("villager_swing_m"),false,noone,0.9,1.05+(random_func(0,2,true)/10));
 				if(!free){create_hitbox(AT_GRAB, 2, x, y);}else{if(vsp > -3){vsp = -3;}create_hitbox(AT_GRAB, 3, x, y);}
 				if(instance_exists(grabbedtarget)){
 					grabbedtarget.x = x+(65*spr_dir);
@@ -586,8 +588,7 @@ if (attack == AT_NSPECIAL){
 	        		}else{
 						grabbedtarget.y = y-30;grabbedtarget.hsp = 10*spr_dir;grabbedtarget.vsp = -5;
 				    	if(!grabbedarticle){
-		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
-		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
+		                	grabbedtarget.hit_priority = 4;if(grabbedtarget.player_id != self){grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;}
 		            	}else{
 		                	with(grabbedtarget){
 						    	if("MattPlanet" in self){state = 2;}
@@ -602,6 +603,7 @@ if (attack == AT_NSPECIAL){
 			grabbedposX = 75;grabbedposY = 15;
 			if(instance_exists(grabbedtarget))grabbedtarget.grabbed_invisible = true;
 			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+				sound_play(sound_get("villager_swing_m"),false,noone,0.9,1.05+(random_func(0,2,true)/10));
 				if(!free){create_hitbox(AT_GRAB, 4, x, y);}else{if(vsp > -7){vsp = -7;}create_hitbox(AT_GRAB, 5, x, y);}
 				if(instance_exists(grabbedtarget)){
 					grabbedtarget.x = x+(40*spr_dir);
@@ -610,8 +612,7 @@ if (attack == AT_NSPECIAL){
 	        		}else{
 						grabbedtarget.y = y-85;grabbedtarget.hsp = 2*spr_dir;grabbedtarget.vsp = -16;
 				    	if(!grabbedarticle){
-		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
-		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
+		                	grabbedtarget.hit_priority = 4;if(grabbedtarget.player_id != self){grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;}
 		            	}else{
 		                	with(grabbedtarget){
 						    	if("MattPlanet" in self){state = 2;}
@@ -626,6 +627,7 @@ if (attack == AT_NSPECIAL){
 			grabbedposX = -35;grabbedposY = -35;
 			if(instance_exists(grabbedtarget))grabbedtarget.grabbed_invisible = true;
 			if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) && !hitpause){
+				sound_play(sound_get("villager_swing_l"),false,noone,0.9,1.05+(random_func(0,2,true)/10));
 				var grounded = true;
 				if(!free || position_meeting(x,y+40,asset_get("par_block")) || position_meeting(x,y+40,asset_get("par_jumpthrough"))){create_hitbox(AT_GRAB, 6, x, y);}else{if(vsp > -3){vsp = -3;}create_hitbox(AT_GRAB, 7, x, y);grounded = false;}
 				if(instance_exists(grabbedtarget)){
@@ -636,8 +638,8 @@ if (attack == AT_NSPECIAL){
 	        		}else{
 						grabbedtarget.y = y+55;grabbedtarget.hsp = 2*spr_dir;grabbedtarget.vsp = 14;
 				    	if(!grabbedarticle){
-		                	grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;grabbedtarget.hit_priority = 4;
-		                	//with(grabbedtarget){if("MattStar" in self && MattStar){hit_effect = other.fx_starhit_big;sound_effect = other.starheavyhitsfx;}}
+		                	if(grabbedtarget.player_id != self){grabbedtarget.damage *= 1.5;grabbedtarget.kb_scale *= 1.25;}
+		                	grabbedtarget.hit_priority = 4;
 		            	}else{
 		                	with(grabbedtarget){
 						    	if("MattPlanet" in self){state = 2;}

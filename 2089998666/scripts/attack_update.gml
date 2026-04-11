@@ -410,6 +410,7 @@ if (attack == AT_NSPECIAL) {
             if (tongueOutcome == 1) {
                 set_attack(AT_FTHROW);
             } else if (tongueOutcome == 2) {
+				soft_armor = 30;
                 set_attack(AT_DTHROW);
             } else {
                 window = 4;

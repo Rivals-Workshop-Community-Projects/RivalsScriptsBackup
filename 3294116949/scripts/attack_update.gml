@@ -46,16 +46,16 @@ if (attack == AT_DSPECIAL) {
 }
 
 
-// if (attack == AT_DAIR) or (attack == (45)) or (attack == (44)){
-// 	if window == 1 && window_timer <= 2 {
-//             if left_down && !right_down{
-//                 spr_dir = -1 
-//             }
-//             if !left_down && right_down{
-//                 spr_dir = 1
-//         }
-// 	}
-// }
+if (attack == AT_DAIR){
+ 	if window == 1 && window_timer <= 2 {
+             if left_down && !right_down{
+                 spr_dir = -1 
+             }
+             if !left_down && right_down{
+                 spr_dir = 1
+         }
+	}
+}
 
 
 // if (lamp_number == 1){
@@ -835,7 +835,7 @@ if !end_it return noone;
 	var dfa = 0; //draw_angle value
 	var dust_color = 0;
 	var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
+var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
 	
 	switch (name) {
 		default: 

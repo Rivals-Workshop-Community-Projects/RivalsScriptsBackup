@@ -10,11 +10,29 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
 
 if ( attack == AT_TAUNT ){
 	if (!hitpause){
-		if (window == 1 && window_timer == 1){
-			sound_play(asset_get("sfx_charge_blade_ready"),false,noone,0.5,1.5)
-			sound_play(asset_get("sfx_tech"),false,noone,0.4,1.5)
-			sound_play(sound_get("spinny"),false,noone,0.5,1.1)
-			
+		if (window == 1){
+			if (window_timer == 1){
+				sound_play(asset_get("sfx_charge_blade_ready"),false,noone,0.5,1.5)
+				sound_play(asset_get("sfx_tech"),false,noone,0.4,1.5)
+				sound_play(sound_get("spinny"),false,noone,0.5,1.1)
+				
+			}
+			if (shield_pressed){
+				taunt_parry_storage = true;
+				clear_button_buffer( PC_SHIELD_PRESSED );
+			}
+		}
+		if (window == 2){
+			if (shield_pressed && window_timer < 6){
+				taunt_parry_storage = false;
+				clear_button_buffer( PC_SHIELD_PRESSED );
+			}
+			if (window_timer == 6){
+				if (taunt_parry_storage){
+					taunt_parry_storage = false;
+					set_state(PS_IDLE);
+				}
+			}
 		}
 		if (window == 3 && window_timer == 1){
 				sound_play(sound_get("taunt_a"),false,noone,1,1.25)
@@ -79,12 +97,23 @@ if ( attack == AT_DTILT ){
 		}
 	}
 	if (!was_parried){
-		if (window > 4 || (window==4&&window_timer>5)){
+		/*if (window > 4 || (window==4&&window_timer>5)){
 			if (has_hit){
 				if (is_special_pressed( DIR_DOWN )){
 					set_attack(AT_DSPECIAL);
 				}
 			}
+		}*/
+		if (window == 8){
+			//iasa_script(); //decided not to use iasa because cancelling it with crouch kinda wrecked my intention //...2! i copied this over from lumina
+			can_move = true;
+			can_jump = true;
+			can_attack = true;
+			can_strong = true;
+			can_special = true;
+			can_shield = true;
+			if (right_hard_pressed){set_state(PS_DASH_START);spr_dir=1;}; else if (right_down){set_state(PS_WALK);spr_dir=1;};
+			if (left_hard_pressed){set_state(PS_DASH_START);spr_dir=-1;}; else if (left_down){set_state(PS_WALK);spr_dir=-1;};
 		}
 	}
 }
@@ -817,8 +846,8 @@ if ( attack == AT_DSPECIAL_2 ){
 			dsp_bounce_count = 0;
 			//hsp = 6*spr_dir;
 			//vsp = -6;
-			//invincible = true;
-			//invince_time = 3;
+			invincible = true;
+			invince_time = 3;
 		}
 		var dspecial_speed_timer_max = 24;
 		if (window == 2 && window_timer == 1){

@@ -1,6 +1,11 @@
 //update
 
 
+if (ledge_lock_timer > 0) {
+    off_edge = false;
+    ledge_lock_timer--;
+}
+
 switch (state){
     case PS_FIRST_JUMP:
         if (state_timer <= 1)

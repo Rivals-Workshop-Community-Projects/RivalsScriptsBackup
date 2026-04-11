@@ -50,6 +50,7 @@ wow_wavebounce_happened = false;
 dsp_hit = false;
 move_is_fresh = true;
 the_parried_ice = 0;
+taunt_parry_storage = false;
 //if ( attack == AT_TAUNT ){
 //	print(string(get_match_setting( SET_SEASON )))
 //}

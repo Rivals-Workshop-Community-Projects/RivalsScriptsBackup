@@ -321,10 +321,15 @@ if !hitpause {
                 ///    sound_play(sound_get("sage"),false,noone,1.2)
                 ///    sound_play(asset_get("sfx_absa_whip3"),false,noone,1)
                 ///    sound_play(asset_get("sfx_bird_downspecial"),false,noone,1)
-                ///    sagemode = -5
+                ///    sagemode = -5s
                 ///}
                 
-                spawn_hit_fx(x + 22*spr_dir, y - 36, 302)
+                // spawn_hit_fx(x + 22*spr_dir, y - 36, 302)
+            }
+            if ncharge == 4 {
+            	attack = AT_FSPECIAL
+   				window = 8
+				window_timer = 4
             }
             
             if ncharge == 20 {

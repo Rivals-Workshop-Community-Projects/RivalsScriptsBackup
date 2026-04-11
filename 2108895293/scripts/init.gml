@@ -129,7 +129,6 @@ trummelcodecneeded = false;
 otto_bobblehead_sprite = sprite_get("lumina_bobblehead");
 tcoart = sprite_get("luminatcoart_old");
 Hikaru_Title = "Light magic little miss";
-feri_costume = sprite_get("feri_costume_lumina"); //i coded this!
 active=false;tt="";tc=0;actlve=false;pc=false;pd=false;si=false;
 hypal=0;
 hyae=0;
@@ -181,6 +180,7 @@ particle3 = hit_fx_create( sprite_get("particle3"), 8 );//6
 lumihitfx1 = hit_fx_create( sprite_get("hit_effect_test"), 25 );
 
 I_would_not_like_Sephiroth_to_impale_my_character = true; //yes
+is_gorable = false; blood_col = make_colour_rgb(0, 0, 0);
 
 set_victory_theme( sound_get( "lumina_victory" ));//twinklesky by fether
 set_victory_bg( sprite_get( "lumina_victorybg" ));

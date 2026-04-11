@@ -24,6 +24,7 @@ applied_player_id = -4;
 stored_spr_dir = 0;
 
 cloud_lifetimer = 60*5;
+cloudpause = 60;
 
 is_iced = false;
 ice_timer = 0;

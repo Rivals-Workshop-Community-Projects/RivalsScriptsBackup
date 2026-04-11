@@ -85,6 +85,19 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.1415 - (2026/04/06)"
+		patch_note_text[i++] = 
+		"===v3.1415 (vPI.3)===
+		---changes---
+		?? DTILT ... the IASA is now a weird manual version that is already proven to work with its use for Lumina, and now makes it not be cancelled by crouch itself, improving animation visual
+		:: DTILT ... added 1 animation frame for endlag!
+		-- DTILT ... removed the weird on-hit cancel-to-DSPECIAL thing that's a leftover from pre-3.0
+		:: my sfx invention for genesis alt is now an opt-in feature. press SPECIAL at match start to activate it.
+		:: removed debug print from cloud that i forgot to hide
+		:: RAINCLOUD ... added 1 second of time at spawn where it doesn't rise up.
+		:: DSPECIAL ... re-added the odd 3 frames of invincibility at true startup (where you start jumping up.)"
+		
+		
 		patch_note_title[i] = "v3.141 - (2026/03/14)"
 		patch_note_text[i++] = 
 		"===v3.141 (vPI.2)===

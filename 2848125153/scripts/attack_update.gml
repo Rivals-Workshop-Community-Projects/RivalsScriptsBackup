@@ -60,26 +60,27 @@ if (attack == AT_NSPECIAL){
         if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
         	sound_play(asset_get("sfx_swipe_medium1"));
         	if(!instance_exists(thetoken)){
+        		hb = noone;
 	        	if(fspec_charge >= 30 && current_money >= 3000*discount){
-	        		thetoken = create_hitbox(AT_FSPECIAL, 2, round(x+55*spr_dir), round(y-35));
+	        		thetoken = create_hitbox(AT_FSPECIAL, 2, round(x+55*spr_dir), round(y-35));hb = thetoken;
 	        		var hitcol = create_hitbox(AT_NSPECIAL, 2, round(x+55*spr_dir), round(y-35));thetoken.thedice = hitcol;hitcol.thedice = thetoken;
 	        		current_money -= 3000*discount;
 	        		rand = random_func(0, 3, true);                    
             		sound_play(sound_get("money_pickup"+string(rand+1)));
 	        	}else if(current_money >= 1000*discount){
-	        		thetoken = create_hitbox(AT_FSPECIAL, 1, round(x+55*spr_dir), round(y-35));
+	        		thetoken = create_hitbox(AT_FSPECIAL, 1, round(x+55*spr_dir), round(y-35));hb = thetoken;
 	        		var hitcol = create_hitbox(AT_NSPECIAL, 2, round(x+55*spr_dir), round(y-35));thetoken.thedice = hitcol;hitcol.thedice = thetoken;
 	        		current_money -= 1000*discount;
 	        	}else{
-					create_hitbox(AT_JAB, 12, round(x+55*spr_dir), round(y-35));
+					hb = create_hitbox(AT_JAB, 12, round(x+55*spr_dir), round(y-35));
+					if(fspec_charge >= 30){
+						hb.sprite_index = sprite_get("dust_effect_gold");hb.damage += 4;current_money += 1000*income_boost;
+					}
 				}
-				/*move_cooldown[AT_NSPECIAL] = 9999;move_cooldown[AT_FSPECIAL] = 9999;
-	        	dicecooldown += 60;tokencooldown += 60;*/
+				if(instance_exists(hb))hb.hsp += right_down ? 2 : left_down ? -2 : 0;hb.vsp += up_down ? -5 : down_down ? 3 : 0;
 	        	if(instance_exists(thetoken) && (dicecooldown > 0 || instance_exists(thedice1) && instance_exists(thedice2))){
 		        	tokencooldown += 60;
-		        	if(dicecooldown > 0){
-		        		tokencooldown += 60;
-		        	}
+		        	if(dicecooldown > 0)tokencooldown += 60;
 	        	}
         	}
         }
@@ -233,7 +234,7 @@ if (attack == AT_NSPECIAL){
 		    if(!runeG && dist < 10 || runeG && dist < 30){
 		    	uspectarget.destroyed = true;spawn_hit_fx(round(uspectarget.x) , round(uspectarget.y), 302);
 		    	window = 18;mask_index = asset_get("ex_guy_collision_mask");
-		    	current_money += 2000;
+		    	current_money += 2000*income_boost;
 		    	rand = random_func(0, 3, true);
             	sound_play(sound_get("money_pickup"+string(rand+1)));
 		    }

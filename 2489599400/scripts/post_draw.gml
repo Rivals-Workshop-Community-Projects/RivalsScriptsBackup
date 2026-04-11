@@ -14,7 +14,7 @@ shader_start();
 with (oPlayer) {
     if (id != other.id) {
         if ("taped" in self && taped) {
-			with other_player_id draw_sprite_ext(sprite_get("taped"), -1, other.x, other.y-(char_height/2), 1, 1, 0, c_white, .75);
+			with other.id draw_sprite_ext(sprite_get("taped"), -1, other.x, other.y-(char_height/2), 1, 1, 0, c_white, .75);
         }
     }
 }

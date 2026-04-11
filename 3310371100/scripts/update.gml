@@ -292,7 +292,7 @@ if (get_synced_var( player )==3){//D
 		init_shader();
 	}
 	if (get_player_color( player ) == 3){//pseudogenesis
-		ex_pseudogenesis = true;
+		ex_pseudogenesis_qual = true;
 		init_shader();
 	}
 	if (get_player_color( player ) == 10){//asayzll
@@ -304,7 +304,7 @@ if (get_synced_var( player )==4){//EXTRA??
 		madeonfinale = true;
 	}
 	if (get_player_color( player ) == 1){//ultragenesis
-		ex_pseudogenesis = true;
+		ex_pseudogenesis_qual = true;
 		//print("yeah?")
 		init_shader();
 	}
@@ -319,6 +319,16 @@ if (get_synced_var( player )==4){//EXTRA??
 	}
 	if (get_player_color( player ) == 11){//hymn
 		init_shader();
+	}
+}
+if (ex_pseudogenesis_qual == true){
+	if (state==PS_SPAWN && ex_pseudogenesis == false){
+		if (special_down){
+			ex_pseudogenesis = true;
+			white_flash_timer = 18;
+			sound_play(sound_get("asayzll_1"),false,noone,1,0.8);
+			sound_play(sound_get("asayzll_1"),false,noone,1,0.3);
+		}
 	}
 }
 if (ex_pseudogenesis_snd != -4){

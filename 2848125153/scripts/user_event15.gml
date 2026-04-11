@@ -318,6 +318,14 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.45", "4th April, 2026");
+initHeader("Skillful Buffs");
+initSection("+ FSpecial tokens can now be aimed slightly
++ When charging FSpecial while having no money, the dust will turn into golden dust. Slightly more powerful and gains Mr. Monopoly a small amount of money!");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed USpecial money gain not being affected by the income boost from rune D
++ Fixed stock icon recoloring wrong");
+
 initPatch("1.44", "3rd April, 2026");
 initHeader("Skillful Buffs");
 initSection("+ DAttack choo choo can now hit multiple times");

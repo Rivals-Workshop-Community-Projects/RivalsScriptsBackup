@@ -133,6 +133,7 @@ sprite_change_offset("money", 30, 30);
 sprite_change_offset("moneypile", 30, 46);
 sprite_change_offset("feathers", 20, 20);
 sprite_change_offset("dust_effect", 15, 15);
+sprite_change_offset("dust_effect_gold", 15, 15);
 sprite_change_offset("dust_sharp_big", 60, 80);
 sprite_change_offset("dust_sharp", 30, 40);
 sprite_change_offset("explosion", 150, 150);

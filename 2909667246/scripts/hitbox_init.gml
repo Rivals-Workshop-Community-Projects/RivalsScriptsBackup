@@ -7,6 +7,7 @@ timer = 0;
 if("KoB_grabbed" not in self)KoB_grabbed = false;
 KoB_was_grabbed = false;
 KoB_destroy = false;
+grabbedbyself = false;
 
 if (player_id.runeE) {
 	VillagerTreeCut = 1;

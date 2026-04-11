@@ -14,21 +14,26 @@ if (applied_player_id != -4){
 	y = applied_player_id.y+applied_player_id.vsp;
 }
 
-if (cloud_lifetimer>0){
-	print(string(cloud_lifetimer));
-	cloud_lifetimer--;
-}
 //hsp = hsp-(cloud_air_friction*sign(hsp));
 //vsp = vsp-(cloud_air_friction*sign(vsp));
 hsp = hsp*cloud_air_friction_mult;
 vsp = vsp*cloud_air_friction_mult;
-if (ice_timer==0){
+if (cloudpause==0){
 	if (cloud_lifetimer>0){
-		//vsp += -0.06;
-		//vsp += -0.035;
-		vsp += -0.05;
+		//print(string(cloud_lifetimer));
+		cloud_lifetimer--;
 	}
+	if (ice_timer==0){
+		if (cloud_lifetimer>0){
+			//vsp += -0.06;
+			//vsp += -0.035;
+			vsp += -0.05;
+		}
+	}
+}else{
+	cloudpause--;
 }
+	//print(string(cloudpause))
 
 //distance calculator
 var max_rain_dist = room_height;
