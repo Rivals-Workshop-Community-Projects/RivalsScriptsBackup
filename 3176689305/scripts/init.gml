@@ -154,6 +154,8 @@ knight_compat_dream =
         "..."
     ]
 wiimote_compat_sprite = sprite_get("knight_for_the_wii");
+blood_col = /*#*/$000000;
+is_gorable = true
 
 //VICTORY MUSIC AND BG SET ---------------------------------------------------------------------------------
 set_victory_bg( sprite_get( "knight_victory1" )); //Victory BackGround

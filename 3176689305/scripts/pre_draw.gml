@@ -21,7 +21,7 @@ if (shade_stock == 0 && shade_consumer == 0 ) {
         shadecharge_anim = 1
     }
     if (shade_timer > 9)
-        draw_sprite_ext( sprite_get("vfx_shadecharge_back"), shadecharge_anim, x, y+(dsin(bobTime) * bobFreq) * bobAmp, spr_dir, 1, 0, c_white, shade_a);
+        draw_sprite_ext( sprite_get("vfx_shadecharge_back"), shadecharge_anim, x, y+4+(dsin(bobTime) * bobFreq) * bobAmp, spr_dir, 1, 0, c_white, shade_a);
 }
 
 shader_start()

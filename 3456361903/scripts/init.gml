@@ -209,3 +209,4 @@ arena_title = "The Rising Ninja Star"
 mamizou_transform_spr = sprite_get("mamizou_ninjiboy"); //Replace "X" with your sprite.
 pot_compat_variable = sprite_get("pumbo_dish");
 pot_compat_text = "Subconian Stew"
+is_gorable = false;
