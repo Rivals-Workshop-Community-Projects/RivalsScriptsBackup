@@ -110,12 +110,12 @@ if (my_hitboxID.attack == AT_USPECIAL)
     can_uspecial_combo = true;
     set_window_value(AT_USPECIAL, 3, AG_WINDOW_TYPE, 1);
 }
-/*if (my_hitboxID.attack == AT_USPECIAL) {
+/*if (my_hitboxID.attack == AT_FAIR) {
     var lerpam
-    lerpam = [0.5, 0.7]
+    lerpam = [0.3, 0.4]
     
     hit_player_obj.x = lerp(floor(hit_player_obj.x), x+0*spr_dir, lerpam[0])
-    hit_player_obj.y = lerp(floor(hit_player_obj.y), y-30, lerpam[1])
+    hit_player_obj.y = lerp(floor(hit_player_obj.y), y-0, lerpam[1])
     
 }*/
 

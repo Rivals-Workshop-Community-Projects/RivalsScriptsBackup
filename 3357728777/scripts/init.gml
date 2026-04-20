@@ -144,6 +144,7 @@ focused_fury_delay = 30
 
 nspec_proj_charge = 0;
 
+jab_art = noone;
 jab_offset = 10;
 temp_jab_offset = 0;
 dspecial_wrath_delay = 0;

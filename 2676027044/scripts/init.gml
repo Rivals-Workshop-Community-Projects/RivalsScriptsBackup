@@ -203,3 +203,5 @@ introTimer3 = 0;
 pkmn_stadium_front_img = sprite_get("pkmn_sprite1");
 pkmn_stadium_back_img = sprite_get("pkmn_sprite2");
 arena_title = "Pika... Pika?";
+is_gorable = true;
+blood_col = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 3 ), get_color_profile_slot_g( get_player_color(player), 3 ), get_color_profile_slot_b( get_player_color(player), 3 ));

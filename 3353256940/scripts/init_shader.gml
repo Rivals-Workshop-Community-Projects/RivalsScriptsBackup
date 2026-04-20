@@ -12,6 +12,15 @@ switch (get_player_color(player)) {
         set_character_color_shading( 3, 0 );
 }
 
+//Image Mask
+if  (get_player_color(player) == 21) { 
+    if("start_predraw" in self) && start_predraw{
+    set_character_color_slot( 2, 0, 0, 0, 0); 
+    set_character_color_slot( 3, 0, 0, 0, 0); 
+    set_character_color_slot( 7, 0, 0, 0, 0); 
+    }
+} 
+
 //my name is teto pc and i have a song to see
 if (variable_instance_exists(id, "extra_col")){
     if (extra_col == 1){

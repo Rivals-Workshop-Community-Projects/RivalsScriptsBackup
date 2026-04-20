@@ -208,6 +208,10 @@ knot_opacity = 0;
 
 secret_v = 99;
 
+//compat
+is_gorable = true;
+blood_col = 11285130;
+
 fs_char_portrait_y = 198;
 fs_char_chosen_final_smash = "custom";
 fs_char_attack_index = 49;

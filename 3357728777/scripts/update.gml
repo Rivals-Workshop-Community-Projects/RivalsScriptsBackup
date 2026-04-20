@@ -90,7 +90,9 @@ if dspecial_wrath_delay_timer < 0{
 	dspecial_wrath_delay = 0;
 	centipede_prevention = 0;
 	if focused_fury == 0{
-		wrath_meter -= 8	
+		wrath_meter -= 15
+	}else{
+		focused_fury_timer-=40
 	}
 	
 }
@@ -132,22 +134,22 @@ switch(state){
 			step_sound = random_func( 0, 6, true);
 			switch (step_sound){
 		    	case 1:
-		    	sound_play(sound_get("step1"),false,noone,.4);
+		    	sound_play(sound_get("step1"),false,noone,.2);
 		    	break;
 		    	case 2:
-		    	sound_play(sound_get("step2"),false,noone,.4);
+		    	sound_play(sound_get("step2"),false,noone,.2);
 		    	break;
 		    	case 3:
-		    	sound_play(sound_get("step3"),false,noone,.4);
+		    	sound_play(sound_get("step3"),false,noone,.2);
 		    	break;
 		    	case 4:
-		    	sound_play(sound_get("step4"),false,noone,.4);
+		    	sound_play(sound_get("step4"),false,noone,.2);
 		    	break;
 		    	case 5:
-		    	sound_play(sound_get("step5"),false,noone,.4);
+		    	sound_play(sound_get("step5"),false,noone,.2);
 		    	break;
 		    	case 0:
-		    	sound_play(sound_get("step6"),false,noone,.4);
+		    	sound_play(sound_get("step6"),false,noone,.2);
 			}
 	}
 	if (walk_cont == 12) {

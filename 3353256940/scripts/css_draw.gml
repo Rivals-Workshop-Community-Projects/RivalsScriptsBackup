@@ -8,6 +8,9 @@ switch (get_player_color( player ) ){
         draw_sprite_ext(sprite_get("css_bg_alts"),0,x+8,y+8,2,2,0,-1,1);
     	break;
     case 20:
+        draw_sprite_ext(sprite_get("css_bg_alts"),1,x+8,y+8,2,2,0,-1,1);
+    	break;
+    case 21:
         draw_sprite_ext(sprite_get("css_bg_alts"),2,x+8,y+8,2,2,0,-1,1);
     	break;
     default:
@@ -40,7 +43,7 @@ switch (get_player_color( player ) ){
     	break;
 }
 
-if (get_player_color(player) != 20) {
+if (get_player_color(player) < 20) {
 	shader_end();
 	var a = 0.02*(1+sin(pi*css_intro_timer/16));
 	gpu_set_fog(true, c_white, 0, 0);
@@ -48,6 +51,15 @@ if (get_player_color(player) != 20) {
 	gpu_set_fog(false, c_white, 0, 0);
 	init_shader();
 }
+if (get_player_color(player) == 21) {
+	shader_end();
+	var a = 0.09*(1+sin(pi*css_intro_timer/40));
+	gpu_set_fog(true, c_red, 0, 0);
+	draw_sprite_ext(sprite_get("css_bg_alts"), 2, x+8+(dsin(css_intro_timer  * 12 ) * 2), y+8, 2, 2, 0, c_red, a);
+	gpu_set_fog(false, c_red, 0, 0);
+	init_shader();
+}
+
 // 
 
 
@@ -67,7 +79,7 @@ if (get_player_color(player) != 20) {
 //
 // now, please change this string to your character's name. used for resetting the values after other characters.
 //--- --
-var qe_b = "TweNnny"
+var qe_b = "Twennny"
 
 // ! you can now scroll down until you reach "the primary part you should change."
 
@@ -123,7 +135,7 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	altsel = 0; // change the alt select sound here. if you don't want to change the sound, put 0 here.
 	color_desc_activate = true; // optional "alt color description button". set to "true" to turn it on.
 	
-	col_max = 20; // number of alternate color palettes. 0 is the default color, count it accordingly.
+	col_max = 21; // number of alternate color palettes. 0 is the default color, count it accordingly.
 	
 	//first array index is for alternate color. second array index is for distinguishing the information in it.
 	ce[0,0] = make_color_rgb(187, 70, 135) // "color preview square" color. can be any color!
@@ -210,6 +222,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[20,1] = "An End."
 	ce[20,2] = "Note: FATAL ERROR .We are sorry, but an internal error occurred. Please re-install the product to fix the problem."
 	
+	ce[21,0] = make_color_rgb(255, 0, 0)
+	ce[21,1] = "G:E:N:E:S:I:S"
+	ce[21,2] = "birth:re:GENESIS:re:birth:re:birth:rebirth:re:re:birth:rebirth:rebirth?"
 
 	// you can add more, by copypasting and changing the first index of the array accordingly.
 	// ! changing part end.
@@ -376,7 +391,6 @@ css_intro_timer++;
 
 if (get_player_color( player ) != 0) {
 	css_intro_state = 4;
-	css_intro_timer = 0;
 }
 
 //

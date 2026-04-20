@@ -24,3 +24,4 @@ sound_stop(sound_get("vic_luminance"));
 sound_stop(sound_get("vic_robots"));
 sound_stop(sound_get("vic_tamat"));
 sound_stop(sound_get("vic_truck"));
+sound_stop(sound_get("vict_female"));

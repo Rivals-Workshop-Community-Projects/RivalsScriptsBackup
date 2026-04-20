@@ -74,7 +74,7 @@ if (attack == AT_FSPECIAL){
 					if !airborne{
 						x -= 18*other.spr_dir;
 					}else if airborne{
-						x -= 8*other.spr_dir;
+						x -= 12*other.spr_dir;
 					}
 					
 				}

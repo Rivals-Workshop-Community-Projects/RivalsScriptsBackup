@@ -17,6 +17,8 @@ if ("twenny_initialized_victory_screen" not in self)
     get_victory_screen_data();
 }
 
+if (get_player_color( player ) == 21) twenny_victory_quote = get_genesis_quotes();
+
 //...only do the following with the frontmost Hypercam
 if (winner == player /* && uhc_batteries */)
 {
@@ -158,6 +160,68 @@ if (winner == player /* && uhc_batteries */)
     return [quotes[(current_time) % array_length(quotes)], icons[(current_time) % array_length(icons)], voiceclips[(current_time) % array_length(voiceclips)]];
 }
 
+#define get_genesis_quotes()
+{
+    var quotes = []
+    var i = 0;
+    quotes[i++] = "How much is too much?"
+    quotes[i++] = "Genesis."
+    quotes[i++] = "47 45 4E 45 53 49 53" 
+    quotes[i++] = "GENESISGENESISGENESISGENESISGENESIS GENESISGENESISGENESISGENESIS GENESISGENESISGENESIS" 
+    quotes[i++] = "     When did you start being yourself?" 
+    quotes[i++] = "sirensong" 
+    quotes[i++] = "G XX G XX" 
+    quotes[i++] = "GETOUTGETOUTGETOUTGETOUT" 
+    quotes[i++] = "    Life Link" 
+    quotes[i++] = "thedreamer" 
+    quotes[i++] = " Dreamlike Reality."
+    quotes[i++] = "2020202020202020202020202020202020 2020202020202020202020202020202020" 
+    quotes[i++] = "I can make myself believe I can make myself forget" 
+    quotes[i++] = "Yet i cannot control these no more As much subconsciousness runs beyond my control" 
+    quotes[i++] = "> <IDI0T.>    <IDI0T.>    <IDI0T.>" 
+    quotes[i++] = "shallows" 
+    quotes[i++] = "I'm half crazy  All for the love of you" 
+    quotes[i++] = "      Genesis." 
+    quotes[i++] = "<strong>ONE?</strong><br><i>MANY...</i><br>THE SAME WAY AS <ul>0ES</ul> AND <ul>1S</ul> GO," 
+    quotes[i++] = "               afterbirth" 
+    quotes[i++] = "How long did it take for her to smile?" 
+    quotes[i++] = "haruka.." 
+    quotes[i++] = "Whatever it takes." 
+    quotes[i++] = "> D0N’T LET L00KS DECEIVE Y0U! I'M  TRASH  TRASH  TRASH  TRASH" 
+    quotes[i++] = "gENESIS : rE : bIRTH" 
+    quotes[i++] = "kindly check the attached LOVELETTER coming from me." 
+    quotes[i++] = "                -1" 
+    quotes[i++] = "gcc -c hello.s && ld hello.o && ./a.out" 
+    quotes[i++] = "   :))" 
+    quotes[i++] = "Thank you for the love  Thank you for the joy" 
+    quotes[i++] = "GE::nesis"
+    quotes[i++] = "           PLEASE WAKE UP." 
+    quotes[i++] = "   What did [ ] do?" 
+    quotes[i++] = "ANY FILES IN THE UPLOADED DIRECTORY WHICH ARE NOT SUPPORTED BY STEAM WORKSHOP  WILL BE AUTOMATICALLY DELETED. ARE YOU S" 
+    quotes[i++] = "   Genesis." 
+    quotes[i++] = "'M" 
+    quotes[i++] = "          idbirth" 
+    quotes[i++] = "You're absolutely right! It's not just  ,  it's  ,  !" 
+    quotes[i++] = "This is my intellect." 
+    quotes[i++] = "  RE : RE : RE : ER ::: : BIRTH" 
+    quotes[i++] = "WHAT'S WRONG WITH IT NOT BEING REAL? WHEN IT'S REAL IT'S WHEN IT SUCKS" 
+    quotes[i++] = "I HATE WHEN IT'S REAL." 
+    quotes[i++] = "突然のキスや" 
+    quotes[i++] = "  Genesis." 
+    quotes[i++] = "            -2" 
+    quotes[i++] = "My nerves shortcircuited by lifeblood, cables of copper-lined sinew undone." 
+    quotes[i++] = "    XX    XX  XX XX   XX XX XX XX  XX   XX" 
+    quotes[i++] = "Between millions of people around the world i found you. Don't forget to remember this day every time MY FRIEND!" 
+    quotes[i++] = "iT'S sO sIMPLE i"
+    quotes[i++] = "                         Unlisted Funlands!"
+    quotes[i++] = "{ [ (    ( (" 
+    quotes[i++] = "The pain itself is the reason why."
+    quotes[i++] = "G-X-N-X-S-I-S"
+    quotes[i++] = "20   10   5 4 2 1"
+    
+    return string(quotes[(current_time / 200 ) % array_length(quotes) ]);
+}
+
 #define get_victory_screen_data()
 {
     var data_array = noone;
@@ -167,7 +231,7 @@ if (winner == player /* && uhc_batteries */)
     {
         data_array = twenny_victory_screen_array;
         //data_batteries = uhc_batteries;
-        break;
+        
     }
     
     if (data_array == noone) return; // no data :(
@@ -226,6 +290,12 @@ if (winner == player /* && uhc_batteries */)
             twenny_victory_quote = " ";
             twenny_vic_face = "vicf_nothing"
             twenny_vic_line = "vic_--"
+        }
+        else if get_player_color( player ) == 21 {
+            twenny_victory_quote = "test"
+            
+            twenny_vic_face = "vicf_glitch"
+            twenny_vic_line = "vict_female"
         }
         else 
         { if (string_length(twenny_victory_quote) < 1)

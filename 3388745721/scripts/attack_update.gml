@@ -283,6 +283,7 @@ case AT_DSPECIAL:
 break;
 
 case AT_DSPECIAL_2:
+	move_cooldown[AT_DSPECIAL] = 40;
 	djumps = 0;
 	can_move = false;
 break;

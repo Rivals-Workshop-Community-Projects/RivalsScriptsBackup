@@ -692,9 +692,10 @@ if (runeM)
 }
 else
 {
-    initial_dash_speed = initial_dash_speed_ref;
+/*    initial_dash_speed = initial_dash_speed_ref;
     dash_speed = dash_speed_ref;
     air_max_speed = air_max_speed_ref;
+    */
 }
 
 

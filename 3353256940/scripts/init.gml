@@ -217,6 +217,8 @@ mamizou_transform_spr = sprite_get("mami_transformation");
 pot_compat_variable = sprite_get("pumbo_dish");
 pot_compat_text = "Spaghetti al Necrotico"
 miiverse_post = sprite_get("miiverse");
+blood_col = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 7 ), get_color_profile_slot_g( get_player_color(player), 7 ), get_color_profile_slot_b( get_player_color(player), 7 ));
+
 
 scrapbomb_visual = "b_scrapbomb"
 scrapbomb_alt_index = 0;
@@ -259,22 +261,30 @@ switch (get_player_color(player)) {
         scrapbomb_alt_index = 5;
     break;
     case 20:
+    case 21:
         set_hitbox_value(AT_DSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("p_livespark_alt"))
         is_deadalt = true;
         is_voiced = false;
     break;
 }
 
-if (get_player_color(player) != 20) {
+if (get_player_color(player) < 20) {
     is_deadalt = false;
     set_victory_bg( sprite_get( "twenny_victorybg" ));
     set_victory_theme( sound_get( "mus_twenny_victory" ));
 } else {
 	set_victory_bg( sprite_get( "--_victorybg" ));
-    set_victory_theme( sound_get( "mus_--" ));
+    if (get_player_color(player) == 20) set_victory_theme( sound_get( "mus_--" )) else set_victory_theme( sound_get( "mus_gen" ));
+}
+
+if (get_player_color(player) == 21){
+    set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_genesis"));
 }
 
 //voiceline on galaxy
 galaxy_timer = 0;
 eureka = false;
 extra_col = 0;
+
+//Image Mask
+start_predraw = true;

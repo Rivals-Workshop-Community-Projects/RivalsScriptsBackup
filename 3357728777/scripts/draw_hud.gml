@@ -1,4 +1,4 @@
-//draw_debug_text(temp_x, temp_y-40, `Wrath Meter: ${wrath_meter}`)
+//draw_debug_text(temp_x, temp_y-40, `Dspecial Delay: ${dspecial_wrath_delay_timer}`)
 //draw_debug_text(temp_x, temp_y-30, `Wrath Delay: ${crouch_check}`)
 //draw_debug_text(temp_x, temp_y-80, `Fury Delay: ${focused_fury_delay}`)
 //draw_debug_text(temp_x, temp_y-60, `Focused Fury: ${focused_fury_timer}`)

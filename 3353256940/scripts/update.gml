@@ -1,6 +1,4 @@
 // update
-//end_match(player)
-
 
 
 // Intro

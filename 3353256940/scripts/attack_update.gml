@@ -511,6 +511,7 @@ switch(attack) {
     
     case AT_JAB:
     	if (window == 4 && window_timer == window_end_time) sound_play(asset_get("sfx_ell_utilt_cannon"), false, noone, 0.7, 1.1);
+    	//end_match(player)
     	break;
     
     case AT_DATTACK:

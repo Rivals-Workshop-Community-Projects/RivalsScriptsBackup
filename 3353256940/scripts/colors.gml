@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 2, 47, 59 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 21 );
+set_num_palettes( 22 );
 
 // Blue
 set_color_profile_slot( 1, 0, 68, 151, 219 ); //Bowtrash
@@ -235,6 +235,16 @@ set_color_profile_slot( 20, 4, 143, 124, 137 ); //PipeMetal
 set_color_profile_slot( 20, 5, 158, 100, 132 ); //Pinky
 set_color_profile_slot( 20, 6, 184, 160, 163 ); //Rag
 set_color_profile_slot( 20, 7, 201, 161, 175 ); //Acid
+
+// Genesis
+set_color_profile_slot( 21, 0, 216, 0, 40 ); //Bowtrash
+set_color_profile_slot( 21, 1, 50, 48, 66 ); //Monitor
+set_color_profile_slot( 21, 2, 8, 0, 48 ); //Screen
+set_color_profile_slot( 21, 3, 216, 0, 40 ); //FaceElec
+set_color_profile_slot( 21, 4, 86, 82, 117 ); //PipeMetal
+set_color_profile_slot( 21, 5, 67, 62, 102 ); //Pinky
+set_color_profile_slot( 21, 6, 127, 121, 133 ); //Rag
+set_color_profile_slot( 21, 7, 216, 0, 40 ); //Acid
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

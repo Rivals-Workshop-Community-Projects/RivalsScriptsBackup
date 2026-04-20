@@ -259,6 +259,14 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.64", "17th April, 2026");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed articles with an empty sprite not being Pocketable no matter what (they normally arent, but Pocketable = true was meant to override this, hopefully now things are fine lol)");
+
+initPatch("1.63", "13th April, 2026");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed Pocketing articles not actually being opt-in like intended (I guess this didn't fully work and wasn't reported til now lol. If it still has issues let me know)");
+
 initPatch("1.62", "4th April, 2026");
 initHeader("Nerfs");
 initSection("- If Villager grabs his own fireworks with the net, it will despawn quicker after firing (mostly just to prevent repeated use with net)

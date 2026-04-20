@@ -85,6 +85,8 @@ if QD_Charge == 0{
 	set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 3);
 	set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 1);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 6);
+	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 7);
+	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 7);
 	set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 2);
 	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 5);
 	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 5);
@@ -111,6 +113,8 @@ if QD_Charge == 1{
 	set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 4);
 	set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 2);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
+	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 8);
+	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 8);
 	set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 3);
 	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 6);
 	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 6);
@@ -137,6 +141,8 @@ if QD_Charge == 2{
 	set_hitbox_value(AT_DSTRONG, 4, HG_DAMAGE, 5);
 	set_hitbox_value(AT_NAIR, 5, HG_DAMAGE, 3);
 	set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 8);
+	set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 9);
+	set_hitbox_value(AT_FAIR, 3, HG_DAMAGE, 9);
 	set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 4);
 	set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 7);
 	set_hitbox_value(AT_UAIR, 2, HG_DAMAGE, 7);

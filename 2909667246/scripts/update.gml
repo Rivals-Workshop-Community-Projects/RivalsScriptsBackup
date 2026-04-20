@@ -272,10 +272,8 @@ if(canon){
 	    if(!free && !attacking || size_mult > 1){
 		    if(soft_armor <= passivesoftarmor){
 		    	var playerdmg = round(get_player_damage(player)/40);
-		    	soft_armor = passivesoftarmor-playerdmg;
-		    }if(soft_armor < 0){
-		    	soft_armor = 0;
-		    }
+		    	soft_armor = passivesoftarmor-(playerdmg/2);
+		    }if(soft_armor < 0)soft_armor = 0;
 	    }
     }else{
 	    soft_armor = 0;

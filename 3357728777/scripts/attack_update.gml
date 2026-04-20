@@ -522,7 +522,7 @@ case AT_DSPECIAL:
 		        temp_jab_offset -= 1;
 		    }
 		    //if !collision_point(x+spr_dir*temp_jab_offset,y+1,asset_get("par_block"),true,true) temp_jab_offset = 0;
-		    var jab_art = instance_create(x+spr_dir*temp_jab_offset,y,"obj_article1");
+		    jab_art = instance_create(x+spr_dir*temp_jab_offset,y,"obj_article1");
 		    jab_art.att = AT_DSPECIAL;
 		    //jab_art._init = 1;
     }

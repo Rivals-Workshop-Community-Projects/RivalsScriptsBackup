@@ -229,7 +229,7 @@ ncode1 = "Mayor of a small town";
 ncode2 = "Seemingly has endless pockets";
 ncode3 = "Whatever you do, don't turn your back to him";
 wiimote_compat_sprite = sprite_get("wiimote");//if(kewtmode>=1 && random_func(0,2,true) == 0)wiimote_compat_sprite = sprite_get("wiimote_kewt");
-oohEeOohAhAhTingTangWallaWallaBingBang = 1;
+oohEeOohAhAhTingTangWallaWallaBingBang = 1;is_gorable = false;
 //Toadie_Ability = 1;
 TCG_Kirby_Copy = 7;
 
