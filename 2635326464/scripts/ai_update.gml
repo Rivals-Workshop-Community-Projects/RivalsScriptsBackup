@@ -397,10 +397,29 @@ if(!attacking){
 		if(closest_wall_x > 30){
 			hold_toward_center();
 		}
+
 		if(vsp > 0  && !move_cooldown[AT_USPECIAL] && y>stagey+32 && closest_wall_xdist*0.3 < abs(y-stagey) && closest_wall_xdist < 230 && random_func(123, 1000, true) < 200){
 			perform_attack(AT_USPECIAL, true);
 			hold_toward_center();
 			// print("WOW33")
+		}
+
+		if(attack != AT_USPECIAL && vsp > 0  && y>stagey+32 && closest_wall_xdist*0.3 < abs(y-stagey) && closest_wall_xdist < 230 && random_func(123, 1500, true) < 200){
+			perform_attack(AT_FSPECIAL, true);
+			hold_toward_center();
+		}
+
+		if(attack != AT_USPECIAL && attack != AT_FSPECIAL && vsp > 0 && y>stagey+32 && closest_wall_xdist*0.3 < abs(y-stagey) && closest_wall_xdist < 230 && random_func(123, 1500, true) < 200){
+			perform_attack(AT_UAIR, true);
+			hold_toward_center();
+		}
+
+		if(attack == AT_DAIR && y>stagey+32 && random_func(123, 1000, true) < 200)
+		{
+			clear_ai_inputs();
+			hold_toward_center();
+			press_up(true);
+			press_special(true);
 		}
 		
 		if(!has_walljump && djumps < max_djumps){
@@ -478,6 +497,13 @@ if(attacking)
 			}
 		break;
 
+		case AT_DATTACK:
+			if (!was_parried){
+				clear_ai_inputs();
+				press_attack(true);
+			}
+		break;
+
 		case AT_UTILT:
 			if (has_hit && !was_parried)
 			{
@@ -486,8 +512,25 @@ if(attacking)
 				{
 					clear_ai_inputs();
 					perform_attack(AT_UTILT, true);
+				} else {
+					clear_ai_inputs();
+					hold_forwards()
 				}
 			}
+
+			if(chosenAttack != AT_UTILT){
+					clear_ai_inputs();
+					hold_forwards()	
+			}
+		break;
+
+
+		case AT_NSPECIAL:
+			if(window <= 9 || window == 13 || window == 14 || window == 15){
+				clear_ai_inputs();
+				hold_backwards();
+			}}
+			
 		break;
 
 		case AT_NSPECIAL_2:
@@ -496,12 +539,19 @@ if(attacking)
 			
 		break;
 
+		case AT_NAIR:
+			if (!was_parried && (chosenAttack != AT_UAIR) && (chosenAttack != AT_USPECIAL) && (chosenAttack != AT_DAIR) && (chosenAttack != AT_NAIR) && (chosenAttack != AT_BAIR) && (chosenAttack != AT_FAIR))
+			clear_ai_inputs();
+			press_attack(true);
+			
+		break;
+
 		case AT_DAIR:
-			if(ai_recovering)
+			if((x < stage_left || x > stage_right) && y>stagey+32 && (window == 2 || window == 3) && random_func(123, 1000, true) < 200)
 			{
 				clear_ai_inputs();
+				press_up(true);
 				press_special(true);
-				
 			}
 			
 		break;
@@ -512,12 +562,38 @@ if(attacking)
 				hold_toward_center();
 				if (can_wall_jump)
 				{
+					clear_ai_inputs();
 					press_jump(true);
 				}
 				
 			}
+
+			if(window == 2){ //3 checks, 3 different attacks
+				if(random_func(123, 1500, true) < 200){
+					clear_ai_inputs();
+					hold_neutral();
+					press_special(true);
+				} else if(random_func(123, 1500, true) < 200){
+					clear_ai_inputs();
+					hold_towards_target();
+					press_special(true);
+				} else if(random_func(123, 1500, true) < 200 && y<stagey){
+					clear_ai_inputs();
+					press_down(true);
+					press_attack(true);
+				}
+			}
 		break;
 	}
+
+	if(get_gameplay_time()<130){ //for the countdown. idk if it will work.
+		clear_ai_inputs();
+		press_attack();
+	}
+
+	if(abs(hsp) < 2){
+		ai_attacks = ai_attacks_stopped;
+	} else {ai_attacks = ai_attacks_moving;} //so nspecial is treated differently
 }
 
 #define newPredict(tgt, frame, vo_x, vo_y, h_fric, apply_grav, is_hitbox)

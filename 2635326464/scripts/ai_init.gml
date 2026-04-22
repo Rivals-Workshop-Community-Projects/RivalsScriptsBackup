@@ -58,30 +58,59 @@ For instance if there is one hitbox, write [1], if there are two write [1, 2] et
 */
 //ATTACK, OVERWRITE[X,Y,WIDTH,HEIGHT], [HITBOXES INDEXES]
 ai_attacks = [
-  [AT_DATTACK,					[], [1]],
+  [AT_DATTACK,					[169, 58, 219, 32], [1]],
   [AT_UAIR, 						[], [1,2,3]],
-  [AT_FAIR, 						[], [1,2,3,4,5,6,7,8]],
+  [AT_FAIR, 						[185, 27, 140, 64], [1,2,3,4,5,6,7,8]],
   [AT_NAIR, 						[], [1, 2, 3]],
-  [AT_DAIR, 						[], [1, 2]],
+  [AT_DAIR, 						[0, 150, 104, 300], [1, 2, 3, 4, 5]],
   [AT_BAIR, 						[], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12, 13, 14, 15, 16]],
-  [AT_NSPECIAL, 				[], [1, 2, 3, 4]],
-  [AT_NSPECIAL_2, 				[], [1]],
-  [AT_EXTRA_1, 				[], [1, 2]],
-  [AT_NSPECIAL_AIR, 				[], [1]],
+  [AT_NSPECIAL, 				[-26, 22, 163, 45], [1, 2, 3, 4]],
+  [AT_NSPECIAL_2, 				[497, -30, 358, 58], [1]],
+  [AT_EXTRA_1, 				[497, -30, 358, 58], [1, 2]],
+  [AT_NSPECIAL_AIR, 				[454,185,543,344], [1]],
   [AT_UTILT,						[], [1, 2, 3, 4, 5, 6]],
   [AT_FTILT,						[], [1]],
   [AT_DTILT,						[], [1, 2, 3, 4, 5]],
   [AT_JAB,							[], [1, 2, 3]], 
-  [AT_FSTRONG,					[0, 0, 500, -300], [1]],
-  [AT_FSTRONG_2,					[0, 0, 600, -600], [1, 2]],
+  [AT_FSTRONG,					[462, 38, 430, 145], [1]],
+  [AT_FSTRONG_2,					[0, 0, 2000, 2000], [1, 2]],
   [AT_DSTRONG,					[], [1, 2]],
-  [AT_USTRONG,					[0, 0, 300, 160], [1, 2]],
-  [AT_FSPECIAL,					[], [1]],
-  [AT_FSPECIAL_AIR,					[], [1, 2]],
-  [AT_DSPECIAL,					[0, 0, -300, 160], [1]],
-  [AT_USPECIAL,					[], [1]],
+  [AT_USTRONG,					[202, -75, 90, 148], [1, 2]],
+  [AT_FSPECIAL,					[204, -16, 134, 31], [1]],
+  [AT_FSPECIAL_AIR,					[230, -31, 234, 90], [1, 2]],
+  [AT_DSPECIAL,					[-112, 42, 161, 152], [1]],
+  [AT_USPECIAL,					[148, -138, 125, 101], [1]],
   [AT_USPECIAL_2,					[], [1, 2, 3, 4, 5]],
 ];
+
+ai_attacks_moving = ai_attacks; //changing the behavior nspecial in particular (yeah i have to repeat everything except for nspecial)
+
+ai_attacks_stopped = [
+  [AT_DATTACK,					[169, 58, 219, 32], [1]],
+  [AT_UAIR, 						[], [1,2,3]],
+  [AT_FAIR, 						[185, 27, 140, 64], [1,2,3,4,5,6,7,8]],
+  [AT_NAIR, 						[], [1, 2, 3]],
+  [AT_DAIR, 						[0, 150, 104, 300], [1, 2, 3, 4, 5]],
+  [AT_BAIR, 						[], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12, 13, 14, 15, 16]],
+  [AT_NSPECIAL, 				[497, -30, 358, 58], [1, 2, 3, 4]],
+  [AT_NSPECIAL_2, 				[497, -30, 358, 58], [1]],
+  [AT_EXTRA_1, 				[497, -30, 358, 58], [1, 2]],
+  [AT_NSPECIAL_AIR, 				[454,185,543,344], [1]],
+  [AT_UTILT,						[], [1, 2, 3, 4, 5, 6]],
+  [AT_FTILT,						[], [1]],
+  [AT_DTILT,						[], [1, 2, 3, 4, 5]],
+  [AT_JAB,							[], [1, 2, 3]], 
+  [AT_FSTRONG,					[462, 38, 430, 145], [1]],
+  [AT_FSTRONG_2,					[0, 0, 1000, 1000], [1, 2]],
+  [AT_DSTRONG,					[], [1, 2]],
+  [AT_USTRONG,					[202, -75, 90, 148], [1, 2]],
+  [AT_FSPECIAL,					[204, -16, 134, 31], [1]],
+  [AT_FSPECIAL_AIR,					[230, -31, 234, 90], [1, 2]],
+  [AT_DSPECIAL,					[-112, 42, 161, 152], [1]],
+  [AT_USPECIAL,					[148, -138, 125, 101], [1]],
+  [AT_USPECIAL_2,					[], [1, 2, 3, 4, 5]],
+];
+
 
 attacking = false;
 ai_attack_data = [];

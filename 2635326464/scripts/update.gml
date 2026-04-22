@@ -502,8 +502,9 @@ if (swallowed)
 
 with oPlayer 
 {
-    if (url == "1868756032")
+    if ("url" in self)
     {
+	if(url == "1868756032"){
         if (attack == AT_NSPECIAL && window == 1 && window_timer == 1)
         {
              other.abilitygiven = (1 + floor(get_gameplay_time()/4) mod 15);
@@ -553,6 +554,7 @@ with oPlayer
             }
             
         }
+	}
     }
 }
 
