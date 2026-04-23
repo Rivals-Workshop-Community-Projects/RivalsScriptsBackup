@@ -2,7 +2,7 @@
 //this script allows us to draw anything over the CSS - icons, text etc.
 //NOTE: CSS is short for Character Select Screen
 
-alt_cur = get_player_color(player); //checks the current alt
+alt_cur = get_player_color(player); //checks the current alt 
 
 //milestone alt mask - this draws directly behind the character, so you should make the character somewhat transparent for the effect to work
 /*if (alt_cur == 15)
@@ -69,7 +69,6 @@ prepare_shader(); //resets shader
 //  image_index 6: gear icon
 //  image_index 9: another gear icon
 //  image_index 10: gift package alt (as seen on ori and shovel knight's free champion skins)
-
 //alt boxes
 draw_set_halign(fa_left);
 var thin = alt_total > 16; //if we have more than 16 alts, the box sizes change accordingly
@@ -108,7 +107,13 @@ if (css_anim_time < 140)
     );
 }
 
-
+switch(alt_cur){
+	case 9:
+	case 15:
+	draw_sprite(sprite_get("css_outline"), 0, x+8, y + 8);
+	sprite_get("css_outline").depth = -99
+	break;
+}
 
 //functions by supersonic
 #define prepare_shader()
@@ -175,3 +180,4 @@ if (css_anim_time < 140)
     gpu_set_blendmode(bm_normal);
     draw_set_alpha(1);
 }
+

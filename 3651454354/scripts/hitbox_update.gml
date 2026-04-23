@@ -179,6 +179,10 @@ if hitbox_timer < 5{
     destroyed = true
 }
 }
+
+if (attack = AT_NSPECIAL_2 && hbox_num != 1){
+	for (var i = 0; i < 20; i++) can_hit[i] = true
+}
     
 if attack = AT_DSPECIAL{
     can_hit_self = true
@@ -238,7 +242,7 @@ if attack = AT_USPECIAL{
 if attack = AT_UAIR && hbox_num = 6{
 if player_id.free = 0 or player_id.state != PS_ATTACK_AIR or attack != AT_UAIR or hitbox_timer == length - 1{
         destroyed = true
-        uair_destroy.hit_angle = proj_angle
+        //uair_destroy.hit_angle = proj_angle (another log-spamming piece of code)
     }
     x = player_id.x 
     y = player_id.y-90
@@ -255,28 +259,139 @@ if player_id.free = 0 or player_id.state != PS_ATTACK_AIR or attack != AT_UAIR o
         image_index = 4
     }
 } //130, 230, 30, 330
-if attack = AT_NSPECIAL && proj_angle != 180 && proj_angle != 0{
-    player_id.angle_used_nspecial = 1
+
+if (attack == AT_NSPECIAL && hbox_num == 3){
+    if (was_parried){
+        draw_xscale = spr_dir
+    }
 }
-if attack = AT_NSPECIAL{
-if hitbox_timer < 7{
-        if !player_id.joy_pad_idle && player_id.angle_used_nspecial = 0{
-            if player_id.joy_dir < 140 && player_id.spr_dir = -1{
-                proj_angle = 140
-            }else if player_id.joy_dir > 220 && player_id.spr_dir = -1{
-                proj_angle = 220 
-            }else if player_id.joy_dir > 40 && player_id.joy_dir < 220 && player_id.spr_dir = 1{
-                proj_angle = 40 
-            }else if player_id.joy_dir < 320 && player_id.joy_dir > 40 && player_id.spr_dir = 1{
+
+if attack = AT_NSPECIAL && !player_id.joy_pad_idle && (hbox_num = 3 || hbox_num = 4) && hitbox_timer = 1 && spr_dir = -1{
+	draw_xscale = +1
+}
+if attack = AT_NSPECIAL && hbox_num = 2 && hitbox_timer >= 3{
+    proj_angle += 7
+}
+
+var horz_decel_rate = 0.25; 
+var vert_decel_rate = 0.25; 
+
+if attack = AT_NSPECIAL && hbox_num = 3{
+	hsp -= sign(hsp) * (horz_decel_rate * -0.5);
+	vsp -= sign(vsp) * (vert_decel_rate * -0.5);
+	if hitbox_timer % 10 == 0{
+	damage += 1;
+	kb_value += 1.5;
+	extra_hitpause += 1;
+	}
+}
+
+if attack = AT_NSPECIAL && hbox_num = 4{
+	hsp -= sign(hsp) * horz_decel_rate;
+	if abs(hsp) < horz_decel_rate hsp = 0;
+	vsp -= sign(vsp) * vert_decel_rate;
+	if abs(vsp) < vert_decel_rate vsp = 0;
+    if hitbox_timer = length-1 {
+    var topproj = create_hitbox(AT_NSPECIAL, 5, x-(spr_dir * 4), y+10);
+    if nspecial_anglecheck = 320 or nspecial_anglecheck = 220{
+    topproj.vsp = 4;
+	topproj.hsp = 4 * (spr_dir);
+	topproj.x -= 6 * (spr_dir * 2);
+	topproj.y += 4;
+    }else if proj_angle = 40 or proj_angle = 140{
+    topproj.vsp = -2;
+	topproj.hsp = 6 * (spr_dir);	
+	topproj.x -= 0  * (spr_dir * 2);
+	topproj.y -= 10;	
+    }else{
+    topproj.vsp = 2;
+	topproj.hsp = 5 * (spr_dir);
+    }
+	var midproj = create_hitbox(AT_NSPECIAL, 5, x+(spr_dir * 8), y);
+	if nspecial_anglecheck = 320 or nspecial_anglecheck = 220{
+    midproj.vsp = 3.5;
+	midproj.hsp = 5.5 * (spr_dir);
+	midproj.x -= 5  * (spr_dir * 2);	
+	midproj.y += 14;		
+	}else if proj_angle = 40 or proj_angle = 140{
+    midproj.vsp = -3.5;
+	midproj.hsp = 5.5 * (spr_dir);	
+	midproj.x -= 5  * (spr_dir * 2);	
+	midproj.y -= 14;	
+    }else{
+	midproj.hsp = 6 * (spr_dir);
+    }
+    var bottomproj = create_hitbox(AT_NSPECIAL, 5, x-(spr_dir * 4), y-10);
+    if nspecial_anglecheck = 320 or nspecial_anglecheck = 220{
+    bottomproj.vsp = 2;
+	bottomproj.hsp = 6 * (spr_dir);	
+	bottomproj.x -= 0  * (spr_dir * 2);
+	bottomproj.y += 10;
+    }else if proj_angle = 40 or proj_angle = 140{
+    bottomproj.vsp = -4;
+	bottomproj.hsp = 4 * (spr_dir);	
+	bottomproj.x -= 6  * (spr_dir * 2);
+	bottomproj.y -= 4;
+    }else{
+    bottomproj.vsp = -2;
+	bottomproj.hsp = 5 * (spr_dir);
+    }
+    }
+	}
+if attack = AT_NSPECIAL && hbox_num = 2{
+if hitbox_timer % 15 == 0 for (var h = 0; h < 20; h++;) can_hit[h] = true;}
+
+//if (attack = AT_NSPECIAL or attack = AT_NSPECIAL_2 && hbox_num != 1) && proj_angle != 180 && proj_angle != 0{
+//    player_id.angle_used_nspecial = 1
+//}
+
+if (attack = AT_NSPECIAL or attack = AT_NSPECIAL_2 && hbox_num = 2){
+if hitbox_timer < 3 && hbox_num != 5{
+		if player_id.down_down{
+			if player_id.spr_dir = 1{
                 proj_angle = 320
-            }else{
-                proj_angle = player_id.joy_dir
-            }
-        }
-        if !player_id.joy_pad_idle{
-    	hsp = lerp(hsp, 9.3 * dcos(proj_angle), 1);
+          }else if player_id.spr_dir = -1{
+              proj_angle = 220 
+          }
+		}
+		if player_id.up_down{
+			if player_id.spr_dir = 1{
+                proj_angle = 40
+          }else if player_id.spr_dir = -1{
+              proj_angle = 140 
+          }
+		}
+		nspecial_anglecheck = proj_angle
+        //if !player_id.joy_pad_idle && player_id.angle_used_nspecial = 0{
+        //    if player_id.joy_dir < 140 && player_id.spr_dir = -1{
+        //        proj_angle = 140
+        //    }else if player_id.joy_dir > 220 && player_id.spr_dir = -1{
+         //       proj_angle = 220 
+          //  }else if player_id.joy_dir > 40 && player_id.joy_dir < 220 && player_id.spr_dir = 1{
+            //    proj_angle = 40 
+            //}else if player_id.joy_dir < 320 && player_id.joy_dir > 40 && player_id.spr_dir = 1{
+              //  proj_angle = 320
+            //}else{
+              //  proj_angle = player_id.joy_dir
+		
+        if !player_id.joy_pad_idle && hitbox_timer < 3 && hbox_num != 5{
+        if hbox_num = 1{
+        hsp = lerp(hsp, 9.3 * dcos(proj_angle), 1);
         vsp = lerp(vsp, -9.3 * dsin(proj_angle), 1);
-        }
+        }else{
+        if hbox_num = 2{
+        hsp = lerp(hsp, 3 * dcos(proj_angle), 1);
+        vsp = lerp(vsp, -3 * dsin(proj_angle), 1);
+        }else{
+        if hbox_num = 3{
+        hsp = lerp(hsp, 0.1 * dcos(proj_angle), 1);
+        vsp = lerp(vsp, -0.1 * dsin(proj_angle), 1);
+        }else{
+        if hbox_num = 4{
+        hsp = lerp(hsp, 4.0 * dcos(proj_angle), 1);
+        vsp = lerp(vsp, -4.0 * dsin(proj_angle), 1);
+        }else{
+        }}}}}
     }
     if hitbox_timer < 5{
     image_index = 0
@@ -285,6 +400,11 @@ if hitbox_timer < 7{
 }else if hitbox_timer > 10{
     image_index = 2
 }
+}
+
+if attack = AT_NSPECIAL && spr_dir = -1 && (hbox_num = 1 or hbox_num = 2 or hbox_num = 3 or hbox_num = 4) && hitbox_timer = 2 && player_id.right_down && !(player_id.up_down || player_id.down_down) {
+hsp = hsp * -1
+draw_xscale = -1
 }
 
 if attack = AT_DSTRONG && (hbox_num = 1 or hbox_num = 2 or hbox_num = 3 or hbox_num = 4){
@@ -358,7 +478,7 @@ if attack = AT_DSTRONG && (hbox_num = 1 or hbox_num = 2 or hbox_num = 3 or hbox_
     }
 }
 
-if attack = AT_NSPECIAL_2{
+if attack = AT_NSPECIAL_2 && hbox_num = 1{
     x = player_id.x
     if vsp < 25{
     vsp += 0.65
@@ -367,6 +487,27 @@ if attack = AT_NSPECIAL_2{
     destroyed = 1
     }
 }
+
+if attack = 49 && hbox_num = 1{
+					through_platforms = 300
+					proj_angle += 10
+					if hitbox_timer == 5{
+					proj_angle += random_func( 0, 361, true);
+					}
+				    if vsp < 15{
+					vsp += 0.65
+					}
+    		    if (!free){					
+    		        sound_play(sound_get("snd_scytheburst"));
+					var beam = create_hitbox(49, 2, floor(x-5), floor(y-1200));
+					beam.through_platforms = 999
+    		        destroyed_next = true;
+    		    }
+}
+
+
+
+
 /*if hitbox_timer < 15{
         //homing detection
             if (!in_hitpause) //should only work if the projectile isn't in hitpause
@@ -394,4 +535,3 @@ if attack = AT_NSPECIAL_2{
     }
 }
 }
-

@@ -15,8 +15,8 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, -1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 10);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("snd_swing"));
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("snd_criticalswing"));
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 3);
 
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 18);

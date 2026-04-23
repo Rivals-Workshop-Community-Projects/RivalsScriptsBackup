@@ -1,231 +1,42 @@
 hud_x = temp_x;
 hud_y = temp_y;
-if state = PS_SPAWN && fspecial_vc = 0{
-    textDraw(
-temp_x + 6,
-temp_y - 35,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Press TAUNT to enable Fspec voice",
-false
-)
-}
-if attack = AT_BAIR{
-draw_sprite_ext(sprite_get("clover_counter"), (nspecial_ammo), temp_x + 160, temp_y - 4, 1, 1, 0, c_white, 1);
-    }else{
-draw_sprite_ext(sprite_get("diamond_counter"), (nspecial_ammo), temp_x + 160, temp_y - 4, 1, 1, 0, c_white, 1);
-    }
-if pirouette_selected = 1{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Useless Bird",
-false
-            )
+
+var fspecial_vc = 0
+	if get_gameplay_time() < 130 && fspecial_vc = 0{
+	textDraw(temp_x - 15, temp_y - 22, "fName", c_white, 0.2, 6000, fa_left, 1, true, 1, "Press TAUNT to enable Fspec voice", false)
+	}
+
+draw_sprite_ext(sprite_get("diamond_counter"), (nspecial_ammo), temp_x + 149, temp_y - 6, 1, 1, 0, c_white, 1);
+draw_sprite_ext(sprite_get("roulette_wheel"), (roulette_rot), temp_x + 167, temp_y - 23, 1, 1, 0, c_white, 1);
+
+if move_cooldown[AT_DSPECIAL] > 0{
+    gpu_set_fog(1, c_black, 0, 1); 
+    var shade = draw_sprite_ext(sprite_get("roulette_wheel"), image_index, temp_x + 167, temp_y - 23, 1, 1, spr_angle, c_black, 0.75); //draw the foggy sprite on top of the sprite
+	gpu_set_fog(0, c_white, 0, 0); 
 }
 
-if pirouette_selected = 2{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Speed +",
-false
-            )
-}
+pirouette_text = pirouette_selected;
 
-if pirouette_selected = 3{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Weight -",
-false
-            )
-}
-
-if pirouette_selected = 4{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Extra Jump",
-false
-            )
-}
-
-if pirouette_selected = 5{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Jump Height -",
-false
-            )
-}
-
-if pirouette_selected = 6{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Defense -",
-false
-            )
-}
-
-if pirouette_selected = 7{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Projectile Hitstun +",
-false
-            )
-}
+effects[0] = "0: ERROR"
+effects[1] = "15: On Fire"
+effects[2] = "1: Foley"
+effects[3] = "2: Slippery"
+effects[4] = "3: Awkward"
+effects[5] = "4: Tranquil"
+effects[6] = "5: Useless Bird"
+effects[7] = "6: Attack Boost"
+effects[8] = "7: Kaboom"
+effects[9] = "8: Ghastly"
+effects[10] = "9: Wormhole"
+effects[11] = "10: Perfect 10"
+effects[12] = "11: Tiring"
+effects[13] = "12: Swift Legs"
+effects[14] = "13: Twisted Ankle"
+effects[15] = "14: Full House"
 
 
-if pirouette_selected = 8{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"No Effect",
-false
-            )
-}
 
-if pirouette_selected = 9{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Normals Speed +",
-false
-            )
-}
-
-if pirouette_selected = 10{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Ground Speed -",
-false
-            )
-}
-
-if pirouette_selected = 11{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Jump Height +",
-false
-            )
-}
-
-if pirouette_selected = 12{
-textDraw(
-temp_x + 6,
-temp_y - 15,
-"fName",
-c_white,
-0.2,
-6000,
-fa_left,
-1,
-true,
-1,
-"Take Damage",
-false
-            )
-}
-
+if (get_match_setting(SET_PRACTICE) = true) && get_gameplay_time() >= 130 {textDraw(temp_x + 6, temp_y - 15, "fName", c_white, 0.2, 6000, fa_left, 1, true, 1, (effects[pirouette_text]), false)}
 
 
 //if chaos = 500{
@@ -268,3 +79,4 @@ false
     if array_bool return [string_width_ext(text, lineb, linew), string_height_ext(text, lineb, linew)];
     else return;
 }
+

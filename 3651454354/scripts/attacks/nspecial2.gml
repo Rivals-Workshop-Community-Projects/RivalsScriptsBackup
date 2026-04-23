@@ -1,3 +1,4 @@
+//intro devilsknife is this because im a brilliant coder
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_WINDOW, 3);
@@ -20,4 +21,4 @@ set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_PLASMA_SAFE, true );
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_UNBASHABLE, true );
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_DESTROY_EFFECT, 1 );
 set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_PARRY_STUN, 1 );
-set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_ANIM_SPEED, 0.3 );
+set_hitbox_value(AT_NSPECIAL_2, 1, HG_PROJECTILE_ANIM_SPEED, 0.0 );
