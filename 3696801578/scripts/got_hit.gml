@@ -1,0 +1,1 @@
+sound_stop(nspecial_spin_sound)

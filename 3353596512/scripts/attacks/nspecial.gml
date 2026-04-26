@@ -36,7 +36,7 @@ set_window_value(AT_NSPECIAL, 4, AG_WINDOW_GOTO, 2);
 
 //cancel
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_TYPE, 1);
-set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 22);
+set_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 18);
 //set_window_value(AT_NSPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.2);

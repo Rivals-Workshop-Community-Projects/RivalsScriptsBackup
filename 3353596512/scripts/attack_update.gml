@@ -297,7 +297,7 @@ switch(attack)
     can_fast_fall = false;
     if (window == 1){
     	if (window_timer == 1 && !hitpause){
-    		sound_play(sound_get("terminal_enter"));
+    		terminal_sfx = sound_play(sound_get("terminal_enter"));
     	}
     	if (window_timer == 8 && !hitpause){
     		using_terminal = true;
@@ -321,7 +321,8 @@ switch(attack)
     	if ( (shield_pressed || shield_down) || (special_pressed)) && (!hitpause){
     		sound_play(sound_get("terminal_exit"));
     		sound_play(sound_get("terminal_type" + string( random_func(0, 5, true) + 1 ) ));
-    		using_terminal = false
+    		using_terminal = false;
+    		sound_stop(terminal_sfx);
     		window = 5;
     		window_timer = 0;
     	}
@@ -912,15 +913,15 @@ if (attack == AT_USTRONG|| attack == AT_USTRONG_2 || attack == AT_USTRONG_3){
 #define strong_walk()
 
     strong_walk_dir = right_down - left_down;
-    if (strong_walk_dir == 0){
+    if (strong_walk_dir == 0 || strong_walk_dir == 1 && hsp < 0 || strong_walk_dir == -1 && hsp > 0){
     	strong_walk_hsp = 0;
     	hsp = 0;
     }
     	if (strong_walk_dir != 0 && window == 1 && smash_charging){
     	    if (!hitpause){
-    	    	if (hsp < walk_speed || hsp > -walk_speed){
+    	    	if (hsp < walk_speed*(melee_weapons[curr_melee].walk_mult) || hsp > -walk_speed*(melee_weapons[curr_melee].walk_mult)){
 					strong_walk_hsp += walk_accel*strong_walk_dir;
-					strong_walk_hsp = clamp(strong_walk_hsp, -walk_speed, walk_speed)
+					strong_walk_hsp = clamp(strong_walk_hsp, -walk_speed*(melee_weapons[curr_melee].walk_mult), walk_speed*(melee_weapons[curr_melee].walk_mult))
 					hsp = strong_walk_hsp;
 					//print(hsp);
     	    	}

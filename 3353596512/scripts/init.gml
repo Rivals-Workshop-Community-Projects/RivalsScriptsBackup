@@ -167,21 +167,24 @@ melee_weapons = [
         index : 0,
         name : "Yield sign",
         rank_req : 1,
-        was_bought : true
+        was_bought : true,
+        walk_mult : 2/3
         },
         
         {
         index : 1,
         name : "Stop sign",
         rank_req : 3,
-        was_bought : false
+        was_bought : false,
+        walk_mult : 1
         },
         
         {
         index : 2,
         name : "Shovel",
         rank_req : 4,
-        was_bought : false
+        was_bought : false,
+        walk_mult : 4/3
         }
     ];
     
@@ -275,6 +278,8 @@ terminal_melee_index = 0;
 terminal_fspec_index = 0;
 terminal_uspec_index = 0;
 terminal_slot_buffer = 0;
+
+terminal_sfx = noone;
 
 used_nspecial_stall = false;
 

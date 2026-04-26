@@ -560,6 +560,7 @@ if (using_terminal){
 if (!is_attacking || attack != AT_NSPECIAL){
 	if (using_terminal){
 		sound_play(sound_get("terminal_exit"));
+		sound_stop(terminal_sfx);
 		using_terminal = false;
 	}
 }
