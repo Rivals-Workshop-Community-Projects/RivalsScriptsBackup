@@ -65,7 +65,7 @@ if free{    // AIR ATTACKS
     }
 }
 
-if (attack = AT_NSPECIAL) {
+/*if (attack = AT_NSPECIAL) {
 	switch (current_ability) {
 		case 16:
 			attack = AT_EXTRA_3;

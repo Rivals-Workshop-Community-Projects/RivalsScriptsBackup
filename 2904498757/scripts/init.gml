@@ -197,3 +197,294 @@ for (var i = 0; i < nspec_ai_tot; i += 1) {
         alpha: image_alpha
     }
 }
+
+//Compatability
+
+//dialogue buddy
+otherUrl = 0;
+diagchoice = [
+    "Out-a my way! I've got a delivery to make!",
+    "Noise put you up-a to this, didn't he?",
+    "Well someone's gotta pay for this-a pizza?!"
+];
+diag_nrs_diag = [noone];
+
+//prowler buddy
+prowler_parry_screen = sprite_get("Prowler_peppino")
+
+//mt ddd
+arena_title = "Speedy Chef";
+
+//pokemon stadium
+pkmn_stadium_back_img = sprite_get("Peppino_pokemon_back");
+pkmn_stadium_front_img = sprite_get("Peppino_pokemon_front");
+
+//smiley kirby
+TCG_Kirby_Copy = 4;
+
+//Trial grounds
+
+guiltySprite = sprite_get("Peppino_trial")
+
+
+//The chosen one
+//tcoart = sprite_get("bowsertcoart");
+
+//soulbound conflict
+battle_text = "* It's Pizza Time!";
+
+//boxing arena
+boxing_title = "Middle-Aged
+Speedster";
+
+//Snake interigations
+
+sna_interrogated_line_01 = "YAAAAAAAAAHHHHH!";
+sna_interrogated_line_02 = "Let-a go of me!";
+sna_interrogated_line_03 = "Wait, I'll pay-a my debt!";
+
+//Henry Stickmin fail
+
+has_fail = true;
+fail_text = "There goes your P-Rank.";
+
+//greenwood
+greenwood_cheer = [4];
+
+
+//yooka laylee
+laylee_win_quote = "DEFEATED IN 30 MINUTES OR LESS. NOW HAND OVER THE PIZZA!"
+
+//unregistered HyperCam quotes
+
+uhc_victory_quote = "Pienpl pzza ruls!!!!:) ";
+
+//Wall-E Taunt
+
+walle_taunt_sound = sound_get("Walle_peppino");
+walle_taunt_type = 1
+
+//Chaos emeralds buddy
+super_form_transform_sound = sound_get("Peppino_angry")
+super_form_music = sound_get("Peppino_chaos");
+
+//song by Divide music
+
+// Green flower hill zone
+
+gfzsignspr = sprite_get("PeppinoBoard")
+
+gfzsignsfx = sound_get("pt_parry")
+
+//wily castle
+ wily_robotmaster_img = sprite_get("Peppino-Megaman");
+
+knight_compat_dream = 
+    [
+        "I have to protect my resturant.",
+        "I'll-a get you eventually Pizza Head",
+        "Now-a this bug thing. give me a break."
+    ]
+
+ //Last Resort
+
+ //resort_portrait = sprite_get("Bowserjr")
+ 
+//steve-compatiblity
+
+steve_death_message = "Steve couldn't escape in time."
+
+//Hikaru title
+
+Hikaru_Title = "Chef"; 
+
+//Pacman sprite 
+
+Namco_Taunt = sprite_get("Pac_peppino")
+Namco_Taunt_Sound = sound_get("Pac_peppino")
+
+//Amber
+//plushForAmber = sprite_get("Bowser_Plush")
+
+//Trial grounds
+
+//guiltySprite = sprite_get("Bowser_Trial")
+
+//Miiverse
+
+miiverse_post = sprite_get("Peppino_miiverse")
+
+//wii menu
+wiimote_compat_sprite = sprite_get("peppimote")
+
+//ttyd stage
+
+ttyd_audience_sprite = sprite_get("Gustavo")
+
+//po and Gumbo
+pot_compat_variable = sprite_get("Peppino_food");
+pot_compat_text = "Peppino's Pizza"
+
+//Barr sonic
+sonic_rainbowring_atk = 46; //the value corresponds to an attack index, make sure it's unused by your character. this value is used by the template
+
+//Chao
+chao_type = 5
+chao_custom_spr = sprite_get("Pep_chao")
+
+//so sorry support
+
+//sorry_art = sprite_get("sorryart_[samus_card]");
+
+//loadent
+
+//ltweet = sprite_get( "ltweet" );
+
+//Bailey
+
+kinniku_behind = sprite_get("MuscleBuster-peppino2");
+kinniku_front = sprite_get("MuscleBuster-peppino");
+
+//omori battle
+omoriface_n = sprite_get("peppino_neutral");
+omoriface_h = sprite_get("peppino_happy");
+omoriface_s = sprite_get("peppino_sad");
+omoriface_a = sprite_get("peppino_angry");
+omoriface_t = sprite_get("peppino_toast");
+
+//bbc news
+bbc_msg = "Italian found dead, local coroner reports cause of death as a heart attack."
+
+//star/screen ko buddy 
+buddy_screenko_sprite = sprite_get("Peppino_Star_KO");
+
+//weegee
+weegeefied_sprite = sprite_get("Peppino_Weegee");
+
+//abyss hime
+abyssHime_deathspr = sprite_get("Peppino_hime_death");
+
+//clockworks zone
+
+spr_stagefreefall = sprite_get("Drift");
+
+// Highway delivery
+truckadspr = sprite_get("Peppino_ads_highway");
+
+//Elizabeth
+
+elizabeth_transformation = sprite_get("Peppino_elizabeth");
+
+//freddy merch compat
+has_merch = true //enables Freddy to read your character
+merch_sprite = sprite_get("Peppino_taunt_freddyplush"); //replace "your_sprite_here" with the name of your sprite
+merch_sound = sound_get("sfx_taunt"); //replace "your_sound_here" with the name of your sound, if you have one
+merch_sound_type = 0; //optional, initialize this variable as 1 if your character's audio file is a music track, as this will suppress the stage's background music
+
+//scoop
+scoop_personalized_flavour_name = "Spaghett-O-Melt";
+scoop_personalized_flavour_sprite = sprite_get("peppino_compat_scoop");
+
+//Dracula support
+dracula_portrait = asset_get("peppino-1")
+dracula_portrait2 = asset_get("peppino-2") //or asset_get("empty_sprite")
+dracula_portrait3 = asset_get("peppino-3") //or asset_get("empty_sprite")
+var page = 0;
+
+//Dracula support
+dracula_portrait = sprite_get("peppino-1");
+dracula_portrait2 = sprite_get("peppino-2");
+dracula_portrait3 = sprite_get("peppino-3");
+dracula_portrait3 = sprite_get("peppino-3");
+var page = 0;
+
+//Page 0
+dracula_speaker[0] = 0;
+dracula_text[0] = "Ugh, what a horrid smell, tomatoes, cheddar, and... garlic. How dare you sully my castle with such a stench!";
+page++;
+
+//Page 1
+dracula_speaker[1] = 2;
+dracula_text[1] = "Oh, ma che dici! You don’t get to talk to me about smell! You’re the one threatening la mia pizzeria!";
+page++;
+
+//page 2
+
+dracula_speaker[2] = 1;
+dracula_text[2] = "Your minions made a mess, didn’t pay for the pizzas they destroyed, and worst of all";
+page++;
+
+//Page 3
+dracula_speaker[3] = 3;
+dracula_text[3] = "you haven’t even bought a single slice! Che disastro!";
+page++;
+
+//Page 4
+dracula_speaker[4] = 0;
+dracula_text[4] = "Hah![shake] Your filthy shop isn’t worthy of existing in the same world as me. I shall take great pleasure in wiping it from existence.";
+page++;
+
+//Page 5
+dracula_speaker[5] = 2;
+dracula_text[5] = "That’s it! You’ve crossed the line, stronzo!";
+page++;
+
+//Page 6
+dracula_speaker[6] = 3;
+dracula_text[6] = "I’m gonna knock you and this castle straight to the ground you Basta!";
+page++;
+
+//Toon link
+
+//toonlink_photo = sprite_get("Samus_Toon_link");
+//toonlink_photo2 = 1
+
+//Feri
+
+//feri_costume = sprite_get("Feri_Bowser");
+
+//Otto bobblehead
+
+//otto_bobblehead_sprite = sprite_get("otto_bobblehead");
+
+//otto_bobblehead_body_sprite = sprite_get("otto_bobblehead_body");
+
+// Spamton ads
+
+spam_ad = sprite_get("peppinoad")
+
+//smash mario
+mario_cap_compat = sprite_get("cappytaunt_peppino")
+
+//flatzone 
+
+GWSpr = sprite_get("Peppino_flatzone")
+
+//kirby fighters
+
+kf_custom_icon = sprite_get("Peppino_kirby_Fighters")
+
+//clockworks zone 
+stage_freefalling = false;
+
+//Amber interaction variables
+amber_herObj = noone; //The object ID of Amber when she hugs. Amber's own script will set this when the hug is inititated
+amber_thisHugSprite = sprite_get("Amber_pep");
+amber_herHugSprite = sprite_get("Amber_pep_amber");
+amber_startHug = false; //This variable is set true from Amber's scripts
+amber_thisSpriteInFront = true; //When true, this character's sprite is rendered over Amber's sprite
+amber_autoTurnToHer = true; //This character will automatically face towards Amber upon hug activatation when true
+
+amber_hugStartPos[0] = 70; //The x target offset point (from Amber's pos) where the player should hug Amber at. 
+amber_hugStartPos[1] = 0; //The y target offset point. Recommended to keep this at 0 for grounded interaction
+
+amber_hugExitPos[0] = 70; //The x target offset point (from Amber's pos) where the player stands at when exiting hug state.
+amber_hugExitPos[1] = 3; //The y target offset point.
+
+//The x target offset positions will inherit the character's spr_dir when this is true.
+//Set this to true for character interactions that face toward each other such as hugging
+//Set this to false for centered interaction animations
+amber_useSprDirOffset = true; 
+
+amber_hugExitTimer = 30; //How many frames should pass before either player can exit the hug window loop
+amber_hugExitWindow = 3; //The window to jump to when either player presses a button to exit hug loop

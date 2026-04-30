@@ -1,3 +1,4 @@
+user_event(9); 
 has_airdodge = false;
 can_shield = false;
 can_tech = false;

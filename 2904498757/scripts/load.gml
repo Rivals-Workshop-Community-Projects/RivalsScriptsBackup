@@ -68,3 +68,62 @@ sprite_change_offset("pizza_destroy_fx", load_x, load_y);
 
 // plat
 sprite_change_offset("plat", 32, 0);
+
+//pac-man
+
+sprite_change_offset("Pac_peppino", 12, 15);
+
+//Trial Grounds
+
+sprite_change_offset("Peppino_trial", 31, 0);
+
+//Naruto
+
+sprite_change_offset("Naruto_peppino", 50, 70);
+
+//green flower hill zone
+
+sprite_change_offset("PeppinoBoard", 18, 41);
+
+//paper mario ttyd
+sprite_change_offset("Gustavo", 28, 70) 
+
+//Barr sonic
+sprite_change_offset("sonictrick", 24, 47);
+
+//Bailey
+
+sprite_change_offset("MuscleBuster-peppino", 68, 93);
+sprite_change_offset("MuscleBuster-peppino2", 70, 93);
+
+//star screen ko
+sprite_change_offset("Peppino_Star_KO", 57, 63);
+
+//miiverse
+
+sprite_change_offset("Peppino_miiverse", 28, 48) 
+
+//smash mario
+
+sprite_change_offset("cappytaunt_peppino", 22, 39) 
+
+//Weegee
+
+sprite_change_offset("Peppino_Weegee", 20, 46) 
+
+//Weegee
+
+sprite_change_offset("Peppino_hime_death", 54, 65) 
+
+//amber hug
+
+sprite_change_offset("Amber_pep", 32, 98) 
+sprite_change_offset("Amber_pep_amber", 32, 62) 
+
+//clockworks zone
+
+sprite_change_offset("Drift", 60, 60) 
+
+//Elizabeth
+
+sprite_change_offset("Peppino_elizabeth", 72, 144);

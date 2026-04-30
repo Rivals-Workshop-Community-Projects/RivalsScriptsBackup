@@ -307,6 +307,16 @@ if abs(hsp) < 2 && !hitpause {
 	reset_attack_value(attack, AG_OFF_LEDGE);
 }
 
+if (attack == sonic_rainbowring_atk) //check if the trick attack is used
+{
+    iasa_script(); //lets character cancel out of the animation at any point
+    if (vsp > 0 && window == 3) //window 3 is the window specified for the trick pose
+    {
+        window ++;
+        window_timer = 0;
+    }
+    if (window > 1 && !free) set_state(PS_LANDING_LAG);
+}
 #define is_last_frame
 return window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH);
 
