@@ -60,6 +60,7 @@ if (place_meeting(x, y, asset_get("pHitBox")) && hitstop == 0) { //makes the art
     		if(hitbox_hit.hitpause != 0 && hitbox_hit.hit_priority != 0 && hitbox_hit.kb_value != 0 && hitbox_hit.id != last_hit && hitbox_hit.hbox_group != last_hit_group){
     			with (hitbox_hit){
     				if other.grab_hit = false{
+    				
         			sound_play(sound_effect);
         			sound_play(asset_get("sfx_frog_nspecial_shove"))
         			spawn_hit_fx(floor(x), floor(y), hit_effect);
@@ -140,11 +141,23 @@ if (place_meeting(x, y, asset_get("pHitBox")) && hitstop == 0) { //makes the art
     			
     			if(grabbed_id != noone){
     				if grab_hit = false{
-    			take_damage(grabbed_id.player, -1, hitbox_hit.damage);	
+    			if hitbox_hit.damage >= pop_damage{  
+    			if grabbed_id = player_id{
+    			state = 4;
+    			state_timer = 0;
+    			print_debug("dddd")
+    			}
+    			}else{
+    			take_damage(grabbed_id.player, -1, hitbox_hit.damage);
+    			}
     			}
     			}
     			if(state == 5){
-    			take_damage(hit_player_obj.player, -1, hitbox_hit.damage);		
+    			take_damage(hit_player_obj.player, -1, hitbox_hit.damage);	
+    			if hitbox_hit.damage >= pop_damage{
+    			state = 2;
+    			state_timer = 0;
+    			}
     			}
     			//pass_thru = false;
     			
@@ -417,7 +430,7 @@ if (state == 4){
 	vsp = 0;
 	if state_timer == 2 {
 	if(grabbed_id = player_id){
-		player_id.move_cooldown[AT_NSPECIAL] = 120
+		player_id.move_cooldown[AT_NSPECIAL] = 250
 	}
 	//print(grabbed_id.vsp);
 	grabbed_id = -4;

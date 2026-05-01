@@ -22,3 +22,4 @@ grabtimer = 0;
 bubbledamage = 0;
 hasdamaged = false;
 bubbleexists = false;
+move_cooldown[AT_NSPECIAL] = 2;

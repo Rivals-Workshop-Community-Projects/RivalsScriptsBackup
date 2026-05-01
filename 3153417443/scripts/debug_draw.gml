@@ -6,7 +6,7 @@
 //draw_debug_text(x, y + 75, "tap2" +string(nspecialtap2));
 // draw_debug_text(x, y + 35, "fspecialgrab" +string(fspecialgrabbing));
 //draw_debug_text(x, y + 55, "uspecgrab" +string(uspecialgrabbed));
-// draw_debug_text(x, y + 75, "grab" +string(grabbed_player_obj));
+// draw_debug_text(x, y + 75, "grab" +string(bubblearticle.grabbed_id));
 // draw_debug_text(x, y + 55, "grabtimer:" +string(grabtimer));
 //draw_debug_text(x, y + 55, "id" +string(cantap));
 

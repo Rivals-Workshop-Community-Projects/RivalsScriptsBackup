@@ -10,10 +10,9 @@ if (instance_exists(parent)) {
 			sound_play(asset_get("sfx_ell_explosion_medium"));
 			spawn_hit_fx( x, y - 40, 143 );
 			create_hitbox(AT_DSPECIAL, 1, x, y - 30);
-			with (parent) {
-				destroy = true;
-			}
-			instance_destroy();
+			parent.destroy = true;
+			/*parent = noone;
+			instance_destroy();*/
 		}
 		is_hittable = true;
 	} else {

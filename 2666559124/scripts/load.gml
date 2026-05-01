@@ -52,6 +52,9 @@ sprite_change_offset("taunt", 52, 76);
 sprite_change_offset("taunt_overlay", 52, 76);
 sprite_change_offset("taunt_old", 42, 76);
 
+sprite_change_offset("starko", 31, 42);
+sprite_change_offset("screenko", 41, 72);
+
 // EX Sprites
 sprite_change_offset("idle_ex", 32, 76);
 sprite_change_offset("crouch_ex", 28, 68);
@@ -104,6 +107,9 @@ sprite_change_offset("uspecial_ex", 66, 88);
 sprite_change_offset("dspecial_ex", 24, 74);
 sprite_change_offset("taunt_ex", 52, 76);
 sprite_change_offset("taunt_old_ex", 42, 76);
+
+sprite_change_offset("starko_ex", 31, 42);
+sprite_change_offset("screenko_ex", 41, 72);
 
 // Other things
 sprite_change_offset("nspecial_proj", 18, 20);

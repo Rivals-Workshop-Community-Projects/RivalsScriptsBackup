@@ -20,7 +20,7 @@ dash_turn_time = 10;
 dash_turn_accel = 1.5;
 dash_stop_time = 5;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = .5;
+ground_friction = .55;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5; //ok
@@ -28,10 +28,10 @@ jump_speed = 10.5; //ok
 short_hop_speed = 5.00; //ok
 djump_speed = 10; //ok
 leave_ground_max = 7; //the maximum hsp you can have when you go from grounded to aerial without jumping //ok
-max_jump_hsp = 7; //the maximum hsp you can have when jumping from the ground //ok
-air_max_speed = 5.5; //the maximum hsp you can accelerate to when in a normal aerial state //ok
+max_jump_hsp = 6.5; //the maximum hsp you can have when jumping from the ground //ok
+air_max_speed = 5.25; //the maximum hsp you can accelerate to when in a normal aerial state //ok
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down //ok
-air_accel = .36; //ok
+air_accel = .3; 
 prat_fall_accel = 1.00; //multiplier of air_accel while in pratfall //ok
 air_friction = .04; //ok
 max_djumps = 1; //ok
@@ -89,7 +89,7 @@ roll_backward_max = 9;
 
 land_sound = asset_get("sfx_land_med");
 landing_lag_sound = asset_get("sfx_land");
-waveland_sound = asset_get("sfx_waveland_zet");
+waveland_sound = asset_get("sfx_waveland_ran");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
@@ -99,7 +99,6 @@ bubble_x = 0;
 bubble_y = 8;
 
 //misc variables
-fire_bouncetime = 0;
 fireballs_out = 0;
 rollable = false;
 aerialdspec = false;

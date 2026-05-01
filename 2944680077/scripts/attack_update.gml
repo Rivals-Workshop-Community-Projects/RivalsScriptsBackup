@@ -7,66 +7,6 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_FSPECIAL_AIR 
 
 switch(attack)
 {
-	case AT_JAB:
-		//jab logic to prevent annoying jank from cancel types
-		var cancel_window_1 = 3; //The window where jab1 can be cancelled into jab2 or a tilt
-		var cancel_window_2 = 6; 
-		
-		var cancel_frame_1 = 4; //The frame of cancel_window_1, whereafter jab1 can be cancelled into jab2 or a tilt
-		var cancel_frame_2 = 6;
-		
-		if (window == 1){
-			set_attack_value(AT_JAB, AG_NUM_WINDOWS, 3); //set so that jab1 stays a single attack
-		}
-		if ((window == cancel_window_1 && attack_pressed && window_timer >= cancel_frame_1) || (window == cancel_window_2 && attack_pressed && window_timer >= cancel_frame_2)){ //If during the cancel window of jab1 or jab2...following logic for tilt cancelled jab
-			if (left_down){
-				if (spr_dir = -1 || has_hit){ //if facing left, or if you hit the opponent, do ftilt if pressing left+attack
-					spr_dir = -1; //sets facing so you can do reversed tilts on hi
-					window = 1;
-					window_timer = 0;
-					attack = AT_FTILT;
-				}
-			}
-			if (right_down){
-				if (spr_dir = 1 || has_hit){ //if facing right, or if you hit the opponent, do ftilt if pressing right+attack
-					spr_dir = 1; //sets facing so you can do reversed tilts on hit
-					window = 1;
-					window_timer = 0;
-					attack = AT_FTILT;
-					hurtboxID.sprite_index = sprite_get("ftilt_hurt");
-				}
-			}
-			if (up_down){ //do utilt if pressing up+attack
-				window = 1;
-				window_timer = 0;
-				attack = AT_UTILT;
-				hurtboxID.sprite_index = sprite_get("utilt_hurt");
-			}
-			if (down_down){ //do dtilt if pressing down+attack
-				window = 1;
-				window_timer = 0;
-				attack = AT_DTILT;
-				hurtboxID.sprite_index = sprite_get("dtilt_hurt");
-			}
-			if ((left_down && spr_dir == 1) || (right_down && spr_dir == -1) || (!left_down && !right_down && !up_down && !down_down)){ //if simply trying to do jab2 or jab3 by not holding a direction
-				if (window == 3){
-					set_attack_value(AT_JAB, AG_NUM_WINDOWS, 6); //set so it actually goes to the next windows
-					window = 4; //jab2 starting window
-					window_timer = 0;
-					clear_button_buffer(PC_ATTACK_PRESSED); //clears the buffer, just in case your jab timings are very tight and quick.
-				}
-				if (window == 6){
-					set_attack_value(AT_JAB, AG_NUM_WINDOWS, 9);
-					window = 7; //jab3 starting window
-					window_timer = 0;
-					clear_button_buffer(PC_ATTACK_PRESSED);
-				}
-			}
-		} 
-		if (was_parried && (window == 3 || window == 6) && window_timer >= get_window_value(AT_JAB, window, AG_WINDOW_LENGTH)){ //if jab isn't cancelled or if jab3 isn't performed, as soon as the window ends, was_parried is cleared so that the jab is parry safe
-			was_parried = false;
-		}
-	break;
 	
 	case AT_USTRONG:
 		if window == 1 

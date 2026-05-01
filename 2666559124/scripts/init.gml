@@ -115,12 +115,14 @@ canBomb = true;
 if (alt == 2 || alt == 3 || alt == 4 ||
     alt == 7 || alt == 13 || alt == 14 || alt == 15) {
 	use_ex_sprites = true;
+	var is_ex = "_ex";
 	set_ui_element(UI_HUD_ICON, sprite_get("hud_ex"));
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudrt_ex"));
 	set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_ex"));
 	set_ui_element(UI_WIN_PORTRAIT, sprite_get("portrait_ex"));
 } else {
 	use_ex_sprites = false;
+	var is_ex = "";
 	set_ui_element(UI_HUD_ICON, sprite_get("hud_def"));
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("hudrt_def"));
 	set_ui_element(UI_WIN_SIDEBAR, sprite_get("result_small_def"));
@@ -133,138 +135,91 @@ if (alt == 0) {
 	set_hitbox_value(AT_FSPECIAL, 2, HG_PROJECTILE_SPRITE, sprite_get("barrel_gb_pieces"));
 }
 
+// --- Character Compat ---
 //Toonlink Support
 if(get_player_color(player) == 0) {
 	toonlink_photo = sprite_get("tl_photo_def");
 } else {
-	if (!use_ex_sprites) {
-		toonlink_photo = sprite_get("tl_photo");
-	} else {
-		toonlink_photo = sprite_get("tl_photo_ex");
-	}
+	toonlink_photo = sprite_get("tl_photo" + is_ex);
 }
 toonlink_photo2 = 0;
 
+// --- Stage Compat --- 
 //Dracula support
-if (!use_ex_sprites) {
-	dracula_portrait = sprite_get("cutscene_portrait");
-} else {
-	dracula_portrait = sprite_get("cutscene_portrait_ex");
-}
+dracula_portrait = sprite_get("cutscene_portrait" + is_ex);
 dracula_portrait2 = asset_get("empty_sprite")
 var page = 0;
 
 //Page 0
 dracula_speaker[page] = 0;
-dracula_text[page] = "Who are you supposed to be?";
+dracula_text[page] = "So, it seems we have another mortal enter the Devil's Castle throne room?";
 page++;
 
 //Page 1
 dracula_speaker[page] = 1;
-dracula_text[page] = "Oh, I'm just a contruction worker who has a job to do.";
+dracula_text[page] = "Dracula! You-!";
 page++;
 
 //Page 2
 dracula_speaker[page] = 1;
-dracula_text[page] = "So, we're supposed to build a very fancy hotel here and your castle came out of nowhere.";
+dracula_text[page] = "What's the big idea sproutin' your castle up in the worst spot at the worst time?!";
 page++;
 
 //Page 3
 dracula_speaker[page] = 1;
-dracula_text[page] = "I happened to be picked to see if anyone lives here. And I was surprised to see that you have zombies and skeletons and other random things.";
+dracula_text[page] = "We were tearing down this old hotel, and you had to show up and take away all our work before we could get started!";
 page++;
 
 //Page 4
-dracula_speaker[page] = 1;
-dracula_text[page] = "You are the owner of this place right?";
+dracula_speaker[page] = 0;
+dracula_text[page] = "You're upset with me just because my arrival demolished something you were already going to destroy?";
 page++;
 
 //Page 5
 dracula_speaker[page] = 0;
-dracula_text[page] = "You really think you can just ask me and my slaves to leave my own domain?";
+dracula_text[page] = "You should be thanking me for making your work easier, really.
+			And I would gladly accept complete surrender and servitude in return.";
 page++;
 
 //Page 6
-dracula_speaker[page] = 0;
-dracula_text[page] = "You don't even know who I am, do you? I am Dracula, the Prince of Darkness. And I'm not allowing anyone to destroy my castle.";
+dracula_speaker[page] = 1;
+dracula_text[page] = "Surre-?! This demolition would've givin' us a fortune! This is a HUGE building we were gonna take down!";
 page++;
 
 //Page 7
 dracula_speaker[page] = 1;
-dracula_text[page] = "Welp, if your gonna be like that, I'm gonna have take things by force.";
+dracula_text[page] = "But noOOoo! You had to show up and take away our fortune!";
 page++;
 
 //Page 8
 dracula_speaker[page] = 1;
-dracula_text[page] = "I'll just leave and tell my te-";
+dracula_text[page] = "So I think it's fair I bring this rotten dungeon to dust instead, you bat-breathed joker!";
 page++;
 
 //Page 9
 dracula_speaker[page] = 0;
-dracula_text[page] = "You're not going anywhere.[glass] I'm not letting a single one of you destruction experts touch my castle with your greasy mallets.";
+dracula_text[page] = "[shake]Excuse me?!![glass] Not only do you enter uninvited, but you dare offend me and my domain with such a disrespectful comment?!";
 page++;
 
 //Page 10
 dracula_speaker[page] = 0;
-dracula_text[page] = "So allow me to slay the rest of your team after I kill you first.";
+dracula_text[page] = "You have just sealed your fate, rebellious worker!";
 page++;
 
-
-//Daroach support
-daroach_portrait = sprite_get("cutscene_portrait");
-daroach_portrait2 = asset_get("empty_sprite")
-var page = 0;
-
-//Page 0
-daroach_speaker[page] = 0;
-daroach_text[page] = "Huh? Where did you come from?";
+//Page 11
+dracula_speaker[page] = 1;
+dracula_text[page] = "Oh, yeah? Well, this worker is built for blowing up more then just buildings! Get wrecked!!";
 page++;
 
-//Page 1
-daroach_speaker[page] = 1;
-daroach_text[page] = "Your ship took off too late.";
-page++;
-
-//Page 2
-daroach_speaker[page] = 1;
-daroach_text[page] = "And you stole some important parts we need to make a fancy hotel.";
-page++;
-
-//Page 3
-daroach_speaker[page] = 0;
-daroach_text[page] = "I'm afraid this hotel your building is not my problem. These girders are solid gold.";
-page++;
-
-//Page 4
-daroach_speaker[page] = 1;
-daroach_text[page] = "Which is exactly what we need to make our hotel fancy.";
-page++;
-
-//Page 5
-daroach_speaker[page] = 1;
-daroach_text[page] = "So, I'm gonna have to ask you to give them back before I end up starting any rough events.";
-page++;
-
-//Page 6
-daroach_speaker[page] = 0;
-daroach_text[page] = "Ohohoho![laugh] Threatening me like many others would, aren't you?";
-page++;
-
-//Page 7
-daroach_speaker[page] = 0;
-daroach_text[page] = "Well, I'm sure the Squeak Squad will throw you overboard no matter what event you start!";
-page++;
-
-//Page 8
-daroach_speaker[page] = 1;
-daroach_text[page] = "What the heck is the Squeak Squad?";
-page++;
-
-//Page 9
-daroach_speaker[page] = 0;
-daroach_text[page] = "You just so happen to be talking to their leader.";
-page++;
-
-// *** Outskirts Invasion *** 
+// Outskirts Invasion 
 draw_hud_event = 5;
 hit_player_event = 6;
+
+// --- Buddy Compat --- 
+/*if (alt == 0) {
+	buddy_starko_sprite = sprite_get("starko_def");
+	buddy_screenko_sprite = sprite_get("screenko_def");
+} else {*/
+	buddy_starko_sprite = sprite_get("starko" + is_ex);
+	buddy_screenko_sprite = sprite_get("screenko" + is_ex);
+//}

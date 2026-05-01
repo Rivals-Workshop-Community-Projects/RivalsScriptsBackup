@@ -1,5 +1,5 @@
 set_attack_value(AT_JAB, AG_SPRITE, sprite_get("jab"));
-set_attack_value(AT_JAB, AG_NUM_WINDOWS, 3);
+set_attack_value(AT_JAB, AG_NUM_WINDOWS, 9);
 set_attack_value(AT_JAB, AG_HURTBOX_SPRITE, sprite_get("jab_hurt"));
 
 //startup jab 1
@@ -18,6 +18,9 @@ set_window_value(AT_JAB, 2, AG_WINDOW_ANIM_FRAME_START, 1);
 set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
+set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_FRAME, 7);
+
 
 //startup jab2
 set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 2);
@@ -38,6 +41,9 @@ set_window_value(AT_JAB, 5, AG_WINDOW_HSPEED, 1);
 set_window_value(AT_JAB, 6, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_JAB, 6, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_TYPE, 1);
+set_window_value(AT_JAB, 6, AG_WINDOW_CANCEL_FRAME, 8);
+
 
 //startup jab3
 set_window_value(AT_JAB, 7, AG_WINDOW_LENGTH, 4);

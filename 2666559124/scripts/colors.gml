@@ -196,7 +196,7 @@ set_color_profile_slot( 16, 5, 98, 181, 227 ); //Nose
 set_color_profile_slot( 16, 6, 156, 0, 68 ); //Shoes
 set_color_profile_slot( 16, 7, 143, 0, 0 ); //Mallet
 
-// Blakey
+// Custom 2
 set_color_profile_slot( 17, 0, 153, 56, 0 ); //Skin
 set_color_profile_slot( 17, 1, 0, 125, 118 ); //Shirt
 set_color_profile_slot( 17, 2, 65, 156, 0 ); //Pants

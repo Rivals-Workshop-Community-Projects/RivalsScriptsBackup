@@ -1,4 +1,8 @@
-var alt_cur = "alt_fix" in self ? get_player_color(alt_fix) : get_player_color(player);
+//init shader
+
+var real_player = (room == asset_get("network_char_select") && object_index != oTestPlayer) ? 0 : player;
+var alt_palette = get_player_color( real_player );
+
 
 //init shader
 
@@ -11,7 +15,7 @@ var alt_cur = "alt_fix" in self ? get_player_color(alt_fix) : get_player_color(p
 //}
 
 //Base Colormap
-if  (get_player_color(player) == 0) { 
+if  (alt_palette == 0) { 
     set_character_color_slot( 2, 235, 26, 26); //shirt
     set_article_color_slot( 0, 235, 26, 26);   //shirt
     
@@ -33,7 +37,7 @@ if  (get_player_color(player) == 0) {
 }
 
 //Flying Mario
-if (get_player_color( player ) == 4){ 
+if (alt_palette == 4){ 
 	set_character_color_shading(0, 0.64);
 	set_character_color_shading(3, 0.64);
 }
