@@ -36,9 +36,9 @@ set_num_hitboxes(curr_attack, 8);
 var curr_num = 0;
 
 for (var j = 0; j <= 1; j++) {
-	for (var i = 1; i <= 4; i++) {
+	for (var i = 1; i <= 2; i++) {
 		curr_num = i + j * 4
-		set_hitbox_value(curr_attack, curr_num, HG_WINDOW_CREATION_FRAME, (i - 1) * 2);
+		set_hitbox_value(curr_attack, curr_num, HG_WINDOW_CREATION_FRAME, (i - 1) * 4);
 		set_hitbox_value(curr_attack, curr_num, HG_HITBOX_TYPE, 1);
 		set_hitbox_value(curr_attack, curr_num, HG_WINDOW, j + 2);
 		set_hitbox_value(curr_attack, curr_num, HG_LIFETIME, 2);
@@ -48,14 +48,14 @@ for (var j = 0; j <= 1; j++) {
 		set_hitbox_value(curr_attack, curr_num, HG_WIDTH, 56);
 		set_hitbox_value(curr_attack, curr_num, HG_HEIGHT, 56);
 		set_hitbox_value(curr_attack, curr_num, HG_PRIORITY, 2);
-		set_hitbox_value(curr_attack, curr_num, HG_DAMAGE, 1);
+		set_hitbox_value(curr_attack, curr_num, HG_DAMAGE, 2);
 		set_hitbox_value(curr_attack, curr_num, HG_ANGLE, 90);
 		set_hitbox_value(curr_attack, curr_num, HG_ANGLE_FLIPPER, 9);
 		set_hitbox_value(curr_attack, curr_num, HG_BASE_KNOCKBACK, 3);
 		set_hitbox_value(curr_attack, curr_num, HG_KNOCKBACK_SCALING, .0);
 		set_hitbox_value(curr_attack, curr_num, HG_HITBOX_GROUP, -1);
 		set_hitbox_value(curr_attack, curr_num, HG_BASE_HITPAUSE, 2);
-		set_hitbox_value(curr_attack, curr_num, HG_HITPAUSE_SCALING, .3);
+		set_hitbox_value(curr_attack, curr_num, HG_HITPAUSE_SCALING, 0);
 		//set_hitbox_value(curr_attack, 1, HG_FORCE_FLINCH, true);
 		set_hitbox_value(curr_attack, curr_num, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 		set_hitbox_value(curr_attack, curr_num, HG_VISUAL_EFFECT, 301);

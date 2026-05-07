@@ -17,7 +17,7 @@ vsp = 0;                                            //The vertical speed of the 
 //Terrain behavior
 can_be_grounded = true;                            //Determines if the article follows platforms when free == false.
 ignores_walls = false;                               //Determines if the article goes through walls.
-free = true;                                        //Whether the article is in the air or not.
+free = false;                                        //Whether the article is in the air or not.
 hit_wall = false;                                   //If the article moves into a wall on its own, this variable will be true.
 
 //State buffering (for if the article is busy when you send it a state command)

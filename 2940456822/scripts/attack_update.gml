@@ -89,7 +89,9 @@ switch(attack) {
 		*/
 		if (instance_exists(mic_proj) && !has_hit && can_wall_tether) {
 			with mic_proj {
-				if place_meeting(x, y, asset_get("par_block")) {
+				if		place_meeting(x, y, asset_get("par_block"))
+					||	place_meeting(x, y, asset_get("par_jumpthrough"))
+				{
 					other.wall_tether = true;
 					var tether = spawn_hit_fx(x, y, 305);
 					sound_play(asset_get("sfx_clairen_nspecial_grab_success"));
@@ -102,6 +104,41 @@ switch(attack) {
 					other.can_wall_tether = false;
 					instance_destroy(self);
 				}
+				//
+				//print(other.clam_ball)
+				if place_meeting(x, y, other.clam_ball) {
+					print("Grab Ball")
+					//
+					other.wall_tether = true;
+					var tether = spawn_hit_fx(x, y, 305);
+					sound_play(asset_get("sfx_clairen_nspecial_grab_success"));
+					other.window = 2;
+					other.window_timer = 0;
+					//other.window_timer = clamp(6 - other.window_timer, 0, 30); //DiscoBall Jump
+					other.tether_to_x = x;
+					other.tether_x = other.x;
+					other.tether_y = other.y;
+					other.can_wall_tether = false;
+					instance_destroy(self);
+				}	
+				#region //What if: Player grapple
+				//print(other.clam_ball)
+				//if place_meeting(x, y, oPlayer) {
+				//	print("Grab Ball")
+				//	//
+				//	other.wall_tether = true;
+				//	var tether = spawn_hit_fx(x, y, 305);
+				//	sound_play(asset_get("sfx_clairen_nspecial_grab_success"));
+				//	other.window = 2;
+				//	other.window_timer = 0;
+				//	//other.window_timer = clamp(6 - other.window_timer, 0, 30); //DiscoBall Jump
+				//	other.tether_to_x = x;
+				//	other.tether_x = other.x;
+				//	other.tether_y = other.y;
+				//	other.can_wall_tether = false;
+				//	instance_destroy(self);
+				//}
+				#endregion
 			}
 		}
 		if (wall_tether && !hitstop) {
@@ -119,7 +156,9 @@ switch(attack) {
 					x -= spr_dir;
 				}
 				y = tether_y;
-				set_state(PS_FIRST_JUMP);
+				//set_state(PS_FIRST_JUMP);
+				set_state(PS_IDLE_AIR);
+				vsp = -10;
 			}
 		}
 		if (instance_exists(mic_proj) && mic_proj.has_hit && mic_proj.mic_grabbed_obj != -4) {
@@ -139,12 +178,14 @@ switch(attack) {
 		}
 	break;
 	case AT_UTHROW:
-		if (window == 1) {
+		//if (window == 1) {
 			hsp = 0;
 			vsp = 0;
 			can_move = false;
 			can_fast_fall = false;
-		}
+		//}
+		
+
 		
 		if instance_exists(mic_grabbed_obj) {
 			mic_grabbed_obj.can_tech = false;
@@ -181,6 +222,14 @@ switch(attack) {
 			vsp -= (gravity_speed - .3);
 			hsp *= .95;
 		}
+		//Disco Ball
+		if (window == 1 && window_timer = 2) {
+			if (instance_exists(clam_ball)) {
+				var ball_fx = spawn_hit_fx(clam_ball.x, clam_ball.y, notes_l);
+				create_hitbox(AT_DSPECIAL, 2, clam_ball.x, clam_ball.y);
+			}
+		}
+		//
 	break;
 	case AT_NAIR:
 	/*
@@ -243,7 +292,7 @@ switch(attack) {
 		vsp *= .99;
 	break;
 	case AT_FSTRONG:
-		if (window == 3 && window_timer == 1 && !hitpause) {
+		if (!has_hit && window == 3 && window_timer == 1 && !hitpause) {
 			sound_play(asset_get("sfx_blow_heavy1"), false, noone, .5, 1);
 		}
 	break;

@@ -92,7 +92,7 @@ max_fall = 8; //maximum fall speed without fastfalling
 fast_fall = 11; //fast fall speed
 gravity_speed = .45; //5
 hitstun_grav = .45; //5
-knockback_adj = 1.05; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, 1> = heavier
+knockback_adj = 1.2; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, 1> = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 10;
@@ -101,7 +101,7 @@ wave_land_adj = 1.35; //the multiplier to your initial hsp when wavelanding. Usu
 wave_friction = .04; //grounded deceleration when wavelanding
 
 //crouch animation frames
-crouch_startup_frames = 1;
+crouch_startup_frames = 2;
 crouch_active_frames = 1;
 crouch_recovery_frames = 1;
 

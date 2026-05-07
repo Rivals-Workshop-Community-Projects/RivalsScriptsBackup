@@ -1,11 +1,11 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-patch_ver = "V1.2.2";
+patch_ver = "V2.0";
 patch_day = "4";
-patch_month = "MAR";
+patch_month = "MAY";
 
-var num_alts = 24;
+var num_alts = 28;
 var alt_cur = get_player_color(player);
 
 //Alt name init. var doesn't work with arrays lol
@@ -16,29 +16,29 @@ alt_name[2]  = "Red"
 alt_name[3]  = "Green"
 alt_name[4]  = "White"
 alt_name[5]  = "Purple" //
-alt_name[6]  = "Miror B." //
-alt_name[7]  = "BLM" //
-alt_name[8]  = "Cotton Candy" //
-alt_name[9]  = "Pink"
-alt_name[10]  = "Pink 2"
-alt_name[11]  = "Orange"
-alt_name[12]  = "Dark"
-alt_name[13]  = "Minty Fresh"
-alt_name[14]  = "Alear"
-alt_name[15]  = "Steven Universe"
+alt_name[6]  = "Old School" //
+alt_name[7]  = "Miror B." //
+alt_name[8]  = "BLM" //
+alt_name[9]  = "Cotton Candy" //
+alt_name[10]  = "Pink"
+alt_name[11]  = "Pink 2"
+alt_name[12]  = "Orange"
+alt_name[13]  = "Dark"
+alt_name[14]  = "Minty Fresh"
+alt_name[15]  = "Alear"
 
-alt_name[16]  = "SU Future"
-alt_name[17]  = "Brook"
-alt_name[18]  = "Cirno"
-alt_name[19]  = "Bob Ross"
-alt_name[20]  = "Golden"
-alt_name[21]  = "Jimmy T"
-alt_name[22]  = "Jimmy P"
-alt_name[23]  = "Outrageous"
-alt_name[24] = ""
-alt_name[25] = ""
-alt_name[26] = ""
-alt_name[27] = ""
+alt_name[16]  = "Steven Universe"
+alt_name[17]  = "SU Future"
+alt_name[18]  = "Soul King"
+alt_name[19]  = "Gaimon"
+alt_name[20]  = "Cirno"
+alt_name[21]  = "Bob Ross"
+alt_name[22]  = "Golden"
+alt_name[23]  = "Jimmy T"
+alt_name[24]  = "Jimmy P"
+alt_name[25]  = "Outrageous"
+alt_name[26] = "Hatsune Miku"
+alt_name[27] = "Globe"
 alt_name[28] = ""
 alt_name[29] = ""
 alt_name[30] = ""

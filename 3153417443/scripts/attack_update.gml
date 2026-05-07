@@ -256,6 +256,7 @@ if (attack == AT_FSPECIAL){
 	can_fast_fall = false;
 	
 	if window == 2 {
+	reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE);
 	if (place_meeting(x + hsp, y, asset_get("par_block")) && free) {
 	for (var i = 1; i < 40; i++){
       if (!place_meeting(x + hsp, y - i ,asset_get("par_block"))) {
@@ -273,6 +274,9 @@ if (attack == AT_FSPECIAL){
 	if vsp > 4 {
 			vsp = 4;
 		}
+	if !free{
+	set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 0);
+	}
 	}
 	
 	if window < 4 {

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 28 );
+set_num_palettes( 30 );
 
 // snow
 set_color_profile_slot( 1, 0, 174, 252, 246 ); //pea
@@ -56,7 +56,7 @@ set_color_profile_slot( 2, 5, 0, 48, 119 ); //flame
 set_color_profile_slot( 2, 6, 63, 179, 235 ); //flame 2
 set_color_profile_slot( 2, 7, 169, 255, 216 ); //flame 3
 
-// Sweet
+// sweet
 set_color_profile_slot( 3, 0, 255, 230, 245 ); //pea
 set_color_profile_slot( 3, 1, 255, 135, 187 ); //pea 2
 set_color_profile_slot( 3, 2, 231, 73, 121 ); //pea 3
@@ -67,13 +67,13 @@ set_color_profile_slot( 3, 6, 244, 132, 178 ); //flame 2
 set_color_profile_slot( 3, 7, 255, 253, 254 ); //flame 3
 
 // eepy
-set_color_profile_slot( 4, 0, 170, 254, 213 ); //pea
+set_color_profile_slot( 4, 0, 181, 255, 224 ); //pea
 set_color_profile_slot( 4, 1, 254, 254, 254 ); //pea 2
 set_color_profile_slot( 4, 2, 24, 255, 142 ); //pea 3
-set_color_profile_slot( 4, 3, 206, 238, 159 ); //foliage
-set_color_profile_slot( 4, 4, 104, 205, 2 ); //foliage 2
+set_color_profile_slot( 4, 3, 192, 230, 136 ); //foliage
+set_color_profile_slot( 4, 4, 99, 173, 24 ); //foliage 2
 set_color_profile_slot( 4, 5, 0, 195, 110 ); //flame
-set_color_profile_slot( 4, 6, 170, 254, 213 ); //flame 2
+set_color_profile_slot( 4, 6, 156, 255, 214 ); //flame 2
 set_color_profile_slot( 4, 7, 255, 255, 255 ); //flame 3
 
 // shadow
@@ -216,7 +216,7 @@ set_color_profile_slot( 18, 5, 191, 101, 15 ); //flame
 set_color_profile_slot( 18, 6, 246, 189, 0 ); //flame 2
 set_color_profile_slot( 18, 7, 255, 255, 214 ); //flame 3
 
-// roygbiv
+// birdo
 set_color_profile_slot( 19, 0, 251, 200, 245 ); //pea
 set_color_profile_slot( 19, 1, 248, 144, 237 ); //pea 2
 set_color_profile_slot( 19, 2, 204, 72, 204 ); //pea 3
@@ -276,35 +276,55 @@ set_color_profile_slot( 24, 5, 186, 46, 46 ); //flame
 set_color_profile_slot( 24, 6, 240, 159, 84 ); //flame 2
 set_color_profile_slot( 24, 7, 186, 46, 46 ); //flame 3
 
-// pea(t)shooter
-set_color_profile_slot( 25, 0, 85, 46, 46 ); //pea
-set_color_profile_slot( 25, 1, 117, 81, 68 ); //pea 2
-set_color_profile_slot( 25, 2, 73, 51, 43 ); //pea 3
-set_color_profile_slot( 25, 3, 49, 37, 33 ); //foliage
-set_color_profile_slot( 25, 4, 31, 23, 21 ); //foliage 2
-set_color_profile_slot( 25, 5, 64, 18, 8 ); //flame
-set_color_profile_slot( 25, 6, 111, 47, 22 ); //flame 2
-set_color_profile_slot( 25, 7, 170, 85, 38 ); //flame 3
+// sylvan watcher
+set_color_profile_slot( 25, 0, 255, 255, 255 ); //pea
+set_color_profile_slot( 25, 1, 169, 245, 124 ); //pea 2
+set_color_profile_slot( 25, 2, 89, 164, 74 ); //pea 3
+set_color_profile_slot( 25, 3, 195, 135, 101 ); //foliage
+set_color_profile_slot( 25, 4, 145, 86, 70 ); //foliage 2
+set_color_profile_slot( 25, 5, 89, 164, 74 ); //flame
+set_color_profile_slot( 25, 6, 169, 245, 124 ); //flame 2
+set_color_profile_slot( 25, 7, 89, 164, 74 ); //flame 3
 
-// creamy pea pasta
-set_color_profile_slot( 26, 0, 255, 255, 255 ); //pea
-set_color_profile_slot( 26, 1, 255, 255, 255 ); //pea 2
-set_color_profile_slot( 26, 2, 0, 0, 0 ); //pea 3
-set_color_profile_slot( 26, 3, 255, 255, 255 ); //foliage
-set_color_profile_slot( 26, 4, 0, 0, 0 ); //foliage 2
-set_color_profile_slot( 26, 5, 0, 0, 0 ); //flame
-set_color_profile_slot( 26, 6, 0, 0, 0 ); //flame 2
-set_color_profile_slot( 26, 7, 0, 0, 0 ); //flame 3
+// heart of the forest
+set_color_profile_slot( 26, 0, 32, 35, 25 ); //pea
+set_color_profile_slot( 26, 1, 50, 54, 40 ); //pea 2
+set_color_profile_slot( 26, 2, 92, 132, 56 ); //pea 3
+set_color_profile_slot( 26, 3, 145, 86, 70 ); //foliage
+set_color_profile_slot( 26, 4, 97, 61, 48 ); //foliage 2
+set_color_profile_slot( 26, 5, 242, 208, 134 ); //flame
+set_color_profile_slot( 26, 6, 224, 114, 100 ); //flame 2
+set_color_profile_slot( 26, 7, 196, 44, 69 ); //flame 3
+
+// pea(t)shooter
+set_color_profile_slot( 27, 0, 85, 46, 46 ); //pea
+set_color_profile_slot( 27, 1, 117, 81, 68 ); //pea 2
+set_color_profile_slot( 27, 2, 73, 51, 43 ); //pea 3
+set_color_profile_slot( 27, 3, 49, 37, 33 ); //foliage
+set_color_profile_slot( 27, 4, 31, 23, 21 ); //foliage 2
+set_color_profile_slot( 27, 5, 64, 18, 8 ); //flame
+set_color_profile_slot( 27, 6, 111, 47, 22 ); //flame 2
+set_color_profile_slot( 27, 7, 170, 85, 38 ); //flame 3
+
+// cream pea pasta
+set_color_profile_slot( 28, 0, 255, 255, 255 ); //pea
+set_color_profile_slot( 28, 1, 255, 255, 255 ); //pea 2
+set_color_profile_slot( 28, 2, 0, 0, 0 ); //pea 3
+set_color_profile_slot( 28, 3, 255, 255, 255 ); //foliage
+set_color_profile_slot( 28, 4, 0, 0, 0 ); //foliage 2
+set_color_profile_slot( 28, 5, 0, 0, 0 ); //flame
+set_color_profile_slot( 28, 6, 0, 0, 0 ); //flame 2
+set_color_profile_slot( 28, 7, 0, 0, 0 ); //flame 3
 
 // imitated
-set_color_profile_slot( 27, 0, 249, 249, 249 ); //pea
-set_color_profile_slot( 27, 1, 205, 210, 196 ); //pea 2
-set_color_profile_slot( 27, 2, 139, 156, 111 ); //pea 3
-set_color_profile_slot( 27, 3, 161, 184, 153 ); //foliage
-set_color_profile_slot( 27, 4, 99, 128, 90 ); //foliage 2
-set_color_profile_slot( 27, 5, 152, 135, 118 ); //flame
-set_color_profile_slot( 27, 6, 255, 255, 255 ); //flame 2
-set_color_profile_slot( 27, 7, 255, 255, 255 ); //flame 3
+set_color_profile_slot( 29, 0, 249, 249, 249 ); //pea
+set_color_profile_slot( 29, 1, 205, 210, 196 ); //pea 2
+set_color_profile_slot( 29, 2, 139, 156, 111 ); //pea 3
+set_color_profile_slot( 29, 3, 161, 184, 153 ); //foliage
+set_color_profile_slot( 29, 4, 99, 128, 90 ); //foliage 2
+set_color_profile_slot( 29, 5, 152, 135, 118 ); //flame
+set_color_profile_slot( 29, 6, 255, 255, 255 ); //flame 2
+set_color_profile_slot( 29, 7, 255, 255, 255 ); //flame 3
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

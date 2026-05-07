@@ -463,15 +463,17 @@ if (st == 2) //ball movement
         {
             first_hit = 1;
         }        
-        ballhitbox.player = hit_by_opponent;
-        if (spd >= 4) && (spd <= 39)
-        {
-            ballhitbox.damage = 10;
-        }
-        else if spd >= 50
-        {
-            ballhitbox.damage = 20;
-        }
+		ballhitbox.player = hit_by_opponent;
+
+		var dmg_mult = (hit_by_opponent == belongsto+1) ? 1 : 0.5;
+				
+		if (spd >= 4 && spd <= 39){
+			ballhitbox.damage = round(10 * dmg_mult);
+		}
+		else if (spd >= 50){
+			ballhitbox.damage = round(20 * dmg_mult);	
+		}
+
         ballhitbox.x = round(x+hsp);
         ballhitbox.y = round(y+vsp);
     }

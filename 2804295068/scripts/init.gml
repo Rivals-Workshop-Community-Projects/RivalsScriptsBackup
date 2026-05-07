@@ -16,7 +16,7 @@ walk_turn_time = 6;
 initial_dash_time = 8;
 initial_dash_speed = 6.5;
 dash_speed = 6.5;
-dash_turn_time = 10;
+dash_turn_time = 8;
 dash_turn_accel = 1.5;
 dash_stop_time = 8;
 dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
@@ -131,9 +131,6 @@ switch get_player_color(player){
 firepea_sprite = sprite_get("pea_torched");
 pea_sprite = sprite_get("pea");
 nspecial_charge = 0;
-boom = false;
-bean_x = 0;
-bean_y = 0;
 
 bean_bomb_recharge = 0;
 torchwood_recharge = 0;

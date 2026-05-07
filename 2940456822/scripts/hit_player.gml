@@ -3,6 +3,8 @@ if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.player_id == id) {
 
 }
 */
+can_wall_tether = true;
+
 if !(my_hitboxID.player_id == id && my_hitboxID.type == 2) {
 	mic_grabbed_obj = -4;
 }
@@ -15,8 +17,27 @@ if (my_hitboxID.type == 1 && my_hitboxID.player_id == id) {
 		case AT_DATTACK:
 			if (my_hitboxID.hbox_num == 8) {
 				hit_player_obj.can_tech = true;
+			} else {
+				var _amt = .5;
+				var _obj = hit_player_obj;
+				//hit_player_obj.x = floor(lerp(_obj.x, x + spr_dir * 40, _amt));
+				//hit_player_obj.y = floor(lerp(_obj.y, y - 20, _amt));
+				//hit_player_obj.x = floor(lerp(_obj.x, x + spr_dir * 24, _amt));
+				//hit_player_obj.y = floor(lerp(_obj.y, y - 10, _amt));
+				hit_player_obj.x = x + spr_dir * 8;
+				hit_player_obj.y = y - 4;
 			}
 		break
+		/*
+		case AT_USPECIAL:
+			if (my_hitboxID.hbox_num == 4) {
+				hit_player_obj.can_tech = true;
+			} else {
+				hit_player_obj.x = x + spr_dir * 32;
+				hit_player_obj.y = y - 24;
+			}
+		break
+		*/
 	}
 }
 

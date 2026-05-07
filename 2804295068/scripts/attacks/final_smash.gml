@@ -61,6 +61,7 @@ set_hitbox_value(49, 1, HG_PROJECTILE_SPRITE, sprite_get("pea"));
 set_hitbox_value(49, 1, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(49, 1, HG_PROJECTILE_HSPEED, 16);
 set_hitbox_value(49, 1, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(49, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(49, 1, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(49, 2, HG_HITBOX_TYPE, 2);
@@ -81,6 +82,7 @@ set_hitbox_value(49, 2, HG_PROJECTILE_SPRITE, sprite_get("pea"));
 set_hitbox_value(49, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(49, 2, HG_PROJECTILE_HSPEED, 16);
 set_hitbox_value(49, 2, HG_PROJECTILE_PLASMA_SAFE, 1);
+set_hitbox_value(49, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(49, 2, HG_HITBOX_GROUP, -1);
 
 set_hitbox_value(49, 3, HG_HITBOX_TYPE, 2);
@@ -105,4 +107,5 @@ set_hitbox_value(49, 3, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(49, 3, HG_PROJECTILE_HSPEED, 24);
 set_hitbox_value(49, 3, HG_PROJECTILE_PLASMA_SAFE, 1);
 set_hitbox_value(49, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(49, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(49, 3, HG_HITBOX_GROUP, -1);

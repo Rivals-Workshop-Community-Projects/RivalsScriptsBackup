@@ -49,7 +49,30 @@ if (is_turn)
 draw_sprite(sprite_get("nowplaying2"),0,temp_x + 34,temp_y - 34);
 
 
-
+switch (cd_level)
+{
+case 0:
+draw_sprite(sprite_get("cd_black"),hcd_image,temp_x + 170,temp_y);
+break;
+case 1:
+draw_sprite(sprite_get("cd_blue"),hcd_image,temp_x + 170,temp_y);
+break;
+case 2:
+draw_sprite(sprite_get("cd_green"),hcd_image,temp_x + 170,temp_y);
+break;
+case 3:
+draw_sprite(sprite_get("cd_yellow"),hcd_image,temp_x + 170,temp_y);
+break;
+case 4:
+draw_sprite(sprite_get("cd_orange"),hcd_image,temp_x + 170,temp_y);
+break;
+case 5:
+draw_sprite(sprite_get("cd_red"),hcd_image,temp_x + 170,temp_y);
+break;
+case 6:
+draw_sprite(sprite_get("cd_purple"),hcd_image,temp_x + 170,temp_y);
+break;
+}
 
 
 

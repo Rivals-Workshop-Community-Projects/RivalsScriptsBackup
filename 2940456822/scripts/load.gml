@@ -21,8 +21,8 @@
 	sprite_change_offset("walk", 96, 128);
 	sprite_change_offset("walkturn", 96, 128);
 	
-	sprite_change_offset("dash", 96, 128);
-	sprite_change_offset("dashstart", 96, 128);
+	sprite_change_offset("dash", 106, 128);
+	sprite_change_offset("dashstart", 106, 128);
 	sprite_change_offset("dashstop", 96, 128);
 	sprite_change_offset("dashturn", 96, 128);
 	
@@ -46,7 +46,7 @@
 
 	sprite_change_offset("dstrong", 96, 128);
 	sprite_change_offset("fstrong",  96, 128);
-	sprite_change_offset("ustrong", 96, 190);
+	sprite_change_offset("ustrong", 96, 318);
 	
 	sprite_change_offset("bair", 96, 128);
 	sprite_change_offset("dair", 96, 128);

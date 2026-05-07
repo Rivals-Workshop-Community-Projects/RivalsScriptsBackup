@@ -9,9 +9,11 @@ if (player_id.player == player) {
 				//Uncomment this and remove it from the one below to make hitbox active longer
 				//image_xscale = 0;
 				//image_yscale = 0;
-			} else {
 				image_xscale = 0;
 				image_yscale = 0;
+			} else {
+				//image_xscale = 0;
+				//image_yscale = 0;
 				x = player_id.x + spr_dir * (160);
 			}
 

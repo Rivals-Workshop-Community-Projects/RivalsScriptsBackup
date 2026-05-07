@@ -1,21 +1,19 @@
 //set_attack
 if (attack == AT_DAIR){ 
 	if !(has_rune("C")){
-		hover_used = true;
+		//hover_used = true;
 		hover_pratfall = true;
 		hover_store_jump = djumps;
 		djumps = max_djumps;
 	}
 }
 
-if (attack == AT_DSTRONG){
     with oPlayer if id != other.id && split_grabbed1 == other.id {
 		split_grabbed1 = false;
     }
 	with oPlayer if id != other.id && split_grabbed2 == other.id {
 		split_grabbed2 = false;
     }
-}
 
 if (attack == AT_USPECIAL){
 	if (free){
@@ -38,4 +36,10 @@ if (attack == AT_TAUNT){
 
 if (attack == AT_FTILT){
 	if (has_rune("M")) attack = AT_FSPECIAL_2;
+}
+
+with (oPlayer) if (id != other.id){
+	if (split_grabbed1 == other.id) split_grabbed1 = noone;
+	if (split_grabbed2 == other.id) split_grabbed2 = noone;
+	threepeater_stack = 0;
 }

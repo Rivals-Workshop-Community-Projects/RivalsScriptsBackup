@@ -26,13 +26,13 @@ set_window_value(curr_attack, 3, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(curr_attack, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 
 
-set_num_hitboxes(curr_attack, 1);
+set_num_hitboxes(curr_attack, 0);
 
 //Sour
 set_hitbox_value(curr_attack, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(curr_attack, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(curr_attack, 1, HG_WINDOW, 2);
-set_hitbox_value(curr_attack, 1, HG_LIFETIME, 3);
+set_hitbox_value(curr_attack, 1, HG_LIFETIME, 1);
 set_hitbox_value(curr_attack, 1, HG_HITBOX_Y, -20);
 set_hitbox_value(curr_attack, 1, HG_HITBOX_X, 24);
 set_hitbox_value(curr_attack, 1, HG_WIDTH, 36);

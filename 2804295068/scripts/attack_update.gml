@@ -104,7 +104,7 @@ if (attack == AT_DAIR){
 				state_timer = 0;
 			} else {
 				window = 5;
-				window_timer = 0;
+				window_timer = 8;
 			}
 		}
 		
@@ -123,7 +123,7 @@ if (attack == AT_DAIR){
 		*/
 	}
 	if (window == 2 || window == 3){
-		vsp = -0.5;
+		vsp = min(vsp, -0.5);
 	}
 }
 
@@ -204,9 +204,7 @@ if (attack == AT_NSPECIAL){
 		}
 	}
 	if (window == 5 || window == 7 || window == 9 || window == 11){
-		if (!has_rune("H")){
-			nspecial_charge = 0;
-		}
+		nspecial_charge = 0;
 	}
 	//projectile creation
 	if (window == 4){
@@ -334,30 +332,8 @@ if (attack == AT_USPECIAL){
 	} else if (uspecial_iasa){
 		iasa_script();
 	}
-	if (window == 2 || window == 3){
-	    with (obj_article1){
-		    if (player_id == other.id) && (state != 2){
-				with other{
-					if collision_rectangle(
-					other.x - 32, 
-					other.y - 72, 
-					other.x + 32, 
-					other.y, 
-					self, true, false) || (has_rune("L")){
-						set_attack( AT_USPECIAL_2 );
-						take_damage (player, -1, 4)
-						sound_play (sound_get ("wakeup"));
-						with other{
-							state = 2;
-							state_timer = 0;
-						}
-					}
-				}
-			}
-		}
-	}
-	if (window = 4){
-        can_wall_jump = true
+	if (window == 4){
+        can_wall_jump = true;
 	}
 	if (window != 1){
 	    if (!free){
@@ -441,7 +417,7 @@ if (attack == AT_FSTRONG){
 			window_timer = 0;
 			state_timer = 0;
 		}
-	} else {
+	} else if !(has_rune("E")){
 		if (window == 1 && strong_charge >= 30){
 			strong_charge = 60;
 		}
@@ -462,12 +438,12 @@ if (attack == AT_DSTRONG && window < 5){
         with oPlayer if id != other.id && split_grabbed2 == other.id {
             x = lerp(x - 30*other.spr_dir, other.x - 30*other.spr_dir, 0.5)
             y = lerp(y - 2, other.y - 2, 0.5)
-			split_grabbed1 = false;
+			split_grabbed1 = noone;
         }
     }
 	if (window == 5){
         with oPlayer if id != other.id && split_grabbed2 == other.id {
-			split_grabbed2 = false;
+			split_grabbed2 = noone;
         }
     }
 }
@@ -510,23 +486,21 @@ if (attack == AT_EXTRA_2){
 if (attack == 49){
 	super_armor = true;
 	hurtboxID.sprite_index = get_attack_value(49, AG_HURTBOX_SPRITE);
-	if (free){
-		fall_through = true;
-		if (!joy_pad_idle){
-            hsp += lengthdir_x(1, joy_dir);
-            vsp += lengthdir_y(1, joy_dir);
-        } else {
-            hsp *= .6;
-            vsp *= .6;
-        }
-        var fly_dir = point_direction(0,0,hsp,vsp);
-        var fly_dist = point_distance(0,0,hsp,vsp);
-        var max_speed = 1;
-        if (fly_dist > max_speed){
-            hsp = lengthdir_x(max_speed, fly_dir);
-            vsp = lengthdir_y(max_speed, fly_dir);
-        }
-	}
+	if (down_down) fall_through = true;
+	if (!joy_pad_idle){
+        hsp += lengthdir_x(1, joy_dir);
+        vsp += lengthdir_y(1, joy_dir);
+    } else {
+        hsp *= .6;
+        vsp *= .6;
+    }
+    var fly_dir = point_direction(0,0,hsp,vsp);
+    var fly_dist = point_distance(0,0,hsp,vsp);
+    var max_speed = 1;
+    if (fly_dist > max_speed){
+        hsp = lengthdir_x(max_speed, fly_dir);
+        vsp = lengthdir_y(max_speed, fly_dir);
+    }
 	if (!hitpause && !hitstop){
 		if (window == 2 || window == 3 || window == 4){
 			if (window_timer mod 3 == 0){

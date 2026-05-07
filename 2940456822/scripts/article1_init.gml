@@ -22,4 +22,5 @@ hitstop = 0;
 cant_hit_list = [];
 
 disabled = false;
+disabled_rest = false;
 should_break = false;

@@ -3,6 +3,10 @@ if (state != 2 && state != 3 && disabled) {
 	set_state(2);
 }
 
+if (state != 2 && state != 3 && state != 4 && disabled_rest) {
+	set_state(4);
+}
+
 if (should_break) {
 	should_break = false;
 	set_state(3);
@@ -35,15 +39,21 @@ switch(state) {
 	case 3: //Dying
 		disabled = true;
 		sprite_index = sprite_get("disco_ball_broken"); 
+		player_id.move_cooldown[AT_NSPECIAL] = 60;
 		if (state_timer >= 30) {
 			disco_is_dead();
-		}
+			exit;
+		}		
+	break;
+	case 4: //Rest Attack
+		image_index = floor(state_timer / 5);
 		player_id.move_cooldown[AT_NSPECIAL] = 60;
+		if (state_timer >= 5) {
+			disco_is_dead();
+			exit;
+		}
 	break;
 }
-
-
-
 
 if (!hitstop) {
 	state_timer += 1;
@@ -112,11 +122,19 @@ if (!hitstop) {
 
 #define proj_detected() {
 	var _curr_hitpause = get_hitstop_formula(0, damage, hitpause, hitpause_growth, extra_hitpause);
-	player_id.has_hit = true;
+	var _spawn_vfx = true;
+	if ("is_earl_mic" in self && is_earl_mic && !has_hit) {
+		//player_id.has_hit = false;
+		_spawn_vfx = false;
+	} else {
+		player_id.has_hit = true;
+	}
 	other.hitstop = _curr_hitpause;
 	array_insert(other.cant_hit_list, 0, id);
 	print(other.cant_hit_list);
-	spawn_hit_fx((x + hit_effect_x + other.x) / 2, (y + hit_effect_y + other.y) / 2 , hit_effect);
+	if (_spawn_vfx) {
+		spawn_hit_fx((x + hit_effect_x + other.x) / 2, (y + hit_effect_y + other.y) / 2 , hit_effect);
+	}
 	sound_play(sound_effect);
 	//DiscoBall Jump
 	/*
@@ -138,6 +156,18 @@ if (!hitstop) {
 #define set_state(_num) {
 	state_timer = false;
 	state = _num;
+	//
+	switch(state) {
+		case 1:
+			sound_play(asset_get("sfx_panda_taunt_vote"));				
+		break;
+		case 2:
+			sound_play(asset_get("sfx_pom_cheer"));	
+		break;
+		case 3:
+			sound_play(asset_get("sfx_ice_shatter"));
+		break;
+	}
 }
 
 #define disco_is_dead() {

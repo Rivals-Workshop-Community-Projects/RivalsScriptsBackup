@@ -41,7 +41,7 @@ if blastzonedestroy = true {
 	blastzonedestroy = false;
 }
 
-if	move_cooldown[AT_NSPECIAL] > 0 && move_cooldown[AT_NSPECIAL] < 240 && (special_pressed || special_down) && nspecialtap = false {
+if	move_cooldown[AT_NSPECIAL] > 0 && move_cooldown[AT_NSPECIAL] < 490 && (special_pressed || special_down) && nspecialtap = false {
 	nspecialtap = true;
 } else {
 	nspecialtap = false;

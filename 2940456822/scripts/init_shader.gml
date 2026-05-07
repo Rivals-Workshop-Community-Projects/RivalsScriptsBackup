@@ -1,13 +1,22 @@
 switch(get_player_color(player)) { 
 	case 0:
+		//set_character_color_slot(0, 64, 51, 83 ); //Hair L
+		//set_character_color_slot(1, 64, 51, 83 ); //Hair R
+		//set_character_color_slot(2, 36, 159, 222 ); //Shell
+		//set_character_color_slot(3, 255, 213, 65 ); //Shirt L
+		//set_character_color_slot(4, 249, 163, 27 ); //Shirt D
+		//set_character_color_slot(5, 250, 106, 10 ); //Shirt H
+		//set_character_color_slot(6, 255, 213, 65 ); //Pant L
+		//set_character_color_slot(7, 249, 163, 27 ); //Pant D
+		
 		set_character_color_slot(0, 64, 51, 83 ); //Hair L
 		set_character_color_slot(1, 64, 51, 83 ); //Hair R
-		set_character_color_slot(2, 36, 159, 222 ); //Shell
-		set_character_color_slot(3, 255, 213, 65 ); //Shirt L
-		set_character_color_slot(4, 249, 163, 27 ); //Shirt D
-		set_character_color_slot(5, 250, 106, 10 ); //Shirt H
-		set_character_color_slot(6, 255, 213, 65 ); //Pant L
-		set_character_color_slot(7, 249, 163, 27 ); //Pant D
+		set_character_color_slot(2, 146, 174, 189 ); //Shell
+		set_character_color_slot(3, 242, 254, 255 ); //Shirt L
+		set_character_color_slot(4, 191, 212, 219 ); //Shirt D
+		set_character_color_slot(5, 255, 0, 0 ); //Shirt H
+		set_character_color_slot(6, 242, 254, 255 ); //Pant L
+		set_character_color_slot(7, 191, 212, 219 ); //Pant D
 	break;
 	default:
 	break;

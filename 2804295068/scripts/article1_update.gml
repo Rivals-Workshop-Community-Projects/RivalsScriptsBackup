@@ -52,7 +52,7 @@ if (state != 2){
 		other.y - 72, 
 		other.x + 24, 
 		other.y, 
-		self, true, false) || (has_rune("L")){
+		self, true, false){
 			//firepea
 			if (attack == AT_FTILT 
 			|| attack == AT_EXTRA_1 
@@ -65,6 +65,7 @@ if (state != 2){
 					torched = true;
 					with other{
 						state_timer += 180;
+						if (has_rune("B")) hsp = 5 * other.spr_dir * ((other.attack == AT_EXTRA_1)?-1:1);
 					}
 				}
 			}
@@ -73,11 +74,13 @@ if (state != 2){
 					torched = true;
 					if (hbox_num != 4){
 						with other{
-							state_timer += 180;
+							state_timer += 60;
+							if (has_rune("B")) hsp = 2 * other.spr_dir;
 						}
 					} else {
 						with other{
-							state_timer += 180;
+							state_timer += 540;
+							if (has_rune("B")) hsp = 8 * other.spr_dir;
 						}
 					}
 				}
@@ -88,8 +91,11 @@ if (state != 2){
 					torched = true;
 					if (hbox_num == 3){
 						with other{
-							state = 2;
-							state_timer = 0;
+							if !(has_rune("L")){
+								state = 2;
+								state_timer = 0;
+							}
+							if (has_rune("B")) hsp = 20 * other.spr_dir;
 						}
 					}
 				}
@@ -102,13 +108,49 @@ if (state != 2){
 					vsp += -1.25
 					hsp += 2*spr_dir
 					sound_play (sound_get ("wakeup"));
+					if (has_rune("H")){
+						for (var i = 1; i <= 3; i++){
+							var bean_dupe = create_hitbox( AT_FSPECIAL, 1, x, y );
+							bean_dupe.torched = true;
+							bean_dupe.hitbox_timer = min(hitbox_timer, 180) - i*20;
+							bean_dupe.vsp = vsp - sqrt(i*2);
+							bean_dupe.hsp = hsp - i*spr_dir;
+						}
+						sound_play (sound_get ("bean_voice"));
+					}
 					with other{
+						if !(has_rune("L")){
+							state = 2;
+							state_timer = 0;
+						}
+						if (has_rune("B")) hsp = 3 * other.spr_dir;
+					}
+				}
+			}
+	    }
+	}
+	
+	with (player_id){
+		if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) 
+		&& (attack == AT_USPECIAL) && (window == 2 || window == 3){
+			if collision_rectangle(
+			other.x - 32, 
+			other.y - 72, 
+			other.x + 32, 
+			other.y, 
+			self, true, false){
+				set_attack( AT_USPECIAL_2 );
+				create_hitbox( AT_USPECIAL_2, 1, x, y-36 );
+				take_damage (player, -1, 4)
+				sound_play (sound_get ("wakeup"));
+				with other{
+					if !(has_rune("L")){
 						state = 2;
 						state_timer = 0;
 					}
 				}
 			}
-	    }
+		}
 	}
 }
 
@@ -148,7 +190,12 @@ if (grav_on){
 		}
 		
 	}
-	
+}
+if (has_rune("B")){
+	if (free){
+		hsp *= 0.97;
+		vsp = min(vsp, 0);
+	} else vsp = -2;
 }
 
 //State 0: Freshly spawned
@@ -157,11 +204,11 @@ if (state == 0){
 		spawn_hit_fx(x + 16,y,15)
 		spawn_hit_fx(x - 16,y,15)
 	}
-	if (state_timer >= 1200) && (state_timer mod 30 == 1){
+	if (state_timer >= 1200) && (state_timer mod 30 == 1) && !(has_rune("L")){
 		spawn_hit_fx(x,y - 62,14)
 	}
 	//delete if 30 seconds pass
-	if (state_timer >= 1800 && !has_rune("L")) || (state_timer >= 2700){
+	if (state_timer >= 1800) && !(has_rune("L")){
 		state = 2
 		state_timer = 0
 	}
@@ -212,7 +259,10 @@ switch(state){
 switch(animation_type){
     
     case 0: //Increment image_index every frame
-        image_index++;
+        if (state_timer mod idle_anim_rate == 0){
+            image_index++;
+        }
+        break;
     
     case 1: //Increment image_index at the rate determined by idle_anim_rate
         if (state_timer mod idle_anim_rate == 0){

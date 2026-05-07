@@ -18,7 +18,7 @@ set_window_value(curr_attack, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(curr_attack, 2, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_window_value(curr_attack, 3, AG_WINDOW_TYPE, 1);
-set_window_value(curr_attack, 3, AG_WINDOW_LENGTH, 35);
+set_window_value(curr_attack, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(curr_attack, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(curr_attack, 3, AG_WINDOW_ANIM_FRAME_START, 5);
 

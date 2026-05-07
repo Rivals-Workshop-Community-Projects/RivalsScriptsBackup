@@ -156,14 +156,9 @@ if (has_rune("A")){
 	torchwood_recharge++;
 }
 
-if (has_rune("B")){
-	set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 100);
-	set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_HSPEED, 4);
-}
-
 if (has_rune("E")){
-	set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 10);
-	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 6);
+	set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 12);
+	set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 4);
 }
 
 if (has_rune("I")){
@@ -203,7 +198,7 @@ if (has_rune("K")){
 
 
 with (oPlayer) {
-	if (snow_pea_chill_id == other){
+	if (snow_pea_chill_id == other.id){
 		snow_pea_chill_time--;
 		x -= ((abs(hsp) + air_friction) * sign(hsp)) / 2;
 		y -= (vsp - hitstun_grav) / 2;

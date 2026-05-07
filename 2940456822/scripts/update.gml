@@ -16,3 +16,8 @@ if (!free) {
 	can_wall_tether = true;
 }
 
+switch(state) {
+	case PS_WALL_JUMP:
+		can_wall_tether = true;
+	break;
+}

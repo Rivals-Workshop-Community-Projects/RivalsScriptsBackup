@@ -1,6 +1,7 @@
 //
 switch(attack) {
 	case AT_FSPECIAL:
+		is_earl_mic = true;
 		mic_grabbed_obj = -4;
 	break;
 	case AT_NSPECIAL:

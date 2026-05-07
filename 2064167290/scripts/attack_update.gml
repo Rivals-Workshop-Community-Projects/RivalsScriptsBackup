@@ -157,6 +157,7 @@ if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - l
     }
 }
 }
+
 // FAIR
 if (attack == AT_FAIR) and (window == 1) 
 {

@@ -121,7 +121,7 @@ switch (attack)
         }
     }*/
     break;
-    case AT_NSPECIAL:if window > 1 { can_jump = true; can_shield = true;move_cooldown[AT_NSPECIAL] = 20;}
+    case AT_NSPECIAL:if window > 1 { can_jump = true; can_shield = true;}
     break;
     case AT_DATTACK: if (window != 3 || window != 1) && has_hit {can_jump = true;}
     break;
@@ -160,9 +160,12 @@ switch (attack)
     case AT_USPECIAL: 
     if (window == 2 || window == 3)
     {
+        if (down_pressed and window == 2 and window_timer >= 7){
+            window = 4;
+        }
         if (!joy_pad_idle)
         {
-            hsp += lengthdir_x(.2, joy_dir);
+            hsp += lengthdir_x(.35, joy_dir);
         } 
         else 
         {
@@ -171,7 +174,7 @@ switch (attack)
 
         var fly_dir = point_direction(0,0,hsp,vsp);
         var fly_dist = point_distance(0,0,hsp,vsp);
-        var max_speed = 7;
+        var max_speed = 8.5;
         
         if (fly_dist > max_speed)
         {

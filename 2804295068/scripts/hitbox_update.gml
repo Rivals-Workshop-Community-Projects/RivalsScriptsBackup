@@ -7,7 +7,6 @@ if (attack == AT_FTILT
 || attack == AT_FSTRONG 
 || attack == AT_NSPECIAL 
 || attack == 49 && hbox_num != 3){
-	//through_platforms = 2;
 	if torched{
 		sprite_index = player_id.firepea_sprite;
 		hit_effect = 4;
@@ -23,9 +22,14 @@ if (attack == AT_FTILT
 		damage = torch_damage_mult;
 		length = torch_length_mult;
 		if (!was_parried) hsp = torch_hsp_mult;
-	} else if was_parried{
-		instance_destroy();
-		exit;
+		else hsp = -torch_hsp_mult;
+	}
+	if was_parried{
+		length = parry_length_mult;
+		if (attack != AT_EXTRA_1) draw_xscale = spr_dir;
+		if !(attack == AT_FSTRONG && hbox_num == 4) kb_value = 0;
+		transcendent = true;
+		proj_break = true;
 	}
 }
 if (has_rune("G")){
@@ -39,11 +43,7 @@ if (has_rune("G")){
 		if torched extra_hitpause = 12;
 	}
 }
-if (attack == AT_EXTRA_1){
-	if torched{
-		image_xscale = -1;
-	}
-}
+
 //big firepea
 if (attack == 49){
 	if was_parried{
@@ -82,8 +82,6 @@ if (attack == AT_FSPECIAL_2){
 
 //bean stuff
 if (attack == AT_FSPECIAL && hbox_num == 1){
-	player_id.bean_x = x;
-	player_id.bean_y = y;
 	if (!free){
 		bean_fall_prevention = true;
 	    hsp *= .97;
@@ -97,21 +95,22 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	    hsp = -1 * spr_dir;
 		vsp = -1;
 	}
-	if (player != orig_player){
-		player = orig_player
-	}
 	if (hitbox_timer == 60){
-		sound_play (sound_get ("bean_voice2"));
+		with player_id sound_play (sound_get ("bean_voice2"));
 	}
 	if (hitbox_timer >= 120){
-	    sprite_index = sprite_get("bean_bomb_flashing");
+	    with player_id other.sprite_index = sprite_get("bean_bomb_flashing");
+		//if (has_hit) hitbox_timer = 180;
 	}
 	if (hitbox_timer >= 180){
-		create_hitbox( AT_FSPECIAL, 2, x, y-12, );
+		var beanboom = create_hitbox( AT_FSPECIAL, 2, x, y-12, );
+		beanboom.player = player;
 		spawn_hit_fx(x,y-12,145);
-		sound_play (sound_get("bean_explode"));
-		sound_stop (sound_get("bean_voice"));
-		sound_stop (sound_get("bean_voice2"));
+		with player_id{
+			sound_play (sound_get("bean_explode"));
+			sound_stop (sound_get("bean_voice"));
+			sound_stop (sound_get("bean_voice2"));
+		}
 		instance_destroy();
 		exit;
 	}
@@ -152,4 +151,8 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 			}
 		}
 	}
+}
+
+if (attack == AT_FAIR){
+	through_platforms = 2;
 }

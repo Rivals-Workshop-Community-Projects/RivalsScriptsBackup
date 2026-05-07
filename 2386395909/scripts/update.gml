@@ -1,5 +1,19 @@
 //update
 
+//patch notes 2026
+// Nspecial cooldown 20 > 0
+// Uspecial vspeed -5 > -6
+// Uspecial startup 11 > 9
+// Uspecial window 2 duration 16 > 21
+// Uspecial can now be cancelled early by pressing down
+// Dattack startup 9 > 7
+// Dattack window 2 length 14 > 9
+// Dattack hitbox lifetime 12 > 14
+// Ball now deals less damage when hit by an opponent
+// Slightly increased Ftilt range
+// Pratland 18 > 14
+// Air accel .3 > .45
+
 if ball_cooldown > 0 
 {
     ball_cooldown--;

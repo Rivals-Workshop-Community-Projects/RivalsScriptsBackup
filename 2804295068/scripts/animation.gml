@@ -1,16 +1,23 @@
 //animation.gml
-if (attack == AT_UTILT && window == 2){
-	hud_offset = lerp(hud_offset, 80, 0.5);
-}
-if (attack == AT_USTRONG && window == 3){
-	hud_offset = lerp(hud_offset, 100, 0.5);
-}
-if (attack == AT_TAUNT_2 && window > 1){
-	hud_offset = 100;
-}
 
-if abs(hud_offset) < 1{
-	hud_offset = 0;
+if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+	if (attack == AT_UTILT && window == 2){
+		if (char_height < 100){
+			char_height += 12;
+		}
+	} else if (attack == AT_USTRONG && window == 3){
+		if (char_height < 100){
+			char_height += 12;
+		}
+	} else if (attack == AT_TAUNT_2 && window > 1){
+		char_height = 124;
+	} else {
+		if char_height > 52{
+			char_height -= 8;
+		}	
+	}
+} else if (char_height > 52){
+	char_height -= 8;
 }
 
 //wait animations

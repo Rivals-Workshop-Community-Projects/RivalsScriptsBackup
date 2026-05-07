@@ -20,6 +20,10 @@ switch(attack) {
 	case AT_DSPECIAL:
 		invincible = true;
 		invince_time = 25;
+		//
+		if (instance_exists(clam_ball) && !clam_ball.disabled) {
+			clam_ball.disabled_rest = true;
+		}
 	break;
 	case AT_USPECIAL:
 		sound_play(asset_get("sfx_burnapplied"))
