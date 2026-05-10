@@ -67,11 +67,11 @@ set_num_hitboxes(AT_FSPECIAL, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW,3 )
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME,70); // yes it will stop working, dont cry if you ever lost a stock because of this.
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 70); // yes it will stop working, dont cry if you ever lost a stock because of this.
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -30);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 45);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 45);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 42);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 32);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 5);
@@ -83,4 +83,5 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, 0.5);
 set_hitbox_value(AT_FSPECIAL, 1, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_LOCKOUT, 4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 302);
+set_hitbox_value(AT_FSPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));

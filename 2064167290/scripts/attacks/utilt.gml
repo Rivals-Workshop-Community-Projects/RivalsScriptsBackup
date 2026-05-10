@@ -37,8 +37,8 @@ set_hitbox_value(AT_UTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW, 2)
 set_hitbox_value(AT_UTILT, 1, HG_WINDOW_CREATION_FRAME, 0);
 set_hitbox_value(AT_UTILT, 1, HG_LIFETIME,3);
-set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 2);
-set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -58);
+set_hitbox_value(AT_UTILT, 1, HG_HITBOX_X, 7);
+set_hitbox_value(AT_UTILT, 1, HG_HITBOX_Y, -56);
 set_hitbox_value(AT_UTILT, 1, HG_WIDTH, 62);
 set_hitbox_value(AT_UTILT, 1, HG_HEIGHT, 70);
 set_hitbox_value(AT_UTILT, 1, HG_SHAPE, 0);
@@ -59,10 +59,10 @@ set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_UTILT, 2, HG_WINDOW, 3)
 set_hitbox_value(AT_UTILT, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 2);
+set_hitbox_value(AT_UTILT, 2, HG_HITBOX_X, 3);
 set_hitbox_value(AT_UTILT, 2, HG_HITBOX_Y, -78);
-set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 60);
-set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 60);
+set_hitbox_value(AT_UTILT, 2, HG_WIDTH, 50);
+set_hitbox_value(AT_UTILT, 2, HG_HEIGHT, 50);
 set_hitbox_value(AT_UTILT, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_UTILT, 2, HG_PRIORITY, 3);
 set_hitbox_value(AT_UTILT, 2, HG_DAMAGE, 6);

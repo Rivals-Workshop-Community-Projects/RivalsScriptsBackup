@@ -2,6 +2,32 @@
 if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_DAIR){
     trigger_b_reverse();
 }
+/*if(attack == AT_NAIR)
+{
+    if (has_hit and !hitpause)
+    {
+        if (attack_pressed)
+        {
+            if (up_down)
+            {
+                set_attack(AT_UAIR);
+                //clear_button_buffer(PC_ATTACK_PRESSED)
+            }
+            else if (down_down)
+            {
+                set_attack(AT_DAIR);
+            }
+            else if (right_down and spr_dir == 1) or (left_down and spr_dir == -1)
+            {
+                set_attack(AT_FAIR);
+            }
+            else if (right_down and spr_dir == -1) or (left_down and spr_dir == 1)
+            {
+                set_attack(AT_BAIR);
+            }
+        }
+    }
+}*/
 if (attack == AT_DATTACK)
 {
     if (has_hit)
@@ -68,12 +94,9 @@ if (attack == AT_DAIR)
 }
 if (attack == AT_FSTRONG)
 {
-    set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 10 + (strong_charge/20));
-    if (strong_charge == 0)
-    {
-            set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 10);
-            set_window_value(AT_FSTRONG, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
-    }
+    set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 5 + strong_charge/8);
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 4 * floor(strong_charge/20));
+    set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 4 * floor(strong_charge/20));
     if (window == 5)
     {
         if (window_timer == 1)
@@ -82,7 +105,6 @@ if (attack == AT_FSTRONG)
             spawn_hit_fx(x,y, chair_break);
         }
     }
-    
 }
 if (attack == AT_NSPECIAL){
     can_fast_fall = false;
@@ -103,14 +125,25 @@ if (attack == AT_NSPECIAL){
             reset_window_value(attack, 4, AG_WINDOW_LENGTH)
             nspec_array = [1,2,3,4,5,6];
             nspec_array2 = [];
+            nspec_array3 = [];
             array_count1 = 0;
             array_count2 = 0;
+            array_count3 = 0;
+            sound_man = 0;
         }
-        if (shield_pressed and ex_meter >= 50)
+        if (shield_pressed and ex_meter >= 30)
         {
             if (ex = 0)
             spawn_hit_fx(x, y - 20, 21)
+            if (sound_man = 0)
+            {
+                sound_play(asset_get("sfx_bird_sidespecial"), 0, 0, 0.5, 1)
+                sound_man = 1;
+            }
             ex = 1;
+            ex_draw = 2;
+            ex_draw_x = x;
+            ex_draw_y = y;
         }
         var temp;
         
@@ -118,6 +151,7 @@ if (attack == AT_NSPECIAL){
         {
             array_random = random_func(0, 6, true);
             array_random2 = random_func(0, 5, true);
+            array_random3 = random_func(0, 4, true);
         }
         else
         {
@@ -127,13 +161,22 @@ if (attack == AT_NSPECIAL){
                 if (array_count1 != array_random)
                 {
                     array_insert(nspec_array2, array_count1, nspec_array[array_count1])   
-                    array_count2++
+                    //array_count2++;
                 }
                 array_count1++
             }
-            else
+            else if (array_count2 < 5)
             {
                 nspec_proj2 = nspec_array2[array_random2];
+                if (array_count2 != array_random2)
+                {
+                    array_insert(nspec_array3, array_count2, nspec_array2[array_count2])   
+                }
+                array_count2++
+            }
+            else 
+            {
+                nspec_proj3 = nspec_array3[array_random3];
             }
         }
       //  else
@@ -171,6 +214,11 @@ if (attack == AT_NSPECIAL){
                 create_hitbox(attack, 3, x + (15 * spr_dir), y - 40)
                 create_hitbox(attack, 6, x + (15 * spr_dir), y - 40)
             }
+            else if (spr_dir != dir and up_down)
+            {
+                create_hitbox(attack, 5, x + (15 * spr_dir), y - 40)
+                create_hitbox(attack, 6, x + (15 * spr_dir), y - 40)
+            }
             else
             {
                 create_hitbox(attack, nspec_proj, x + (15 * spr_dir), y - 40)
@@ -179,20 +227,63 @@ if (attack == AT_NSPECIAL){
         }
         else if (ex == 1)
         {
-                set_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER, 0.8)
-                set_hitbox_value(attack, 4, HG_HITSTUN_MULTIPLIER, 0.8)
-                set_hitbox_value(attack, 5, HG_HITSTUN_MULTIPLIER, 0.8)
-                set_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE, 4)
-                set_hitbox_value(attack, 4, HG_EXTRA_HITPAUSE, 4)
-                set_hitbox_value(attack, 5, HG_EXTRA_HITPAUSE, 4)
+            
+                //set_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER, 0.8)
+                //set_hitbox_value(attack, 4, HG_HITSTUN_MULTIPLIER, 0.8)
+                //set_hitbox_value(attack, 5, HG_HITSTUN_MULTIPLIER, 0.8)
+                //set_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE, 4)
+                //set_hitbox_value(attack, 4, HG_EXTRA_HITPAUSE, 4)
+                //set_hitbox_value(attack, 5, HG_EXTRA_HITPAUSE, 4)
                 set_hitbox_value(attack, 1, HG_ANGLE, 70)
                 set_hitbox_value(attack, 4, HG_ANGLE, 70)
                 set_hitbox_value(attack, 5, HG_ANGLE, 70)
                 set_window_value(attack, 3, AG_WINDOW_LENGTH, 6)
                 set_window_value(attack, 4, AG_WINDOW_LENGTH, 6)
-                create_hitbox(attack, 1, x + (15 * spr_dir), y - 40)
-                create_hitbox(attack, 4, x + (15 * spr_dir), y - 40)
-                create_hitbox(attack, 5, x + (15 * spr_dir), y - 40)
+                
+                var dir = (right_down - left_down)
+                if (spr_dir != dir and dir != 0 and down_down)
+                {
+                    create_hitbox(attack, 1, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 3, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 5, x + (15 * spr_dir), y - 40)
+                }
+                else if (dir == 0 and down_down)
+                {
+                    create_hitbox(attack, 2, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 5, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 6, x + (15 * spr_dir), y - 40)
+                    
+                }
+                else if (spr_dir == dir and down_down)
+                {
+                    create_hitbox(attack, 1, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 2, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 4, x + (15 * spr_dir), y - 40)
+                }
+                else if (spr_dir == dir and !down_down)
+                {
+                    create_hitbox(attack, 2, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 4, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 6, x + (15 * spr_dir), y - 40)
+                }
+                else if (spr_dir != dir and dir != 0 and up_down)
+                {
+                    create_hitbox(attack, 1, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 5, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, 6, x + (15 * spr_dir), y - 40)
+                }
+                else
+                {
+                    print("Nspec_Proj: " + string(nspec_proj))
+                    print("Nspec_Proj2: " + string(nspec_proj2))
+                    print("Nspec_Proj3: " + string(nspec_proj3))
+                    print("Nspec_Array: " + string(nspec_array))
+                    print("Nspec_Array2: " + string(nspec_array2))
+                    print("Nspec_Array3: " + string(nspec_array3))
+                    create_hitbox(attack, nspec_proj, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, nspec_proj2, x + (15 * spr_dir), y - 40)
+                    create_hitbox(attack, nspec_proj3, x + (15 * spr_dir), y - 40)
+                }
         }
     }
 }
@@ -211,12 +302,22 @@ if (attack == AT_FSPECIAL){
             reset_hitbox_value(attack, 6, HG_BASE_KNOCKBACK)
             reset_hitbox_value(attack, 6, HG_ANGLE)
             //reset_hitbox_value(attack, 6, HG_DRIFT_MULTIPLIER)
+            sound_man = 0;
         }
-        if (shield_pressed and ex_meter >= 50)
+        
+        if (shield_pressed and ex_meter >= 30)
         {
             if (ex = 0)
             spawn_hit_fx(x, y - 20, 21)
+            if (sound_man = 0)
+            {
+                sound_play(asset_get("sfx_bird_sidespecial"), 0, 0, 0.5, 1)
+                sound_man = 1;
+            }
             ex = 1;
+            ex_draw = 1;
+            ex_draw_x = x;
+            ex_draw_y = y;
             set_hitbox_value(attack, 1, HG_DAMAGE, 2)
             set_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE, 6)
             set_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER, 1)
@@ -225,18 +326,35 @@ if (attack == AT_FSPECIAL){
             set_hitbox_value(attack, 6, HG_ANGLE, 85)
             //set_hitbox_value(attack, 6, HG_DRIFT_MULTIPLIER, 0)
             set_hitbox_value(attack, 6, HG_HITSTUN_MULTIPLIER, 1)
-            set_hitbox_value(attack, 6, HG_EXTRA_HITPAUSE, 6)
+            set_hitbox_value(attack, 6, HG_EXTRA_HITPAUSE, 5)
             
         }
     }
     else if (window == 2){
+        
+        var inst = collision_rectangle(floor(x + 55 * spr_dir), floor(y-2), floor(x + 65 * spr_dir), floor(y -52), pHurtBox, true, true);
+        
+        if (inst == noone or ex == 0)
+        {
+            hsp = 6 * spr_dir;
+        }
+        else if (inst != noone and ex == 1)
+        {
+            if (spr_dir = 1 and hsp > 1) or (spr_dir == -1 and hsp < -1)
+            hsp *= 0.99;
+            else
+            hsp = 0.5 * spr_dir;
+        }
+        
         if (!free and special_pressed and ex == 0){
             window = 4;
             window_timer = 0;
             destroy_hitboxes();
         }
+        
         if (window_timer == 13 or window_timer == 6)
         {
+            if (!hitpause)
             sound_play(asset_get("sfx_swipe_weak2"))
         }
     }
@@ -260,30 +378,41 @@ if (attack == AT_FSPECIAL_AIR){
         if (window_timer == 1)
         {
             reset_hitbox_value(attack, 1, HG_DAMAGE)
-            reset_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE)
-            reset_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER)
+            reset_hitbox_value(attack, 1, HG_BASE_KNOCKBACK)
+            //reset_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE)
+            //reset_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER)
             //reset_hitbox_value(attack, 6, HG_EXTRA_HITPAUSE)
             reset_hitbox_value(attack, 6, HG_DAMAGE)
-            reset_hitbox_value(attack, 6, HG_HITSTUN_MULTIPLIER)
+            //reset_hitbox_value(attack, 6, HG_HITSTUN_MULTIPLIER)
             reset_hitbox_value(attack, 6, HG_BASE_KNOCKBACK)
-            reset_hitbox_value(attack, 6, HG_ANGLE)
+            //reset_hitbox_value(attack, 6, HG_ANGLE)
             //reset_hitbox_value(attack, 6, HG_DRIFT_MULTIPLIER)
             reset_window_value(attack, 3, AG_WINDOW_LENGTH)
+            sound_man = 0;
         }
-        if (shield_pressed and ex_meter >= 50)
+        if (shield_pressed and ex_meter >= 30)
         {
             if (ex = 0)
             spawn_hit_fx(x, y - 20, 21)
+            if (sound_man = 0)
+            {
+                sound_play(asset_get("sfx_bird_sidespecial"), 0, 0, 0.5, 1)
+                sound_man = 1;
+            }
             ex = 1;
+            ex_draw = 1;
+            ex_draw_x = x;
+            ex_draw_y = y;            
             set_hitbox_value(attack, 1, HG_DAMAGE, 2)
-            set_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE, 6)
-            set_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER, 1)
+            set_hitbox_value(attack, 1, HG_BASE_KNOCKBACK, 6)
+            //set_hitbox_value(attack, 1, HG_EXTRA_HITPAUSE, 6)
+            //set_hitbox_value(attack, 1, HG_HITSTUN_MULTIPLIER, 1)
             set_hitbox_value(attack, 6, HG_DAMAGE, 2)
-            set_hitbox_value(attack, 6, HG_BASE_KNOCKBACK, 7)
-            set_hitbox_value(attack, 6, HG_ANGLE, 90)
+            set_hitbox_value(attack, 6, HG_BASE_KNOCKBACK, 6)
+            //set_hitbox_value(attack, 6, HG_ANGLE, 90)
             //set_hitbox_value(attack, 6, HG_DRIFT_MULTIPLIER, 0)
-            set_hitbox_value(attack, 6, HG_HITSTUN_MULTIPLIER, 1)
-            //set_hitbox_value(attack, 6, HG_EXTRA_HITPAUSE, 10)
+            //set_hitbox_value(attack, 6, HG_HITSTUN_MULTIPLIER, 1)
+            //set_hitbox_value(attack, 6, HG_EXTRA_HITPAUSE, 5)
             set_window_value(attack, 3, AG_WINDOW_LENGTH, 12)
             
         }
@@ -291,6 +420,7 @@ if (attack == AT_FSPECIAL_AIR){
     else if (window == 2){
         if (window_timer == 6 or window_timer == 13)
         {
+            if (!hitpause)
             sound_play(asset_get("sfx_swipe_weak2"))
         }
     }
@@ -318,11 +448,23 @@ if (attack == AT_FSPECIAL_AIR){
 if (attack == AT_USPECIAL){
     if (window == 1)
     {
-        if (shield_pressed and ex_meter >= 50)
+        if (window_timer == 1)
+        {
+            sound_man = 0;
+        }
+        if (shield_pressed and ex_meter >= 30)
         {
             if (ex = 0)
             spawn_hit_fx(x, y - 20, 21)
+            if (sound_man = 0)
+            {
+                sound_play(asset_get("sfx_bird_sidespecial"), 0, 0, 0.5, 1)
+                sound_man = 1;
+            }
             ex = 1;
+            ex_draw = 3;
+            ex_draw_x = x;
+            ex_draw_y = y;
         }
         if (window_timer == 1)
         {
@@ -360,17 +502,26 @@ if (attack == AT_DSPECIAL){
         {
             reset_window_value(attack, 2, AG_WINDOW_LENGTH);
             reset_window_value(attack, 3, AG_WINDOW_LENGTH);
+            sound_man = 0;
         }
         else if (window_timer == get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH))
         {
             if (!hitpause and ex == 1)
             create_hitbox(AT_DSPECIAL, 2, x, y);
         }
-        if (shield_pressed and ex_meter >= 50)
+        if (shield_pressed and ex_meter >= 30)
         {
             if (ex = 0)
             spawn_hit_fx(x, y - 20, 21)
+            if (sound_man = 0)
+            {
+                sound_play(asset_get("sfx_bird_sidespecial"), 0, 0, 0.5, 1)
+                sound_man = 1;
+            }
             ex = 1;
+            ex_draw = 4;
+            ex_draw_x = x;
+            ex_draw_y = y;
             set_window_value(attack, 2, AG_WINDOW_LENGTH, 14)
             set_window_value(attack, 3, AG_WINDOW_LENGTH, 10)
         }
@@ -462,10 +613,14 @@ if (window == 1)
         meter_build = true;
     }
 }*/
-if (has_hit and (attack != AT_USPECIAL and attack != AT_FSPECIAL and attack != AT_FSPECIAL_AIR and attack != AT_NSPECIAL and attack != AT_DSPECIAL))
+if (has_hit and (attack != AT_USPECIAL and attack != AT_FSPECIAL and attack != AT_FSPECIAL_AIR and attack != AT_NSPECIAL and attack != AT_DSPECIAL and attack != AT_USTRONG))
 {
     if (!hitpause)
-    can_special = true;
+    {
+        if (window != 8)
+        can_special = true;
+    }
+    
 }
 if (window == get_attack_value(attack, AG_NUM_WINDOWS) and (attack != AT_FSPECIAL or attack != AT_FSPECIAL_AIR))
 {
@@ -488,8 +643,8 @@ else if (window == 3 and (attack == AT_FSPECIAL or attack == AT_FSPECIAL_AIR))
 if (ex == 1 and ex_spend == 0)
 {
     ex_alpha_draw = 0.4
-    ex_meter -= 50;
+    ex_meter -= 30;
     ex_spend = 1;
-    ex_ring -= 1;
+    //ex_ring -= 1;
     //meter_build = false; //For next patch
 }

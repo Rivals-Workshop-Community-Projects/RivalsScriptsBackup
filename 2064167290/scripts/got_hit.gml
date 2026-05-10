@@ -29,7 +29,4 @@ if (holding_turntable)
     }
 }
 
-if (attack == AT_FSPECIAL) 
-{
     move_cooldown[AT_FSPECIAL] = 0;
-}

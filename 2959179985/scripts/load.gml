@@ -60,6 +60,7 @@ sprite_change_offset("taunt", 160, 194);
 
 sprite_change_offset("plat", 160, 194);
 sprite_change_offset("meter", 160, 194);
+sprite_change_offset("moon_icon", 160, 194);
 sprite_change_offset("ex_vfx", 160, 194);
 
 sprite_change_offset("nspecial_proj", 64, 94);

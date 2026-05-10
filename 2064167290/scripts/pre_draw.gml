@@ -86,34 +86,34 @@ if  (get_player_color(player) == 22) { //check for the alt slot you want to do t
     maskHeader();
     draw_sprite_ext(sprite_index, image_index, x-hsp*3, y-vsp*3, (small_sprites + 1)*spr_dir, small_sprites + 1, 0, c_white, 0.25)
     maskMidder();
-    draw_sprite_tiled_ext(sprite_get("wavetexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
+    draw_sprite_tiled_ext(sprite_get("wtexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
     maskFooter();
     maskHeader();
     draw_sprite_ext(sprite_index, image_index, x-hsp*2, y-vsp*2, (small_sprites + 1)*spr_dir, small_sprites + 1, 0, c_white, 0.5)
     maskMidder();
-    draw_sprite_tiled_ext(sprite_get("wavetexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
+    draw_sprite_tiled_ext(sprite_get("wtexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
     maskFooter();
     maskHeader();
     draw_sprite_ext(sprite_index, image_index, x-hsp*1.5, y-vsp*1.5, (small_sprites + 1)*spr_dir, small_sprites + 1, 0, c_white, 0.6)
     maskMidder();
-    draw_sprite_tiled_ext(sprite_get("wavetexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
+    draw_sprite_tiled_ext(sprite_get("wtexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
     maskFooter();
     //"glow"
     maskHeader();
     draw_sprite_ext(sprite_index, image_index, x+2, y+2, (small_sprites + 1)*spr_dir, small_sprites + 1, 0, c_white, 1)
     maskMidder();
-    draw_sprite_tiled_ext(sprite_get("wavetexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
+    draw_sprite_tiled_ext(sprite_get("wtexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
     maskFooter();
         maskHeader();
     draw_sprite_ext(sprite_index, image_index, x-2, y-2, (small_sprites + 1)*spr_dir, small_sprites + 1, 0, c_white, 1)
     maskMidder();
-    draw_sprite_tiled_ext(sprite_get("wavetexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
+    draw_sprite_tiled_ext(sprite_get("wtexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
     maskFooter();
     //glowend
     maskHeader();
     draw_sprite_ext(sprite_index, image_index, x, y, (small_sprites + 1)*spr_dir, small_sprites + 1, 0, c_white, 1)
     maskMidder();
-    draw_sprite_tiled_ext(sprite_get("wavetexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
+    draw_sprite_tiled_ext(sprite_get("wtexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
     maskFooter();
 }
 

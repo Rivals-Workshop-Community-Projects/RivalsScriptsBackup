@@ -43,32 +43,19 @@ ai_debug_pin_damage = 50;
 ai_debug_pin_timer = 0;
 
 //attack stuff that kinda works
-far_side_attacks = [AT_FSPECIAL];
-far_side_attacks [1] = AT_USPECIAL_2; 
-far_side_attacks [3] = AT_NSPECIAL, AT_NSPECIAL_2;
+far_side_attacks = [AT_FSPECIAL, AT_NSPECIAL];
 
 mid_up_attacks = [AT_FSPECIAL];
 
-mid_side_attacks = [AT_FSPECIAL];
-mid_side_attacks[0] = AT_DATTACK;
-mid_side_attacks[0] = AT_FSPECIAL;
-mid_side_attacks[3] = AT_FTILT;
+mid_side_attacks = [AT_FSPECIAL, AT_DATTACK, AT_FTILT];
 
-close_up_attacks[0] = AT_USTRONG;
-close_up_attacks[1] = AT_UAIR;
-close_up_attacks[3] = AT_UTILT, AT_NAIR;
+close_up_attacks = [AT_USTRONG, AT_UAIR, AT_UTILT, AT_NAIR];
 
-close_down_attacks[3] = AT_NAIR;
-close_down_attacks[1] = AT_DAIR;
-close_down_attacks[2] = AT_DTILT;
+close_down_attacks = [AT_NAIR, AT_DAIR, AT_DTILT];
 
-close_side_attacks[0] = AT_FSPECIAL;
-close_side_attacks[1] = AT_DATTACK;
-close_side_attacks[2] = AT_FTILT, AT_JAB;
+close_side_attacks = [AT_FSPECIAL, AT_DATTACK, AT_FTILT, AT_JAB];
 
-neutral_attacks[0] = AT_FSPECIAL, AT_NSPECIAL, AT_NSPECIAL_AIR, AT_NSPECIAL_2;
-neutral_attacks[1] = AT_NAIR, AT_FAIR, AT_FTILT, AT_UAIR, AT_JAB;
-neutral_attacks[2] = AT_DSPECIAL, AT_DSPECIAL_AIR;
+neutral_attacks = [AT_JAB, AT_FTILT, AT_NAIR, AT_FAIR, AT_UAIR, AT_NSPECIAL, AT_FSPECIAL, AT_DSPECIAL];
 
 //ATTACK, OVERWRITE[X,Y,WIDTH,HEIGHT], [HITBOXES INDEXES]
 

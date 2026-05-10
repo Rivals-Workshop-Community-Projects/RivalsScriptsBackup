@@ -30,17 +30,18 @@ if (my_hitboxID.attack == AT_FSTRONG)
 
 if (my_hitboxID.attack == AT_FSPECIAL and ex == 1)
 {
-   hit_player_obj.x = x + (60 * spr_dir);
-   hit_player_obj.y = y - 0;
+   //hit_player_obj.x = x + (60 * spr_dir);
+   //hit_player_obj.y = y - 0;
 }
 
 if (my_hitboxID.attack == AT_FSPECIAL_AIR and ex == 1)
 {
-   hit_player_obj.x = x + (50 * spr_dir);
-   hit_player_obj.y = y + 10;
+   //hit_player_obj.x = x + (50 * spr_dir);
+   //hit_player_obj.y = y + 10;
 }
 
-ex_meter += my_hitboxID.damage
+if (my_hitboxID.type == 1 and ex = 0 and ex_meter < 100 and hit_player_obj.state_cat == SC_HITSTUN and (hit_player_obj.prev_state != PS_HITSTUN and hit_player_obj.prev_state != PS_HITSTUN_LAND and hit_player_obj.prev_state != PS_WRAPPED and hit_player_obj.prev_state != PS_FROZEN))
+ex_meter += 10
 /* For next patch
 if (meter_build == true)
 {

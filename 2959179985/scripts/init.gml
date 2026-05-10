@@ -102,12 +102,16 @@ jump_timer = 0;
 
 nspec_proj = 0;
 nspec_proj2 = 0;
-nspec_array = [];
-nspec_array2 = [];
+nspec_proj3 = 0;
+nspec_array = array_create(6, noone);
+nspec_array2 = array_create(5, noone);
+nspec_array3 = array_create(4, noone);
 array_count1 = 0
 array_count2 = 0;
+array_count3 = 0;
 array_random = 0;
 array_random2 = 0;
+array_random3 = 0;
 
 bento = noone;
 bento2 = noone;
@@ -127,11 +131,19 @@ ex_meter = 0;
 ex_spend = 0;
 ex_alpha_draw = 0.8;
 infinite_meter = false;
+ex_draw = 0;
+ex_draw_x = 0;
+ex_draw_y = 0;
+ex_draw_timer = 0;
 
 meter_build = true;
+delay = 0;
 
 training_menu = false;
 menu_state = 0;
 cursor_pos = 4;
 page = 1;
 max_pages = 0;
+
+hitbox_owner = noone;
+sound_man = 0;

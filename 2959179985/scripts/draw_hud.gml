@@ -1,15 +1,43 @@
 // draw_hud
 if (!get_match_setting(SET_PRACTICE))
 {
-    draw_sprite(sprite_get("meter"), 0, temp_x + 20, temp_y + 6)
-    draw_sprite(sprite_get("meter"), floor(ex_meter/25), temp_x + 20, temp_y + 6)
+    if (ex_meter < 100)
+    {
+        gpu_set_fog(true, /*#*/$ca6b3b, 0, 0);
+        draw_sprite_ext(sprite_get("meter"), 10, temp_x + 20, temp_y + 6, 1, 1, 0, 0, 0.2)
+        gpu_set_fog(false, /*#*/$ca6b3b, 0, 0);
+        if (ex_meter > 0)
+            {
+                gpu_set_fog(true, /*#*/$b6f7ff, 0, 0);
+                draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 22, temp_y + 8, 1, 1, 0, 0, 0.25)
+                draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 18, temp_y + 8, 1, 1, 0, 0, 0.25)
+                draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 22, temp_y + 4, 1, 1, 0, 0, 0.25)
+                draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 18, temp_y + 4, 1, 1, 0, 0, 0.25)
+                gpu_set_fog(false, /*#*/$b6f7ff, 0, 0);
+            }
+        draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 20, temp_y + 6, 1, 1, 0, /*#*/$62d4f5, 1)
+        draw_sprite_ext(sprite_get("meter"), 0, temp_x + 20, temp_y + 6, 1, 1, 0, /*#*/$e0e0de, 1)
+    }
+    else if (ex_meter = 100)
+    {
+        gpu_set_fog(true, /*#*/$b6f7ff, 0, 0);
+        draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 24, temp_y + 10, 1, 1, 0, 0, 0.25)
+        draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 16, temp_y + 10, 1, 1, 0, 0, 0.25)
+        draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 24, temp_y + 2, 1, 1, 0, 0, 0.25)
+        draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 16, temp_y + 2, 1, 1, 0, 0, 0.25)
+        gpu_set_fog(false, /*#*/$b6f7ff, 0, 0);
+        draw_sprite(sprite_get("meter"), floor(ex_meter/10), temp_x + 20, temp_y + 6)
+        draw_sprite_ext(sprite_get("meter"), 0, temp_x + 20, temp_y + 6, 1, 1, 0, /*#*/$e0e0de, 1)
+    }
 }
 
-if (get_match_setting(SET_PRACTICE))
+else if (get_match_setting(SET_PRACTICE))
 {
     //draw_debug_text(temp_x + 50, temp_y - 20, "Taunt for training menu:" + (infinite_meter ? "ON" : "OFF"));
+    draw_debug_text(temp_x + 50, temp_y - 20, "Taunt for training menu");
     if (training_menu == true)
     {
+        
         draw_sprite_ext(sprite_get("training_menu"), 0, temp_x + 104, temp_y, 1, 1, 0, 1, 0.5)
         switch(menu_state)
         {
@@ -195,8 +223,33 @@ if (get_match_setting(SET_PRACTICE))
     }
     else
     {
-        draw_debug_text(temp_x + 50, temp_y - 20, "Taunt for training menu");
-        draw_sprite(sprite_get("meter"), 0, temp_x + 20, temp_y + 6)
-        draw_sprite(sprite_get("meter"), floor(ex_meter/25), temp_x + 20, temp_y + 6)
+        if (ex_meter < 100)
+        {
+            gpu_set_fog(true, /*#*/$ca6b3b, 0, 0);
+            draw_sprite_ext(sprite_get("meter"), 10, temp_x + 20, temp_y + 6, 1, 1, 0, 0, 0.2)
+            gpu_set_fog(false, /*#*/$ca6b3b, 0, 0);
+            if (ex_meter > 0)
+            {
+                gpu_set_fog(true, /*#*/$b6f7ff, 0, 0);
+                draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 22, temp_y + 8, 1, 1, 0, 0, 0.25)
+                draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 18, temp_y + 8, 1, 1, 0, 0, 0.25)
+                draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 22, temp_y + 4, 1, 1, 0, 0, 0.25)
+                draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 18, temp_y + 4, 1, 1, 0, 0, 0.25)
+                gpu_set_fog(false, /*#*/$b6f7ff, 0, 0);
+            }
+            draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 20, temp_y + 6, 1, 1, 0, /*#*/$62d4f5, 1)
+            draw_sprite_ext(sprite_get("meter"), 0, temp_x + 20, temp_y + 6, 1, 1, 0, /*#*/$e0e0de, 1)
+        }
+        else if (ex_meter = 100)
+        {
+            gpu_set_fog(true, /*#*/$b6f7ff, 0, 0);
+            draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 24, temp_y + 10, 1, 1, 0, 0, 0.25)
+            draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 16, temp_y + 10, 1, 1, 0, 0, 0.25)
+            draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 24, temp_y + 2, 1, 1, 0, 0, 0.25)
+            draw_sprite_ext(sprite_get("meter"), floor(ex_meter/10), temp_x + 16, temp_y + 2, 1, 1, 0, 0, 0.25)
+            gpu_set_fog(false, /*#*/$b6f7ff, 0, 0);
+            draw_sprite(sprite_get("meter"), floor(ex_meter/10), temp_x + 20, temp_y + 6)
+            draw_sprite_ext(sprite_get("meter"), 0, temp_x + 20, temp_y + 6, 1, 1, 0, /*#*/$e0e0de, 1)
+        }
     }
 }

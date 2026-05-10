@@ -11,7 +11,6 @@ if (state == PS_DASH_START) or (state == PS_DASH)
 {
     hurtboxID.sprite_index = sprite_get("dash_hurtbox");
 }
-
     
 if( state == PS_IDLE) or ( state == PS_WALK) or ( state == PS_FIRST_JUMP) or ( state == PS_IDLE_AIR) or ( state == PS_PARRY_START)
 {
@@ -69,6 +68,7 @@ if (attack == AT_NTHROW) and (window == 2) and (window_timer == 55) // WARN: Pos
 
 if (!free)
 {
+    dspec_bounced = false;
     can_uspecial = true;
     move_cooldown[AT_FSPECIAL] = 0;
 }

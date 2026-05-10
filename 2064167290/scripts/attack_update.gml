@@ -139,6 +139,9 @@ if (attack == AT_EXTRA_2) and ( window == 2)
     airborn = true;
 }
 
+if(attack = AT_DSPECIAL && !dspec_bounced && free && window_timer = 1){ //if has not already bounced and is not grounded, then bounce // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+   vsp = -5;
+}
 
 // NSPECIAL
 
@@ -161,19 +164,18 @@ if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - l
 // FAIR
 if (attack == AT_FAIR) and (window == 1) 
 {
-    
-    set_hitbox_value( AT_FAIR, 1, HG_BASE_KNOCKBACK, 1.1 + abs(hsp) )
-    
-    var dir = spr_dir;
-    var way = (hsp >= 0) * 2 - 1;
-    if (dir == way)
+var fair_bkb = 1.1 + abs(hsp);
+fair_bkb = clamp(fair_bkb, 3, 7.5); //this is an example, 4 would be minimum here and 7 would be max, replace it with whatever
+set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, fair_bkb)
+	//this code doesnt do anything because the "way" variable was removed when fair bkb was recoded
+    /*if (dir == way)
     {
         set_hitbox_value( AT_FAIR, 1, HG_ANGLE_FLIPPER, 0)
     }
     else
     {
         set_hitbox_value( AT_FAIR, 1, HG_ANGLE_FLIPPER, 5)
-    }
+    }*/
     
 }
 
@@ -201,14 +203,14 @@ if (attack == AT_DSPECIAL) and (window_timer == 11)  // WARN: Possible repetitio
     cd_level = 0;
     //ds_list_delete(cd_pos,0);
     
+    dspec_bounced = true;
     is_hcd = true;
     hcd_x = x ;
     hcd_y = y - cd_height;
     hcd_step = 0;
     hcd_spd = 8;
-    
-    
-    
+   
+
 }
 
 
@@ -607,7 +609,7 @@ if (attack == AT_USPECIAL) and ((can_uspecial_combo) or ((runeG) and (runeG_can_
 }
 
 // uspecial cancel wall jump
-if (attack == AT_USPECIAL) and ((window == 3) or ((window == 2) and (window_timer > 12)))
+if (attack == AT_USPECIAL) and ((window == 3) or ((window == 2)))
 {
     can_wall_jump = true;
 }

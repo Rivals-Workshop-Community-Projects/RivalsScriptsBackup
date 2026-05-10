@@ -3,10 +3,8 @@ if (state != PS_ATTACK_GROUND and state != PS_ATTACK_AIR)
     ex = 0;
     ex_spend = 0;
     ex_alpha_draw = 0.4
-}
-if (ex_meter > 100)
-{
-    ex_meter = 100;
+    ex_draw_timer = 0;
+    ex_draw = 0;
 }
 
 if (infinite_meter == true)
@@ -19,17 +17,33 @@ with hit_fx_obj {
     depth = -10;
   }
 }
-if (ex_meter >= 50 and ex_meter < 100 and ex_ring == 0 and !infinite_meter)
+if (ex_meter >= 30 and !infinite_meter)
 {
-sound_play(asset_get("sfx_coin_capture"))
-white_flash_timer = 15;
-ex_ring = 1;
+    if (ex == 1)
+    {
+        white_flash_timer = 0;
+        delay = 0;
+    }
+    if (white_flash_timer == 0)
+    {
+        if (delay == 45)
+        {
+            white_flash_timer = 15
+            delay = 0;
+        }
+        delay++
+    }
+    if (ex_ring == 0)
+    {
+        sound_play(asset_get("sfx_coin_capture"))
+        ex_ring = 1;
+    }
 }
-else if (ex_meter >= 100 and ex_ring == 1 and !infinite_meter)
+else if (ex_meter < 30)
 {
-sound_play(asset_get("sfx_coin_capture"))
-white_flash_timer = 15;
-ex_ring = 2;
+    white_flash_timer = 0;
+    delay = 45;
+    ex_ring = 0;
 }
 
 if (training_menu)
@@ -140,5 +154,15 @@ if (training_menu)
     	{
     	    sound_play(asset_get("mfx_back"));
     	}
+    }
+}
+
+if (ex_draw > 0)
+{
+    ex_draw_timer++;
+    if (ex_draw_timer mod 5 = 0)
+    {
+        ex_draw_x = x;
+        ex_draw_y = y;
     }
 }

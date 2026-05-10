@@ -4,6 +4,7 @@ hurtbox_spr = sprite_get("hana_hurtbox");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = sprite_get("hana_hurtbox");
 hitstun_hurtbox_spr = sprite_get("hurt_hurt");
+dspec_bounced = false;
 
 char_height = 62; char_height_ref = char_height; char_height_cd = 90;
 idle_anim_speed = 8 / 60;
@@ -47,7 +48,7 @@ max_fall = 10; max_fall_ref = max_fall; max_fall_jmp = 17;//maximum fall speed w
 fast_fall = 13; fast_fall_ref = fast_fall; fast_fall_jmp = 19;//fast fall speed
 gravity_speed = 0.4; gravity_speed_ref = gravity_speed; gravity_speed_jmp = 0.45; gravity_speed_shld = 0.4;
 hitstun_grav = .45;
-knockback_adj = 1.1; knockback_adj_ref = knockback_adj; knockback_adj_shld = 0.8;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
+knockback_adj = 1.15; knockback_adj_ref = knockback_adj; knockback_adj_shld = 0.8;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
 prat_land_time = 3;

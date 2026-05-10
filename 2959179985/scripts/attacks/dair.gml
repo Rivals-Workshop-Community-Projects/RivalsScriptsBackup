@@ -40,10 +40,10 @@ set_hitbox_value(AT_DAIR, 1, HG_HEIGHT, 40);
 set_hitbox_value(AT_DAIR, 1, HG_SHAPE, 0);
 set_hitbox_value(AT_DAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_DAIR, 1, HG_DAMAGE, 6);
-set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 90);
-set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 6)
+set_hitbox_value(AT_DAIR, 1, HG_ANGLE, 80);
+set_hitbox_value(AT_DAIR, 1, HG_BASE_KNOCKBACK, 7)
 set_hitbox_value(AT_DAIR, 1, HG_KNOCKBACK_SCALING, .3);
-set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_DAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);

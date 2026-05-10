@@ -1,4 +1,7 @@
-ex_meter = 0;
+if (ex_meter >= 20)
+ex_meter -= 20;
+else if (ex_meter = 10)
+ex_meter -= 10;
 if (instance_exists(bento))
 {
 	bento.timer = 0;

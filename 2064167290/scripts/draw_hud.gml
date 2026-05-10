@@ -1,5 +1,5 @@
 // draw hud
-
+if("cd_level" not in self) exit;
 
 
 draw_sprite(sprite_get("nowplaying"),0,temp_x + 30,temp_y - 20);
@@ -41,9 +41,8 @@ if (is_turn)
         	var sprite = sprite_get("cd_purple")
         break;
     }
-
-    draw_sprite(sprite,hcd_image,temp_x + 30, temp_y - 20);
-    draw_sprite(sprite_get("number"), inst.col,temp_x + 60,temp_y - 18);
+        draw_sprite(sprite,hcd_image,temp_x + 30, temp_y - 20);
+    draw_sprite(sprite_get("number"), inst.col,temp_x + 45,temp_y - 18);
 }
 
 draw_sprite(sprite_get("nowplaying2"),0,temp_x + 34,temp_y - 34);
@@ -52,29 +51,27 @@ draw_sprite(sprite_get("nowplaying2"),0,temp_x + 34,temp_y - 34);
 switch (cd_level)
 {
 case 0:
-draw_sprite(sprite_get("cd_black"),hcd_image,temp_x + 170,temp_y);
+draw_sprite(sprite_get("cd_blackhud"),hcd_image,temp_x + 153,temp_y - 17);
 break;
 case 1:
-draw_sprite(sprite_get("cd_blue"),hcd_image,temp_x + 170,temp_y);
+draw_sprite(sprite_get("cd_bluehud"),hcd_image,temp_x + 153,temp_y -17 );
 break;
 case 2:
-draw_sprite(sprite_get("cd_green"),hcd_image,temp_x + 170,temp_y);
+draw_sprite(sprite_get("cd_greenhud"),hcd_image,temp_x + 153,temp_y -17);
 break;
 case 3:
-draw_sprite(sprite_get("cd_yellow"),hcd_image,temp_x + 170,temp_y);
+draw_sprite(sprite_get("cd_yellowhud"),hcd_image,temp_x + 153,temp_y -17);
 break;
 case 4:
-draw_sprite(sprite_get("cd_orange"),hcd_image,temp_x + 170,temp_y);
+draw_sprite(sprite_get("cd_orangehud"),hcd_image,temp_x + 153,temp_y -17);
 break;
 case 5:
-draw_sprite(sprite_get("cd_red"),hcd_image,temp_x + 170,temp_y);
+draw_sprite(sprite_get("cd_redhud"),hcd_image,temp_x + 153,temp_y -17);
 break;
 case 6:
-draw_sprite(sprite_get("cd_purple"),hcd_image,temp_x + 170,temp_y);
+draw_sprite(sprite_get("cd_purplehud"),hcd_image,temp_x + 153,temp_y-17);
 break;
 }
-
-
 
 
 

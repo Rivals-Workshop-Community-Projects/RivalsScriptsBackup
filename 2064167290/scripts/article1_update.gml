@@ -124,6 +124,37 @@ else
                     hitbox = create_hitbox( AT_DSPECIAL, col + 1, floor(x) + floor(hsp), floor(y) - 16 + floor(vsp ));
                 }
                 
+                //hitbox detection
+                if(can_hit){
+                    with (pHitBox) {
+                        var _team = get_player_team( get_instance_player( other.player_id.player ));
+                        if (other.can_hit && place_meeting(x,y,other) && player != other.player_id.player && _team != get_player_team( player ) && proj_break == false && hit_priority > 0 && kb_value > 0){
+                            //bounce back turntable
+                            var _ttable = other;
+                            _ttable.hsp = -_ttable.hsp / 3;
+                            _ttable.vsp = -9 - (_ttable.hsp == 0) * 2;
+                            _ttable.can_hit = false;
+                            with(_ttable.player_id) _ttable.PV -= (_ttable.col == 3? 5 : get_hitbox_value( AT_DSPECIAL, _ttable.col + 1, HG_DAMAGE ));
+                            
+                            //copied from supersonic template, does the hitfx/sfx stuff
+                            sound_play(sound_effect);
+                            
+                            var kb_dir = get_hitbox_angle(self);
+                            
+                            var fx_x = lerp(other.x, x, 0.5) + hit_effect_x*spr_dir;
+                            var fx_y = lerp(other.y-40, y, 0.5) + hit_effect_y;
+                            with player_id { // use a with so that it's shaded correctly
+                                var temp_fx = spawn_hit_fx(fx_x, fx_y, other.hit_effect);
+                                temp_fx.hit_angle = kb_dir;
+                            }
+                            
+                            //destroy if its a projectile
+                            if(type == 2 && enemies == 0) destroyed = true;
+                        }
+                        
+                    }
+                }
+                
                 if (hit_wall)
                 {
                     if (col != 1)
@@ -160,16 +191,10 @@ else
 }
 
 
-if (y > room_height + 60) or (x > room_width) or (x < 0)
+if (y > room_height + 60) or (x < get_stage_data( SD_X_POS ) - get_stage_data( SD_SIDE_BLASTZONE )) or x > room_width - get_stage_data( SD_X_POS ) + get_stage_data( SD_SIDE_BLASTZONE )
 {
     destroyed = true;
 }
-
-
-
-
-
-
 
 
 
