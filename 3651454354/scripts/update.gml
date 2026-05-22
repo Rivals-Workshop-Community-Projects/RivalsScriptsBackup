@@ -316,6 +316,7 @@ sound_play(sound_get("snd_rudebuster_hit"), false, noone, 3.0, 1);
 buffed = 0}
 
 if free = 0{
+	warp_count = 0
 		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 5);
 	}else{
 		set_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE, 4);
@@ -384,9 +385,6 @@ if attack = AT_FSTRONG && window = 3 && window_timer = 1{
 if attack = AT_FSTRONG && window = 2 && window_timer = 3{
 	hsp += 1 *spr_dir
 }
-
-//print_debug(pirouette_timer)
-//print_debug(get_game_timer())
 
 if attack = AT_FSPECIAL && nspecial_ammo > 0 && window_timer >= 27 && (state = PS_ATTACK_AIR or state = PS_ATTACK_GROUND){
 	if window = 2{

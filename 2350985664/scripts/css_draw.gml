@@ -9,7 +9,7 @@ patch_ver = "";
 patch_day = "";
 patch_month = "";
 
-var num_alts = 13;
+var num_alts = 16;
 var alt_cur = get_player_color(player);
  
  
@@ -29,9 +29,9 @@ alt_name[9]  = "Broken Bird";
 alt_name[10] = "Electric Bird";
 alt_name[11] = "Blue Bird";
 alt_name[12] = "Strange Bird";
-alt_name[13] = "Lying Bird";
-alt_name[14] = "Abyss";
-alt_name[15] = "Early Access";
+alt_name[13] = "Seagull";
+alt_name[14] = "Opila Bird";
+alt_name[15] = "Quote 'Em!";
  
  
 //Patch

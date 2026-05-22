@@ -122,11 +122,11 @@ if (attack == AT_FSPECIAL || attack == AT_FSPECIAL_2) && window == 4 {
 //DSpecial stuff
 if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
 	can_move = false;
-	
-	if (window == 3 || window == 4) {
+
+	if (4 >= window) {
 		if !hitpause {
 			hsp = clamp(hsp, -1, 1);
-			vsp = clamp(vsp, -3, 3);
+			vsp = clamp(vsp, -1, 1);
 		}
 	} 
 	

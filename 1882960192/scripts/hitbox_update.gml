@@ -238,10 +238,10 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) && hbox_num == 1 {
 		vsp = clamp(vsp, -6, 6);
 		if 16 > hitbox_timer {
 			with player_id if up_down {
-				other.vsp -= .2;
+				other.vsp -= .25;
 			}
 			with player_id if down_down {
-				other.vsp += .2;
+				other.vsp += .25;
 			}
 		}
     }
@@ -287,11 +287,11 @@ if (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) && hbox_num == 1 {
 		}
 		
 		if proj_angle > 0 {
-			proj_angle += .2*spr_dir;
+			proj_angle += .5*spr_dir;
 		}
 		
 		if 0 > proj_angle {
-			proj_angle -= .2*spr_dir;
+			proj_angle -= .5*spr_dir;
 		}
 		
         // aim for azure's center

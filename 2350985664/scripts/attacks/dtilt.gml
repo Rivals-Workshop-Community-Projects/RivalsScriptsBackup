@@ -9,11 +9,11 @@ set_window_value(AT_DTILT, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, sound_get("throw"));
 set_window_value(AT_DTILT, 1, AG_WINDOW_SFX_FRAME, 7);
 
-set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DTILT, 2, AG_WINDOW_LENGTH, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DTILT, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
-set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 32);
+set_window_value(AT_DTILT, 3, AG_WINDOW_LENGTH, 31);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DTILT, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 //set_window_value(AT_DTILT, 3, AG_WINDOW_HAS_WHIFFLAG, 1);

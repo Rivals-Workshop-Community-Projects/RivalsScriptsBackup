@@ -1,3 +1,4 @@
+ledge_lock_timer = 0;
 hurtbox_spr = sprite_get("hurtbox");
 crouchbox_spr = sprite_get("crouch_hurtbox");
 air_hurtbox_spr = -1;

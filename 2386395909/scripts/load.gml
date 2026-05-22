@@ -1,5 +1,7 @@
 //ball stuff
 sprite_change_offset("ball", 23, 23);
+sprite_change_offset("ballTPFX", 23, 23);
+sprite_change_offset("candyball", 23, 23);
 sprite_change_offset("hud_ball", 25, 25);
 sprite_change_offset("ball_dead", 23, 23);
 sprite_change_offset("smoke", 23, 23);

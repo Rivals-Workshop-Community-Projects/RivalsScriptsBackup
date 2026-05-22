@@ -6,8 +6,18 @@ if my_hitboxID.attack == AT_USPECIAL && my_hitboxID.hbox_num == 6
     {
         if player_id == other.id
         {
+            
             hitstop = 15;
             hitpause = true;
+            spawn_hit_fx(other.my_hitboxID.x, other.my_hitboxID.y, 301);
+            if (jawBreakerMode){
+                
+                other.my_hitboxID.no_other_hit = 30;
+                for (var h = 0; h < 20; h++;){
+                    other.my_hitboxID.can_hit[h] = true;
+
+                }
+            }
         }
     }
    

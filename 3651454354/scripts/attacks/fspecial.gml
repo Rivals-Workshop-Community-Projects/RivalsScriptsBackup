@@ -60,6 +60,7 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_HITPAUSE, 6);
 set_hitbox_value(AT_FSPECIAL, 1, HG_EXTRA_HITPAUSE, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITPAUSE_SCALING, .4);
 set_hitbox_value(AT_FSPECIAL, 1, HG_BASE_KNOCKBACK, 3.5) // was 7 before
+set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 1.3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_KNOCKBACK_SCALING, .0)
 set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("snd_damage_weak"));
 set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT_Y_OFFSET, -16);

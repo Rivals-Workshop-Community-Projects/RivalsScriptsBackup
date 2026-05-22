@@ -14,6 +14,17 @@
 // Pratland 18 > 14
 // Air accel .3 > .45
 
+//patch notes 2026 04/05/2026
+//Candyman can now use his special ability from Lethal League Blaze
+//Every time Candyman hits the ball, his meter increases by one (two when the ball is in the bunt state and hit with Fair.)
+//When you hit the ball with the full meter, just press attack again while in hitpause to activate Candyman's special ability
+//The ball will teleport a maximum of 10 times, hitting the ball resets this back to 10, if it's hit by an enemy while in this
+//state, the special attack will end, same if it gets parried.
+//Max air speed 5 > 6
+//Ball angle flipper 1 > 8
+//Uair base knockback 9 > 10
+//Uair knockback scaling 0.3 > 0.6
+
 if ball_cooldown > 0 
 {
     ball_cooldown--;
@@ -21,6 +32,13 @@ if ball_cooldown > 0
 if !free && h >= 1
 {
     h = 0;
+}
+
+if (abilityStage >= 4){
+    abilityAnimFrame += 0.2
+    if (abilityAnimFrame >= 9){
+        abilityAnimFrame = 4
+    }
 }
 
 if attack ==  AT_FSPECIAL

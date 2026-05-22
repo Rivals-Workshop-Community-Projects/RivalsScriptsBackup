@@ -122,61 +122,64 @@ if (attack == AT_USTRONG or attack == AT_FSPECIAL) && window == 1 && window_time
 my_grab_id = noone;
 }
 
-if (attack == AT_USPECIAL && window == 4 && special_pressed && (nspecial_ammo >= 1)){
+if (attack == AT_USPECIAL && window == 4 && special_pressed && (nspecial_ammo >= 1) && warp_count < 3){
 	set_attack( AT_USPECIAL );
 	nspecial_ammo -= 1
 	nspecial_timer = 0
+	warp_count += 1
 	}
 	
 if attack = AT_DSPECIAL or attack = AT_DATTACK{
     can_fast_fall = 0
 }
 
-if attack = AT_BAIR && window = 2{
+if attack = AT_BAIR{
+	if window = 1{ bair_shot = 0 }
+	if window = 2{
 	if window_timer = 1{
 		ammo_bair_starting = nspecial_ammo
 	}
-    if nspecial_ammo > 0{
     if spr_dir = 1{
     if window_timer = 1 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) && nspecial_ammo > 0{
+		bair_shot = 1
         create_hitbox(AT_BAIR, 2, x-30, y+15)
         nspecial_ammo -= 1
 		nspecial_timer = 0
 		sound_play(sound_get("snd_smallswing"), false, false, 0.9, 1.0);
     }
     
-    if window_timer = 5 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  nspecial_ammo > 0{
+    if window_timer = 5 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  bair_shot > 0{
         create_hitbox(AT_BAIR, 3, x-45, y-15)
-        nspecial_ammo -= 1
-		nspecial_timer = 0
+        //nspecial_ammo -= 1
+		//nspecial_timer = 0
 		sound_play(sound_get("snd_smallswing"), false, false, 0.9, 1.0);
     }
     
-    if window_timer = 8 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  nspecial_ammo > 0 {
+    if window_timer = 8 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  bair_shot > 0 {
         create_hitbox(AT_BAIR, 1, x-30, y-45)
-        nspecial_ammo -= 1
-		nspecial_timer = 0
+        //nspecial_ammo -= 1
+		//nspecial_timer = 0
 		sound_play(sound_get("snd_smallswing"), false, false, 0.9, 1.0);
     }
     }else{
-        if window_timer = 1 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  nspecial_ammo > 0{
+        if window_timer = 1 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  bair_shot > 0{
         create_hitbox(AT_BAIR, 2, x+30, y+15)
-        nspecial_ammo -= 1
-		nspecial_timer = 0
+        //nspecial_ammo -= 1
+		//nspecial_timer = 0
 		sound_play(sound_get("snd_smallswing"), false, false, 0.9, 1.0);
     }
     
-    if window_timer = 5 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  nspecial_ammo > 0{
+    if window_timer = 5 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  bair_shot > 0{
         create_hitbox(AT_BAIR, 3, x+45, y-15)
-        nspecial_ammo -= 1
-		nspecial_timer = 0
+        //nspecial_ammo -= 1
+		//nspecial_timer = 0
 		sound_play(sound_get("snd_smallswing"), false, false, 0.9, 1.0);
     }
     
-    if window_timer = 8 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  nspecial_ammo > 0{
+    if window_timer = 8 && (attack_down or ((spr_dir = -1 && right_strong_down) or (spr_dir = 1 && left_strong_down))) &&  bair_shot > 0{
         create_hitbox(AT_BAIR, 1, x+30, y-45)
-        nspecial_ammo -= 1
-		nspecial_timer = 0
+        //nspecial_ammo -= 1
+		//nspecial_timer = 0
 		sound_play(sound_get("snd_smallswing"), false, false, 0.9, 1.0);
     }
     }}}

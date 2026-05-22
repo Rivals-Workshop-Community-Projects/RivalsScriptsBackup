@@ -505,8 +505,25 @@ if attack = 49 && hbox_num = 1{
     		    }
 }
 
-
-
+if(attack == AT_NSPECIAL){
+    if(was_parried){
+	if hbox_num = 1{
+        hitbox_timer = 10;
+		}
+		if hbox_num = 2{
+        hitbox_timer = 9999999;
+		}
+		if hbox_num = 3{
+        hitbox_timer = 9999999;
+		}
+		if hbox_num = 4{
+        hitbox_timer = 9999999;
+		}
+		if hbox_num = 5{
+        hitbox_timer = 1;
+		}
+    }
+}
 
 /*if hitbox_timer < 15{
         //homing detection

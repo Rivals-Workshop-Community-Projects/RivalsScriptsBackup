@@ -10,7 +10,7 @@ if (get_player_color( player ) == 0) {
 	set_character_color_shading(1, 1.2); //shirt
 	set_character_color_shading(2, 1); //pants
 	set_character_color_shading(3, 1.1); //skin
-	set_character_color_shading(4, 1.5); //gloves / scarf
+	set_character_color_shading(4, 1.15); //gloves / scarf
 	set_character_color_shading(5, 1); //hair
 	set_character_color_shading(6, 1.6); //shoes / wand1
 	set_character_color_shading(7, 1); //shoes / wand2

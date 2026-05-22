@@ -11,13 +11,12 @@ if attack == AT_NSPECIAL {
 }
 
 with (asset_get("pHitBox")) {
-	if (player_id == other.id && (attack == AT_NSPECIAL) {
-        destroyed = true;
+	if (player_id == other.id && (attack == AT_NSPECIAL)) {
+        hitbox_timer = length;
     }
 }
 
 tongueOutcome = 0;
-
 grabbed_player_obj = noone;
 grabbed_cookie_obj = noone;
 

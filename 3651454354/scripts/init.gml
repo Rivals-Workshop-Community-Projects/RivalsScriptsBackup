@@ -44,12 +44,12 @@ max_fall = 8.5;
 fast_fall = 14;
 gravity_speed = .35;
 hitstun_grav = .5;
-knockback_adj = 1.1; 
+knockback_adj = 1.12; 
 
 land_time = 4; 
-prat_land_time = 12;
-wave_land_time = 8;
-wave_land_adj = 1.05; 
+prat_land_time = 15;
+wave_land_time = 9;
+wave_land_adj = 1.12; 
 wave_friction = .05; 
 
 //crouch animation frames
@@ -142,6 +142,9 @@ uair_hit_num = 0
 uair_stationary = 0
 uair_timer = 0
 uair_landing_hitbox = 0
+
+bair_shot = 0
+warp_count = 0
 
 chaos_timer = 45
 giant_knife_descent_timer = 0

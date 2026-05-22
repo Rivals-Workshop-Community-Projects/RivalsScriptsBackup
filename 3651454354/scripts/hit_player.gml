@@ -1,4 +1,5 @@
 //if (attack != AT_FSPECIAL){
+//if (attack != AT_FSPECIAL){
 //if combonum <= 4{
 //if attack == AT_BAIR or attack == AT_UTILT{
 //chaos += 3
@@ -55,61 +56,61 @@ if my_hitboxID.attack = AT_UTILT or my_hitboxID.attack = AT_NAIR && my_hitboxID.
 		nspecial_timer = 0
     }
 }
-if attack = AT_FSPECIAL{
+if my_hitboxID.attack = AT_FSPECIAL{
     if my_hitboxID.hbox_num == 1 or my_hitboxID.hbox_num == 2 or my_hitboxID.hbox_num == 3 or my_hitboxID.hbox_num == 4 or my_hitboxID.hbox_num == 5 or my_hitboxID.hbox_num == 6 or my_hitboxID.hbox_num == 7{
 sound_play(asset_get("sfx_blow_medium1"))
 }else if my_hitboxID.hbox_num == 8  or my_hitboxID.hbox_num == 9 or my_hitboxID.hbox_num == 10 or my_hitboxID.hbox_num == 11 or my_hitboxID.hbox_num == 12 or my_hitboxID.hbox_num == 13{
  sound_play(asset_get("sfx_blow_weak1"))   
 }}
 
-if attack = AT_NAIR{
+if my_hitboxID.attack = AT_NAIR{
 	if my_hitboxID.hbox_num = 4{
  sound_play(asset_get("sfx_blow_medium2"))   
 	}else{
  sound_play(asset_get("sfx_blow_weak2"))   		
 	}
 }
-if attack = AT_FAIR{
+if my_hitboxID.attack = AT_FAIR{
     if my_hitboxID.hbox_num == 1{
 sound_play(asset_get("sfx_blow_medium1"))
 }else if my_hitboxID.hbox_num == 3{
  sound_play(asset_get("sfx_blow_weak1"))   
 }
 }
-if attack = AT_DAIR && my_hitboxID.hbox_num == 1{
+if my_hitboxID.attack = AT_DAIR && my_hitboxID.hbox_num == 1{
 sound_play(asset_get("sfx_blow_weak2"))
 }
-if attack = AT_FSTRONG && my_hitboxID.hbox_num == 1{
+if my_hitboxID.attack = AT_FSTRONG && my_hitboxID.hbox_num == 1{
 sound_play(asset_get("sfx_blow_heavy2"))
 }
-if attack = AT_DATTACK{
+if my_hitboxID.attack = AT_DATTACK{
     if my_hitboxID.hbox_num == 5{
-sound_play(asset_get("sfx_blow_medium2"), false, false, 1.0, 1.0);
+sound_play(asset_get("sfx_blow_medium3"), false, false, 1.0, 1.0);
 }
     if my_hitboxID.hbox_num < 5{
 sound_play(asset_get("sfx_blow_weak2"))   
 }}
 
-if attack = AT_FSPECIAL{
+if my_hitboxID.attack = AT_FSPECIAL{
 		if my_hitboxID.hbox_num <= 7 set_grab_id();
 		else my_grab_id = noone;
 }
 
-if attack = AT_USTRONG{
+if my_hitboxID.attack = AT_USTRONG{
 		if my_hitboxID.hbox_num == 10 set_grab_id();
 		else my_grab_id = noone;
 }
 
-if attack = AT_BAIR{
+if my_hitboxID.attack = AT_BAIR{
 		if my_hitboxID.hbox_num == 1{
 		sound_play(asset_get("sfx_ori_energyhit_weak"), false, false, 1.0, 1.0);
 }}
 
-if attack = AT_NSPECIAL{
+if my_hitboxID.attack = AT_NSPECIAL{
 		if my_hitboxID.hbox_num == 1{
 		sound_play(asset_get("sfx_ori_energyhit_weak"), false, false, 1.0, 1.0);
 }}
-if attack = AT_FTILT{
+if my_hitboxID.attack = AT_FTILT{
 		if my_hitboxID.hbox_num == 3{
 		sound_play(asset_get("sfx_ori_energyhit_weak"), false, false, 1.0, 1.0);
 }}

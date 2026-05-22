@@ -10,6 +10,19 @@ if st != 5
     }
 }
 
+if (player_id.hitpause and hitlockout2 != 0) and !jawBreakerMode{
+	if (player_id.attack_pressed) and player_id.abilityStage > 3{
+		player_id.abilityStage = 0;
+		jawBreakerMode = true;
+		jawBreakerHP = 10;
+		spd = 20;
+	    hsp = round(lengthdir_x(spd/2, angle));
+	    vsp = round(lengthdir_y(spd/2, angle));
+	    sound_play(sound_get("candy_activation_a"));
+	    sound_play(sound_get("special_activate"));
+	}
+}
+
 #region hitstop n spd stuff
 if hitlockout2 > 0
 {
@@ -38,10 +51,10 @@ else
 {
     h = 56;
 }
-if hitstop = 0 && st != 1
+if (hitstop = 0 && st != 1) and !jawBreakerMode
 {
     {
-        if spd != 0
+        if spd != 0 
         {
             spd = lerp(spd,0,0.1);
         }
@@ -55,6 +68,7 @@ if hitstop = 0 && st != 1
         }
     }
 }
+
 #endregion
 
 #region plasma_field
@@ -75,7 +89,11 @@ if playsound == true
     }
     if spd > 0 && spd <= 20
     {
-        sound_play(sound_get("weak_hit"));
+    	if (jawBreakerMode){
+    		sound_play(sound_get("medium_hit"));
+    	}else{
+    		sound_play(sound_get("weak_hit"));
+    	}
     }
     if spd >= 21 && spd <= 39
     {
@@ -157,6 +175,8 @@ if draw_e = 1
 */
 #endregion
 
+
+
 #region getting hit
 if st != 5
 {
@@ -169,10 +189,45 @@ if st != 5
         {
             if player_id != other.player_id
             {
+            	if (other.jawBreakerMode){
+            		other.jawBreakerMode = false
+            		other.jawBreakerHP = 0;
+            	}
                 other.hit_by_opponent = player;
             }
             else
             {
+            	other.jawBreakerHP = 10;
+            	clear_button_buffer( PC_ATTACK_PRESSED );
+            	//Can only fill up meter when not in lockout, otherwise the meter gets filled up every frame it 
+            	//detects a hitbox
+            	if (other.hitlockout2 == 0){
+            		if (other.st == 7){
+            			if !(attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+		            		if (!other.jawBreakerMode){
+				            	with player_id{
+									if (abilityStage < 4) {
+										if (other.attack == AT_FAIR){
+											abilityStage += 2
+										}else{
+											abilityStage += 1
+										}
+									}
+								}
+		            		}
+            			}
+            		}else{
+            			if !(attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+		            		if (!other.jawBreakerMode){
+				            	with player_id{
+									if (abilityStage < 4) {
+										abilityStage += 1
+									}
+								}
+		            		}
+            			}
+            		}
+            	}
                 other.hit_by_opponent = player;
             }
             other.fuckingrockid = id;
@@ -193,6 +248,7 @@ if st != 5
                     {
                         other.angle = 90;
                         other.spd = 0;
+                        other.jawBreakerMode = false
                         other.st = 7;
                         other.stt = 0;
                         other.playsound=true;
@@ -251,21 +307,33 @@ if st != 5
                         other.times_hit+=1;
                         other.st = 2;
                         other.stt = 0;
-    
+
                         if (attack == AT_FSTRONG) || (attack == AT_USTRONG) 
                         || (attack == AT_DSTRONG) || damage >= 12
                         {
-                            other.spd+=80;
+                        	if (other.jawBreakerMode){
+                        		other.spd = 20;
+                        	}else{
+                        		other.spd += 80;
+                        	}
                         }
                         else
                         {
                             if damage <=5 && type == 1
                             {
-                                    other.spd = 29;
+	                        	if (other.jawBreakerMode){
+	                        		other.spd = 20;
+	                        	}else{
+	                        		other.spd += 29;
+	                        	}
                             }
                             else if damage <=5 && type == 2
                             {
-                                other.spd = 2;
+	                        	if (other.jawBreakerMode){
+	                        		other.spd = 20;
+	                        	}else{
+	                        		other.spd += 2;
+	                        	}
                                 if player_id.url != CH_WRASTOR
                                 {
                                     destroyed = true;
@@ -273,8 +341,11 @@ if st != 5
                             }
                             else
                             {
-    
-                                other.spd+=40;  
+								if (other.jawBreakerMode){
+									other.spd = 20;
+								}else{
+									other.spd += 40;
+								}
                             }
                         }
                         if other.spd >= 8
@@ -290,7 +361,7 @@ if st != 5
                             case AT_DTILT: kb_angle = 90;break;
                             case AT_NAIR: kb_angle = 45; break;
                             case AT_DAIR: kb_angle = 270; break;
-                            case AT_FAIR: kb_angle = -45; other.spd+= 10;break;
+                            case AT_FAIR: kb_angle = -45; if (!other.jawBreakerMode){other.spd+= 10};break;
                             case AT_BAIR: kb_angle = 180;break;
                             case AT_UAIR: kb_angle = 90; break;
                             case AT_FSTRONG: kb_angle = 0;break;
@@ -492,87 +563,137 @@ if (st == 2) //ball movement
         image_index = 0;
         if (y < +250)
         {
-            if hit_exists == true
-            {
+        	if (!jawBreakerMode){
+	            if hit_exists == true
+	            {
+	                ballhitbox.x = round(x);
+	                ballhitbox.y = round(y);
+	            }
+	            var wallfx = spawn_hit_fx( x, y, wall_fx);
+	            i_hit_cei = true;
+	            wall3a = 1.2;
+	             y = 250;
+	            vsp*=-1;
+	            sound_play(sound_get("wall_bounce_fast"));
+	            i_hit_cei = true;
+	            if spd >= 1
+	            {
+	                hitpause = true
+	                hitstop = 2;
+	            }
+	            angle*=-1;
+        	}else{
+                var tpFx = spawn_hit_fx( x, 270, ballTp_fx);
+                tpFx.draw_angle = 180;
+                var tpFx2 = spawn_hit_fx( x, stagefloor-20, ballTp_fx);
+    		
+                // tpFx2.draw_angle = 90;       		
+				y = stagefloor - 1
+				wall3a = 1.2;
+				jawBreakerHP -= 1;
                 ballhitbox.x = round(x);
                 ballhitbox.y = round(y);
-            }
-            var wallfx = spawn_hit_fx( x, y, wall_fx);
-            i_hit_cei = true;
-            wall3a = 1.2;
-             y = 250;
-            vsp*=-1;
-            sound_play(sound_get("wall_bounce_fast"));
-            i_hit_cei = true;
-            if spd >= 1
-            {
-                hitpause = true
-                hitstop = 2;
-            }
-            angle*=-1;
+        	}
         }
         else if (y > stagefloor)
         {
-            if hit_exists == true
-            {
+        	if (!jawBreakerMode){
+	            if hit_exists == true
+	            {
+	                ballhitbox.x = round(x);
+	                ballhitbox.y = round(y);
+	            }
+	            var wallfx = spawn_hit_fx( x, y, wall_fx);
+	            i_hit_cei = true;
+	            y = round(stagefloor);
+	            vsp*=-1;
+	            sound_play(sound_get("wall_bounce_fast"));
+	            i_hit_cei = true;
+	            if spd >= 1
+	            {
+	                hitpause = true
+	                hitstop = 2;
+	            }
+	            angle*=-1;
+        	}else{
+                var tpFx = spawn_hit_fx( x, 270, ballTp_fx);
+                tpFx.draw_angle = 180;
+                var tpFx2 = spawn_hit_fx( x, stagefloor-20, ballTp_fx);
+        		y = 249;
+        		wall3a = 1.2;
+        		jawBreakerHP -= 1;
                 ballhitbox.x = round(x);
                 ballhitbox.y = round(y);
-            }
-            var wallfx = spawn_hit_fx( x, y, wall_fx);
-            i_hit_cei = true;
-            y = round(stagefloor);
-            vsp*=-1;
-            sound_play(sound_get("wall_bounce_fast"));
-            i_hit_cei = true;
-            if spd >= 1
-            {
-                hitpause = true
-                hitstop = 2;
-            }
-            angle*=-1;            
+        	}
         }
         if (x < stage_x)
         {
-            spr_dir*=-1;
-            if hit_exists == true
-            {
+        	if (!jawBreakerMode){
+	            spr_dir*=-1;
+	            if hit_exists == true
+	            {
+	                ballhitbox.x = round(x);
+	                ballhitbox.y = round(y);
+	            }
+	            var wallfx = spawn_hit_fx( x, y, wall_fx);
+	            wall1a = 1.2;
+	            x = round(stage_x);
+	            angle*=-1;
+	            hsp *=-1;
+	            sound_play(sound_get("wall_bounce_fast"));
+	            i_hit_wall = true
+	            if spd >= 1
+	            {
+	                hitpause = true
+	                hitstop = 2;
+	            }
+        	}else{
+                var tpFx = spawn_hit_fx( stage_x+20, y, ballTp_fx);
+                tpFx.draw_angle = -90;
+                var tpFx2 = spawn_hit_fx( (room_width - stage_x)-20, y, ballTp_fx);
+                tpFx2.draw_angle = 90;
+        		wall1a = 1.2;
+        		wall2a = 1.2;
+        		x = (room_width - stage_x)-1
+        		jawBreakerHP -= 1;
                 ballhitbox.x = round(x);
                 ballhitbox.y = round(y);
-            }
-            var wallfx = spawn_hit_fx( x, y, wall_fx);
-            wall1a = 1.2;
-            x = round(stage_x);
-            angle*=-1;
-            hsp *=-1;
-            sound_play(sound_get("wall_bounce_fast"));
-            i_hit_wall = true
-            if spd >= 1
-            {
-                hitpause = true
-                hitstop = 2;
-            }
+        	}
         }
         if (x > room_width - stage_x) 
         {
-            spr_dir*=-1;
-            if hit_exists == true
-            {
-                ballhitbox.x = round(x);
-                ballhitbox.y = round(y);
-            }
-            var wallfx = spawn_hit_fx( x, y, wall_fx);
-            i_hit_wall = true;
-            wall2a = 1.2;
-            x = (room_width - round(stage_x));
-            angle*=-1;
-            hsp *=-1;
-            sound_play(sound_get("wall_bounce_fast"));
-            i_hit_wall = true
-            if spd >= 1
-            {
-                hitpause = true
-                hitstop = 2;
-            }
+        	if (!jawBreakerMode){
+	            spr_dir*=-1;
+	            if hit_exists == true
+	            {
+	                ballhitbox.x = round(x);
+	                ballhitbox.y = round(y);
+	            }
+	            var wallfx = spawn_hit_fx( x, y, wall_fx);
+	            i_hit_wall = true;
+	            wall2a = 1.2;
+	            x = (room_width - round(stage_x));
+	            angle*=-1;
+	            hsp *=-1;
+	            sound_play(sound_get("wall_bounce_fast"));
+	            i_hit_wall = true
+	            if spd >= 1
+	            {
+	                hitpause = true
+	                hitstop = 2;
+	            }
+        	}else{
+                var tpFx = spawn_hit_fx( stage_x+20, y, ballTp_fx);
+                tpFx.draw_angle = -90;
+                var tpFx2 = spawn_hit_fx( (room_width - stage_x)-20, y, ballTp_fx);
+                tpFx2.draw_angle = 90;
+        		wall1a = 1.2;
+        		wall2a = 1.2;
+        		x = stage_x + 1
+        		jawBreakerHP -= 1;
+				ballhitbox.x = round(x);
+				ballhitbox.y = round(y);
+        	}
         }
     }
 }
@@ -835,6 +956,31 @@ if st == 8
 #endregion
 
 stt++;
+if (jawBreakerHP <= 0 and jawBreakerMode){
+	jawBreakerMode = false
+}
+#define resetShi()
+{
+    angle = 90;
+    spd = 0;
+	jawBreakerMode = false
+    st = 7;
+    stt = 0;
+    playsound=true;
+    hitpause = true;
+    hitstop = 10; 
+    hitlockout = player;
+    hitlockout2 = 20;
+    with player_id
+    {
+        old_hsp = hsp;
+        old_vsp = vsp;       
+        hitpause = true;
+        hitstop = 5;
+        has_hit = true;
+        destroy_hitboxes();
+    }
+}
 
 #define cool_hitboxstuff()
 {

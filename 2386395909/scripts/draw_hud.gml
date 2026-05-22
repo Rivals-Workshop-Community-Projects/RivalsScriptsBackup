@@ -11,3 +11,9 @@ else if (ball_cooldown > 0) || (ball_exists == true)
     draw_sprite(sprite_get("hud_ball"),1,temp_x+194,temp_y-11);
 }
 
+if (abilityStage < 4){
+    draw_sprite_ext(sprite_get("hud_powerBar"),abilityStage,temp_x,temp_y-18,2,2,0.0,c_white,1.0);
+}else{
+    draw_sprite_ext(sprite_get("hud_powerBar"),abilityAnimFrame,temp_x,temp_y-18,2,2,0.0,c_white,1.0);
+}
+

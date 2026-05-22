@@ -12,3 +12,7 @@ if attack == AT_DTILT && has_rune("L") {
 if (attack == AT_DSPECIAL) && (0 >= cookieMeter || cookieAid) {
 	attack = AT_DSPECIAL_2;
 }
+
+grabbed_player_obj = noone;
+grabbed_cookie_obj = noone;
+tongueOutcome = 0;

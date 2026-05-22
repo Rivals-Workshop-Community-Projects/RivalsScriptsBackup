@@ -26,6 +26,8 @@ fuckingrockid = noone; // gets the id of kraggs rock i think idk
 i_hit_cei =  false;
 ori_length = 0;//????
 hittime = 0;//idk
+jawBreakerMode = false; //Tracks if Candyman has activaded his special ability 
+jawBreakerHP = 0;
 
 stagefloor = get_stage_data(SD_Y_POS);
 stage_x = get_stage_data( SD_X_POS );
@@ -35,6 +37,8 @@ smoke_fx = hit_fx_create(sprite_get("smoke"),12);
 speedcloud_fx = hit_fx_create(sprite_get("dust"),32);
 wall_fx = hit_fx_create(sprite_get("plasma_hitfx2"),32);
 hitball_fx = hit_fx_create(sprite_get("ball_hit"),32);
+ballTp_fx = hit_fx_create(sprite_get("ballTPFX"),23);
+
 
 spd = 0; // i am s peed
 h = 0; //i dont remember what this  does
