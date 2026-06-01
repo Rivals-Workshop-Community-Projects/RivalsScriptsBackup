@@ -53,8 +53,8 @@ was_parried = false
 attacked = false
 
 cooldown_amounts = {
-    attacked : 60,
-    hurt : 90,
-    parried : 120
+    attacked : 120,
+    hurt : 150,
+    parried : 180
 }
 target_cooldown = 0

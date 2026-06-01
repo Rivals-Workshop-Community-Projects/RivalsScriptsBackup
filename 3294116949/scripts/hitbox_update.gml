@@ -39,7 +39,7 @@ if attack == AT_NSPECIAL && hbox_num != 5 {
 
 if(attack == AT_DSPECIAL && hbox_num == 1){
 	if player_id.state == PS_DEAD || player_id.state == PS_RESPAWN || player_id.respawn_taunt { destroyed = true; spawn_hit_fx(x, y, HFX_SHO_FLAME_SMALL); }
-	player_id.move_cooldown[AT_DSPECIAL] = 30 + (was_parried || player != player_id.player) * 70;
+	player_id.move_cooldown[AT_DSPECIAL] = 30 + (was_parried || player != player_id.player) * 90;
 	if (vsp >= 0 && has_bounced) || (!was_parried && hitbox_timer > 6 && player_id.down_down && player_id.special_pressed){
 		if (hitbox_timer > 6 && player_id.down_down && player_id.special_pressed) with(player_id) clear_button_buffer(PC_SPECIAL_PRESSED);
 		destroyed = true;

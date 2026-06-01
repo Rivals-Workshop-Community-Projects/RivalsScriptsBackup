@@ -87,7 +87,7 @@ for(var i = 0; i < array_length(axeless_sprite_name_list); i++){
 }
 
 //COMMAND (TEST)
-item = 0;
+fspec_cancel = 0;
 /*switched = 0;*/
 
 char_height = 52;
@@ -201,7 +201,7 @@ afterImageMax = 5;
 afterImage = array_create(afterImageMax, -1);*/
 
 
-// Comapts
+// Compats
 miiverse_post = sprite_get("miiverse");
 TCG_Kirby_Copy = 1;
 plushForAmber = sprite_get("plushForAmber");

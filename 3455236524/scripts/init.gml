@@ -234,6 +234,9 @@ fair_charge = 0;
 intro_y = y - 280
 intro_x = x - 60
 
+is_gorable = true;
+blood_col = /*#*/$e48d0c;
+
 //Custom Hitbox Colors System (by @SupersonicNK)
 HG_HITBOX_COLOR = 79; //This can be any number above 57 and below 100. It is recommended that you put this number below Munophone's starting_hg_index value, to prevent conflicts.
 

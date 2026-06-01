@@ -20,7 +20,7 @@
 
 // Physical size
 char_height             = 74;       //                  the height of the overhead hud - the arrow with your name and %
-knockback_adj           = 1;		// 0.9  -  1.2
+knockback_adj           = 1.1;		// 0.9  -  1.2
 
 // Ground movement
 walk_speed              = 2;		// 3    -  4.5

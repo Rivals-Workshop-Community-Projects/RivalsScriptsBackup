@@ -170,6 +170,18 @@ switch (state) {
     case PS_PARRY: // FSPECIAL
     	player_id.move_cooldown[AT_DSPECIAL_2] = 3
     	
+    	var line_offset = 30*spr_dir
+    	var block = asset_get("par_block")
+    	var jumpthrough = asset_get("par_jumpthrough")
+    	
+    	if !free and !(
+    		collision_line(x + (line_offset), y-3, x+line_offset, y+3, block, true, true) or
+    		collision_line(x + (line_offset), y-3, x+line_offset, y+3, jumpthrough, true, true)
+    	) {
+    		hsp = 0;
+    		vsp = 0;
+    	}
+    	
     	if window > 0 {
     		hsp *= 0.96
     	} else {
@@ -444,7 +456,9 @@ switch (state) {
         		}
 	    		if point_distance(x,y-20, target_position.x, target_position.y) < 60 {
 	    			player_id.jake_cooldown = target_cooldown
-	    			change_finn_sprites()
+	    			
+	    			with player_id user_event(2)
+            	    
             	    with spawn_hit_fx(player_id.x,player_id.y-15,player_id.vfx_thing) {
         				depth = other.player_id.depth+1
         			}
@@ -508,7 +522,7 @@ switch (state) {
     
 
     case PS_DEAD: // For when Finn dies while jake is out
-		change_finn_sprites()
+		with player_id user_event(2)
 		
 		instance_destroy()
 		exit
@@ -545,7 +559,7 @@ if window_timer >= window_data.length {
             window++;
         }
         else {
-        	if state == PS_IDLE_AIR and was_parried {
+        	if was_parried {
         		state = PS_RESPAWN
         	} else {
         		state = data.next
@@ -554,7 +568,7 @@ if window_timer >= window_data.length {
             
             // PS_LAND KILLS JAKE INSTANTLY
             if state == PS_LAND {
-            	change_finn_sprites()
+            	with player_id user_event(2)
             	
             	instance_destroy()
             	exit
@@ -630,68 +644,6 @@ var position_prime = {
 initial_position = {x: x, y: y}
 target_position = position_prime
 
-#define change_finn_sprites()
-
-with player_id {
-	var attack_sprites = jake_sprites[? PS_ATTACK_AIR]
-	var keys = ds_map_keys(attack_sprites)
-	var values = ds_map_values(attack_sprites)
-	for (var i = 0; i < ds_map_size(attack_sprites); i++) {
-		set_attack_value(keys[i], AG_HURTBOX_SPRITE, values[i].hurtbox)
-	}
-	
-	// JAB
-	reset_attack_value(AT_JAB, AG_NUM_WINDOWS);
-
-	// NAIR
-	reset_attack_value(AT_NAIR, AG_LANDING_LAG)
-	reset_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH)
-	reset_hitbox_value(AT_NAIR, 2, HG_LIFETIME)
-	
-	// FSTRONG
-	reset_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH)
-	reset_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH)
-	reset_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME)
-	reset_hitbox_value(AT_FSTRONG, 1, HG_DAMAGE)
-	reset_hitbox_value(AT_FSTRONG, 1, HG_HITPAUSE_SCALING)
-	reset_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX)
-	reset_hitbox_value(AT_FSTRONG, 1, HG_HIT_LOCKOUT);
-	reset_hitbox_value(AT_FSTRONG, 1, HG_EXTRA_HITPAUSE);
-	reset_hitbox_value(AT_FSTRONG, 1, HG_KNOCKBACK_SCALING)
-	reset_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME)
-	
-	// USTRONG
-	reset_window_value(AT_USTRONG, 2, AG_WINDOW_LENGTH)
-	reset_window_value(AT_USTRONG, 2, AG_WINDOW_SFX_FRAME)
-	reset_window_value(AT_USTRONG, 4, AG_WINDOW_LENGTH);
-	reset_hitbox_value(AT_USTRONG, 1, HG_DAMAGE);
-	reset_hitbox_value(AT_USTRONG, 1, HG_ANGLE);
-	reset_hitbox_value(AT_USTRONG, 1, HG_BASE_KNOCKBACK);
-	reset_hitbox_value(AT_USTRONG, 1, HG_KNOCKBACK_SCALING);
-	reset_hitbox_value(AT_USTRONG, 1, HG_BASE_HITPAUSE);
-	reset_hitbox_value(AT_USTRONG, 1, HG_HITPAUSE_SCALING);
-	reset_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX);
-	reset_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT)
-	reset_hitbox_value(AT_USTRONG, 1, HG_HIT_LOCKOUT);
-	reset_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP);
-	reset_hitbox_value(AT_USTRONG, 3, HG_LIFETIME);
-	
-	// DSTRONG
-	reset_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH)
-	reset_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH)
-	reset_hitbox_value(AT_DSTRONG, 1, HG_DAMAGE);
-	reset_hitbox_value(AT_DSTRONG, 1, HG_ANGLE);
-	reset_hitbox_value(AT_DSTRONG, 1, HG_BASE_KNOCKBACK);
-	reset_hitbox_value(AT_DSTRONG, 1, HG_KNOCKBACK_SCALING);
-	reset_hitbox_value(AT_DSTRONG, 1, HG_BASE_HITPAUSE);
-	reset_hitbox_value(AT_DSTRONG, 1, HG_HITPAUSE_SCALING);
-	reset_hitbox_value(AT_DSTRONG, 1, HG_ANGLE_FLIPPER);
-	reset_hitbox_value(AT_DSTRONG, 1, HG_FORCE_FLINCH);
-	reset_hitbox_value(AT_DSTRONG, 1, HG_TECHABLE);
-	reset_hitbox_value(AT_DSTRONG, 2, HG_LIFETIME);
-	reset_hitbox_value(AT_DSTRONG, 4, HG_LIFETIME);
-}
-
 #define check_can_attack(target, threshold_min, threshold_max)
 if instance_exists(hit_player_obj) and hit_player_obj.activated_kill_effect primed = false
 
@@ -711,14 +663,17 @@ var target_action = PS_IDLE
 var frame_overshoot = 6
 calculate_target(frame_overshoot, sqr(frame_overshoot))
 var distance = point_distance(x, y, target_position.x, target_position.y)
-if distance > threshold_max or are_components_out_of_range(275) {
+
+var threshold_mult = 1 + vertical_attack
+
+if distance > (threshold_max*threshold_mult) or are_components_out_of_range( (275 * threshold_mult) ) {
 	primed = false
 	return;
 }
 
-if distance <= threshold_min 
+if distance <= threshold_min
 {
-	target_action = PS_ATTACK_GROUND //// TOO CLOSE. perform neutral attack. designate this as neutral attack
+	target_action = vertical_attack ? target : PS_ATTACK_GROUND //// TOO CLOSE. perform neutral attack. designate this as neutral attack
 }
 else {
     target_action = target //jump towards player

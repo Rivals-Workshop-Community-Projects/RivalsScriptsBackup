@@ -21,8 +21,9 @@ if(instance_exists(lamp) && lamp.state == 1 && lamp.state_timer >= 10 && attack 
 set_num_hitboxes(AT_FSPECIAL, 4);
 reset_window_value(AT_FSPECIAL, 6, AG_WINDOW_HSPEED);
 
+//Down Air stall before falling
 if(attack == AT_DAIR){
-    set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, min(-5, vsp));
+    set_window_value(AT_DAIR, 1, AG_WINDOW_VSPEED, min(-4, vsp)); //previously 5
 }
 
 if (instance_exists(axe) && attack==AT_NSPECIAL && axe.state == 2){

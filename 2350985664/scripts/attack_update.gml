@@ -195,6 +195,11 @@ if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - l
             spawn_hit_fx( x, y, dash_effect_down)
             sound_play(sound_get("dash"));
         }
+      /* if(window = 5 && shield_pressed){ //release
+        destroy_hitboxes() 
+        attack_end();
+        set_attack(AT_FSPECIAL_AIR);
+        }*/
         /*
         if (has_rune("H"))
         {
@@ -237,7 +242,11 @@ if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - l
             reset_window_value(AT_EXTRA_2, 1, AG_WINDOW_TYPE);
         }
         can_wall_jump = true;
-        
+        /*if(window = 5 && shield_pressed){ //release
+        destroy_hitboxes() 
+        attack_end();
+        set_attack(AT_FSPECIAL_AIR);
+        }*/
         /*
         if (has_rune("H"))
         {
@@ -258,7 +267,7 @@ if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - l
     break;
     case AT_EXTRA_2:
         can_wall_jump = true;
-        ledge_lock_timer = 4;
+        // ledge_lock_timer = 4;
     break;
     case AT_FSPECIAL:
         if (window == 1 && window_timer = 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
@@ -270,7 +279,7 @@ if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - l
             destroy_hitboxes() 
             attack_end();
             set_attack(AT_EXTRA_2);
-                ledge_lock_timer = 4;
+                // ledge_lock_timer = 4;
             hurtboxID.sprite_index = sprite_get("grab_endlag_hurt");
         }
         var time = get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH);
@@ -279,7 +288,11 @@ if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - l
             spawn_hit_fx( x, y, dash_effect_front)
             sound_play(sound_get("dash"));
         }
-        
+        /*if(window = 5 && shield_pressed){ //release
+        destroy_hitboxes() 
+        attack_end();
+        set_attack(AT_FSPECIAL_AIR);
+        }*/
         /*
         if (has_rune("H"))
         {
@@ -294,6 +307,11 @@ if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - l
             }
         }
     */
+    break;
+    case AT_FSPECIAL_AIR: //Grab release
+    if(window_timer = 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+    vsp = -3;
+    }
     break;
 }
 

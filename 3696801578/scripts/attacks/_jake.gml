@@ -35,6 +35,9 @@ set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_ENEMY_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_WALL_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_GROUND_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 1, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_EXTRA_1, 1, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 1, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 //Grab
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITBOX_TYPE, 2);
@@ -60,6 +63,9 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_WALL_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_GROUND_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 2, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_EXTRA_1, 2, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 //Ground neutral attack
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITBOX_TYPE, 2);
@@ -84,6 +90,9 @@ set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 3, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_EXTRA_1, 3, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 //They see me rolling
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITBOX_TYPE, 2);
@@ -109,6 +118,9 @@ set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_ENEMY_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_WALL_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_GROUND_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 4, HG_HITSTUN_MULTIPLIER, 0.8);
+set_hitbox_value(AT_EXTRA_1, 4, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 4, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 //"FUCK YOU" -Nspecial punch, probably
 set_hitbox_value(AT_EXTRA_1, 5, HG_HITBOX_TYPE, 2);
@@ -134,6 +146,9 @@ set_hitbox_value(AT_EXTRA_1, 5, HG_PROJECTILE_WALL_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 5, HG_PROJECTILE_GROUND_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 5, HG_HITSTUN_MULTIPLIER, 0.5);
 set_hitbox_value(AT_EXTRA_1, 5, HG_VISUAL_EFFECT, HFX_GEN_BIG)
+set_hitbox_value(AT_EXTRA_1, 5, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 5, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 
 //"FUCK YOU AS WELL" -Nspecial2 clap, probably
 set_hitbox_value(AT_EXTRA_1, 6, HG_HITBOX_TYPE, 2);
@@ -159,3 +174,6 @@ set_hitbox_value(AT_EXTRA_1, 6, HG_PROJECTILE_WALL_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 6, HG_PROJECTILE_GROUND_BEHAVIOR, 1)
 set_hitbox_value(AT_EXTRA_1, 6, HG_VISUAL_EFFECT, HFX_GEN_BIG)
 set_hitbox_value(AT_EXTRA_1, 6, HG_HITSTUN_MULTIPLIER, 0.5);
+set_hitbox_value(AT_EXTRA_1, 6, HG_EXTENDED_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 6, HG_PROJECTILE_PARRY_STUN, 1);
+set_hitbox_value(AT_EXTRA_1, 6, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

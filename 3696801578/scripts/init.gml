@@ -145,7 +145,8 @@ jake_sprites[? PS_WALK] = sprite_get("jake_walk")
 jake_sprites[? PS_WALK_TURN] = sprite_get("jake_walkturn")
 jake_sprites[? PS_DASH_START] = sprite_get("jake_dashstart")
 jake_sprites[? PS_DASH] = sprite_get("jake_dash")
-jake_sprites[? PS_DASH_STOP] = sprite_get("jake_dashturn")
+jake_sprites[? PS_DASH_STOP] = sprite_get("jake_dashstop")
+jake_sprites[? PS_DASH_TURN] = sprite_get("jake_dashturn")
 jake_sprites[? PS_WAVELAND] = sprite_get("jake_waveland")
 jake_sprites[? PS_JUMPSQUAT] = sprite_get("jake_jumpstart")
 jake_sprites[? PS_FIRST_JUMP] = sprite_get("jake_jump")
@@ -472,7 +473,7 @@ detached_jake_data[? PS_HITSTUN] = {
         {
             frame_start: 1,
             frames: 1,
-            length: 30,
+            length: 90,
             loop: false
         }
     ]

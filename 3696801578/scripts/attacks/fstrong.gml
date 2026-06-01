@@ -14,7 +14,7 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 7);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 5.5);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, sound_get("sfx_fj_sword_swipe_heavy"));

@@ -29,4 +29,8 @@ if (holding_turntable)
     }
 }
 
+if((attack = AT_NSPECIAL || attack = AT_NSPECIAL_2) && (prev_state = PS_ATTACK_AIR || prev_state = PS_ATTACK_GROUND) && cd_level != 0){
+cd_level = 0;
+}
+
     move_cooldown[AT_FSPECIAL] = 0;

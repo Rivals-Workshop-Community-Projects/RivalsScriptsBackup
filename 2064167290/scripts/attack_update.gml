@@ -152,11 +152,13 @@ if (attack == AT_JAB)
             clear_button_buffer(PC_ATTACK_PRESSED);
         }
 //turnaround
-if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - left_stick_down) * -1) && !up_down && !down_down && (attack_down || right_stick_down || left_stick_down)){
+if((spr_dir == (right_down - left_down) * -1 || spr_dir == (right_stick_down - left_stick_down) * -1) && !up_down && !down_down && (attack_down)){
     if(spr_dir == (right_down - left_down) * -1){
+    	if(window < 7){
         spr_dir *= -1;
         attack_end();
         set_attack(AT_FTILT);
+    	}
     }
 }
 }
@@ -595,7 +597,7 @@ if (attack == AT_USPECIAL) and ((can_uspecial_combo) or ((runeG) and (runeG_can_
         }
        
        
-        if (shield_pressed) or (attack_pressed)
+        if (shield_pressed) or is_attack_pressed(DIR_ANY) or is_strong_pressed(DIR_ANY)
         {
             set_state(PS_IDLE_AIR);
             

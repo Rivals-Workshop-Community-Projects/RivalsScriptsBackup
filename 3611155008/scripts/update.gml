@@ -21,6 +21,10 @@ with oPlayer if self != other && ((yi_parry_undo && was_parried) || yi_parry_ext
 		old_vsp = lengthdir_y(10, dir)*free;
 	}
 	if yi_parry_extra_hitpause{
+		if !hitstop{
+			old_hsp = hsp;
+			old_vsp = vsp;
+		}
 		hitstop += 15;
 		hitstop_full += 15;
 		hitpause = 1;
@@ -137,7 +141,7 @@ with (asset_get("new_dust_fx_obj")) if dust_fx = 2 && player == other.player && 
 	y = -3000;
 	dust_length = 0;
 }
-		
+
 //intro
 if get_gameplay_time() <= 4 set_attack(2);
 if prev_state = PS_RESPAWN && respawn_anim < 149 hsp = 0;

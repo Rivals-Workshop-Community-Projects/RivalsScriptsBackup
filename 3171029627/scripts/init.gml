@@ -220,3 +220,6 @@ james_taunt_window = 4;
 introTimer = -(1 + player);
 introTimer2 = 0;
 introAnimFrameLength = 5;
+
+is_gorable = true;
+blood_col = make_colour_rgb(get_color_profile_slot_r( get_player_color(player), 0 ), get_color_profile_slot_g( get_player_color(player), 0 ), get_color_profile_slot_b( get_player_color(player), 0 ));

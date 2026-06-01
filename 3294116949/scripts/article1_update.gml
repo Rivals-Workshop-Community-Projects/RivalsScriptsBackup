@@ -5,7 +5,7 @@ player_id.move_cooldown[AT_NSPECIAL] = 90; // 40
 if returning player_id.move_cooldown[AT_NSPECIAL] = 100; // 60
 if was_hit player_id.move_cooldown[AT_NSPECIAL] = 120; // 80
 if was_parried player_id.move_cooldown[AT_NSPECIAL] = 140; // 120
-if ignited player_id.move_cooldown[AT_DSPECIAL] = 100;
+if ignited player_id.move_cooldown[AT_DSPECIAL] = 120;
 
 if(place_meeting(x, y, asset_get("plasma_field_obj"))){
 	if(instance_exists(axe_hitbox)) axe_hitbox.destroyed = true;

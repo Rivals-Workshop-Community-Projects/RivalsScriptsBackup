@@ -1,9 +1,10 @@
 switch my_hitboxID.attack {
     case AT_FSPECIAL:
         if my_hitboxID.hbox_num == 1{
-           window = 3;
+        	window = 3;
 		    window_timer = 0;
 		    old_vsp = -8;
+		    old_hsp /= 1.4
         }
     break;
 }

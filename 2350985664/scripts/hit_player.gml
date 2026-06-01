@@ -79,6 +79,7 @@ switch(my_hitboxID.attack)
         }
     break;
     case AT_NSPECIAL:
+//    move_cooldown[AT_NSPECIAL] = 40;
         if (ds_list_find_index(caged_list,hit_player_obj) == -1) and (hit_player_obj.blind_immune_time == 0)
         {
             if (hit_player_obj.blinded < 300)

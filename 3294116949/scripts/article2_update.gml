@@ -1,5 +1,5 @@
 
-if player_id.lamp == self player_id.move_cooldown[AT_DSPECIAL] = 100;
+if player_id.lamp == self player_id.move_cooldown[AT_DSPECIAL] = 120;
 
 in_use = false;
 x = round(x);

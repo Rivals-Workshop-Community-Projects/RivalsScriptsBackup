@@ -1,7 +1,7 @@
 // attack_update
 
 //B - Reversals
-if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_DAIR){
+if (attack == AT_NSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_DAIR){
     trigger_b_reverse();
 }
 
@@ -424,7 +424,7 @@ if (attack == (43)) && (free) && (special_down) && (vsp > 0){
 
 if (attack == AT_DAIR) {
 	can_fast_fall = false;
-	if window == 4 && state_timer >= 35 && !hitpause {
+	if window == 4 && state_timer >= 37 && !hitpause { //previously 35
 		can_jump = true;
 		can_wall_jump = true;
 		can_shield = true;
@@ -696,7 +696,7 @@ if (attack == AT_FSPECIAL){
 		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH) + 4 * (fspec_grounded && free));
 	}
 	if has_hit || !free || fspec_grounded set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
-	else set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7); // Side Special Pratfall
+	else if (fspec_cancel == 0){ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);} // Side Special Pratfall
 	// if window == 3 && window_timer == 12 && !has_hit{
 	// 	if (free) set_state( PS_PRATFALL );
 	// }
@@ -798,6 +798,21 @@ if (attack == AT_FSPECIAL) {
 	}
 	if(window == 9){
 		if(window_timer > 13) iasa_script();
+	}
+}
+
+//FSPECIAL CANCEL DASH SPEED
+
+if (attack == AT_FSPECIAL) {
+	if (window == 1) && (window_timer > 4){
+			if (left_down *spr_dir) or (right_down *!spr_dir){
+			 fspec_cancel = 1;
+			 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
+             set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 6);
+			 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+             set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 2);
+			 set_num_hitboxes(AT_FSPECIAL, 0);
+		} else fspec_cancel = 0;
 	}
 }
 
