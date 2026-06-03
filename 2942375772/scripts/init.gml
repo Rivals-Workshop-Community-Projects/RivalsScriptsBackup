@@ -65,7 +65,7 @@ crouch_recovery_frames = 1;
 //parry animation frames
 dodge_startup_frames = 1;
 dodge_active_frames = 1;
-dodge_recovery_frames = 4;
+dodge_recovery_frames = 5;
 
 //tech animation frames
 tech_active_frames = 1;
@@ -110,7 +110,9 @@ note_strong_hfx = hit_fx_create(sprite_get("hfx_strong"), 40);
 note_trail = hit_fx_create(sprite_get("note_trail"), 22);
 note_trail_orange = hit_fx_create(sprite_get("note_trail_orange"), 22);
 note_trail_purple = hit_fx_create(sprite_get("note_trail_purple"), 22);
-purple_nspec_vfx = hit_fx_create(sprite_get("hfx_purple_hit"), 24);
+purple_nspec_vfx = hit_fx_create(sprite_get("hfx_purple_hit"), 20);
+green_nspec_vfx = hit_fx_create(sprite_get("hfx_green_hit"), 20);
+red_nspec_vfx = hit_fx_create(sprite_get("hfx_red_hit"), 24);
 fire_trail = hit_fx_create(sprite_get("vfx_nspecial_fire"), 24);
 smoke_vfx = hit_fx_create(sprite_get("vfx_smoke"), 24);
 fspecial_vfx = hit_fx_create(sprite_get("vfx_fspecial"), 20);
@@ -122,6 +124,9 @@ for (i = 0; i < 3; i++) {
     array_push(dattack_vfx, hit_fx_create(sprite_get(`vfx_dattack_${i}`), 15))
     sprite_change_offset(`vfx_dattack_${i}`, 134, 158);
 }
+
+green_nspec_destroy = hit_fx_create(sprite_get("nspecial_proj_2_destroy"), 16);
+red_nspec_destroy = hit_fx_create(sprite_get("nspecial_proj_3_destroy"), 20);
 
 tambo_obj = noone;
 
@@ -176,6 +181,10 @@ greenwood_cheer = 2;
 //TAS alt
 hue_offset = 0;
 hue_speed = 0.5; //change this to change the speed of the hueshift
+
+extra_col = 0;
+champ_alt = false;
+champ_name = get_player_name(player);
 
 //woodcock support indices
 i = 80;

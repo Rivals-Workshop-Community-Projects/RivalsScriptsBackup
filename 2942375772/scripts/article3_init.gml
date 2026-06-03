@@ -6,7 +6,7 @@ prefix_sum = [];
 current_proj = 0;
 
 state_timer = 0;
-print("CREATED")
+//print("CREATED")
 
 projectile_number = 0;
 loop = false;

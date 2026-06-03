@@ -93,14 +93,14 @@ set_color_profile_slot( 8, 4, 255, 255, 250 ); //tamb white
 set_color_profile_slot( 8, 5, 235, 56, 56 ); //tamb black
 
 // Jockington
-set_color_profile_slot( 9, 0, 1, 200, 83 ); //body blue
+set_color_profile_slot( 9, 0, 68, 200, 122 ); //body blue
 set_color_profile_slot( 9, 1, 33, 150, 243 ); //body white
-set_color_profile_slot( 9, 2, 0, 150, 136 ); //hat black
+set_color_profile_slot( 9, 2, 0, 87, 79 ); //hat black
 set_color_profile_slot( 9, 3, 33, 150, 245 ); //hat white
-set_color_profile_slot( 9, 4, 135, 163, 255 ); //tamb white
-set_color_profile_slot( 9, 5, 0, 133, 86 ); //tamb black
+set_color_profile_slot( 9, 4, 33, 150, 243 ); //tamb white
+set_color_profile_slot( 9, 5, 0, 87, 79 ); //tamb black
 
-// unnamed alt palette
+// Eidolon
 set_color_profile_slot( 10, 0, 60, 61, 77 ); //body blue
 set_color_profile_slot( 10, 1, 163, 154, 214 ); //body white
 set_color_profile_slot( 10, 2, 42, 38, 56 ); //hat black
@@ -129,8 +129,8 @@ set_color_profile_slot( 13, 0, 48, 173, 17 ); //body blue
 set_color_profile_slot( 13, 1, 255, 222, 112 ); //body white
 set_color_profile_slot( 13, 2, 255, 221, 0 ); //hat black
 set_color_profile_slot( 13, 3, 255, 174, 0 ); //hat white
-set_color_profile_slot( 13, 4, 255, 51, 0 ); //tamb white
-set_color_profile_slot( 13, 5, 68, 255, 0 ); //tamb black
+set_color_profile_slot( 13, 4, 255, 221, 0 ); //tamb white
+set_color_profile_slot( 13, 5, 255, 51, 51 ); //tamb black
 
 // Mech Snek
 set_color_profile_slot( 14, 0, 75, 38, 178 ); //body blue
@@ -150,11 +150,11 @@ set_color_profile_slot( 15, 5, 112, 205, 255 ); //tamb black
 
 // Amaya
 set_color_profile_slot( 16, 0, 8, 190, 122 ); //body blue
-set_color_profile_slot( 16, 1, 255, 225, 181 ); //body white
-set_color_profile_slot( 16, 2, 46, 167, 255 ); //hat black
-set_color_profile_slot( 16, 3, 0, 19, 155 ); //hat white
-set_color_profile_slot( 16, 4, 196, 0, 255 ); //tamb white
-set_color_profile_slot( 16, 5, 0, 139, 110 ); //tamb black
+set_color_profile_slot( 16, 1, 235, 232, 169 ); //body white
+set_color_profile_slot( 16, 2, 45, 60, 163 ); //hat black
+set_color_profile_slot( 16, 3, 103, 184, 245 ); //hat white
+set_color_profile_slot( 16, 4, 152, 115, 191 ); //tamb white
+set_color_profile_slot( 16, 5, 83, 43, 122 ); //tamb black
 
 // Najarala
 set_color_profile_slot( 17, 0, 201, 182, 26 ); //body blue

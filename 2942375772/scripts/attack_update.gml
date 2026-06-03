@@ -22,6 +22,7 @@ switch (attack)
         }
     break;
     case AT_DATTACK:
+    hud_offset = 24;
     can_fast_fall = false;
         if window == 1 {
             if window_timer == 1
@@ -115,11 +116,12 @@ switch (attack)
             sound_play(sound_get("sfx_tambo_swipe"), false, noone, 0.8, 1.1)
         }
     
-        if (window == 3 and window_timer > 5) or window == 4 or (window == 5 and window_timer < 10) {
+        if (window == 3 and window_timer > 5) or window == 4 or (window == 5 and window_timer < 14*(has_hit? 1 : 1.5)) {
             hud_offset = round(lerp(hud_offset, 350, 0.2))
         }
     break;
     case AT_DSTRONG:
+        hud_offset = 38;
         if window == 2 and window_timer == 5 {
             sound_play(asset_get("sfx_zetter_downb"), false, noone, 0.6, 1)
             sound_play(sound_get("sfx_idle_shake"), false, noone, 0.2, 0.93)
@@ -127,6 +129,7 @@ switch (attack)
         }
     break;
     case AT_NAIR:
+        hud_offset = 42;
         switch (window)
         {
             case 1:
@@ -221,6 +224,7 @@ switch (attack)
         }
     break;
     case AT_UTILT:
+        hud_offset = 34;
         if window == 1 and window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 1
         {
             hsp += spr_dir * 3.5
@@ -255,6 +259,9 @@ switch (attack)
                 }
             break;
         }
+    break;
+    case AT_UAIR:
+    hud_offset = 48;
     break;
 }
 

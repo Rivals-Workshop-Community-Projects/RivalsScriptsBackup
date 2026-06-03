@@ -34,7 +34,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.45);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
-set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
@@ -56,7 +56,7 @@ set_num_hitboxes(AT_FSPECIAL, 3);
 
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 4);
-set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 2);
+set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_SHAPE, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 25);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -35);

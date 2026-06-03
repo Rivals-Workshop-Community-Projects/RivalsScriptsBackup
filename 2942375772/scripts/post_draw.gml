@@ -11,3 +11,7 @@ if get_player_color(player) == 22 && random_func(4, 2, 1) == 0  && (state == PS_
     draw_sprite_part_ext(sprite_index,image_index,0,fs, abs(sprite_width), random_func(1, 20, 1)+1, (x+(random_func(2, 3, 1)-1)*7)  - sprite_get_xoffset(sprite_index)*spr_dir*1, y+fs*1 - sprite_get_yoffset(sprite_index)*1, spr_dir*1, 1, image_blend, 0.8);
 }
 shader_end();
+
+if (state == PS_RESPAWN || respawn_taunt) && visible{
+    draw_sprite_ext(sprite_get("plat_real"), 0, x, y, 1, 1, 0, c_white, 1)
+}

@@ -22,12 +22,39 @@ switch (projectile_number) {
     case 1:
         switch current_section {
             case 0:
-                hsp = lerp( (7*spr_dir) + orig_hsp, 0, state_timer/lengths[current_section])
+                if !parried{
+                    hsp = lerp( (9*spr_dir) + orig_hsp, 0, state_timer/lengths[current_section])
+                } else {
+                    hsp = lerp( (12*spr_dir) + orig_hsp, 0, state_timer/lengths[current_section])
+                }
+                if state_timer == 0 && !parried{
+                    hitbox = create_hitbox(AT_NSPECIAL,6, x,y);
+                } 
+                    if instance_exists(hitbox) {
+                        hitbox.x = x + hsp
+                        hitbox.y = y + vsp
+                        
+                            
+                            if hitbox.was_parried and !parried {
+                                hitbox.can_hit_self = true;
+                                parried = true;
+                                spr_dir *= -1;
+                                hitbox.hitbox_timer = 0;
+                                state_timer = 0;
+                            }
+                    
+                    } else {
+                        should_die = true;
+                    }
             break;
             case 1:
                 if state_timer mod 9 == 0 {
                     sound_play(asset_get("sfx_ori_uptilt_single"))
                     hitbox = create_hitbox(AT_NSPECIAL, 3, x, y)
+                    hitbox.spr_dir = spr_dir;
+                    if parried {
+                        hitbox.can_hit_self = true;
+                    }
                 }
                 if state_timer == 14 {
                     sound_play(asset_get("sfx_ori_grenade_hit_ground"))
@@ -36,6 +63,10 @@ switch (projectile_number) {
             case 2:
                 if state_timer == 0 {
                     hitbox = create_hitbox(AT_NSPECIAL, 4, x,y)
+                    hitbox.spr_dir = spr_dir;
+                    if parried {
+                        hitbox.can_hit_self = true;
+                    }
                 }
             break;
         }

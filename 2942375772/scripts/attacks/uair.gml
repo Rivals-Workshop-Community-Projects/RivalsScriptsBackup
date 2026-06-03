@@ -2,7 +2,7 @@ set_attack_value(AT_UAIR, AG_CATEGORY, 1);
 set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
 set_attack_value(AT_UAIR, AG_NUM_WINDOWS, 3);
 set_attack_value(AT_UAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_UAIR, AG_LANDING_LAG, 6);
+set_attack_value(AT_UAIR, AG_LANDING_LAG, 8);
 set_attack_value(AT_UAIR, AG_HURTBOX_SPRITE, sprite_get("uair_hurt"));
 
 set_window_value(AT_UAIR, 1, AG_WINDOW_TYPE, 1);
@@ -39,9 +39,11 @@ set_hitbox_value(AT_UAIR, 1, HG_WIDTH, 125); // 135 -> 125
 set_hitbox_value(AT_UAIR, 1, HG_HEIGHT, 78); // 88 -> 78
 set_hitbox_value(AT_UAIR, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 1, HG_DAMAGE, 6);
-set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 90);
+set_hitbox_value(AT_UAIR, 1, HG_ANGLE, 80);
+set_hitbox_value(AT_UAIR, 1, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UAIR, 1, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_UAIR, 1, HG_HITSTUN_MULTIPLIER, .85);
 set_hitbox_value(AT_UAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UAIR, 1, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
@@ -57,11 +59,13 @@ set_hitbox_value(AT_UAIR, 3, HG_WIDTH, 85);
 set_hitbox_value(AT_UAIR, 3, HG_HEIGHT, 64);
 set_hitbox_value(AT_UAIR, 3, HG_PRIORITY, 1);
 set_hitbox_value(AT_UAIR, 3, HG_DAMAGE, 6);
-set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 90);
+set_hitbox_value(AT_UAIR, 3, HG_ANGLE, 80);
+set_hitbox_value(AT_UAIR, 3, HG_ANGLE_FLIPPER, 6);
 set_hitbox_value(AT_UAIR, 3, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_UAIR, 3, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_UAIR, 3, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_UAIR, 3, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_UAIR, 3, HG_HITSTUN_MULTIPLIER, .85);
 set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_UAIR, 3, HG_MUNO_HITBOX_MISC_ADD, "Adds shake note");
 

@@ -35,3 +35,26 @@ switch (get_player_color(player)){
     break;
 }
 
+//bendy
+if (variable_instance_exists(id, "extra_col")){
+    if (extra_col == 1){
+        set_character_color_slot( 0, 49, 148, 93  ); 
+        set_character_color_slot( 1, 240, 213, 96 ); 
+        set_character_color_slot( 2, 55, 66, 120 ); 
+        set_character_color_slot( 3, 184, 48, 60 ); 
+        set_character_color_slot( 4, 55, 66, 120 ); 
+        set_character_color_slot( 5, 184, 48, 60 ); 
+        set_article_color_slot( 1, 55, 66, 120 ); 
+        set_article_color_slot( 4, 55, 66, 120 ); 
+        reset_shading();
+    }
+}
+
+#define reset_shading()
+    set_character_color_shading(1, 1);
+    set_character_color_shading(2, 1);
+    set_character_color_shading(3, 1);
+    set_character_color_shading(4, 1);
+    set_character_color_shading(5, 1);
+    set_character_color_shading(6, 1);
+    set_character_color_shading(7, 1);

@@ -326,10 +326,12 @@ if !hitpause {
                 
                 // spawn_hit_fx(x + 22*spr_dir, y - 36, 302)
             }
-            if ncharge == 4 {
+            if ncharge == 6 {
             	attack = AT_FSPECIAL
    				window = 8
-				window_timer = 4
+				window_timer = 6
+				sound_play(asset_get("sfx_absa_whip"),false,noone,.7,2)
+            	sound_play(asset_get("sfx_absa_whip3"),false,noone,.7)
             }
             
             if ncharge == 20 {
@@ -431,7 +433,7 @@ if !hitpause {
         if window == 1 {
         	if window_timer == 1 {
         		if move_cooldown[AT_EXTRA_3] == 0{
-        		if !free vsp -= 10
+        		if !free vsp -= 6
 	        	set_attack(AT_EXTRA_3)
 	        	move_cooldown[AT_EXTRA_3] = 999
 	        	window = 1

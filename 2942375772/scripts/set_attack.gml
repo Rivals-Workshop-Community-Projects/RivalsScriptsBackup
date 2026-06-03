@@ -16,9 +16,13 @@ dattack_loops = 0;
 
 unique_hitboxes = [];
 
-if attack == AT_TAUNT and down_down {
+if attack == AT_TAUNT and shield_down {
     attack = AT_TAUNT_2
-    sound_play(sound_get("vineboom"))
+    if (champ_alt && extra_col == 1){
+        sound_play(sound_get("vineboom"))
+    } else {
+        sound_play(sound_get("honk"))
+    }
 }
 
 if attack == AT_TAUNT and up_down {

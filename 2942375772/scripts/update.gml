@@ -32,8 +32,16 @@ with (hit_fx_obj)
 with (hit_fx_obj)
 {
     if player_id == other {
-        if hit_fx == other.note_hfx || hit_fx == other.note_strong_hfx {
-            depth = player_id.depth+1;
+        if (hit_fx == other.note_hfx || hit_fx == other.note_strong_hfx || hit_fx == other.purple_nspec_vfx
+        || hit_fx == other.green_nspec_vfx || hit_fx == other.red_nspec_vfx){
+            if (player_id.state == PS_ATTACK_AIR || player_id.state == PS_ATTACK_GROUND){
+                depth = player_id.depth+1;
+            } else {
+                depth = player_id.depth;
+            }
+        }
+        if (hit_fx == other.red_nspec_destroy || hit_fx == other.green_nspec_destroy){
+            depth = -7;
         }
     }
 }
@@ -210,7 +218,7 @@ if state == PS_ATTACK_AIR or state == PS_ATTACK_GROUND {
                         projectile.anim_frames = nspecial_framedata[popped_note].anim_frames;
                         projectile.projectile_number = popped_note;
                         projectile.loop = nspecial_framedata[popped_note].loop;
-                        projectile.depth = depth - 2
+                        projectile.depth = depth - 1;
                     }
                     
                     move_cooldown[AT_NSPECIAL] = 60
@@ -241,6 +249,21 @@ if state == PS_AIR_DODGE and window < 2 {
     {
         spawn_colored_notes()
     }
+}
+
+if (get_player_name(player) == "BENDY"){
+	champ_alt = true;
+}
+
+if (state == PS_SPAWN && extra_col == 0 && get_player_color(player) != 21 && get_player_color(player) != 22 && get_player_color(player) != 23 && taunt_down && down_down && champ_alt){
+	switch (champ_name){
+		case "BENDY":
+		extra_col = 1;
+		break;
+	}
+	white_flash_timer = 18;
+	sound_play(sound_get("sfx_nspecial_note_0"));
+	init_shader();
 }
 
 //rainbow alt code (thanks mallow)
