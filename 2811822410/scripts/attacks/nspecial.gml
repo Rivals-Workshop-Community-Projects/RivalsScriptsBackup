@@ -42,6 +42,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, .3);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
 set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_LOCKOUT, 16);
+set_hitbox_value(AT_NSPECIAL, 1, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 
 //Leak
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
@@ -75,6 +76,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 2, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_NSPECIAL, 2, HG_VISUAL_EFFECT, leak_vfx_big);
 set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DESTROY_EFFECT, leak_vfx_small);
+set_hitbox_value(AT_NSPECIAL, 2, HG_PROJECTILE_DOES_NOT_REFLECT, true);
 //
 //set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 9);
 

@@ -96,6 +96,7 @@ if (object_index != oTestPlayer){ //Code to stop crashing in test player
 		wally_static_enabled = false;
 		clone_attack = 0;
 		clone_active = 0;
+		clone_die = false;
 		custom_clone = true;
 	}
 } else {
@@ -180,6 +181,7 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 56; //56
+orig_char_height = char_height;
 idle_anim_speed = .2;
 crouch_anim_speed = .1;
 walk_anim_speed = .2;

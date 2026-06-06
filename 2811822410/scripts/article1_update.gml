@@ -41,6 +41,11 @@ switch(state) {
 			image_index = 4;
 		}
 	break;
+	case 3: //Death
+		if (state_timer >= 90) {
+			kill_clone();
+			exit;
+		}
 	case 2: //Projection
 		if (free) {
 			vsp += .5;
@@ -58,8 +63,11 @@ switch(state) {
 }
 
 
-
 if (y >= room_height || x < 0 || x > room_width) {
+	kill_clone();
+}
+
+#define kill_clone() {
 	clone.state = PS_IDLE;
 	clone.visible = false;
 	clone.invincible = true;
@@ -69,4 +77,5 @@ if (y >= room_height || x < 0 || x > room_width) {
 	sound_play(asset_get("sfx_abyss_hazard_burst"));
 	instance_destroy(self);
 }
+
 

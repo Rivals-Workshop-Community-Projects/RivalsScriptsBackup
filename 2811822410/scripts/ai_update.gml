@@ -5,6 +5,7 @@ if (custom_clone) {
 	if (!clone_owner.rune_sentience) {
 		reset_inputs();
 	}
+	//
 }
 
 

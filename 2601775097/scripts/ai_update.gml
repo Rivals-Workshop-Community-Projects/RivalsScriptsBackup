@@ -3,43 +3,13 @@ with (ai_target) if ("char_height" not in self) exit; //prevents annoying error 
 
 if (get_training_cpu_action() == CPU_FIGHT)
 {
-    //old selection code
-    /*
-        //get bar to te menu select instantly
-        if (cpu_fight_time == 0)
-        {
-            menu_active = true;
-            set_state(PS_SPAWN);
-        }
-        cpu_fight_time ++;
-        
-        //skill select right off the bat
-        if (menu_active)
-        {
-            if (cpu_fight_time % 5 == 0)
-            {
-                var cur_index = random_func((training ? current_second % 24 : 0), ds_list_size(cpu_skill_pool), true); //find a random index from the current list
-                cur_value = ds_list_find_value(cpu_skill_pool, cur_index); //check the value of said index
-
-                cur_skill_hover = cur_value;
-            }
-            if (cpu_fight_time % cpu_select_time == 0)
-            {
-                menu_dir = -1;
-                ds_list_delete(cpu_skill_pool, cur_index); //delete the index from the list, making the list one element shorter
-
-                if (cur_select == 4) ds_list_destroy(cpu_skill_pool);
-            }
-        }
-    */
-    
     if (cpu_fight_time == 0)
     {
         if (ds_list_valid(cpu_skill_pool))
         {
             for (var i = 0; i < 4; i ++)
             {
-                var cur_index = random_func((training ? current_second % 24 : i), ds_list_size(cpu_skill_pool), true); //find a random index from the current list
+                var cur_index = random_func(i, ds_list_size(cpu_skill_pool), true); //find a random index from the current list
                 cur_skills[i] = ds_list_find_value(cpu_skill_pool, cur_index);
                 ds_list_delete(cpu_skill_pool, cur_index);
             }
@@ -145,7 +115,7 @@ if (cpu_fight_time > 0)
 
     //general stuff
     skill_check();
-    input = random_func(floor(cpu_fight_time/10), 2, true);
+    input = random_func(5, 2, true);
     if (!ai_recovering && jump_down) jump_down = false;
 
     facing_target = (x > ai_target.x && spr_dir == -1 || x < ai_target.x && spr_dir == 1);
@@ -359,7 +329,7 @@ if (cpu_fight_time > 0)
                 if (!burnbuff_active && !lightbuff_active)
                 {
                     burnbuff_time = 0;
-                    burnbuff_end_time = random_func(924, 120, true);
+                    burnbuff_end_time = random_func(6, 120, true);
 
                     //the input keeps going back to nspec because i'm forcing it out of fspec, overwriting the code above
                     if (mp_cur >= skill[1].mp_use_cost && target_dist < 250) use_skill(i);
@@ -496,7 +466,7 @@ if (cpu_fight_time > 0)
 {
     var input = argument[0];
 
-    var maybe_use_skill = random_func_2(current_second, 100-temp_level*5, true);
+    var maybe_use_skill = random_func(10, 100-temp_level*5, true);
     if (maybe_use_skill == input && state_cat != SC_GROUND_COMMITTED && state_cat != SC_AIR_COMMITTED
         && state_cat != SC_HITSTUN && ai_target.state != PS_DEAD && ai_target.state != PS_RESPAWN)
     {

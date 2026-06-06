@@ -52,7 +52,7 @@ if (!custom_clone) {
 	if (object_index != oTestPlayer && instance_exists(clone_player)) { //Code to stop crashing in test player
 		if (instance_exists(miku_clone)) {
 			if (!is_training_mode) { //training mode has no cooldown
-				move_cooldown[AT_DSPECIAL] = 120;
+				move_cooldown[AT_DSPECIAL] = 180;
 			}
 			if (clone_player.state != PS_ATTACK_AIR) {
 				clone_player.spr_dir = miku_clone.spr_dir;
@@ -66,81 +66,96 @@ if (!custom_clone) {
 			} else {
 				clone_player.clone_active = false;
 			}
-			if (!clone_hit_timer) { //Not allowing clone to attack while on cooldown
-				if (!clone_attack_hold) {
-					if !((attack == AT_TAUNT_2 && is_oc) || attack == AT_DSPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_GRAB || attack == AT_GRAB_HOLD || attack == AT_PUMMEL || attack == AT_FTHROW_2 || attack == AT_BTHROW_2 || attack == AT_DTHROW_2 || attack == AT_UTHROW_2) {
-						clone_player.clone_attack = attack
-					} else {
-						clone_player.clone_attack = 0
-					}
-				}
-				if (!clone_attack_hold && !hitpause && clone_player.clone_attack &&
-					(attack_down || up_strong_down || right_strong_down || down_strong_down || left_strong_down || up_stick_down || right_stick_down || down_stick_down || left_stick_down || strong_down || taunt_down)
-					&& clone_player.state != PS_ATTACK_AIR)
-				{
-					if (attack_down) {
-						clone_attack_hold_type = 1;
-					} else if (up_strong_down) {
-						clone_attack_hold_type = 2;
-					}	else if (right_strong_down) {
-						clone_attack_hold_type = 3;
-					} else if (down_strong_down) {
-						clone_attack_hold_type = 4;
-					} else if (left_strong_down) {
-						clone_attack_hold_type = 5;
-					} else if (up_stick_down) {
-						clone_attack_hold_type = 6;
-					}	else if (right_stick_down) {
-						clone_attack_hold_type = 7;
-					} else if (down_stick_down) {
-						clone_attack_hold_type = 8;
-					} else if (left_stick_down) {
-						clone_attack_hold_type = 9;
-					} else if (strong_down) {
-						clone_attack_hold_type = 10;
-					} else if (taunt_down) {
-						clone_attack_hold_type = 11;
-					}
-					
-					clone_attack_hold = true;
-				}
-				if (
-					(clone_attack_hold) && 
-						(
-							(!attack_down && clone_attack_hold_type == 1) ||
-							//Strongs
-							(!up_strong_down && clone_attack_hold_type == 2) ||
-							(!right_strong_down && clone_attack_hold_type == 3) ||
-							(!down_strong_down && clone_attack_hold_type == 4) ||
-							(!left_strong_down && clone_attack_hold_type == 5) ||
-							//Stick
-							(!up_stick_down && clone_attack_hold_type == 6) ||
-							(!right_stick_down && clone_attack_hold_type == 7) ||
-							(!down_stick_down && clone_attack_hold_type == 8) ||
-							(!left_stick_down && clone_attack_hold_type == 9) ||
-							//Neutrla strong
-							(!strong_down && clone_attack_hold_type == 10) ||
-							//Tautns
-							(taunt_down && clone_attack_hold_type == 11) 
-						)
-					) {
-					clone_attack_hold = false;
-					with (clone_player) {
-						set_attack(clone_attack);				
-					}			
-				}
+			//
+			if (miku_clone.state == 3) { 
+				clone_player.clone_active = true;
+				clone_player.clone_die = true;
+			}
+			//
+			if (clone_player.clone_die) {
+				clone_attack_hold = false;	
+				clone_player.clone_active = miku_clone.state_timer % 20 < 15;
+				clone_player.invincible = true;
+				clone_player.invince_time = 2;				
 			} else {
-				clone_hit_timer -= 1;
-				if (!clone_hit_timer) {
-					spawn_hit_fx(clone_player.x, clone_player.y + 20, HFX_SHO_GEAR_BREAK);
-					with clone_player {
-						sound_play(asset_get("sfx_abyss_hazard_burst"));
+				if !(clone_hit_timer) { //Not allowing clone to attack while on cooldown
+					if (!clone_attack_hold) {
+						if !((attack == AT_TAUNT_2 && is_oc) || attack == AT_DSPECIAL || attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_USPECIAL || attack == AT_GRAB || attack == AT_GRAB_HOLD || attack == AT_PUMMEL || attack == AT_FTHROW_2 || attack == AT_BTHROW_2 || attack == AT_DTHROW_2 || attack == AT_UTHROW_2) {
+							clone_player.clone_attack = attack
+						} else {
+							clone_player.clone_attack = 0
+						}
 					}
-					clone_player.visible = false;
-					clone_player.clone_active = false;
-					instance_destroy(miku_clone)
-					move_cooldown[AT_DSPECIAL] = 120 //120
-					clone_attack_hold = false;
+					if (!clone_attack_hold && !hitpause && clone_player.clone_attack &&
+						(attack_down || up_strong_down || right_strong_down || down_strong_down || left_strong_down || up_stick_down || right_stick_down || down_stick_down || left_stick_down || strong_down || taunt_down)
+						&& clone_player.state != PS_ATTACK_AIR)
+					{
+						if (attack_down) {
+							clone_attack_hold_type = 1;
+						} else if (up_strong_down) {
+							clone_attack_hold_type = 2;
+						}	else if (right_strong_down) {
+							clone_attack_hold_type = 3;
+						} else if (down_strong_down) {
+							clone_attack_hold_type = 4;
+						} else if (left_strong_down) {
+							clone_attack_hold_type = 5;
+						} else if (up_stick_down) {
+							clone_attack_hold_type = 6;
+						}	else if (right_stick_down) {
+							clone_attack_hold_type = 7;
+						} else if (down_stick_down) {
+							clone_attack_hold_type = 8;
+						} else if (left_stick_down) {
+							clone_attack_hold_type = 9;
+						} else if (strong_down) {
+							clone_attack_hold_type = 10;
+						} else if (taunt_down) {
+							clone_attack_hold_type = 11;
+						}
+						
+						clone_attack_hold = true;
+					}
+					if (
+						(clone_attack_hold) && 
+							(
+								(!attack_down && clone_attack_hold_type == 1) ||
+								//Strongs
+								(!up_strong_down && clone_attack_hold_type == 2) ||
+								(!right_strong_down && clone_attack_hold_type == 3) ||
+								(!down_strong_down && clone_attack_hold_type == 4) ||
+								(!left_strong_down && clone_attack_hold_type == 5) ||
+								//Stick
+								(!up_stick_down && clone_attack_hold_type == 6) ||
+								(!right_stick_down && clone_attack_hold_type == 7) ||
+								(!down_stick_down && clone_attack_hold_type == 8) ||
+								(!left_stick_down && clone_attack_hold_type == 9) ||
+								//Neutrla strong
+								(!strong_down && clone_attack_hold_type == 10) ||
+								//Tautns
+								(taunt_down && clone_attack_hold_type == 11) 
+							)
+						) {
+						clone_attack_hold = false;
+						with (clone_player) {
+							set_attack(clone_attack);				
+						}			
+					}
+				} else {
+					/*
+					clone_hit_timer -= 1;
+					if (!clone_hit_timer) {
+						spawn_hit_fx(clone_player.x, clone_player.y + 20, HFX_SHO_GEAR_BREAK);
+						with clone_player {
+							sound_play(asset_get("sfx_abyss_hazard_burst"));
+						}
+						clone_player.visible = false;
+						clone_player.clone_active = false;
+						instance_destroy(miku_clone)
+						move_cooldown[AT_DSPECIAL] = 180 //120
+						clone_attack_hold = false;
+					}
+					*/
 				}
 			}
 		} else {
@@ -153,176 +168,6 @@ if (!custom_clone) {
 		//custom_frame_advance();
 	}
 	
-	if (instance_exists(leak_proj)) {
-		#region Runes
-		if (rune_leek_move) {
-			if (leak_proj.leak_state == 0) {
-				if (up_down) {
-					leak_proj.vsp -= .25;
-				}
-				if (down_down) {
-					leak_proj.vsp += .25;
-				}
-			} else if (leak_proj.leak_state == 1) {
-				leak_proj.vsp = 0
-			}
-		}
-		/*
-		if (rune_teleport) {
-			with leak_proj {
-				if (leak_state == 1) {
-					for (i = 0; i < 4; i++) {
-						can_hit[i] = 0;
-					}
-					image_index = 6
-					leak_state = 2;
-					leak_state_timer = 0;
-					image_xscale = 0.01;
-					image_yscale =  0.01;
-				}
-			}
-		}
-		*/
-		if (rune_follow_hit) {
-			with leak_proj {
-				if ("rune_follow" in self && rune_follow != -4) {
-					var rune_dir = point_direction(x, y, rune_follow.x, rune_follow.y - rune_follow.char_height / 2)
-					hsp = lengthdir_x(2, rune_dir);
-					vsp = lengthdir_y(2, rune_dir);
-					print(hsp)
-				}
-			}
-		}
-		if (rune_follow_miku) {
-			with leak_proj {
-				if ("rune_follow" in self && rune_follow == -4) {
-					x = other.x;
-					y = other.y - other.char_height / 2;
-				}
-			}
-		}
-		#endregion
-		with (leak_proj) {
-			if (was_parried) {
-				leak_state = 3;
-				leak_state_timer = 0;
-			}
-			leak_state_timer += 1;
-			//print(leak_state)
-			switch(leak_state) {
-				case 0: //init
-					hsp = lerp(hsp, 0, .05)
-					if (abs(hsp) <= 1) {
-						hsp = 0;
-						leak_state = 1;
-						leak_state_timer = 0;
-					}
-					image_index += .34
-					if (image_index  >= 6) {
-						image_index = 2;
-					}
-					for (i = 0; i < 20; i++) {
-						if (i != other.player) {
-							can_hit[i] = 1;
-						}
-					}
-					//Regrab Leek
-					if (!other.rune_follow_miku) { //Doesn't collect if you have the leaf shield rune
-						if (abs(hsp) <= 8 && place_meeting(x, y, other)) {
-							collect_leek()
-						}
-					}
-				break;
-				case 1: //Constant
-					if (other.special_down) {
-						image_index += .34
-						if (image_index  >= 6) {
-							image_index = 2;
-						}
-						for (i = 0; i < 20; i++) {
-							if (i != other.player) {
-								can_hit[i] = 1;
-							}
-						}
-					} else {
-						for (i = 0; i < 20; i++) {
-							can_hit[i] = 0;
-						}
-						image_index = 6
-						leak_state = 2;
-						leak_state_timer = 0;
-						image_xscale = 0.01;
-						image_yscale =  0.01;
-					}
-					//Regrab Leek
-					if (!other.rune_follow_miku) { //Doesn't collect if you have the leaf shield rune
-						if place_meeting(x, y, other) {
-							collect_leek()
-						}
-					}
-				break;
-				case 2: //Swing
-					//print(leak_state_timer)
-					if (leak_state_timer == 1) { //Hitbox init
-						with (other) {
-							other.damage = get_hitbox_value(AT_NSPECIAL, 1, HG_DAMAGE);
-							other.kb_angle = get_hitbox_value(AT_NSPECIAL, 3, HG_ANGLE);
-							other.kb_value = get_hitbox_value(AT_NSPECIAL, 3, HG_BASE_KNOCKBACK);
-							other.kb_scale = get_hitbox_value(AT_NSPECIAL, 3, HG_KNOCKBACK_SCALING);
-							other.hitpause = get_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE);
-							other.hitpause_growth = get_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING);
-							other.hit_effect = leak_vfx_huge;
-						}
-
-					}
-					if (leak_state_timer % 6 == 5) {
-						image_index += 1;
-					}
-					if (leak_state_timer == 5) {
-						image_xscale = 0.4;
-						image_yscale =  0.3;
-						sound_play(asset_get("sfx_swipe_medium1"))
-						for (i = 0; i < 20; i++) {
-							if (i != other.player) {
-								can_hit[i] = 1;
-							}
-						}
-					} 
-					if (image_index == 8) {
-						for (i = 0; i < 20; i++) {
-							can_hit[i] = 0;
-						}
-						image_xscale = .1;
-						image_yscale =  .1;
-					}
-					if (leak_state_timer == 24) {
-						leak_state = 3;
-						leak_state_timer = 0;
-					}
-					if (!other.rune_follow_miku) { //Doesn't collect if you have the leaf shield rune
-						if place_meeting(x, y, other) {
-							collect_leek()
-						}
-					}
-				break;
-				case 3: //Return
-					for (i = 0; i < 20; i++) {
-						can_hit[i] = 0;
-					}
-					image_index = 10
-					image_angle = point_direction(x, y, other.x, other.y - (other.char_height / 2))
-					x = lerp(x, other.x + other.hsp, .2)
-					y = lerp(y, other.y - (other.char_height / 2) + other.vsp, .2)
-					damage = 0;
-					if (place_meeting(x, y, other)) {
-						collect_leek()
-					}
-				break;
-				default:
-				break;
-			}
-		}
-	}
 	
 } else { //Clone Stuff
 	//have_collision = false;
@@ -334,11 +179,13 @@ if (!custom_clone) {
 		set_attack(AT_NSPECIAL)
 	}
 	#endregion
+	/*
 	if (clone_owner.clone_attack_hold) { //Has Attack or not
 		outline_color = [100, 100, 100];
 	} else {
 		outline_color = [0, 0, 0];
 	}
+	*/
 	soft_armor = 999;
 	force_depth = true;
 	depth = 0;

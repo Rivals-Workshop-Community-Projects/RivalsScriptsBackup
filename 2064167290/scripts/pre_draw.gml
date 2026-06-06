@@ -117,6 +117,21 @@ if  (get_player_color(player) == 22) { //check for the alt slot you want to do t
     maskFooter();
 }
 
+if  (get_player_color(player) == 23) { //check for the alt slot you want to do this on
+        //"glow"
+    maskHeader();
+    draw_sprite_ext(sprite_index, image_index, x+1, y+1, (small_sprites + 1)*spr_dir, small_sprites + 1, 0, c_white, 1)
+    maskMidder();
+    draw_sprite_tiled_ext(sprite_get("rtexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
+    maskFooter();
+        maskHeader();
+    draw_sprite_ext(sprite_index, image_index, x-1, y-1, (small_sprites + 1)*spr_dir, small_sprites + 1, 0, c_white, 1)
+    maskMidder();
+    draw_sprite_tiled_ext(sprite_get("rtexture"), (get_gameplay_time() * 0.2), x, y, 1, 1, c_white, 1)
+    maskFooter();
+    //glowend
+}
+
 //================================================================================
 #define maskHeader
 // Mask renderer utility: disables Normal draw.

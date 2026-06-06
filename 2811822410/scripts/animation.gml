@@ -24,6 +24,12 @@ if (custom_clone) {
 		sprite_index = sprite_get("hurt");
 		hurtboxID.sprite_index = sprite_get("empty");
 	}
+	//
+	if clone_die {
+		sprite_index = sprite_get("hurt");
+		hurtboxID.sprite_index = sprite_get("empty");	
+	}
+	//
 	hurtboxID.x = x;
 	hurtboxID.y = y;
 	if (current_month == 4 && current_day == 1 && !clone_owner.clone_attack_hold) { //April Fools day only

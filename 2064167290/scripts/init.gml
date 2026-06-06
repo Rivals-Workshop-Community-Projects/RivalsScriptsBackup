@@ -364,3 +364,8 @@ miiverse_post2 = sprite_get("miiverse2");
 
 sprite_change_offset("miiverse3", 60, 30);
 miiverse_post3 = sprite_get("miiverse3");
+
+if(get_player_color(player) == 23){
+    set_victory_portrait(sprite_get("hannah_portrait"));
+    set_victory_sidebar(sprite_get("hannah_result"));
+}

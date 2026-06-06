@@ -51,7 +51,7 @@ switch(attack) {
 			}
 		}
 		if (window == 3) {
-			if (attack_pressed || up_strong_pressed || right_strong_pressed || down_strong_pressed || left_strong_pressed || up_strong_pressed || right_stick_pressed || down_stick_pressed || left_stick_pressed) {
+			if (attack_pressed || up_strong_pressed || right_strong_pressed || down_strong_pressed || left_strong_pressed || up_strong_pressed || up_stick_pressed || right_stick_pressed || down_stick_pressed || left_stick_pressed) {
 				window = 4;
 				window_timer = 0;
 			}
@@ -69,12 +69,12 @@ switch(attack) {
 					spr_dir *= -1;
 				}
 			}
-			if (window == 2 && window_timer == 1) {
-				if (!instance_exists(leak_proj)) {
-					leak_proj = create_hitbox(AT_NSPECIAL, 2, x + (spr_dir * 24), y - 24);
-					leak_proj.leak_state = 0;
-					leak_proj.leak_state_timer = 0;
-				}
+			if (!hitpause && window == 2 && window_timer == 1) {
+				//if (!instance_exists(leak_proj)) {
+				leak_proj = create_hitbox(AT_NSPECIAL, 2, x + (spr_dir * 24), y - 24);
+				leak_proj.leak_state = 0;
+				leak_proj.leak_state_timer = 0;
+				//}
 			}
 		} else {
 			if (window == 2 && window_timer == 1) {
@@ -223,10 +223,14 @@ switch(attack) {
 		can_fast_fall = false;
 		grab_pos(attack, 0, 32, -16);
 		if (!hitstop && instance_exists(grabbed_obj) && grabbed_obj != -4) {
-			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || (left_pressed || down_pressed || right_pressed || up_pressed) || (attack_pressed && (left_down || right_down || up_down || down_down)) || (left_stick_pressed || left_strong_pressed || right_stick_pressed || right_strong_pressed || down_stick_pressed || down_strong_pressed || up_stick_pressed || up_strong_down) {
+			if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) || (left_pressed || down_pressed || right_pressed || up_pressed) || (attack_pressed && (left_down || right_down || up_down || down_down)) || (left_stick_pressed || left_strong_pressed || right_stick_pressed || right_strong_pressed || down_stick_pressed || down_strong_pressed || up_stick_pressed || up_strong_pressed) {
 				activate_throw()
 			} else if (attack_pressed && joy_pad_idle) {
+				/*
 				set_attack(AT_PUMMEL);
+				attack_end();
+				*/
+				set_attack(AT_FTHROW_2);
 				attack_end();
 			}			
 		}

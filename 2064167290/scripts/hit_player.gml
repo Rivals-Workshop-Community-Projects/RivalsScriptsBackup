@@ -143,6 +143,6 @@ if (my_hitboxID.attack == AT_FSPECIAL)
         hurtboxID.sprite_index = sprite_get("dairbounce_hurt");
         sound_play(sound_get("bounce"));
         vsp = 0;
-        move_cooldown[AT_FSPECIAL] = 0;
+        move_cooldown[AT_FSPECIAL] = 20;
     }
 }

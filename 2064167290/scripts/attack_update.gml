@@ -2,7 +2,7 @@
 
 
 //B - Reversals
-if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL){
+if (attack == AT_FSPECIAL || attack == AT_DSPECIAL || attack == AT_USPECIAL || attack == AT_NSPECIAL_2){
     
     trigger_b_reverse();
 }

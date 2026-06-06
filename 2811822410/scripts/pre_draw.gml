@@ -4,6 +4,15 @@ if (is_oc && visible && initial_invince && should_show_plat) { //platform
 }
 //
 
+if ("clone_owner" in self && clone_owner && clone_owner.clone_attack_hold) {
+	gpu_set_fog(true, get_player_hud_color(player), 1, 1);
+		draw_sprite_ext(sprite_index, image_index, x + 2, y + 0, spr_dir, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_index, image_index, x - 2, y + 0, spr_dir, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_index, image_index, x + 0, y + 2, spr_dir, 1, 0, c_white, 1);
+		draw_sprite_ext(sprite_index, image_index, x + 0, y - 2, spr_dir, 1, 0, c_white, 1);
+	gpu_set_fog(false, c_white, 1, 1);
+}
+
 
 if (pizza_game && is_oc) {
 	var _offset_x = x + spr_dir * 64;

@@ -34,7 +34,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 23 );
+set_num_palettes( 24 );
 
 // Cherry
 set_color_profile_slot( 1, 0, 190, 22, 11 ); //BLUE (Light)
@@ -246,7 +246,7 @@ set_color_profile_slot( 21, 5, 77, 42, 21 ); //Blue-black (hair) (light)
 set_color_profile_slot( 21, 6, 200, 148, 89 ); //Skin (Light)
 set_color_profile_slot( 21, 7, 245, 89, 66 ); //Cheek
 
-// RQ
+// coinbox
 set_color_profile_slot( 22, 0, 37, 99, 51 ); //BLUE (Light)
 set_color_profile_slot( 22, 1, 4, 17, 5 ); //RED (light)
 set_color_profile_slot( 22, 2, 255, 255, 255 ); //YELLOW (light)
@@ -255,6 +255,16 @@ set_color_profile_slot( 22, 4, 89, 215, 117 ); //CYAN (Shirt)
 set_color_profile_slot( 22, 5, 7, 38, 9 ); //Blue-black (hair) (light)
 set_color_profile_slot( 22, 6, 255, 255, 255 ); //Skin (Light)
 set_color_profile_slot( 22, 7, 91, 200, 117 ); //Cheek
+
+// redquote
+set_color_profile_slot( 23, 0, 0, 0, 0 ); //BLUE (Light)
+set_color_profile_slot( 23, 1, 255, 0, 0 ); //RED (light)
+set_color_profile_slot( 23, 2, 255, 0, 0 ); //YELLOW (light)
+set_color_profile_slot( 23, 3, 0, 0, 0 ); //GREEN (PALE)
+set_color_profile_slot( 23, 4, 255, 255, 255 ); //CYAN (Shirt)
+set_color_profile_slot( 23, 5, 0, 0, 0 ); //Blue-black (hair) (light)
+set_color_profile_slot( 23, 6, 255, 255, 255 ); //Skin (Light)
+set_color_profile_slot( 23, 7, 255, 0, 0 ); //Cheek
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

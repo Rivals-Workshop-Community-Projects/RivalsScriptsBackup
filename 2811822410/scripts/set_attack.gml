@@ -149,6 +149,22 @@ if (custom_clone) {
 	if (attack == AT_GRAB) {
 		pummel_count = 2;
 	}
+	
+	if (is_training_mode) {
+		move_cooldown[AT_DSPECIAL] = 0;	
+	}
+	
+	if (attack == AT_DSPECIAL) {		
+		if instance_exists(miku_clone) && !is_training_mode {
+			move_cooldown[AT_DSPECIAL] = 1;			
+		} else {
+			clone_player.clone_die = false;
+			if (instance_exists(miku_clone)) {
+				miku_clone.state = 0;
+				miku_clone.state_timer = 0;
+			}
+		}
+	}
 }
 
 if !(attack == AT_JAB || attack == AT_NAIR || attack == AT_NTHROW) {

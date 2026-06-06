@@ -39,6 +39,8 @@ alt_name[19] = "Puree of Disks";
 alt_name[20] = "Vortex 2025"
 alt_name[21] = "MEXICO"
 alt_name[22] = "The Coinbox"
+alt_name[23] = "8194"
+
  
 //Patch
  

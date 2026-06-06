@@ -124,7 +124,7 @@ set_hitbox_value(AT_DSPECIAL, 4, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 4, HG_BASE_HITPAUSE, 3);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL, 4, HG_GROUNDEDNESS, 0);
-set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_LOCKOUT, 4);
+set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_DSPECIAL, 4, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_DSPECIAL, 4, HG_HIT_SFX, sound_get("slash"));
 set_hitbox_value(AT_DSPECIAL, 4, HG_PROJECTILE_SPRITE, sprite_get("nothing"));

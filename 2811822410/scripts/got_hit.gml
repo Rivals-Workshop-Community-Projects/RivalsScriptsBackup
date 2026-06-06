@@ -6,6 +6,7 @@ if (custom_clone) {
 		hit_player_obj.hitstop = get_hitstop_formula(0, enemy_hitboxID.damage, enemy_hitboxID.hitpause, enemy_hitboxID.hitpause_growth, enemy_hitboxID.extra_hitpause);
 	}
 	//print(hit_player_obj.hitstop)
+	/*
 	if (!rune_indestructible) {
 		//instance_destroy(clone_owner.miku_clone)
 		clone_owner.move_cooldown[AT_DSPECIAL] = 120 //120
@@ -15,6 +16,12 @@ if (custom_clone) {
 		invince_time = 30;
 		clone_owner.clone_hit_timer = 30;
 		clone_active = false;
+	}
+	*/
+	if (!rune_indestructible) {
+		clone_die = true;
+		clone_owner.miku_clone.state = 3;
+		clone_owner.miku_clone.state_timer = 0;
 	}
 	//if (enemy_hitboxID.effect == 3) {
 	burned = false;
