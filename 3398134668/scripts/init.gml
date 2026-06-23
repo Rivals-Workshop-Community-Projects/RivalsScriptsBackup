@@ -20,6 +20,12 @@ ultimateMaxLoops = 8;
 pkmn_stadium_front_img = sprite_get("birdzulafront");
 pkmn_stadium_back_img = sprite_get("birdzulaback");
 
+// Attribute anomaly buddy
+attribute_anomaly_buddy_element = 2;
+attribute_anomaly_buddy_sprite = -1;
+attribute_anomaly_buddy_colour = -1;
+attribute_anomaly_buddy_text = "SHOCK!!";
+
 // STAT NAME		ZETTER VALUE   BASECAST RANGE   NOTES
 
 

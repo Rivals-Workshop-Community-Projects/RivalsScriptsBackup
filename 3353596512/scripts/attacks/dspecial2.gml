@@ -6,7 +6,7 @@ set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 18);
 set_attack_value(AT_DSPECIAL_2, AG_AIR_SPRITE, sprite_get("dspecial2"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial2_hurt"));
 set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_NAME, "DSpecial (Scrap Throw)");
-set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC, "Gains 7 extra frames of startup when throwing a large scrap item.");
+//set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC, "Gains 7 extra frames of startup when throwing a large scrap item.");
 
 //throw forward startup
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_TYPE, 1);
@@ -207,7 +207,7 @@ set_hitbox_value(AT_DSPECIAL_2, 2, HG_ANGLE, 45);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_KNOCKBACK_SCALING, 0.8);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITPAUSE_SCALING, 0.2);
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_VISUAL_EFFECT, 301);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_HITSTUN_MULTIPLIER, 0.9);
@@ -227,6 +227,7 @@ set_hitbox_value(AT_DSPECIAL_2, 2, HG_PROJECTILE_DESTROY_EFFECT, 301);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_PROJECTILE_PARRY_STUN, false);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_EXTENDED_PARRY_STUN, true);
 set_hitbox_value(AT_DSPECIAL_2, 2, HG_MUNO_HITBOX_NAME, "Large Scrap");
+set_hitbox_value(AT_DSPECIAL_2, 2, HG_MUNO_HITBOX_ACTIVE, string(get_window_value(AT_DSPECIAL_2, 10, AG_WINDOW_LENGTH) + 1) + "-");
 
 //bees
 set_hitbox_value(AT_DSPECIAL_2, 3, HG_HITBOX_TYPE, 2);

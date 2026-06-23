@@ -55,7 +55,8 @@ if attack == AT_DSPECIAL {
     }
     
     //honk
-    if move_cooldown[AT_DSPECIAL] != 0 && sprite_index == sprite_get("crouch") && image_index == 2 {
+    if move_cooldown[AT_DSPECIAL] != 0 && (sprite_index == sprite_get("crouch") && image_index == 2 || sprite_index == sprite_get("crawl"))  {
+        crouch_honk_vfx_timer = 0;
         attack = AT_DSPECIAL_2;
         window_timer = 0;
         window = 1;

@@ -51,7 +51,7 @@ if (place_meeting(x, y, asset_get("pHitBox"))) {
 		if (state >= 2){ //Anyone can hit the Essence and knock the star out of it at this point.
 			with (asset_get("pHitBox")){
 				//if (player != other.player_id.player){
-					if (place_meeting(x, y, other) && ((type == 1) || (type == 2 && player_id == other.player_id))){
+					if (place_meeting(x, y, other) && hit_priority > 0 && ((type == 1) || (type == 2 && player_id == other.player_id))){
 						if (player_id == other.player_id){
 							if (attack == AT_DSPECIAL || (attack == AT_FSPECIAL)){
 								//nothing

@@ -14,7 +14,9 @@ if "debug" in self {
 }
 
 //draw_debug_text( temp_x, temp_y + 20, string(x))
-
+if ("burst_bubble_is_charged" not in self){
+	burst_bubble_is_charged = false;
+}
 if (burst_bubble_is_charged == true){
 	draw_sprite(sprite_get("nspecial_bubble_hud"), burst_bubble_hud_thing_timer_actual_tick, temp_x + 62, temp_y + 30);
 }

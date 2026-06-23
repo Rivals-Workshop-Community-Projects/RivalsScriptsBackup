@@ -5,6 +5,9 @@ set_attack_value(AT_NSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_NSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial"));
 set_attack_value(AT_NSPECIAL, AG_HURTBOX_SPRITE, sprite_get("nspecial_hurt"));
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_NAME, "NSpecial: Energy Shot");
+set_attack_value(AT_NSPECIAL, AG_MUNO_ATTACK_MISC_ADD, "Projectile that stuns.
+If fired while airborne, Tails will shoot out the projectile at a diagonal angle, which will bounce upwards if it hits the ground.");
 
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_NSPECIAL, 1, AG_WINDOW_LENGTH, 26);
@@ -27,6 +30,7 @@ set_num_hitboxes(AT_NSPECIAL, 1);
 
 // main hitbox
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 1, HG_MUNO_HITBOX_NAME, "Projectile Hitbox");
 set_hitbox_value(AT_NSPECIAL, 1, HG_WINDOW, 99999);
 set_hitbox_value(AT_NSPECIAL, 1, HG_LIFETIME, 120);
 set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_X, 0);
@@ -59,6 +63,7 @@ set_hitbox_value(AT_NSPECIAL, 1, HG_HITBOX_GROUP, -1);
 
 // rune that gives multihit stuff
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 2, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NSPECIAL, 2, HG_WINDOW, 99999);
 set_hitbox_value(AT_NSPECIAL, 2, HG_LIFETIME, 6);
 set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_X, 0);
@@ -89,6 +94,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_HITBOX_GROUP, -1);
 
 // rune that gives multihit stuff (finisher)
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_NSPECIAL, 3, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_WINDOW, 99999);
 set_hitbox_value(AT_NSPECIAL, 3, HG_LIFETIME, 6);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITBOX_X, 0);

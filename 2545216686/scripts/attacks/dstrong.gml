@@ -3,6 +3,7 @@ set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
+set_attack_value(AT_DSTRONG, AG_MUNO_ATTACK_NAME, "DStrong: Dummy Ring Bomb");
 
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 8);

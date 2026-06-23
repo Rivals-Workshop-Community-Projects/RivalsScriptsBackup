@@ -11,6 +11,7 @@ hitbox_view = get_match_setting(SET_HITBOX_VIS);
 //user_event(14);
 
 //char height
+/*
 var start_char_height = 48;
 if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
     char_height = start_char_height;
@@ -28,11 +29,28 @@ if state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND {
         }
         break;
     }
-}
+}*/
 
 if wt_destroyed_timer > 0 {
 	wt_destroyed_timer--;
 	if move_cooldown[AT_DSPECIAL] < 2 move_cooldown[AT_DSPECIAL] = 2;
+}
+
+//crawl
+if (state == PS_CROUCH) || ((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_DSPECIAL_2){
+    var crouchdir = right_down - left_down;
+    if (!hitpause && crouchdir != 0 && (state == PS_CROUCH && state_timer > 4 || state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)){
+    	crouch_walking = true;
+    	crouch_walk_timer += 1;
+    	if (crouchdir == 1 && hsp < crouch_walk_speed || crouchdir == -1 && hsp > -crouch_walk_speed){
+        	hsp = lerp(0, crouch_walk_speed*crouchdir, crouch_walk_timer*0.2);
+        	hsp = clamp(hsp, -crouch_walk_speed, crouch_walk_speed);
+    	}
+        off_edge = false;
+    } else {
+    	crouch_walking = false;
+    	crouch_walk_timer = 0;
+    }
 }
 
 //print(wt_destroyed_timer)
@@ -202,6 +220,15 @@ if holding_wt {
             case AT_FSPECIAL: wt_sprite = sprite_get("fspecial_wt") break;
             case AT_DSPECIAL: wt_sprite = sprite_get("dspecial_wt") break;
             case AT_DSPECIAL: wt_sprite = sprite_get("dspecial_wt") break;
+            case AT_DSPECIAL_2: 
+            if (sprite_index == sprite_get("dspecial_2")){
+            	wt_sprite = sprite_get("dspecial_2_wt");
+            } else if (sprite_index == sprite_get("dspecial_2_crawl")){
+            	wt_sprite = sprite_get("crawl_honk_wt");
+            } else if (sprite_index == sprite_get("crawl")){
+            	wt_sprite = sprite_get("crawl_wt");
+            }
+            break;
             
             case AT_USPECIAL:
             if free {
@@ -246,6 +273,10 @@ if holding_wt {
 
 if state == PS_PARRY_START || state == PS_PARRY {
 	hurtboxID.sprite_index = sprite_get("parry_hurtbox");
+}
+
+if (state != PS_PARRY && hurtboxID.sprite_index == sprite_get("parry_hurtbox")){
+	hurtboxID.sprite_index = sprite_get("hurtbox");
 }
 
 if blue_colour == undefined {

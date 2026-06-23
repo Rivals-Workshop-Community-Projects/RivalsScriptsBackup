@@ -288,7 +288,7 @@ switch(attack)
     		}
     	}
     	if (window == 4){
-    		strong_charge = 0;
+    		//strong_charge = 0;
     	}
     break;
     

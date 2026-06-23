@@ -52,6 +52,7 @@ set_hitbox_value(AT_FSTRONG, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_HIT_SFX, asset_get("sfx_blow_heavy2"));
 
 if (fstrongWindRune){
+set_hitbox_value(AT_FSTRONG, 2, HG_MUNO_HITBOX_EXCLUDE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 2, HG_LIFETIME, 2);

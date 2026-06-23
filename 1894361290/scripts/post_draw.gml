@@ -22,6 +22,8 @@ if holding_wt {
     else if sprite_index == sprite_get("doublejump") {wt_sprite = sprite_get("doublejump_wt")}
     else if sprite_index == sprite_get("walljump") {wt_sprite = sprite_get("walljump_wt")}
     else if sprite_index == sprite_get("tech") {wt_sprite = sprite_get("tech_wt")}
+    else if sprite_index == sprite_get("crawl") {wt_sprite = sprite_get("crawl_wt")}
+    else if sprite_index == sprite_get("dspecial_2") {wt_sprite = sprite_get("dspecial_2_wt")}
     
     shader_start();
     draw_sprite_ext(wt_sprite, image_index, x, y, spr_dir, 1, 0, _col, 1);
@@ -30,7 +32,13 @@ if holding_wt {
     if attack == AT_DSPECIAL {
         shader_start();
     }
-    draw_sprite_ext(non_sprite, image_index, x, y, spr_dir, 1, 0, c_white, 1);
+    if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && (sprite_index == sprite_get("dspecial_2") || sprite_index == sprite_get("dspecial_2_crawl") || sprite_index == sprite_get("crawl")){
+        if (crouch_honk_vfx_timer > 0 && window > 1){
+            draw_sprite_ext(non_sprite, crouch_honk_vfx_timer/3, x, y, spr_dir, 1, 0, c_white, 1);
+        }
+    } else {
+        draw_sprite_ext(non_sprite, image_index, x, y, spr_dir, 1, 0, c_white, 1);
+    }
     if attack == AT_DSPECIAL {
         shader_end();
     }

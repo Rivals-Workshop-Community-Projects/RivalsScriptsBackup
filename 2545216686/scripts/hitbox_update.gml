@@ -19,7 +19,7 @@ if (attack == AT_NSPECIAL || attack == AT_NSPECIAL_AIR){
 		if (hitbox_timer == 0){
 			nspec_air_elec_bounced = 0
 		}
-		if ((hitbox_timer == 119) || (x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b || y < blastzone_t)){//>
+		if ((hitbox_timer == 119) || (x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b)){//>
 			sound_play(asset_get("sfx_absa_jab1"));
 			spawn_hit_fx( x , y, 197 );
 			instance_destroy();

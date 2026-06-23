@@ -344,5 +344,7 @@ knight_compat_dream =
         "...Please... ...Let me sleep... ...A little more... ...Please...",	// Kirby's Adventure flavor text for Sleep
         "Just...five more...minutes. Please..."	// Kirby's Return to Dream Land flavor text for Sleep
     ]
+	
+is_gorable = false;									// general gorable var
 
 user_event(7);

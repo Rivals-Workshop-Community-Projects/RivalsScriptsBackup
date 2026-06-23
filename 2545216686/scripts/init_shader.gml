@@ -8,8 +8,8 @@ if (get_player_color(player) == 7){
 }
 
 if (get_player_color(player) == 17){
-		outline_color = [76, 53, 0];
-	}
+	outline_color = [76, 53, 0];
+}
 
 // color mapping
 if get_player_color(player) == 0 {

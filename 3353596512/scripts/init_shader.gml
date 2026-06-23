@@ -15,6 +15,9 @@ switch (get_player_color(player)){
         set_character_color_slot(4, 82, 82, 82); //boots/gloves
         set_character_color_slot(5, 218, 123, 30); //rabbit
         set_character_color_slot(6, 190, 82, 10); //rabbit shading
+        if ("starko_timer_buddy" in self){
+            set_article_color_slot(4, 82, 82, 82);
+        }
     break;
     case 1: //green
     case 6:

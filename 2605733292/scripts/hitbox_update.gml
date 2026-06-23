@@ -121,7 +121,7 @@ if (attack == AT_NSPECIAL){
 	}
 	
 	//Blastzone stuffs lol
-	if ((x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b || y < blastzone_t) || was_parried == true){//>
+	if ((x != clamp(x, blastzone_l, blastzone_r) || y > blastzone_b /* || y < blastzone_t*/) || was_parried == true){//>
 		spawn_hit_fx( x, y - 32, 304 );
 		sound_play(player_id.sfx_canvas_curse_balloon_pop);
 		player_id.copy_essence_hit = 0

@@ -6,6 +6,14 @@ set_attack_value(AT_DSPECIAL_2, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL_2, AG_AIR_SPRITE, sprite_get("dspecial_2_air"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_2_hurt"));
 set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_AIR_SPRITE, sprite_get("dspecial_2_air_hurt"));
+set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_NAME, "DSpecial: Remote Robot");
+set_attack_value(AT_DSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "Throws a mini Tails robot overhead that explodes on contact when falling.
+After landing, the robot will walk back and forth.
+Remote Robot will jump upwards if either:
+- Tails uses DSpecial again while it's out
+- Remote Robot touches an opposing player
+Remote Robot can also be hit by an opposing player to get rid of it.
+Tails can grab Remote Robot with FSpecial to throw it.");
 
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 6);

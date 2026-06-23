@@ -144,7 +144,7 @@ rank_number_flicker = false;
 levels_gained = 0;
 
 //weight system
-passive_weight = 42;
+passive_weight = 24;
 item_weight = 0;
 
 weight_value = passive_weight + item_weight;
@@ -163,20 +163,20 @@ prev_scrap = noone;
 user_event(9);
 
 melee_weapons = [
-        {
+	    {
         index : 0,
-        name : "Yield sign",
+        name : "Stop sign",
         rank_req : 1,
         was_bought : true,
-        walk_mult : 2/3
+        walk_mult : 1
         },
         
         {
         index : 1,
-        name : "Stop sign",
+        name : "Yield sign",
         rank_req : 3,
         was_bought : false,
-        walk_mult : 1
+        walk_mult : 2/3
         },
         
         {
@@ -609,6 +609,14 @@ pot_compat_text = "Company Rations";
 
 miiverse_post = sprite_get("miiverse");
 miiverse_friendslop = false;
+
+if (get_player_color(player) == 5 ){
+    buddy_screenko_sprite = sprite_get("screenko_rabbit");
+    buddy_starko_sprite = sprite_get("starko_rabbit");
+} else {
+    buddy_screenko_sprite = sprite_get("screenko");
+    buddy_starko_sprite = sprite_get("starko");
+}
 
 //custom indexes
 overtime_bonus = 0;

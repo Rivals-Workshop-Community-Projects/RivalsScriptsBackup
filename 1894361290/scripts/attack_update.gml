@@ -5,6 +5,18 @@ if (attack == AT_NSPECIAL || attack == AT_FSPECIAL || attack == AT_DSPECIAL || a
     trigger_b_reverse();
 }
 
+switch (attack){
+    case AT_UTILT:
+    hud_offset = 36 + (holding_wt*32);
+    break;
+    case AT_UAIR:
+    hud_offset = 40 + (holding_wt*24);
+    break
+    case AT_USPECIAL:
+    hud_offset = 32 + (holding_wt*10);
+    break
+}
+
 if attack == AT_NSPECIAL {
     if window == 1 && window_timer == 1 {
         wt_hitbox_size = 0;
@@ -40,8 +52,10 @@ if attack == AT_NSPECIAL {
 }
 
 if attack == AT_DSPECIAL_2 {
+    crouch_honk_vfx_timer++;
     if window == 1 {
         attack_end();
+        crouch_honk_vfx_timer = 3;
         window = 2;
         window_timer = 0;
     }
@@ -52,8 +66,10 @@ if attack == AT_DSPECIAL_2 {
     
     if window == 2 && window_timer == 8 {
         state = PS_CROUCH;
+        hurtboxID.sprite_index = sprite_get("crouchbox");
         state_timer = 10;
     }
+    
 }
 
 if attack == AT_NSPECIAL_2 {
@@ -150,6 +166,10 @@ if attack == AT_USPECIAL {
     if vsp < 0 && vsp > -7 && window >= 3 {
         destroy_hitboxes();
     }
+
+    if (window >= 4){
+        can_fast_fall = false
+    }
 }
 
 if attack == AT_FSPECIAL {
@@ -165,17 +185,22 @@ if attack == AT_FSPECIAL {
         state_timer = 0;
     }
     
-    if window == 2 && !free && !hitpause {
         if has_hit {
             set_window_value(AT_FSPECIAL, 4, AG_WINDOW_LENGTH, 6);
         }
+    
+    if (window == 2 || window == 3) && !free && !hitpause {
         
         window = 4;
         window_timer = 0;
+        can_shield = false;
         spawn_base_dust(x + 80*spr_dir, y, "dash", -spr_dir);
         spawn_base_dust(x + 40*spr_dir, y, "dash", spr_dir);
         if holding_wt {
             sound_play(sound_get("wt_impact"))
+            sound_play(asset_get("sfx_land_heavy"));
+        } else {
+            sound_play(asset_get("sfx_tow_anchor_land"));
         }
         destroy_hitboxes();
         
@@ -203,7 +228,13 @@ if attack == AT_FSPECIAL {
         can_jump = true;
         can_attack = true;
         //can_special = true;
-        can_airdodge = true;
+        can_shield = true;
+    }
+}
+
+if (attack == AT_FSTRONG){
+    if (window == 2 && window_timer == window_length && !hitpause){
+        sound_play( asset_get("sfx_ori_glide_featherout"),false,noone,0.85, 0.8);
     }
 }
 
@@ -418,7 +449,7 @@ if window == 1 && window_timer == 1 {
                 set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX_FRAME, 16);
             }
             set_window_value(AT_FSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-            set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_land_heavy"));
+            //set_window_value(AT_FSPECIAL, 4, AG_WINDOW_SFX, asset_get("sfx_land_heavy"));
         } else {
             reset_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW);
             reset_hitbox_value(AT_FSPECIAL, 2, HG_WINDOW);

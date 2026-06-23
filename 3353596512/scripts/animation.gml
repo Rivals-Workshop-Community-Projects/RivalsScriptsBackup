@@ -442,6 +442,11 @@ if (attack == AT_DSPECIAL_2){
 		sound_stop(sound_get("scrap_robot"));
 	}
 
+if ("starko_timer_buddy" in self){
+     if (starko_timer_buddy > 90 && state == PS_WRAPPED){
+         sprite_index = buddy_starko_sprite;
+     }
+}
 
 var sprite_found = get_sprite_name(sprite_index)
 if sprite_found != "null" process_form_sprite(sprite_found);

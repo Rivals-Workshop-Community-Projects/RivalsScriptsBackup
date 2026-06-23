@@ -84,11 +84,13 @@ switch (my_hitboxID.attack){
     case AT_DSTRONG:
         if (my_hitboxID.hbox_num >= 3 && instance_exists(ladder_obj)){
             with (ladder_obj) sound_play( sound_get("ladder_hit"), false, noone, 1, 1 );
+            //print(hit_player_obj.orig_knock)
         }
     break;
     case 2: //this is also dstrong
         if (my_hitboxID.hbox_num >= 1 && instance_exists(ladder_obj)){
             with (ladder_obj) sound_play( sound_get("ladder_hit"), false, noone, 1, 1 );
+            //print(hit_player_obj.orig_knock)
         }
     break;
     case AT_FSPECIAL_2:

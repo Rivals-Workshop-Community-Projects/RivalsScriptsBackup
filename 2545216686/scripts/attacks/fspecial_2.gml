@@ -6,6 +6,11 @@ set_attack_value(AT_FSPECIAL_2, AG_AIR_SPRITE, sprite_get("fspecial_2"));
 set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_SPRITE, hurtbox_spr);
 set_attack_value(AT_FSPECIAL_2, AG_HURTBOX_AIR_SPRITE, hurtbox_spr);
 set_attack_value(AT_FSPECIAL_2, AG_USES_CUSTOM_GRAVITY, 1);
+set_attack_value(AT_FSPECIAL_2, AG_MUNO_ATTACK_NAME, "FSpecial: Air Lift");
+set_attack_value(AT_FSPECIAL_2, AG_MUNO_ATTACK_MISC_ADD, "Moving dive with a grab hitbox.
+On hit, Tails will rise upwards with the grabbed opponent before kicking them upwards, either setting up for combos or killing if high up enough.
+Landing has proportionally higher landing lag depending on how long the move was active for.
+This move can grab Remote Robot (DSpecial) to throw it.");
 
 // note to self: if i change the length of windows 1 or 2 in here, change the hit lockout for the grab hitbox so the move can properly connect
 
@@ -64,6 +69,7 @@ set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 set_num_hitboxes(AT_FSPECIAL_2, 1);
 
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_MUNO_HITBOX_NAME, "Throw Hitbox");
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITBOX_X, 35);

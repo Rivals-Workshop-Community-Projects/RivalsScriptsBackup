@@ -36,7 +36,7 @@ if (state <= 4){//>
 						fspecHitboxTouchedRobot = true;
 					}
 				} else { // other players that aren't Tails
-					if (type == 1 && other.state != 9){
+					if (type == 1 && hit_priority > 0 && other.state != 9){
 						if (hit_effect != 301 && hit_effect != 302 && hit_effect != 305){
 							spawn_hit_fx(other.x, other.y, 302);
 						}

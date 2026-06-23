@@ -68,7 +68,7 @@ switch (attack){
     case AT_FAIR:
     if (!has_scrap){
         switch (curr_melee){
-            case 1:
+            case 0:
                 attack = AT_FAIR_2;
             break;
             case 2:
@@ -80,7 +80,7 @@ switch (attack){
     case AT_UAIR:
     if (!has_scrap){
         switch (curr_melee){
-            case 1:
+            case 0:
                 attack = AT_UAIR_2;
             break;
             case 2:
@@ -97,10 +97,10 @@ switch (attack){
     }
 	if (!has_scrap){
         switch (curr_melee){
-        	case 0:
+        	case 1:
         	    sound_play(sound_get("shovel_pickup"), false, noone, 0.7, 1);
         	break;
-            case 1:
+            case 0:
                 sound_play(sound_get("shovel_pickup"), false, noone, 0.7, 1);
                 attack = AT_FSTRONG_2;
             break;
@@ -119,10 +119,10 @@ switch (attack){
     }
     if (!has_scrap){
         switch (curr_melee){
-        	case 0:
+        	case 1:
         		sound_play(sound_get("shovel_pickup"), false, noone, 0.7, 1);
         	break;
-            case 1:
+            case 0:
             	sound_play(sound_get("shovel_pickup"), false, noone, 0.7, 1);
                 attack = AT_USTRONG_2;
             break;

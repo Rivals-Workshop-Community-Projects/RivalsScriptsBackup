@@ -146,6 +146,11 @@ sprite_change_offset("plat_real", 64, 79);
 sprite_change_offset("mamizou_transformation", 64, 79);
 sprite_change_offset("intro", 64, 79, true);
 
+sprite_change_offset("starko", 13, 18, true);
+sprite_change_offset("starko_rabbit", 14, 24, true);
+sprite_change_offset("screenko", 13, 19, true);
+sprite_change_offset("screenko_rabbit", 13, 22, true);
+
 sprite_change_offset("hud_rabbit", 0, -2);
 sprite_change_offset("hudhurt_rabbit", 0, -2);
 sprite_change_offset("offscreen_rabbit", 17, 17);

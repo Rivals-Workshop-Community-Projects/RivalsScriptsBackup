@@ -7,6 +7,7 @@ sprite_change_offset("bouncehurt", 40, 78);
 sprite_change_offset("spinhurt", 40, 68);
 sprite_change_offset("hurtground", 40, 78);
 sprite_change_offset("crouch", 40, 78);
+sprite_change_offset("crawl", 40, 78);
 sprite_change_offset("walk", 40, 78);
 sprite_change_offset("walkturn", 40, 78);
 sprite_change_offset("dash", 40, 78);
@@ -79,6 +80,7 @@ sprite_change_offset("fspecial", 60, 78);
 sprite_change_offset("uspecial", 40, 98);
 sprite_change_offset("uspecial_air", 40, 98);
 sprite_change_offset("dspecial_2", 40, 78);
+sprite_change_offset("dspecial_2_crawl", 40, 78);
 sprite_change_offset("dspecial", 40, 78);
 sprite_change_offset("taunt", 40, 78);
 
@@ -106,6 +108,9 @@ sprite_change_offset("uspecial_wt", 40, 98);
 sprite_change_offset("uspecial_air_wt", 40, 98);
 sprite_change_offset("dspecial_wt", 40, 78);
 sprite_change_offset("dspecial_2_vfx", 40, 78);
+sprite_change_offset("dspecial_2_wt", 40, 78);
+sprite_change_offset("crawl_wt", 40, 78);
+sprite_change_offset("crawl_honk_wt", 40, 78);
 sprite_change_offset("taunt_wt", 40, 78);
 
 sprite_change_offset("plat", 52, 4);

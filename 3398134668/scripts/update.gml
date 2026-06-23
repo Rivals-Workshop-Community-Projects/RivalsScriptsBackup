@@ -133,6 +133,10 @@ if (plus_ready)
     }
     if (special_pressed = true) && (attack_pressed = true) && (plus_ab_use = false) && (!invalidStates) && attack != AT_EXTRA_2
     {
+        attribute_anomaly_buddy_element = 2;
+        attribute_anomaly_buddy_colour = make_color_rgb(get_color_profile_slot_r(get_player_color(player),1),get_color_profile_slot_g(get_player_color(player),1),get_color_profile_slot_b(get_player_color(player),1));
+        attribute_anomaly_buddy_sprite = sprite_get("attribute_anomaly");
+        attribute_anomaly_buddy_text = "STATIC!!";
         plus_ready = false;
         sub_tick = 0;
         sub_gauge = 0;
@@ -183,6 +187,10 @@ if ((meter <= 0) || endPlus) && (plus_active = true)
 {
     if ((state = PS_IDLE) || (state = PS_IDLE_AIR)) || endPlus
     {
+        attribute_anomaly_buddy_element = 2;
+        attribute_anomaly_buddy_sprite = -1;
+        attribute_anomaly_buddy_colour = -1;
+        attribute_anomaly_buddy_text = "SHOCK!!";
         set_attack(AT_EXTRA_2);
         sub_gauge = 0;
         if !endPlus meter = 0;

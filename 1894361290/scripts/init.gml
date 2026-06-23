@@ -55,6 +55,9 @@ draw_non = true; //if true, will draw non-sprites like bat and hammer
 fspec_grapple_id = undefined; //fspecial command grab id
 fspec_grapple_hitbox = undefined;
 
+wt_runee = has_rune("E")
+wt_runek = has_rune("K");
+
 trigger_fs = false; //trigger final smash cutscene
 fs_scene = 0; //different parts of cutscene
 fs_scene_timer = 0; //increment while cutscene plays, resets upon transition to new scene
@@ -130,6 +133,13 @@ wave_friction = 0.07; //grounded deceleration when wavelanding
 crouch_startup_frames = 2;
 crouch_active_frames = 1;
 crouch_recovery_frames = 2;
+
+crouch_walking = false;
+crouch_walk_timer = 0;
+crouch_walk_anim_speed = 0.2;
+crouch_walk_speed = 2.5;
+
+crouch_honk_vfx_timer = 0;
 
 //parry animation frames
 dodge_startup_frames = 1;

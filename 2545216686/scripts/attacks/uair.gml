@@ -42,6 +42,7 @@ set_num_hitboxes(AT_UAIR, 3);
 
 //1st hit
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 1, HG_MUNO_HITBOX_NAME, "First Hitbox");
 set_hitbox_value(AT_UAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_UAIR, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_UAIR, 1, HG_HITBOX_X, -1);
@@ -63,6 +64,7 @@ set_hitbox_value(AT_UAIR, 1, HG_HITBOX_GROUP, 1);
 
 //2nd hit sweetspot
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 2, HG_MUNO_HITBOX_NAME, "Second Hitbox, Clean");
 set_hitbox_value(AT_UAIR, 2, HG_WINDOW, 4);
 set_hitbox_value(AT_UAIR, 2, HG_LIFETIME, 3);
 set_hitbox_value(AT_UAIR, 2, HG_HITBOX_X, -4);
@@ -85,6 +87,7 @@ set_hitbox_value(AT_UAIR, 2, HG_HITBOX_GROUP, 2);
 
 //2nd hit sourspot
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_UAIR, 3, HG_MUNO_HITBOX_NAME, "Second Hitbox, Sour");
 set_hitbox_value(AT_UAIR, 3, HG_WINDOW, 4);
 set_hitbox_value(AT_UAIR, 3, HG_LIFETIME, 3);
 set_hitbox_value(AT_UAIR, 3, HG_HITBOX_X, -3);
