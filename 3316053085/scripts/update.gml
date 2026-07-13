@@ -141,7 +141,6 @@ else
     if (used_wallkick != -1) used_wallkick = -1;
 }
 
-
 ////////////////////// attack specific
 
 //nspec aim cancel

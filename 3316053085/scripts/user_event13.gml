@@ -49,11 +49,15 @@ switch (my_hitboxID.attack) //attack specific
         if (my_hitboxID.hbox_num == 1) sound_play(sound_get("sfx_lighthit2"));
         break;
     case AT_USTRONG:
-        if (my_hitboxID.hbox_num <= 2) sound_play(sound_get("sfx_lighthit1"));
-        else sound_play(sound_get("sfx_lighthit2"));
+        if (my_hitboxID.hbox_num <= 2)
+        {
+            sound_play(sound_get("sfx_lighthit1"));
+            if (hit_player_obj.state_cat == SC_HITSTUN && ustrong_first_hit == noone) ustrong_first_hit = hit_player_obj;
+        }
+        else if (my_hitboxID.hbox_num < 5) sound_play(sound_get("sfx_lighthit2"));
 
         //tweak old_hsp based on venus' old_hsp and their positions from each other for more consistent chains
-        if (do_ustrong_ex && my_hitboxID.hbox_num <= 2) hit_player_obj.old_hsp = (hit_player_obj.old_hsp/old_hsp - abs(hit_player_obj.x-x)/50) * spr_dir;
+        if (do_ustrong_ex && my_hitboxID.hbox_num == 5) hit_player_obj.hsp = 0;
         break;
     case AT_DSTRONG:
         if (my_hitboxID.hbox_num == 1) sound_play(sound_get("sfx_lighthit2"));

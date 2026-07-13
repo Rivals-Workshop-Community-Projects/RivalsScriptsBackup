@@ -317,27 +317,27 @@ set_color_profile_slot( 21, 6, 255, 245, 180 ); //holy water main
 set_color_profile_slot( 21, 7, 214, 170, 123 ); //holy water sub
 //shading data: [1.5, 1.5, 1, 1, 1, 1, 1, 1]
 
-// electromagnetism
-set_color_profile_slot( 22, 0, 64, 107, 43 ); //pink
-set_color_profile_slot( 22, 1, 242, 167, 184 ); //hair
-set_color_profile_slot( 22, 2, 227, 189, 161 ); //skin
-set_color_profile_slot( 22, 3, 133, 40, 38 ); //white
-set_color_profile_slot( 22, 4, 83, 89, 67 ); //black
-set_color_profile_slot( 22, 5, 186, 22, 106 ); //leaf
-set_color_profile_slot( 22, 6, 201, 135, 255 ); //holy water main
-set_color_profile_slot( 22, 7, 116, 130, 227 ); //holy water sub
-//shading data: [1, 1, 1, 0.7, 0.7, 1, 2, 1]
-
-// kaede akamatsu
-set_color_profile_slot( 23, 0, 240, 230, 230 ); //pink
-set_color_profile_slot( 23, 1, 239, 229, 191 ); //hair
-set_color_profile_slot( 23, 2, 246, 228, 226 ); //skin
-set_color_profile_slot( 23, 3, 190, 152, 168 ); //white
-set_color_profile_slot( 23, 4, 71, 23, 57 ); //black
-set_color_profile_slot( 23, 5, 160, 69, 30 ); //leaf
-set_color_profile_slot( 23, 6, 240, 130, 237 ); //holy water main
-set_color_profile_slot( 23, 7, 245, 244, 113 ); //holy water sub
+// mercy kiss
+set_color_profile_slot( 22, 0, 236, 224, 94 ); //pink
+set_color_profile_slot( 22, 1, 242, 223, 183 ); //hair
+set_color_profile_slot( 22, 2, 250, 249, 222 ); //skin
+set_color_profile_slot( 22, 3, 255, 255, 255 ); //white
+set_color_profile_slot( 22, 4, 222, 120, 138 ); //black
+set_color_profile_slot( 22, 5, 250, 240, 190 ); //leaf
+set_color_profile_slot( 22, 6, 255, 110, 158 ); //holy water main
+set_color_profile_slot( 22, 7, 230, 32, 98 ); //holy water sub
 //shading data: [1, 1, 1, 1, 1, 1, 1, 1]
+
+// electromagnetism
+set_color_profile_slot( 23, 0, 64, 107, 43 ); //pink
+set_color_profile_slot( 23, 1, 242, 167, 184 ); //hair
+set_color_profile_slot( 23, 2, 227, 189, 161 ); //skin
+set_color_profile_slot( 23, 3, 133, 40, 38 ); //white
+set_color_profile_slot( 23, 4, 83, 89, 67 ); //black
+set_color_profile_slot( 23, 5, 186, 22, 106 ); //leaf
+set_color_profile_slot( 23, 6, 201, 135, 255 ); //holy water main
+set_color_profile_slot( 23, 7, 116, 130, 227 ); //holy water sub
+//shading data: [1, 1, 1, 0.7, 0.7, 1, 2, 1]
 
 // time agent
 set_color_profile_slot( 24, 0, 168, 175, 218 ); //pink

@@ -580,6 +580,16 @@ if (!player_id.s_alt && player_id.alt_cur == 10)
     clear_button_buffer(PC_SHIELD_PRESSED);
     invince_time = floor(walljump_time/2);
     invincible = true;
+    if (activated_kill_effect)
+    {
+        other.hp = 0;
+        
+        sound_play(asset_get("sfx_blow_heavy2"));
+        var temp_sound = sound_play(asset_get("sfx_ice_dspecial_ground"));
+        sound_pitch(temp_sound, lerp(0.75, 1.25, random_func(0, 10, true)/10));
+
+        shake_camera(10, 12);
+    }
 
     sound_play(asset_get("sfx_tech"));
     var dust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 21);

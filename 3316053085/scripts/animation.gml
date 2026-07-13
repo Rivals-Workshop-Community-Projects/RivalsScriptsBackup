@@ -264,7 +264,7 @@ if (is_attacking)
 			spawn_base_dust(x + 32 * spr_dir, y, "dash", -spr_dir, 0, 1, 2);
 			spawn_base_dust(x - 32 * spr_dir, y, "dash", 0, 0, 1, 6);
 			spawn_base_dust(x, y, "jump", 0, 0, 3, window_end-1);
-			if (!hitpause && (window == 4 || window == 6) && window_timer == window_end-1)
+			if (!hitpause && (window == 4 || window == 7) && window_timer == window_end-1)
 			{
 				var fx = spawn_hit_fx(x, y, window == 4 ? fx_ustrong_smear1 : fx_ustrong_smear2);
 				fx.depth = depth - 1;

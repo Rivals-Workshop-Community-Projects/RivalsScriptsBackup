@@ -143,7 +143,7 @@ else
             }
             break;
         case 21: set_shading(1.5, 1.5, 1, 1, 1, 1, 1, 1); break; //kiku
-        case 22: set_shading(1, 1, 1, 0.7, 0.7, 1, 2, 1); break; //kim
+        case 23: set_shading(1, 1, 1, 0.7, 0.7, 1, 2, 1); break; //kim
         case 26: set_shading(1.5, 1.2, 1, 1, 1, 1, 0.7, 1); break; //all-star heroines
         case 27: set_outline(90, 43, 55); break; //theikos
         case 30: //hud color

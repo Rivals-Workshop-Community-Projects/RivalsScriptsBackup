@@ -82,22 +82,8 @@ switch (attack)
     case AT_USTRONG:
         switch (window)
         {
-            case 1: //resets
-                if (do_ustrong_ex)
-                {
-                    for (var i = 1; i <= 2; i++)
-                    {
-                        reset_hitbox_value(attack, i, HG_DAMAGE); //8
-                        reset_hitbox_value(attack, i, HG_BASE_KNOCKBACK); //8
-                        reset_hitbox_value(attack, i, HG_KNOCKBACK_SCALING); //1
-                        reset_hitbox_value(attack, i, HG_BASE_HITPAUSE); //9
-                        reset_hitbox_value(attack, i, HG_HITPAUSE_SCALING); //0.6
-                    }
-                    do_ustrong_ex = false;
-                }
-                break;
-            case 2: //charge window
-                if (floor(charge_cur/100) > 0 && strong_charge >= 9 && !do_ustrong_ex) //is_special_pressed(DIR_ANY)
+            case 1: case 2: case 3: //charge window
+                if (floor(charge_cur/100) > 0 && special_down && !do_ustrong_ex) //is_special_pressed(DIR_ANY)
                 {
                     for (var i = 1; i <= 2; i++)
                     {
@@ -114,10 +100,20 @@ switch (attack)
                     do_ustrong_ex = true;
                 }
                 break;
-            case 6: case 7: //kick 2
+            case 6: case 7: case 8: //kick 2
                 force_depth = true;
                 depth = -6;
             case 4: //endlag of kick 1
+                if (window == 4 && has_hit_player && !hitpause)
+                {
+                    var no_di_hbox = create_hitbox(
+                        attack, 5,
+                        floor(ustrong_first_hit.x + ustrong_first_hit.hsp),
+                        floor(ustrong_first_hit.y + ustrong_first_hit.vsp - 32)
+                    );
+                    for (var i = 0; i < array_length(no_di_hbox.can_hit); i++) if (i != ustrong_first_hit.player) no_di_hbox.can_hit[i] = false;
+                    has_hit_player = false;
+                }
                 if (!free)
                 {
                     landing_lag_time = get_attack_value(attack, AG_LANDING_LAG)*2;
@@ -127,7 +123,7 @@ switch (attack)
             case 5:
                 if (image_index > 10 && do_ustrong_ex)
                 {
-                    sound_play(asset_get("sfx_orcane_dsmash"))
+                    sound_play(asset_get("sfx_orcane_dsmash"));
                     set_window(6);
                 }
 
@@ -167,26 +163,18 @@ switch (attack)
     case AT_DSTRONG:
         switch (window)
         {
-            case 1:
-                dstrong_ex_charges = 0;
-                dstrong_ex_uses = 0;
-                dstrong_ex_useable = floor(charge_cur/100);
-
-                reset_hitbox_value(attack, 2, HG_BASE_KNOCKBACK);
-                reset_hitbox_value(attack, 2, HG_KNOCKBACK_SCALING);
-                break;
-            case 2:
-                if (strong_charge % 15 == 9 && dstrong_ex_charges < dstrong_ex_useable)
+            case 1: case 2: case 3:
+                if (special_pressed && dstrong_ex_charges < dstrong_ex_useable)
                 {
-                    dstrong_ex_charges ++;
+                    dstrong_ex_charges = dstrong_ex_useable;
                     switch (dstrong_ex_charges)
                     {
                         case 1: sound_play(asset_get("sfx_frog_fspecial_charge_gained_1")); break;
                         case 2: sound_play(asset_get("sfx_frog_fspecial_charge_gained_2")); break;
-                        case 3: sound_play(asset_get("sfx_frog_fspecial_charge_full")); break;
+                        default: sound_play(asset_get("sfx_frog_fspecial_charge_full")); break;
                     }
                     spawn_hit_fx(x + 32 * spr_dir, y - 64, fx_charge_spark);
-                    charge_cur -= 100;
+                    charge_cur -= 100 * dstrong_ex_useable;
                     clear_button_buffer(PC_SPECIAL_PRESSED);
                 }
                 break;
@@ -518,6 +506,7 @@ switch (attack)
                     if (!special_down || (!has_rune("C") && (charge_cur/100) >= dspec_charge_milestone || charge_cur >= charge_max))
                     {
                         if (charge_cur > dspec_charge_milestone*100) charge_cur = dspec_charge_milestone*100;
+                        if (frac(charge_cur) != 0) charge_cur = round(charge_cur);
 
                         sound_stop(dspec_loop_sound);
                         sound_play(sound_get("sfx_dspec_end"));

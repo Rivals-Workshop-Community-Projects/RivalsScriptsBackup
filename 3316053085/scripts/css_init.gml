@@ -24,7 +24,7 @@ season_name[4] = "Cold and Cozy";
 //alts
 //there can be a total of 32 (0 - 31) alts normally
 alt_name[0] = "Cupids' Resolve";
-alt_name[1] = "Ready Player 2";
+alt_name[1] = "Flowering Nights";
 alt_name[2] = "Elemental Guardian";
 alt_name[3] = "Umbra Princess";
 alt_name[4] = "Mysterious Friend";
@@ -47,8 +47,8 @@ alt_name[18] = "Ranked Gold"; //has the shiny effect
 alt_name[19] = "Starman Princess";
 alt_name[20] = "Sullied Blossom";
 alt_name[21] = "Honeycrisp Punch";
-alt_name[22] = "Electromagnetism";
-alt_name[23] = "Ultimate Pianist";
+alt_name[22] = "Mercifulness Incarnate";
+alt_name[23] = "Electromagnetism";
 alt_name[24] = "Time Agent";
 alt_name[25] = "Driving Thunder";
 alt_name[26] = "Youkai of Dusk";

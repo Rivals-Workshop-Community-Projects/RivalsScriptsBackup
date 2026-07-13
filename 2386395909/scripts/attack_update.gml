@@ -121,7 +121,7 @@ switch (attack)
         }
     }*/
     break;
-    case AT_NSPECIAL:if window > 1 { can_jump = true; can_shield = true;}
+    case AT_NSPECIAL:if window > 1 and !was_parried { can_jump = true; can_shield = true;}
     break;
     case AT_DATTACK: if (window != 3 || window != 1) && has_hit {can_jump = true;}
     break;

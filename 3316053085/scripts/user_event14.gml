@@ -99,8 +99,8 @@ if (floor(charge_cur/100) > 0 && floor(charge_cur/100)/2 > 0.5)
 }
 //^ charges indicator (it's the arrows out of the heart)
 
-draw_debug_text(temp_x + 96, temp_y - 30, string(floor(charge_cur - floor(charge_cur/100)*100) ) );
-
+var charge_value = charge_cur >= charge_max ? "MAX" : string(floor(charge_cur - floor(charge_cur/100)*100));
+draw_debug_text(temp_x + 96, temp_y - 30, charge_value);
 
 //overdrive/fs meter
 if (can_overdrive > 0)

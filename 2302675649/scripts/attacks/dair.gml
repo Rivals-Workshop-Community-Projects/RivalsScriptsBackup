@@ -30,6 +30,7 @@ set_window_value(AT_DAIR, 3, AG_WINDOW_VSPEED_TYPE, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_LENGTH, 8);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DAIR, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_DAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_window_value(AT_DAIR, 5, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DAIR, 5, AG_WINDOW_ANIM_FRAMES, 1);

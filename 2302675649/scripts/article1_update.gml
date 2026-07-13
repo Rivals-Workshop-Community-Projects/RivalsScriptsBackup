@@ -66,8 +66,8 @@ else
 			}
 			else
 			{
-				if (player_id.canTele && IsPlayerInPortal() && otherPortal != noone
-					&& ((player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR) || player_id.attack != AT_FSPECIAL))
+				if (player_id.canTele && IsPlayerInPortal() && otherPortal != noone && player_id.state_cat != SC_HITSTUN && player_id.state != PS_TUMBLE &&
+					(player_id.attack != AT_FSPECIAL || (player_id.state != PS_ATTACK_GROUND && player_id.state != PS_ATTACK_AIR)))
 				{
 					SetArticleState(AS_TELEPORT);
 					with (otherPortal) SetArticleState(AS_RECEIVE);

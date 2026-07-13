@@ -82,6 +82,6 @@ switch (attack)
         break;
     default:
         if (was_parried) draw_xscale = spr_dir;
-        if (hitbox_timer == length-1) with (orig_player_id) spawn_hit_fx(x, y, destroy_fx);
+        if (hitbox_timer == length-1) with (orig_player_id) spawn_hit_fx(other.x, other.y, other.destroy_fx);
         break;
 }

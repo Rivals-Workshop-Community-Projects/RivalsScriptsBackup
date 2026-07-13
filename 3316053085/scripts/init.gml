@@ -323,10 +323,12 @@ dattack_can_bounce_set = 10;
 dattack_can_bounce = 0;
 
 do_ustrong_ex = false;
+ustrong_tp_target = noone;
 fstrong_meter_redc = charge_max;
 dstrong_ex_charges = 0;
 dstrong_ex_useable = 0;
 dstrong_ex_uses = 0;
+dstrong_ex_usable_max = infinity;
 
 total_runes = 2 + 2 * has_rune("A"); //decides the amount of runes venus can have
 artc_rune = array_create(total_runes, noone);

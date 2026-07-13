@@ -887,6 +887,22 @@ if ("rollArray" in self)
 						AddText("Optimised sprites' file sizes");
 						AddText("Updated song list");
 						break;
+					case 53:
+						AddText("v1.53 - 4 Jul 2026");
+						AddText("");
+						AddText("FAir 1 Hitpause 12 -> 10");
+						AddText("FAir Sweetspot Hitpause 18 -> 12");
+						AddText("FAir Sweetspot Angle 40 -> 361");
+						AddText("FAir Sweetspot KB 8 + 1.0 -> 7.5 + 0.9");
+						AddText("(FAir Sourspot unchanged)");
+						AddText("");
+						AddText("UTilt Endlag Window Length 8 -> 12");
+						AddText("");
+						AddText("UAir Adjusted Whifflag");
+						AddText("DAir Adjusted Whifflag");
+						AddText("");
+						AddText("Lonin can no longer move through portals during hitstun and tumble");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
