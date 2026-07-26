@@ -371,6 +371,17 @@ with phone{
 	 * put the version number and full date.
 	 */
 	
+	initPatch("4.2", "2026-7-23 (YMD)");
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("Hello from the far future.");
+	
+	initPatchWords_ext("Changes", fa_left, c_yellow, 1, 0);
+	initPatchWords("- Removed things.
+	- In its place, new alt color: Half Dilemma.
+	- Wow this char really doesn't have much parts for unique alt colors huh?
+	- CSS no longer has the blue rim light thing.");
+	
+	
 	initPatch("4.1", "2021-8-31 (YMD)");
 	initPatchWords_ext("Additions", fa_left, c_yellow, 1, 0);
 	initPatchWords("- i think i added dialogue buddy support (only my chars for now im busy)");

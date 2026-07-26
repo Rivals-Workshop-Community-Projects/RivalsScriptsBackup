@@ -254,7 +254,7 @@ if dairprojID != 0 {
 }
 
 if packageID != 0 {
-	if (explo_owner == noone) {
+	if (explo_owner == noone){
 	    if packageID.has_hit = true || packageID.free = false || (packageID.hitbox_timer > 40 && packageID.vsp = 0) {
 	        packageID.destroyed = true;
 	        var k = spawn_hit_fx(packageID.x, packageID.y + 55, mb_proj_lv3_explo_vfx);
@@ -266,6 +266,9 @@ if packageID != 0 {
 	        package_exploded = true;
 	        packageID = 0;	
 	    }
+		if(packageID.destroyed = true){
+			packageID = 0
+		}
 	} else if explo_owner != noone {
 	    if packageID.has_hit = true || packageID.free = false || (packageID.vsp = 0) {
 	        packageID.destroyed = true;
@@ -279,6 +282,9 @@ if packageID != 0 {
 	        package_exploded = true;
 	        packageID = 0;	
 	    }
+		if(packageID.destroyed = true){
+			packageID = 0
+		}
 	}
 	
 	if (packageID.free && packageID.y >= room_height - 0){
@@ -327,6 +333,10 @@ if lvl1projID != 0 {
 			}
 		}
 	}
+	if (!place_meeting(lvl1projID.x, lvl1projID.y, asset_get("par_block")) && lvl1projID.y >= room_height - 0){
+	    lvl1projID.destroyed = true;
+	    lvl1projID = 0;
+	}
 }
 
 if lvl2projID != 0 {
@@ -361,11 +371,6 @@ if lvl2projID != 0 {
 	        lvl2projID = 0;
 	        mailproj_hit = false;
 		}
-	}
-	
-	if (!place_meeting(lvl1projID.x, lvl1projID.y, asset_get("par_block")) && lvl1projID.y >= room_height - 0){
-	    lvl1projID.destroyed = true;
-	    lvl1projID = 0;
 	}
 
 

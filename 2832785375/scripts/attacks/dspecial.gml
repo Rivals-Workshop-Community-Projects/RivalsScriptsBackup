@@ -9,6 +9,8 @@ set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 30);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 2);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED, -5);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_syl_dspecial_growth"));
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_SFX_FRAME, 1);
 

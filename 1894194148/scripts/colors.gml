@@ -148,14 +148,14 @@ set_color_profile_slot( 12, 4, 90, 58, 60 ); //dark.purple
 set_color_profile_slot( 12, 5, 122, 66, 31 ); //dark.green
 set_color_profile_slot( 12, 6, 47, 50, 51 ); //grey.portrait
 
-// feribows
-set_color_profile_slot( 13, 0, 26, 78, 232 ); //top.purple
-set_color_profile_slot( 13, 1, 67, 138, 111 ); //top.green
-set_color_profile_slot( 13, 2, 224, 194, 255 ); //skin
-set_color_profile_slot( 13, 3, 255, 77, 215 ); //red
-set_color_profile_slot( 13, 4, 16, 53, 133 ); //dark.purple
-set_color_profile_slot( 13, 5, 15, 48, 28 ); //dark.green
-set_color_profile_slot( 13, 6, 28, 33, 28 ); //grey.portrait
+// Dilemma
+set_color_profile_slot( 13, 0, 126, 73, 148 ); //top.purple
+set_color_profile_slot( 13, 1, 119, 161, 142 ); //top.green
+set_color_profile_slot( 13, 2, 255, 238, 207 ); //skin
+set_color_profile_slot( 13, 3, 255, 194, 79 ); //red
+set_color_profile_slot( 13, 4, 92, 42, 112 ); //dark.purple
+set_color_profile_slot( 13, 5, 51, 44, 79 ); //dark.green
+set_color_profile_slot( 13, 6, 46, 37, 77 ); //grey.portrait
 
 // tomorrow valley
 set_color_profile_slot( 14, 0, 122, 79, 52 ); //top.purple

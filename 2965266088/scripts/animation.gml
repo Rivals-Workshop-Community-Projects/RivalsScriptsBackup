@@ -61,6 +61,7 @@ switch (state)
 	case PS_CROUCH:
 		if (right_down || left_down) sprite_index = sprite_get("crawl");
 		if (crawl_time > 0) image_index = fake_img;
+        hurtboxID.sprite_index = (crawl_time > 0) ? sprite_get("rumia_hurtbox_crawl") : crouchbox_spr;
 		break;
 	case PS_TUMBLE: case PS_HITSTUN_LAND:
 		hurt_img = 5;

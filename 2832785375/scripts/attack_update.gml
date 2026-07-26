@@ -10,14 +10,17 @@ if attack == AT_DAIR {
         old_djumps = djumps
     }
     if window == 2 || window == 3 {
-        can_move = false
+        can_move = false;
+        can_wall_jump = true;
         if !free {
             window++
             window_timer = 0
             destroy_hitboxes()
         }
         
-        if window_timer > 20 can_jump = true
+        if window_timer > 15{
+        can_jump = true
+        }
     }
     
     if window == 6 && window_timer == 1 {
@@ -86,6 +89,7 @@ if attack == AT_USPECIAL {
         can_special = true
         can_strong = true
         can_ustrong = true
+        can_shield = true
     }
     
     if window == 1 && window_timer == 1 sound_play(asset_get("sfx_syl_uspecial_travel_start"))
@@ -114,7 +118,7 @@ if attack == AT_USPECIAL {
             spr_dir *= -1
             set_state(PS_WALL_JUMP)
         }
-    } else if window == 2 && touch_wall {
+    } else if window == 2 && touch_wall && special_down {
         window = 3
         window_timer = 0
     } else if window == 2 && touch_ceiling {
@@ -123,7 +127,7 @@ if attack == AT_USPECIAL {
     }
     
     
-    if window == 5 {
+    if window == 5{
         if touch_wall {
             uspec_spawn_x = x + spr_dir*120
             if right_down && !left_down uspec_spawn_x += 60
@@ -160,6 +164,14 @@ if attack == AT_NSPECIAL {
 }
 
 if attack == AT_DSPECIAL {
+    if(free){
+        set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 0);
+        set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED, 0);
+    }else{
+        reset_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED);
+    }
+    trigger_wavebounce();
     move_cooldown[AT_DSPECIAL] = 30;
     
     if window_timer == 6 {
@@ -323,9 +335,10 @@ if attack == AT_DATTACK {
             orig_id.has_hit = true
             orig_id.hitpause = true
             orig_id.hitstop = 6
+            if(!orig_id.has_hit_player){
             orig_id.old_hsp = orig_id.hsp
             orig_id.old_vsp = orig_id.vsp
-            
+            }
             die = true
             sound_play(asset_get("sfx_crunch"))
             spawn_hit_fx(x, y, 133)
@@ -462,4 +475,15 @@ with obj_article1 if player_id == other.id && state == PS_IDLE {
     window = 1
     window_timer = 0
     other.remote_strong = true
+}
+
+#define trigger_wavebounce() 
+{
+    if ((left_down and state_timer <= 7 and spr_dir == 1) or (right_down and state_timer <= 7 and spr_dir == -1) and (b_reversed == false)) {
+        hsp *= -1;
+        spr_dir *= -1;
+        b_reversed = true;
+    } else if (state_timer == 6) {
+        b_reversed = false;
+    }
 }

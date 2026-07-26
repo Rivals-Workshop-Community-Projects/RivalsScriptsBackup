@@ -71,6 +71,8 @@ if (state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND)
 {
 	sound_volume(slender_staticheavy_sound_id, 0, 0);
 	sound_volume(slender_staticmedium_sound_id, 0, 0);
+	slender_staticheavy_volume = 0;
+	slender_staticmedium_volume = 0;
 }
 
 switch (state)
@@ -96,6 +98,7 @@ switch (state)
 			{
 				var is_it_heavy_distance = false;
 				var is_it_medium_distance = false;
+				var snd_distort_extra = sound_get("distort_ex_2")
 				with(oPlayer)
 				{
 					if (id != other.id && get_player_team(other.player) != get_player_team(player) &&
@@ -107,8 +110,22 @@ switch (state)
 						if (point_distance(x, y, other.x, other.y - 66) < other.dist_h_static)
 						{
 							is_it_heavy_distance = true;
-								if (get_gameplay_time() % 5 == 0) take_damage(player, other.player, 2);
-							if (slender_haunt == noone) slender_buildup += 2.05;
+							if (get_gameplay_time() % 5 == 0)
+							{
+								take_damage(player, other.player, 2);
+								if (state==PS_PARRY){
+									take_damage(player, other.player, 2);
+									sound_play(snd_distort_extra, false, noone, 0.8, 1.5);
+									//print("!!!")
+								}
+							}
+							if (slender_haunt == noone)
+							{
+								slender_buildup += 2.05;
+								if (state==PS_PARRY){
+									slender_buildup += 6.05;
+								}
+							}
 						}
 						//you might notice that this doesn't check for invincibility.... yes, it is NTENTIONAL.
 						// holdup chat you forgot the 'i' in intentional here.

@@ -17,19 +17,19 @@ if (get_player_stocks(player) == 1)
 // Specialty sound effects 
 switch (get_player_color(player))
 {
-	case 20:
+	case 22:
 	//scarymaze
 	sound_play(
 			sound_get("z_death_scarymaze2_jumpscare_warning_please"),
 			false, noone, 1);
 	break;
 	
-	case 21:
+	case 23:
 	//ender
 	sound_play(sound_get("z_death_ender"));
 	break;
 	
-	case 22:
+	case 24:
 	//teletubby
 	sound_play(sound_get("z_death_tubbies"));
 	break;

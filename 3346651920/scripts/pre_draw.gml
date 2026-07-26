@@ -45,7 +45,7 @@ if (state==PS_ATTACK_GROUND || state==PS_ATTACK_AIR){
 
 
 //alt stuff
-if (get_player_color( player ) == 15){//eckva
+if (get_player_color( player ) == 17){//eckva
 	shader_end();
 	maskHeader();
 	draw_sprite_ext(sprite_index, image_index, x, y, 2*spr_dir, 2, 0, -1, 1)

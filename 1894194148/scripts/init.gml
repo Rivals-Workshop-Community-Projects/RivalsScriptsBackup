@@ -259,16 +259,11 @@ ardev = false;
 trummelcodecneeded = false;
 tcoart = asset_get("empty_sprite"); //changes it later at update.gml
 Hikaru_Title = "Temporary Title"; //changes it later at update.gml
-feri_costume = sprite_get("feri_costume_AR"); //i coded this!
 otto_bobblehead_sprite = asset_get("empty_sprite"); //changes it later at update.gml
 // (you don't have to write anything, i just put it for fun)
 arena_title = "?";
 arena_short_name = "A.R.";
 battle_text = "*           approaches.";
-
-ncode1 = "Faceless hooded figure with a red blade."
-ncode2 = "Unable to identify with automatic detection."
-ncode3 = "Don't think. Feel and you'll be"
 
 steve_death_message = "Steve was slain by z_ARainbows using XaaaCi";
 

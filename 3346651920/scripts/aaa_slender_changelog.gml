@@ -4,6 +4,34 @@ they're in my head, they're in my soul.
 
 
 
+===v0.8===
+------
+:: alt colors "GORR'RYLAEHOTEP" and "KVDR" has been added
+:: alt colors "BLUE" "GREEN" "PURPLE" "DOOMDWELL" has been adjusted
+
+:: WEIRD EXPERIMENTAL ADDITION I CAN UNDO: INTERFERENCE (JAB) now applies DOUBLE damage and increased Slender Sickness Buildup on opponents.
+:::: there have been some feedback on how slenderman just has no options against parries (because he has no jab hitbox), and i've been thinking about maybe putting a hitbox somehow, but... i've been thinking about it
+:::: if it's a "option beats option, then another option beats that option" situation, what if just... that "beats" parry?
+:::: it is brave of you to get in and parry. however.
+:::: there is no use being brave against the true unknown of the forest.
+
+:::: if it is too much, i can limit it to "only when parry is active", since it currently counts the parry endlag duration as well.
+
+------
+:: fixed issue where holding left and right at the same time while in DSPECIAL (occuring most often when playing with keyboard) locked you in a weird state until you get hit out of it.
+:: fixed issue with JAB static volume not quite resetting if JAB was prematurely stopped, e.g. by cancelling into parry.
+
+:: known issue: you can drop from platforms while in jab endlag. however i kinda like this so i'm keeping it in.
+
+------
+:: DSPECIAL cancel endlag is shorter by 4 frames.
+:: FSPECIAL endlag is shorter by 2 frames.
+
+------
+Fear is interest paid on a debt you might not owe
+
+
+
 ===v0.7===
 ------
 :: i was reminded of it today so i went ahead and made JAB check for invincibility. now it no longer deals damage-over-time piercing through invincibility.

@@ -643,7 +643,7 @@ switch(attack){
 		}
 		if window == 3 && window_timer == 10  {
 			mailboxID = instance_create(x + (spr_dir * 57), y - 2 , ("obj_article1"));
-		    move_cooldown[AT_DSPECIAL] = 50;
+		    move_cooldown[AT_DSPECIAL] = 400;
 			//print("test")
 		}
 	break;
@@ -659,6 +659,7 @@ switch(attack){
 				if mailboxID.letters < 3 {
 					sound_play(sound_get("whistle"), 0, noone, 2, 1)
 				} else if mailboxID.letters == 3 {
+					move_cooldown[AT_DSPECIAL] = 50;
 					sound_play(sound_get("bigwhistle"), 0, noone, 2, 1)
 				}
 			}
@@ -1267,7 +1268,7 @@ var dfg; //fg_sprite value
 var dfa = 0; //draw_angle value
 var dust_color = 0;
 var x = argument[0], y = argument[1], name = argument[2];
-var dir; if (argument_count > 3) dir = argument[3]; else dir = 0;
+var dir = argument_count > 3 ? argument[3] : 0;
 
 switch (name) {
     default: 

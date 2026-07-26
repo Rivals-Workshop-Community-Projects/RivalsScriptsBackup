@@ -698,7 +698,6 @@ if instance_exists(after_image1) and (after_image1.state == 1) and (mark_meter >
 				}
 				else if (strong_down)
 				{
-					set_attack(AT_USTRONG)
 					if (joy_dir >= 28 and joy_dir <= 155)
 					{
 					    set_attack(AT_USTRONG);

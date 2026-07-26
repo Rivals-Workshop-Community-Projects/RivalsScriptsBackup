@@ -24,7 +24,7 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED, 0);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 2);//wow!!
 
 //end
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 16);//22
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 14);//22//16
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED_TYPE, 1);

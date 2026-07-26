@@ -9,7 +9,9 @@ with pHitBox if player_id == other.id && attack == AT_DSPECIAL && hbox_num == 1 
     is_grappling = true
 }
 
-with obj_article1 if player_id == other.id && state == PS_WRAPPED && !is_grappling {
+if(enemy_hitboxID.type == 1){
+with obj_article1 if player_id == other.id && state == PS_WRAPPED && !is_grappling{
     state = PS_DEAD
     state_timer = 0
+}
 }

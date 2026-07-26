@@ -20,6 +20,13 @@ if attack == AT_DTILT {
 }
 
 if attack == AT_DSPECIAL {
+    if(!free){
+        set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED_TYPE, 0);
+        set_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED, 0);
+    }else{
+        reset_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED_TYPE);
+        reset_window_value(AT_DSPECIAL, 1, AG_WINDOW_VSPEED);
+    }
     with pHitBox if ("arb_seeker" in self) {
         die = true
     }

@@ -329,7 +329,7 @@ switch (attack)
 				// Sound effects.
 				switch (get_player_color(player))
 				{
-					case 21:
+					case 23:
 					// ender
 					sound_play(sound_get("z_tele_ender"),false,noone,0.8);
 					sound_play(sound_get("z_tele_ender"),false,noone,0.8);
@@ -667,7 +667,7 @@ if (!hitpause)
 			sound_play(sound_get("nisae_hit2"));
 			switch (get_player_color(player))
 			{
-				case 20:
+				case 22:
 				sound_play(sound_get("z_death_scarymaze2_jumpscare_warning_please"), false, noone, 0.9, 1);
 				sound_play(sound_get("z_death_scarymaze2_jumpscare_warning_please"), false, noone, 0.9, 0.9);
 				break;
@@ -821,7 +821,9 @@ switch (window)
 	hsp = clamp(hsp + ((walk_accel + ground_friction) * spr_dir), walk_speed * -1, walk_speed);
 	if (walkturn_dir != spr_dir)
 	{
-		window_timer = 0;
+		//print("walkturn_dir = "+string(walkturn_dir))
+		//print("spr_dir = "+string(spr_dir))
+		//window_timer = 0; //was causing lockup when left+right both held, while specifically only dspecial. still dunno why.
 	}
 	
 	// Freefall
@@ -875,7 +877,7 @@ switch (window)
 }
 
 // Ending.
-if (window <= 2)
+if (window <= 3) //previously <=2. this had to include walkturn now or else if you held walkturn forever the move would not end.
 {
 	if (attack == AT_JAB)
 	{

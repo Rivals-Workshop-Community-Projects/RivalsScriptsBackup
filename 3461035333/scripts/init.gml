@@ -1,28 +1,3 @@
-//init.gml
-//every script that has the word "init" will run only for the first frame of the "update" of it
-//this script is used to assign player variables
-//init.gml runs at the start of the match
-
-////////////////////////////////////////////////////// CHARACTER GENERAL VARIABLES //////////////////////////////////////////////////////
-
-/* STAT NOTES
- * The stats below are taken from Zetterburn, replacing Sandbert's overpowered
- * movement stats. The commented-out numbers are the range of values the RoA
- * base cast has - e.g. it lists the slowest and fastest run speeds.
- * 
- * Replace Zetter's stats with whatever strengths/weaknesses your char should
- * have, e.g. change dash_speed to 8 or so if you want a fast character.
- *
- * Explanation of each stat:
- * https://rivalsofaether.com/player-variables/
- * 
- * Base Cast Frame Data:
- * docs.google.com/spreadsheets/d/19UtK7xG2c-ehxdlhCFKMpM4_IHSG-EXFgXLJaunE79I
- * 
- * Base Cast Stats:
- * docs.google.com/spreadsheets/d/14JIjL_5t81JHqnJmU6BSsRosTe2JO8sFGUysM_9tDoU
-*/
-
 //Marlow variables
 last_joy_dir = 0;
 
@@ -71,8 +46,6 @@ sage_meter_threshold_bonus = 10;
 sage_timer = 0;
 sage_taunt_bonus = 10;
 
-normal_air_max_speed = 6;
-
 sage_meter_depletion_rate = 44;
 
 mark_meter = 0;
@@ -84,7 +57,7 @@ sonic_boom_threshold = 15;
 special_down_timer = 0;
 strong_down_timer = 0;
 
-afterimage_array=0;
+afterimage_array = 0;
 
 slow_motion_mode = 0;
 
@@ -133,7 +106,7 @@ moonwalk_accel          = 1.5;		            // 1.2  -  1.4
 // Air movement
 leave_ground_max        = 8; //8		        // 4    -  8
 max_jump_hsp            = 4.6; // 6		        // 4    -  8
-air_max_speed           = normal_air_max_speed; // 3    -  7
+air_max_speed           = 4.5; // 6             // 3    -  7
 jump_change             = 3;		            // 3
 air_accel               = 0.25; //0.25		    // 0.2  -  0.4
 prat_fall_accel         = 1.5;		            // 0.25 -  1.5
@@ -188,7 +161,7 @@ can_wall_cling          = false;    // lets the character cling onto walls, you 
 wall_frames             = 1;		// amount of animation frames to play while clinging, spread accross 60 frames
 
 // Parry
-dodge_startup_frames    = 1;
+dodge_startup_frames    = 2;
 dodge_active_frames     = 1;
 dodge_recovery_frames   = 3;
 

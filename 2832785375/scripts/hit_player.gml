@@ -63,6 +63,8 @@ if my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 3 {
 }
 
 if my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 3 {
+    id.old_hsp = id.hsp
+    id.old_vsp = id.vsp
     if hit_player_obj.arb_marked {
         //seed_hit = true
     }

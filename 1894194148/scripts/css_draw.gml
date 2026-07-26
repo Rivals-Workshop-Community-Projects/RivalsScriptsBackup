@@ -153,9 +153,9 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[12,0] = make_color_rgb(223, 183, 49)
 	ce[12,1] = "Night Walker"
 	ce[12,2] = "Colors of Linne from UNDER NIGHT IN-BIRTH TM Exe Late [st] [cl-r] Thousand night, Recurrence night, Reverie end Invite. and... [7days Immortal] Unreal BLACK THINGS."
-	ce[13,0] = make_color_rgb(26, 78, 232)
-	ce[13,1] = "Feribows"
-	ce[13,2] = "Did you know I helped with Feri? Shoutouts to Azazel"
+	ce[13,0] = make_color_rgb(126, 73, 148)
+	ce[13,1] = "Half Dilemma"
+	ce[13,2] = "Somber greetings from the future"
 	ce[14,0] = make_color_rgb(183, 242, 87)
 	ce[14,1] = "Tomorrow Valley"
 	ce[14,2] = "Also known as Storyshift"

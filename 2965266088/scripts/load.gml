@@ -72,6 +72,7 @@ sprite_change_offset("plat_pre",        32, 47); //draws platform behind the pla
 
 sprite_change_offset("rumia_hurtbox",       20, 54);
 sprite_change_offset("rumia_hurtbox_hit",   23, 49);
+sprite_change_offset("rumia_hurtbox_crawl", 28, 19);
 sprite_change_offset("hud_msg1",        48, 48);
 sprite_change_offset("hud_msg2",        48, 48);
 sprite_change_offset("fx_graze_range",  24, 24);

@@ -54,7 +54,7 @@ set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAME_START, 16);
 set_window_value(AT_DSPECIAL, 7, AG_WINDOW_ANIM_FRAMES, 2);
 
 //END2
-set_window_value(AT_DSPECIAL, 8, AG_WINDOW_LENGTH, 22);
+set_window_value(AT_DSPECIAL, 8, AG_WINDOW_LENGTH, 18);//22
 set_window_value(AT_DSPECIAL, 8, AG_WINDOW_ANIM_FRAME_START, 18);
 set_window_value(AT_DSPECIAL, 8, AG_WINDOW_ANIM_FRAMES, 1);
 
