@@ -191,8 +191,8 @@ with (asset_get("pHitBox")){
 		}
 	}
 }
-if ( (y > view_get_yview() + view_get_hview()) or (x+150 < view_get_xview()) or (y+120 < view_get_yview()) or (y-120 > view_get_yview() + view_get_hview()) or (x-150 > view_get_xview() + view_get_wview())){
-        instance_destroy(); //If it's off screen, delete it.
+if (y<player_id.blastU||y>player_id.blastD||x<player_id.blastL||x>player_id.blastR){
+        instance_destroy(); //If it's off screen, delete it. SUUUUUUURE BUDDY
 }
 if (free == false && (place_meeting( x+25 * spr_dir, 0, asset_get("par_block"))) && !(player_id.special_pressed && player_id.joy_pad_idle == true)){ //the y has no purpose, so it won't check for the ground.
 	wall_turn = true;

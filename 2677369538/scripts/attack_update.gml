@@ -103,7 +103,7 @@ if (attack == AT_DATTACK){
 			window = 5;
 			window_timer = 0;
 		} else {
-			if (window_timer == 6 || window_timer == 12){
+			if ((window_timer == 6 || window_timer == 12) &&hitstop==0){
 			attack_end();
 			create_hitbox(AT_DATTACK, 8, x, y); 
 			}

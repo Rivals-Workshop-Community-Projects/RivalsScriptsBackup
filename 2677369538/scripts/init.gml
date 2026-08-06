@@ -13,6 +13,11 @@ which_bash = 0;
 afterimage_timer = 0;
 KILL_RATS = 0;
 
+blastU=get_stage_data(SD_TOP_BLASTZONE_Y)
+blastD=get_stage_data(SD_BOTTOM_BLASTZONE_Y)
+blastL=get_stage_data(SD_LEFT_BLASTZONE_X)
+blastR=get_stage_data(SD_RIGHT_BLASTZONE_X)
+
 groundrat_id = noone;
 airrat_id = noone;
 
