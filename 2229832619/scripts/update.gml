@@ -186,12 +186,7 @@ if (state==PS_SPAWN && extra_col == 0 && taunt_down){
 		sound_play(sound_get("shine"));
 		init_shader();
 	}
-	if (right_down){
-		extra_col = 4
-		white_flash_timer = 18;
-		sound_play(sound_get("shine"));
-		init_shader();
-	}
+	//4 is gone
 	if (attack_down){
 		extra_col = 5
 		white_flash_timer = 18;

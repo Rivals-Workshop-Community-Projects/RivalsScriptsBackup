@@ -241,27 +241,13 @@ set_article_color_slot(6, 208, 208, 208 ); //blade
 set_article_color_slot(7, 122, 111, 148 ); //blade.2
 base_col = make_colour_rgb(126, 33, 207 );
 }
-if (extra_col==4){//truethaumaturge "taint"
-// shade, r, g, b, alpha
-set_character_color_slot(0, 157, 51, 212 ); //main
-set_character_color_slot(1, 114, 35, 166 ); //main.2
-set_character_color_slot(2, 90, 21, 130 ); //main.3
-set_character_color_slot(3, 255, 64, 246 ); //purple
-set_character_color_slot(4, 228, 222, 236 ); //white_eye
-set_character_color_slot(5, 255, 117, 243 ); //abyss_eye
-set_character_color_slot(6, 60, 23, 120 ); //blade
-set_character_color_slot(7, 42, 7, 69 ); //blade.2
-set_article_color_slot(0, 157, 51, 212 ); //main
-set_article_color_slot(1, 114, 35, 166 ); //main.2
-set_article_color_slot(2, 90, 21, 130 ); //main.3
-set_article_color_slot(3, 255, 64, 246 ); //purple
-set_article_color_slot(4, 228, 222, 236 ); //white_eye
-set_article_color_slot(5, 255, 117, 243 ); //abyss_eye
-set_article_color_slot(6, 60, 23, 120 ); //blade
-set_article_color_slot(7, 42, 7, 69 ); //blade.2
-base_col = make_colour_rgb(255, 64, 246 );
-}
+
+//4 is gone
+
 if (extra_col==5){//spiderboi "tiny"
+
+//despite everything, i guess im not removing this one
+
 // shade, r, g, b, alpha
 /*set_character_color_slot(0, 53, 44, 222 ); //main
 set_character_color_slot(1, 43, 33, 176 ); //main.2

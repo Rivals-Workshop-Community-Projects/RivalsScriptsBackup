@@ -336,6 +336,14 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v4.2b - (2026 Aug 08)"
+		patch_note_text[i++] = 
+		"v4.2b (2026 Aug 08)
+		[b]Fixes[/b]
+		-
+		"
+		
+		
 		patch_note_title[i] = "v4.2 - (2025 Oct 12)"
 		patch_note_text[i++] = 
 		"v4.2 (2025 Oct 12)
