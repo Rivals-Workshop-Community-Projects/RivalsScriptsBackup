@@ -308,7 +308,10 @@ sl_prev_strong_charge = strong_charge
 var teleportthing = noone;
 with(pHitBox)
 {
-	if (player_id != other.id && type == 2)
+	//if (player_id.object_index == asset_get("obj_stage_main")){
+	//	print("yes, this is a stage hitbox")
+	//} //part of the solution
+	if (player_id != other.id && type == 2 && player_id.object_index != asset_get("obj_stage_main"))
 	{
 		if (!variable_instance_exists(id, "slender_sickness_check"))
 		{

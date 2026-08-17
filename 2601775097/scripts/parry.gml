@@ -2,10 +2,24 @@
 
 if (pHitBox.orig_player == player) exit;
 
-if (mp_cur < 100) mp_cur += 25;
+if (mp_cur < 100 && mp_gainable) mp_cur += 25;
 mp_mini_timer = mp_mini_timer_set;
 
 if (can_overdrive && od_cast == 0) od_cur += 10;
+
+if (lightbuff_active)
+{
+    if (polaris_shots_left > 1) polaris_double_strike_time = polaris_double_strike_time_set;
+    if (polaris_shots_left > 0)
+    {
+        var proj = polaris_shot_ids[polaris_shots_left-1];
+        proj.shoot_projectile = true;
+        proj.home_id = hit_player_obj;
+        proj.hitbox_timer = 0;
+        proj = noone;
+        polaris_shots_left --;
+    }
+}
 
 
 //AI stuff

@@ -6,7 +6,6 @@ switch (attack)
     case AT_DATTACK:
         if (up_down) attack = AT_UTILT;
         else if (down_down) attack = AT_DTILT;
-        else if (left_down || right_down) attack = AT_DATTACK;
         break;
     //skill select stuff - open for details
         // 1. change the attack to the correct skill values from init.gml

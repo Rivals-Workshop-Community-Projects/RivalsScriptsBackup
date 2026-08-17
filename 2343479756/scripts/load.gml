@@ -54,5 +54,9 @@ sprite_change_offset("uphurt", 79, 114);
 sprite_change_offset("downhurt", 79, 114);
 
 sprite_change_offset("locket", 16, 16);
+sprite_change_offset("lemon", 16, 16);
 sprite_change_offset("car", 79, 114);
 sprite_change_offset("meter", 40, 57);
+sprite_change_offset("locket_bg", 12, 12);
+sprite_change_offset("locket_sparkle1_strip3", 16, 16);
+sprite_change_offset("locket_sparkle2_strip2", 16, 16);

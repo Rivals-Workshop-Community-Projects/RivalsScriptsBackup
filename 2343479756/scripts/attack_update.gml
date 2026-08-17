@@ -98,8 +98,23 @@ if (attack==AT_USPECIAL){
 
 
 if (attack==AT_FSTRONG){
-	if (window == 2 && window_timer == 8){
-		shake_camera(8,3);
+	if (window==1){
+		if (window_timer==1){
+			sound_play(sound_get("dspecial"),false,noone,0.3,1.8)
+			sound_play(sound_get("dspecial"),false,noone,0.15,0.6)
+		}
+	}
+	if (window==2){
+		if (window_timer==1){
+			sound_play(sound_get("swing_weak_4"),false,noone,0.8,0.65)
+		}
+		if (window_timer==10){
+			if (!hitpause){
+				shake_camera(8,3);
+				//var tmp_hfx = spawn_hit_fx( x+(81*spr_dir), y, 259 );
+				//tmp_hfx.image_alpha = 0.75;
+			}
+		}
 	}
 }
 
@@ -257,6 +272,7 @@ if (attack==AT_NSPECIAL){
 	if (window = 3){
 		if (window_timer = 1){
 			spawn_hit_fx( x+(25*spr_dir), y-78, 113 )
+			sound_play(sound_get("nspecial_even"),false,noone,0.5)
 		}
 	}
 	if (!fsp_did&&!usp_did){

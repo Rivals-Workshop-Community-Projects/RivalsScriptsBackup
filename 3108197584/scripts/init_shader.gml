@@ -1,10 +1,8 @@
 var alt_cur = ("init_shader_alts" in self? init_shader_alts: get_player_color(player));
-var alt_sec = get_synced_var(player);
 
-var cols = [[143, 143, 143], [255, 0, 0], [143, 143, 143], [128, 70, 70], [143, 143, 143], [128, 70, 70], [143, 143, 143], [102, 114, 118]];
 if !alt_cur for(var e = 0; e < 8; e++){
-    set_character_color_slot(e, cols[e][0], cols[e][1], cols[e][2]);
-    set_article_color_slot(e, cols[e][0], cols[e][1], cols[e][2]);
+    set_character_color_slot(e, get_color_profile_slot_r(32, e), get_color_profile_slot_g(32, e), get_color_profile_slot_b(32, e), 1);
+    set_article_color_slot(e, get_color_profile_slot_r(32, e), get_color_profile_slot_g(32, e), get_color_profile_slot_b(32, e), 1);
 }
 
 static_colorO[32] = 0;

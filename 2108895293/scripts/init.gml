@@ -140,6 +140,7 @@ battle_text = "* You feel the faint aura of snow.";
 kirbyability = 16;
 enemykirby = noone;
 swallowed = 0;
+grace_dodge = 0;
 
 extra_col = 0;
 

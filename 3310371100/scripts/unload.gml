@@ -13,6 +13,7 @@ if (!ushr_handled_victory_quote)
             order: 99999,             // placement in results. only known later
             team: get_player_team(p), // current team of player
             priority: 0,              // message priority (0 default, 1 builtin, 2 explicit)
+            special: 0,              // special override quote id
             quote:"",                 // message if Hypercam wins against you
             icon: 0,                   // victory icon for char
             //===========================================================================
@@ -27,7 +28,7 @@ if (!ushr_handled_victory_quote)
         if (url == other.url)
         {
             //only one of the same character has to handle this for everyone: notify them.
-            ushr_handled_victory_quote = true;
+            ushr_handled_victory_quote = false;
             
             data.priority = 2;
             data.icon = 0;
@@ -61,8 +62,12 @@ if (!ushr_handled_victory_quote)
             }
             
         }
-		if (other.madeonfinale == true){data.quote="Go out fighting, go out young... A flash of lightning... Eclipse the sun.";data.icon=0;data.priority=3;}
-		if (other.mightyfallen == true){data.quote="Godspeed You! You're a determination!";data.icon=3;data.priority=3;}
+        if (url == other.url){
+			if (madeonfinale == true){data.special=1;}
+			if (mightyfallen == true){data.special=2;}
+			if (littlesparkplasma == true){data.special=3;}
+			if (m0417 == true){data.special=4;}
+		}
             
         transfer_array[player] = data;
     }

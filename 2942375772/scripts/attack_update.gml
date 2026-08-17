@@ -166,6 +166,7 @@ switch (attack)
         }
     break;
     case AT_USPECIAL:
+        can_fast_fall = false;
         can_wall_jump = true;
         can_move = false;
         

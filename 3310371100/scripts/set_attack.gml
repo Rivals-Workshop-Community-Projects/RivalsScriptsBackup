@@ -20,6 +20,7 @@ if ( attack == AT_NSPECIAL ){
 	}
 }
 if ( attack == AT_FSPECIAL ){
+	fsp_spinvolume_timer = 0;
 	attack = AT_FSPECIAL_2
 }
 if ( attack == AT_DSPECIAL ){
@@ -27,9 +28,26 @@ if ( attack == AT_DSPECIAL ){
 	attack = AT_DSPECIAL_2
 }
 
-if (get_match_setting( SET_SEASON )==3){
 if (get_synced_var( player )==0){//A
 	if (get_player_color( player ) == 8){
+if (get_match_setting( SET_SEASON )==3){
+	var tmp_rand = random_func_2( id%4, 10, true );
+	var tmp_rand_b = random_func_2( 2+(id%4), 10, true )/20;
+		switch (tmp_rand){
+			case 8:
+				sound_play(sound_get("windchime_1"),false,noone,0.35,0.9+tmp_rand_b)
+			break;
+			case 9:
+				sound_play(sound_get("windchime_2"),false,noone,0.35,0.9+tmp_rand_b)
+			break;
+			default: break;
+		}
+}
+	}
+}
+
+if (get_synced_var( player )==4){//
+	if (get_player_color( player ) == 11){
 	var tmp_rand = random_func_2( id%4, 10, true );
 	var tmp_rand_b = random_func_2( 2+(id%4), 10, true )/20;
 		switch (tmp_rand){
@@ -42,7 +60,6 @@ if (get_synced_var( player )==0){//A
 			default: break;
 		}
 	}
-}
 }
 
 move_start_spr_dir_tracker = spr_dir;

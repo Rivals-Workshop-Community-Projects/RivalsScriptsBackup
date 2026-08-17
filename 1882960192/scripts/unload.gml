@@ -94,11 +94,11 @@ if (!azure_handled_victory_quote)
             quote = "You weren't half bad, sis. Maybe next time you'll get it.";
             break;
         case "2089998666": // Big Yoshi
-            quote = "...Huh? What do you mean it's a cookie, not a flower?";
+            quote = "...Huh? What do you mean that thing you've been eating is a cookie, not a flower?";
             break;
         case "3380391964": // Troops
         case "1932503649": // Troops (Legacy)
-            quote = "How odd. I feel like I've known you for ages.";
+            quote = "I feel like I've known you for ages. ...Weird.";
             break;
         case "2310580951": // 64 Mario
             quote = "Can I have an autograph now, Mr. Mario? ...Wait, where are your fingers?";
@@ -122,7 +122,7 @@ if (!azure_handled_victory_quote)
 						
 		//my not-so-own characters lol
         case "3123375474": // Miles Edgeworth
-            quote = "Hey, where'd you get that thing on your neck?";
+            quote = "Hey, where'd you get that thing on your neck? The 19th century?";
             break;
         case "2839808881": // Kirby (Dream Collection)
             quote = "So tough, yet so...friend-shaped. If that even makes sense.";
@@ -160,7 +160,7 @@ if (!azure_handled_victory_quote)
             break;
 
         case "1996010699": // Suitcase
-            quote = "...Sure, I'll fight a suitcase. Why not? What could possibly faze me in this place...?"
+            quote = "...Sure, I guess I just fought a suitcase. Why not?"
             break;
             
         case "2871136791": // Lode & Puul
@@ -212,7 +212,7 @@ if (!azure_handled_victory_quote)
             break;
         
         case "2904498757": //Peppino
-            quote = "Dang, everything about you just SCREAMS pizza box mascot. ...wow, you look unwell.";
+            quote = "Man, everything about you just SCREAMS pizza box mascot. ...and, uh, you look unwell.";
             break;
         
         case "2605468032": //Gawr Gura

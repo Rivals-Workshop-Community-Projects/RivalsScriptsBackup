@@ -96,9 +96,9 @@ if (winner == player /* && uhc_batteries */)
     var data_array = noone;
     //var data_batteries = true;
     //relies on unload.gml sending over a persistent hitbox with said data
-    with (asset_get("pHitBox")) if ("ushr_victory_screen_array" in self)
+    with (asset_get("pHitBox")) if ("ao_victory_screen_array" in self)
     {
-        data_array = ushr_victory_screen_array;
+        data_array = ao_victory_screen_array;
         //data_batteries = uhc_batteries;
         break;
     }

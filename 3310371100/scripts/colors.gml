@@ -213,15 +213,15 @@ set_color_profile_slot( 14, 5, 119, 85, 148 ); //gold
 set_color_profile_slot( 14, 6, 172, 152, 181 ); //umbrella
 set_color_profile_slot( 14, 7, 111, 77, 127 ); //eyes
 
-// dusk
-set_color_profile_slot( 15, 0, 168, 115, 255 ); //green
-set_color_profile_slot( 15, 1, 255, 248, 176 ); //hair
-set_color_profile_slot( 15, 2, 155, 112, 81 ); //skin
-set_color_profile_slot( 15, 3, 81, 86, 122 ); //white
-set_color_profile_slot( 15, 4, 102, 30, 46 ); //dark
-set_color_profile_slot( 15, 5, 138, 57, 75 ); //gold
-set_color_profile_slot( 15, 6, 102, 30, 46); //umbrella
-set_color_profile_slot( 15, 7, 30, 18, 48 ); //eyes
+// skyblue
+set_color_profile_slot( 15, 0, 0, 192, 255 ); //green
+set_color_profile_slot( 15, 1, 15, 153, 207 ); //hair
+set_color_profile_slot( 15, 2, 247, 213, 153 ); //skin
+set_color_profile_slot( 15, 3, 161, 255, 255 ); //white
+set_color_profile_slot( 15, 4, 24, 84, 173 ); //dark
+set_color_profile_slot( 15, 5, 43, 111, 255 ); //gold
+set_color_profile_slot( 15, 6, 0, 189, 214 ); //umbrella
+set_color_profile_slot( 15, 7, 34, 46, 97 ); //eyes
 
 // ASH
 set_color_profile_slot( 16, 0, 255, 201, 89 ); //green

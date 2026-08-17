@@ -38,7 +38,7 @@ set_color_profile_slot_range( 7, 1, 1, 1 );
 
 
 // ALTERNATE COLORS
-set_num_palettes( 20 );
+set_num_palettes( 19 );
 
 // apotos
 set_color_profile_slot( 1, 0, 190, 196, 209 ); //pink
@@ -190,45 +190,35 @@ set_color_profile_slot( 15, 5, 90, 173, 90 ); //dress
 set_color_profile_slot( 15, 6, 15, 54, 20 ); //eyes
 set_color_profile_slot( 15, 7, 255, 135, 122 ); //blush
 
-// noradrenaline
-set_color_profile_slot( 16, 0, 43, 61, 43 ); //pink
-set_color_profile_slot( 16, 1, 82, 59, 49 ); //hair
-set_color_profile_slot( 16, 2, 240, 189, 139 ); //skin
-set_color_profile_slot( 16, 3, 166, 16, 18 ); //red
-set_color_profile_slot( 16, 4, 159, 207, 159 ); //sleeves
-set_color_profile_slot( 16, 5, 92, 67, 52 ); //dress
-set_color_profile_slot( 16, 6, 240, 189, 139 ); //eyes
-set_color_profile_slot( 16, 7, 240, 189, 139 ); //blush
-
 // ballin
-set_color_profile_slot( 17, 0, 196, 92, 191 ); //pink
-set_color_profile_slot( 17, 1, 90, 73, 107 ); //hair
-set_color_profile_slot( 17, 2, 255, 227, 196 ); //skin
-set_color_profile_slot( 17, 3, 94, 75, 153 ); //red
-set_color_profile_slot( 17, 4, 196, 92, 191 ); //sleeves
-set_color_profile_slot( 17, 5, 94, 75, 153 ); //dress
-set_color_profile_slot( 17, 6, 17, 17, 18 ); //eyes
-set_color_profile_slot( 17, 7, 255, 227, 196 ); //blush
+set_color_profile_slot( 16, 0, 196, 92, 191 ); //pink
+set_color_profile_slot( 16, 1, 90, 73, 107 ); //hair
+set_color_profile_slot( 16, 2, 255, 227, 196 ); //skin
+set_color_profile_slot( 16, 3, 94, 75, 153 ); //red
+set_color_profile_slot( 16, 4, 196, 92, 191 ); //sleeves
+set_color_profile_slot( 16, 5, 94, 75, 153 ); //dress
+set_color_profile_slot( 16, 6, 17, 17, 18 ); //eyes
+set_color_profile_slot( 16, 7, 255, 227, 196 ); //blush
 
 // longing
-set_color_profile_slot( 18, 0, 58, 65, 105 ); //pink
-set_color_profile_slot( 18, 1, 49, 49, 64 ); //hair
-set_color_profile_slot( 18, 2, 166, 123, 99 ); //skin
-set_color_profile_slot( 18, 3, 255, 195, 0 ); //red
-set_color_profile_slot( 18, 4, 49, 49, 64 ); //sleeves
-set_color_profile_slot( 18, 5, 58, 65, 105 ); //dress
-set_color_profile_slot( 18, 6, 255, 195, 0 ); //eyes
-set_color_profile_slot( 18, 7, 255, 195, 0 ); //blush
+set_color_profile_slot( 17, 0, 58, 65, 105 ); //pink
+set_color_profile_slot( 17, 1, 49, 49, 64 ); //hair
+set_color_profile_slot( 17, 2, 166, 123, 99 ); //skin
+set_color_profile_slot( 17, 3, 255, 195, 0 ); //red
+set_color_profile_slot( 17, 4, 49, 49, 64 ); //sleeves
+set_color_profile_slot( 17, 5, 58, 65, 105 ); //dress
+set_color_profile_slot( 17, 6, 255, 195, 0 ); //eyes
+set_color_profile_slot( 17, 7, 255, 195, 0 ); //blush
 
 // inu
-set_color_profile_slot( 19, 0, 61, 45, 37 ); //pink
-set_color_profile_slot( 19, 1, 125, 60, 45 ); //hair
-set_color_profile_slot( 19, 2, 255, 217, 176 ); //skin
-set_color_profile_slot( 19, 3, 181, 17, 58 ); //red
-set_color_profile_slot( 19, 4, 181, 17, 58 ); //sleeves
-set_color_profile_slot( 19, 5, 250, 112, 188 ); //dress
-set_color_profile_slot( 19, 6, 79, 24, 24 ); //eyes
-set_color_profile_slot( 19, 7, 255, 122, 88 ); //blush
+set_color_profile_slot( 18, 0, 61, 45, 37 ); //pink
+set_color_profile_slot( 18, 1, 125, 60, 45 ); //hair
+set_color_profile_slot( 18, 2, 255, 217, 176 ); //skin
+set_color_profile_slot( 18, 3, 181, 17, 58 ); //red
+set_color_profile_slot( 18, 4, 181, 17, 58 ); //sleeves
+set_color_profile_slot( 18, 5, 250, 112, 188 ); //dress
+set_color_profile_slot( 18, 6, 79, 24, 24 ); //eyes
+set_color_profile_slot( 18, 7, 255, 122, 88 ); //blush
 
 
 /* This is a comment used by that one RoA colors.gml generator tool to store palette data. You can safely keep it in your colors.gml if you plan to re-use the tool later, or safely remove it if you don't.

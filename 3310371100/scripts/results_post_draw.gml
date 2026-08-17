@@ -40,7 +40,15 @@ if (winner == player /* && uhc_batteries */)
     {
         draw_sprite(sprite_get("etc_victory_quote_bg"), 0, 
                     ushr_quote_current_pos_x, quote_pos_y);
-        draw_sprite_ext(sprite_get("etc_faceicon"), victoryicon_subimg, 
+		var tmp_icon = victoryicon_subimg;
+		if (victoryicon_subimg==66){//string_delete(str, index, count)
+			var tmp_str_len = string_length(ushr_victory_quote);
+			//print("len: "+string(tmp_str_len));
+			ushr_victory_quote = string_delete(ushr_victory_quote, 1, tmp_str_len-10)+string_delete(ushr_victory_quote, tmp_str_len-9, 10);
+			var tmp_icon = ord(string_char_at(ushr_victory_quote, 1));
+			//print(string(tmp_icon));
+		}
+        draw_sprite_ext(sprite_get("etc_faceicon"), tmp_icon, 
                     ushr_quote_current_pos_x + 37, quote_pos_y - 46, 3, 3, 0, c_white, 1);
         draw_win_quote(ushr_quote_current_pos_x+46, quote_pos_y+18, 
                         ushr_victory_quote);
@@ -148,6 +156,36 @@ if (winner == player /* && uhc_batteries */)
 
         ushr_victory_quote = data_array[best_player].quote;
         victoryicon_subimg = data_array[best_player].icon;
+		
+		/*print("winner is: "+string(winner))
+		print("best_player is: "+string(best_player))
+		print("best_player special is: "+string(data_array[best_player].special))
+		print(string(data_array[1].special)+string(data_array[2].special)+string(data_array[3].special)+string(data_array[4].special))*/
+		//special alt color overrides
+		switch (data_array[winner].special)
+		{
+			case 1: // madeonfinale
+				ushr_victory_quote = "Go out fighting, go out young... A flash of lightning... Eclipse the sun.";
+				victoryicon_subimg = 0;
+				break;
+			
+			case 2: // mightyfallen
+				ushr_victory_quote = "Godspeed You! You're a determination!";
+				victoryicon_subimg = 3;
+				break;
+			
+			case 3: // littlesparkplasma
+				ushr_victory_quote = "Hmph! That was too easy, try better next time, punk. ... Hehe, ahaha! Did that sound cool or did I totally mess it up?";
+				victoryicon_subimg = 3;
+				break;
+			
+			case 4: // m0417
+				ushr_victory_quote = " ・ ・(bÑム ・h ・C ・1xp ・(*ÙHh& ・1x8 7 ゥ ↑??????????????Ë ・ ・ 2・ 5・ ・＊↑ゥA↑ çdqìïEゥ:    ゲヲa0モm3]T6モEDTモEUEcDU ...ｻ..ｻｪ.ｻｪｪｻｪｪｪ...ｻ..ｻ.ｪｻｪｪｻｪｪùôÝÕÊÃÌÈÉü↑リホツフヤヒナ→'siiq ・ ・nlhqF. ・H..h           >1 ・x.(ÑムHI ・J.1..R0  . ・ ・Cクaクiyi     p9  18  09  1 xQ    p8  0   x x ・モ8  0 ! p9  18..09  1 xQ    p8 0 ・ ・0E ・ ・0E ・ ・0E ・ ・0E ・ ・0T ・ ・ ・S ・ ・ ・C ・ ・ ・0.オ ・oF.H8'8h.I.9H...!ノ ロ ロ ロ ロ ロ ロ ロロロロロロロロロロ ロロロ ロ ロ ロ '9H   0 I# ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; : : : : : : : : 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9  ウ 4  ウ 4  ウ 4  ウ 4  ウ 4--------------ミ.. . . . . . . . .w...Ue..UUv.Uev.......f... ・ ・ ・ ・C@3C.D '' 2._.!. ・ ! ・ ・ ・! ・ ・C.1S ・433123.4.3 DTE#UU43>E3#?v=s21Sxhahnms";
+				victoryicon_subimg = 66;
+				break;
+			
+			default: break;
+		}
     }
     
 }

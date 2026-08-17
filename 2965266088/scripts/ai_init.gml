@@ -27,21 +27,15 @@ blastzone_r = get_stage_data(SD_RIGHT_BLASTZONE_X);
 adjusted_recovery = false;
 adjusted_recovery_offset = 0;
 
-print("Floor size check");
-if (position_meeting(stage_left,stage_top + 20,asset_get("par_block")))
+//print("Floor size check");
+if (!position_meeting(stage_left, stage_top + 20, asset_get("par_block")))
 {
-	print_debug("Normal recovery");
-}
-else
-{
-	print_debug("Adjusted recovery");
+	//print_debug("Adjusted recovery");
 	adjusted_recovery = true;
 	for (var i = 0; i < 50 && adjusted_recovery_offset == 0; i += 1)
 	{
-		if (position_meeting(stage_left + i*5,stage_top + 20,asset_get("par_block")))
-		{
-			adjusted_recovery_offset = i*5;
-		}
+		if (position_meeting(stage_left + i*5,stage_top + 20,asset_get("par_block"))) adjusted_recovery_offset = i*5;
 	}
-	print_debug("Adjusted recovery amount:" + string(adjusted_recovery_offset));
+	//print_debug("Adjusted recovery amount:" + string(adjusted_recovery_offset));
 }
+//else print_debug("Normal recovery");

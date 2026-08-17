@@ -39,6 +39,7 @@ switch (attack)
             attack_end();
             set_attack(skill[4].skill_attack);
             hurtboxID.sprite_index = get_attack_value(skill[4].skill_attack, AG_HURTBOX_SPRITE);
+            hsp += 4 * spr_dir;
         }
 
         if (window == 9 && window_timer == window_end && !is_attack_pressed(DIR_ANY) && was_parried) set_state(PS_PRATLAND);

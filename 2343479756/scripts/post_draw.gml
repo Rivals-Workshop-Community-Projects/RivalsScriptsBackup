@@ -29,6 +29,66 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v1.10 hotfix - (2026 Aug 12)"
+		patch_note_text[i++] = 
+		"v1.10 hotfix - (2026 Aug 12)
+		[b]fixes[/b]
+		- oops, i accounted for parry graphical bug on ONE thing and not the other. NSPECIAL locket parry visual error has been fixed
+		"
+		
+		
+		patch_note_title[i] = "v1.9 - (2026 Aug 10)"
+		patch_note_text[i++] = 
+		"v1.9 - (2026 Aug 10)
+		[b]additions[/b]
+		- added a few simple compatibilities
+		- FSTRONG has been given animation tweaks, including a new inbetween frame right before the swing!
+		
+		[b]fixes[/b]
+		- WACKY NSPECIAL SHENANEGANS WITH REVERSE ANGLES HAVE BEEN FIXED.
+		...instead...
+		
+		[b]changes[/b]
+		though i'd much rather leave it fixed and gone forever, why not play around with the idea, atleast for a little while?
+		- EXPERIMENTAL, can revert
+		- every time you hit the NSPECIAL Locket, it REVERSES the hitbox angle direction now.
+		- the kick hitboxes does not change the direction, so prepare it before you kick!
+		- there is now an indicator visual behind the Locket that shows player color and also a ''shape'' that corresponds to the current direction.
+		- plays a corresponding sound too
+		- of course the direction relies on the actual direction it was thrown (the direction it's moving) so it might be confusing
+		- so i also added a trail of sparkle particles behind the locket, hopefully this helps with judging how it moves
+		- on the other news, more sfx has been added to FSTRONG and screenshake timing of it is also adjusted
+		
+		[b]balances[/b]
+		-- -- idk
+		- i've heard Angle Flipper 9 is better for UAIR so i'm putting it there (10 -> 9), try it out for yourself
+		
+		-- -- beneficial
+		- FSPECIAL can now hit NSPECIAL much easily. (priority 0 hitbox has been added specifically to hit NSPECIAL, it is 50 pixels larger than actual FSPECIAL hitbox)
+		
+		-- -- counterplay
+		- max airspeed decreased (air_max_speed 5 -> 4.75, max_jump_hsp 5.5 -> 5, leave_ground_max 7 -> 5.5)
+		- FSTRONG hitbox size has been adjusted to be smaller (notably, how much space it covered behind her)
+		- FSTRONG startup after charge has been increased by 2 frames. (8 -> 10)
+		- FSPECIAL endlag increased by 1 frame, not counting whifflag.
+		
+		[b]notes[/b]
+		natsumi patch? in 2026?
+		thanks to kibbykins for the inspiration for this suddenly elaborate patch"
+		
+		
+		patch_note_title[i] = "v1.8b - (2026 Aug 09)"
+		patch_note_text[i++] = 
+		"v1.8b - (2026 Aug 09)
+		カラバリ「ノルアドレナリン」
+		きえました。
+
+		[b]balances[/b]
+		-- -- counterplay
+		- FAIR and NAIR now have landing lag increased by 1 point.
+		"
+		
+		
 		patch_note_title[i] = "v1.8 - (2025 Aug 30)"
 		patch_note_text[i++] = 
 		"v1.8 - (2025 Aug 30)

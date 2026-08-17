@@ -22,6 +22,20 @@ if (usp_cd_state != 0){
 }
 
 
+with(asset_get("pHitBox")){
+	if (player_id == other){
+		if (variable_instance_exists(id, "h_hitcount")){
+			if (h_hitcount%2==0){
+				draw_sprite_ext( h_locketthing, 2, x, y, 2, 2, 0, -1, 0.25 );
+				draw_sprite_ext( h_locketthing, 2, x, y, 2, 2, 0, get_player_hud_color( other.player ), 0.5 );
+			}else{
+				draw_sprite_ext( h_locketthing, 1, x, y, 2, 2, 0, -1, 0.25 );
+				draw_sprite_ext( h_locketthing, 1, x, y, 2, 2, 0, get_player_hud_color( other.player ), 0.5 );
+			}
+		}
+	}
+}
+
 if (attack==AT_FSPECIAL && (state==PS_ATTACK_GROUND||state==PS_ATTACK_AIR)){
 	var tmp_w = get_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH);
 	var tmp_x = get_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X);

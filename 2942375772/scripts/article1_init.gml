@@ -44,6 +44,17 @@ should_die = false;
 explode_timer = 0;
 max_explode_timer = 3;
 explode_should_hit_self = false;
+
+offscreen_arrow_enabled = true;             
+article_offscreen = false;                  
+offscreen_image = 0;                        
+offscreen_x_pos = 0;                        
+offscreen_y_pos = 0;
+
+orig_depth = depth;
+
+hud_col = get_player_hud_color(player);
+
 ///     article[index]_update.gml
  
 //Put this code at the bottom of the file.

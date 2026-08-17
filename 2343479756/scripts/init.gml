@@ -74,9 +74,9 @@ jump_start_time = 5;
 jump_speed = 11.5;
 short_hop_speed = 7.5;//8
 djump_speed = 10;
-leave_ground_max = 7;//7 //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = 5.5;//4 //the maximum hsp you can have when jumping from the ground
-air_max_speed = 5;//6//5.5//5.2 //the maximum hsp you can accelerate to when in a normal aerial state
+leave_ground_max = 5.5;//7 //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = 5;//5.5//4 //the maximum hsp you can have when jumping from the ground
+air_max_speed = 4.75;//5//6//5.5//5.2 //the maximum hsp you can accelerate to when in a normal aerial state
 jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .3;
 prat_fall_accel = .85; //multiplier of air_accel while in pratfall
@@ -159,16 +159,20 @@ usp_cd_end = 0;
 usp_cd_dur = 180;//180
 
 Hikaru_Title = "Vector Art";
-arena_title = "Flash Emissary"
+arena_title = "Flash Emissary"; boxing_title = arena_title; //holy frick
 battle_text = "* Smells like 2003.";
-
-ncode1 = "Don't think."
-ncode2 = "feel and you'll be tanasinn."
-ncode3 = ""
+TCG_Kirby_Copy = 5; //sword
+copy_ability_id = 12; //wheel
+keygen_type = "Macromedia Flash Professional"
 
 steve_death_message = "Steve was slain by AndohNatsu";
 
 I_would_not_like_Sephiroth_to_impale_my_character = true; //she aint my character bro
+
+locket_sparkle1 = hit_fx_create( sprite_get("locket_sparkle1"), 12 );
+locket_sparkle2 = hit_fx_create( sprite_get("locket_sparkle2"), 8 );
+locket_sparkle3 = hit_fx_create( sprite_get("locket_sparkle3"), 12 );
+locket_sparkle4 = hit_fx_create( sprite_get("locket_sparkle4"), 8 );
 
 
 set_victory_theme( sound_get( "victory" ));

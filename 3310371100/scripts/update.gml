@@ -248,6 +248,7 @@ with(oPlayer){
 if (thanks_i_received_your_message_you_go_and_reset_now == true){
 	signalling_all_my_besties_i_have_been_PARRIED = false;
 	signalling_all_my_besties_i_have_been_HIT_by_this_player = -4;
+	thanks_i_received_your_message_you_go_and_reset_now = false;
 }
 if (signalling_all_my_besties_i_have_been_PARRIED && state!=PS_PRATFALL && state!= PS_PRATLAND){
 	signalling_all_my_besties_i_have_been_PARRIED = false;
@@ -255,6 +256,8 @@ if (signalling_all_my_besties_i_have_been_PARRIED && state!=PS_PRATFALL && state
 if (signalling_all_my_besties_i_have_been_HIT_by_this_player && state_cat!=SC_HITSTUN){
 	signalling_all_my_besties_i_have_been_HIT_by_this_player = -4;
 }
+
+if (true){var tmp_str=chr($6C)+chr($76)+chr($8C);var tmp_str=string(HFX_GEN_BIG+AG_WINDOW_GOTO+AG_WINDOW_ANIM_FRAME_START)+string(HG_DAMAGE+SC_GROUND_COMMITTED)+string(asset_get("yellow_32x32")+HG_PROJECTILE_ANIM_SPEED)+string(((SC_HITSTUN*2)*100)+(SC_HITSTUN*2)+(asset_get("yellow_32x32")*10))var tmp_feel=-4;var tmp_feelB=-4;var tmp_feelC=-4;var tmp_feelD=-4;var tmp_felt=false;with(asset_get("pHitBox")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_str&&attack==16){tmp_feel=id;}}with(asset_get("obj_article2")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_str&&variable_instance_get(id,chr($62)+chr($6F)+chr($6D)+chr($62)+chr($5F)+chr($66)+chr($75)+chr($73)+chr($65))<5){tmp_feelC=id;}}with(asset_get("oPlayer")){if(variable_instance_get(id,chr($75)+chr($72)+chr($6C))==tmp_str&&(state==6||state==5)&&attack==19&&window>=6){tmp_feelD=id;}}if(tmp_feel!=-4){with(hurtboxID){if(place_meeting(x+other.hsp-tmp_feel.hsp,y+other.vsp-tmp_feel.vsp,tmp_feel)){spr_dir=tmp_feel.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelB!=-4){with(hurtboxID){if(distance_to_object(tmp_feelB)<80){spr_dir=tmp_feelB.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelC!=-4){with(hurtboxID){if(distance_to_object(tmp_feelC)<200){spr_dir=tmp_feelC.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelD!=-4){with(hurtboxID){if(place_meeting(x+other.hsp-tmp_feelD.hsp,y+other.vsp-tmp_feelD.vsp,tmp_feelD)){spr_dir=tmp_feelD.spr_dir*-1;tmp_felt=true;}}}if(state==12&&last_attack==19&&variable_instance_get(hit_player_obj,chr($75)+chr($72)+chr($6C))==tmp_str){hitstop=0;hitstop_full=0;hitstun=0;hitstun_full=0;spr_dir=hit_player_obj.spr_dir*-1;hit_player_obj.state=10;with(hit_player_obj){sound_stop(sound_get(chr($66)+chr($72)+chr($6F)+chr($67)+chr($5F)+chr($65)+chr($61)+chr($74)+chr($5F)+chr($6D)+chr($61)+chr($6E)));sound_stop(sound_get(chr($66)+chr($72)+chr($6F)+chr($67)+chr($5F)+chr($65)+chr($61)+chr($74)+chr($5F)+chr($6C)+chr($69)+chr($74)+chr($65)));}tmp_felt=true;}if(tmp_felt&&!grace_dodge){sound_play(asset_get("sfx_may_arc_hit"));sound_play(asset_get("sfx_clairen_uspecial_rise"));set_state(PS_AIR_DODGE);window=1;grace_dodge=16;perfect_dodging=true;invincible=1;invince_time=32;var tmp_hfx=spawn_hit_fx(x+(20*spr_dir),y,27);tmp_hfx.draw_angle=20;tmp_hfx.image_yscale=6.5;}}if(grace_dodge>0){var tmp_d=ease_cubeIn(2,19,grace_dodge,16);hsp=tmp_d*spr_dir*-1;vsp=tmp_d/-1.25;grace_dodge--;}
 
 
 if (get_synced_var( player )==0){//A
@@ -295,7 +298,10 @@ if (get_synced_var( player )==3){//D
 		ex_pseudogenesis_qual = true;
 		init_shader();
 	}
-	if (get_player_color( player ) == 10){//asayzll
+	if (get_player_color( player ) == 7){//heartbeat of havoc
+		littlesparkplasma = true;
+	}
+	if (get_player_color( player ) == 9){//asayzll
 		mightyfallen = true;
 	}
 }
@@ -314,21 +320,23 @@ if (get_synced_var( player )==4){//EXTRA??
 	if (get_player_color( player ) == 8){//grid
 		init_shader();
 	}
-	if (get_player_color( player ) == 10){//hymn
+	if (get_player_color( player ) == 14){//painterly
 		init_shader();
 	}
-	if (get_player_color( player ) == 11){//hymn
-		init_shader();
+	if (get_player_color( player ) == 17){//
+		ex_pseudogenesis_qual = true;
+		m0417 = true;
 	}
 }
 if (ex_pseudogenesis_qual == true){
-	if (state==PS_SPAWN && ex_pseudogenesis == false){
-		if (special_down){
+	//if (state==PS_SPAWN && ex_pseudogenesis == false){
+	if (ex_pseudogenesis == false){
+		//if (special_down){
 			ex_pseudogenesis = true;
-			white_flash_timer = 18;
-			sound_play(sound_get("asayzll_1"),false,noone,1,0.8);
-			sound_play(sound_get("asayzll_1"),false,noone,1,0.3);
-		}
+			//white_flash_timer = 18;
+			//sound_play(sound_get("asayzll_1"),false,noone,1,0.8);
+			//sound_play(sound_get("asayzll_1"),false,noone,1,0.3);
+		//}
 	}
 }
 if (ex_pseudogenesis_snd != -4){
@@ -352,6 +360,11 @@ if (state==PS_DASH){
 		dash_anim_speed = dash_anim_speed_tire;
 	}
 }else{stamina=stamina_max; dash_speed=dash_speed_normal; dash_anim_speed=dash_anim_speed_normal;}
+
+if (state==PS_LAND||state==PS_LANDING_LAG||state==PS_PRATLAND||state==PS_HITSTUN){
+	
+	fast_fall = 12;
+}
 
 //kinda runestuff
 

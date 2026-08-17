@@ -55,7 +55,7 @@ switch (attack)
         {
             depth = player_id.depth - 1;
 
-            if (image_xscale == 0)
+            if (image_xscale == 0 && hitbox_timer >= player_id.polaris_windup_time/2)
             {
                 image_xscale = saved_size_x;
                 image_yscale = saved_size_y;

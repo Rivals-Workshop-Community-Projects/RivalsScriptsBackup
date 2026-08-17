@@ -68,7 +68,7 @@ if (!ushr_handled_victory_quote)
     smuggler.type = 2;
     smuggler.length = 60; //will destroy itself automatically after one second.
     
-    smuggler.ushr_victory_screen_array = transfer_array;
+    smuggler.ao_victory_screen_array = transfer_array;
     //smuggler.uhc_batteries = uhc_batteries;
 }
 /*checklist

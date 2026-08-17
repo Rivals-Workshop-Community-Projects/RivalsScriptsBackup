@@ -159,6 +159,8 @@ if alt_cur != 0{
 	set_ui_element(UI_HUDHURT_ICON, sprite_get("corr_hurt"));
 	set_ui_element(UI_OFFSCREEN, sprite_get("corr_offscreen"));
 }
+dust_shade = 8;
+hit_shade = 8;
 
 //anims
 prev_st = state;

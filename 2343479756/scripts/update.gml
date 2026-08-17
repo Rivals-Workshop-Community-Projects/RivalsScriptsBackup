@@ -91,12 +91,6 @@ if (state==PS_SPAWN && extra_col == 0){
 		sound_play(sound_get("dspecial_activate"));
 		init_shader();
 	}
-	if (taunt_down&&down_down){//spider
-		extra_col = 5
-		white_flash_timer = 18;
-		sound_play(sound_get("dspecial_activate"));
-		init_shader();
-	}
 	if (taunt_down&&right_down){//kingdoge
 		extra_col = 3
 		white_flash_timer = 18;

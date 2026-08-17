@@ -190,6 +190,9 @@ extra_col = 0;
 champ_alt = false;
 champ_name = get_player_name(player);
 
+playtest_active = false;
+with (oTestPlayer) playtest_active = true;
+
 //woodcock support indices
 i = 80;
 

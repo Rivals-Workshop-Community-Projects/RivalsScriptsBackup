@@ -183,13 +183,15 @@ if (lightbuff_active && !was_parried && polaris_shots_left > 0)
             proj.hitbox_timer = 0;
             proj = noone;
             polaris_shots_left --;
+
+            if (!infinite_mp_mode) mp_cur -= polaris_mp_hit_cost;
         }
     }
 }
 if (my_hitboxID.attack == skill[7].skill_attack && my_hitboxID.hbox_num == 1)
 {
     sound_play(asset_get("sfx_holy_lightning"));
-    mp_cur += true_damage;
+    //mp_cur += true_damage;
 }
 
 //overdrive

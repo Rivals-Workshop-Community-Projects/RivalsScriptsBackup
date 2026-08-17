@@ -3,7 +3,7 @@ set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair"));
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 set_attack_value(AT_FAIR, AG_NUM_WINDOWS, 6);
 set_attack_value(AT_FAIR, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_FAIR, AG_LANDING_LAG, 6);
+set_attack_value(AT_FAIR, AG_LANDING_LAG, 7);//6
 
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FAIR, 1, AG_WINDOW_ANIM_FRAME_START, 0);

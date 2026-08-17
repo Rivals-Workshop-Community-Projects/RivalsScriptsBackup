@@ -10,7 +10,11 @@ hbox_view = get_match_setting(SET_HITBOX_VIS);
 game_time = get_gameplay_time();
 exist_time ++;
 
-strong_pressed = (up_strong_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed)
+strong_pressed = (up_strong_pressed || left_strong_pressed || right_strong_pressed || down_strong_pressed);
+if (left_down && !right_down && state == PS_GLIDE) left_held_time ++;
+else left_held_time = 0;
+if (right_down && !left_down && state == PS_GLIDE) right_held_time ++;
+else right_held_time = 0;
 
 if (is_attacking)
 {
@@ -131,6 +135,7 @@ if (instance_exists(bar_hitbox))
 #region BAR MECHANICS
 
 // RESET VARIABLES ON THE GROUND
+
 if (!free)
 {
     //exit glide
@@ -179,7 +184,9 @@ if (free)
         
             glide_stamina --;
             if (glide_stamina <= 0) set_state(PS_IDLE_AIR); //if stamina reaches 0 stop gliding
-            if (abs(hsp) >= air_max_speed) spr_dir = sign(hsp); //turn bar around if he goes fast enough
+            //if (abs(hsp) >= air_max_speed) spr_dir = sign(hsp); //turn bar around if he goes fast enough
+            if (left_held_time >= glide_turn_time) spr_dir = -1;
+            if (right_held_time >= glide_turn_time) spr_dir = 1;
         
             //anim stuff
             sprite_index = sprite_get("glide");
@@ -202,6 +209,7 @@ if (free)
             }
         
             //midair turning
+            /*
             var turn_timeframe = 5; //decides how much time bar has to turn around
             if (state_timer == 0) djump_turn = false;
             if (state_timer <= turn_timeframe && !djump_turn)
@@ -217,6 +225,7 @@ if (free)
                     djump_turn = true;
                 }
             }
+            */
             break;
     }
 
@@ -229,12 +238,6 @@ if (is_attacking && attack == AT_DSTRONG && window == 3 && window_timer == 0 && 
 //GLIDE UI
 if (glide_stamina < glide_stamina_max && state != PS_PRATFALL && prev_state != PS_PRATFALL && theikos_type == 0) glide_ui = draw_indicator; //show glide UI
 else glide_ui = false;
-
-//MP MECHANIC
-//thanks delta parallax
-if (mp_cur < 100 && mp_gainable) mp_cur = mp_cur + (mp_gain_rate/60); //clamp(mp_cur + (mp_gain_rate/60), 0, mp_max);
-else if (mp_cur >= mp_max) mp_cur = mp_max;
-else if (mp_cur <= 0) mp_cur = 0;
 
 //mana gain conditions
 if (burnbuff_active || lightbuff_active || mp_cur >= mp_max) mp_gainable = false;
@@ -563,7 +566,7 @@ if (!menu_active)
             /////////////////////////////////////////////////////////////////
             case 1: //burning fury
                 //check if burning fury is active and change the mana costs accordingly
-                if (burnbuff_active) check_skill.mp_use_cost = check_skill.mp_cost2;
+                if (burnbuff_active) check_skill.mp_use_cost = 0;//check_skill.mp_cost2;
                 else check_skill.mp_use_cost = fury_norm_cost;
 
                 //makes sure the activation/deactivation doesn't run every frame cuz it's a lot of code
@@ -680,7 +683,7 @@ if (!menu_active)
                 if (blast_used) move_cooldown[check_skill.skill_attack] = 1 + blast_used;
                 break;
             case 7: //polaris
-                if (lightbuff_active) check_skill.mp_use_cost = check_skill.mp_cost2;
+                if (lightbuff_active) check_skill.mp_use_cost = 0;//check_skill.mp_cost2;
                 else check_skill.mp_use_cost = polaris_norm_cost;
 
                 if (polaris_double_strike_time > 0)
@@ -705,7 +708,11 @@ if (!menu_active)
                 if (lightbuff_active)
                 {
                     //mp burning
-                    if (!infinite_mp_mode) mp_cur -= mp_burn_rate/60;
+                    var mp_rate = round(lerp(mp_cost_light_rate.min, mp_cost_light_rate.max, (polaris_shots_left-1)/(polaris_shots_max-1)));
+
+                    if (!infinite_mp_mode) mp_cur -= mp_rate/60;
+                    //(mp_cost_light_rate * polaris_shots_left)/60
+                    //mp_burn_rate/60
                     if (mp_cur <= 0) cancel_polaris = true;
 
                     //internal cooldown stuff
@@ -744,29 +751,27 @@ if (!menu_active)
                     //projectiles following bar around
                     for (var j = 0; j < polaris_shots_left; j++) if ("shoot_projectile" in polaris_shot_ids[j] && !polaris_shot_ids[j].shoot_projectile)
                     {
-                        var anim_time = 20;
-
-                        var angle = (polaris_shot_ids[j].hitbox_timer < anim_time) ?
+                        var angle = (polaris_shot_ids[j].hitbox_timer < polaris_windup_time) ?
                             ease_cubeOut(
                                 (j-4) * 90 - 90,
                                 (j+1) * 20 - 10,
                                 polaris_shot_ids[j].hitbox_timer,
-                                anim_time
+                                polaris_windup_time
                             ) : (j+1) * 20 - 10;
                         var turn_anim_dist = ease_cubeInOut(80, -80, polaris_shot_ids[j].play_turn_anim, 10);
-                        var dist = (polaris_shot_ids[j].hitbox_timer < anim_time) ?
+                        var dist = (polaris_shot_ids[j].hitbox_timer < polaris_windup_time) ?
                             ease_cubeOut(
                                 0,
                                 turn_anim_dist,
                                 polaris_shot_ids[j].hitbox_timer,
-                                anim_time
+                                polaris_windup_time
                             ) : turn_anim_dist;
-                        var x_pos = (polaris_shot_ids[j].hitbox_timer < anim_time) ?
+                        var x_pos = (polaris_shot_ids[j].hitbox_timer < polaris_windup_time) ?
                             ease_cubeOut(
                                 32,
                                 0,
                                 polaris_shot_ids[j].hitbox_timer,
-                                anim_time
+                                polaris_windup_time
                             ) : 0;
 
                         //position setup
@@ -776,7 +781,7 @@ if (!menu_active)
                         polaris_shot_ids[j].y = floor(
                             prev_bar_pos[1] + lengthdir_y(
                                 polaris_shot_ids[j].hitbox_timer < 20 ?
-                                    abs(dist)/ease_cubeInOut(2, 1, polaris_shot_ids[j].hitbox_timer, anim_time) : 80,
+                                    abs(dist)/ease_cubeInOut(2, 1, polaris_shot_ids[j].hitbox_timer, polaris_windup_time) : 80,
                                     angle
                                 ) - char_height/1.75
                         );
@@ -1213,6 +1218,12 @@ prep_hitboxes();
 
 #endregion
 
+//MP MECHANIC
+//thanks delta parallax
+if (mp_cur < 100 && mp_gainable) mp_cur = mp_cur + (mp_gain_rate/60); //clamp(mp_cur + (mp_gain_rate/60), 0, mp_max);
+else if (mp_cur >= mp_max) mp_cur = mp_max;
+else if (mp_cur <= 0) mp_cur = 0;
+
 #region WORKSHOP COMPATIBILITIES
 
 //dracula boss dialouge
@@ -1446,6 +1457,7 @@ if (exist_time == 2 || get_match_setting(SET_PRACTICE) && exist_time == 240)
                 if (state_timer % mp_time == 0) mp_cur -= floor(mp_amount);
                 break;
         }
+        mp_cur = clamp(mp_cur, 0, 100);
     }
 }
 

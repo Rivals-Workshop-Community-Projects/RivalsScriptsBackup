@@ -139,6 +139,7 @@ fsp_loop_count = 0;
 fsp_loop_count_storage = 0;
 fsp_loop_count_max = 8;//8
 fsp_vulnerable = false;
+fsp_spinvolume_timer = 0;
 raincloud_present = false;
 dsp_hsp_store = 0;
 dsp_vsp_store = 0;
@@ -163,6 +164,7 @@ ushr_rainclouded = false;
 ushr_rainclouded_timer = 0;
 ushr_rainclouded_timer_max = 0;
 move_is_fresh = true;
+grace_dodge = 0;
 
 the_parried_ice = 0;//raincloud freeze got parried, 1 for normal, 2 for fstrong
 
@@ -172,6 +174,8 @@ signalling_all_my_besties_i_have_been_HIT_by_this_player = -4;
 thanks_i_received_your_message_you_go_and_reset_now = false;
 madeonfinale = false;
 mightyfallen = false;
+littlesparkplasma = false;
+m0417 = false;
 
 //hfx_splash = hit_fx_create( sprite_get("splash"), 12 );//unused
 

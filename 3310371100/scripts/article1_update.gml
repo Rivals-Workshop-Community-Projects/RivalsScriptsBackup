@@ -72,7 +72,9 @@ if (is_iced == false){
 							other.ice_attacktrack = attack;
 							//can_hit[appl_player_num] = false;
 							other.stored_spr_dir = spr_dir;
-							other.stored_spin_state = player_id.fsp_loop_count_storage;
+							if (variable_instance_exists(player_id, "fsp_loop_count_storage")){
+								other.stored_spin_state = player_id.fsp_loop_count_storage;
+							}
 							spawn_hit_fx( x, y, hit_effect ) 
 							other.ice_hbox_owner_id = player_id; //hopefully this is usher
 							destroyed = true;

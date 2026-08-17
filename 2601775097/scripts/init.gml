@@ -324,6 +324,10 @@ glide_stamina = glide_stamina_max;
 glide_stamina_restore = 50;
 glide_ui = false;
 
+glide_turn_time = 15;
+left_held_time = 0;
+right_held_time = 0;
+
 //Double jump stuff
 prev_djumps = 0;
 djump_turn = false;
@@ -702,6 +706,9 @@ lightbuff_active = false;
 cancel_polaris = false;
 polaris_input_dir = 0; //0 = neutral | 1 = left/right | 2 = up | 3 = down
 polaris_shot = false;
+mp_cost_light_rate = {min: 5, max: 12}; //used for polaris
+polaris_mp_hit_cost = 5;
+polaris_windup_time = 20;
 polaris_shots_max = 4;
 polaris_shots_left = 4;
 polaris_shot_ids = [];

@@ -59,6 +59,14 @@ if (my_hitboxID.attack==AT_BAIR){
 		sound_play(sound_get("hit_gen_2"), false, noone, 0.7, 0.7);
 	}
 }
+if (my_hitboxID.attack==AT_NSPECIAL){
+	if (my_hitboxID.h_hitcount%2==0){
+		sound_play(sound_get("nspecial_even"),false,noone,1,1.2)
+	}else{
+		sound_play(sound_get("nspecial_odd"),false,noone,1,1.2)
+		spawn_hit_fx( my_hitboxID.x, my_hitboxID.y, 254 );
+	}
+}
 
 
 

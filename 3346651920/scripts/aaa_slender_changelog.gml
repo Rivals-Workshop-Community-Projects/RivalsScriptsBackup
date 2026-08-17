@@ -4,6 +4,15 @@ they're in my head, they're in my soul.
 
 
 
+===v0.9===
+------
+:: fixed a very niche issue with INTERFERENCE, opponents, and stage article hitboxes. thank you to bulbaquaza for the report
+
+------
+A book unread is a weapon unused
+
+
+
 ===v0.8===
 ------
 :: alt colors "GORR'RYLAEHOTEP" and "KVDR" has been added

@@ -14,7 +14,7 @@ if (attack==AT_NSPECIAL){
 		}
 		if (player_id.up_down){
 			vsp = -11
-			hsp = 1*spr_dir
+			hsp = 1*sign(hsp)
 		}
 	}
 	
@@ -39,7 +39,7 @@ if (attack==AT_NSPECIAL){
 						//the kicks are here
 						h_old_hsp=12*(tmp_hb_id.spr_dir*((tmp_hb_id.attack==AT_BAIR)?-1:1));
 						h_old_vsp=-3;
-						spr_dir = (spr_dir*((tmp_hb_id.attack==AT_BAIR)?-1:1));
+						spr_dir = (tmp_hb_id.spr_dir*((tmp_hb_id.attack==AT_BAIR)?-1:1));
 						damage = 13
 						kb_value = 9
 						kb_angle = 361
@@ -50,6 +50,7 @@ if (attack==AT_NSPECIAL){
 						sound_play(sound_get("hit_med_5"))
 						does_not_reflect = true;
 						projectile_parry_stun = true;
+						h_hitcount++;
 						
 					}else if(tmp_hb_id.attack==AT_FSPECIAL){
 						var store_a = 0;
@@ -113,7 +114,7 @@ if (attack==AT_NSPECIAL){
 					}else if (tmp_hb_id.attack==AT_FSTRONG&&(tmp_hb_id.hbox_num==1||tmp_hb_id.hbox_num==4)){
 						h_old_hsp=6*(tmp_hb_id.spr_dir*((tmp_hb_id.attack==AT_BAIR)?-1:1));
 						h_old_vsp=-6;
-						spr_dir = (spr_dir*((tmp_hb_id.attack==AT_BAIR)?-1:1));
+						spr_dir = (tmp_hb_id.spr_dir*((tmp_hb_id.attack==AT_BAIR)?-1:1));
 						damage = 10
 						kb_value = 9
 						kb_angle = 361
@@ -135,7 +136,33 @@ if (attack==AT_NSPECIAL){
 					sound_play(tmp_hb_id.sound_effect)
 					spawn_hit_fx( x, y, tmp_hb_id.hit_effect )
 					h_lockout = true;
+					h_hitcount++;
+						//print(string(h_hitcount));
+						spr_dir = spr_dir*((h_hitcount%2==0)?1:-1);
+					if (h_hitcount%2==0){
+						sound_play(sound_get("nspecial_even"))
+					}else{
+						sound_play(sound_get("nspecial_odd"))
+					}
 				}
+			}
+		}
+	}
+	if (h_hitpause==false){
+		if (hitbox_timer %4 == 0){
+			var dsp_particle_rand = random_func( 0, 2, true )
+			var tmp_vfx_a = -4; var tmp_vfx_b = -4;
+			if (h_hitcount%2==0){
+				tmp_vfx_a = h_vfx1; tmp_vfx_b = h_vfx2;
+			}else{
+				tmp_vfx_a = h_vfx3; tmp_vfx_b = h_vfx4;
+			}
+			if (dsp_particle_rand == 0){
+				var tmp_hfx = spawn_hit_fx( x-14, y-14, tmp_vfx_a );
+				tmp_hfx.spr_dir = 1;
+			}else{
+				var tmp_hfx = spawn_hit_fx( x-14, y-14, tmp_vfx_b );
+				tmp_hfx.spr_dir = 1;
 			}
 		}
 	}

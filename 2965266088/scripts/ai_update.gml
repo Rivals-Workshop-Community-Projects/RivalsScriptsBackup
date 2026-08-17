@@ -16,15 +16,12 @@ if (DoFunny) Taunts();
 ChangeStates();
 CheckRecover();
 AttackUpdate();
-if temp_level == 1{
+if (temp_level == 1)
+{
 	// print(get_gameplay_time()%(3-temp_level))
-	if random_func_2(player,2,true)==0{
-		SetAttack();
-	}
+	if (random_func_2(player, 2, true) == 0) SetAttack();
 }
-else{
-	SetAttack();
-}
+else SetAttack();
 
 // print(ai_attack_time)
 
@@ -38,34 +35,34 @@ else{
 // print("HoldRight: " + string(right_down))
 // print(game_time)
 #define Taunts()
-if(ai_target.state != PS_DEAD && ai_target != self){
-	silly = 0;taunt_down = false;
-}
-else{
-	if(silly == 0)silly = 1;
-	if(!free){
-		ready_to_attack = false;
-		if(silly == 1){
-			silly = 2+random_func(0,4,true);
-		}
-		else if(silly == 2){
-			down_down = true;
-		}
-		else if(silly == 3){
-			if(state == PS_IDLE){
-				set_state(PS_WALK_TURN);
-				if(spr_dir == 1){
-					left_pressed = true;
-				}
-				else if(spr_dir == -1){
-					right_pressed = true;
+{
+	if (ai_target.state != PS_DEAD && ai_target != self)
+	{
+		silly = 0;
+		taunt_down = false;
+	}
+	else
+	{
+		if (silly == 0)silly = 1;
+		if (!free)
+		{
+			ready_to_attack = false;
+			if (silly == 1) silly = 2+random_func(0,4,true);
+			else if (silly == 2) down_down = true;
+			else if (silly == 3)
+			{
+				if (state == PS_IDLE)
+				{
+					set_state(PS_WALK_TURN);
+					if (spr_dir == 1) left_pressed = true;
+					else if (spr_dir == -1) right_pressed = true;
 				}
 			}
-		}
-		else if(silly == 4 || silly == 5){
-			if(can_attack && attack != AT_TAUNT){
-				set_attack(AT_TAUNT);
-			}taunt_down = true;
+			else if (silly == 4 || silly == 5)
+			{
+				if (can_attack && attack != AT_TAUNT) set_attack(AT_TAUNT);
+				taunt_down = true;
+			}
 		}
 	}
 }
@@ -166,7 +163,7 @@ else{
 	}
 	ready_to_attack = (OwnAiAttackTimer >= ai_attack_time)
 	
-	if (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)
+	if (is_attacking)
 	{
 		switch (attack)
 		{
@@ -187,33 +184,41 @@ else{
 				strong_down = !(dist < 40 || !facing_enemy || (xdist < 170 && ydist < 50)) && random_func(10, 100, true) <= 90;	
 				break;
 			case AT_NSPECIAL:
-				if !ai_recovering && x < stage_right + 100 && x > stage_left - 100{
-					HoldTowardsTarget();
+				if (!ai_recovering && x < stage_right + 100 && x > stage_left - 100)
+				{
+					if (window == 2 && window_timer == 1 && (x < ai_target.x && spr_dir == -1 || x > ai_target.x && spr_dir == 1) && random_func(0, 3, true) > 0)
+					{
+						HoldTowardsTarget();
+						spr_dir = -spr_dir;
+						nspec_turned = true;
+					}
 				}
-				else{
+				else
+				{
 					HoldTowardsStage();
+					if (window == 2 && window_timer == 1 && (right_down && spr_dir == -1 || left_down && spr_dir == 1))
+					{
+						spr_dir = -spr_dir;
+						nspec_turned = true;
+					}
 				}
 				break;
-			case AT_UAIR:
-			case AT_DAIR:
-			case AT_FAIR:
+			case AT_UAIR: case AT_DAIR: case AT_FAIR:
 				HoldTowardsTarget();
 				break;
 			case AT_BAIR:
-				if x>ai_target.x{
-					left_down = x > ai_target.x + 20
-					right_down = !left_down
+				if (x > ai_target.x)
+				{
+					left_down = (x > ai_target.x + 20);
+					right_down = !left_down;
 				}
-				else{
-					left_down = x > ai_target.x - 20
-					right_down = !left_down
+				else
+				{
+					left_down = (x > ai_target.x - 20);
+					right_down = !left_down;
 				}
 				break;
-			case AT_FTILT:
-			case AT_UTILT:
-			case AT_DTILT:
-			case AT_DATTACK:
-			case AT_FSPECIAL:
+			case AT_FTILT: case AT_UTILT: case AT_DTILT: case AT_DATTACK: case AT_FSPECIAL:
 				if (window == 1 && window_timer < 2) FaceTarget();
 				break;
 			case AT_JAB:
@@ -476,135 +481,137 @@ else{
 	}
 }
 #define TryParry() // Made by Karu
-var react = temp_level <= 8 ? round(temp_level/2)+random_func(10,round(temp_level*2),true) : 7+random_func(10,temp_level,true);
-var reacting = react > 8; //try scale the reaction time with CPU level
-if(ai_target.temp_level > 0 && temp_level > 6)reacting = true;
-if(reacting && ((state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) || window == 1)){
-	with(ai_target){ //physical hitboxes
-		if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
-			var hb_window = 100;var hb_window_timer = 900;var hb_pos_x = 0;var hb_pos_y = 0;var hb_width = 0;var hb_height = 0;var hb_distance = 0;
-			var above = y < other.y;var right = x > other.x;
-// 			print_debug("Num Hitboxes: " + string(get_num_hitboxes(attack)))
-// 			print_debug("Max Windows: " + string(get_attack_value(attack, AG_NUM_WINDOWS)))
-			for (var hb=1; hb <= get_num_hitboxes(attack); hb+=1;) {
-			 //   print_debug("Hitbox Value Window?: " + string(get_hitbox_value(attack, hb, HG_WINDOW)))
-				if(get_hitbox_value(attack, hb, HG_WINDOW) <= hb_window && get_hitbox_value(attack, hb, HG_WINDOW) <= get_attack_value(attack, AG_NUM_WINDOWS)) && get_hitbox_value(attack, hb, HG_WINDOW_CREATION_FRAME) <= hb_window_timer{
-					//check if you should actually care about this hitbox
-					if(get_hitbox_value(attack, hb, HG_PRIORITY) > 0 && (get_hitbox_value(attack, hb, HG_DAMAGE) > 1 || get_hitbox_value(attack, hb, HG_HITSTUN_MULTIPLIER) >= 0
-					|| get_hitbox_value(attack, hb, HG_BASE_KNOCKBACK) > 0 || get_hitbox_value(attack, hb, HG_KNOCKBACK_SCALING) > 0)){
-						hb_window = get_hitbox_value(attack, hb, HG_WINDOW);
-						hb_window_timer = get_hitbox_value(attack, hb, HG_WINDOW_CREATION_FRAME);
-						hb_pos_x = x+(get_hitbox_value(attack, hb, HG_HITBOX_X)*spr_dir)+(right?(get_hitbox_value(attack, hb, HG_WIDTH)/2):-(get_hitbox_value(attack, hb, HG_WIDTH)/2));
-						hb_pos_y = y+get_hitbox_value(attack, hb, HG_HITBOX_Y)+(above?(get_hitbox_value(attack, hb, HG_HEIGHT)/2):(-get_hitbox_value(attack, hb, HG_HEIGHT)/2));
-						hb_width = get_hitbox_value(attack, hb, HG_WIDTH)
-						hb_height = get_hitbox_value(attack, hb, HG_HEIGHT)
-						hb_distance = ((hb_width + hb_height) / 2) + 10
+{
+	var react = temp_level <= 8 ? round(temp_level/2)+random_func(10,round(temp_level*2),true) : 7+random_func(10,temp_level,true);
+	var reacting = react > 8; //try scale the reaction time with CPU level
+	if(ai_target.temp_level > 0 && temp_level > 6)reacting = true;
+	if(reacting && ((state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) || window == 1)){
+		with(ai_target){ //physical hitboxes
+			if(state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND){
+				var hb_window = 100;var hb_window_timer = 900;var hb_pos_x = 0;var hb_pos_y = 0;var hb_width = 0;var hb_height = 0;var hb_distance = 0;
+				var above = y < other.y;var right = x > other.x;
+	// 			print_debug("Num Hitboxes: " + string(get_num_hitboxes(attack)))
+	// 			print_debug("Max Windows: " + string(get_attack_value(attack, AG_NUM_WINDOWS)))
+				for (var hb=1; hb <= get_num_hitboxes(attack); hb+=1;) {
+				//   print_debug("Hitbox Value Window?: " + string(get_hitbox_value(attack, hb, HG_WINDOW)))
+					if(get_hitbox_value(attack, hb, HG_WINDOW) <= hb_window && get_hitbox_value(attack, hb, HG_WINDOW) <= get_attack_value(attack, AG_NUM_WINDOWS)) && get_hitbox_value(attack, hb, HG_WINDOW_CREATION_FRAME) <= hb_window_timer{
+						//check if you should actually care about this hitbox
+						if(get_hitbox_value(attack, hb, HG_PRIORITY) > 0 && (get_hitbox_value(attack, hb, HG_DAMAGE) > 1 || get_hitbox_value(attack, hb, HG_HITSTUN_MULTIPLIER) >= 0
+						|| get_hitbox_value(attack, hb, HG_BASE_KNOCKBACK) > 0 || get_hitbox_value(attack, hb, HG_KNOCKBACK_SCALING) > 0)){
+							hb_window = get_hitbox_value(attack, hb, HG_WINDOW);
+							hb_window_timer = get_hitbox_value(attack, hb, HG_WINDOW_CREATION_FRAME);
+							hb_pos_x = x+(get_hitbox_value(attack, hb, HG_HITBOX_X)*spr_dir)+(right?(get_hitbox_value(attack, hb, HG_WIDTH)/2):-(get_hitbox_value(attack, hb, HG_WIDTH)/2));
+							hb_pos_y = y+get_hitbox_value(attack, hb, HG_HITBOX_Y)+(above?(get_hitbox_value(attack, hb, HG_HEIGHT)/2):(-get_hitbox_value(attack, hb, HG_HEIGHT)/2));
+							hb_width = get_hitbox_value(attack, hb, HG_WIDTH)
+							hb_height = get_hitbox_value(attack, hb, HG_HEIGHT)
+							hb_distance = ((hb_width + hb_height) / 2) + 10
+						}
 					}
 				}
-			}
-			// compensate?
-			if(hb_window_timer <= 0 && hb_window <= get_attack_value(attack, AG_NUM_WINDOWS)){
-			 //   print_debug("Compensate!")
-				hb_window -= 1;
-				if(hb_window > get_attack_value(attack, AG_NUM_WINDOWS) || hb_window >= 100 || hb_window < 1)hb_window = 1; //failsafe
-				hb_window_timer = get_window_value(attack, hb_window, AG_WINDOW_LENGTH);
-			}
-// 			print_debug(hb_distance)
-			var Cond1 = (window == hb_window && window_timer < hb_window_timer && window_timer > hb_window_timer-9)
-			var Cond2 = (window == hb_window-1 && hb_window_timer < 5 && window_timer > get_window_value(attack, hb_window, AG_WINDOW_LENGTH)-round(hb_window_timer*1.5))
-			var Cond3 = point_distance(hb_pos_x, hb_pos_y, other.x, other.y) < hb_distance
-			var Cond4 = !smash_charging
-			// print_debug("window: " + string(window))
-			// print_debug("window_timer: " + string(window_timer))
-			// print_debug("hb_window_timer: " + string(hb_window_timer))
-// 			print_debug("---")
-// 			print_debug("hb_window_timer-2: " + string(hb_window_timer-2))
-// 			print_debug("hb_window_timer-8: " + string(hb_window_timer-8))
-// 			print_debug("---")
-			// print_debug("Condition1: " + string(Cond1))
-			// print_debug("Condition2: " + string(Cond2))
-			// print_debug("Condition3: " + string(Cond3))
-			// print_debug("Condition4: " + string(Cond4))
-			// print_debug("FullConditions: " + string((Cond1 || Cond2) && Cond3 && Cond4))
-			// print_debug("-------")
-			
-// 			if((((window == hb_window && window_timer < hb_window_timer-2 && window_timer > hb_window_timer-8)
-// 			|| (window == hb_window-1 && hb_window_timer < 5 && window_timer > get_window_value(attack, hb_window, AG_WINDOW_LENGTH)-round(hb_window_timer*1.5)))
-// 			&& point_distance(hb_pos_x, hb_pos_y, other.x, other.y) < hb_distance) && !smash_charging){
-			shield_pressed = false;
-			if (Cond1 || Cond2) && Cond3 && Cond4{
-				with(other){
-					if(state != PS_JUMPSQUAT){
-						shield_pressed = true;right_pressed = false;left_pressed = false;right_down = false;left_down = false;
-						if parry_cooldown <= 0 && can_shield {
-							set_state(PS_PARRY);
+				// compensate?
+				if(hb_window_timer <= 0 && hb_window <= get_attack_value(attack, AG_NUM_WINDOWS)){
+				//   print_debug("Compensate!")
+					hb_window -= 1;
+					if(hb_window > get_attack_value(attack, AG_NUM_WINDOWS) || hb_window >= 100 || hb_window < 1)hb_window = 1; //failsafe
+					hb_window_timer = get_window_value(attack, hb_window, AG_WINDOW_LENGTH);
+				}
+	// 			print_debug(hb_distance)
+				var Cond1 = (window == hb_window && window_timer < hb_window_timer && window_timer > hb_window_timer-9)
+				var Cond2 = (window == hb_window-1 && hb_window_timer < 5 && window_timer > get_window_value(attack, hb_window, AG_WINDOW_LENGTH)-round(hb_window_timer*1.5))
+				var Cond3 = point_distance(hb_pos_x, hb_pos_y, other.x, other.y) < hb_distance
+				var Cond4 = !smash_charging
+				// print_debug("window: " + string(window))
+				// print_debug("window_timer: " + string(window_timer))
+				// print_debug("hb_window_timer: " + string(hb_window_timer))
+	// 			print_debug("---")
+	// 			print_debug("hb_window_timer-2: " + string(hb_window_timer-2))
+	// 			print_debug("hb_window_timer-8: " + string(hb_window_timer-8))
+	// 			print_debug("---")
+				// print_debug("Condition1: " + string(Cond1))
+				// print_debug("Condition2: " + string(Cond2))
+				// print_debug("Condition3: " + string(Cond3))
+				// print_debug("Condition4: " + string(Cond4))
+				// print_debug("FullConditions: " + string((Cond1 || Cond2) && Cond3 && Cond4))
+				// print_debug("-------")
+				
+	// 			if((((window == hb_window && window_timer < hb_window_timer-2 && window_timer > hb_window_timer-8)
+	// 			|| (window == hb_window-1 && hb_window_timer < 5 && window_timer > get_window_value(attack, hb_window, AG_WINDOW_LENGTH)-round(hb_window_timer*1.5)))
+	// 			&& point_distance(hb_pos_x, hb_pos_y, other.x, other.y) < hb_distance) && !smash_charging){
+				shield_pressed = false;
+				if (Cond1 || Cond2) && Cond3 && Cond4{
+					with(other){
+						if(state != PS_JUMPSQUAT){
+							shield_pressed = true;right_pressed = false;left_pressed = false;right_down = false;left_down = false;
+							if parry_cooldown <= 0 && can_shield {
+								set_state(PS_PARRY);
+							}
+							if(parry_cooldown > 0 && !free){right_down = random_func(1+player,2,true) == 0;left_down = !right_down;}
 						}
-						if(parry_cooldown > 0 && !free){right_down = random_func(1+player,2,true) == 0;left_down = !right_down;}
 					}
 				}
 			}
 		}
-	}
-	gets_hit_by_projectile_in_x_frames = 1000; // Made by Sanoi
-	with(pHitBox)
-	{
-		// print_debug("???")
-		if (player != other.player || (player == other.player && can_hit_self))
+		gets_hit_by_projectile_in_x_frames = 1000; // Made by Sanoi
+		with(pHitBox)
 		{
-			var enemy_projectile_exists = (player != other.player && type == 2) ? true : false;
-		}	
-		if (enemy_projectile_exists)
-		{
-			//print_debug("Projectile exists!");
-			//var predicted_projectile_distance = point_distance(x + (hsp*3), y + (vsp*3), other.x + hsp, other.y-(other.char_height/2));
-			//var projectile_distance = point_distance(x, y, other.x, other.y-(other.char_height/2));
-			var y_distance = abs(y - other.y-(other.char_height/2));
-			var x_distance = abs(x - other.x-(other.char_height/2));
-			//print_debug("PROJECTILE Speed:(" + string(hsp) + "/" + string(vsp) + ")");
-			if ((other.x < x && hsp < 0) || (other.x > x && hsp > 0))
+			// print_debug("???")
+			if (player != other.player || (player == other.player && can_hit_self))
 			{
-				var will_hit = false;
-				for (var i = 0; i < 30; i += 1)
+				var enemy_projectile_exists = (player != other.player && type == 2) ? true : false;
+			}	
+			if (enemy_projectile_exists)
+			{
+				//print_debug("Projectile exists!");
+				//var predicted_projectile_distance = point_distance(x + (hsp*3), y + (vsp*3), other.x + hsp, other.y-(other.char_height/2));
+				//var projectile_distance = point_distance(x, y, other.x, other.y-(other.char_height/2));
+				var y_distance = abs(y - other.y-(other.char_height/2));
+				var x_distance = abs(x - other.x-(other.char_height/2));
+				//print_debug("PROJECTILE Speed:(" + string(hsp) + "/" + string(vsp) + ")");
+				if ((other.x < x && hsp < 0) || (other.x > x && hsp > 0))
 				{
-					if (place_meeting(x + hsp * i * 1, y + vsp * i * 1, other))
+					var will_hit = false;
+					for (var i = 0; i < 30; i += 1)
 					{
-						will_hit = true;
-						other.gets_hit_by_projectile_in_x_frames = other.gets_hit_by_projectile_in_x_frames > i ? i : other.gets_hit_by_projectile_in_x_frames;				
-					}
-				}
-				if(will_hit && ((other.state_cat == SC_AIR_NEUTRAL || other.state_cat == SC_GROUND_NEUTRAL || other.state == PS_DASH || other.state == PS_DASH_START)))
-				{
-					with(other)
-					{
-						//print_debug("Blocking projectile hit in " + string(gets_hit_by_projectile_in_x_frames) + " frames.");
-						up_down = false;
-						up_pressed = false;
-						left_down = false;
-						left_pressed = false;
-						right_down = false;
-						right_pressed = false;
-						jump_down = false;
-						jump_pressed = false;				
-						attack_down = false;			
-						attack_pressed = false;			
-						strong_pressed = false;			
-						left_strong_pressed = false;			
-						right_strong_pressed = false;			
-						up_strong_pressed = false;			
-						down_strong_pressed = false;
-						
-						if (gets_hit_by_projectile_in_x_frames < 10 && gets_hit_by_projectile_in_x_frames >= 6) && random_func_2(0+player,3,true) == 0
+						if (place_meeting(x + hsp * i * 1, y + vsp * i * 1, other))
 						{
-							set_state(PS_ROLL_FORWARD)
-							shield_pressed = true;
-							// print_debug("Parry2.Roll")
+							will_hit = true;
+							other.gets_hit_by_projectile_in_x_frames = other.gets_hit_by_projectile_in_x_frames > i ? i : other.gets_hit_by_projectile_in_x_frames;				
 						}
-						else if (gets_hit_by_projectile_in_x_frames < 5)
+					}
+					if(will_hit && ((other.state_cat == SC_AIR_NEUTRAL || other.state_cat == SC_GROUND_NEUTRAL || other.state == PS_DASH || other.state == PS_DASH_START)))
+					{
+						with(other)
 						{
-							set_state(PS_PARRY)
-							shield_pressed = true;
-							// print_debug("Parry2")
-						}					
+							//print_debug("Blocking projectile hit in " + string(gets_hit_by_projectile_in_x_frames) + " frames.");
+							up_down = false;
+							up_pressed = false;
+							left_down = false;
+							left_pressed = false;
+							right_down = false;
+							right_pressed = false;
+							jump_down = false;
+							jump_pressed = false;				
+							attack_down = false;			
+							attack_pressed = false;			
+							strong_pressed = false;			
+							left_strong_pressed = false;			
+							right_strong_pressed = false;			
+							up_strong_pressed = false;			
+							down_strong_pressed = false;
+							
+							if (gets_hit_by_projectile_in_x_frames < 10 && gets_hit_by_projectile_in_x_frames >= 6) && random_func_2(0+player,3,true) == 0
+							{
+								set_state(PS_ROLL_FORWARD)
+								shield_pressed = true;
+								// print_debug("Parry2.Roll")
+							}
+							else if (gets_hit_by_projectile_in_x_frames < 5)
+							{
+								set_state(PS_PARRY)
+								shield_pressed = true;
+								// print_debug("Parry2")
+							}					
+						}
 					}
 				}
 			}
@@ -626,48 +633,54 @@ if(reacting && ((state != PS_ATTACK_AIR && state != PS_ATTACK_GROUND) || window 
 }
 #define HoldTowardsStage()
 {
-	left_down = x > floor(room_width/2);
-	right_down = !left_down;
+	if (x > floor(room_width/2))
+	{
+		left_down = true;
+		right_down = false;
+	}
+	else
+	{
+		left_down = false;
+		right_down = true;
+	}
 }
 #define KeepDistance()
-if (x > stage_left + 40) && (x < stage_right - 40){
-	if !CrouchToGraze{
-		if (dist < 150 - clamp(get_player_damage(ai_target.player)*1.5,0,115)) RunTowardsTarget(false);
-		if random_func_2(player+2,19-(temp_level*2),true)==0 && temp_level > 5{
-			if (dist < 120 - clamp(get_player_damage(ai_target.player)*1.5,0,115)) WaveDash(false,false,true);
+{
+	if ((x > stage_left + 40) && (x < stage_right - 40))
+	{
+		if (!CrouchToGraze)
+		{
+			var damage_check = clamp(get_player_damage(ai_target.player) * 1.5, 0, 115);
+			if (dist < 150 - damage_check) RunTowardsTarget(false);
+			if (random_func_2(player + 2, 19 - (temp_level * 2), true) == 0 && temp_level > 5)
+			{
+				if (dist < 120 - damage_check) WaveDash(false, false, true);
+			}
+			else if (dist > 400 - damage_check) RunTowardsTarget(true);
 		}
-		else if (dist > 400 - clamp(get_player_damage(ai_target.player)*1.5,0,115)) RunTowardsTarget(true);
-	}
-	else {
-		down_down = true;
-		if xdist > 200 HoldTowardsTarget();
-		else if xdist < 150 HoldAwayTarget();
-		if random_func_2(player+5,30 + ((9-temp_level)*3),true)==0 || xdist < 60 || gets_hit_by_projectile_in_x_frames != 1000{
-			CrouchToGraze = false;
+		else
+		{
+			down_down = true;
+			if (xdist > 200) HoldTowardsTarget();
+			else if (xdist < 150) HoldAwayTarget();
+			if (random_func_2(player + 5, 30 + ((9 - temp_level) * 3),true) == 0 || xdist < 60 || gets_hit_by_projectile_in_x_frames != 1000) CrouchToGraze = false;
 		}
 	}
 }
 #define RunTowardsTarget(Towards)
-if !ai_recovering && (ai_target.state != PS_DEAD && ai_target != self) {
-	if (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN) {
-		Running = true;
-	}
-	else {
-		Running = false;
-	}
-	// Running = true;
-	if (ai_target.x < x && Towards) || (ai_target.x > x && !Towards){
-		left_down = true;
-		if (Running == false) {
-			left_hard_pressed = true;
-			// print("Dash")
+{
+	if (!ai_recovering && (ai_target.state != PS_DEAD && ai_target != self))
+	{
+		Running = (state == PS_DASH || state == PS_DASH_START || state == PS_DASH_TURN);
+		if ((ai_target.x < x && Towards) || (ai_target.x > x && !Towards))
+		{
+			left_down = true;
+			if (Running == false) left_hard_pressed = true;
 		}
-	}
-	else{
-		right_down = true;
-		if (Running == false) {
-			right_hard_pressed = true;
-			// print("Dash")
+		else
+		{
+			right_down = true;
+			if (Running == false) right_hard_pressed = true;
 		}
 	}
 }
@@ -697,7 +710,6 @@ if !ai_recovering && (ai_target.state != PS_DEAD && ai_target != self) {
 #define DoAttack(attack)
 {
 	NoInputs();
-	print(attack)
 	OwnAiAttackTimer = 0;
 	switch (attack)
 	{
@@ -910,10 +922,13 @@ if !ai_recovering && (ai_target.state != PS_DEAD && ai_target != self) {
 	}
 }
 #define cpu_attack(attack, turn_to_target)
+{
 	set_attack(attack);
 	draw_y = 0;
 	if(turn_to_target && ai_target != self)spr_dir = x < ai_target.x ? 1 : -1;
+}
 #define NoInputs()
+{
 	// Nothing Held
 	up_down = false;
 	down_down = false;
@@ -962,3 +977,4 @@ if !ai_recovering && (ai_target.state != PS_DEAD && ai_target != self) {
 	right_stick_pressed = false;
 	down_stick_pressed = false;
 	left_stick_pressed = false;
+}

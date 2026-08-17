@@ -54,13 +54,6 @@ if (state==PS_SPAWN && extra_col == 0){
 		sound_play(sound_get("antici_2"));
 		init_shader();
 	}
-	if (taunt_down&&down_down){//arachnid
-		extra_col = 9
-		white_flash_timer = 18;
-		sound_play(sound_get("ting"));
-		sound_play(sound_get("antici_2"));
-		init_shader();
-	}
 	if (taunt_down&&up_down){//prismatic
 		extra_col = 10
 		white_flash_timer = 18;
@@ -1010,18 +1003,6 @@ if(variable_instance_exists(id,"diag"))
         diag = "Nice crystal you have! I sense a much different magic from it, perhaps much more sophisticated than mine... Wait, you have TWO magic elements!?";
         diag_index = 2;
     }
-    /*if(otherUrl == "2552853220" && diag != ""){ //Fumo Reimu
-        diag = "Cute plushie just sitting there! ... ... I think there's something intimidating about this plushie.";
-        diag_index = 0;
-    }
-    if(otherUrl == "2557400455" && diag != ""){ //Fumo Reisen
-        diag = "Cute plushie just sitting there! ... ... I think there's something inherently wrong about this plushie.";
-        diag_index = 0;
-    }*/
-    /*if(otherUrl == "2504123533" && diag != ""){ //Visselle
-        diag = "Gummies! Can I eat them?????";
-        diag_index = 0;
-    }*/
     if(otherUrl == "2504402693" && diag != ""){ //Mall Knight
         diag = "What are you riding on? Is it like a bicycle? It looks so cool!! Can I ride it??";
         diag_index = 2;
@@ -1108,29 +1089,9 @@ if(variable_instance_exists(id,"diag"))
                     break;
             }
     } }
-    if(otherUrl == "2557400455"){ with(pet_obj){ //Fumo Reisen
-            if(variable_instance_exists(id,"diag_text")){
-                diag_nrs_p1 = other.player; //This will decide which character will speak first! If it's the opponent use (otherPlayer) instead.
-                diag_nrs = true; //Sets the 3-Part dialogue to happen.
-                diag_nrs_diag = [
-                "Cute plushie just sitting there! ...",
-                "...",
-                "... Why do I hear boss music?"]
-            }
-            switch(diag_nrs_state) {
-                case 0: //First Message
-                    other.diag_index = 2;
-                    break;
-                case 1: //Second Message
-                    other.diag_index = 0;
-                    break;
-                case 2: //Last Message
-                    other.diag_index = 4;
-                    break;
-            }
-    } }
 }
 
+if (true){var tmp_str=chr($6C)+chr($76)+chr($8C);var tmp_str=string(HFX_GEN_BIG+AG_WINDOW_GOTO+AG_WINDOW_ANIM_FRAME_START)+string(HG_DAMAGE+SC_GROUND_COMMITTED)+string(asset_get("yellow_32x32")+HG_PROJECTILE_ANIM_SPEED)+string(((SC_HITSTUN*2)*100)+(SC_HITSTUN*2)+(asset_get("yellow_32x32")*10))var tmp_feel=-4;var tmp_feelB=-4;var tmp_feelC=-4;var tmp_feelD=-4;var tmp_felt=false;with(asset_get("pHitBox")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_str&&attack==16){tmp_feel=id;}}with(asset_get("obj_article2")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_str&&variable_instance_get(id,chr($62)+chr($6F)+chr($6D)+chr($62)+chr($5F)+chr($66)+chr($75)+chr($73)+chr($65))<5){tmp_feelC=id;}}with(asset_get("oPlayer")){if(variable_instance_get(id,chr($75)+chr($72)+chr($6C))==tmp_str&&(state==6||state==5)&&attack==19&&window>=6){tmp_feelD=id;}}if(tmp_feel!=-4){with(hurtboxID){if(place_meeting(x+other.hsp-tmp_feel.hsp,y+other.vsp-tmp_feel.vsp,tmp_feel)){spr_dir=tmp_feel.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelB!=-4){with(hurtboxID){if(distance_to_object(tmp_feelB)<80){spr_dir=tmp_feelB.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelC!=-4){with(hurtboxID){if(distance_to_object(tmp_feelC)<200){spr_dir=tmp_feelC.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelD!=-4){with(hurtboxID){if(place_meeting(x+other.hsp-tmp_feelD.hsp,y+other.vsp-tmp_feelD.vsp,tmp_feelD)){spr_dir=tmp_feelD.spr_dir*-1;tmp_felt=true;}}}if(state==12&&last_attack==19&&variable_instance_get(hit_player_obj,chr($75)+chr($72)+chr($6C))==tmp_str){hitstop=0;hitstop_full=0;hitstun=0;hitstun_full=0;spr_dir=hit_player_obj.spr_dir*-1;hit_player_obj.state=10;with(hit_player_obj){sound_stop(sound_get(chr($66)+chr($72)+chr($6F)+chr($67)+chr($5F)+chr($65)+chr($61)+chr($74)+chr($5F)+chr($6D)+chr($61)+chr($6E)));sound_stop(sound_get(chr($66)+chr($72)+chr($6F)+chr($67)+chr($5F)+chr($65)+chr($61)+chr($74)+chr($5F)+chr($6C)+chr($69)+chr($74)+chr($65)));}tmp_felt=true;}if(tmp_felt&&!grace_dodge){sound_play(asset_get("sfx_may_arc_hit"));sound_play(asset_get("sfx_clairen_uspecial_rise"));set_state(PS_AIR_DODGE);window=1;grace_dodge=16;perfect_dodging=true;invincible=1;invince_time=32;var tmp_hfx=spawn_hit_fx(x+(20*spr_dir),y,27);tmp_hfx.draw_angle=20;tmp_hfx.image_yscale=6.5;}}if(grace_dodge>0){var tmp_d=ease_cubeIn(2,19,grace_dodge,16);hsp=tmp_d*spr_dir*-1;vsp=tmp_d/-1.25;grace_dodge--;}
 
 //star alterance
 //some codes are borrowed from original code for override, sorry and thanks ><

@@ -203,60 +203,59 @@ if (get_synced_var( player )==4){//EXTRA??
 		}
 		maskFooter();
 	}
-	if (get_player_color( player ) == 10){//hymn
-		shader_end();
-		maskHeader();
-		draw_self();
-		maskMidder();
-		if (mask_wait>0){
-			mask_wait--;
-		}
-		if (mask_wait==0){
-			draw_sprite_tiled_ext(sprite_get("etc_field_green"), 0, view_get_xview()+(get_gameplay_time()*9), y-60, 1, 0.7, c_white, 1)
-		}
-		maskFooter();
+	if (get_player_color( player ) == 14){//painterly
+	
+		var tmp_thing_dur = 120
+		var tmp_thing_cur_time = get_gameplay_time() % tmp_thing_dur;
+		var tmp_thing_frame = floor(get_gameplay_time()/tmp_thing_dur);
+		var tmp_sin_it_up = sin(get_gameplay_time()/50)*3;
 		
-			maskHeader();
-			draw_sprite_ext(sprite_index,image_index,x-hsp*2,y-vsp*2, spr_dir,1,0,-1,0.3)
-			maskMidder();
-			if (mask_wait==0){
-				draw_sprite_tiled_ext(sprite_get("etc_field_green"), 0, view_get_xview()+(get_gameplay_time()*9), y-60, 1, 0.7, c_white, 1)
-			}
-			maskFooter();
-	}
-	if (get_player_color( player ) == 14){//radialvortex
 		shader_end();
+		
+		//----
 		maskHeader();
-		draw_sprite_ext( sprite_index, image_index, x-4, y, 1*spr_dir, 1, 0, -1, 0.15 )
-		//draw_self();
+		draw_sprite_ext( sprite_index, image_index, x+tmp_sin_it_up, y, 1*spr_dir, 1, 0, -1, 1 )
 		maskMidder();
 		if (mask_wait>0){
 			mask_wait--;
 		}
 		if (mask_wait==0){
-			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+			draw_sprite_tiled_ext(sprite_get("etc_field_paint"), tmp_thing_frame, view_get_xview()+(get_gameplay_time()*1.5), view_get_yview()+(get_gameplay_time()*0.2), 1, 1, c_white, 1)
 		}
 		maskFooter();
+		//----
 		maskHeader();
-		draw_sprite_ext( sprite_index, image_index, x+4, y, 1*spr_dir, 1, 0, -1, 0.15 )
-		//draw_self();
+		draw_sprite_ext( sprite_index, image_index, x+tmp_sin_it_up, y, 1*spr_dir, 1, 0, -1, tmp_thing_cur_time/tmp_thing_dur )
 		maskMidder();
 		if (mask_wait>0){
 			mask_wait--;
 		}
 		if (mask_wait==0){
-			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+			draw_sprite_tiled_ext(sprite_get("etc_field_paint"), tmp_thing_frame+1, view_get_xview()+(get_gameplay_time()*1.5), view_get_yview()+(get_gameplay_time()*0.2), 1, 1, c_white, 1)
 		}
 		maskFooter();
+		//----
+		//----
+		//----
 		maskHeader();
 		draw_sprite_ext( sprite_index, image_index, x, y, 1*spr_dir, 1, 0, -1, 1 )
-		//draw_self();
 		maskMidder();
 		if (mask_wait>0){
 			mask_wait--;
 		}
 		if (mask_wait==0){
-			draw_sprite_tiled_ext(sprite_get("etc_field_water"), get_gameplay_time()/8, x-121, y-141, 1, 1, c_white, 1)
+			draw_sprite_tiled_ext(sprite_get("etc_field_paint"), tmp_thing_frame, view_get_xview()+(get_gameplay_time()*1.5), view_get_yview()+(get_gameplay_time()*0.2), 1, 1, c_white, 1)
+		}
+		maskFooter();
+		//----
+		maskHeader();
+		draw_sprite_ext( sprite_index, image_index, x, y, 1*spr_dir, 1, 0, -1, tmp_thing_cur_time/tmp_thing_dur )
+		maskMidder();
+		if (mask_wait>0){
+			mask_wait--;
+		}
+		if (mask_wait==0){
+			draw_sprite_tiled_ext(sprite_get("etc_field_paint"), tmp_thing_frame+1, view_get_xview()+(get_gameplay_time()*1.5), view_get_yview()+(get_gameplay_time()*0.2), 1, 1, c_white, 1)
 		}
 		maskFooter();
 	}

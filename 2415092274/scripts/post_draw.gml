@@ -155,6 +155,15 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//
 		//put text here.
 		
+		patch_note_title[i] = "v3.1b - (2026 Jul 24)"
+		patch_note_text[i++] = 
+		"v3.1b - (2026 Jul 24)
+		an unannounced update 2. hi to you who read this, thanks for reading the playtest changelog, again.
+		[b]fixes[/b]
+		- fixed usher, ràiné and ao's victory quotes overriding eachother. i was fearing this was gonna be tough to figure out... but that was easy"
+		
+		
+		
 		patch_note_title[i] = "v3.1 - (2026 Mar 02)"
 		patch_note_text[i++] = 
 		"v3.1 - (2026 Mar 02)

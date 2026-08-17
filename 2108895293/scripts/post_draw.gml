@@ -35,6 +35,26 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v2.7d - (2026 Aug 08)"
+		patch_note_text[i++] = 
+		"v2.7d - (2026 Aug 08)
+		[b]fixes[/b]
+		- 
+
+		[b]notes[/b]
+		open for inputs!"
+		
+		
+		patch_note_title[i] = "v2.7c - (2026 Jul 24)"
+		patch_note_text[i++] = 
+		"v2.7c - (2026 Jul 24)
+		[b]fixes[/b]
+		- like few years late but im noticing some sprite and text mistakes, ive went and tweaked those
+
+		[b]notes[/b]
+		open for inputs!"
+		
+		
 		patch_note_title[i] = "v2.7b - (2025 Apr 26)"
 		patch_note_text[i++] = 
 		"v2.7b - (2025 Apr 26)

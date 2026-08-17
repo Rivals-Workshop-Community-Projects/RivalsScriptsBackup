@@ -220,6 +220,18 @@ if ( attack == AT_FAIR ){
 					var sfxdid = true;
 				}
 			}
+			if (get_synced_var( player )==4){//
+				if (get_player_color( player ) == 14){
+					sound_play(sound_get("brush"),false,noone,1,1)
+					sound_play(sound_get("brush"),false,noone,1,0.85)
+					var sfxdid = true;
+				}
+				if (get_player_color( player ) == 17){
+					sound_play(sound_get("nisae_swing1"),false,noone,1,1)
+					sound_play(sound_get("z_zap"),false,noone,1,1)
+					var sfxdid = true;
+				}
+			}
 			if (sfxdid == false){
 				//sound_play(sound_get("SWB2"),false,noone,0.7,1)
 				sound_play(sound_get("SWB2"),false,noone,0.7,1.1)
@@ -253,6 +265,24 @@ if ( attack == AT_UAIR ){
 			sound_play(asset_get("sfx_swipe_heavy1"),false,noone,0.7,1.1)
 		}
 	}
+}
+if ( attack == AT_UAIR||attack==AT_NAIR||attack==AT_DAIR||attack==AT_FAIR||attack==AT_BAIR ){
+	//...you're reading this.
+	if (!hitpause){
+	if (vsp<0){
+		fast_fall = 9.5;
+			//print("up")
+	}else if(fast_falling==false){
+		fast_fall = 12;
+			//print("down")
+	}
+	}
+	/*if (hitpause){
+		if (fast_falling==true&&down_pressed){
+			sound_play(sound_get("aaa_test"),false,noone,1,1)
+			
+		}
+	}*/
 }
 if ( attack == AT_DAIR ){
 	if (!hitpause){
@@ -483,6 +513,7 @@ if ( attack == AT_FSPECIAL_2 ){
 			}else{
 				if (window_timer==1){
 					sound_play(sound_get("woosh_1"),false,noone,0.5,1.5)
+					sound_play(asset_get("sfx_bird_nspecial2"),false,noone,0.8,0.7+(fsp_loop_count/10))
 					if (state_timer > 16){
 						fsp_loop_count++;
 					}
@@ -490,9 +521,13 @@ if ( attack == AT_FSPECIAL_2 ){
 			}
 		}
 		if (window == 3){
+			fsp_spinvolume_timer++;
 			if (window_timer==1){
-				sound_play(sound_get("woosh_1"),false,noone,0.5,2)
-				sound_play(sound_get("woosh_1"),false,noone,0.5,1)
+				var tmp_vol = 0.33+((1-(min(fsp_spinvolume_timer,180)/180))/1.5) //i know its a mess bear with me
+				//print(string(tmp_vol));
+				sound_play(sound_get("woosh_1"),false,noone,0.4*tmp_vol,2)
+				sound_play(sound_get("woosh_1"),false,noone,0.3*tmp_vol,1)
+					sound_play(asset_get("sfx_bird_nspecial2"),false,noone,0.6*tmp_vol,0.7+(fsp_loop_count/10))
 			}
 		}
 		if (window==2||window==3||window==4){

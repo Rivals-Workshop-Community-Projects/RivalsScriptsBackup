@@ -85,6 +85,38 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.21 - (2026/07/26)"
+		patch_note_text[i++] = 
+		"===v3.21===
+		---fixes---
+		:: fixed an issue where Ràiné freezing Usher's raincloud was throwing errors. it should work proper now
+		:: fixed some sort of bug, i think. a variable wasnt being reset when it was supposed to be. it seeeeeeeeems like it wasn't really affecting usher, but it's good to fix these just in case, yknow"
+		
+		
+		patch_note_title[i] = "v3.20 - (2026/07/25)"
+		patch_note_text[i++] = 
+		"===v3.20===
+		eventually you will run out of pie so might as well move on to new number
+		---additions---
+		:: FSPECIAL charging now has a slight bit of rising tone to indicate current charge level.
+		:: holding FSPECIAL at full charge now fades out the volume of the sound gradually. kinda like lumina jab2.
+
+		---changes---
+		:: 5 new alt colors: ''Skyline'' ''Livart'' ''Brilante'' ''Ericcil'' ''Lightmeasure''
+		:: alt colors have been shuffled around. now, Palette Set C is fully ''tribute-to-other-peoples-oc'' set of alt colors, except for first and last slot of course which are doing its own thing throughout the different palette sets
+		:: HUD umbrella now gains colors from your current color more accurately...hopefully?
+		:: my sfx invention for genesis alt is now no longer optional
+		:: alt color ''hymn'' removed completely
+
+		---fixes---
+		:: fixed special conditions of ''Godspeed You!'' alt color
+		:: fixed usher, ràiné and ao's victory quotes overriding eachother. i was fearing this was gonna be tough to figure out... but that was easy
+		:: this, however, wasn't as easy to solve: fixed special alt color quotes on dittos.
+
+		--balances--
+		-- UAIR ... landing lag increased by... 1, or something to that effect, idk how the calculation works (7 -> 8)"
+		
+		
 		patch_note_title[i] = "v3.1415 - (2026/04/06)"
 		patch_note_text[i++] = 
 		"===v3.1415 (vPI.3)===

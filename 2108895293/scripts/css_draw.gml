@@ -132,8 +132,8 @@ if (!variable_instance_exists(id,"ae") || ye == true){
 	ce[8,1] = "Caste"
 	ce[8,2] = "References the fact that Lumina was born in june."
 	ce[9,0] = make_color_rgb(196, 9, 37)
-	ce[9,1] = "Rumia"
-	ce[9,2] = "Someone kept misspelling Lumina's name as Lumia."
+	ce[9,1] = "Scarlet Robe"
+	ce[9,2] = "Looks cool!"
 	ce[10,0] = make_color_rgb(255, 123, 205)
 	ce[10,1] = "Trigonometric"
 	ce[10,2] = "Support ma friends"

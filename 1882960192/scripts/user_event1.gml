@@ -54,7 +54,12 @@ switch (opp_url) {
             [BOT, 0, "that's what it's called |orcane         |orca cane"],
             [BOT, 0, "he likes water |         bubbles         |         and unguarded sinks"],
             [CIN, 4, "Wow. Good thing our house's |sinks are all guarded. |Right, Azu?"],
-            [AZU, 0, "...Uh. No?"]
+            [BOT, 0, "anyway.|he makes puddles to do |things"],
+            [AZU, 0, "Like...?"],
+            [BOT, 0, "teleporting|enhacing strong attacks|       and"],
+            [CIN, 1, "And...?"],
+            [BOT, 0, "    |    buble"],
+            [AZU, 4, "...I guess that means|I should avoid going |near puddles."]
         ];
     break;
 	
@@ -92,7 +97,7 @@ switch (opp_url) {
 	
     case 6: // Forsburn
         codec_dialogue = [
-            [AZU, 7, "*cough* *hack* Blah, this |guy is ALL smoke! Can't see |or breathe a thing..."],
+            [AZU, 7, "*cough* *hack* Bleh, this |guy is ALL smoke! Can't see |or breathe a thing..."],
             [BOT, 0, " | the forsburn"],
             [CIN, 1, "Burn... Hey, isn't that |lion from before also |named Somethingburn?"],
             [BOT, 0, "they are brothers.|he served the firelands |until their dad died"],
@@ -100,7 +105,10 @@ switch (opp_url) {
             [AZU, 0, "...Dang.|Can't say I blame him for|disappearing."],
             [AZU, 6, "...Hope he and Zetter get|themselves sorted out,|though."],			
             [CIN, 2, "Yeah! Siblings are stronger|when they're together!|Right, Azu?"],
-            [AZU, 8 , "...Something like that, yeah."],
+            [AZU, 8, "...Something like that, yeah."],
+            [BOT, 0, "the smoke hides him|and he can inhale some to|do a big explosion"],
+            [CIN, 1, "But you can just blow the|smoke away, right?"],
+            [AZU, 4, "I'd hope so...|For the sake of my lungs."]
         ];
     break;
 	
@@ -131,7 +139,6 @@ switch (opp_url) {
             [AZU, 3, "I'm not sure how useful an |umbrella in a thunderstorm |with no rain is..."],
 			[CIN, 1, "... |I mean... you can fight |the goat lady with it."],
 			[AZU, 6, "...True that."]
-			
         ];
     break;
 	
@@ -144,7 +151,7 @@ switch (opp_url) {
             [AZU, 1, "What's the lore on this guy?"],
             [BOT, 0, "something something |last harbor guard who was |fighting some black ice"],
             [AZU, 2, "This guy must hate iced |soda."],
-            [BOT, 0, "he can fill the place with |ice and go         |zooo   ooooooom"],
+            [BOT, 0, "he can fill the place with |ice and slide and go         |zooo   ooooooom"],
             [CIN, 0, "Zoo-Oom?"],
             [BOT, 3, "the letters are blocking |my antenna |grrrr   rrr"],
             [AZU, 3, "What."],
@@ -156,7 +163,7 @@ switch (opp_url) {
 			[CIN, 3, "Aww, look at the little |white cat! |It's so cute!"],
 			[AZU, 1, "Looks more like a rat |or something."],
 			[CIN, 4, "No way, that face is |definitely a cat's...!"],
-			[AZU, 8, "We are NOT having this |debate again."],	
+			[AZU, 8, "We are NOT having this |debate right now."],	
 			[CIN, 1, "What's that thing floating |around it? A fairy?"],
 			[AZU, 0, "Looks like a ball of |light to me."],
 			[BOT, 0, "that's ori |the ball is sein"],
@@ -201,7 +208,7 @@ switch (opp_url) {
     case 13: // Sylvanos
         codec_dialogue = [
 			[CIN, 8, "I don't like the way|that big wolf looks..."],
-            [AZU, 1, "Not gonna lie,|it's giving me the|creeps too."],
+            [AZU, 1, "I imagine it has|something to do with all|this grass over the place."],
             [BOT, 0, "sylvanos|aether forest's big bad |wolf guardian"],
             [BOT, 0, "he's mad at the fire army|for burning the forest|so he wants to grow it"],
             [BOT, 0, "and that's why the|       kragg     |          wall exists"],
@@ -214,7 +221,7 @@ switch (opp_url) {
     case 14: // Elliana
         codec_dialogue = [
             [CIN, 3, "A snake on a mech?!|That's so cool!"],
-            [AZU, 8, "(... I always wanted to|pilot a mech...|I'm so jealous.)"],
+            [AZU, 8, "(... I always wanted to|pilot a mech...|I'm kinda jealous.)"],
             [CIN, 1, "...You okay, Azu?"],
             [AZU, 4, "!!       |Of course I am.|...BBot, gimme a refresher."],
             [BOT, 0, "elliana wanted to fly|with the air armada.|so she built the mech"],
@@ -222,7 +229,7 @@ switch (opp_url) {
             [BOT, 0, "so now she'll prove them |wrong|               with explosives"],
             [CIN, 7, "This world is one screwed|up situation after the |other, isn't it?"],
             [AZU, 6, "...|        |I hope she gets her shot."],
-            [BOT, 0, "snek"],
+            [BOT, 0, "snek"]
         ];
     break;
 	
@@ -231,7 +238,7 @@ switch (opp_url) {
             [AZU, 1, "He's here too..."],
             [BOT, 0, "the shovel|         |          is omnipresent"],
 			[CIN, 3, "Shovel Knight does a lot of|things with that shovel, |huh?"],
-			[CIN, 4, "Azu, let's scan his shovels|with our Multi-Rod! We|need a Shovel Mode ASAP!"],
+			[CIN, 4, "Azu, scan his shovel with|your Multi-Rod! I wanna|see a Shovel Mode ASAP!"],
             [AZU, 3, "First off, that'd be|stealing."],
             [AZU, 6, "Second, SK's shovel by itself|isn't doing much more than|what our Multi-Rods do."],
             [AZU, 2, "...Just take a look at all the|bajillion of other random|stuff he's pulling out."],
@@ -266,7 +273,7 @@ switch (opp_url) {
             [CIN, 8, "Ew! So that's why he keeps|that towel around his |neck..."],
             [BOT, 0, "he can make spirits out of |his sweat to power up his|attacks"],
             [BOT, 2, "he can also grab you|with his towel and--"],
-            [AZU, 7, "A-Actually! I don't want to|know anything else. I'll...       |just fight him already."],
+            [AZU, 7, "A-Actually! I don't want to|know anything else. I'll...       |just try to stay dry."],
             [CIN, 8, "Don't let his spirits|drag you to stinky hell!         |*shudder*"]
         ];
     break;
@@ -275,14 +282,14 @@ switch (opp_url) {
     case "1913517643": // Pomme + Workshomme
         codec_dialogue = [
             [CIN, 7, "Azuuu...|Can I ask you something?"],
-            [AZU, 3, "...what."],
+            [AZU, 3, "...What."],
             [CIN, 4, "........                 |We NEED to go to|a Pomme concert."],
             [AZU, 3, "That's not a question, Cinna."],
             [BOT, 0, "pomme's from the same bad|future as clairen so. |might not be safe"],
             [CIN, 6, "Not a problem! |We can defend ourselves!"],
             [AZU, 6, "I am not fighting a|dystopian future's police|for that of all things."],
             [AZU, 3, "Plus, she already fights by|singing, so... this fight is|basically a concert anyway."],
-            [BOT, 0, "she also floot"],
+            [BOT, 0, "she dose also floot"],
             [CIN, 3, "Oh! True... Then, um, |good luck!|To both of you!"],
         ];
     break;
@@ -328,7 +335,7 @@ switch (opp_url) {
 			[AZU, 2, "Anyways... I hope you got a|better plan than sending|your minions after me."],
 			[BOT, 0, "why yes, I do in fact|have one"],
 			[AZU, 1, "Oh?"],
-			[MOZ, 0, "Hi, Papa Bot!|Hi, Cinna and Other Papa!|Is a party going on?!"],
+			[MOZ, 0, "Hi, Papa Bot!|Hi, Cinna-pie and Zuzu!|Is a party going on?!"],
 			[BOT, 3, "no"],
 			[AZU, 4, "NO."],
 			[CIN, 6, "Yes!"]
@@ -344,12 +351,12 @@ switch (opp_url) {
 			[AZU, 9, "......."],																			// holding back laughter
 			[CIN, 4, "Well... if we ARE fighting,|don't expect me to go easy|just 'cause we're siblings."],
 			[AZU, 2, "Wouldn't dream of it. You do|have your own style with|the Multi-Rod, after all."],
-			[AZU, 1, "...Still impressive that Dr. |Fowl managed to make an|exact copy of the original."],
+			[AZU, 1, "...Still impressive that |Fowl managed to make an|exact copy of the original."],		//azureverse lore i have not publicly shown lmao
 			[CIN, 3, "Yeah... He's a real smart |dude, isn't he?"],
 			[CIN, 2, "...But nevermind that, 'cause|you're about to find out|who's the cooler sibling."],			
 			[AZU, 9, "...Pfft."],
 			[CIN, 4, "I HEARD THAT."],
-			[BOT, 0, "i too am in this|codec conversation"],
+			[BOT, 2, "i too am in this|codec conversation"],
 		];
 	break;
 
@@ -363,7 +370,7 @@ switch (opp_url) {
 			[CIN, 1, "'Bluey'? ...Waitwaitwait.|Why does a Koopa Troopa|know YOU, Azu?"],
 			[TRO, 3, "(It's actually Koopa|PARAtroopa...)"],
 			[AZU, 0, "Long story.|We've known each other|for a while."],
-			[TRO, 1, "Heheh, yeah! We've gone|way back, me and Bluey."],
+			[TRO, 1, "Heheh, yeah! We go|waaaay back."],
 			[CIN, 4, "...Okay, now I need|that long story."],
 			[BOT, 0, "i require|                the lore"],
 			[AZU, 3, "You're not getting it|mid-match, you two."],
@@ -383,35 +390,38 @@ switch (opp_url) {
             [AZU, 0, "...Honestly..."],
             [AZU, 8, "...I don't even want|to fight him. He seems so|chill to be around."],
             [BOT, 0, "you won't be saying that|when he chucks eggs at you"],
-            [AZU, 4, "Fine."]
+            [AZU, 0, "Right..."],
+            [BOT, 0, "or when he eats cookies|and becomes really fast|and rushes you down"],
+            [AZU, 3, "...Okay, I get it."]
         ];
     break;
 
     case "2669553388":
     case "2160644191": // Old Man
         codec_dialogue = [
-            [AZU, 0, "What a tiny old man.|What's it doing here?"],
+            [AZU, 0, "What a tiny old man.|What's he doing here?"],
             [CIN, 1, "Maybe he needs help|crossing the street..."],
             [AZU, 1, "What street?|We're in an elevated arena."],
             [CIN, 1, "Hmm..."],
             [CIN, 5, "Then maybe he's just|grumpy and hasn't had his|morning coffee."],
-	        [AZU, 3, "I think there's better |places to look for coffee|than a battle arena..."]
+	        [AZU, 3, "I think there's better |places to look for coffee|than a battle arena..."],
+			[BOT, 3, "you darn kids|get off my property"]
         ];
     break;
 
     case "2310580951": // 64 Mario
         codec_dialogue = [
-            [AZU, 1, "Huh... |that's Mario, isn't it?|He looks kinda off."],
+            [AZU, 1, "Huh. |that's Mario, isn't it?|He looks kinda off."],
             [CIN, 1, "Yeah, he looks all... blocky."],
 			[TRO, 3, "And his eyes and mustache|look like stickers."],
             [BOT, 0, "that is indeed a mario. |specifically of the |sixty-four kind"],
-            [AZU, 0, "...Sixty-four kind?"],
+            [AZU, 0, "The sixty-four kind?"],
             [BOT, 0, "the nintendo"],
             [CIN, 0, "So he's not the actual |Mario?"],
             [BOT, 0, "yes but no"],
-            [BOT, 0, "he don't got a fire flower |or tanooki suit"],
+            [BOT, 0, "he don't got a fire flower |or tanooki suit,"],
             [BOT, 0, "but he'll chase you around |with long jumps and dives |and quadruple jumps"],
-			[TRO, 2, "Yikes. Good thing I'm|not in Bowser's army..."],
+			[TRO, 2, "I'm so glad I'm not|in Bowser's army..."],
             [AZU, 3, "...I still don't get the |sixty-four part."],
             [BOT, 0, "the nintendo"]
         ];
@@ -423,13 +433,13 @@ switch (opp_url) {
             [CIN, 1, "Is that--"],
             [AZU, 6, "Yes, Cinna,      |that is a giant roll of|tape."],
             [CIN, 7, "...Why do you say that like|it's a normal thing to see?"],
-            [AZU, 3, "Well, it's not the only|sentient everyday object|I've run into around here."],
+            [AZU, 3, "Well, it's not the only|sentient everyday object|we've run into around here."],
 			[BOT, 0, "it's a big roll of tape|brought to life by a tiny|origami man to sic on mario"],
-            [CIN, 4, "Mario??? As in THE Mario?!       |Why would he have beef|with office supplies?!"],
+            [CIN, 4, "Mario??? As in THE Mario?!       |Why would he have beef|with office supplies?"],
 			[BOT, 0, "it rides its dispenser for |heavy attacks and can get |off it to move faster"],
             [AZU, 3, "Okay. So the roll of tape|can change stances.           |Sure."],
-			[BOT, 0, "also it's a mobster"],
-            [AZU, 8, "...Yeah, that tracks."],
+			[BOT, 2, "also it's a mobster"],
+            [AZU, 8, "...Of course.|Of course it is."],
         ];
     break;
 
@@ -440,21 +450,22 @@ switch (opp_url) {
             [BOT, 0, "holy moly it's sir kibble"],
             [AZU, 0, "What."],
 			[BOT, 1, "SIR KIBBLE THE GOAT |YEEEEAAHHHH #SirKibble|#TheChamp #GOAT #Based|#Peak #Kino"],
-            [CIN, 1, "I didn't know BBot was|such a big fan of this|guy..."],
+            [CIN, 1, "I didn't know BBot was|such a big fan of this|guy."],
             [AZU, 3, "...This is just SB|speaking through him."],
 			[BOT, 4, ".......       |.......          |......."],
 			[BOT, 2, "uh            |where was i"],
 			[BOT, 0, "oh right. uh          |he throws boomer rangs          |they cut and are hurt"],
-            [AZU, 8, "Well, at least we got|SOME info out of|him..."],
+            [AZU, 8, "Well, at least he|said SOMETHING|useful..."],
         ];
     break;
 
     case "3123375474": // Miles Edgeworth
         codec_dialogue = [
             [AZU, 0, "Is that guy wearing a|cravat? That's so 17th|century."],
-            [CIN, 4, "It looks good on him...|Maybe it'd look better on|you than the scarf, Azu!"],
+            [CIN, 4, "It looks good on him.|Maybe it'd look better on|you than the scarf, Azu!"],
             [AZU, 3, "No."],
             [BOT, 0, "miles edgeworth. famous |prosecutor. very smart and|fond of truth and logic"],
+            [BOT, 2, "and chess"],
             [AZU, 6, "Wow. The lawyer man can |use deductive reasoning.|You don't see that often."],
             [CIN, 1, "You think he'd help if we |got in trouble with |the law?"],
             [AZU, 0, "Uh.           |No, he's not that|kind of lawyer, Cinna."],
@@ -463,7 +474,7 @@ switch (opp_url) {
 
     case "3380395299": // Ms. Game & Watch
         codec_dialogue = [
-			[CIN, 1, "Whoa... that lady is paper|thin! Are you fighting a |living cutout, Azure?"],
+			[CIN, 1, "Whoa, that lady is paper|thin! Are you fighting a |living cutout, Azure?"],
 			[AZU, 0, "She looks like she stepped |right out of a calculator|screen."],
 			[BOT, 0, "ms. game & watch. |error: missing z-axis. |cannot calculate depth"],
 			[BOT, 2, "does not appear to be|related to the more known|mr. game & watch"],
@@ -472,7 +483,7 @@ switch (opp_url) {
 			[CIN, 1, "Maybe she has her own|Multi-Rod?"],
 			[AZU, 3, "...Definitely not."],
 			[CIN, 0, "But Azu, if she's so flat,|then how are you seeing|her from the front?"],
-			[AZU, 7, "...Good question."],
+			[AZU, 7, "I don't think we're|ready for the answer|to that..."],
         ];
     break;
 	
@@ -482,8 +493,7 @@ switch (opp_url) {
 				[AZU, 7, "Holy crap, I looked ROUGH|back then."],
 				[CIN, 0, "Whoa. Pretty sure that was|from when I still wore|a purple shirt."],
 				[BOT, 2, "and when we were just|taunt cameos"],
-				[AZU, 8, "...Oh, yeah, that was a thing."],
-				[AZU, 1, "Y'know, I had completely|forgotten I used a|Suitcase Mode back then."],
+				[AZU, 1, "...Y'know, I had completely|forgotten I used a|Suitcase Mode back then."],
 				[CIN, 3, "Don't forget the Dumbbell |Mode! And the weird spiky |balls. Or Hand Mode--"],
 				[CIN, 7, "Oh, wait, we still|use that one."],
 				[AZU, 6, "...That's the beauty of the|Multi-Rod."],
@@ -503,7 +513,7 @@ switch (opp_url) {
 				[AZU, 2, "You gotta respect him, |though. His Copy Abilities |are pretty impressive."],
 				[AZU, 5, "They're kinda like our |Multi-Rod Modes, except he |does it all naturally."],
 				[CIN, 1, "Wait. Doesn't he get|those powers by|eating people?"],
-				[AZU, 0, "Yeah. Like how we scan |stuff to add them to our |Multi-Rod as Modes."],
+				[AZU, 0, "Yeah. Like how we scan |stuff to add them to our |Multi-Rod."],
 				[CIN, 4, "Woah... We're like, Kirbies...|but human and boring|and uncute."],
 				[BOT, 2, "or the multi-rod is a kirby"],
 				[AZU, 1, "........"],
@@ -524,7 +534,7 @@ switch (opp_url) {
 				[AZU, 3, "What."],
 				[BOT, 0, "she acquired mythical |artifacts while sandbert |fought for his life"],
 				[BOT, 2, "they gave her|extreme power. |unspecified type"],
-				[AZU, 3, "Consider my pants brown|for this information."],
+				[AZU, 3, "...Consider my pants brown|for this information."],
 				[BOT, 0, "she also knows various |things of interest"],
 				[CIN, 4, "Like what?"],
 				[BOT, 0, "your ip address."],
@@ -537,10 +547,10 @@ switch (opp_url) {
 
 	case "3513247320": // Mega Man (Spam)
         codec_dialogue = [
-				[AZU, 1, "Huh... Never thought I'd|run into the Blue Bomber|ever in my life."],
+				[AZU, 1, "I never thought I'd|run into the Blue Bomber|ever in my life..."],
 				[CIN, 3, "He's a guy all in blue |who shoots stuff...   |Just like you, Azu!"],
 				[BOT, 0, "correction. |he is a super fighting |robot."],
-				[CIN, 2, "Oh! So he's a blue robot|who shoots stuff!|Just like YOU, BBot!"],
+				[CIN, 2, "Oh! So he's a blue robot|who shoots stuff!|Just like YOU, BBot."],
 				[AZU, 6, "When you put |it like that..."],
 				[BOT, 1, "scanning for plagiarism... |he has a buster. |i have hand repulsors."],
 				[BOT, 3, "he stole my entire flow."],
@@ -561,7 +571,7 @@ switch (opp_url) {
             [CIN, 7, "I dunno how useful|that info is, BBot..."],		
             [BOT, 2, "whatever.|just read the |steam workshop page bro"],
             [AZU, 6, "...Whoever it is,  |I don't really care."],
-            [AZU, 2, "Gotta fight 'em all the|same, anyway."],
+            [AZU, 2, "I mean...    |Gotta fight 'em all the|same, anyway."],
             [CIN, 6, "Yeah.  |Go get 'em, Azu!"],
         ];
     break;

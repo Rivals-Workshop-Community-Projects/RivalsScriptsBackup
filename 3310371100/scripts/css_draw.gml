@@ -88,11 +88,13 @@ if (var_localstorage==4){//EXTRA???
 		draw_sprite_ext(sprite_get("z_css_icons"),2,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
 		case 9:
+		case 10:
+		case 11:
+		case 12:
 		draw_sprite_ext(sprite_get("z_css_icons"),0,x+icon_x,y+icon_y,2,2,0,-1,1);
 		break;
-		case 14:
-		draw_sprite_ext(sprite_get("etc_css_radialvortex_2x"),1,x+8,y+8,1,1,0,-1,1);
-		draw_sprite_ext(sprite_get("z_css_icons"),13,x+icon_x,y+icon_y,2,2,0,-1,1);
+		case 17:
+		draw_sprite_ext(sprite_get("z_css_lcons"),0,x+icon_x+32,y+icon_y+32,1,1,0,-1,1);
 		break;
 		default: break;
 	}
@@ -256,8 +258,8 @@ if (reset_color_list == true){
 	ce[13,1] = "Orange"
 	ce[14,0] = make_color_rgb(203, 139, 232)
 	ce[14,1] = "Lavender"
-	ce[15,0] = make_color_rgb(138, 57, 75)
-	ce[15,1] = "Moondusk"
+	ce[15,0] = make_color_rgb(0, 192, 255)
+	ce[15,1] = "Skyline"
 	ce[16,0] = make_color_rgb(134, 90, 184)
 	ce[16,1] = "ASHe"
 	ce[17,0] = make_color_rgb(255, 223, 61)
@@ -284,12 +286,12 @@ if (reset_color_list == true){
 	ce[7,1] = "Illu"
 	ce[8,0] = make_color_rgb(232, 86, 110)
 	ce[8,1] = "Nipalensis"
-	ce[9,0] = make_color_rgb(255, 156, 222)
-	ce[9,1] = "paintyourworld"
-	ce[10,0] = make_color_rgb(69, 42, 150)
-	ce[10,1] = "Shadow"
-	ce[11,0] = make_color_rgb(230, 110, 138)
-	ce[11,1] = "Cytherean"
+	ce[9,0] = make_color_rgb(0, 157, 214)
+	ce[9,1] = "Livart"
+	ce[10,0] = make_color_rgb(232, 84, 43)
+	ce[10,1] = "Brilante"
+	ce[11,0] = make_color_rgb(201, 255, 54)
+	ce[11,1] = "Ericcil"
 	ce[12,0] = make_color_rgb(119, 100, 189)
 	ce[12,1] = "Between the Times"
 	ce[13,0] = make_color_rgb(214, 81, 81)
@@ -322,24 +324,22 @@ if (reset_color_list == true){
 	ce[6,1] = "Magitech"
 	ce[7,0] = make_color_rgb(158, 43, 43)
 	ce[7,1] = "For The Flowers"
-	ce[8,0] = make_color_rgb(242, 123, 32)
-	ce[8,1] = "Clockwork Fate"
-	ce[9,0] = make_color_rgb(133, 127, 227)
-	ce[9,1] = "Bell Toll of the Lily"
-	ce[10,0] = make_color_rgb(89, 82, 138)
-	ce[10,1] = "Frozen Armory"
+	ce[8,0] = make_color_rgb(255, 156, 222)
+	ce[8,1] = "paintyourworld"
+	ce[9,0] = make_color_rgb(69, 42, 150)
+	ce[9,1] = "Shadow"
+	ce[10,0] = make_color_rgb(230, 110, 138)
+	ce[10,1] = "Cytherean"
 	ce[11,0] = make_color_rgb(47, 222, 150)
 	ce[11,1] = "Thru Blade's Vision"
 	ce[12,0] = make_color_rgb(248, 247, 255)
 	ce[12,1] = "Windrose"
 	ce[13,0] = make_color_rgb(240, 96, 102)
 	ce[13,1] = "Raincoat Poppy"
-	//ce[14,0] = make_color_rgb(189, 64, 78)
-	//ce[14,1] = "Syndrome+"
 	ce[14,0] = make_color_rgb(176, 80, 74)
 	ce[14,1] = "Ashveil"
-	ce[15,0] = make_color_rgb(79, 104, 214)
-	ce[15,1] = "Snowball"
+	ce[15,0] = make_color_rgb(125, 86, 103)
+	ce[15,1] = "Lightmeasure"
 	ce[16,0] = make_color_rgb(49, 184, 155)
 	ce[16,1] = "So-called Ghost Snake"
 	ce[17,0] = make_color_rgb(255, 66, 139)
@@ -406,40 +406,27 @@ if (reset_color_list == true){
 	ce[7,1] = "Scarlet like Cinnabar Fire"
 	ce[8,0] = make_color_rgb(184, 186, 219)
 	ce[8,1] = "Grid"
-	switch(get_match_setting( SET_SEASON )){
-		case 1: //spring
 			ce[9,0] = make_color_rgb(255, 163, 238)
-			ce[9,1] = "Seasonal ~ Cupid"
-		break;
-		case 2: //summer
-			ce[9,0] = make_color_rgb(99, 226, 230)
-			ce[9,1] = "Seasonal ~ Seafoam"
-		break;
-		case 3: //autumn
-			ce[9,0] = make_color_rgb(57, 64, 60)
-			ce[9,1] = "Seasonal ~ Interloper"
-		break;
-		case 4: //winter
-			ce[9,0] = make_color_rgb(235, 66, 82)
-			ce[9,1] = "Seasonal ~ SANTA!!"
-		break;
-	}
-	ce[10,0] = make_color_rgb(0, 255, 123)
-	ce[10,1] = "Hymn"
-	ce[11,0] = make_color_rgb(242, 255, 245)
-	ce[11,1] = "it's the end of all things"
-	ce[12,0] = make_color_rgb(156, 122, 112)
-	ce[12,1] = "Forlorn Egodeth"
+			ce[9,1] = "Perma ~ Cupid"
+			ce[10,0] = make_color_rgb(99, 226, 230)
+			ce[10,1] = "Perma ~ Seafoam"
+			ce[11,0] = make_color_rgb(57, 64, 60)
+			ce[11,1] = "Perma ~ Interloper"
+			ce[12,0] = make_color_rgb(235, 66, 82)
+			ce[12,1] = "Perma ~ SANTA!!"
 	ce[13,0] = make_color_rgb(154, 117, 191)
 	ce[13,1] = "Dilemma"
-	ce[14,0] = make_color_rgb(0, 88, 240)
-	ce[14,1] = "Radial Vortex"
+	ce[14,0] = make_color_rgb(179, 114, 184)
+	ce[14,1] = "Painterly Rhodox Paradox"
 	ce[15,0] = make_color_rgb(128, 0, 128)
 	ce[15,1] = "---"
 	ce[16,0] = make_color_rgb(128, 0, 128)
 	ce[16,1] = "---"
-	ce[17,0] = make_color_rgb(128, 0, 128)
-	ce[17,1] = "---"
+	ce[17,0] = make_color_rgb(24, 16, 16)
+	ce[17,1] = "ŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒŒ
+	you	should probably let me
+	go and let me be forgotten
+	ゥゥゥゥゥゥゥゥゥゥゥゥゥゥゥゥゥゥゥゥ"
 	}
 	//--------------------------------------------
 	

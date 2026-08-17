@@ -264,6 +264,39 @@ with phone{
 	//
 	
 	
+	initPatch("2.7d", "2026-08-08 (YMD)");
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("-")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("open for inputs!");
+	
+	
+	//
+	
+	
+	initPatch("2.7c", "2026-07-24 (YMD)");
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("like few years late but im noticing some sprite mistakes, ive went and tweaked those")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("open for inputs!");
+	
+	
+	//
+	
+	
+	initPatch("2.7b", "2025-04-26 (YMD)");
+	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
+	initPatchWords("it seems lumina was affected by the update after all. fixed the issue where UAIR could not go into UAIR2 if you are tapping ATTACK and not holding ATTACK or using TILTSTICK UP.")
+	
+	initPatchWords_ext("Notes", fa_left, c_yellow, 1, 0);
+	initPatchWords("open for inputs!");
+	
+	
+	//
+	
+	
 	initPatch("2.7", "2025-04-25 (YMD)");
 	initPatchWords_ext("Fixes", fa_left, c_yellow, 1, 0);
 	initPatchWords("nothing special, i just fixed how the ranked gold alt special alternative colors were checking for the wrong alt color number which was infamous alt. did that make no sense? idk thats fine")
