@@ -192,6 +192,10 @@ airdash = hit_fx_create( sprite_get( "airdash" ), 15 );
 explode = hit_fx_create( sprite_get( "explosion_area" ), 15 );
 axetrailing = hit_fx_create( sprite_get( "spinaxe1" ), 16 );
 
+DashEffect = 0;
+Dashing = sprite_get("fspecial_dash_effect");
+dash_timer=0;
+dashing_timer=0;
 
 /*
 //AfterImageTest

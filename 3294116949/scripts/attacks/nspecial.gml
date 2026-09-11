@@ -96,7 +96,7 @@ set_hitbox_value(AT_NSPECIAL, 2, HG_PRIORITY, 2);
 set_hitbox_value(AT_NSPECIAL, 2, HG_DAMAGE, 4); // 6
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE, 120);
 //set_hitbox_value(AT_NSPECIAL, 2, HG_EFFECT, 12); 
-set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 3);
+set_hitbox_value(AT_NSPECIAL, 2, HG_FORCE_FLINCH, 3);
 set_hitbox_value(AT_NSPECIAL, 2, HG_ANGLE_FLIPPER, 7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_BASE_KNOCKBACK, 7);
 set_hitbox_value(AT_NSPECIAL, 2, HG_KNOCKBACK_SCALING, 0.3);
@@ -146,7 +146,7 @@ set_hitbox_value(AT_NSPECIAL, 3, HG_BASE_HITPAUSE, 4);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 302);
 set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
-set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("axe_poke1"));
+set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("alt_axe1"));
 //set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, 1.2);
 set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 5);
@@ -242,7 +242,7 @@ set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_SFX, asset_get("sfx_forsburn_combust"));
 set_hitbox_value(AT_NSPECIAL, 5, HG_HITSTUN_MULTIPLIER, 1);//.8
 set_hitbox_value(AT_NSPECIAL, 5, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_NSPECIAL, 5, HG_FORCE_FLINCH, 2);
-set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_LOCKOUT, 10);
+set_hitbox_value(AT_NSPECIAL, 5, HG_HIT_LOCKOUT, 5);  //previously 10
 
 
 set_hitbox_value(AT_NSPECIAL, 5, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
@@ -461,10 +461,10 @@ if(has_rune("A")) {
     set_hitbox_value(AT_NSPECIAL, 3, HG_HITPAUSE_SCALING, .1);
     set_hitbox_value(AT_NSPECIAL, 3, HG_VISUAL_EFFECT, 302);
     set_hitbox_value(AT_NSPECIAL, 3, HG_EXTENDED_PARRY_STUN, 1);
-    set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("axe_poke1"));
+    set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, sound_get("alt_axe1"));
     //set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
     set_hitbox_value(AT_NSPECIAL, 3, HG_HITSTUN_MULTIPLIER, .6);
-    set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 5);
+    set_hitbox_value(AT_NSPECIAL, 3, HG_HIT_LOCKOUT, 5); //previously 5
     set_hitbox_value(AT_NSPECIAL, 3, HG_IGNORES_PROJECTILES, 1);
     
     

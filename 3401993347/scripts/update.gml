@@ -123,46 +123,58 @@ if(hitpause || (!((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attac
 	ledgeCancelling = false;
 }
 
-// if(taunt_down && attack != AT_TAUNT && attack != AT_TAUNT_2 && !free){
-// 	//reaction time test
+if(taunt_down && attack == AT_TAUNT && window_timer == 32*3-1){
+	//do taunt 2
+	attack = AT_EXTRA_2
+	window_timer = 42*3-1;
+}
 
-// 	time++;
+if(taunt_down && attack == AT_EXTRA_2 && get_gameplay_time() > 300 && !free){
+	//reaction time test
+	if(window_timer > 2){
+		window_timer-=2;
+	} if(window_timer < 100) {
+		time++;
 
-// 	if(time%10==0){
-// 		randomer = random_func_2(floor(x%199)+1, 100, 1)
-// 	}
+		if(time%10==0){
+			randomer = random_func_2(floor(x%199)+1, 100, 1)
+		}
 
-// 	if(shield_down){
-// 		//make mewtwo invisible
-// 		draw_indicator = false;
-// 		sprite_change_offset("idle", 44442, 72);
-// 	} else {
-// 		sprite_change_offset("idle", 62, 80);
-// 	}
+		if(shield_down){
+			//make mewtwo invisible
+			draw_indicator = false;
+		}
+		if(!jump_down){
+			count++;
+		}
+		if(count > 120 && time >= timeTarget){
+			
+			count = 0;
+			timeTarget = 120+random_func_2(floor(randomer)+1, 200, 1)
 
-// 	count++;
-// 	if(count > 120 && time >= timeTarget){
-// 		x=1000-x;
-// 		count = 0;
-// 		timeTarget = 120+random_func_2(floor(randomer)+1, 200, 1)
 
-// 		time = 0;
+			time = 0;
 
-// 		with (oPlayer){
-// 			reactionTime = 0;
-// 		}
-// 		if(shield_down){
-// 			sound_play(asset_get("sfx_abyss_explosion_big"));
-// 		}
-// 	}
+			with (oPlayer){
+				reactionTime = 0;
+			}
+			if(shield_down){
+				sound_play(asset_get("sfx_abyss_explosion_big"));
+			} else {
+				window_timer = 100;
+				x=1000-x;
+			}
+		}
 
-// 	with (oPlayer){
-//         if(attack_pressed){
-//             clear_button_buffer(PC_ATTACK_PRESSED);
-// 			reactionTime = other.count;
-// 		}
-// 	}
-// }
+	}
+	
+	with (oPlayer){
+        if(attack_pressed){
+            clear_button_buffer(PC_ATTACK_PRESSED);
+			reactionTime = other.count;
+		}
+	}
+}
 	
 
 
@@ -199,6 +211,13 @@ with (oPlayer) {
 	}
 }
 
+// if(attack == AT_DATTACK){
+// 	set_attack_value(AT_DATTACK, AG_CATEGORY, 1);
+// 	if(free){
+// 		set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
+// 	}
+// }
+
 //Modified code from anthem fspecial
 //mewtwo orbs orbit an enemy or mewtwo
 with (oPlayer) {
@@ -215,8 +234,10 @@ with (oPlayer) {
 					}
 					
 					with (stack) {
-						var rot_current = (360 * (i / array_length(other.mewtwoOrbStacks)) + hitbox_timer * 5) % 360;
-						var len_current = 64;
+						// print(hitbox_timer);
+						var rot_current = (360 * (i / array_length(other.mewtwoOrbStacks)) + get_gameplay_time() * 5) % 360;
+						var len_current = 84;
+						var ease = 0.9111;
 						var time_end = (length - 1) - (i * 3);
 						if (other.state == PS_DEAD || other.state == PS_RESPAWN) {
 							instance_destroy(id);
@@ -225,16 +246,22 @@ with (oPlayer) {
 						}
 						can_hit[orig_player] = false;
 						can_hit[player] = false;
+
 						exploding = 0;
-				    	if (hitbox_timer >= time_end - other.mewtwoOrbId.orb_warning_frames) {
-				    		len_current = ease_backIn(64, 8, hitbox_timer - (time_end - other.mewtwoOrbId.orb_warning_frames), other.mewtwoOrbId.orb_warning_frames, 5);
+
+						if (hitbox_timer >= time_end - other.mewtwoOrbId.orb_warning_frames) {
+				    		len_current = ease_backIn(84, 8, hitbox_timer - (time_end - other.mewtwoOrbId.orb_warning_frames), other.mewtwoOrbId.orb_warning_frames, 5);
+							ease = 0.9111-0.1*ease_backIn(0, 9, hitbox_timer - (time_end - other.mewtwoOrbId.orb_warning_frames), other.mewtwoOrbId.orb_warning_frames+1, 0);
 							exploding = hitbox_timer - (time_end-other.mewtwoOrbId.orb_warning_frames);
 				    		image_index = ease_linear(0, 6, hitbox_timer - (time_end - other.mewtwoOrbId.orb_warning_frames), other.mewtwoOrbId.orb_warning_frames)
 				    	}
-				    	
-				    	x = other.x + lengthdir_x(len_current, rot_current);
-				    	y = other.y - (other.char_height / 2) + lengthdir_y(len_current, rot_current);
-				    	
+							
+				    	var targetx = other.x + lengthdir_x(len_current, rot_current) + other.hsp*10*ease;
+				    	var targety = other.y - (other.char_height / 2) + lengthdir_y(len_current, rot_current) + other.vsp*10*ease;
+
+						x = (ease)*x + (1-ease)*targetx;
+						y = (ease)*y + (1-ease)*targety;
+
 				    	if (hitbox_timer >= time_end) {
 
 							var hbox = create_hitbox(AT_FSPECIAL, 4, round(x), round(y))
@@ -278,10 +305,10 @@ if (array_length(trapOrbStacks) > 0) {
 		}
 		
 		with (stack) {
-			var rot_current = (360 * (i / array_length(other.trapOrbStacks)) + hitbox_timer * 5) % 360;
-			var len_current = 64;
+			var rot_current = (360 * (i / array_length(other.trapOrbStacks)) + get_gameplay_time() * 5) % 360;
+			var len_current = 84;
 			if(other.trapboxCurrentTime < other.trapboxSetupTime){
-				len_current = ease_quadInOut(8, 64, other.trapboxCurrentTime, other.trapboxSetupTime);
+				len_current = ease_quadInOut(8, 84, other.trapboxCurrentTime, other.trapboxSetupTime);
 				setupAmount = other.trapboxCurrentTime;
 			}
 
@@ -294,6 +321,8 @@ if (array_length(trapOrbStacks) > 0) {
 			can_hit[orig_player] = false;
 			can_hit[player] = false;
 			exploding = 0;
+			var ease = 0.9111;
+
 			if (hitbox_timer >= time_end - other.orb_warning_frames) {
 				// //clear trap hitboxes
 				// with (other.trapboxCollectable) {
@@ -302,14 +331,21 @@ if (array_length(trapOrbStacks) > 0) {
 				// with (other.trapbox) {
 				// 	instance_destroy(id);
 				// }
+
+
+				ease = 0.9111-0.1*ease_backIn(0, 9, hitbox_timer - (time_end - other.orb_warning_frames), other.orb_warning_frames+1, 0);
+
 				
-				len_current = ease_backIn(64, 8, hitbox_timer - (time_end - other.orb_warning_frames), other.orb_warning_frames, 5);
+				len_current = ease_backIn(84, 8, hitbox_timer - (time_end - other.orb_warning_frames), other.orb_warning_frames, 5);
 				exploding = hitbox_timer - (time_end-other.orb_warning_frames);
 				image_index = ease_linear(0, 6, hitbox_timer - (time_end - other.orb_warning_frames), other.orb_warning_frames)
 			}
 			
-			x = other.trapX + lengthdir_x(len_current, rot_current);
-			y = other.trapY + lengthdir_y(len_current, rot_current);
+			var targetx = other.trapX + lengthdir_x(len_current, rot_current);
+			var targety = other.trapY + lengthdir_y(len_current, rot_current);
+
+			x = (ease)*x + (1-ease)*targetx;
+			y = (ease)*y + (1-ease)*targety;
 
 			if (hitbox_timer >= time_end) {
 				var hbox = create_hitbox(AT_FSPECIAL, 4, other.trapX, other.trapY)
@@ -350,40 +386,40 @@ if (array_length(fadingTrapOrbStacks) > 0) {
 		var deadtime = fadingTrapbox.hitbox_timer;
 
 		with (stack) {
-			var rot_current = (360 * (i / array_length(other.fadingTrapOrbStacks)) + hitbox_timer * 5) % 360;
-			var len_current = 64;
-			var time_end = (300 - 1) - (i * 3);
+			var rot_current = (360 * (i / array_length(other.fadingTrapOrbStacks)) + get_gameplay_time() * 5) % 360;
+			var len_current = 84;
+			var time_end = (400 - 1) - (i * 3);
 			if (other.state == PS_DEAD || other.state == PS_RESPAWN) {
 				instance_destroy(id);
 				other.fadingTrapOrbStacks = array_cut(other.fadingTrapOrbStacks, i);
 				continue;
 			}
 
-			len_current = ease_backIn(64, 8, deadtime, 29, 0);
+			len_current = ease_backIn(84, 8, deadtime, 29, 0);
 
 			can_hit[orig_player] = false;
 			can_hit[player] = false;
 
-			//fading trap orbs only explode if they are already exploding
-			if explodeanyway {
-				if (hitbox_timer >= time_end - other.orb_warning_frames) {
-					len_current = ease_backIn(64, 8, hitbox_timer - (time_end - other.orb_warning_frames), other.orb_warning_frames, 5);
-					with (player_id) other.sprite_index = asset_get("empty_sprite");
-					exploding = hitbox_timer - (time_end-other.orb_warning_frames);
-					image_index = ease_linear(0, 6, hitbox_timer - (time_end - other.orb_warning_frames), other.orb_warning_frames)
-				}
+			// //fading trap orbs only explode if they are already exploding
+			// if explodeanyway {
+			// 	if (hitbox_timer >= time_end - other.orb_warning_frames) {
+			// 		len_current = ease_backIn(84, 8, hitbox_timer - (time_end - other.orb_warning_frames), other.orb_warning_frames, 5);
+			// 		with (player_id) other.sprite_index = asset_get("empty_sprite");
+			// 		exploding = hitbox_timer - (time_end-other.orb_warning_frames);
+			// 		image_index = ease_linear(0, 6, hitbox_timer - (time_end - other.orb_warning_frames), other.orb_warning_frames)
+			// 	}
 
-				if (hitbox_timer >= time_end) {
-					var hbox = create_hitbox(AT_FSPECIAL, 4, other.fadingTrapX, other.fadingTrapY)
-					hbox.player = player;
+			// 	if (hitbox_timer >= time_end) {
+			// 		var hbox = create_hitbox(AT_FSPECIAL, 4, other.fadingTrapX, other.fadingTrapY)
+			// 		hbox.player = player;
 
-					hbox.can_hit_self = true;
-					other.fadingTrapOrbStacks = array_cut(other.fadingTrapOrbStacks, i);
-					sound_play(asset_get("sfx_abyss_explosion_big"));
-					instance_destroy(id);
-					continue;
-				}
-			} else {
+			// 		hbox.can_hit_self = true;
+			// 		other.fadingTrapOrbStacks = array_cut(other.fadingTrapOrbStacks, i);
+			// 		sound_play(asset_get("sfx_abyss_explosion_big"));
+			// 		instance_destroy(id);
+			// 		continue;
+			// 	}
+			// } else {
 				if(deadtime == 30){
 					//kill all non-exploding orbs
 					other.fadingTrapOrbStacks = array_cut(other.fadingTrapOrbStacks, i);
@@ -395,10 +431,12 @@ if (array_length(fadingTrapOrbStacks) > 0) {
 					fade = 0;
 				}
 				fade++;
-			}
+			// }
 
-			x = other.fadingTrapX + lengthdir_x(len_current, rot_current);
-			y = other.fadingTrapY + lengthdir_y(len_current, rot_current);
+			var targetx = other.fadingTrapX + lengthdir_x(len_current, rot_current);
+			var targety = other.fadingTrapY + lengthdir_y(len_current, rot_current);
+			x = (0.9111)*x + (1-0.9111)*targetx;
+			y = (0.9111)*y + (1-0.9111)*targety;
 		}
 	}
 }
@@ -423,8 +461,8 @@ with (pHitBox)
 			}
 			
 			with (stack) {
-				var rot_current = (360 * (i / array_length(other.shadowBallOrbStacks)) + hitbox_timer * 5) % 360;
-				var len_current = 64;
+				var rot_current = (360 * (i / array_length(other.shadowBallOrbStacks)) + get_gameplay_time() * 5) % 360;
+				var len_current = 84;
 				var time_end = (length - 1) - (i * 3);
 				// if (other.hitpause) {
 				// 	instance_destroy(id);
@@ -439,17 +477,64 @@ with (pHitBox)
 
 				can_hit[orig_player] = false;
 				can_hit[player] = false;
-
-				if(other.hitbox_timer > 80){
-					len_current = ease_backIn(64, 0, other.hitbox_timer-80, 20, 0);
-				}
-
-				hitbox_timer = 200+other.hitbox_timer;
+				var ease = 0.9111;
 				
 
+				if(other.hitbox_timer > 70){
+					ease = 0.9111-0.1*ease_backIn(0, 9, other.hitbox_timer-70, 30, 0);
+					len_current = ease_backIn(84, 0, other.hitbox_timer-70, 30, 0);
+				}
 
-				x = other.x + lengthdir_x(len_current, rot_current);
-				y = other.y - 0 + lengthdir_y(len_current, rot_current);
+				len_current-=10*(0.9111*0.9111-ease*ease)			
+				rot_current -= 50*(0.9111*0.9111-ease*ease);
+
+
+				exploding = 0;
+				var orb_warning_frames = 50;
+				var ballTimeLeft = 100 - other.hitbox_timer;
+				var orbTimeLeft = time_end - hitbox_timer + i*3;
+				if(ballTimeLeft < orbTimeLeft && ballTimeLeft > orbTimeLeft/2){
+					//running out of time to explode
+					hitbox_timer ++;
+				}
+
+				if (hitbox_timer >= time_end - orb_warning_frames) {
+					ease = 0.9111-0.1*ease_backIn(0, 9, hitbox_timer - (time_end - orb_warning_frames), orb_warning_frames+1, 0);
+					len_current = ease_backIn(84, 0, hitbox_timer - (time_end - orb_warning_frames), orb_warning_frames, 5);
+					exploding = hitbox_timer - (time_end-orb_warning_frames);
+					image_index = ease_linear(0, 6, hitbox_timer - (time_end - orb_warning_frames), orb_warning_frames)
+				}
+
+				if(other.hitbox_timer > 98){
+					//destroy orbs
+					// print(other.hsp)
+					hitbox_timer = 400+other.hitbox_timer;
+					var targetx = other.x + lengthdir_x(len_current, rot_current) + other.hsp*10*ease;
+					var targety = other.y - 0 + lengthdir_y(len_current, rot_current) + other.vsp*10*ease;
+					x = (ease)*x + (1-ease)*targetx;
+					y = (ease)*y + (1-ease)*targety;
+					continue;
+				}
+				
+				
+				if (hitbox_timer >= time_end) {
+
+					var hbox = create_hitbox(AT_FSPECIAL, 4, round(x), round(y))
+					hbox.player = player;
+
+					hbox.can_hit_self = true;
+					
+					other.shadowBallOrbStacks = array_cut(other.shadowBallOrbStacks, i);
+					sound_play(asset_get("sfx_abyss_explosion_big"));
+					instance_destroy(id);
+					continue;
+				}
+
+				var targetx = other.x + lengthdir_x(len_current, rot_current) + other.hsp*10*ease;
+				var targety = other.y - 0 + lengthdir_y(len_current, rot_current) + other.vsp*10*ease;
+				x = (ease)*x + (1-ease)*targetx;
+				y = (ease)*y + (1-ease)*targety;
+
 			}
 		}
 	}

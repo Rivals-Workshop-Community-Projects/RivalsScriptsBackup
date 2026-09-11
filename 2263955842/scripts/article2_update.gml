@@ -357,7 +357,7 @@ with hbox {
     return ("owner" not in self || owner != other) //check if the hitbox was created by this article
         && hit_priority != 0 && hit_priority <= 10
         && (groundedness == 0 || groundedness == 1+other.free) 
-        && (!player_equal || player_id == other.player_id && attack != AT_DSPECIAL)
+        && (!player_equal || player_id == other.player_id)
         //\\&& (!player_equal) //uncomment to prevent the article from being hit by its owner.
         //&& ( (get_match_setting(SET_TEAMS) && (get_match_setting(SET_TEAMATTACK) || !team_equal) ) || player_equal) //uncomment to prevent the article from being hit by its owner's team.
 }

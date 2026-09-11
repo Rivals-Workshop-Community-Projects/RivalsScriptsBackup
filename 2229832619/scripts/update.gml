@@ -81,7 +81,7 @@ if (state == PS_AIR_DODGE && attack == AT_USPECIAL){
 if (yo_dummy_your_up_b_got_PARRIED){
 		//prat_fall_accel = prat_fall_accel_reduce;
 		hsp = clamp(hsp, -3, 3)
-	if (!free){
+	if (!free||state==PS_WALL_JUMP||state==PS_HITSTUN||state==PS_HITSTUN_LAND){
 		yo_dummy_your_up_b_got_PARRIED = false;
 		//prat_fall_accel = prat_fall_accel_normal;
 	}
@@ -998,6 +998,11 @@ if(variable_instance_exists(id,"diag"))
         diag = "All are blind to what one lacks, for they never knew what they could have.";
         diag_index = 0;
     }
+    if(otherUrl == "3532575292" && diag != "")
+    {//Usher
+        diag = "Frozen hail will pelt your hide and tatter you.";
+        diag_index = 0;
+    }
     if(otherUrl == "3346651920" && diag != "")
     {//Slenderman
         diag = "Myths rely of intangibility. Without, they wither and crumble.";
@@ -1094,11 +1099,6 @@ if(variable_instance_exists(id,"diag"))
         diag = "You understand nothing.";
         diag_index = 0;
     }
-    if(otherUrl == "2006712792" && diag != "")
-    {//Feri
-        diag = "End of your hubris.";
-        diag_index = 0;
-    }
     if(otherUrl == "2534202008" && diag != "")
     {//Kinunosu
         diag = "Transliterations do not tell the whole story.";
@@ -1162,11 +1162,6 @@ if(variable_instance_exists(id,"diag"))
     if(otherUrl == "2217843818" && diag != "")
     {//Among
         diag = "With many eyes, we cannot be fooled. Try, if you dare.";
-        diag_index = 0;
-    }
-    if(otherUrl == "2265876548" && diag != "")
-    {//Matthew Favson
-        diag = "That is what you wish to believe. Let us see how further can you keep such beliefs.";
         diag_index = 0;
     }
     if(otherUrl == "2502476068" && diag != "")
@@ -1305,9 +1300,49 @@ if(variable_instance_exists(id,"diag"))
 	
 }
 
+/*
+//parry test
+with (oPlayer){
+	if (id != other.id){
+		if (state==PS_PARRY){
+			if (window==1){
+			window = 1;
+			window_timer = 0;
+			state_timer = 0;
+			}
+		}
+	}
+}
+*/
 
-
-
+with (pHitBox){
+	
+	if (player_id == other.id){
+		if (variable_instance_exists(id,"panicsv")){
+			if (panicsv != -4){
+				//received a distress signal from this hitbox
+				//this hitbox returned in a very odd condition
+				//we'll assume someone else outside n/a tried to spawn it, and...
+				//create the article ourselves.
+				
+				//here i spawn void
+				//print("SHOULD HAPPEN");
+				var voidID = instance_create(x+(32*spr_dir), y, "obj_article2");
+				voidID.player_id = other.id;
+				voidID.player = player;
+				voidID.parried_player = panicsv;
+				voidID.loop_count = 8;//16 is current max
+				voidID.spr_dir = 1;
+				voidID.image_angle = (spr_dir==1)?0:180;
+				voidID.tmpdir = spr_dir;
+				voidID.void_speed = 3;
+				voidID.slash_immune = true;
+				instance_destroy(id);
+			}
+		}
+	}
+	
+}
 
 
 /*

@@ -49,14 +49,95 @@ if (attack == AT_DSPECIAL) {
 if (attack == AT_DAIR){
  	if window == 1 && window_timer <= 2 {
              if left_down && !right_down{
-                 spr_dir = -1 
+                 spr_dir = -1; 
              }
              if !left_down && right_down{
-                 spr_dir = 1
+                 spr_dir = 1;
          }
 	}
 }
 
+/*if (attack == AT_UTILT){
+ 	if (window == 3 && window_timer == 1){
+ 		if !((attack_down) or (up_stick_down)){
+		window_timer = 8;
+		destroy_hitboxes();
+		vsp = -6;
+		}
+		else
+		vsp = vsp+0;
+		window_timer = 1;
+ 	}
+}*/
+
+if (attack == AT_UTILT){
+ 	if (window == 3 && window_timer == 1){
+ 		if (down_down){
+		window_timer = +6;
+		//window = 4;
+		destroy_hitboxes();
+		vsp = -4;
+		}
+		else
+		vsp = vsp+0;
+ 	}
+}
+
+//Divekick
+if (attack == (45)) {
+	can_fast_fall = false;
+	if !(free){
+		destroy_hitboxes();
+	}
+	/*if window == 1 && window_timer <= 6 {
+		if left_down && !right_down{
+				spr_dir = -1;
+		}
+		if !left_down && right_down{
+				spr_dir = 1;
+		}
+	}*/
+	if window == 3 && state_timer >= 35 && !hitpause {
+		can_jump = true;
+		can_wall_jump = true;
+		can_shield = true;
+		if (jump_pressed){
+			hsp = 1;
+		}
+		if is_special_pressed( DIR_UP ){
+			set_attack( AT_USPECIAL );
+			vsp = 0;
+		}
+	}
+	if(window == 3 && !hitpause && !free){
+		shake_camera(2,4);
+		destroy_hitboxes();
+		//sound_play(sound_get("rich_land"));
+		sound_play(asset_get("sfx_kragg_rock_land"));
+		window++;
+		window_timer = 0;
+		hsp = 8* spr_dir;  //Moves forward when landing
+	}else
+	if((window == 2 or window == 3) && hitpause){
+		window = 5;
+		window_timer = 0;
+	}
+	if (window == 5) && (!hitpause){
+		destroy_hitboxes();
+	}
+	if(window == 6 && window_timer == 1){
+		if right_down * spr_dir {
+			hsp = 4;
+		}/*if right_down * -spr_dir {
+			hsp = 1;
+		}
+		if left_down * spr_dir {
+			hsp = -1;
+		}*/if left_down * -spr_dir {
+			hsp = -4;
+		}
+	}
+}
 
 // if (lamp_number == 1){
 // }
@@ -89,26 +170,9 @@ if(attack == AT_DSPECIAL_2){
 	}
 }
 
-if (attack == (46)){ //Directional Whip Code (John Morris Castlevania Bloodlines)
-	if (window == 1 && window_timer <= 5){
-		set_attack_value(46, AG_NUM_WINDOWS, 3);
-	}
-	if (window == 2 && window_timer >= 6){
-		if (down_down){
-		set_attack_value(46, AG_NUM_WINDOWS, 6);
-		window = 4;
-		}
-	}
-	if (window == 2 && window_timer >= 6){
-		if (up_down){
-		set_attack_value(46, AG_NUM_WINDOWS, 9);
-		window = 7;
-		}
-	}
-}
-	
+
 if (attack == (AT_FSPECIAL)){
-    if (window <= 2 or (window >= 5 && !axeless)) {
+    if (window == 2 or (window >= 5 && !axeless)) {
     	if (state_timer % 4 == 0){
       		instance_create(x , y, "obj_article3");
     	}
@@ -141,11 +205,11 @@ if (attack == (AT_FSPECIAL)){
 //AXELESS FIXES
 if (!axeless){
 	set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("alt_axe2"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -15);
 } else {
 	set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("alt_fspecial_hurt"));
-	set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_blow_medium3"));
+	set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_blow_heavy1"));
 	set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_Y, -45);
 }
 
@@ -396,13 +460,30 @@ if (attack == AT_USPECIAL){
 
 
 //Down Air Fall
-// if (attack == AT_DAIR){
-// 	if window == 4{
-// 		if vsp = 0 && hitpause = 0 {
-// 		window = 6;
-// 		}
-// 	}
-// }
+if (attack == AT_DAIR){
+	if window == 1{
+		if vsp < -4{
+			vsp = vsp +1;
+		}
+	}
+	if window == 4{
+ 		if hsp > 4{
+ 		hsp = hsp -0.3;
+ 		}
+ 		if hsp < -4{
+ 		hsp = hsp +0.3;
+ 		}
+ 	}
+}
+
+//Up Special
+if (attack == AT_USPECIAL) or (attack == AT_USPECIAL_GROUND){
+	if (window == 1 && window_timer == 4){
+		sound_play(asset_get("sfx_coin_collect"));
+		spawn_hit_fx(x + 24 * spr_dir, y - 10, HFX_ORI_BASH_START);
+	}
+}
+
 
 //Greatsword Charge
 if (attack == (43)){
@@ -453,10 +534,14 @@ if (attack == AT_FSTRONG) {
 	}
 }
 
-/*
-if (attack == (AT_FAIR)) {
-	can_fast_fall = false;
-}*/
+//BAIR extra impulse
+if (attack == (AT_BAIR)) && window == 2 && window_timer == 1 {
+	hsp = hsp +-1.5*spr_dir;
+}
+if (attack == (AT_FAIR)) && window == 4 && window_timer == 1 {
+	hsp = hsp +1*spr_dir;
+}
+
 if (attack == AT_USTRONG) {
 	if window ==3 && window_timer == 6{
 	shake_camera( 2, 4);
@@ -469,15 +554,15 @@ if (attack == AT_USTRONG) {
 //DSTRONG SPIN CHARGE
 if(attack == AT_DSTRONG){
 	can_move = false;
-	if(window == 2) spin_count = 1 + floor(strong_charge/40);
+	if(window == 2) spin_count = 1; //  + floor(strong_charge/40)
 	if(window == 2 && window_timer == window_end && !hitpause){
 		// sound_play(asset_get("sfx_spin_longer"), false, noone, true, .9);
 	}
 	if(window == 3 && !hitpause){
-		if(window_timer == 6) sound_play(asset_get("sfx_swipe_heavy1"))
-		if(left_down) hsp -= 1;
-		if(right_down) hsp += 1;
-		hsp = clamp(hsp, -4, 4);
+		if(window_timer == 1) sound_play(asset_get("sfx_swipe_heavy1"))
+		if(left_down) hsp = hsp - (0.9 + strong_charge/300);
+		if(right_down) hsp = hsp + (0.9 + strong_charge/300);
+		hsp = clamp(hsp, -7 - strong_charge/60, 7 + strong_charge/60);
 		if window_timer == window_end && spin_count > 0 { spin_count--; window_timer = 0; attack_end(); }
 		
 	}
@@ -640,25 +725,32 @@ if (attack == AT_UTILT){
 	if(was_parried) hsp = clamp(hsp, -2, 2);
 }
 
+//Old Dash Attack Backup
 if (attack == AT_DATTACK) && window == 2{
 	if window_timer == (get_window_value(attack, window, AG_WINDOW_LENGTH)) && (!hitpause) && (!has_hit){
          sound_play(asset_get("sfx_ice_dspecial_ground"));
          shake_camera( 2, 6);
 	}
 }
-if (attack == AT_DATTACK) && (down_down){ //Short Distance Dash Attack
+if (attack == AT_DATTACK) && ((down_down) or ((left_down *spr_dir) or (right_down *!spr_dir))){ //Short Distance Dash Attack
 	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 6);
-	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 2);
+	//set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 2);
 }else{
 	set_window_value(AT_DATTACK, 1, AG_WINDOW_HSPEED, 9);
-	set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 5);
+	//set_window_value(AT_DATTACK, 2, AG_WINDOW_HSPEED, 5);
 }
+
+//Experimental Dash Attack stuff
+/*if (attack == AT_DATTACK) && (down_down) && !(hsp == 0) { //Short Distance Dash Attack
+		hsp = hsp -.5*spr_dir;
+}*/
+
 
 if (attack == AT_FSPECIAL) {
 	can_fast_fall = false;
     // can_jump = false;
     can_wall_jump = true;
-    if(window == 1) if vsp < 0 vsp *= .9 else vsp *= .7;
+    if(window == 1) if vsp < 0 vsp *= .9 else vsp *= .8;
     if(window == 2){
     	
     	if (place_meeting(x + hsp + 2 * spr_dir, y, asset_get("par_block")) && free && !hitpause) {
@@ -679,7 +771,7 @@ if (attack == AT_FSPECIAL) {
         }
     	
     }
-    if window == 3 if vsp > 0 vsp *= .7;
+    if window == 3 if vsp > 0 vsp *= .9;
 }
 
 if (attack == AT_FSPECIAL){
@@ -695,7 +787,7 @@ if (attack == AT_FSPECIAL){
 		reset_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH);
 		set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, get_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH) + 4 * (fspec_grounded && free));
 	}
-	if has_hit || !free || fspec_grounded set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
+	if (has_hit || !free || fspec_grounded) or (fspec_cancel == 1) set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
 	else if (fspec_cancel == 0){ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 7);} // Side Special Pratfall
 	// if window == 3 && window_timer == 12 && !has_hit{
 	// 	if (free) set_state( PS_PRATFALL );
@@ -708,8 +800,18 @@ if (attack == AT_NSPECIAL){
 	}
 }
 
-if attack == AT_FSPECIAL && window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 8 {
-	spawn_hit_fx( x + -50*spr_dir, y + -86, airdash);
+//AirDash FX
+if attack == AT_FSPECIAL && window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH) - 5 {
+	spawn_hit_fx( x + -20*spr_dir, y + -86, airdash);
+}
+
+if (attack == AT_FSPECIAL) && (fspec_cancel == 0){
+	if (window == 2){
+		DashEffect = 1;
+		dashing_timer++;
+		} else {
+		DashEffect = 0;
+	}
 }
 // if attack == AT_FSPECIAL && (window == 5) && window_timer == 2 {
 // 	if right_down * spr_dir {
@@ -787,6 +889,7 @@ if (attack==AT_NSPECIAL_2 and window==1 and window_timer==1 && !hitpause){
 */
 if (attack == AT_FSPECIAL) {
 	if window <= 3 && has_hit && !hitpause {
+		DashEffect = 0;
 		set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 7);
 		window = 4;
 		window_timer = 0;
@@ -804,17 +907,47 @@ if (attack == AT_FSPECIAL) {
 //FSPECIAL CANCEL DASH SPEED
 
 if (attack == AT_FSPECIAL) {
-	if (window == 1) && (window_timer > 4){
-			if (left_down *spr_dir) or (right_down *!spr_dir){
+	if /*(window == 1) && (window_timer > 4) and */(window == 1) && (window_timer > 1){
+			if /*(left_down *spr_dir) or (right_down *!spr_dir)*/ (shield_pressed){
 			 fspec_cancel = 1;
 			 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 3);
              set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 6);
 			 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_TYPE, 1);
              set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HSPEED, 2);
 			 set_num_hitboxes(AT_FSPECIAL, 0);
-		} else fspec_cancel = 0;
+		} 
+	}
+	if (window == 1 && window_timer == 1){
+		fspec_cancel = 0;
 	}
 }
+
+//HUD OFFSET PER ATTACK
+
+if (attack == AT_USTRONG) && window > 1{
+	hud_offset = 60;
+}
+if (attack == AT_FSTRONG) && window > 1{
+	hud_offset = 36;
+}
+if (attack == AT_DATTACK) && window > 1{
+	hud_offset = 34;
+}
+if (attack == AT_UTILT) && window > 2{
+	hud_offset = 40;
+}
+if (attack == AT_UAIR) && window > 1{
+	hud_offset = 46;
+}
+/*if (attack == AT_FAIR) && (window > 1 && window < 7){
+	hud_offset = 30;
+}*/
+if (attack == AT_DAIR) && ((window == 2 && window_timer > 8) or window == 3 or (window == 4 && window_timer < 3)){
+	hud_offset = 56;
+}
+/*if (attack == AT_NAIR) && ((window == 2 && window_timer > 3) or window == 3){
+	hud_offset = 50;
+}*/
 
 #define find_lamp
 /// @param {undefined} lamps

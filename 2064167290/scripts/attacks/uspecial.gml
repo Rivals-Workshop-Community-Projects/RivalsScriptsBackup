@@ -1,8 +1,8 @@
 set_attack_value(AT_USPECIAL, AG_CATEGORY, 1);
 set_attack_value(AT_USPECIAL, AG_SPRITE, sprite_get("uspecial_kirby1"));
 set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_kirby1_hurt"));
-set_attack_value(AT_USPECIAL, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_USPECIAL, AG_LANDING_LAG, 16);
+//set_attack_value(AT_USPECIAL, AG_HAS_LANDING_LAG, 1);
+//set_attack_value(AT_USPECIAL, AG_LANDING_LAG, 6);
 
 set_attack_value(AT_USPECIAL, AG_NUM_WINDOWS, 3);
 

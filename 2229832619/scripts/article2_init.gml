@@ -27,5 +27,6 @@ parried_player_id_old = -4;
 slash_immune = false;
 verticalmode = false;
 extraparried = false;
+parryfast = false;
 
 extraparry_target_next = player_id;

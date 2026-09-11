@@ -2,7 +2,7 @@
 
 
 //draw_debug_text(x, y, "playing rivals rogue?: " + string(employee_playing_rogue));
-//draw_debug_text(x, y+16, "Fine: " + string(death_fine));
+//draw_debug_text(x, y+16, "spr dir: " + string(spr_dir));
 
 /*
 if (show_result && result_timer > 0){

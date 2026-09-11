@@ -167,6 +167,13 @@ pot_compat_variable = sprite_get("pogumbo_food");
 pot_compat_text = "Le abyssfishe au chocolat";
 hit_player_event = 5;
 
+//for isabelle but who knows, maybe someone else uses this system in the future
+pocketed_icons = sprite_get("na_pocket_icons");
+pocketed_sprite_x = 0;
+pocketed_sprite_y = 0;
+pocketed_icons_index = 0;
+pocketed_icons_small = false;
+
 //table of contents:
 //article1 is abyss bubble
 //article2 is nspecial rift
@@ -212,20 +219,20 @@ giy_tr_speed = 0.06;
 trummelcodecneeded = false;
 trummelcodec_id = -4;
 
-clock_show = false;
-clock_timer = 0;
-clock_dur_orig = 80;
-clock_dur = 80;
-clock_s_type = 0;
-clock_s_timer = 0;
-clock_s_dur = 20;
-clock_n_prev = 0;
-clock_n_cur = 0;
-clock_n_timer = 0;
-clock_n_dur_orig = 6;
-clock_n_dur = 6;
-clock_n_deathstore = 0;
-clock_lock = false;
+clock_show = false; //display or not altogether
+clock_timer = 0; //timer for the HOW LONG CLOCK DISPLAYS FOR
+clock_dur_orig = 80; //total duration, storing the original so _dur could be altered
+clock_dur = 80; //total duration of HOW LONG CLOCK DISPLAYS FOR
+clock_s_type = 0; //clock SHOW type, probably means whether it's appearing/disappearing
+clock_s_timer = 0; //timer for the CLOCK APPEARING/DISAPPEARING lerp
+clock_s_dur = 20; //total duration of clock appear/disappear/fading-in-or-out
+clock_n_prev = 0; //previous location of the 'hand' of the clock
+clock_n_cur = 0; //current location of the 'hand' of the clock
+clock_n_timer = 0; //timer for the CLOCK HAND MOVING lerp
+clock_n_dur_orig = 6; //total duration of clock hand moving, storing the original
+clock_n_dur = 6; //total duration of the clock hand moving
+clock_n_deathstore = 0; //stores the value the clock had before being halved by death
+clock_lock = false; //used for death.gml so i guess it's like, it waits until it is allowed to animate
 
 dsp_air_track = 0;
 /*

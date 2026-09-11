@@ -270,7 +270,7 @@ if ( attack == AT_UAIR||attack==AT_NAIR||attack==AT_DAIR||attack==AT_FAIR||attac
 	//...you're reading this.
 	if (!hitpause){
 	if (vsp<0){
-		fast_fall = 9.5;
+		fast_fall = 8;//9.5
 			//print("up")
 	}else if(fast_falling==false){
 		fast_fall = 12;

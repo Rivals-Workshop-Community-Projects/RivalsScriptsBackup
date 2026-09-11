@@ -17,6 +17,10 @@ if(my_hitboxID.attack == AT_NSPECIAL and my_hitboxID.hbox_num == 2){
 
 if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1) my_hitboxID.effect = 0;
 
+if my_hitboxID.attack == AT_NSPECIAL and (my_hitboxID.hbox_num == 4 or my_hitboxID.hbox_num == 5) {
+    trap_cooldown = trap_cd_on_parry
+}
+
 
 #define play_voice (_string_array, _cooldown)
 var arr = _string_array;

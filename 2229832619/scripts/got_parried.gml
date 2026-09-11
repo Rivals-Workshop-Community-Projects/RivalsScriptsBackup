@@ -12,7 +12,8 @@ if (my_hitboxID.attack==AT_NSPECIAL_AIR){
 	my_hitboxID.owner_article.tmpdir = my_hitboxID.owner_article.tmpdir*-1;
 	my_hitboxID.owner_article.loop_count = 0;
 	my_hitboxID.owner_article.void_speed = 3;//4
-	my_hitboxID.owner_article.slash_immune = true;//4
+	my_hitboxID.owner_article.slash_immune = true;
+	my_hitboxID.owner_article.parryfast = true;
 	var targetPlayer = noone;
 	
 	if (my_hitboxID.owner_article.verticalmode == true){

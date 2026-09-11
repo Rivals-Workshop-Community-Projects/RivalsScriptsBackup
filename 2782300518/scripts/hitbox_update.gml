@@ -74,16 +74,17 @@ switch(attack)
 				hsp=lengthdir_x(18, player_id.dst);
 				vsp=lengthdir_y(18, player_id.dst);
 			}
-			if (was_parried)
+			if (disc_parried)
 			{
-				hsp=lengthdir_x(x - player_id.x, player_id.dst + 180);
-				vsp=lengthdir_y(y - player_id.y, player_id.dst + 180);
+				hsp=lengthdir_x(x - player_id.x, player_id.dst + 180) /12;
+				vsp=lengthdir_y(y - player_id.y, player_id.dst + 180) /12;
 			}
+			print_debug(disc_parried);
 			if ((has_hit && player_id.moveDisc == true) || hitbox_timer == 12 )
 			{
 				player_id.Fspecial_positionX = x;
 				player_id.Fspecial_positionY = y;
-				if (hitbox_timer < 27)
+				if (hitbox_timer < 27 && !disc_parried)
 				{
 					hsp = 0;
 					vsp = 0;
@@ -255,4 +256,30 @@ switch(attack)
 	break;
 }
 
-
+with(oPlayer)
+{
+	if(url == 3791302003 && id != other.id && nspecial_pocket_status.ref == other)
+	{
+		with(other)
+		{
+			if(attack = AT_FSPECIAL)
+			{
+				player_id.pocketed_icons_index = 0;
+				print_debug(hitbox_timer);
+			}
+			if(attack == AT_FSPECIAL_AIR)
+			{
+				player_id.pocketed_icons_index = 1;
+			}
+		}
+		if (nspecial_pocket_status.occupied)
+		{
+			with (other) if(attack = AT_FSPECIAL || attack == AT_FSPECIAL_AIR)
+			{
+				can_hit_self = false;
+				other.custom_x_offset = 14;
+				other.nspecial_pocket_status.velocity.x = 18 * spr_dir
+			}
+		}
+	}
+}

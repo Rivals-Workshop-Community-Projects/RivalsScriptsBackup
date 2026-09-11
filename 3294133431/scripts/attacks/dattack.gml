@@ -1,9 +1,10 @@
 set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
+set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
 set_attack_value(AT_DATTACK, AG_NUM_WINDOWS, 7);
 set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
 set_attack_value(AT_DATTACK, AG_AIR_SPRITE, sprite_get("dattack"));
-set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
+set_attack_value(AT_DATTACK, AG_HURTBOX_AIR_SPRITE, sprite_get("dattack_hurt"));
 //set_attack_value(AT_DATTACK, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_DATTACK, 1, AG_WINDOW_TYPE, 1);
@@ -92,7 +93,7 @@ set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_GROUP, 1);
 
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 3);
-set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 12);
+set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 16);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_Y, -16);
 set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 96);
 set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 64);
@@ -110,10 +111,10 @@ set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DATTACK, 3, HG_WINDOW, 6);
 set_hitbox_value(AT_DATTACK, 3, HG_LIFETIME, 4);
-set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_X, 8);
-set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_Y, -64);
-set_hitbox_value(AT_DATTACK, 3, HG_WIDTH, 64);
-set_hitbox_value(AT_DATTACK, 3, HG_HEIGHT, 100);
+set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_X, 9);
+set_hitbox_value(AT_DATTACK, 3, HG_HITBOX_Y, -60);
+set_hitbox_value(AT_DATTACK, 3, HG_WIDTH, 75);
+set_hitbox_value(AT_DATTACK, 3, HG_HEIGHT, 115);
 set_hitbox_value(AT_DATTACK, 3, HG_PRIORITY, 2);
 set_hitbox_value(AT_DATTACK, 3, HG_DAMAGE, 4);
 set_hitbox_value(AT_DATTACK, 3, HG_ANGLE, 70);

@@ -336,6 +336,23 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v4.3 - (2026 Sep 06)"
+		patch_note_text[i++] = 
+		"v4.3 (2026 Sep 09)
+		it was just supposed to be 1 bugfix but hey
+		[b]additions[/b]
+		- added isabelle pocket compat, she can grab NSPECIAL now, not just the hitbox... the whole thing
+		--- the way it detects being pocket right now could have some faults. i tried to make it ''general'' instead of being isabelle-specific, someone might ask them to let them use the same system too, yknow. but idk if the way i did it will break in some gamemode-stage-related situations or not
+
+		[b]fixes[/b]
+		- fixed the issue where, when your USPECIAL gets parried, but you use it again without touching the ground (by walljumping), it messes weirdly with its movement.
+		--- the exact reason this happened is: there is a variable that clamps your horizontal movement when your USPECIAL gets parried. as it turns out, this only gets reset when you touch the ground. i made it so it also resets when you walljump or gets hit.
+
+		[b]notes[/b]
+		thank you to lavna/melancholicmutt for reporting this bug
+		"
+		
+		
 		patch_note_title[i] = "v4.2b - (2026 Aug 08)"
 		patch_note_text[i++] = 
 		"v4.2b (2026 Aug 08)

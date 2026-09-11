@@ -6,7 +6,7 @@ set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 
 // set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 16);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 8);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_SFX_FRAME, 1);
@@ -19,13 +19,17 @@ set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 8);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_abyss_explosion_big"));
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 0);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED, 5);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_HSPEED_TYPE, 0);
+// set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
+// set_window_value(AT_FSTRONG, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
 
 //hitbox window
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 10);
 
-set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 14);
+set_window_value(AT_FSTRONG, 4, AG_WINDOW_LENGTH, 17);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 12);
 set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);

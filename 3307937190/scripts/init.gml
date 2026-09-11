@@ -427,6 +427,7 @@ ink_hold = tmp_sync_vars[2];
 trap_cooldown = 0;
 trap_cd_on_trigger = 120;
 trap_cd_on_fade = 40;
+trap_cd_on_parry = 60 * 5;
 
 //////////////////////////////////////////////////////// WORKSHOP COMPATIBILIES ////////////////////////////////////////////////////////
 

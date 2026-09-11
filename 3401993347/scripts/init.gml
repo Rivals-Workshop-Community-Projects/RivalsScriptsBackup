@@ -68,7 +68,7 @@ max_djumps          = 1;		// 0    -  3        the 0 is elliana because she has h
 walljump_hsp        = 7;		// 4    -  7
 walljump_vsp        = 10;		// 7    -  10
 land_time           = 4;		// 4    -  6
-prat_land_time      = 16;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
+prat_land_time      = 18;		// 3    -  24       zetterburn's is 3, but that's ONLY because his uspecial is so slow. safer up b (or other move) = longer pratland time to compensate
 
 // Shield-button actions
 wave_friction       = 0.12;		// 0    -  0.15
@@ -126,8 +126,8 @@ techroll_recovery_frames    = 2;
 
 // Airdodge
 air_dodge_startup_frames    = 1;
-air_dodge_active_frames     = 4;
-air_dodge_recovery_frames   = 2;
+air_dodge_active_frames     = 6;
+air_dodge_recovery_frames   = 5;
 
 // Roll
 roll_forward_startup_frames     = 3;
@@ -191,7 +191,6 @@ grabDuration = 24;
 grabbedRecently = 0;
 target = noone;
 
-maxOrbsStacks = 6;
 
 trapX = 0;
 trapY = 0;

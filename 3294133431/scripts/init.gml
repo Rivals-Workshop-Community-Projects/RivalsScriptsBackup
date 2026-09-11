@@ -214,7 +214,7 @@ crits = 0;
 shotCounter = 0;
 
 
-num_alts = 15;//needs to be the same as css_draw.gml and colors.gml
+num_alts = 17;//needs to be the same as css_draw.gml and colors.gml
 orgAlt = get_player_color(player);
 currAlt = orgAlt;
 lastAlt = orgAlt;

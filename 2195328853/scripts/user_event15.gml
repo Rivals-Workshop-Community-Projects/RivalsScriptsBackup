@@ -233,6 +233,12 @@ in a Patch.
 */
 
 #define CORE_patches
+initPatch("1.85", "25th August 2025");
+initHeader("Fixes / Other Changes");
+initSection("+ Fixed outline colors (such as for certain status effects) often not working due to old outline code
++ Added a jump indicator to the HUD, which displays when you're out of jumps
++ Updated some misc stuff");
+
 initPatch("1.84", "7th December 2024");
 initHeader("Fixes / Other Changes");
 initSection("+ Made the AI much better
@@ -632,7 +638,7 @@ otto_bobblehead_sprite = sprite_get("otto_bobblehead");
 otto_bobblebody_sprite = sprite_get("otto_bobblehead_body");
 
 // Steve death message.
-steve_death_message = "Steve got canceled on Twitter";
+steve_death_message = "Steve got bounced off-stage";
 
 // Link spear. (determines which spear your char will drop the first time)
 link_spear_drop = 6;

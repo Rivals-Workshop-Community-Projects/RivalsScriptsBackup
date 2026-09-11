@@ -349,6 +349,7 @@ if(attack == AT_DAIR)
 	{
 		window_timer = 0;
 		window++;
+		destroy_hitboxes();
 	}
 	if(has_hit && !dairHitPlayer)
 	{
@@ -523,6 +524,8 @@ else
 		set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0.6);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_FORCE_FLINCH, 0);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("bulletProjectileCrit"));
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, true);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, true);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("crit_hit"));
 		set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 304);
 
@@ -539,6 +542,8 @@ else
 		set_hitbox_value(AT_FSPECIAL, 1, HG_HITSTUN_MULTIPLIER, 0);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_FORCE_FLINCH, 1);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("bulletProjectile"));
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_IS_TRANSCENDENT, false);
+		set_hitbox_value(AT_FSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, false);
 		set_hitbox_value(AT_FSPECIAL, 1, HG_HIT_SFX, sound_get("hitsound"));
 		set_hitbox_value(AT_FSPECIAL, 1, HG_VISUAL_EFFECT, 303);
 

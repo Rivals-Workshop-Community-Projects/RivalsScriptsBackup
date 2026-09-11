@@ -63,6 +63,33 @@ if sentry_alive == true{
         if sentry.building_level == 3{
             draw_sprite_ext(sprite_get("hud_sentry_lv3"), 0, temp_x + 44, temp_y - 92, 2, 2, 0, c_white, 1);
         }
+        //written hp:
+        //second digit
+        if (sentry.building_health > 39){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 4, temp_x + 58, temp_y - 36, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_numbers_small"), sentry.building_health - 40, temp_x + 68, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (sentry.building_health > 29){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 3, temp_x + 58, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), sentry.building_health - 30,temp_x + 68, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (sentry.building_health > 19){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 2, temp_x + 58, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), sentry.building_health - 20 , temp_x + 68, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (sentry.building_health > 9){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 1, temp_x + 58, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), sentry.building_health - 10, temp_x + 68, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else{
+            //2nd digit
+            // draw_sprite_ext(sprite_get("hud_numbers_small"), 3, temp_x + 172, temp_y - 134, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 1 + sentry.building_health, temp_x + 68, temp_y - 36, 2, 2, 0, c_white, 1);
+        }
     }else{
     draw_sprite_ext(sprite_get("hud_no_sentry"), 0, temp_x + 38, temp_y - 60, 2, 2, 0, c_white, 1);
     }
@@ -85,6 +112,41 @@ if disp_alive == true{
         if disp.building_level == 3{
             draw_sprite_ext(sprite_get("hud_disp_lv3"), 0, temp_x - 2, temp_y - 92, 2, 2, 0, c_white, 1);
         }
+        
+        //written hp:
+        //second digit
+        // var disp_health_critical;
+        // if disp.building_health < disp.building_max_health/2{
+        //     disp_health_critical = 10;
+        // } else{
+        //     disp_health_critical = 0;
+        // }
+        
+        if (disp.building_health > 39){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 4, temp_x + 12, temp_y - 36, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_numbers_small"), disp.building_health - 30, temp_x + 22, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (disp.building_health > 29){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 3, temp_x + 12, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), disp.building_health - 20, temp_x + 22, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (disp.building_health > 19){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 2, temp_x + 12, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), disp.building_health -20, temp_x + 22, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (disp.building_health > 9){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 1, temp_x + 12, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), disp.building_health - 10, temp_x + 22, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else{
+            //2nd digit
+            // draw_sprite_ext(sprite_get("hud_numbers_small"), 3, temp_x + 172, temp_y - 134, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 1 + disp.building_health, temp_x + 22, temp_y - 36, 2, 2, 0, c_white, 1);
+        }
     }else{
     draw_sprite_ext(sprite_get("hud_no_disp"), 0, temp_x - 8, temp_y - 60, 2, 2, 0, c_white, 1);
     }
@@ -96,7 +158,43 @@ if tp_alive == true{
     if tp.building_state != 200{
         draw_sprite_ext(sprite_get("hud_tele_box"), 0, temp_x + 84, temp_y - 60, 2, 2, 0, c_white, 1);
         draw_sprite_ext(sprite_get("hud_hpbar"), 6-((tp.building_health/tp.building_max_health)*6),temp_x+84,temp_y-60, 2, 2, 0, c_white, 1);
-        draw_sprite_ext(sprite_get("hud_tele"), 0, temp_x + 90, temp_y - 92, 2, 2, 0, c_white, 1);
+        if tp.building_level == 1{
+            draw_sprite_ext(sprite_get("hud_metalbar"), tp.building_upgrade + 5,temp_x+90,temp_y-18, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_tele_lv1"), 0, temp_x + 90, temp_y - 92, 2, 2, 0, c_white, 1);
+        }
+        if tp.building_level == 2{
+            draw_sprite_ext(sprite_get("hud_metalbar"), tp.building_upgrade + 5,temp_x+90,temp_y-18, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_tele_lv2"), 0, temp_x + 90, temp_y - 92, 2, 2, 0, c_white, 1);
+        }
+        if tp.building_level == 3{
+            draw_sprite_ext(sprite_get("hud_tele_lv3"), 0, temp_x +90, temp_y - 92, 2, 2, 0, c_white, 1);
+        }
+        
+        if (tp.building_health > 39){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 4, temp_x + 104, temp_y - 36, 2, 2, 0, c_white, 1);
+            draw_sprite_ext(sprite_get("hud_numbers_small"), tp.building_health - 40, temp_x + 114, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (tp.building_health > 29){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 3, temp_x + 104, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), tp.building_health - 30, temp_x + 114, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (tp.building_health > 19){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 2, temp_x + 104, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), tp.building_health -20, temp_x + 114, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else if (tp.building_health > 9){
+            //2nd digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 1, temp_x + 104, temp_y - 36, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), tp.building_health - 10, temp_x + 114, temp_y - 36, 2, 2, 0, c_white, 1);
+        } else{
+            //2nd digit
+            // draw_sprite_ext(sprite_get("hud_numbers_small"), 3, temp_x + 172, temp_y - 134, 2, 2, 0, c_white, 1);
+            //1st digit
+            draw_sprite_ext(sprite_get("hud_numbers_small"), 1 + tp.building_health, temp_x + 114, temp_y - 36, 2, 2, 0, c_white, 1);
+        }
     }else{
     draw_sprite_ext(sprite_get("hud_no_tele"), 0, temp_x + 84, temp_y - 60, 2, 2, 0, c_white, 1);
     }

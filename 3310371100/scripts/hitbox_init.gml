@@ -11,4 +11,5 @@ if (attack==AT_NSPECIAL){
 	fx_mist = player_id.fx_ice_mist_A;
 	ice_verticalmode = false;
 	ice_fake_lifetime = false;
+	was_pocketed = false;
 }

@@ -110,8 +110,8 @@ switch(building_type){
 //teleporter code --------------------------------------------------------------------------------------------------------------------
 case 0:
 	
-	//cooldown code
 	switch(building_state){
+	//cooldown code
 		case 1:
 			sprite_index = sprite_get("teleporter_cooldown");
 			frame_num = 5;
@@ -125,7 +125,7 @@ case 0:
 				if (tp_cooldown_loop == 0){
 					building_state = 2;
 					life_timer = 0;
-					tp_sfx_loop_counter = 2;
+					tp_sfx_loop_counter = 3 - building_level;
 					sound_play(sound_get("tp_ready"));
 					sound_play(sound_get("tp_loop"), true);
 				}
@@ -144,26 +144,41 @@ case 0:
 				life_timer = 0;
 			}
 		break;
-
+		
 	//teleporting code
 		case 3:
 			sprite_index = sprite_get("teleporter_using");
 			frame_num = 4;
 			player_id.tp_process = true;
 			if (life_timer == 12){
-				sound_play(sound_get("eurika_zap2"));
+				sound_play(sound_get("eurika_zap2"), false, noone, 0.6);
 				tp_count ++
 				sound_stop(sound_get("tp_loop"));
 			}
 			if (life_timer == 36){
 				building_state = 1;
-				tp_cooldown_loop = 5; //used to be 3+tp_count
+				tp_cooldown_loop = 8 - building_level*2; //used to be 3+tp_count
 				life_timer = 0;
 			}
 		break;
 		default:
 			player_id.tp_process = false;
 		break;
+	}
+	//upgrade code
+	if building_upgrade == 2{
+		building_level++;
+		building_max_health = building_max_health + 5;
+		building_health = building_max_health;
+		building_upgrade = 0;
+		building_state = 1;
+		tp_cooldown_loop = 2;
+		life_timer = 0;
+		if(get_synced_var (player) == 2){
+			sound_play(sound_get("cd_plantgrow"), false, noone, 2.1);
+		} else{
+			sound_play(sound_get("dispenser_generate_metal"));
+		}
 	}
 break;
 // dispenser code----------------------------------------------------------------------------------------------------------------------------------
@@ -250,6 +265,7 @@ case 1:
 		building_max_health = building_max_health + 10;
 		building_health = building_max_health;
 		building_upgrade = 0;
+		building_state = 2;
 		building_state = 2;
 		life_timer = 0;
 		if(get_synced_var (player) == 2){
@@ -646,7 +662,7 @@ if building_hit_cooldown == 0{
 											spawn_hit_fx( other.x - 15 + snd_rng * 2, other.y -50, player_id.repair2 );
 											sound_play(sound_get("repair_2"));
 										}
-									}else if other.building_level < 3 && other.building_type > 0{ //upgrades if it isn't lv3 or a teleporter
+									}else if other.building_level < 3 { //upgrades if it isn't lv3 or a teleporter
 										other.building_upgrade ++
 										player_id.metal_count = player_id.metal_count - 25;
 										// spawn_hit_fx( other.x + 6, other.y +80, 310 );
@@ -664,7 +680,7 @@ if building_hit_cooldown == 0{
 									}
 								} else{ //no metal
 									sound_play(sound_get("repair_fail"));
-									if (other.building_level < 3 && other.building_type > 0) or (other.building_health < other.building_max_health){
+									if (other.building_level < 3) or (other.building_health < other.building_max_health){
 										spawn_hit_fx( other.x,  other.y - 30 - 22 * other.building_level - (1 + 5 * other.building_type), player_id.repairfail );
 									} else{ //still perfect
 										spawn_hit_fx( other.x, other.y - 22 * other.building_level - (1 + 5 * other.building_type), player_id.repairperfect);
@@ -686,7 +702,7 @@ if building_hit_cooldown > 0{
 //destruction code
 if (building_health <= 0) or (y > room_height){
     sound_play(sound_get("demolition"));
-    spawn_hit_fx( x, y+86, 140 );
+    spawn_hit_fx( x, y - 26, 140 );
     if building_type == 0{
 		player_id.tp_alive = 0;
 		player_id.tp_process = false;

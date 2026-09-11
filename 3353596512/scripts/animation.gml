@@ -303,7 +303,7 @@ if (attack == AT_FSPECIAL && hbox_num == 1){
 	if (hitbox_timer == length-1){
         sound_play(explode_sfx);
         var vfx = spawn_hit_fx(x, y, 262);
-        var flash = create_hitbox(AT_FSPECIAL, 2, x, y);
+        var flash = create_hitbox(AT_FSPECIAL, 2, round(x), round(y));
         flash.can_hit_self = true;
         flash.player = player;
         destroyed_next = true;

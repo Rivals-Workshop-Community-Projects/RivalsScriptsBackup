@@ -36,14 +36,14 @@ set_window_value(AT_FTILT, 6, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_FTILT, 6, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 6, AG_WINDOW_SFX, sound_get("pistol"));
 
-set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_FTILT, 7, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FTILT, 7, AG_WINDOW_ANIM_FRAME_START, 6);
 set_window_value(AT_FTILT, 7, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FTILT, 7, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
-set_window_value(AT_FTILT, 8, AG_WINDOW_LENGTH, 4);
-set_window_value(AT_FTILT, 8, AG_WINDOW_ANIM_FRAMES, 5);
+set_window_value(AT_FTILT, 8, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FTILT, 8, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_FTILT, 8, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FTILT, 8, AG_WINDOW_HAS_WHIFFLAG, 1);
 

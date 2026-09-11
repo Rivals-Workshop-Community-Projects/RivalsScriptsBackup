@@ -9,6 +9,9 @@
        //draw_debug_text(temp_x,temp_y - 30,"Press Taunt for voiced mode");
 //}
 
+//draw_debug_text(temp_x,temp_y - 30,"hsp: " + string(hsp));
+//draw_debug_text(temp_x,temp_y - 50,"vsp: " + string(vsp));
+
 shader_start();
 // nspec
 draw_sprite_ext(sprite_get("fire_hud"), 0, temp_x+180, temp_y-20, 2, 2, 0, ((move_cooldown[AT_DSPECIAL] <= 0 || (instance_exists(lamp) && lamp.state == 1 && !lamp.on_cooldown))?c_white:c_gray), 1);

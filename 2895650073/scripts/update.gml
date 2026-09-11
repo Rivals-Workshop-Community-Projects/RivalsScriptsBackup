@@ -182,18 +182,7 @@ if (state == PS_LANDING_LAG){
 
 
 
-if ((((state == PS_ATTACK_AIR ||
-	state == PS_ATTACK_GROUND) &&
-	attack != AT_FSTRONG &&
-	attack != AT_DSTRONG &&
-	attack != AT_USTRONG &&
-	attack != AT_USPECIAL &&
-	attack != AT_NSPECIAL &&
-	attack != AT_NSPECIAL_2 &&
-	attack != AT_FSPECIAL &&
-	attack != AT_DSPECIAL &&
-	attack != AT_DSPECIAL_2 &&
-	attack != AT_TAUNT_2 ) ||
+if ((
 	state == PS_AIR_DODGE ||
 	state == PS_PARRY ||
 	state == PS_ROLL_FORWARD ||

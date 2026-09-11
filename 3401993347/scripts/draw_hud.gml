@@ -14,14 +14,14 @@ var t_y = temp_y - 16;
 // text_draw(t_x, t_y - 48, "fName", c_white, 0, 1000, 1, true, 1, string(state_timer));
 
 
-// if(taunt_down && attack != AT_TAUNT && attack != AT_TAUNT_2 && !free)
-// {
-//     with (oPlayer){
-//         if(other.count < 120 && reactionTime > 0){
-//             text_draw(x - 120, y - 64, "fName", c_white, 0, 1000, 1, true, 1, string(reactionTime));
-//         }
-//     }
-// }
+if(taunt_down && attack != AT_TAUNT && attack != AT_TAUNT_2 && !free)
+{
+    with (oPlayer){
+        if(other.count < 120 && reactionTime > 0){
+            text_draw(x - 120, y - 64, "fName", c_white, 0, 1000, 1, true, 1, string(reactionTime));
+        }
+    }
+}
 
 
 //draw shadowball charge percent UI bar

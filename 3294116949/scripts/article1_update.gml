@@ -126,8 +126,8 @@ if(!hitstop){
 				axe_hitbox.x = x + hsp;
 				axe_hitbox.y = y + vsp;
 			}
-			hsp -= .1 * spr_dir;
-			if(state_timer >= 60){
+			hsp -= .09 * spr_dir;
+			if(state_timer >= 80){
 				if(instance_exists(axe_hitbox)) axe_hitbox.destroyed = true;
 				normal_return = true;
 				is_hittable = false;
@@ -197,7 +197,7 @@ if(!hitstop){
 		if sprite_index == sprite_get("spinning_axe1") sprite_index = sprite_get("spinning_axe1_fire");
 		if sprite_index == sprite_get("spinning_axe2") sprite_index = sprite_get("spinning_axe2_fire");
 	}
-	if(anim_timer%4 == 1){
+	if(anim_timer%5 == 1){
 		if sprite_index == sprite_get("spinning_axe1") || sprite_index == sprite_get("spinning_axe1_fire") spawn_hit_fx( x, y, axetrailing);
 		if sprite_index == sprite_get("spinning_axe2") || sprite_index == sprite_get("spinning_axe2_fire") { spawn_hit_fx( x, y, axetrailing2);
 		mask_index = sprite_get("spinning_axe2_mask") }

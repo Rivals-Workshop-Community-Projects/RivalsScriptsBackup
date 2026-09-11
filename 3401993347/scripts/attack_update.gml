@@ -38,6 +38,26 @@ switch(attack){
 
 // per-attack logic
 switch(attack){
+	case AT_DATTACK:
+	if(window == 1 && window_timer <= 3 && !free){
+		hsp = spr_dir*10;
+		if((up_pressed || up_down)&&(strong_down) || (up_strong_down)){
+			set_attack(AT_USTRONG);
+		}
+	}
+	can_fast_fall = false;
+	
+	//modified goku air attack code
+	if window == 4 && free && window_timer >= phone_window_end * 0.5{
+		window_timer = phone_window_end;
+		can_fast_fall = true;
+	}
+	if (window > 2 && free){
+		hsp = clamp(hsp, -6, 6);
+		hsp *= 0.9;
+	}
+	vsp = 0;
+	break;
 	case AT_JAB:
 		if(grabbedRecently && window == 1){
 			window_timer = 0;
@@ -289,6 +309,8 @@ switch(attack){
 			var orbsToAdd = 3;
 			repeat(orbsToAdd) {
 				var hbox = create_hitbox(AT_FSPECIAL, 3, 0, 0);
+				hbox.x = trapX;
+				hbox.y = trapY;
 				// hbox.player = my_hitboxID.player;
 				// hbox.can_hit[hit_player_obj.player] = false;
 				hbox.can_hit[player] = true;
@@ -357,12 +379,12 @@ switch(attack){
 					//add a small direction of uair and dair on keyboards
 					var angledUp = false;
 					var angledDown = false;
-					if(down_strong_down){
+					if(down_strong_down || down_stick_down){
 						angledUp = true;
 						
 						// print("angled down" + string(uspecial_direction))
 					}
-					if(up_strong_down){
+					if(up_strong_down || up_stick_down){
 						angledDown = true;
 						
 						// print("angled up" + string(uspecial_direction))

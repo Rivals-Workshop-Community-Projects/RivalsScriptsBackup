@@ -111,7 +111,12 @@ if((my_hitboxID.attack == AT_FSPECIAL || (my_hitboxID.attack == AT_NSPECIAL && m
 		hit_player_obj.deathMark = true;
 	}
 
+	var maxStacks = 999;
+
 	if (my_hitboxID.hbox_num == 1 || my_hitboxID.hbox_num == 2 || my_hitboxID.hbox_num == 5 || my_hitboxID.hbox_num == 6) {
+		if(my_hitboxID.hbox_num == 6){
+			maxStacks = 6; //max self orbs
+		}
 		var orbsToAdd = 2;
 		var aboutToExplodeTimer = 0;
 		if (my_hitboxID.hbox_num == 5 || my_hitboxID.hbox_num == 6){
@@ -132,7 +137,6 @@ if((my_hitboxID.attack == AT_FSPECIAL || (my_hitboxID.attack == AT_NSPECIAL && m
 					}
 					var time_end = (stack.length - 1) - (i * 3);
 
-					if (stack.hitbox_timer <= time_end - orb_warning_frames) continue;
 					if(closestIndex == -1){
 						closestIndex = i;
 						continue;
@@ -146,9 +150,9 @@ if((my_hitboxID.attack == AT_FSPECIAL || (my_hitboxID.attack == AT_NSPECIAL && m
 					// print("closestIndex " + string(closestIndex));
 
 				if(closestIndex != -1){
-
-					//the orbs were about to explode, record the closest timer
+					//remaining time
 					aboutToExplodeTimer = trapOrbStacks[closestIndex].hitbox_timer;
+
 				}
 			}
 
@@ -165,10 +169,44 @@ if((my_hitboxID.attack == AT_FSPECIAL || (my_hitboxID.attack == AT_NSPECIAL && m
 
 		if(my_hitboxID.attack == AT_NSPECIAL){
 			orbsToAdd = 0;
+			
 			with my_hitboxID
 			{
 				if ("shadowBallOrbStacks" in self){
+					
+					//shadowballs can apply above max stacks
 					orbsToAdd = array_length(shadowBallOrbStacks)
+					if (orbsToAdd > 0) {
+						//get the index of the orb that is closest to exploding
+						var closestIndex = -1;
+
+						for (var i = 0; i < array_length(shadowBallOrbStacks); i++) {
+
+							var stack = shadowBallOrbStacks[i];
+
+							if (!instance_exists(stack)) {
+								shadowBallOrbStacks = array_cut(shadowBallOrbStacks, i);
+								continue;
+							}
+							var time_end = (stack.length - 1) - (i * 3);
+
+							if(closestIndex == -1){
+								closestIndex = i;
+								continue;
+							}
+							if (stack.hitbox_timer > shadowBallOrbStacks[closestIndex].hitbox_timer) {
+								closestIndex = i;
+							}
+						}
+							// print("orbs to add: " + string(orbsToAdd));
+							// print("shadowBallOrbStacks[0].hitbox_timer:" + string(shadowBallOrbStacks[0].hitbox_timer));
+							// print("closestIndex " + string(closestIndex));
+
+						if(closestIndex != -1){
+							//remaining time
+							aboutToExplodeTimer = shadowBallOrbStacks[closestIndex].hitbox_timer;
+						}
+					}
 					for (var i = 0; i < array_length(shadowBallOrbStacks); i++) {
 						var stack = shadowBallOrbStacks[i];
 						with (stack) {
@@ -178,15 +216,13 @@ if((my_hitboxID.attack == AT_FSPECIAL || (my_hitboxID.attack == AT_NSPECIAL && m
 					}
 					shadowBallOrbStacks = []
 				}
+
+				
 			}
 			
 		}
 
 		if(orbsToAdd != 0){
-			var maxStacks = max(maxOrbsStacks, orbsToAdd);
-			if(aboutToExplodeTimer != 0){
-				var maxStacks = 999;
-			}
 			hit_player_obj.mewtwoOrbId = id; //claim this target
 
 			repeat(orbsToAdd) {
@@ -195,6 +231,8 @@ if((my_hitboxID.attack == AT_FSPECIAL || (my_hitboxID.attack == AT_NSPECIAL && m
 					hbox.player = my_hitboxID.player;
 					hbox.can_hit[hit_player_obj.player] = false;
 					hbox.can_hit[player] = false;
+					hbox.x = hit_player_obj.x;
+					hbox.y = hit_player_obj.y;
 					hit_player_obj.mewtwoOrbStacks = array_push(hit_player_obj.mewtwoOrbStacks, hbox);
 					if(aboutToExplodeTimer != 0){
 						hbox.hitbox_timer = aboutToExplodeTimer;
@@ -209,7 +247,8 @@ if((my_hitboxID.attack == AT_FSPECIAL || (my_hitboxID.attack == AT_NSPECIAL && m
 				}
 				var time_end = (stack.length - 1) - (i * 3);
 				if (stack.hitbox_timer >= time_end - 30) continue;
-				stack.hitbox_timer = 0;
+				//reset hitbox timer since multi orbs
+				// stack.hitbox_timer = 0;
 			}
 		}
 	}

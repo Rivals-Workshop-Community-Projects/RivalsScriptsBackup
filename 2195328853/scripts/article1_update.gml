@@ -50,14 +50,14 @@ if(ballmode == 0){ //normal
 			image_index = 1;
 		}
 	}
-	Pocket_hsp = 7;Pocket_vsp = -5;Pocket_hud_imageindex = 0;
+	Pocket_hsp = 7;Pocket_vsp = -5;Pocket_hud_imageindex = 0;Toadie_Ability = 6;
 }else if(ballmode == 1){ //ice
 	ignores_walls = false;
 	if(vsp < 11){
         vsp += 0.45;
     }
 	image_index = 5;
-	Pocket_hsp = 7;Pocket_vsp = -5;Pocket_hud_imageindex = 3;
+	Pocket_hsp = 7;Pocket_vsp = -5;Pocket_hud_imageindex = 3;Toadie_Ability = 1;
 }else if(ballmode == 2){ //steam
 	ignores_walls = true;
 	if(hsp*spr_dir < 15){
@@ -72,7 +72,7 @@ if(ballmode == 0){ //normal
 	    	image_index = 7;bounceanim = 0;ballnum = 0;
 		}
 	}
-	Pocket_hsp = 10;Pocket_vsp = 0;Pocket_hud_imageindex = 1;
+	Pocket_hsp = 10;Pocket_vsp = 0;Pocket_hud_imageindex = 1;Toadie_Ability = 6;
 }else if(ballmode == 3){ //whirlpool
 	ignores_walls = false;
 	if(vsp < 7){
@@ -87,7 +87,7 @@ if(ballmode == 0){ //normal
 	    	image_index = 9;bounceanim = 0;ballnum = 0;
 		}
 	}
-	Pocket_hsp = 2;Pocket_vsp = -3;Pocket_hud_imageindex = 2;
+	Pocket_hsp = 2;Pocket_vsp = -3;Pocket_hud_imageindex = 2;Toadie_Ability = 6;
 }
 
 bouncetimer -= 1;

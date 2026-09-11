@@ -3,7 +3,7 @@
 if (awake == false){
 	awake = true;
 	instance_create( x, y, "obj_article2" );
-	switch (current_time%10){
+	switch (current_time%13){//10
 		case 0:
 			ushr_victory_quote = "Why did that Me want to fight me!? Did I do something...? Was it my fault...??"
 			victoryicon_subimg = 9;
@@ -41,12 +41,28 @@ if (awake == false){
 			victoryicon_subimg = 0;
 		break;
 		case 9:
+			ushr_victory_quote = "Here I stand, beneath the warm and soothing rain, The droplets falling gently down on the terrain..."
+			victoryicon_subimg = 3;
+		break;
+		case 10:
+			ushr_victory_quote = "Come on with the rain, I have a smile on my face!"
+			victoryicon_subimg = 2;
+		break;
+		case 10:
+			ushr_victory_quote = "I walk down the lane, with a happy refrain, Just singin', singin' in the rain!"
+			victoryicon_subimg = 1;
+		break;
+		case 11:
+			ushr_victory_quote = "I'm singin' in the rain, Yes, singin' in the rain! What a glorious feel, and I'm happy again!"
+			victoryicon_subimg = 1;
+		break;
+		case 12:
 			ushr_victory_quote = "Pluey?"
 			victoryicon_subimg = 6;
 		break;
-		case 10:
-		case 11:
-		case 12:
+		case 13://10
+		case 14:
+		case 15:
 			ushr_victory_quote = "I guess this was truly the experience of a contemporary guardian angel?"
 			victoryicon_subimg = 0;
 		break;

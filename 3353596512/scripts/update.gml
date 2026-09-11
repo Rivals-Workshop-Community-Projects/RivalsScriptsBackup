@@ -281,9 +281,37 @@ if (flashbang_detonate_timer >= flashbang_detonate_max){
 	initial_invince = false;
 	sound_play(sound_get("fspec_explode"));
     spawn_hit_fx(x, y - char_height/2, 262);
-	create_hitbox(AT_FSPECIAL, 2, x, y - char_height/2);
+	create_hitbox(AT_FSPECIAL, 2, round(x), round(y - char_height/2));
 	flashbang_detonate_timer = 0;
 }
+
+//glide toss
+if (state_timer >= 1 && state_timer <= 5 && (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_AIR_DODGE)) {
+	if (has_scrap && current_scrap.size == 0 && (is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY) || strong_pressed)) {
+		if (is_attack_pressed(DIR_RIGHT) || is_strong_pressed(DIR_RIGHT)){
+			spr_dir = 1;
+		}
+		if (is_attack_pressed(DIR_LEFT) || is_strong_pressed(DIR_LEFT)){
+			spr_dir = -1;
+		}
+		window = 1;
+		window_timer = 0;
+		set_state(PS_IDLE);
+		if (is_attack_pressed(DIR_RIGHT) || is_strong_pressed(DIR_RIGHT) || is_attack_pressed(DIR_LEFT) || is_strong_pressed(DIR_LEFT)){
+			set_attack(AT_JAB);
+		}
+		if (is_attack_pressed(DIR_UP) || is_strong_pressed(DIR_UP)){
+			set_attack(AT_UTILT);
+		}
+		if (is_attack_pressed(DIR_DOWN) || is_strong_pressed(DIR_DOWN)){
+			set_attack(AT_DTILT);
+		}
+		if (!initial_invince) invince_time = 0;
+		invincible = false;
+		hurtboxID.dodging = false;
+		hurtboxID.sprite_index = get_attack_value(attack,AG_HURTBOX_SPRITE);
+	}
+} 
 
 with (pHitBox) if ("player_id" in self && player_id == other){
 		hitbox_stuff();
@@ -351,7 +379,7 @@ with (oPlayer) {
 			with (other) {
 				var mask_explode = spawn_hit_fx(other.x + 6*other.spr_dir, other.mask_position, mask_explode_vfx);
 				mask_explode.depth = depth - 2;
-				var mask_hitbox = create_hitbox(AT_DSPECIAL_2, 6, other.x + 6*other.spr_dir, other.mask_position);
+				var mask_hitbox = create_hitbox(AT_DSPECIAL_2, 6, round(other.x + 6*other.spr_dir), round(other.mask_position));
 				mask_hitbox.can_hit_self = true;
 			}
 			got_masked = false;

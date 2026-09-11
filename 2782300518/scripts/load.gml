@@ -140,6 +140,8 @@ sco("cappytaunt_head_carol", 40, 78);
 sco("real_cat", 20, 39);
 sco("amber_hug", 44, 104);
 sco("carol_hug", 44, 104);
+sco("power_ranger_suit", 11, 34);
+sco("pocketed_icon", -4, 38);
 
 sco("hit_small", 24, 24);
 sco("hit_medium", 50, 50);

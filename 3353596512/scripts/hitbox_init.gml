@@ -49,6 +49,7 @@ if (attack == AT_DSPECIAL_2){
         if (player_id.window == 8){
             hsp = 0;
             vsp = 12;
+            through_platforms = 2;
         }
         
         if (proj_scrap_id.name != "Easter egg"){
@@ -169,6 +170,7 @@ if (attack == AT_DSPECIAL_2){
         if (player_id.window == 17){
             hsp = 0;
             vsp = 8;
+	        through_platforms = 2;
         }
          
         switch (proj_scrap_id.name){

@@ -32,10 +32,13 @@ sprite_change_offset("waveland", 72, 88);
 sprite_change_offset("tech", 50, 78);
 
 sprite_change_offset("jab", 82, 96);
-sprite_change_offset("dattack", 60, 108);
+    sprite_change_offset("alt_kick", 66, 88);
+sprite_change_offset("dattack", 72, 88);
     sprite_change_offset("dash_attack", 72, 88);
 sprite_change_offset("ftilt", 60, 94);
+    sprite_change_offset("alt_ftilt", 70, 88);
 sprite_change_offset("dtilt", 76, 70);
+    sprite_change_offset("alt_dtilt", 76, 70);
 sprite_change_offset("utilt", 64, 100);
 
 //Axeless
@@ -78,11 +81,13 @@ sprite_change_offset("nair", 80, 120);
             sprite_change_offset("whip", 72, 128);
             sprite_change_offset("whip_sideways", 72, 88);
             sprite_change_offset("whip_down", 72, 88);
+                sprite_change_offset("alt_nair", 70, 82);
 sprite_change_offset("fair", 76, 114);
-    sprite_change_offset("fair2", 76, 114);
-sprite_change_offset("bair", 114, 76);
+    sprite_change_offset("alt_fair", 72, 88);
+sprite_change_offset("bair", 112, 84);
 sprite_change_offset("uair", 80, 120);
 sprite_change_offset("dair", 76, 114);
+    sprite_change_offset("alt_divekick", 50, 98);
 
 sprite_change_offset("fstrong", 72, 90);
 sprite_change_offset("ustrong", 90, 106);
@@ -95,6 +100,7 @@ sprite_change_offset("nspecial", 106, 94);
 sprite_change_offset("fspecial", 66, 88);
 sprite_change_offset("fspecial_trail", 66, 88);
     sprite_change_offset("fspecial_air", 66, 88);
+        sprite_change_offset("fspecial_dash_effect", 66, 88);
 sprite_change_offset("uspecial", 72, 228);
     sprite_change_offset("uspecial_miss", 72, 228);
 sprite_change_offset("dspecial", 72, 88);

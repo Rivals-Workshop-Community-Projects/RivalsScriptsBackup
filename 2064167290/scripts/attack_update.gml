@@ -101,7 +101,7 @@ if (attack == AT_DAIR)
 {
     if (!was_parried)
     {
-        if (window == 3 && window_timer >= 10) or (window == 4)
+        if (window == 4 && window_timer >= 4)
         {
 			can_jump = true
 			can_shield = true

@@ -12,13 +12,15 @@ sound_play(sound_get("death"));
 has_used_uspecial = false;
 has_runeg_uspecial = false;
 
-
+// For Old Dspec
+/*
 // destroying all cards
 while(ds_list_size(dspe_list))
 {
     instance_destroy(dspe_list[|0]);
     ds_list_delete(dspe_list,0);
 }
+*/
 
 // destroying yinyang
 

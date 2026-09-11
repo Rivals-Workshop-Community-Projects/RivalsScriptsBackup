@@ -30,9 +30,10 @@ if (prev_state == PS_HITSTUN) && (last_player != player) && (state != PS_RESPAWN
 
 if (state == PS_AIR_DODGE && has_scrap && joy_pad_idle){
 	is_zdropping = true;
-	var zscrap = create_hitbox(AT_DSPECIAL_2, 1 + current_scrap.size, x, y - 30);
+	var zscrap = create_hitbox(AT_DSPECIAL_2, 1 + current_scrap.size, round(x), round(y - 30));
 	zscrap.hsp = 0;
 	zscrap.vsp = 0;
+	zscrap.through_platforms = 2;
 	zscrap.init = false;
 	clear_button_buffer( PC_SHIELD_PRESSED );
 	clear_button_buffer( PC_JUMP_PRESSED );

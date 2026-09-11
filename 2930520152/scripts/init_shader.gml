@@ -66,6 +66,16 @@ if(alt_cur == 17){
 	set_character_color_shading(7, 0);
 }
 
+
+switch (alt_cur)
+{
+    case 17:
+        for (var i = 0; i < 8; i++) set_character_color_shading(i, 0);
+        outline_color = [15, 56, 15];           
+    break;
+}    
+
+
 #define apply_color_slot(target_shade, source_color, source_shade)
 
    set_character_color_slot(target_shade,  

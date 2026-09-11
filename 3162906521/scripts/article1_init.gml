@@ -50,8 +50,8 @@ frames_3s = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36]
 frames_4s = [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 47]
 frames_5s = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65]
 
-building_health = 25;//health
-building_max_health = 25;//health
+building_health = 20;//health
+building_max_health = 20;//health
 building_hit = 0;//0-nothing, 1-enemy hit, 2-friendly hit
 building_hit_cooldown = 0;//to prevent single-hitbox attacks from hitting 30 times in a row
 building_upgrade = 0;// will insert 25 metal at a time, each time that happens, this number will go up by 1. When this number reaches 3, the building upgrades

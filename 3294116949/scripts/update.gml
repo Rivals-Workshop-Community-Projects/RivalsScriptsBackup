@@ -59,6 +59,7 @@ if((state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) && attack == AT_USPECIA
 //wall cling
 
 if state == PS_WALL_JUMP && !clinging {
+	DashEffect = 0;
     if state_timer == 0{
         walljump_timer = 0
         if (!axeless){

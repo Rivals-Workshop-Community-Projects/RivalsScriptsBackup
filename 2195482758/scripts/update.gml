@@ -342,7 +342,7 @@ if(!free || state == PS_WALL_JUMP || state_cat == SC_HITSTUN || state == PS_RESP
 }
 
 // Ground resets not counting getting hit
-if(!free || state == PS_WALL_JUMP)
+if(!free || state == PS_WALL_JUMP || state == PS_RESPAWN)
 {
 	can_throw = true;
 }

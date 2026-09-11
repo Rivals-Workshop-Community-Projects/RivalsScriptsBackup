@@ -1,12 +1,14 @@
 set_attack_value(AT_DSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
-set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecialAir"));
-set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
+set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 3);
+set_attack_value(AT_DSPECIAL, AG_AIR_SPRITE, sprite_get("dspecialAir"));
+set_attack_value(AT_DSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("dspecialAir_hurt"));
 
 //startup
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 set_window_value(AT_DSPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
@@ -22,7 +24,7 @@ set_window_value(AT_DSPECIAL, 2, AG_WINDOW_INVINCIBILITY, 2);
 
 //hold out
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_TYPE, 1);
-set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_DSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
@@ -40,10 +42,10 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 6);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_Y, -42);
-set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 80);
-set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 96);
+set_hitbox_value(AT_DSPECIAL, 1, HG_WIDTH, 55);
+set_hitbox_value(AT_DSPECIAL, 1, HG_HEIGHT, 78);
 set_hitbox_value(AT_DSPECIAL, 1, HG_PRIORITY, 1);
-set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 0);
+set_hitbox_value(AT_DSPECIAL, 1, HG_DAMAGE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_DSPECIAL, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_DSPECIAL, 1, HG_BASE_KNOCKBACK, 3);

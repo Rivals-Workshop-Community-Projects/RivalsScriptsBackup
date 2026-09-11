@@ -11,36 +11,28 @@ dJumping = (free && jump_pressed && djumps < max_djumps);
 if(phone_attacking && attack == AT_USPECIAL && window == 1 && window_timer == 0 && jump_pressed && free && dJumping)djumps++;
 
 if(nspecialcharge < 60 && fspecialcharge < 60){
-    if (get_player_color( player ) == 7){
-        if (outline_color[0] != 31 || outline_color[1] != 31 || outline_color[2] != 111){
-            outline_color=[31, 31, 111]
-            init_shader();
-        }
-    }else if (get_player_color( player ) == 8){
-        if (outline_color[0] != 130 || outline_color[1] != 20 || outline_color[2] != 35){
-            outline_color=[130, 20, 35]
-            init_shader();
-        }
-    }//else if (get_player_color( player ) == 10){
-        //if (outline_color[0] == 0 && outline_color[1] == 0 && outline_color[2] == 0){
-            //outline_color=[97, 162, 255]
-            //init_shader();
-        //}
-    //}
-    else if (get_player_color( player ) == 16){
-        if (outline_color[0] != 143 || outline_color[1] != 80 || outline_color[2] != 1){
-            outline_color=[143, 80, 1]
-            init_shader();
-        }
-    }else if (get_player_color( player ) == 26){
-        if (outline_color[0] != 29 || outline_color[1] != 167 || outline_color[2] != 231){
-            outline_color=[29, 167, 231]
-            init_shader();
-        }
-    }else{
-        outline_color = [0, 0, 0];
-        init_shader();
-    }
+	outlinecolorchange = (alt == 7 || alt == 8 || alt == 16 || alt == 26) && (outline_color[0] < 2 && outline_color[1] < 2 && outline_color[2] < 2) ? true : outlinecolorchange;
+	if(outlinecolorchange){
+	    if (alt == 7){
+	        if (outline_color[0] != 31 || outline_color[1] != 31 || outline_color[2] != 111){
+	            outline_color=[31, 31, 111];
+	        }
+	    }else if (alt == 8){
+	        if (outline_color[0] != 130 || outline_color[1] != 20 || outline_color[2] != 35){
+	            outline_color=[130, 20, 35];
+	        }
+	    }else if (alt == 16){
+	        if (outline_color[0] != 143 || outline_color[1] != 80 || outline_color[2] != 1){
+	            outline_color=[143, 80, 1];
+	        }
+	    }else if (alt == 26){
+	        if (outline_color[0] != 29 || outline_color[1] != 167 || outline_color[2] != 231){
+	            outline_color=[29, 167, 231];
+	        }
+	    }else{
+	        outline_color = [0, 0, 0];
+	    }init_shader();outlinecolorchange = false;
+	}
 }else{
 	if(!runeO || runeO && fspecialcharge < 180){
 		outline_color = [outline_timer, outline_timer, outline_timer];
@@ -61,7 +53,7 @@ if(nspecialcharge < 60 && fspecialcharge < 60){
 		if (outline_rev) outline_timer -= 55;
 		else outline_timer += 55;
 		init_shader();
-	}
+	}outlinecolorchange = true;
 }
 
 if(steam_cooldown > 0)steam_cooldown -= 1;
@@ -258,3 +250,5 @@ if(TLinmatch){
 		}
 	}
 }
+
+if(element_cooldown > 0)element_cooldown--;

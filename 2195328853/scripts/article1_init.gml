@@ -39,6 +39,7 @@ Pocketable = true;Pocketed = false;
 Pocket_hsp = 7;Pocket_vsp = -5;
 Pocket_hud = sprite_get("pocket_icons");Pocket_hud_imageindex = 0;
 SpikeCanEat = true;SpikeHealPercent = 2;
+Toadie_Ability = 6;
 
 spr_dir = player_id.spr_dir;
 

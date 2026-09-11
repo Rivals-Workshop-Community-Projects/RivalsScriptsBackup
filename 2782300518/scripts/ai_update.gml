@@ -174,9 +174,9 @@ else if (state != PS_SPAWN)
 			up_down = true;
 			jump_down = true;
 		}
-		else if (walljump_number == 5 && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
+		else if (walljump_number == walljump_limit && place_meeting(x + 80 * spr_dir, y, asset_get("par_block")))
 		{
-			jump_down = false;
+			jump_down = vsp > 0? true:false;
 			up_down = true;
 		}
 		switch (state)
@@ -184,7 +184,7 @@ else if (state != PS_SPAWN)
 			case PS_WALL_JUMP:
 				up_down = true;
 				facestage();
-				if( motorbike)
+				if( motorbike || vsp > 0)
 				{
 					jump_down = true;
 				}
@@ -486,7 +486,7 @@ else if (state != PS_SPAWN)
 			can_DACUS = false;			
 			if (attacking)
 			{
-				print_debug(state_timer)
+				//print_debug(state_timer)
 				if (state_timer < 80)
 				{
 					taunt_down = true;

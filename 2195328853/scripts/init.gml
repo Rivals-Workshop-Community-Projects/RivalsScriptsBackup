@@ -114,38 +114,31 @@ bubble_y = 8;
 is_KOB = true;
 BlueBlob = true;
 crawling = false;
-upb = false;
-upbtime = 0;
+upb = false;upbtime = 0;
 nspecialcharge = 0;
-blob_ball = noone;
-blob_ball2 = noone;
-blob_ball3 = noone;
+blob_ball = noone;blob_ball2 = noone;blob_ball3 = noone;
 fspecialcharge = 0;
-steam_cloud = noone;
-steam_cloud2 = noone;
-steam_cloud3 = noone;
-steam_cloud4 = noone;
+steam_cloud = noone;steam_cloud2 = noone;steam_cloud3 = noone;steam_cloud4 = noone;
 steam_cooldown = 0;
-dspecialtimer = 0;
-dspecialkbhsp = 0;
-dspecialkbvsp = 0;
-dspecialhitbox = noone;
-dspecialhitbox2 = noone;
-dspecialhitbox3 = noone;
-fstrongloop = 0;
-ustrongloop = 0;
-uairloop = 0;
-uairboost = 1;
+dspecialtimer = 0;dspecialkbhsp = 0;dspecialkbvsp = 0;
+dspecialhitbox = noone;dspecialhitbox2 = noone;dspecialhitbox3 = noone;
+fstrongloop = 0;ustrongloop = 0;
+uairloop = 0;uairboost = 1;
 tauntspeed = 0;
-runeH = false;
-runeI = false;
-runeM = false;
-runeO = false;
-outline_timer = 0;
-outline_rev = false;
+runeH = false;runeI = false;runeM = false;runeO = false;
+outline_timer = 0;outline_rev = false;
 lookuptime = 0;
+outlinecolorchange = false;
 TLinmatch = false;
 KewtFriend = true;
+jump_hud = sprite_get("jump_hud");hud_death_timer = 0;
+
+KoBWeaknesses = 
+{
+    Thunder: true,
+    Ice: false,
+    Water: false
+}element_cooldown = 0;
 
 intro = (state == PS_SPAWN);
 introspeed = 0.2;

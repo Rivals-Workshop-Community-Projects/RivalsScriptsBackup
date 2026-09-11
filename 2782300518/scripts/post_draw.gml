@@ -147,6 +147,17 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+        
+        patch_note_title[i] = "2.27"
+        patch_note_text[i++] =  
+
+"Fixed projectile reflection behaviour on Parry for both FSpecial and Bike FSpecial Air, this will now reflect properly rather than instantly teleporting.
+
+Added Command Center compatibility (it was in the files before but not actually properly enabled.)
+
+Added Isabelle compatibility and also removed the insta bike code that was on the projectile beforehand.
+
+Added win quotes for Trixie and Scrollette"
 
         patch_note_title[i] = "2.26"
         patch_note_text[i++] =  

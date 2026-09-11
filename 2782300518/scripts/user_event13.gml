@@ -126,7 +126,7 @@ switch (hit_player_obj.url)
 }
 
 //If Carol is hit by her own bike, get back on the bike
-if (fuel > 0 && hit_player_obj.player == player && my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID.can_hit_self == true)
+if (fuel > 0 && hit_player_obj.player == player && my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1 && my_hitboxID.can_hit_self == true && my_hitboxID.changeSprite = true)
 {
 	if (my_hitboxID.orig_player == player)
 	{

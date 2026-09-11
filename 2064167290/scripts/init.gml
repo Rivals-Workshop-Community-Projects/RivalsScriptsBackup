@@ -31,13 +31,13 @@ moonwalk_accel = 1.3; moonwalk_accel_ref = moonwalk_accel; moonwalk_accel_spd = 
 jump_start_time = 5;
 jump_speed = 9; jump_speed_ref = jump_speed; jump_speed_spd = 7; jump_speed_jmp = 12; jump_speed_shld = 8;
 short_hop_speed = 6; short_hop_speed_ref = short_hop_speed; short_hop_speed_spd = 4.5; short_hop_speed_jmp = 9; short_hop_speed_shld = 6;
-djump_speed = 7.8; djump_speed_ref = djump_speed; djump_speed_spd = 7; djump_speed_jmp = 10.5; djump_speed_shld = 7.5;
+djump_speed = 8.2; djump_speed_ref = djump_speed; djump_speed_spd = 7; djump_speed_jmp = 10.5; djump_speed_shld = 7.5;
 leave_ground_max = 7.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
 max_jump_hsp = 4.5; //the maximum hsp you can have when jumping from the ground
 air_max_speed = 6; air_max_speed_ref = air_max_speed; air_max_speed_runeD = 7; //the maximum hsp you can accelerate to when in a normal aerial state  <----
-jump_change = 3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+jump_change = 3.5; //maximum hsp when double jumping. If already going faster, it will not slow you down
 air_accel = .30; air_accel_ref = air_accel; air_accel_runeD = 0.35;   //<-----
-prat_fall_accel = .85; //multiplier of air_accel while in pratfall
+prat_fall_accel = .65; //multiplier of air_accel while in pratfall
 air_friction = .04;
 max_djumps = 2; max_djumps_ref = max_djumps; max_djumps_turn = 0; max_djumps_runeJ = 3;
 double_jump_time = 44;// 48 //the number of frames to play the djump animation. Can't be less than 31.
@@ -51,7 +51,7 @@ hitstun_grav = .45;
 knockback_adj = 1.15; knockback_adj_ref = knockback_adj; knockback_adj_shld = 0.8;//the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 3;
+prat_land_time = 15;
 wave_land_time = 8;
 wave_land_adj = 1.2; wave_land_adj_ref = wave_land_adj; wave_land_adj_spd = 1.6; wave_land_adj_shld = 1.15;//the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = .035; wave_friction_ref = wave_friction; wave_friction_spd = 0.015; wave_friction_shld = 0.1; wave_friction_jmp = 0.4;//grounded deceleration when wavelanding
@@ -104,7 +104,7 @@ djump_sound = asset_get("sfx_birdflap");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 
 
-prat_land_time	= 10;
+//prat_land_time	= 10;
 
 can_uspecial = true; // 
 can_fspecial = true;

@@ -89,6 +89,7 @@ sprite_change_offset("hfx4", 128, 100);
 sprite_change_offset("idle_csschop", 74, 134);
 sprite_change_offset("na_codec", 52, 14);
 sprite_change_offset("na_halo", -10, 70);
+sprite_change_offset("na_pocket_icons", -4, 38);
 
 sprite_change_offset("fake_circle", 100, 100);
 

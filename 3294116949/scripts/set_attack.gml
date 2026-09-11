@@ -62,12 +62,49 @@ if(attack == AT_DTILT){
     reset_window_value(AT_DTILT, 6, AG_WINDOW_HSPEED_TYPE);
 }
 
+/*if(attack == AT_DATTACK){
+    attack = (47);
+}*/
+
 
 // if (attack == AT_DSPECIAL){
 //     attack = (43);
 // }
 
 /*
-if (attack == AT_NAIR){
+//Axeless attacks
+if (attack == AT_DAIR) && (axeless == 1){
+    attack = (45);
+    if (right_down) && spr_dir == -1{
+        spr_dir = 1;
+    }
+    else
+    if (left_down) && spr_dir == 1{
+        spr_dir = -1;
+    }
+}
+
+if (attack == AT_NAIR) && (axeless == 1){
     attack = (46);
-}*/
+}
+
+if (attack == AT_FAIR) && (axeless == 1){
+    attack = (49);
+}
+if (attack == AT_BAIR) && (axeless == 1){
+    attack = (49);
+    if spr_dir == -1{
+        spr_dir = 1;
+    }
+    else
+    if spr_dir == 1{
+        spr_dir = -1;
+    }
+}
+
+if (((attack == AT_JAB) or (attack == AT_DATTACK)) && (axeless == 1)){
+    attack = (47);
+}
+if (/*(attack == AT_DATTACK) or /(attack == AT_FTILT) or (attack == AT_FSTRONG)) && (axeless == 1){
+    attack = (48);
+}

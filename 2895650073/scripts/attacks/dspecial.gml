@@ -49,8 +49,8 @@ set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_PARRY_STUN, 0);
 //first hits
 set_hitbox_value(AT_DSPECIAL, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_LIFETIME, 3);
-set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 70*2);
-set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 70*2);
+set_hitbox_value(AT_DSPECIAL, 2, HG_WIDTH, 75*2);
+set_hitbox_value(AT_DSPECIAL, 2, HG_HEIGHT, 75*2);
 set_hitbox_value(AT_DSPECIAL, 2, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL, 2, HG_DAMAGE, 1);
 set_hitbox_value(AT_DSPECIAL, 2, HG_ANGLE, 90);
@@ -81,15 +81,15 @@ set_hitbox_value(AT_DSPECIAL, 2, HG_EXTENDED_PARRY_STUN, 1);
 
 //final hit
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 4);
+set_hitbox_value(AT_DSPECIAL, 3, HG_LIFETIME, 5);
 set_hitbox_value(AT_DSPECIAL, 3, HG_WIDTH, 90*2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HEIGHT, 90*2);
 set_hitbox_value(AT_DSPECIAL, 3, HG_SHAPE, 0);
 set_hitbox_value(AT_DSPECIAL, 3, HG_DAMAGE, 9);
-set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 60);
+set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE, 90);
 set_hitbox_value(AT_DSPECIAL, 3, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSPECIAL, 3, HG_PRIORITY, 9);
-set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 9);
+set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_KNOCKBACK, 10);
 set_hitbox_value(AT_DSPECIAL, 3, HG_KNOCKBACK_SCALING, 1.25);
 set_hitbox_value(AT_DSPECIAL, 3, HG_BASE_HITPAUSE, 12);
 set_hitbox_value(AT_DSPECIAL, 3, HG_HITPAUSE_SCALING, 1.2);

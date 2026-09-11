@@ -52,6 +52,17 @@ if (attack==AT_NSPECIAL){
 		tmp_fx.vsp = vsp/20;
 		tmp_fx.image_alpha = 0.25;
 	}
+	if (was_pocketed && y < -1000){
+		//sound_play(sound_get("ting"))
+		if (ice_verticalmode){
+			ice_vsp = -14;
+		}else{
+			ice_vsp = 4;
+		}
+	}
+	if (was_pocketed){
+		ice_hsp = abs(ice_hsp)*spr_dir;
+	}
 	
 }
 
@@ -60,3 +71,18 @@ if ( attack==AT_NSPECIAL || attack==AT_FSTRONG || (attack==AT_FSPECIAL && hbox_n
 	print("hitbox...detected")
 }
 */
+
+//pocket thing
+with(oPlayer){
+	if (variable_instance_exists(id,"nspecial_pocket_status")){
+		if(id != other.id && nspecial_pocket_status.ref == other){
+			
+		if(other.ice_verticalmode == true){
+		other.player_id.pocketed_icons_index = 1;
+		}else{
+		other.player_id.pocketed_icons_index = 0;
+		}
+		
+		}
+	}
+}

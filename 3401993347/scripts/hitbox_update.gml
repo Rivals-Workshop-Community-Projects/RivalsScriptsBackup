@@ -17,10 +17,10 @@ if (attack == AT_NSPECIAL && hbox_num == 2) {
         //or just simply take 3 orbs
         amount = 3;
 
-        //before copying any orbs, check if the orbs are about to EXPLODE
-        if(array_length(player_id.mewtwoOrbStacks) <= 0 || player_id.mewtwoOrbStacks[0].exploding > 0){
-            amount = 0;
-        }
+        // //before copying any orbs, check if the orbs are about to EXPLODE
+        // if(array_length(player_id.mewtwoOrbStacks) <= 0 || player_id.mewtwoOrbStacks[0].exploding > 0){
+        //     amount = 0;
+        // }
 
         
 

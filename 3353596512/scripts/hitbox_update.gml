@@ -183,7 +183,7 @@ switch (attack){
     				if (hitbox_timer == 4){
     					sound_play(hit_sfx);
                 		spawn_hit_fx(x, y, 262);
-	            		var flash = create_hitbox(AT_FSPECIAL, 2, x, y);
+	            		var flash = create_hitbox(AT_FSPECIAL, 2, round(x), round(y));
 	            		flash.is_homemade = true;
 	            		destroyed_next = true;
     				}
@@ -195,7 +195,7 @@ switch (attack){
     					destroy_fx = 1;
     					sound_play(hit_sfx);
     					var yippee = spawn_hit_fx(x, y, player_id.easter_egg);
-    					var yayyyy = create_hitbox(AT_DSPECIAL_2, 5, x, y);
+    					var yayyyy = create_hitbox(AT_DSPECIAL_2, 5, round(x), round(y));
     					yayyyy.can_hit_self = true;
     					yayyyy.player = player;
     					yippee.depth = depth-1;
@@ -246,7 +246,7 @@ switch (attack){
     			}
     			if (bees_attacking){
     				if (image_index == 11 || image_index == 13 || image_index == 16){
-    					create_hitbox(AT_DSPECIAL_2, 4, x, y);
+    					create_hitbox(AT_DSPECIAL_2, 4, round(x), round(y));
     					sound_play(sound_get("scrap_bees_zap" + string(random_func(0, 2, true) + 1) ), false, noone, 0.7, 1);
     				}
     				if (image_index >= 18){

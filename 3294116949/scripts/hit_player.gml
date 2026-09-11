@@ -213,3 +213,8 @@ if(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num == 1){
 		sound_play(asset_get("sfx_blow_heavy1"));
 	}
 }
+if(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num > 1) and !(axeless){
+	with(my_hitboxID){
+		sound_play(sound_get("alt_axe3"));
+	}
+}

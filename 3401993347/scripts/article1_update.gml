@@ -125,7 +125,7 @@ if (instance_exists(hbox) && hbox > 0 && !player_id.was_parried && player_id.hit
                     for (var i = 0; i < array_length(player_id.trapOrbStacks); i++) {
                         var stack = player_id.trapOrbStacks[i];
                         // if (array_length(player_id.trapOrbStacks) < player_id.maxOrbsStacks) {
-                        followingOrbID.shadowBallOrbStacks = array_push(followingOrbID.shadowBallOrbStacks, stack);
+                            followingOrbID.shadowBallOrbStacks = array_push(followingOrbID.shadowBallOrbStacks, stack);
                         // }
                     }
                     

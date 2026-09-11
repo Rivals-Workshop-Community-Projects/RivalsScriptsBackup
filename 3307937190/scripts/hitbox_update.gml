@@ -69,7 +69,7 @@ else if(attack == AT_NSPECIAL)
             //THUNDER STRUCK
             case 1:
                 player_id.move_cooldown[AT_NSPECIAL] = 25;
-                player_id.trap_cooldown = player_id.trap_cd_on_trigger;
+                player_id.trap_cooldown = max(player_id.trap_cooldown, player_id.trap_cd_on_trigger);
                 if(sprite_index != sprite_get("nspecial_thunder"))
                 {
                     sprite_index = sprite_get("nspecial_thunder");
@@ -102,7 +102,7 @@ else if(attack == AT_NSPECIAL)
                 var end_time = 16;
                 if (anim_timer >= 16) destroyed_next = true;
                 image_index = lerp(8, image_number-1, anim_timer/end_time);
-                player_id.trap_cooldown = player_id.trap_cd_on_fade;
+                player_id.trap_cooldown = max(player_id.trap_cooldown, player_id.trap_cd_on_fade);
                 break;
             //THUNDER SPAWN FASTER WHEN PLAYER DETECTED
             case 3:

@@ -89,6 +89,7 @@ sprite_change_offset("etc_afterimage", the_x, 57*2);
 sprite_change_offset("etc_mamizou", the_x, the_y);
 sprite_change_offset("etc_kostar", the_x, the_y-130);
 sprite_change_offset("etc_koscreen", the_x, the_y+20);
+sprite_change_offset("etc_pocket_icons", -4, 38);
 
 
 

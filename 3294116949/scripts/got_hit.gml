@@ -4,6 +4,7 @@ if (move_cooldown[AT_FSPECIAL] > 0){
         move_cooldown[AT_FSPECIAL] = 0;
 }
 
+DashEffect = 0;
 airstall = 0;
 
 // lamp_bounce=false;

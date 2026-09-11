@@ -341,6 +341,7 @@ amber_useSprDirOffset = true;
 amber_hugExitTimer = 27;
 amber_hugExitWindow = 3;
 tcoart= sprite_get("tcoart");
+power_ranger_suit = sprite_get("power_ranger_suit");
 
 knight_compat_dream = 
     [
@@ -353,6 +354,10 @@ dracula_portrait = sprite_get("dracula_port1");
 dracula_portrait2 = sprite_get("dracula_port2");
 dracula_check = false;
 
+pocketed_icons = sprite_get("pocketed_icon")
+pocketed_sprite_x = 0;
+pocketed_sprite_y = 0;
+pocketed_icons_index = 0;
 
 kart_sprite = sprite_get("carol_rc")
 kart_frames= 1

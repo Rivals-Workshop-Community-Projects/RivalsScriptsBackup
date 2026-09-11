@@ -86,7 +86,7 @@ if (state == 1){
 	}
 	if (extraparried == true){
 		state_end = 6
-	}else if (article1check == true || parried_player != -4){
+	}else if (article1check == true || parryfast){//parried_player != -4){
 		state_end = 8//12
 	}else{
 		state_end = 15
@@ -142,6 +142,7 @@ if (state == 1){
 	var hbty = 0;
 	var hbidA = create_hitbox( AT_NSPECIAL_AIR, 2, x+hbtx, y+hbty );
 	hbidA.owner_article=id;
+	hbidA.owner_truth=player_id;
 	hbidA.spr_dir = tmpdir;
 	hbidA.image_angle = image_angle
 	//hbidA.leaderhb = hbidA;

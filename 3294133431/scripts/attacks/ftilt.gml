@@ -1,7 +1,10 @@
-set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftiltWeak"));
-set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_FTILT, AG_CATEGORY, 2);
+set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftiltWeak"));
 set_attack_value(AT_FTILT, AG_HURTBOX_SPRITE, sprite_get("ftilt_hurt"));
+set_attack_value(AT_FTILT, AG_NUM_WINDOWS, 4);
+set_attack_value(AT_FTILT, AG_HAS_LANDING_LAG, 3);
+set_attack_value(AT_FTILT, AG_AIR_SPRITE, sprite_get("fair"));
+set_attack_value(AT_FTILT, AG_HURTBOX_AIR_SPRITE, sprite_get("fair_hurt"));
 
 set_window_value(AT_FTILT, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FTILT, 1, AG_WINDOW_LENGTH, 4);
@@ -33,9 +36,9 @@ set_hitbox_value(AT_FTILT, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FTILT, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FTILT, 1, HG_LIFETIME, 3);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_X, 20);
-set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -35);
+set_hitbox_value(AT_FTILT, 1, HG_HITBOX_Y, -45);
 set_hitbox_value(AT_FTILT, 1, HG_WIDTH, 55);
-set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 85);
+set_hitbox_value(AT_FTILT, 1, HG_HEIGHT, 65);
 set_hitbox_value(AT_FTILT, 1, HG_PRIORITY, 1);
 set_hitbox_value(AT_FTILT, 1, HG_DAMAGE, 6);
 set_hitbox_value(AT_FTILT, 1, HG_ANGLE, 361);

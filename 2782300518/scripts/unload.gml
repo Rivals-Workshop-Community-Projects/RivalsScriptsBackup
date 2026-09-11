@@ -219,10 +219,15 @@ if (!handled_victory_quote)
             quote = "Drop the act Cory, I know its you, just take off the mask.";
         break;
         case "3299337477": //Twilight Sparkle
+        case "3696643186": //Trixie
+        case "3710780371":
 			quote = "I guess you're a ''one trick pony'' after all."        
         break;
         case "3583212615"://Tommy
             quote = "Wait I didn't get to fight your giant robot? I was looking forward to that part..."
+		break;
+		case "3763679928": //Scrollette
+			quote = "Come on, I just wanted to have fun, why are you so afraid?"		
 		break;
         
         default: break;

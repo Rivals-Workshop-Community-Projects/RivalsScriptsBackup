@@ -1,9 +1,10 @@
 set_attack_value(AT_FSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_FSPECIAL, AG_SPRITE, sprite_get("fspecial"));
+set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
 set_attack_value(AT_FSPECIAL, AG_NUM_WINDOWS, 5);
 set_attack_value(AT_FSPECIAL, AG_HAS_LANDING_LAG, 4);
 set_attack_value(AT_FSPECIAL, AG_AIR_SPRITE, sprite_get("fspecialAir"));
-set_attack_value(AT_FSPECIAL, AG_HURTBOX_SPRITE, sprite_get("fspecial_hurt"));
+set_attack_value(AT_FSPECIAL, AG_HURTBOX_AIR_SPRITE, sprite_get("fspecialAir_hurt"));
 
 var airFriction = 0.1;
 var groundFriction = 1;
@@ -58,8 +59,8 @@ set_hitbox_value(AT_FSPECIAL, 1, HG_WINDOW, 3);
 set_hitbox_value(AT_FSPECIAL, 1, HG_LIFETIME, 64);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_X, 32);
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_Y, -58);
-set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 42);
-set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 42);
+set_hitbox_value(AT_FSPECIAL, 1, HG_WIDTH, 30);
+set_hitbox_value(AT_FSPECIAL, 1, HG_HEIGHT, 30);
 set_hitbox_value(AT_FSPECIAL, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FSPECIAL, 1, HG_DAMAGE, 3);//overriden in attack_update
 set_hitbox_value(AT_FSPECIAL, 1, HG_ANGLE, 361);

@@ -19,8 +19,19 @@ switch (state) {
                 hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
             }
         }
+        if(attack == AT_DTILT){
+            if axeless {
+                sprite_index = sprite_get("alt_dtilt");
+            } else {
+                sprite_index = sprite_get("dtilt");
+            }
+        }
         break;
 }
+
+/*if (attack == FSPECIAL) && (window == 2){
+    sprite_get("fspecial_dash_effect");
+}*/
 
 if(axeless)
 {

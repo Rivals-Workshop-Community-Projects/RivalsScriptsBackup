@@ -1,1 +1,0 @@
-// other_post_draw is a script that draws things in front of other players.

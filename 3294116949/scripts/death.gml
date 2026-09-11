@@ -1,5 +1,6 @@
 // called when the character gets KO'd
 
+DashEffect = 0;
 
 if (instance_exists(axe)){
     with(axe){

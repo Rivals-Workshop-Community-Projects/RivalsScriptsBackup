@@ -4,7 +4,7 @@ air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 54;
-idle_anim_speed = .14;
+idle_anim_speed = .12;
 crouch_anim_speed = .13;
 walk_anim_speed = .2;
 dash_anim_speed = .35;
@@ -57,7 +57,7 @@ crouch_active_frames = 4;
 crouch_recovery_frames = 1;
 
 //Wait sprites
-wait_time = 412;
+wait_time = 422;
 wait_length = 220;
 wait_sprite = sprite_get("idle_wait");
 

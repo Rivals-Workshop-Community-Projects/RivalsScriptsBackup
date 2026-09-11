@@ -498,7 +498,7 @@ if (attack = AT_DSPECIAL){
 					door_storage.state = 0;
 					door_storage.state_timer = 0;
 				}
-				move_cooldown[AT_DSPECIAL] = 125;
+				move_cooldown[AT_DSPECIAL] = 60;
 				spawn_hit_fx( x, y-(char_height/2), 66 );
 			}else{
 				door_storage = instance_create( x, y, "obj_article1" );
@@ -537,7 +537,6 @@ if (attack==AT_UTILT||attack==AT_FTILT||attack==AT_DTILT){
     was_parried = true;
   }
 }
-
 
 
 

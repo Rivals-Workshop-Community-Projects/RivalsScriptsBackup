@@ -58,13 +58,27 @@ var tmp_width = ease_cubeOut( 0, 100, round(ushr_rainclouded_timer), ushr_raincl
 if (is_iced == false){
 	if (true/*rain_bottom_dist>3*/){
 	with(pHitBox){
-		if (variable_instance_exists(player_id, "nurburgring_24h_endurance")){//unique identifier for usher ~~hitboxes~~
+		if (variable_instance_exists(player_id, "nurburgring_24h_endurance")){//unique identifier for usher
 			//print("nurburgring...detected : attack="+string(attack))
 			if ( attack==AT_NSPECIAL || attack==AT_FSTRONG || (attack==AT_FSPECIAL && hbox_num==3) || (attack==AT_FSPECIAL_2 && hbox_num==3 && other.ushr_rainclouded_timer < other.ushr_rainclouded_timer_max-20) ){
 				//print("hitbox...detected")
 				//if (can_hit[appl_player_num] == true){
 					//print("can_hit...detected")
+				//print("player move_is_fresh... "+((player_id.move_is_fresh)?"TRUE":"FALSE"))
+				var tmp_move_freshness = false;
+				if (type == 1){//melee
 					if (player_id.move_is_fresh == true){
+						tmp_move_freshness = true;
+					}
+				}
+				if (type == 2){//iceball or so
+					if (true){//i dont think i need to check for this
+						tmp_move_freshness = true;
+					}
+				}
+					//if (player_id.move_is_fresh == true){
+					if (tmp_move_freshness == true){
+						
 						if (collision_rectangle(other.x-round(tmp_width/2), other.y, other.x+round(tmp_width/2), other.y+other.rain_bottom_dist, id, true, false)){//this is the collision box
 							//print("collision...detected")
 							if (reflected==false){

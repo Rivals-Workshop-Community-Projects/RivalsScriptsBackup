@@ -45,6 +45,8 @@ if (attack == AT_TAUNT){
 					tp = instance_create(x+20*spr_dir,y-25,"obj_article1");
 					tp.spr_dir = spr_dir;
 					tp.building_type = 0;
+					tp.building_health = 20;
+					tp.building_max_health = 20;
 					tp_alive = 1;
 					if engi_muted == true{
 						sound_play(sound_get("v_tpgoingup"));
@@ -83,6 +85,8 @@ if (attack == AT_TAUNT){
 					disp = instance_create(x+20*spr_dir,y-25,"obj_article1");
 					disp.spr_dir = spr_dir * -1;
 					disp.building_type = 1;
+					disp.building_health = 20;
+					disp.building_max_health = 20;
 					disp_alive = 1;
 					if engi_muted == true{
 						sound_play(sound_get("v_dispenserup"));
@@ -122,6 +126,8 @@ if (attack == AT_TAUNT){
 					sentry = instance_create(x+20*spr_dir,y-25,"obj_article1");
 					sentry.spr_dir = spr_dir;
 					sentry.building_type = 2;
+					sentry.building_health = 25;
+					sentry.building_max_health = 25;
 					sentry_alive = 1;
 					if engi_muted == true{
 						sound_play(sound_get("v_sentrygoinup"));
@@ -281,7 +287,7 @@ if attack == AT_EXTRA_1{
 		}
 	}
 	if sentry.building_level == 3{ //rockets
-		if (window == 6 && window_timer == 3){
+		if (window == 4 && window_timer == 3){
 			wrangle_rockets = create_hitbox(AT_USPECIAL, 4, x, y);
 			wrangle_rockets.y = y - 60;
 			wrangle_rockets.x = x + 20 * spr_dir;

@@ -258,7 +258,11 @@ AG_MUNO_WINDOW_EXCLUDE = 80+7 // 0: include window in timeline (default)    1: e
 HG_MUNO_HITBOX_NAME = 80+1
 HG_MUNO_HITBOX_MISC_ADD = 80+12
 
-
+pocketed_icons = sprite_get("etc_pocket_icons");
+pocketed_sprite_x = 0;
+pocketed_sprite_y = 0;
+pocketed_icons_index = 0;
+pocketed_icons_small = false;
 
 
 

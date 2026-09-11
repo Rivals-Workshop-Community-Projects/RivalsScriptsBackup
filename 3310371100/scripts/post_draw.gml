@@ -85,6 +85,25 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v3.22 - (2026/09/06)"
+		patch_note_text[i++] = 
+		"===v3.22===
+		---additions---
+		:: added isabelle pocket compatibility, iceball moves in the direction it should now. it also has an icon for normal/high-throw iceball as well
+
+		---changes---
+		:: experimentally changed it so it hopefully only does the results screen victory quotes 50% of the time. i didnt want it popping up allll the time! i only have the only one quote for each character after all.
+
+		---fixes---
+		:: fixed an issue where NSPECIAL iceballs sometimes does not freeze the raincloud.
+		:::: exact criterias of it happening were: 1. your iceball is out, 2. before that happens, you hit an opponent with an another attack such as melee attacks, 3. then iceball collides with the rain.
+		:::: probably also happens with ràiné, but much more likely to with usher because usher has the grounded nspecial high throw. so gonna fix it for ràiné as well probably
+
+		---balancing??---
+		-- JAB1 ... i've been thinking about it since a few months. JAB1 extra hitpause DEcreased, which means the opponent gets out of hitpause earlier. (extra hitpause -3)
+		-- JAB1 ... hitbox size reduced. (width overlaps less with usher, height sliiiiiiiightly small)"
+		
+		
 		patch_note_title[i] = "v3.21 - (2026/07/26)"
 		patch_note_text[i++] = 
 		"===v3.21===

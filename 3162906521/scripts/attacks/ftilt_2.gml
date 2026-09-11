@@ -53,11 +53,11 @@ set_window_value(AT_EXTRA_1, 10, AG_WINDOW_LENGTH, 4);
 set_window_value(AT_EXTRA_1, 10, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_1, 10, AG_WINDOW_ANIM_FRAME_START, 9);
 
-set_window_value(AT_EXTRA_1, 11, AG_WINDOW_LENGTH, 4);
+set_window_value(AT_EXTRA_1, 11, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_EXTRA_1, 11, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_1, 11, AG_WINDOW_ANIM_FRAME_START, 10);
 
-set_window_value(AT_EXTRA_1, 12, AG_WINDOW_LENGTH, 2);
+set_window_value(AT_EXTRA_1, 12, AG_WINDOW_LENGTH, 7);
 set_window_value(AT_EXTRA_1, 12, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_EXTRA_1, 12, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_EXTRA_1, 12, AG_WINDOW_HAS_WHIFFLAG, 1);
