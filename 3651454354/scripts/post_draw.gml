@@ -2,10 +2,6 @@ status_color = c_white;
 jevilx = x;
 jevily = y;
 
-if (fade_time = 179){
-pirouette_popup = pirouette_selected;
-}
-
  effects[0] = "           ERROR           "
  effects[1] = "           On fire!        "
  effects[2] = "     It was just foley!    "

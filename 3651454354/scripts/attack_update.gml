@@ -1,6 +1,10 @@
 if attack == AT_NSPECIAL{
 move_cooldown[AT_NSPECIAL] = 60}
 
+if (fade_time = 179){
+pirouette_popup = pirouette_selected;
+}
+
 var random_laugh = random_func( 0, 2, true);
 
 if (attack == AT_TAUNT) && window_timer == 2{

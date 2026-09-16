@@ -99,7 +99,7 @@ if (motorbike == false)
 						{
 							case AT_FTILT:
 							case AT_UTILT:
-								spawn_base_dust(x, y, "walk");
+								spawn_base_dust(x, y, DFX_WALK);
 							break;
 							default:
 							break;
@@ -112,8 +112,8 @@ if (motorbike == false)
 						{
 							case AT_UTHROW:
 							case AT_DTHROW:
-								spawn_base_dust(x, y, "dash");
-								spawn_base_dust(x, y, "dash", -spr_dir);
+								spawn_base_dust(x, y, DFX_DASH);
+								spawn_base_dust(x, y, DFX_DASH, -spr_dir);
 							break;
 							default:
 							break;
@@ -132,11 +132,11 @@ if (motorbike == false)
 						{
 							case AT_FTILT:
 							case AT_UTILT:
-								spawn_base_dust(x, y, "walk");
+								spawn_base_dust(x, y, DFX_WALK);
 							break;
 							case AT_FTHROW:
-								spawn_base_dust(x, y, "dash");
-								spawn_base_dust(x + 30 * spr_dir, y, "dash");
+								spawn_base_dust(x, y, DFX_DASH);
+								spawn_base_dust(x + 30 * spr_dir, y, DFX_DASH);
 							break;
 							default:
 							break;
@@ -303,8 +303,8 @@ if (motorbike == false)
 			}
 			if (!free)
 			{
-				if (window == 3 && window_timer == 3) spawn_base_dust(x, y, "jump");
-				if (window == 3 && window_timer == 1) spawn_base_dust(x, y, "land");
+				if (window == 3 && window_timer == 3) spawn_base_dust(x, y, DFX_JUMP);
+				if (window == 3 && window_timer == 1) spawn_base_dust(x, y, DFX_LAND);
 			}
 			if (((can_shield && (shield_pressed || shield_down)) 
 			|| (can_jump && (jump_pressed || (tap_jump_pressed && can_tap_jump()))) 
@@ -620,8 +620,8 @@ else if (motorbike == true)
 		case AT_FSPECIAL_2:
 			if(floor(state_timer/2) == state_timer /2 && (window == 2 || (window == 1 && window_timer > 14)))
 			{
-				spawn_base_dust(x, y, "dash_start");
-				spawn_base_dust(x + 30 *spr_dir, y, "dash_start");
+				spawn_base_dust(x, y, DFX_DASH_START);
+				spawn_base_dust(x + 30 *spr_dir, y, DFX_DASH_START);
 			}
 			if (window == 1 && window_timer == 1)
 			{
@@ -729,7 +729,7 @@ else if (motorbike == true)
 			}
 			if (window == 1 && window_timer == 6 && !free)
 			{
-				spawn_base_dust(x, y, "jump");
+				spawn_base_dust(x, y, DFX_JUMP);
 			}
 			if (window == 3 || (window == 2 && window_timer >= 4))
 			{
@@ -862,8 +862,8 @@ else if (motorbike == true)
 		case AT_DTHROW:
 			if (window == 1 && window_timer == 3)
 			{
-				spawn_base_dust(x, y, "dash_start");
-				spawn_base_dust(x + 30 * spr_dir, y, "jump");
+				spawn_base_dust(x, y, DFX_DASH_START);
+				spawn_base_dust(x + 30 * spr_dir, y, DFX_JUMP);
 			}
 		//Claw Combo
 		case AT_NTHROW:
@@ -894,16 +894,16 @@ else if (motorbike == true)
 				{
 					if(floor(state_timer/4) == state_timer /4)
 					{
-						spawn_base_dust(x, y, "dash_start");
-						spawn_base_dust(x + 30 * spr_dir, y, "dash_start");
+						spawn_base_dust(x, y, DFX_DASH_START);
+						spawn_base_dust(x + 30 * spr_dir, y, DFX_DASH_START);
 					}	
 				}
 				else if (bike_sp == walk_speed)
 				{
 					if(floor(state_timer/4) == state_timer /4)
 					{
-						spawn_base_dust(x, y, "dash");
-						spawn_base_dust(x + 30 * spr_dir, y, "dash");
+						spawn_base_dust(x, y, DFX_DASH);
+						spawn_base_dust(x + 30 * spr_dir, y, DFX_DASH);
 					}
 				}
 			}
@@ -934,16 +934,16 @@ else if (motorbike == true)
 			{
 				if(floor(state_timer/4) == state_timer /4)
 				{
-					spawn_base_dust(x, y, "dash_start");
-					spawn_base_dust(x + 30 * spr_dir, y, "dash_start");
+					spawn_base_dust(x, y, DFX_DASH_START);
+					spawn_base_dust(x + 30 * spr_dir, y, DFX_DASH_START);
 				}	
 			}
 			else if (bike_sp == walk_speed/2)
 			{
 				if(floor(state_timer/4) == state_timer /4)
 				{
-					spawn_base_dust(x, y, "dash");
-					spawn_base_dust(x + 30 * spr_dir, y, "dash");
+					spawn_base_dust(x, y, DFX_DASH);
+					spawn_base_dust(x + 30 * spr_dir, y, DFX_DASH);
 				}
 			}
 		break;
@@ -964,16 +964,16 @@ else if (motorbike == true)
 			{
 				if(floor(state_timer/4) == state_timer /4)
 				{
-					spawn_base_dust(x, y, "dash_start");
-					spawn_base_dust(x + 30 * spr_dir, y, "dash_start");
+					spawn_base_dust(x, y, DFX_DASH_START);
+					spawn_base_dust(x + 30 * spr_dir, y, DFX_DASH_START);
 				}	
 			}
 			else if (bike_sp == walk_speed)
 			{
 				if(floor(state_timer/4) == state_timer /4)
 				{
-					spawn_base_dust(x, y, "dash");
-					spawn_base_dust(x + 30 * spr_dir, y, "dash");
+					spawn_base_dust(x, y, DFX_DASH);
+					spawn_base_dust(x + 30 * spr_dir, y, DFX_DASH);
 				}
 			}
 		break;
@@ -1022,7 +1022,7 @@ switch (attack)
 			{
 				case AT_FSTRONG_2:
 				case AT_USTRONG_2:
-					spawn_base_dust (x, y, "dash");
+					spawn_base_dust (x, y, DFX_DASH);
 				break;
 				default:
 				break;
@@ -1033,26 +1033,26 @@ switch (attack)
 		{
 			if(floor(state_timer/4) == state_timer /4)
 			{
-				spawn_base_dust(x, y, "land");
+				spawn_base_dust(x, y, DFX_LAND);
 			}	
 		}
 		if (window == 3 && window_timer == 1 && attack == AT_DSTRONG)
 		{
-			spawn_base_dust (x, y, "jump");
+			spawn_base_dust (x, y, DFX_JUMP);
 		}
 		if (window == 4 && window_timer == 1)
 		{
 			switch (attack)
 			{
 				case AT_FSTRONG:
-					spawn_base_dust (x, y, "dattack");
+					spawn_base_dust (x, y, DFX_SKID);
 				break;
 				case AT_USTRONG:
-					spawn_base_dust (x, y, "jump");
+					spawn_base_dust (x, y, DFX_JUMP);
 				break;
 				case AT_DSTRONG:
-					spawn_base_dust(x + 20 * spr_dir, y, "dattack", -spr_dir, 0);
-					spawn_base_dust(x - 20 * spr_dir, y, "dattack", spr_dir, 0);			
+					spawn_base_dust(x + 20 * spr_dir, y, DFX_SKID, -spr_dir);
+					spawn_base_dust(x - 20 * spr_dir, y, DFX_SKID, spr_dir);			
 				break;
 				default:
 				break;
@@ -1065,7 +1065,7 @@ switch (attack)
 		
 		if (window == 6 && window_timer == 1 && attack = AT_USTRONG)
 		{
-			spawn_base_dust (x, y, "land");		
+			spawn_base_dust (x, y, DFX_LAND);		
 		}
 	break;
 	case AT_NTHROW:
@@ -1484,11 +1484,11 @@ switch (attack)
 				case 16:
 				case 23:
 				case 30:
-					var sparkly1 = spawn_base_dust(x - 10, y - 30, "fastfall");
+					var sparkly1 = spawn_base_dust(x - 10, y - 30, DFX_FAST_FALL);
 					sparkly1.depth = -100;
-					var sparkly2 = spawn_base_dust(x, y - 50, "fastfall");
+					var sparkly2 = spawn_base_dust(x, y - 50, DFX_FAST_FALL);
 					sparkly2.depth = -100;
-					var sparkly3 =spawn_base_dust(x + 10, y - 40, "fastfall");
+					var sparkly3 =spawn_base_dust(x + 10, y - 40, DFX_FAST_FALL);
 					sparkly3.depth = -100;
 				break;
 				//Set Cooldown at the very end of the move
@@ -1694,7 +1694,7 @@ switch (attack)
 		var time = get_gameplay_time();
 		if (window == 2 && window_timer == 12)
 		{
-			spawn_base_dust(x, y, "land", spr_dir)
+			spawn_base_dust(x, y, DFX_LAND, spr_dir)
 		}
 		if (window <= 4) hud_offset = lerp(hud_offset, 2000, 0.1); // put hud away
 		if (window == 4 && window_timer == 33 && time <= 125) state = PS_SPAWN; //correct state to spawn if needed
@@ -1717,63 +1717,77 @@ sound_stop(sound_get("what_you_doing"));
 sound_stop(sound_get("why_are_we_stopping"));
 sound_stop(sound_get("wittle_wiwac"));
 
-#define spawn_base_dust // originally by supersonic
-{
-    // spawn_base_dust(x, y, name)
-    // spawn_base_dust(x, y, name, ?dir, ?angle, ?window, ?window_timer)
+#define spawn_base_dust
+///spawn_base_dust(x, y, dust_fx, ?dir)
+///spawn_base_dust(x, y, dust_fx, ?dir, ?angle, ?window, /window_timer)
 
-    // This function spawns base cast dusts. Names can be found below.
-    var dlen; //dust_length value
-    var dfx; //dust_fx value
-    var dfg; //fg_sprite value
-    var dust_color = 0;
-    var x = argument[0], y = argument[1], name = argument[2];
-var dir = argument_count > 3 ? argument[3] : 0;
-var angle = argument_count > 4 ? argument[4] : 0;
-var win = argument_count > 5 ? argument[5] : -10;
-var win_time = argument_count > 6 ? argument[6] : 0;
-
-    if (!hitpause && (win > 0 && win == window && win_time == window_timer || win == -10) ) //spawns it whenever we want for 1 frame
-    {
-        switch (name) 
-        {
-            default: 
-            case "dash_start":dlen = 21; dfx = 3; dfg = 2626; break;
-            case "dash": dlen = 16; dfx = 4; dfg = 2656; break;
-            case "jump": dlen = 12; dfx = 11; dfg = 2646; break;
-            case "doublejump": 
-            case "djump": dlen = 21; dfx = 2; dfg = 2624; break;
-            case "walk": dlen = 12; dfx = 5; dfg = 2628; break;
-            case "land": dlen = 24; dfx = 0; dfg = 2620; break;
-            case "n_wavedash": dlen = 24; dfx = 0; dfg = 2620; dust_color = 1; break;
-            case "wavedash": dlen = 16; dfx = 4; dfg = 2656; dust_color = 1; break;
-			case "fastfall": dlen = 44; dfx = 17; dfg = 2657; dust_color = 1; break;
-            //
-            //bar-kun additions (note: idk how fg_sprite work)
-            //
-            case "dattack": dlen = 22; dfx = 12; dfg = 0; break;
-            case "b_bounce_bg": dlen = 10; dfx = 7; dfg = 0; break;
-            case "b_bounce_fg": dlen = 14; dfx = 8; dfg = 0; break;
-            case "s_bounce_bg": dlen = 18; dfx = 7; dfg = 0; break;
-            case "s_bounce_fg": dlen = 19; dfx = 8; dfg = 0; break;
-            case "doublejump_small": 
-            case "djump_small": dlen = 21; dfx = 16; dfg = 0; break;
-        }
-        var newdust = spawn_dust_fx(x, y, asset_get("empty_sprite"), dlen);
-        newdust.x = floor(x);
-        newdust.y = floor(y);
-        newdust.dust_fx = dfx; //set the fx id
-        if (dfg != -1) newdust.fg_sprite = dfg; //set the foreground sprite
-
-        newdust.dust_color = dust_color; //set the dust color
-
-        if (dir != 0) newdust.spr_dir = dir; //set the spr_dir, if dir is 0 it will take the player's spr_dir
-        else newdust.spr_dir = spr_dir;
-
-        newdust.draw_angle = angle; //sets the angle of the dust sprite
-        return newdust;
+///Spawns a base game dust effect with its usual parameters.
+if (hitpause) return noone; // Dust effects do funky things in hitpause for some reason
+var x = argument[0], y = argument[1], dfx = argument[2], dir = argument_count > 3 && argument[3] != 0 ? argument[3] : spr_dir;
+var dust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 24);
+with (dust) {
+    dust_fx = dfx; dust_color = 0; spr_dir = dir;
+    switch (dfx) {
+        case DFX_LAND: case DFX_LAND_BIG: break;
+        case DFX_DOUBLE_JUMP: case DFX_DASH_START: case DFX_DOUBLE_JUMP_SMALL:
+            dust_length = 21; break;
+        case DFX_DASH: dust_length = 16; break;
+        case DFX_WALK: dust_length = 12; break;
+        case DFX_TECH: case DFX_TECH_BIG: 
+            dust_length = 18; dust_color = 1; break;
+        case DFX_HIT_SURFACE: case DFX_HIT_SURFACE_SMALL:    
+            dust_length = 10; dust_color = 0; break;
+        case DFX_HIT_SURFACE_FG: case DFX_HIT_SURFACE_SMALL_FG: 
+            dust_length = 15; dust_color = 1; break;
+        case DFX_PARRY: dust_length = 18; dust_color = 1; break;
+        case DFX_JUMP: dust_length = 12; break;
+        case DFX_SKID: dust_length = 21; break;
+        case DFX_DAMAGE_PUFF: case DFX_DAMAGE_PUFF_BIG:
+            dust_length = 18; break;
+        case DFX_WAVEDASH: dust_fx = DFX_DASH_TURN; dust_color = 1;
+        case DFX_DASH_TURN:
+            dust_length = 21; break;
+        case DFX_FAST_FALL: dust_length = 12; break;
+        case DFX_KO_SPARK: dust_length = 30; dust_color = 4; break;
+        case DFX_KO_LINES: dust_length = 30; dust_color = 1; break;
+        case DFX_KO_SLASH: dust_length = 25; dust_color = 1; break;
+        case DFX_KO_STAR:  dust_length = 35; break;
+        case DFX_WAVEDASH_INPLACE: dust_fx = DFX_LAND; dust_color = 1; break;
+        case DFX_WALLJUMP: dust_fx = DFX_LAND; draw_angle = -90 * dir; break;
     }
 }
+return dust;
+//#region Dust Effect Macros
+#macro DFX_LAND 0 
+#macro DFX_LAND_BIG 1
+#macro DFX_DOUBLE_JUMP 2
+#macro DFX_DASH_START 3
+#macro DFX_DASH 4
+#macro DFX_WALK 5
+#macro DFX_TECH 6
+#macro DFX_HIT_SURFACE 7 // landing after big hitstun and not bouncing
+#macro DFX_HIT_SURFACE_FG 8
+#macro DFX_PARRY 9
+#macro DFX_PARRY_BG_UNUSED 10 // This one is .. something.
+#macro DFX_JUMP 11
+#macro DFX_SKID 12 // I don't know when this one is used
+#macro DFX_DAMAGE_PUFF 13
+#macro DFX_DAMAGE_PUFF_BIG 14 // I don't know when this one is used
+#macro DFX_DASH_TURN 15
+#macro DFX_DOUBLE_JUMP_SMALL 16
+#macro DFX_FAST_FALL 17
+#macro DFX_HIT_SURFACE_SMALL 18 // landing after small hitstun and not bouncing
+#macro DFX_HIT_SURFACE_SMALL_FG 19
+#macro DFX_TECH_BIG 20
+#macro DFX_KO_SPARK 21
+#macro DFX_KO_LINES 22
+#macro DFX_KO_SLASH 23
+#macro DFX_KO_STAR 24
+// custom stuff for convenience
+#macro DFX_WAVEDASH 25 // Dash turn with a different color type
+#macro DFX_WAVEDASH_INPLACE 26 // Land with a different color type
+#macro DFX_WALLJUMP 27 // Rotated Land
+//#endregion
 
 #define ClawCombo
 

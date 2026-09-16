@@ -147,6 +147,15 @@ if (object_index == asset_get("oTestPlayer"))
         //like just for recent few patch notes maybe? but it's up to you how you use it!
         //
         //put text here.
+
+        patch_note_title[i] = "2.28"
+        patch_note_text[i++] =  
+
+"Added an extra frame of animation to Bike Utilt so that the move impact lingers longer and the return to idle is snappier
+
+Updated the dust spawning code to the newest version of Supersonic's dust code for part of the character.
+
+Added Tenna compatibility"
         
         patch_note_title[i] = "2.27"
         patch_note_text[i++] =  

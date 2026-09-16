@@ -265,7 +265,6 @@ with(oPlayer)
 			if(attack = AT_FSPECIAL)
 			{
 				player_id.pocketed_icons_index = 0;
-				print_debug(hitbox_timer);
 			}
 			if(attack == AT_FSPECIAL_AIR)
 			{

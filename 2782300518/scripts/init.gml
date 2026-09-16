@@ -366,6 +366,32 @@ kart_anim_speed_scaling = 1;
 kart_engine_sound = 2;
 kart_drift_spr = 2
 
+compat_tenna_codec = [
+initTennaPage(["Hello?"], 2, "bounce", false),	
+initTennaPage(["Who's here?"], 2, "bounce", false),
+initTennaPage(["Carol?"], 2, "bounce", false),
+initTennaPageExt(["Oh, so its the ", "", "{17} holidays?"], "funnytext_christmas", -3, -48, 4, "default", "sfx_tenna_text_christmas", 3, "shimmy", false),
+initTennaPage(["How nice of Carol and her family", "to come round."], 3, "shimmySlow", false),
+initTennaPage(["Carol, Rudy, Noelle, Dess."], 9, "shimmyBoth", false),
+initTennaPage(["They've all come round to see",  "me, I am absolutely delighted!"], 14, "shimmyBothFlip", false),
+initTennaPage(["Wait a minute, you're not Carol"], 21, "bounce", false),
+initTennaPage(["And where's Dess? Where's",  "Noelle? Where's Rudy?"], 21, "bounce", false),
+initTennaPage(["Mike if you're lying to me again", "I'm not going to be happy"], 22, "bounce", false),
+initTennaPage(["..."], 22, "bounce", false),
+initTennaPage(["It's a different Carol? Her", "name is also Carol?"], 2, "bounce", false),
+initTennaPage(["Multiple people can have the", "same name as each other?"], 18, "none", false),
+initTennaPage(["How do you even tell them apart", "in that situation?"], 18, "none", false),
+initTennaPage(["Where is she from anyway?"], 18, "shimmyBothFlip", false),
+initTennaPageExt(["She's from a planet of", "{15}?"], sprite_get("tenna_freedom"), -8, -8, 4, "default", sound_get("dash"), 2, "bounce", false),	
+initTennaPage(["Oh, its like that fake purple", "dragon then."], 2, "bounce", false),	
+initTennaPage(["Well, person pretending to be", "Carol!"], 12, "bounce", false),	
+initTennaPageExt(["Step right up for some", "{8}!"],  "funnytext_fun", -8, -8, 4, "default", "sfx_tenna_text_christmas", 12, "shake", false),
+initTennaPage(["You seem very excited to be here,", "you always wanted to be a star?"], 12, "shake", false),	
+initTennaPage(["Well, this is your opportunity,", "then!"], 12, "shake", false),	
+initTennaPage(["After the break!"], 13, "bounce", false)
+	]
+
+
 //Howzit Compatibility
 howzitisthebestshopowner123 = true //activates the compatibility
 
@@ -515,3 +541,29 @@ with (oPlayer) if ("url" in self)
     }
 }
 user_event(7);
+#define initTennaPageExt(lines, image, io_x, io_y, f_speed, i_anim, i_sound, c_window, w_anim, r_dir)
+return {
+    str: lines,
+    image_embed: image,
+    image_x: io_x,
+    image_y: io_y,
+    image_anim: i_anim,
+    image_sound: i_sound,
+    wait_frames: f_speed,
+    codec_window: c_window,
+    window_anim: w_anim,
+    reverse_dir: r_dir,
+}
+#define initTennaPage(lines, c_window, w_anim, r_dir)
+return {
+    str: lines,
+    image_embed: noone,
+    image_x: noone,
+    image_y: noone,
+    image_anim: noone,
+    image_sound: noone,
+    wait_frames: 2,
+    codec_window: c_window,
+    window_anim: w_anim,
+    reverse_dir: r_dir,
+}

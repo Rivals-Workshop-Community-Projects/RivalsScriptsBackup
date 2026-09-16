@@ -6,17 +6,17 @@ set_attack_value(AT_FSTRONG, AG_NUM_WINDOWS, 5);
 
 // startup + charge at the end
 
-set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 5);
+set_window_value(AT_FSTRONG, 1, AG_WINDOW_LENGTH, 3);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_FSTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 0);
 
 // startup 2
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy1"));
-set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 11);
+set_window_value(AT_FSTRONG, 2, AG_WINDOW_SFX_FRAME, 9);
 
 // 2 frames used to move a bit, without sliding
 set_window_value(AT_FSTRONG, 3, AG_WINDOW_LENGTH, 1);

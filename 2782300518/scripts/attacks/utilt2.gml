@@ -19,7 +19,7 @@ win(atk, 2, AG_WINDOW_ANIM_FRAMES, 1);
 win(atk, 2, AG_WINDOW_ANIM_FRAME_START, 2);
 
 win(atk, 3, AG_WINDOW_LENGTH, 11);
-win(atk, 3, AG_WINDOW_ANIM_FRAMES, 3);
+win(atk, 3, AG_WINDOW_ANIM_FRAMES, 4);
 win(atk, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 win(atk, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
