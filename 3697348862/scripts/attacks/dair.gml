@@ -78,6 +78,7 @@ set_hitbox_value(AT_DAIR, 1, HG_HITPAUSE_SCALING, 0);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT, 305);
 set_hitbox_value(AT_DAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 20);
 set_hitbox_value(AT_DAIR, 1, HG_HIT_SFX, asset_get("non"));
+set_hitbox_value(AT_DAIR, 1, HG_TECHABLE, 3);	// untechable
 set_hitbox_value(AT_DAIR, 1, HG_ANGLE_FLIPPER, 0);
 
 // scoop hitbox (L)

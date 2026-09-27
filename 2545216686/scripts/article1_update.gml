@@ -59,6 +59,12 @@ if (state <= 4 && tailsDied && state != 10){//>
 	setState(10);
 }
 
+if (state == 9){
+	if (instance_exists(projTravelHitbox)){
+		projTravelHitbox.destroyed = true;
+		projTravelHitbox = noone;
+	}
+}
 if (robotGotParried && state != 10){
 	if (instance_exists(projTravelHitbox)){
 		projTravelHitbox.destroyed = true;

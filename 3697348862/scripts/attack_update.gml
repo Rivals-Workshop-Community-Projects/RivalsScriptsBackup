@@ -524,15 +524,6 @@ if (attack == AT_NSPECIAL){
 			
 			sd_card_proj.image_index = sd_card_number;
 			
-			/*
-			if (holding_sd_card){
-				print("threw sd card when held as item")
-			} else {
-				print("threw sd card normally")
-			}
-			*/
-			// print("test var is: " + string(nspec_rethrow_throw_dir));
-			
 			// prevent re-thrown sd cards to be re-caught
 			if (holding_sd_card || sd_card_was_recaught){
 				sd_card_proj.sd_card_unable_to_recatch = true;
@@ -574,6 +565,10 @@ if (attack == AT_NSPECIAL){
 			}
 			
 			sound_play(sfx_ssbu_item_throw);
+			
+			// prevents stuff from making you maintain things after throwing
+			holding_sd_card = false;
+			held_sd_card_num = -1;
 		}
 	}
 	
