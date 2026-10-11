@@ -20,7 +20,6 @@ dieTime = 0;
 startupTime = 8;
 constellationTime = 0;
 isBig = has_rune("H");
-bigStartup = 60;
 checkMerge = false;
 cracked = false;
 crackedTimer = 0;

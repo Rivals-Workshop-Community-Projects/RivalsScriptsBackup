@@ -26,7 +26,7 @@ switch (my_hitboxID.attack)
 	case AT_NSPECIAL:
 		if (my_hitboxID.hbox_num == 1)
 		{
-			if (nspecCharge >= 6)
+			if (nspecCharge >= 12) //now you cant confirm hits off a partially charged nspec
 			{
 				hitstop = 0;
 				hit_player_obj.hitstop = 8;
@@ -90,6 +90,7 @@ else
 	if (!(my_hitboxID.attack == AT_DATTACK && my_hitboxID.hbox_num == 1) &&
 		!(my_hitboxID.attack == AT_NSPECIAL && my_hitboxID.hbox_num >= 2) &&
 		!(my_hitboxID.attack == AT_FSPECIAL && my_hitboxID.hbox_num == 1) &&
+		!(my_hitboxID.attack == AT_JAB && my_hitboxID.hbox_num < 2) &&
 		!(my_hitboxID.attack == 49) &&
 		(my_hitboxID.attack != AT_DAIR || dairTimes < 2))
 	{
@@ -157,7 +158,7 @@ switch (my_hitboxID.attack)
 	}
 
 	//uncomment to see old and desired values
-	// print("old: " + string(prediction) + " new: " + string(desired) + " set: " + string(hit_player_obj.hitstun_full));
+	//print("old: " + string(prediction) + " new: " + string(desired) + " set: " + string(hit_player_obj.hitstun_full));
 }
 
 #define SpawnStar(_startupTime, _numRepeat)

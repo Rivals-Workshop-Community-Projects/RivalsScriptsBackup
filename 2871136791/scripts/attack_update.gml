@@ -103,8 +103,8 @@ switch (attack)
 		break;
 		
 	case AT_DTILT:
-		down_down = true;
-		move_cooldown[AT_DTILT] = 2;
+		//down_down = true;
+		//move_cooldown[AT_DTILT] = 2;
 		if (window == 1 && window_timer == 10) sound_play(asset_get("sfx_bite"));
 		break;
 		

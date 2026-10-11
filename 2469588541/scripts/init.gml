@@ -1,7 +1,7 @@
 hurtbox_spr = asset_get("ex_guy_hurt_box");
 crouchbox_spr = asset_get("ex_guy_crouch_box");
 air_hurtbox_spr = -1;
-hitstun_hurtbox_spr = -1;
+hitstun_hurtbox_spr = asset_get("stinky_hurtbox");
 
 char_height = 54;
 idle_anim_speed = .2;
@@ -13,42 +13,42 @@ pratfall_anim_speed = .25;
 walk_speed = 3.75;
 walk_accel = 0.50;
 walk_turn_time = 6;
-initial_dash_time = 6;
+initial_dash_time = 11;
 initial_dash_speed = has_rune("D")?10:8;
-dash_speed = has_rune("D")?9:7;
-dash_turn_time = has_rune("D")?5:10;
+dash_speed = has_rune("D")?9:8;
+dash_turn_time = has_rune("D")?5:13;
 dash_turn_accel = 3;
 dash_stop_time = has_rune("D")?3:6;
-dash_stop_percent = .35; //the value to multiply your hsp by when going into idle from dash or dashstop
-ground_friction = 1.0;
+dash_stop_percent = .65; //the value to multiply your hsp by when going into idle from dash or dashstop
+ground_friction =0.6;
 moonwalk_accel = 1.4;
 
 jump_start_time = 5;
-jump_speed = 12;
-short_hop_speed = 7;
-djump_speed = 12.5;
-leave_ground_max = has_rune("C")?8.5:5.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
-max_jump_hsp = has_rune("C")?8.5:5.5; //the maximum hsp you can have when jumping from the ground
-air_max_speed = has_rune("C")?7:5.5; //the maximum hsp you can accelerate to when in a normal aerial state
-jump_change = has_rune("C")?5:4; //maximum hsp when double jumping. If already going faster, it will not slow you down
-air_accel = has_rune("C")?.6:.3;
-prat_fall_accel = has_rune("C")?.8:0.60; //multiplier of air_accel while in pratfall
-air_friction = .04;
+jump_speed = 14;
+short_hop_speed = 9;
+djump_speed = 16;
+leave_ground_max = has_rune("C")?10.5:6.5; //the maximum hsp you can have when you go from grounded to aerial without jumping
+max_jump_hsp = has_rune("C")?10.5:6.5; //the maximum hsp you can have when jumping from the ground
+air_max_speed = has_rune("C")?7:4.5; //the maximum hsp you can accelerate to when in a normal aerial state
+jump_change = has_rune("C")?5:3; //maximum hsp when double jumping. If already going faster, it will not slow you down
+air_accel = has_rune("C")?.55:.25;
+prat_fall_accel = has_rune("C")?.8:1; //multiplier of air_accel while in pratfall
+air_friction = .05;
 max_djumps = 1;
 double_jump_time = 32; //the number of frames to play the djump animation. Can't be less than 31.
-walljump_hsp = 5;
-walljump_vsp = 9;
+walljump_hsp = 6;
+walljump_vsp = 13;
 walljump_time = 32;
 wall_frames = 1;
-max_fall = 10; //maximum fall speed without fastfalling
-fast_fall = 15; //fast fall speed
-gravity_speed = .65;
+max_fall = 12; //maximum fall speed without fastfalling
+fast_fall = 14; //fast fall speed
+gravity_speed = .90;
 hitstun_grav = .53;
 knockback_adj = 1.1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier 1.15>1.1
 
 land_time = 4; //normal landing frames
-prat_land_time = 17;
-wave_land_time = 8;
+prat_land_time = 20;
+wave_land_time = 9;
 wave_land_adj = has_rune("D")?1.5:1.3; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = has_rune("D")?.02:.06; //grounded deceleration when wavelanding
 
@@ -94,6 +94,9 @@ waveland_sound = asset_get("sfx_waveland_zet");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
+transformPitch = 1.3;
+detransformPitch = 1.5;
+transformVolume = 1.6;
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
@@ -131,6 +134,7 @@ beegstar_effect = hit_fx_create(sprite_get("bighit"), 16);
 // transcend
 transcounter = 0;
 meowID = noone;
+tauntTime = 0;
 
 // aura
 aura = false;
@@ -164,7 +168,10 @@ upThrow = 0; // tutorial
 
 // shine
 nspecCharge = 0;
-nspecJC = false;
+nspecJC = 0;
+
+//dair landing hitbox
+dairLand = 0;
 
 // final smash
 fSmashCharge = 0;
@@ -196,13 +203,12 @@ shineReleaseFrame = 0;
 jumpSquatFrame = 0;
 airDodgeFrame = 0;
 shieldPressFrame = 0;
-shineHitPlayer = false;
 waveShineScore = 0;
+wasFree = 0;
 releaSuccess = "!";
 squatSuccess = "!";
 dodgeSuccess = "!";
 pressSuccess = "!";
-latehSuccess = "!";
 hideBlurb = false;
 techChaseTrainingTimer = 0;
 techTimer = 0;

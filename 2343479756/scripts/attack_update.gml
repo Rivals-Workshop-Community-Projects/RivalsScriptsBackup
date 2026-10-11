@@ -25,6 +25,10 @@ if (attack==AT_JAB){
 	}
 }
 if (attack==AT_FTILT){
+	if (window==1){
+		if (window_timer==6){
+		spawn_base_dust(x+(20*spr_dir), y, DFX_DASH_TURN, spr_dir);
+	} }
 	if (window==5){
 		iasa_script();
 	}
@@ -54,6 +58,12 @@ if (attack==AT_UTILT){
 	if (window==5){
 		iasa_script();
 	}
+	if (window==1){
+		if (window_timer==5){
+			spawn_base_dust(x+10, y, DFX_DASH, -1);
+			spawn_base_dust(x-10, y, DFX_DASH, 1);
+		}
+	}
 	if (window>=3 && !free){
 		attack_end();
 		if (has_hit_player){
@@ -63,9 +73,19 @@ if (attack==AT_UTILT){
 		}
 		state=PS_LANDING_LAG;
 		state_timer=0;
+		spawn_base_dust(x+18, y, DFX_WALK, -1);
+		spawn_base_dust(x-18, y, DFX_WALK, 1);
 	}
 }
 if (attack==AT_DTILT){
+	if (window==1){
+		if (window_timer==6){
+		spawn_base_dust(x+(60*spr_dir), y, DFX_DASH, spr_dir*-1);
+	} }
+	if (window==4){
+		if (window_timer==5){
+		spawn_base_dust(x+(60*spr_dir), y, DFX_SKID, spr_dir*-1);
+	} }
 	if (window==3){
 	if (window_timer>=3){
 		if (!hitpause){
@@ -113,9 +133,20 @@ if (attack==AT_FSTRONG){
 				shake_camera(8,3);
 				//var tmp_hfx = spawn_hit_fx( x+(81*spr_dir), y, 259 );
 				//tmp_hfx.image_alpha = 0.75;
+				spawn_base_dust(x-(10*spr_dir), y, DFX_DASH_TURN, spr_dir);
 			}
 		}
 	}
+}
+if (attack==AT_USTRONG){
+	if (window==2){
+		if (window_timer==8){
+		spawn_base_dust(x+(16*spr_dir), y, DFX_DASH, spr_dir*-1);
+	} }
+	if (window==4){
+		if (window_timer==8){
+		spawn_base_dust(x-(43*spr_dir), y, DFX_JUMP, spr_dir);
+	} }
 }
 
 if (attack==AT_FSPECIAL){
@@ -147,6 +178,8 @@ if (attack==AT_FSPECIAL){
 		if (window==5){
 			if (window_timer==1){
 				hsp = 0;
+				spawn_base_dust(pre_fsp_x-(10*spr_dir), y, DFX_DASH_TURN, spr_dir);
+				spawn_base_dust(x+(10*spr_dir), y, DFX_DASH, spr_dir*-1);
 			}
 		}
 		if (window==4||window==5){
@@ -197,10 +230,16 @@ if (attack==AT_DSPECIAL||attack==AT_DSPECIAL_AIR){
 				*/
 				if (window==2){
 					hsp = (12-((window_timer/5)*2))*spr_dir
+					if (state_timer%3==0){
+						spawn_base_dust(x+(10*spr_dir), y, DFX_DASH, spr_dir);
+					}
 				}
 				if (window==3){
 					var w_l = get_window_value(attack, 3, AG_WINDOW_LENGTH);
 					hsp = (ease_linear( 10, 5, window_timer, w_l ) * spr_dir)
+					if (state_timer%3==0){
+						spawn_base_dust(x-(16*spr_dir), y, DFX_WALK, spr_dir);
+					}
 				}
 				if (window==4){
 					var w_l = get_window_value(attack, 4, AG_WINDOW_LENGTH);
@@ -300,6 +339,9 @@ if (attack==AT_DATTACK){
 		if (window_timer==3){
 			set_attack_value(AT_DATTACK, AG_CATEGORY, 2);
 		}
+		if (window_timer==11){
+			spawn_base_dust(x+hsp, y, DFX_JUMP);
+		}
 	}
 }
 
@@ -309,3 +351,73 @@ if (attack==AT_DATTACK){
 
 
 
+#define spawn_base_dust
+///spawn_base_dust(x, y, dust_fx, ?dir)
+///supersonic's thing. https://github.com/SupersonicNK/roa-workshop-templates/blob/master/snippets/spawn_base_dust.md
+///Spawns a base game dust effect with its usual parameters.
+if (hitpause) return noone; // Dust effects do funky things in hitpause for some reason
+var x = argument[0], y = argument[1], dfx = argument[2], dir = argument_count > 3 && argument[3] != 0 ? argument[3] : spr_dir;
+var dust = spawn_dust_fx(x, y, asset_get("empty_sprite"), 24);
+with (dust) {
+    dust_fx = dfx; dust_color = 0; spr_dir = dir;
+    switch (dfx) {
+        case DFX_LAND: case DFX_LAND_BIG: break;
+        case DFX_DOUBLE_JUMP: case DFX_DASH_START: case DFX_DOUBLE_JUMP_SMALL:
+            dust_length = 21; break;
+        case DFX_DASH: dust_length = 16; break;
+        case DFX_WALK: dust_length = 12; break;
+        case DFX_TECH: case DFX_TECH_BIG: 
+            dust_length = 18; dust_color = 1; break;
+        case DFX_HIT_SURFACE: case DFX_HIT_SURFACE_SMALL:    
+            dust_length = 10; dust_color = 0; break;
+        case DFX_HIT_SURFACE_FG: case DFX_HIT_SURFACE_SMALL_FG: 
+            dust_length = 15; dust_color = 1; break;
+        case DFX_PARRY: dust_length = 18; dust_color = 1; break;
+        case DFX_JUMP: dust_length = 12; break;
+        case DFX_SKID: dust_length = 21; break;
+        case DFX_DAMAGE_PUFF: case DFX_DAMAGE_PUFF_BIG:
+            dust_length = 18; break;
+        case DFX_WAVEDASH: dust_fx = DFX_DASH_TURN; dust_color = 1;
+        case DFX_DASH_TURN:
+            dust_length = 21; break;
+        case DFX_FAST_FALL: dust_length = 12; break;
+        case DFX_KO_SPARK: dust_length = 30; dust_color = 4; break;
+        case DFX_KO_LINES: dust_length = 30; dust_color = 1; break;
+        case DFX_KO_SLASH: dust_length = 25; dust_color = 1; break;
+        case DFX_KO_STAR:  dust_length = 35; break;
+        case DFX_WAVEDASH_INPLACE: dust_fx = DFX_LAND; dust_color = 1; break;
+        case DFX_WALLJUMP: dust_fx = DFX_LAND; draw_angle = -90 * dir; break;
+    }
+}
+return dust;
+//#region Dust Effect Macros
+#macro DFX_LAND 0 
+#macro DFX_LAND_BIG 1
+#macro DFX_DOUBLE_JUMP 2
+#macro DFX_DASH_START 3
+#macro DFX_DASH 4
+#macro DFX_WALK 5
+#macro DFX_TECH 6
+#macro DFX_HIT_SURFACE 7 // landing after big hitstun and not bouncing
+#macro DFX_HIT_SURFACE_FG 8
+#macro DFX_PARRY 9
+#macro DFX_PARRY_BG_UNUSED 10 // This one is .. something.
+#macro DFX_JUMP 11
+#macro DFX_SKID 12 // I don't know when this one is used
+#macro DFX_DAMAGE_PUFF 13
+#macro DFX_DAMAGE_PUFF_BIG 14 // I don't know when this one is used
+#macro DFX_DASH_TURN 15
+#macro DFX_DOUBLE_JUMP_SMALL 16
+#macro DFX_FAST_FALL 17
+#macro DFX_HIT_SURFACE_SMALL 18 // landing after small hitstun and not bouncing
+#macro DFX_HIT_SURFACE_SMALL_FG 19
+#macro DFX_TECH_BIG 20
+#macro DFX_KO_SPARK 21
+#macro DFX_KO_LINES 22
+#macro DFX_KO_SLASH 23
+#macro DFX_KO_STAR 24
+// custom stuff for convenience
+#macro DFX_WAVEDASH 25 // Dash turn with a different color type
+#macro DFX_WAVEDASH_INPLACE 26 // Land with a different color type
+#macro DFX_WALLJUMP 27 // Rotated Land
+//#endregion

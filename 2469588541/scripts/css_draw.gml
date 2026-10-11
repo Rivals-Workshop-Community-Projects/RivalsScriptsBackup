@@ -1,12 +1,6 @@
 var temp_x = x + 8;
 var temp_y = y + 9;
 
-if (get_color_profile_slot_r(1, 0) == 168)
-{
-	sound_play(sound_get("dspec"),0,-4,2);
-	set_color_profile_slot( 1, 0, 167, 208, 232 );
-}
-
 //patch_ver = string(get_char_info(player, INFO_VER_MAJOR)) + "." + string(max(get_char_info(player, INFO_VER_MINOR), 0));
 image_alpha = max(image_alpha-0.02, 0);
 

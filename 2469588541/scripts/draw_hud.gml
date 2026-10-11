@@ -13,8 +13,10 @@ if ("practice" in self)
 				var noOfStars = 0;
 				with(asset_get("obj_article1")) if (player_id == other.id && state == 1) noOfStars += isBig+1;;
 				AddText("No. of stars: " + string(noOfStars));
-				AddText("KB multiplier: " + string(noOfStars*starKB) + "%");
+				AddText("Constellation KBS: " + string_format((100+noOfStars*starKB)/100,1,2) + "X");
 				//AddText("djumps: " + string(djumps));
+				// AddText("hsp: " + string(hsp));
+				// AddText("window: " + string(window)+":"+string(window_timer));
 				DrawDebugBlock();
 				DrawDebugText();
 				break;
@@ -651,6 +653,96 @@ if ("practice" in self)
 						AddText("Added waveshine training mode in practice tool, which gives an explanation, information about the inputs, and a few scenarios");
 						AddText("Fixed the color of constellation stars on non base alts");
 						break;
+					case 34:
+						AddText("v3.0 - 22 June 2026");
+						AddText("The 7axel7 and @PerfectSystemDX Patch - Page 1 - Unique Movement");
+						AddText("");
+						AddText("/" + "/ This patch is split into 4 sections, focused on making Lukastar more Unique, Easier to learn, Easier to Fight, and Polished");
+						AddText("");
+						AddText("/" + "/ Unique high gravity and grounded focused movement, with the "+'"'+"Weighed down, but trained"+'"'+" feeling that Fox gives.");
+						AddText("Completely new Nair!");
+						AddText("Max Airspeed 5.5->4.5");
+						AddText("Double Jump HSP 4->3");
+						AddText("Air Acceleration .3->.25");
+						AddText("Gravity 0.65->0.9");
+						AddText("Regular Fall 10->12, Fast Fall 15->14");
+						AddText("Leave Ground 5.5->6.5");
+						AddText("");
+						AddText("Initial dash time 6->12");
+						AddText("Waveland time 8->9");
+						AddText("Dash turn duration 10->13");
+						AddText("Dash speed 7->8");
+						AddText("Dash stop percent .35->.65");
+						AddText("Ground Friction 1.0->0.6");
+						AddText("");
+						AddText("Lose 25% less speed after Uspecial, but can't fast fall as quickly out of it");
+						AddText("Jumps are similar, adjusted for gravity");
+						break;
+					case 35:
+						AddText("v3.0 - 22 June 2026");
+						AddText("The 7axel7 and @PerfectSystemDX Patch - Page 2 - Easier to play");
+						AddText("");
+						AddText("/" + "/ Making Lukastar Easier to learn");
+						AddText("");
+						AddText("Star shots always try to aim at enemies, Shine shot detection centered");
+						AddText("Star shot speed is now always the same");
+						AddText("Star shot Hitstun Mult 0.6->0.8");
+						AddText("");
+						AddText("Uspecial angles, Hold C stick up for vertical or down for horizontal mod to get 8 more directions like Rivals 2 angle mod");
+						AddText("Up throw has +2 frame advantage and regular drift");
+						AddText("");
+						AddText("Dair Hitbox Lifetime 2->3, Drill landing hitbox");
+						AddText("Bair KBS 0.8->0.9");
+						AddText("Dtilt BKB 9->8");
+						AddText("Ustrong sourspot removed, hitbox matches new animation, BHP 8, HPS 0.8");
+						AddText("");
+						AddText("Practice mode Waveshine Trainer for new Waveshining, which is slightly slower but much easier");
+						break;
+					case 36:
+						AddText("v3.0 - 22 June 2026");
+						AddText("The 7axel7 and @PerfectSystemDX Patch - Page 3 - Easier to fight");
+						AddText("");
+						AddText("/" + "/ To make Lukastar easier to play against, here are intuitive nerfs, reducing matchup specific knowledge needed");
+						AddText("");
+						AddText("bigger hurtbox in disadvantage");
+						AddText("low airspeed, high gravity and similar fall and fastfall stop them from recovering high and mixing up landing times");
+						AddText("Pratland time 17->20");
+						AddText("Fspecial starts falling 3 frames later, can't avoid pratland as high");
+						AddText("");
+						AddText("NSpecial Shine damage 4->2, now Techable, BKB 7.5->8, KBS 0.2->0");
+						AddText("NSpecial Shine jump cancel frame 6->10 on whiff");
+						AddText("NSpecial Shine no longer has 10 frames extra frame advantage on last shine when charged 6+ frames")
+						AddText("Bair Landing Lag 7->8, Endlag 12->14, Active frames 4->3");
+						AddText("Uair Landing Lag 6->8");
+						AddText("Fair Extra Hitpause 4->0, BHP 4->5, KBS 0.7->0.5");
+						AddText("");
+						AddText("Dattack active framess 12->9");
+						AddText("FTilt Angle 30->40, whifflag 14->15, KBS 0.4->0.6");
+						AddText("Utilt whifflag 16->17")
+						AddText("Jab 1 doesn't make a star, Jab endlag 12->16");
+						AddText("FStrong endlag 18->20, whifflag 24->30,BKB 7.5->7.0, KBS 1.1->1.0 angle 45->40");
+						AddText("DStrong startup 11->13 endlag 16->19, extra hitpause 8->0");
+						AddText("Ustrong endlag 18->19")
+						AddText("");
+						AddText("Star shot speed is consistent, easier to parry");
+						AddText("Parrying removes all stars, parrying fspecial grab goes into endlag for easier punish")
+						AddText("Up special quick wavedash slowed to regular wavedash");
+						AddText("Up taunt Jobble removed");
+						break;
+					case 37:
+						AddText("v3.0 - 22 June 2026");
+						AddText("The 7axel7 and @PerfectSystemDX Patch - Page 4 - Polish");
+						AddText("");
+						AddText("New transformation frames on strongs, with SFX");
+						AddText("Fixed FSpecial not ledge snapping when already touching ledge");
+						AddText("Fixed FSpecial going into prat after hitting enemy articles");
+						AddText("New NSpecial Shine Sfx");
+						AddText("Modified Beegstar VFX, Modified Bigstar Hit VFX");
+						AddText("Bair animation timing");
+						AddText("Modified animations: DashStart, Dattack, Dstrong, Fstrong, Ustrong");
+						AddText("Smears excluded from hurtboxes on Ftilt, Dtilt, DStrong, Ustrong");
+						AddText("Practice menu polish");
+						break;
 				}
 				DrawTutorialBlock();
 				DrawTutorialText();
@@ -663,11 +755,11 @@ if ("practice" in self)
 					{
 						case 0:
 							AddText("Most attacks create stars on hitting the opponent");
-							AddText("These stars will add base knockback and damage when consumed by landing a Strong attack or a sweetspot UAir");
+							AddText("These stars will add base knockback and damage when consumed by landing a Strong attack or a sweetspot UAir / BAir");
 							AddText("You can have a maximum on 7 stars at any time");
 							AddText("Each star will increase knockback multiplier by " + string(starKB) + "% and increase damage by " + string(starDamage) + "%");
 							AddText("");
-							AddText("Create stars (Hit opponent) -> Strong / tipper UAir");
+							AddText("Create stars (Hit opponent) -> Strong / tipper UAir / tipper BAir");
 							break;
 						case 1:
 							AddText("Using NSpecial on a star will shoot it forward towards the closest enemy that you're facing");
@@ -768,8 +860,6 @@ if ("practice" in self)
 				break;
 			case 9:
 				AddText("Waveshine Info");
-				AddText("Hit Training");
-				AddText("RNG Hit Training");
 				AddText("Techchase Training");
 				DrawTutBlock();
 				DrawTutText();
@@ -777,7 +867,7 @@ if ("practice" in self)
 			case 10:
 				if(!hideBlurb && tutPrevMenu == 0)
 				{
-					AddText("Right after using Nspecial, you can cancel it into a jump");
+					AddText("Right after using Nspecial, you can cancel it into a jump.");
 					AddText("Then airdodge to the ground or a platform repeatedly to 'Waveshine'");
 					AddText("You need to time the airdodge to have it buffered");
 					AddText("after hitpause is over if you hit an enemy");
@@ -886,97 +976,81 @@ if ("practice" in self)
 		squatSuccess = "!";
 		dodgeSuccess = "!";
 		pressSuccess = "!";
-		latehSuccess = "!";
 		waveShineScore = 0;
+		wasFree = free;
 	}
-	if (!shineHitPlayer)
-	{
-		if (jumpSquatFrame == 4 && squatSuccess == "!")
-		{
-			squatSuccess = "|";
-			waveShineScore++;
-		}
-		if (airDodgeFrame == 9 && dodgeSuccess == "!")
-		{
-			dodgeSuccess = "|";
-			waveShineScore++;
-		}
-		//check for aerial shine cancel
-		if (airDodgeFrame == 4 && dodgeSuccess == "!")
-		{
-			dodgeSuccess = "|";
-			waveShineScore++;
-		}
-		if (airDodgeFrame == 4 && squatSuccess == "!")
-		{
-			squatSuccess = "|";
-			waveShineScore++;
-		}
-	}
-	else
-	{
-		if (jumpSquatFrame == 9 && squatSuccess == "!")
-		{
-			squatSuccess = "|";
-			waveShineScore++;
-		}
-		if (airDodgeFrame == 14 && dodgeSuccess == "!")
-		{
-			dodgeSuccess = "|";
-			waveShineScore++;
-		}
-		//check for aerial shine cancel
-		if (airDodgeFrame == 9 && dodgeSuccess == "!")
-		{
-			dodgeSuccess = "|";
-			waveShineScore++;
-		}
-		if (airDodgeFrame == 9 && squatSuccess == "!")
-		{
-			squatSuccess = "|";
-			waveShineScore++;
-		}
-	}
-	if ((shineReleaseFrame == 0 || shineReleaseFrame == 1) && releaSuccess == "!")
+
+	if (releaSuccess == "!" && (shineReleaseFrame == 0 || shineReleaseFrame == 1))
 	{
 		releaSuccess = "|";
 		waveShineScore++;
 	}
-	if (2 <= shieldPressFrame && shieldPressFrame <= 9 && pressSuccess == "!")
-	{
-		pressSuccess = "|";
-		waveShineScore++;
+	
+	if(!wasFree){
+		if (squatSuccess == "!" && (jumpSquatFrame == 8))
+		{
+			squatSuccess = "|";
+			waveShineScore++;
+		}
+		if (dodgeSuccess == "!" && airDodgeFrame == 13)
+		{
+			dodgeSuccess = "|";
+			waveShineScore++;
+		}
+		if (pressSuccess == "!" && free && shieldPressFrame >= 6 && shieldPressFrame <= 13)
+		{
+			pressSuccess = "|";
+			waveShineScore++;
+		}
+	} else {
+		//aerial squat is no squat
+		if (squatSuccess == "!" && (jumpSquatFrame == 0))
+		{
+			squatSuccess = "|";
+			waveShineScore++;
+		}
+
+		//check for aerial shine cancel
+		if (dodgeSuccess == "!" && airDodgeFrame == 8)
+		{
+			dodgeSuccess = "|";
+			waveShineScore++;
+		}
+
+		//aerial press, 2 to be safe
+		if (pressSuccess == "!" && shieldPressFrame >= 2 && shieldPressFrame <= 9)
+		{
+			pressSuccess = "|";
+			waveShineScore++;
+		}
 	}
-	if (7 <= shieldPressFrame && shieldPressFrame <= 14 && latehSuccess == "!")
-	{
-		latehSuccess = "|";
-		waveShineScore++;
-	}
+
+	
 
 	if (techCatchSuccess == "!")
 	{
 		if (techInPlaceCatchFrame >= 13 && techInPlaceCatchFrame <= 18)
 			techCatchSuccess = "|";
 	}
-	var frameShow = shineHitPlayer?min(waveshineTimer,14):min(waveshineTimer,9);
 
-	if (waveShineScore == 5 && waveshineTimer > 9 && (tutPrevMenu != 3 || techCatchSuccess = "|"))
+	var frameShow = min(waveshineTimer,14);
+
+	if (waveShineScore == 4 && waveshineTimer == 13 && (tutPrevMenu != 3 || techCatchSuccess = "|"))
 	{
-		waveShineScore = 0;
 		sound_play(sound_get("sfx_cursor"),0,-4, 0.45);
 		hideBlurb = true;
 	}
 
 	AddText("-------------------------");
-	AddText("Shine Release Frame (0 to 1)    " + releaSuccess + string(shineReleaseFrame));
-	AddText("Jump Squat Frame   (4 or 9)    " + squatSuccess + string(jumpSquatFrame));
-	AddText("Air Dodge Frame:     (9 or 14).  " + dodgeSuccess + string(airDodgeFrame));
-	AddText("Miss Shield Frame:   (2 to 9)    " + pressSuccess + string(shieldPressFrame));
-	AddText("Hit Shield Frame:     (7 to 14).  " + latehSuccess + string(shieldPressFrame));
+	AddText("Shine Release Frame (0 to 1)   " + releaSuccess + string(shineReleaseFrame));
+	AddText("Jump Squat Frame   (8)         " + squatSuccess + string(jumpSquatFrame));
+	AddText("Air Dodge Frame:       (13)      " + dodgeSuccess + string(airDodgeFrame));
+	AddText("Shield Input Frame:  (6 to 13)  " + pressSuccess + string(shieldPressFrame));
 	AddText("Current Frame:                    " + "|"          + string(frameShow));
 	if(tutPrevMenu == 3){
-		AddText("Ground Tech Frame:  (13 to 18) " + techCatchSuccess + string(techInPlaceCatchFrame));
+		AddText("Ground Tech Frame: (13 to 18) " + techCatchSuccess + string(techInPlaceCatchFrame));
 		AddText("techTimer:.                         " + "|" + string(techTimer));
 	}
+	// AddText("wasFree:                    " + "|"          + string(wasFree));
 	// AddText("Score: " + string(waveShineScore));
 }

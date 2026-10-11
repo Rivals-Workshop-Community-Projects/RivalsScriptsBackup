@@ -10,22 +10,22 @@ mid_side_attacks[1] = AT_NSPECIAL;
 mid_side_attacks[2] = AT_FSPECIAL;
 mid_side_attacks[3] = AT_DSPECIAL;
 
-// Close attacks change in ai_update
-close_up_attacks[0] = AT_JAB;
-close_up_attacks[1] = AT_DATTACK;
-close_up_attacks[2] = AT_FTILT;
-close_up_attacks[3] = AT_UTILT;
-close_up_attacks[4] = AT_USPECIAL;
-
-close_down_attacks[0] = AT_JAB;
-close_down_attacks[1] = AT_DATTACK;
-close_down_attacks[2] = AT_FTILT;
-close_down_attacks[3] = AT_DTILT;
-
-neutral_attacks[0] = AT_FSTRONG;
-neutral_attacks[1] = AT_USTRONG;
-neutral_attacks[2] = AT_DSTRONG;
+// Close attacks are constantly determined in ai_update.
+// This way, it's obvious if something is wrong, because the
+// AI won't attack when targets are nearby.
 
 ai_dodge_dir = -1;
 ai_commit_dir = 0;
+
+ai_h_reach_dir = 0;
+ai_v_reach_dir = 0;
+ai_block_lx = x;
+ai_block_rx = x;
+
+ai_wall_pass = 0;
+
+ai_ledge_checked = false;
+ai_l_ledge = 0;
+ai_r_ledge = 0;
+ai_recover_dir = 0;
 

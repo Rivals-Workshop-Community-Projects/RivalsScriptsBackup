@@ -1,7 +1,7 @@
 // taunt menu
 if (practice)
 {
-	var noOfPatches = 34;
+	var noOfPatches = 38;
 	tutAlpha = clamp(tutAlpha+(tutOn?0.1:-0.1), 0, 1);
 	if (menuStateBuffer != menuState)
 	{
@@ -13,7 +13,7 @@ if (practice)
 			{
 				menuState = menuStateBuffer;
 				tutPrevMenu = tutMenu;
-				tutMenu = menuState==4?noOfPatches-1:0;
+				tutMenu = menuState==4?34:0;
 				tutOn = true;
 				if (menuState == 5) tutDone[tutPrevMenu] = 0;
 				else if (menuState == 6) tutDoneAdv[tutPrevMenu] = 0;
@@ -61,7 +61,7 @@ if (practice)
 			break;
 		case 9: // Waveshine training menu
 			Invince();
-			MenuNav(4, 1, 10);
+			MenuNav(2, 1, 10);
 			break;
 		case 10: // 7axel7 Waveshine training
 			if (taunt_down)
@@ -72,7 +72,6 @@ if (practice)
 				jumpSquatFrame = 0;
 				airDodgeFrame = 0;
 				shieldPressFrame = 0;
-				shineHitPlayer = false;
 				hideBlurb = false;
 			}
 			if (waveshineTimer > 0)
@@ -88,9 +87,8 @@ if (practice)
 				jumpSquatFrame = 0;
 				airDodgeFrame = 0;
 				shieldPressFrame = 0;
-				shineHitPlayer = false;
 			}
-			//print("waveshineTimer " + string(waveshineTimer) + " window_timer " + string(window_timer) + " window " + string(window) + " attack " + string(attack));
+
 			if (attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window_timer == 0 && window == 1)
 			{
 				waveshineTimer = 0;
@@ -103,12 +101,8 @@ if (practice)
 			if (shield_down && shieldPressFrame == 0)
 			{
 				shieldPressFrame = waveshineTimer;
-				// clear_button_buffer(PC_SHIELD_PRESSED);
 			}
-			if (attack == AT_NSPECIAL && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR) && window == 3 && has_hit_player)
-			{
-				shineHitPlayer = true;
-			}
+
 			if ((state == PS_JUMPSQUAT || state == PS_DOUBLE_JUMP) && jumpSquatFrame == 0)
 			{
 				jumpSquatFrame = waveshineTimer;
@@ -131,30 +125,6 @@ if (practice)
 			switch (tutPrevMenu)
 			{
 				case 1:
-					if (attack == AT_NSPECIAL && window_timer == 1 && window == 3)
-					{
-						//teleport the enemy onto you and stun them
-						with (oPlayer) if (id != other)
-						{
-							x = other.x;
-							y = other.y;
-							hitpause = 1;
-						}
-					}
-					break;
-				case 2:
-					randomVal = random_func(0, 2, 1);
-					if (randomVal == 1 && attack == AT_NSPECIAL && window_timer == 1 && window == 3)
-					{
-						//teleport the enemy onto you
-						with (oPlayer) if (id != other)
-						{
-							x = other.x;
-							y = other.y;
-						}
-					}
-					break;
-				case 3:
 					//reset the situation every 4 seconds
 					techChaseTrainingTimer--;
 
@@ -229,6 +199,17 @@ if (uspecHit > 0) uspecHit--;
 if (free && state != PS_WALL_JUMP && state_cat != SC_HITSTUN && move_cooldown[AT_DSPECIAL] != 0) move_cooldown[AT_DSPECIAL] = 2;
 else move_cooldown[AT_DSPECIAL] = 0;
 
+if(dairLand > 0 && state == PS_LANDING_LAG){
+	var dairLandHitbox = create_hitbox(AT_DAIR, 1, floor(x), floor(y));
+}
+dairLand--;
+
+if(state == PS_SPAWN){
+	if (state_timer == 60){
+		sound_play(sound_get("transform"), 0, -4, transformVolume, detransformPitch);
+	}
+}
+
 // intro
 if (state == PS_SPAWN && (canAura || ("temp_level" in self && temp_level == 1)))
 {
@@ -294,7 +275,11 @@ init_shader();
 		if (holdTimer % 6 == 1 && (holdTimer > 30 || holdTimer == 1))
 		{
 			sound_play(sfxSelect, 0, 0, 2);
-			tutMenu = max(tutMenu-1,0);
+			// tutMenu = max(tutMenu-1,0);
+			tutMenu --;
+			if(tutMenu < 0){
+				tutMenu = _maxv - 1;
+			}
 		}
 	}
 	else if (down_down && _maxv > 1)
@@ -303,7 +288,11 @@ init_shader();
 		if (holdTimer % 6 == 1 && (holdTimer > 30 || holdTimer == 1))
 		{
 			sound_play(sfxSelect, 0, 0, 2);
-			tutMenu = min(tutMenu+1,_maxv-1);
+			// tutMenu = min(tutMenu+1,_maxv-1);
+			tutMenu ++;
+			if(tutMenu > _maxv-1){
+				tutMenu = 0;
+			}
 		}
 	}
 	else

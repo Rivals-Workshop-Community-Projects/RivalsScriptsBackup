@@ -29,6 +29,36 @@ if (object_index == asset_get("oTestPlayer")){//this checks if it's in a playtes
 		//put text here.
 		
 		
+		patch_note_title[i] = "v1.11 - (2026 Oct 04)"
+		patch_note_text[i++] = 
+		"v1.11 - (2026 Oct 04)
+		[b]changes[/b]
+		- added dust effects to her attacks, why not?
+		- FTILT now has priority 0 hitbox (does not hit opponent) that only hits the NSPECIAL locket. it's taller, and is a rounded rectangle instead of the main hitbox's circle
+
+		[b]balances[/b]
+		reviewing the stats... its true that i didnt like how fast she was horizontally, but my aim may have been misplaced.
+		-- -- idk
+		- shorthop height/speed decreased by 0.5 (8 -> 7.5)
+		- - this should let you hit regular-sized characters with shorthop FAIR. is this good? it might be dangerous. idk
+
+		-- -- beneficial
+		- - i still think she was too fast in the air before... but how about this:
+		- leave_ground_max increased to middleground (7 -> 5.5 -> 6)
+		- max_jump_hsp increased to middleground (5.5 -> 4 -> 5)
+		- air_max_speed reverted (5.2 -> 4.75 -> 5.2)
+		- - it feels pretty quick in the air, but not too much for me to feel weird
+
+		-- -- counterplay
+		- - this may be what i shoulda been aiming for, not a lot but i think im satisfied with this value
+		- dash speed decreased by 0.25 (6 -> 5.75)
+		- waveland speed decreased (1.25 -> 1.2)
+
+		[b]notes[/b]
+		question mark? maaybe?
+		"
+		
+		
 		patch_note_title[i] = "v1.10 hotfix - (2026 Aug 12)"
 		patch_note_text[i++] = 
 		"v1.10 hotfix - (2026 Aug 12)

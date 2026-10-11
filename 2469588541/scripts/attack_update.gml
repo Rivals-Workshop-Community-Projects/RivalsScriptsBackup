@@ -39,14 +39,19 @@ switch (attack)
 		break;
 
 	case AT_TAUNT_2:
-		can_jump = true;
 		if (state_timer == 1)
 		{
+			tauntTime = 0;
 			meowID = sound_play(sound_get("meow"), 1, -4, 2);
 			clear_button_buffer(PC_TAUNT_PRESSED);
 		}
-		if (taunt_down && !jump_pressed) suppress_stage_music(0, 0.05);
-		else window = 2;
+		if (taunt_down && !jump_pressed || tauntTime < 6) {
+			tauntTime++;
+			suppress_stage_music(0, 0.05);
+		} else {
+			window = 2;
+		}
+		
 		break;
 
 	case 49:
@@ -132,17 +137,15 @@ switch (attack)
 		
 		
 	case AT_UAIR:
-		ConstellationBonus(attack, 1);
 		ConstellationBonus(attack, 2);
 	case AT_FTILT:
 	case AT_DTILT:
 	case AT_UTILT:
 	case AT_FAIR:
-	case AT_BAIR:
 		if (aura)
 		{
 			SkipWindow(1, 2);
-			SkipWindow(3, 4);
+			SkipWindow(3, 5);
 			clear_button_buffer(PC_ATTACK_PRESSED);
 			clear_button_buffer(PC_DOWN_STICK_PRESSED);
 			clear_button_buffer(PC_LEFT_STICK_PRESSED);
@@ -185,26 +188,38 @@ switch (attack)
 		break;
 		
 	case AT_NSPECIAL:
+		if(hitpause){
+			can_fast_fall = false;
+		}
 		switch (window)
 		{
 			case 1:
 				if (state_timer == 1)
 				{
 					nspecCharge = 0;
-					nspecJC = false;
+					nspecJC = 0;
 					with (asset_get("obj_article1")) if (player_id == other.id && state == 0 && newState == 0) newState = 1;
 				}
 				break;
 			case 2:
-				if (!special_down || jump_pressed) // 7axel7
+				if (jump_pressed)
+				{
+					nspecJC = 6;
+				}
+				if (!special_down || (jump_pressed && djumps == 0)) // 7axel7
 				{
 					if (menuState == 10) // waveshine training code
 					{
 						shineReleaseFrame = window_timer;
 						if (!shineHeldLastFrame)
+						{
 							shineReleaseFrame--;
+						}
 					}
-					if (window_timer != get_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH)-1) sound_play(get_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX));
+					if (window_timer != get_window_value(AT_NSPECIAL, 2, AG_WINDOW_LENGTH)-1) 
+					{
+						sound_play(get_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX));
+					}
 					window_timer = 0;
 					window = 3;
 				}
@@ -212,11 +227,14 @@ switch (attack)
 					nspecCharge++;
 				break;
 			case 3:
-				if (hitpause)
+				if (jump_pressed)
 				{
-					if (jump_pressed) nspecJC = true;
+					nspecJC = 6;
 				}
-				else if (window_timer == 1)
+				if(!hitpause){
+					nspecJC--;
+				}
+				if (!hitpause && window_timer == 1)
 				{
 					if (has_rune("N"))
 					{
@@ -237,11 +255,15 @@ switch (attack)
 				}
 				break;
 		}
-		can_jump = ((window == 3 && window_timer > 2) || window >= 4) && !was_parried;
+		can_jump = ((window == 3 && ((window_timer > 2 && has_hit_player))) || window >= 4) && !was_parried;
 		if (can_jump)
 		{
-			if (nspecJC) jump_pressed = true;
-			if (jump_pressed) clear_button_buffer(PC_SPECIAL_PRESSED);
+			if (nspecJC > 0){
+				jump_pressed = true;
+			}
+			if (jump_pressed){
+				clear_button_buffer(PC_SPECIAL_PRESSED);
+			}
 		}
 		if (aura)
 		{
@@ -301,14 +323,14 @@ switch (attack)
 					LedgeSnap();
 				}
 				break;
-
 			case 3:
-				if (window_timer <= 6)
-					vsp = 0;
+				vsp = 0;
+					
 				LedgeSnap();
 				break;
 
 			case 4:
+				has_hit_player = has_hit;
 				can_wall_jump = true;
 				LedgeSnap();
 				break;
@@ -387,7 +409,9 @@ switch (attack)
 		{
 			case 1:
 				free = true;
-				can_shield = true;
+				if(window_timer > 4){
+					can_shield = true;
+				}
 				break;
 			case 2:
 				if (window_timer == get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH)-1)
@@ -397,6 +421,25 @@ switch (attack)
 					uspecTimes = 0;
 					if (joy_pad_idle) uspecDir = 90;
 					if (!free) y--;
+
+					if (uspecDir == -1) uspecDir = 90;
+
+					// How close to a 45 degree angle? (0 to 1)
+					var nearDiagonal = 1 - abs(cos(uspecDir * 2 * pi / 180));
+
+					var angleShift = 0;
+					if (down_stick_down) angleShift = 22.5;
+					if (up_stick_down) angleShift = -22.5;
+
+					// Flip for leftward angles
+					if (uspecDir < 90 || uspecDir > 270) angleShift *= -1;
+
+
+					// Flip for downwards angles
+					if (uspecDir < 0 || uspecDir > 180) angleShift *= -1;
+
+
+					uspecDir += angleShift * nearDiagonal;
 				}
 				break;
 			case 3:
@@ -438,8 +481,8 @@ switch (attack)
 			case 4:
 				if (window_timer == 1)
 				{
-					hsp /= 4;
-					vsp /= 4;
+					hsp /= 2;
+					vsp /= 2;
 				}
 				can_move = true;
 				can_wall_jump = true;
@@ -472,6 +515,9 @@ switch (attack)
 		break;
 		
 	case AT_DAIR:
+		if (window == 2 || (window == 3 && window_timer < 5)){
+			dairLand = 1;
+		}
 		if (window == 1) dairTimes = 0;
 		else if (!hitpause)
 		{
@@ -486,30 +532,57 @@ switch (attack)
 			SkipWindow(4, 6);
 		}
 		break;
-		
 	case AT_FSTRONG:
+		if(!hitpause && window == 2 && window_timer == 1){
+			sound_play(sound_get("transform"), 0, -4, transformVolume, transformPitch);
+		}
+		if(!hitpause && window == 4 && window_timer == 8){
+			sound_play(sound_get("transform"), 0, -4, transformVolume, detransformPitch);
+		}
 		if (aura)
 		{
 			SkipWindow(1, 3);
-			SkipWindow(4, 5);
+			SkipWindow(4, 6);
+
+			clear_button_buffer(PC_LEFT_STRONG_PRESSED);
+			clear_button_buffer(PC_RIGHT_STRONG_PRESSED);
+			clear_button_buffer(PC_STRONG_PRESSED);
 		}
 		ConstellationBonus(attack, 1);
 		break;
 		
 	case AT_DSTRONG:
+		if(!hitpause && window == 2 && window_timer == 1){
+			sound_play(sound_get("transform"), 0, -4, transformVolume, transformPitch);
+		}
+		if(!hitpause && window == 4 && window_timer == 8){
+			sound_play(sound_get("transform"), 0, -4, transformVolume, detransformPitch);
+		}
 		if (aura)
 		{
 			SkipWindow(1, 3);
-			SkipWindow(4, 5);
+			SkipWindow(4, 6);
+
+			clear_button_buffer(PC_DOWN_STRONG_PRESSED);
+			clear_button_buffer(PC_STRONG_PRESSED);
 		}
 		ConstellationBonus(attack, 1);
 		break;
 		
 	case AT_USTRONG:
+		if(!hitpause && window == 2 && window_timer == 1){
+			sound_play(sound_get("transform"), 0, -4, transformVolume, transformPitch);
+		}
+		if(!hitpause && window == 4 && window_timer == 8){
+			sound_play(sound_get("transform"), 0, -4, transformVolume, detransformPitch);
+		}
 		if (aura)
 		{
 			SkipWindow(1, 3);
 			SkipWindow(4, 6);
+
+			clear_button_buffer(PC_UP_STRONG_PRESSED);
+			clear_button_buffer(PC_STRONG_PRESSED);
 		}
 		ConstellationBonus(attack, 1);
 		ConstellationBonus(attack, 2);
@@ -540,9 +613,13 @@ switch (attack)
 {
 	var nearest = noone;
 	var tempDist = -1;
-	with (oPlayer) if (other.player != player && get_player_team(player) != get_player_team(other.player) && ((other.spr_dir==1?x>other.x:x<other.x) || abs(x-other.x) < 128))
+	with (oPlayer) if (other.player != player && get_player_team(player) != get_player_team(other.player) ) //&& ((other.spr_dir==1?x>other.x:x<other.x) || abs(x-other.x) < 128)
 	{
 		var dist = point_distance(x, y, other.x, other.y);
+		//if the enemy is in front of lukastar, decrease the distance
+		if(other.spr_dir==1?x>other.x:x<other.x){
+			dist *= 0.6;
+		}
 		if (nearest == noone || tempDist > dist)
 		{
 			tempDist = dist;
@@ -575,7 +652,7 @@ switch (attack)
 
 #define LedgeSnap()
 {
-	if (!hasMovedUp && free && place_meeting(x+hsp,y,asset_get("par_block"))) for (var i = 0; i < 24; ++i) if (!place_meeting(x+hsp,y-(i+1),asset_get("par_block")))
+	if (!hasMovedUp && free && place_meeting(x+spr_dir,y,asset_get("par_block"))) for (var i = 0; i < 24; ++i) if (!place_meeting(x+spr_dir,y-(i+1),asset_get("par_block")))
 	{
 		y -= i;
 		hasMovedUp = true;
@@ -616,10 +693,10 @@ switch (attack)
 {
 	var success = false;
 	var otherRuneG = has_rune("G")||aura;
-	with (asset_get("obj_article1")) if (player_id == other && state == 1 && !cracked && (_big^^!isBig) && point_distance(x, y, other.x, other.y) < (isBig?128:96))
+	with (asset_get("obj_article1")) if (player_id == other && state == 1 && !cracked && (_big^^!isBig) && point_distance(x, y, other.x, other.y-floor(other.char_height/2)) < (isBig?128:96))
 	{
-		var baseSpeed = otherRuneG?80:40;
-		var speedScaling = 3;
+		var baseSpeed = otherRuneG?80:40 + 4*3;
+		var speedScaling = 0; //3;
 		var opponent = other.NearestOpponentDir();
 		if (opponent == noone)
 		{

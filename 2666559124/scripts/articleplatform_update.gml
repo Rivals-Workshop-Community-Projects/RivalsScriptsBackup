@@ -96,7 +96,13 @@ switch (state) {
 		var screen_y = view_get_yview() - 90;
 		if (!despawning) {
 			if (moving && player_id.special_down) {
-				hsp = 4 * player_id.spr_dir;
+				if (player_id.left_down && !player_id.right_down) {
+					hsp = -4;
+				} else if (player_id.right_down && !player_id.left_down) {
+					hsp = 4;
+				} else {
+					hsp = 0;
+				}
 			} else {
 				hsp = 0;
 			}

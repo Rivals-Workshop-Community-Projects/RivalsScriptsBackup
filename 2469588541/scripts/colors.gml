@@ -33,7 +33,7 @@ set_color_profile_slot_range( 6, 1, 1, 1 );
 set_num_palettes( 32 );
 
 // Blue
-set_color_profile_slot( 1, 0, 168, 208, 232 ); //Scarf
+set_color_profile_slot( 1, 0, 167, 208, 232 ); //Scarf
 set_color_profile_slot( 1, 1, 76, 69, 196 ); //Fur tone
 set_color_profile_slot( 1, 2, 189, 194, 217 ); //Fur tone2
 set_color_profile_slot( 1, 3, 85, 106, 217 ); //Eye

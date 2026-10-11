@@ -8,8 +8,8 @@ if (instance_exists(my_barrel)) {
 }
 
 // Wario dies
-if(alt == 10){ 
-	if(get_player_stocks(player) == 1){ 
+if (alt == 10) {
+	if (get_player_stocks(player) == 1) {
 		sound_play(sound_get("wario_missed"));
 	} else {
     		wario = random_func(0, 4, true);
@@ -22,6 +22,6 @@ if(alt == 10){
 }
 
 // Classic DGR Scream
-if(get_player_stocks(player) == 1 && alt == 18){
+if (get_player_stocks(player) == 1 && alt == 18) {
 	sound_play(sound_get("dgr_death"));
 }
