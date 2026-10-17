@@ -437,7 +437,7 @@ if (attack == AT_USPECIAL_2)
 
 if (attack == AT_NSPECIAL)
 {
-    
+   
  //B-reverse
     if(state_timer <= 4 && can_b_reverse){
         if((left_pressed && spr_dir == 1) || (right_pressed && spr_dir == -1)){
@@ -526,6 +526,7 @@ if (attack == AT_NSPECIAL)
         if (shield_pressed)
         {
                 window = 3 ;
+                move_cooldown[AT_NSPECIAL] = 2;
                 window_timer = 7;
                 clear_button_buffer(PC_SHIELD_PRESSED)
            
@@ -535,6 +536,7 @@ if (attack == AT_NSPECIAL)
         {
             // turning
             var dir = right_down - left_down;
+            move_cooldown[AT_NSPECIAL] = 40;
             if (dir != 0)
             {
                 spr_dir = dir;

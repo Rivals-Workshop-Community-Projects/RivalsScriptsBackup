@@ -41,9 +41,12 @@ switch(state)
     
     break;
     case 0://idle
+        
+        /*
         if (state_time > 30){
             hit_detection();
         }
+        */
 
         image_index += idle_spd;
         
@@ -51,11 +54,13 @@ switch(state)
         {
             with (oPlayer)
             {
-                if (other.player_id != self) and (state_cat == SC_HITSTUN) and (state_timer > 4) and (last_attack != AT_NSPECIAL)
+                if ((state_cat == SC_HITSTUN) and (state_timer > 4) and (last_attack != AT_NSPECIAL)) || (seija_caped_timer > 4 && seija_caped_timer < 15 && hsp != 0)
                 {
                     if (collision_circle(other.x,other.y,30 * other.size ,self,false,false))
                     {
                         other.state = 2;
+                        other.attack_target = self; // NEW
+                        other.attack_culprit = self.hit_player_obj; // NEW
                     }
                 }
             }
@@ -97,79 +102,43 @@ switch(state)
                         
                         var was_switched = true;
                     }
-                    else
-                    {//if (hitboxHit.player_id != player_id)
-                    
-                     state = 3;
-                    
-                        if (hitboxHit.player_id == player_id) and (hitboxHit.attack == AT_USPECIAL)
+                    else if (hitboxHit.player_id == player_id) and (hitboxHit.attack == AT_USPECIAL)
+                    {
+                        var got_uspe = true;
+                        
+                        state = 4;
+                        
+                        
+                        with (player_id)
                         {
-                            var got_uspe = true;
-                            
-                            state = 4;
-                            
-                            
-                            with (player_id)
+                            if (free)
                             {
-                                if (free)
-                                {
-                                    attack_end();
-                                    set_attack(AT_USPECIAL_2)
-                                    pHurtBox.sprite_index = sprite_get("uspecial_endlag_hit_hurt")
-                                }
+                                attack_end();
+                                set_attack(AT_USPECIAL_2);
+                                pHurtBox.sprite_index = sprite_get("uspecial_endlag_hit_hurt")
                             }
                         }
-                       
                         
                         cant_be_hit = 20;
                         
-                        with(player_id)
-                        {
-                            var eff = spawn_hit_fx( other.x , other.y - 8, doll_eyes_effect );
-                            eff.depth = other.depth - 1;
-                            eff.spr_dir = 1;
-                        }
+                        var eff = spawn_hit_fx( other.x , other.y - 8, doll_eyes_effect );
+                        eff.depth = other.depth - 1;
+                        eff.spr_dir = 1;
+                        
                     }
-                    
-                    
-                    
-                    hitstop = max(round(hitboxHit.hitpause + hitboxHit.extra_hitpause), 0);
                 
                     with hitboxHit{
-                    	if (type == 1)// not hitpause if projectile
-                    	{
-                            player_id.hitpause = true;
-                            if (was_switched) or (got_uspe)
-                            {
-                                player_id.hitstop_full = max(round(hitpause), 0);
-                            }
-                            else
-                            {
-                                player_id.hitstop_full = 40 
-                            }
-                            player_id.hitstop = player_id.hitstop_full;
-                            player_id.old_hsp = player_id.hsp;
-                            player_id.old_vsp = player_id.vsp;
-                    	}
-                        player_id.has_hit = true;
-                        
-                        //if (was_switched) or (got_uspe)
+                        if (was_switched) or (got_uspe)
                         {
                             spawn_hit_fx(other.x, other.y, hit_effect);
                             sound_play(sound_effect);
                         }
-                        
                     }
                 }
-                /*
-                else
+                else if (!hitboxHit.transcendent)
                 {
-                    if (!hitboxHit.transcendent)
-                    {
-                        hitboxHit.destroyed = true;
-                    }
+                    hitboxHit.destroyed = true;
                 }
-                */
             }
            
         }
@@ -213,7 +182,10 @@ switch(state)
                 {
                     hitb.kb_angle = 270;
                 }
-                
+                hitb.can_hit_self = (other.attack_target == self) || (state_cat == SC_HITSTUN); // NEW
+                if (other.attack_culprit != noone && other.attack_culprit.state_cat != SC_HITSTUN) { // NEW
+                    hitb.can_hit[other.attack_culprit.player] = 0; // NEW
+                } // NEW
                 var effe = spawn_hit_fx(other.x, other.y, curse_effect); // curse_effect
                 effe.draw_angle = 90 - other.sided * 90;
             }
@@ -236,6 +208,8 @@ switch(state)
         if (state_time == 6)
         {
             state = 2;
+            attack_target = noone; // NEw
+            attack_culprit = self; // NEW
         }
     
     break;

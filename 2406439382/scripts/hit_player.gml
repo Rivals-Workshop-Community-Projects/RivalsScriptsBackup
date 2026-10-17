@@ -1,5 +1,11 @@
 // hit_player
 
+if attack == AT_DSTRONG {
+    if (my_hitboxID.hbox_num == 1) {
+        sound_play(asset_get("sfx_blow_medium3"), false, noone, 1, 1);
+    }
+}
+
 switch(my_hitboxID.attack)
 {
     case AT_DAIR:
@@ -45,7 +51,8 @@ switch(my_hitboxID.attack)
 case AT_FSPECIAL:
         hit_player_obj.spr_dir *= -1;
         hit_player_obj.has_walljump = true;
-        
+        hit_player_obj.seija_caped_owner = self;
+        hit_player_obj.seija_caped_timer = 0;
         sound_play(sound_get("switch"))
         
         if (hit_player_obj.state_cat = SC_HITSTUN)

@@ -140,6 +140,10 @@ with (oPlayer)
     }
 }
 
+with oPlayer {
+    if (seija_caped_owner == other) seija_caped_timer++;
+}
+
 if (state == PS_PRATFALL)
 {
     max_fall = max_fall_pratfall;

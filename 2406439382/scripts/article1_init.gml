@@ -10,6 +10,8 @@ sided = 1;
 
 idle_spd = 0.05;
 
+attack_target = noone;
+attack_culprit = noone;
 
 state = 0;
 // -1 = spawning

@@ -10,6 +10,11 @@ if (attack == AT_NSPECIAL || attack == AT_USPECIAL || attack == AT_FSPECIAL)
     can_fast_fall = false;
 }
 
+if (attack == AT_FSPECIAL){
+    if (window == 1 && window_timer == 1){ // WARN: Possible repetition during hitpause. Consider using window_time_is(frame) https://rivalslib.com/assistant/function_library/attacks/window_time_is.html
+        sound_play(asset_get("sfx_swipe_weak1"), false, noone, 0.5, 1);
+    }
+}
 
 if (has_rune("I"))
 {

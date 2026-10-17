@@ -58,7 +58,7 @@ double_jump_time = 31; //the number of frames to play the djump animation. Can't
 knockback_adj = 1; //the multiplier to KB dealt to you. 1 = default, >1 = lighter, <1 = heavier
 
 land_time = 4; //normal landing frames
-prat_land_time = 10;
+prat_land_time = 14;
 wave_land_time = 13;
 wave_land_adj = 1.05; //the multiplier to your initial hsp when wavelanding. Usually greater than 1
 wave_friction = 0; //grounded deceleration when wavelanding
@@ -150,23 +150,30 @@ disk_obj = noone;
 disk_dir = 0;
 vbite = hit_fx_create( sprite_get("vfx_bite"), 25 )
 vscratch = hit_fx_create( sprite_get("vfx_scratch"), 35 )
-uspec_stall = 4;        //uspec vsp is this * -2. decreases by 1 each uspec usage. resets on land/walljump/hit
-uspec_coord = [1,1];    //Sign (-1 or 1) of the X and Y difference between you and the disk when you start uspec
+uspec_stall_max = 2;            //uspec vsp is this * -2. decreases by 1 each uspec usage. resets on land/walljump/hit
+uspec_stall = uspec_stall_max;  //current uspec stall count
+uspec_coord = [1,1];            //Sign (-1 or 1) of the X and Y difference between you and the disk when you start uspec
+uspec_travel_speed = 24;        //Speed SnB flies towards Uspec's disk at.
+uspec_max_travel = 9;           //Time Uspecial travels for when not in range to catch disc.
+uspec_catch = false;            //If the current Uspecial will reach the disk or not.
+uspec_range = uspec_travel_speed * uspec_max_travel;   //Max range of Uspecial to catch disc and avoid pratfall.
+uspec_opaq = 0;           //Current opacity of Uspecial's soundwave indicator
+disk_dist = 0;                  //Current distance to your disk.
 
 disk_cooldown_global = 40; //the cooldown on disc when thrown naturally. originally fixed at 40
 
-disk_speed = 8;        //fspec initial speed, bite's is 2 lower
-disk_uspeed = 14.5;       //uspec initial speed
-disk_uspeed_scratch = 14; //target uspec initial speed for scratch
-disk_uspeed_bite = 11;  //target uspec initial speed for bite
-disk_grav = 0.4;        //bite disk gravity
+disk_speed = 8;             //fspec initial speed, bite's is 2 lower
+disk_uspeed = 14.5;         //uspec initial speed
+disk_uspeed_scratch = 11;   //target uspec initial speed for scratch
+disk_uspeed_bite = 11;      //target uspec initial speed for bite
+disk_grav = 0.4;            //bite disk gravity
 //the following are all the time FROM THE START, not from eachother
-disk_timer_start = 20;  //time until scratch disc starts to go get backwards speed. acts normally until.
-disk_timer_turn = 40;   //time until sdisc stops getting back speed. smoothly goes from speed to -speed between the above variable and this one
-disk_timer_back = 60;   //time until sdisc falls off + ratio
+disk_timer_start = 20;  //time until scratch disc starts to go get backwards speed. acts normally until. Stats were 20/40/60
+disk_timer_turn = 55;   //time until sdisc stops getting back speed. smoothly goes from speed to -speed between the above variable and this one
+disk_timer_back = 65;   //time until sdisc falls off + ratio
 disk_extra_scratchtime = 45; //extra hangtime for scratch uspecial disk
-disk_lockout_total = 8;//scratch disk hit lockout when you hit someone with a melee hit
-disk_lockout = 0;      //current hit lockout
+disk_lockout_total = 8; //scratch disk hit lockout when you hit someone with a melee hit
+disk_lockout = 0;       //current hit lockout
 
 is_bite = 0;            //its called scratch n bite you either scratch or you n bite
 AG_SPRITE_BITE = 2;     //custom attack index used by dspecial to pull bite sprites from the attack data

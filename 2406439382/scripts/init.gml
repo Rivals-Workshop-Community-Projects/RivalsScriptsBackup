@@ -127,6 +127,8 @@ got_uspe_destroyed = false;
 
 // fspecial
 fspe_stall = 0;
+seija_caped_owner = noone;
+seija_caped_timer = 0;
 
 // ustrong
 picture_portrait = true;

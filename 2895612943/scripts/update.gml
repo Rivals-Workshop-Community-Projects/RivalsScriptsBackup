@@ -23,8 +23,17 @@ if(assist != noone && assist.state != 3 && state_cat == SC_HITSTUN){
 
 //some disk logic
 if(!instance_exists(disk_obj)) disk_obj = noone;
-
 if(!hitpause && disk_lockout > 0) disk_lockout--;
+
+if(instance_exists(disk_obj) && disk_obj != noone){
+	disk_dist = point_distance(x, y-char_height*.5, disk_obj.x, disk_obj.y);
+	if((attack == AT_USPECIAL_2 && uspec_catch) || (disk_dist < uspec_range && !(attack == AT_USPECIAL_2 && !uspec_catch))) uspec_opaq = clamp(uspec_opaq+0.05, 0, 0.5);
+	else uspec_opaq = clamp(uspec_opaq-0.1, 0, 0.5);
+}else{
+	disk_dist = 0;
+	uspec_opaq = 0;
+}
+
 
 //SWAPPING
 
@@ -141,7 +150,7 @@ if disk_obj != noone {
 if state == PS_WALL_JUMP || !free || state == PS_HITSTUN {
     //move_cooldown[AT_USPECIAL] = 0;
     move_cooldown[AT_USPECIAL_2] = 0;
-    uspec_stall = 4;
+    uspec_stall = uspec_stall_max;
 }/*
 if disk_obj != noone {
     print("exist")

@@ -107,11 +107,12 @@ switch (attack)
         {
             case 1:
                 vsp = 0;
+                hsp = clamp(hsp, -3, 3);
                 break;
             case 2:
                 if (window_timer == 1)
                 {
-                    vsp = -2 * uspec_stall;
+                    vsp = -3 * uspec_stall;
                     uspec_stall -= 1;
                     if(uspec_stall < 0) uspec_stall = 0;
                     create_disk(x+(10*spr_dir),y-86);
@@ -161,8 +162,8 @@ if attack == AT_USPECIAL_2 {
         if (instance_exists(disk_obj)){
             //zoom toward the DISC its not bamboo its not bamboo its not guadrua
             disk_dir = point_direction(x, y-char_height*.5, disk_obj.x, disk_obj.y);
-            vsp = lengthdir_y(24, disk_dir);
-            hsp = lengthdir_x(24, disk_dir);
+            vsp = lengthdir_y(uspec_travel_speed, disk_dir);
+            hsp = lengthdir_x(uspec_travel_speed, disk_dir);
             //ledge snap
             if (place_meeting(x + hsp, y, asset_get("par_block")) && free){
                 for (var i = 1; i < 40; i++){
@@ -176,16 +177,16 @@ if attack == AT_USPECIAL_2 {
             var y_bound = sign(vsp) == 1? y+2: y-char_height-2;
             if(place_meeting(x + (20 * sign(hsp)), y, asset_get("par_block"))){
                 //running into walls
-                vsp = uspec_coord[1] * 24;
+                vsp = uspec_coord[1] * uspec_travel_speed;
             }
             if(place_meeting(x, y_bound, asset_get("par_block"))){
                 if(sign(vsp) == -1){
                     //running into ceilings, yes this only happens on air armada.
                     var aaaa = sign(x-room_width/2);
-                    hsp = aaaa * 24;
+                    hsp = aaaa * uspec_travel_speed;
                 }else{
                     //running into floors
-                    hsp = uspec_coord[0] * 24;
+                    hsp = uspec_coord[0] * uspec_travel_speed;
                 }
             }
             disk_obj.hitbox_timer--;
@@ -197,16 +198,22 @@ if attack == AT_USPECIAL_2 {
             fall_through = true;
             
             //stop when close
-            if (point_distance(x, y-char_height*.5, disk_obj.x, disk_obj.y) < 32 || window_timer == get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH)){
-                attack = AT_USPECIAL
-                window = 6;
+            if (point_distance(x, y-char_height*.5, disk_obj.x, disk_obj.y) < 32){
+                //attack = AT_USPECIAL;
+                window = 4;
                 window_timer = 0;
                 hsp = clamp(hsp, -6, 6);
                 vsp = clamp(vsp, -10, -4);
                 destroy_hitboxes();
                 disk_obj.destroyed = 1;
                 disk_obj = noone;
-                //instance_destroy(bamboo);
+            //slow down and go into pratfall
+            }else if(window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
+                hsp *= 0.3;
+                vsp *= 0.4;
+                destroy_hitboxes();
+                disk_obj.destroyed = 1;
+                disk_obj = noone;
             }
         } else {
             //if the disk is destroyed immediately, dont go on cooldown
@@ -240,6 +247,10 @@ if attack == AT_DSPECIAL {
     } else {
         set_hitbox_value(AT_DSPECIAL, 1, HG_PROJECTILE_SPRITE, sprite_get("dspecproj"));
     }*/
+    
+    if(window == 1 && window_timer == 1){
+       sound_play(sound_get("sfx_snb_record2"));
+    }
     
     if window == 1 && window_timer == 10 {
         if (free) vsp = -5;
