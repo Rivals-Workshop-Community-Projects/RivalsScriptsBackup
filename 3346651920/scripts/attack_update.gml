@@ -229,10 +229,17 @@ switch (attack)
 	jab_dspecial_movement();
 	
 	// Shadow handling.
+	if (window == 1 && window_timer==1)
+	{
+		//get_walkable(0,0,true);
+		//walkable_success_orig = walkable_success;
+	}
 	if (window < 7 && !hitpause)
 	{
 		// Shadow Size Altering
 		var _walkable = noone;
+		var _walkable_B = noone;
+		//walkable_success_old = walkable_success;
 		
 		// STEP 1:
 		// Adjust shadow_increment.
@@ -252,15 +259,29 @@ switch (attack)
 		
 		// STEP 3:
 		// Adjust the size of the actual shadow.
+		var excuse_time = 6;
+		var excuse_time_B = 4;
+		var tmp_A_memory = false;
+		
+		//ACTUAL
 		dsp_distance -= dsp_orig_dir;
-		_walkable = get_walkable(dsp_distance);
+		_walkable = get_walkable(dsp_distance,dsp_orig_dir);
+		if (dsp_timer<excuse_time){
+			//print("EXCUSED");
+			_walkable = 1;
+		}
 		if (_walkable)
 		{
 			// Expand dsp_distance to reach shadow_width_true.
 			while (_walkable && abs(dsp_distance) < abs(shadow_width_true))
 			{
 				dsp_distance += dsp_orig_dir;
-				_walkable = get_walkable(dsp_distance);
+				_walkable = get_walkable(dsp_distance,dsp_orig_dir);
+				if (dsp_timer<excuse_time){
+					//print("EXCUSED");
+					_walkable = 1;
+				}
+				//walkable_success = 0;
 			}
 		}
 		else
@@ -269,10 +290,55 @@ switch (attack)
 			while (!_walkable && dsp_distance * dsp_orig_dir >= 0)
 			{
 				dsp_distance -= dsp_orig_dir;
-				_walkable = get_walkable(dsp_distance);
+				_walkable = get_walkable(dsp_distance,dsp_orig_dir);
 			}
 			dsp_distance += dsp_orig_dir;
 		}
+		//print(string(dsp_distance));
+		
+		//VISUAL
+		dsp_distance_B -= dsp_orig_dir;
+		_walkable_B = get_walkable(dsp_distance_B,0);
+		dsp_B_was_excused = false;
+		if (_walkable_B==0&&dsp_timer<excuse_time_B&&_walkable){
+			//print("EXCUSED_B");
+			_walkable_B = 1;
+			dsp_B_was_excused = true;
+		}
+		if (_walkable_B)
+		{
+			// Expand dsp_distance to reach shadow_width_true.
+			while (_walkable_B && abs(dsp_distance_B) < abs(shadow_width_true))
+			{
+				dsp_distance_B += dsp_orig_dir;
+				_walkable_B = get_walkable(dsp_distance_B,0);
+				//walkable_success = 0;
+				if (dsp_timer<excuse_time_B&&_walkable){
+					//print("EXCUSED_B_2");
+					_walkable_B = 1;
+				}
+			}
+		}
+		else
+		{
+			// Reduce dsp_distance until within the platform's size.
+			while (!_walkable_B && dsp_distance_B * dsp_orig_dir >= 0)
+			{
+				dsp_distance_B -= dsp_orig_dir;
+				_walkable_B = get_walkable(dsp_distance_B,0);
+			}
+			dsp_distance_B += dsp_orig_dir;
+		}
+		/*if (get_walkable(dsp_distance,0,false)==0)
+		{
+			dsp_is_edge = walkable_success_orig;
+			print("RUNNING. "+string(state_timer));
+		}else{
+			dsp_is_edge = 0;
+		}*/
+		
+		//let me tell you how much i've come to
+		//LET ME TELL YOU HOW MUCH I'VE COME TO
 		
 		// Teleporting.
 		if (dsp_timer > dsp_timer_min)
@@ -701,16 +767,22 @@ if (!hitpause)
 	}
 }
 
-#define get_walkable(_x_offset)
+#define get_walkable(_x_offset,_x_dir)
+//,_returnsuccess
 _solid_meeting = 
 		position_meeting(
-			x + _x_offset, 
+			x + (_x_offset-(_x_dir*20)), 
 			y + 1, asset_get("par_block"));
 _plat_meeting = 
 		position_meeting(
-			x + _x_offset, 
+			x + (_x_offset-(_x_dir*10)), 
 			y + 1, asset_get("par_jumpthrough"));
+/*if(_returnsuccess){
+	walkable_success = (_solid_meeting)?2:(_plat_meeting)?1:0;
+	walkable_fail_dist = (_solid_meeting)?(_x_offset-(_x_dir*20)):(_plat_meeting)?(_x_offset-(_x_dir*10)):0;
+}*/
 return (_solid_meeting || _plat_meeting);
+
 #define move_to_ground()
 for (var _y = y - 4; _y < stage_top_position + 4; ++_y)
 {

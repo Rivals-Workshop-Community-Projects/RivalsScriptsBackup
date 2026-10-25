@@ -48,6 +48,7 @@ set_hitbox_value(AT_FTILT, 1, HG_GROUNDEDNESS, 0);
 set_hitbox_value(AT_FTILT, 1, HG_HITBOX_GROUP, 1);
 //set_hitbox_value(AT_FTILT, 1, HG_HIT_LOCKOUT, 1);
 set_hitbox_value(AT_FTILT, 1, HG_VISUAL_EFFECT, 301);
+set_hitbox_value(AT_FTILT, 1, HG_TECHABLE, 3);
 set_hitbox_value(AT_FTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
 
 

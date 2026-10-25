@@ -133,13 +133,20 @@ dist_m_static = 140;
 dist_h_static = 110;
 gimme_20_dollars = false; //try turning this on
 
-dsp_distance = 0;
+dsp_distance = 0; //ACTUAL
+dsp_distance_B = 0; //VISUAL
 dsp_timer = 0; //for limiting min/max duration
 dsp_timer_min = 16;//30
 dsp_timer_max = 120;
 dsp_end_timer = 0;
 dsp_orig_dir = 1;
 dsp_real_cd = 0;
+walkable_success = 0;
+walkable_success_old = 0;
+walkable_success_orig = 0;
+walkable_fail_dist = 0;
+dsp_is_edge = 0;
+dsp_B_was_excused = 0;
 
 dsp_shadow_max_length = 100;
 

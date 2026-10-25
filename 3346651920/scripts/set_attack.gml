@@ -12,6 +12,7 @@ dsp_timer = 0;
 dsp_end_timer = 0;
 dsp_orig_dir = spr_dir;
 dsp_distance = 0;
+dsp_distance_B = 0;
 
 // Attack specific setup functionality.
 switch (attack)

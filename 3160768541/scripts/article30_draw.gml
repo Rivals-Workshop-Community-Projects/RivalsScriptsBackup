@@ -107,7 +107,9 @@ if (string_pos("ralsei", nameget_) || //we are absolutely unsure as-of-now (2024
     string_pos("rouxls", nameget_) ||
     string_pos("starwalker", nameget_) ||
     string_pos("jevil", nameget_) ||
+    string_pos("rudinn", nameget_) ||
     string_pos("tasque", nameget_) ||
+	real(argument[0].url)==3822381760 || //Queen
     string_pos("addison", nameget_) ||
     string_pos("spamton", nameget_) ||
     string_pos("tenna", nameget_) ||
@@ -122,7 +124,11 @@ if (string_pos("ralsei", nameget_) || //we are absolutely unsure as-of-now (2024
     string_pos("pluey", nameget_) || //siiiiigggggh
     string_pos("hammer of justice", nameget_) ||
     string_pos("mizzle", nameget_) ||
+    string_pos("watercooler", nameget_) ||
     string_pos("jackenstein", nameget_) ||
+    string_pos("netskie", nameget_) ||
+    string_pos("floradinn", nameget_) ||
+    string_pos("kawkaw", nameget_) ||
     string_pos("DESS", string_upper(nameget_)) ||
     string_pos("DECEMBER", string_upper(nameget_)) ||
     string_pos("GASTER", string_upper(nameget_)) ||
@@ -135,17 +141,26 @@ if (string_pos("ralsei", nameget_) || //we are absolutely unsure as-of-now (2024
 if (string_pos("clover", nameget_)){
 	return_index_ = 2; //justicesoul
 }
-//this is a very rare case where there is an undertale (yellow?) human oc in workshop. so here, a special case
-if (real(argument[0].url)==3353764260){//kubi
-	return_index_ = 4; //leafsoulorsomething
-}
-//very, very special case for Flowey
-if (string_pos("flowey", nameget_)){//flowey
+//very, very special case for Flowey and Vessel
+if (string_pos("flowey", nameget_) ||//flowey
+	string_pos("vessel", nameget_)){//vessel
 	return_index_ = 5; //"empty" but still has an outline so that it doesnt affect gameplay visuals too much
 }
 //reiga had a devilish idea
 if (real(argument[0].url)==2801480574){//noelle (snowgrave)
-	return_index_ = 5; //.
+	return_index_ = 6; //.
+}
+//very special case for the Flowers
+if (string_pos("flowery", nameget_) || //hey guys
+    string_pos("aqua", nameget_) || //im aware this'll probably catch non-deltarune aquas, but hey
+    real(argument[0].url)==3792245630 || //seth by seth
+	string_pos("clover", nameget_)){
+	return_index_ = 4; //flower
+}
+//very, very special case for Pink
+if (real(argument[0].url)==3818322201 ||
+	real(argument[0].url)==3766817118){
+	return_index_ = 7; //both monster soul and darkner shine
 }
 
 }

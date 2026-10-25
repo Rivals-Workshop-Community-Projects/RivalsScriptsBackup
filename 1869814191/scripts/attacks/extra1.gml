@@ -72,9 +72,9 @@ set_hitbox_value(AT_EXTRA_1, 2, HG_PROJECTILE_IS_TRANSCENDENT, true);
 
 //Left
 
-var blu_dam = 3;
-var blu_kb = 3;
-var blu_kb_scale = .5;
+var blu_dam = 5;
+var blu_kb = 4;
+var blu_kb_scale = .35;
 
 set_hitbox_value(AT_EXTRA_1, 7, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_EXTRA_1, 7, HG_WINDOW, 1);

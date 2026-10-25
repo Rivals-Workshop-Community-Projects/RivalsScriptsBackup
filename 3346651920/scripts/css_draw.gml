@@ -1,6 +1,6 @@
 //slenderman css draw
 
-draw_sprite_ext(sprite_get("aaa_vernum"), 1, x + 180, y + 118, 2, 2, 0, -1, 0.5);
+draw_sprite_ext(sprite_get("aaa_vernum"), 1, x + 176, y + 122, 2, 2, 0, -1, 0.5);
 
 if (!variable_instance_exists(id,"timertest")) timertest = 0;
 timertest += 0.4;

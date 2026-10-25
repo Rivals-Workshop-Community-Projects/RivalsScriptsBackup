@@ -15,7 +15,7 @@ if (attack == AT_DAIR) or (attack == AT_DSPECIAL) or (attack == AT_DSPECIAL_2) o
 
 
 
-if ( attack == AT_USTRONG) 
+if (attack == AT_USTRONG) 
 {
     /*
     ustrong_pale = true;

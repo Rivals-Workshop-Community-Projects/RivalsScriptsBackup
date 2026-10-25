@@ -4,6 +4,24 @@ they're in my head, they're in my soul.
 
 
 
+===v0.10===
+------
+:: YOU CANNOT HIDE IN PLAIN SIGHT.
+
+
+
+
+
+
+
+
+
+
+------
+No man will work for your interests unless they are theirs
+
+
+
 ===v0.9===
 ------
 :: fixed a very niche issue with INTERFERENCE, opponents, and stage article hitboxes. thank you to bulbaquaza for the report

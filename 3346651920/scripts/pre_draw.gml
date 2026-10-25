@@ -2,10 +2,16 @@
 
 if (state==PS_ATTACK_GROUND || state==PS_ATTACK_AIR){
 	if (attack==AT_DSPECIAL){
-		var shadow_size = 20*2
-		var scale_calc = dsp_distance/(shadow_size/2)
+		var shadow_size = 20*2;
+		//var is_edge = (dsp_is_edge*15)*dsp_orig_dir;
+		//var is_edge = (dsp_distance-walkable_fail_dist)*sign(dsp_is_edge);
+		//print("DIST "+string(dsp_distance-walkable_fail_dist))
+		//print("IS "+string(is_edge))
+		//var dsp_distance_calc = dsp_distance-is_edge;
+		var dsp_distance_calc = dsp_distance_B*((dsp_B_was_excused==true)?0:1);
+		var scale_calc = dsp_distance_calc/(shadow_size/2);
 		var b_slope = ease_quadIn( (dsp_end_timer!=0)?45:0, 80, clamp(dsp_end_timer,0,30), 30 )/100
-		draw_sprite_ext( sprite_get("__shadow"), 0, x+(dsp_distance/2), y, scale_calc, 2, 0, -1, (dsp_timer>dsp_timer_min)?0.8-b_slope:0.45 )
+		draw_sprite_ext( sprite_get("__shadow"), 0, x+(dsp_distance_calc/2), y, scale_calc, 2, 0, -1, (dsp_timer>dsp_timer_min)?0.8-b_slope:0.45 )
 		
 		draw_sprite_ext(sprite_index,image_index,x+(4*dsp_orig_dir),y,2.4*spr_dir,1.9,0,c_black,((dsp_timer>dsp_timer_min)?0.8-b_slope:0.45)/2);
 	}
