@@ -1,5 +1,8 @@
 //GOT HIT
 
+//prevent anything wacky
+if (hit_player_obj.object_index == asset_get("oPlayer") || hit_player_obj.object_index == asset_get("oTestPlayer")){
+
 // Fspecial getting hit.
 if (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
 {
@@ -51,3 +54,6 @@ else
 	}
 }
 
+
+
+}//prevent anything wacky wrap

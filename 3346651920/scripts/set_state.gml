@@ -2,6 +2,8 @@
 
 
 if (state==PS_HITSTUN||state==PS_HITSTUN_LAND){//taken atk
+	if (hit_player_obj.object_index == asset_get("oPlayer") || hit_player_obj.object_index == asset_get("oTestPlayer")){
+	
 	if (hitpause){
 		//if (hitstop == hitstop_full){
 	if (hit_player_obj.slender_haunt == id){
@@ -48,6 +50,8 @@ if (state==PS_HITSTUN||state==PS_HITSTUN_LAND){//taken atk
 		}
 	}
 		//}
+	}
+	
 	}
 }
 

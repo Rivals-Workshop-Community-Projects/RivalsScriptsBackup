@@ -4,7 +4,13 @@
 var dmg = ceil(my_dmg*0.25);
 if (dmg < 1) { dmg = 1; }*/
 
+//print_debug("DMG = " + string(get_player_damage(hit_player_obj.player)));
+
 switch(my_hitboxID.attack) {
+	case AT_NSPECIAL:
+		sound_play(asset_get("sfx_absa_singlezap1"))	
+	break;
+	
 	case AT_FSPECIAL:
 		switch(my_hitboxID.hbox_num) {
 			case 1:
@@ -131,25 +137,43 @@ if (my_hitboxID.type == 2){
 }
 
 #define addKR(karma)
+
 with(hit_player_obj) {
 	if !(sansKRconsume) {
-	sansKR += karma;
+	sansKR = clamp(sansKR+karma, 0, 20);
 	if sansKR_player <= 0 sansKR_timer = 0;
 	sansKR_player = other.player;
 	}
 }
 #define consumeKR()
 
-var dmg = get_player_damage(hit_player_obj.player)-my_hitboxID.damage;
-var kb_dir = get_hitbox_angle(my_hitboxID);
+//var dmg = get_player_damage(hit_player_obj.player)-my_hitboxID.damage;
+//var kb_dir = get_hitbox_angle(my_hitboxID);
 
 var _snd = sound_get("sfx_sans_impact");
 with (hit_player_obj) {
 	if (sansKR > 0) {
 		with other spawn_hit_fx(hit_player_obj.x, hit_player_obj.y-(hit_player_obj.char_height/2), hfx_karma);
 		//spawn_hit_fx(x, y-(char_height/2), other.hfx_karma); // i dont know why this doesnt work
+		
+		var dmg = get_player_damage(player)-enemy_hitboxID.damage;
+		
+		var kr_kb = get_kb_formula(dmg+sansKR, knockback_adj, knockback_scaling,
+									enemy_hitboxID.damage, enemy_hitboxID.kb_value, enemy_hitboxID.kb_scale);
+									
+		var kr_hitp = get_hitstop_formula(dmg+sansKR, enemy_hitboxID.damage,
+										enemy_hitboxID.hitpause, enemy_hitboxID.hitpause_growth, enemy_hitboxID.extra_hitpause);
+		kr_hitp = clamp(kr_hitp, 0, 20);
+										
+		var kr_hits = get_hitstun_formula(dmg+sansKR, knockback_adj, knockback_scaling,
+									enemy_hitboxID.damage, enemy_hitboxID.kb_value, enemy_hitboxID.kb_scale);
+		
+		orig_knock = kr_kb;
+		hitstop = kr_hitp+(5+round(sansKR/2));
+		//if (enemy_hitboxID.type == 1) other.hitstop = kr_hitp;
+		hitstun = kr_hits;
 		take_damage(player, other.player, sansKR);
-		hitstop += 5+round(sansKR/2);
+		//hitstop += 5+round(sansKR/2);
 		sansKRconsume = true;
 		//sansKR = 0;
 		sansKR_timer = 0;

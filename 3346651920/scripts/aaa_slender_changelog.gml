@@ -4,6 +4,18 @@ they're in my head, they're in my soul.
 
 
 
+===v0.11===
+------
+:: aesthetic tweaks on roll, techs, and parry
+
+------
+:: fixed a niche issue where being hit by a stage hitbox throws an error. not a big deal per se as it doesnt break the gameplay (actually, it did crash the game once), but fixed it now. thank you to bulbaquaza for the report
+
+------
+Willingness opens the door to knowledge, direction, and achievement
+
+
+
 ===v0.10===
 ------
 :: YOU CANNOT HIDE IN PLAIN SIGHT.

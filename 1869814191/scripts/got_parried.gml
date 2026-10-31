@@ -1,5 +1,8 @@
 //got_parried.gml
 
+fspecCharge = 0;
+fspecStored = false;
+
 with (hit_player_obj) {
 	sansKR = 0;
 	sansKR_timer = 0;

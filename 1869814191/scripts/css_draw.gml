@@ -58,7 +58,7 @@ if (css_anim_time < 140)
 
 //Patch Info - Format borrowed from Hime
 
-patch_day = "22";
+patch_day = "29";
 patch_month = "oct";
 patch_year = "2026"
  

@@ -1,0 +1,114 @@
+sprite_change_offset("idle", 10, 23);
+sprite_change_offset("hurt", 20/2, 44/2);
+sprite_change_offset("bighurt", 20/2, 40/2);
+sprite_change_offset("downhurt", 30/2, 42/2);
+sprite_change_offset("uphurt", 18/2, 48/2);
+sprite_change_offset("spinhurt", 22/2, 40/2);
+sprite_change_offset("crouch", 12, 21);
+sprite_change_offset("walk", 20/2, 42/2);
+sprite_change_offset("walkturn", 20/2, 42/2);
+sprite_change_offset("dash", 12, 22);
+sprite_change_offset("dashstart", 9, 21);
+sprite_change_offset("dashstop", 9, 21);
+sprite_change_offset("dashturn", 20/2, 42/2);
+
+sprite_change_offset("jumpstart", 10, 20);
+sprite_change_offset("jump", 14, 42/2);
+sprite_change_offset("doublejump", 11, 14);
+sprite_change_offset("walljump", 14, 42/2);
+sprite_change_offset("pratfall", 9, 23);
+sprite_change_offset("land", 10, 20);
+sprite_change_offset("landinglag", 10, 20);
+
+sprite_change_offset("superjump", 11, 18);
+
+sprite_change_offset("parry", 11, 26);
+sprite_change_offset("roll_forward", 10, 22);
+sprite_change_offset("roll_backward", 10, 22);
+sprite_change_offset("airdodge", 11, 26);
+sprite_change_offset("waveland", 14, 12);
+sprite_change_offset("tech", 12, 21);
+
+sprite_change_offset("jab", 12, 27, true);
+sprite_change_offset("jab_alt", 12, 27, true);
+sprite_change_offset("dattack", 14, 24, true);
+sprite_change_offset("ftilt", 12, 29, true);
+sprite_change_offset("dtilt", 14, 22, true);
+sprite_change_offset("utilt", 23, 67, true);
+sprite_change_offset("nair", 10, 24, true);
+sprite_change_offset("fair", 12, 28, true);
+sprite_change_offset("fair_sword", 27, 32, true);
+sprite_change_offset("bair", 35, 22, true);
+sprite_change_offset("uair", 20, 24, true);
+sprite_change_offset("uair_alt", 20, 24, true);
+sprite_change_offset("dair", 24, 30, true);
+sprite_change_offset("fstrong", 32, 29, true);
+sprite_change_offset("ustrong", 26, 53, true);
+sprite_change_offset("dstrong", 24, 23, true);
+sprite_change_offset("nspecial", 12, 24, true);
+sprite_change_offset("fspecial", 13, 21, true);
+sprite_change_offset("uspecial", 11, 43, true);
+sprite_change_offset("dspecial", 10, 32, true);
+sprite_change_offset("dspecial_draw", 10, 32, true);
+sprite_change_offset("dspecial_air", 22, 58, true);
+sprite_change_offset("taunt", 14, 25, true);
+sprite_change_offset("pyro", 30, 35, true);
+
+sprite_change_offset("plat", 10, 9);
+
+sprite_change_offset("autobomb_proj_small", 38, 16);
+sprite_change_offset("autobomb_proj_small_coll", 22, 10);
+sprite_change_offset("autobomb_proj_big", 52, 21);
+sprite_change_offset("autobomb_proj_big_coll", 24, 19);
+sprite_change_offset("jab_proj", 8, 6);
+sprite_change_offset("jab_proj_alt", 8, 6);
+sprite_change_offset("dair_proj", 10, 10);
+sprite_change_offset("carpet", 22, 8);
+sprite_change_offset("carpet_small", 9, 5);
+sprite_change_offset("carpet_shrink", 11, 9);
+sprite_change_offset("carpet_coll", 22, 0);
+sprite_change_offset("carpet_return", 8, 16);
+sprite_change_offset("carpet_boost", 27, 7);
+sprite_change_offset("carpet_startup", 19, 22);
+
+sprite_change_offset("subcon_effect", 70, 100);
+
+sprite_change_offset("dspecial_coll_l", 8, 0);
+sprite_change_offset("dspecial_coll", 3, 0);
+sprite_change_offset("dspecial_pole", 3, 0);
+sprite_change_offset("dspecial_shoes", 6, 18);
+sprite_change_offset("dspecial_shygone", 10, 32, true);
+sprite_change_offset("dspecial_fx", -10, 8, true);
+sprite_change_offset("fx_flower", 6, 6, true);
+sprite_change_offset("ustrong_heart", 10, 11);
+sprite_change_offset("dstrong_ring", 11, 11);
+sprite_change_offset("dstrong_ball", 40, 40);
+sprite_change_offset("dstrong_ball_dark", 20, 20);
+sprite_change_offset("fspecial_cooldown_icon", 7, 6);
+sprite_change_offset("hud_autobomb", 7, 6);
+sprite_change_offset("hud_autobomb_alt", 7, 6);
+sprite_change_offset("autobomb_idle", 10, 40);
+sprite_change_offset("autobomb_idleb", 10, 40);
+sprite_change_offset("autobomb_coll", 10, 40);
+sprite_change_offset("autobomb_idle_overlay", 10, 40);
+sprite_change_offset("autobomb_idleb_overlay", 10, 40);
+sprite_change_offset("autobomb_destroyed", 8, 17);
+sprite_change_offset("autobomb_idle_alt", 10, 40);
+sprite_change_offset("autobomb_idleb_alt", 10, 40);
+sprite_change_offset("autobomb_destroyed_alt", 8, 17);
+sprite_change_offset("uspecial_fx", 22, 62);
+sprite_change_offset("fx_jab", 16, 22);
+sprite_change_offset("fx_autobomb_proj_small_dest", 38, 16);
+sprite_change_offset("vfx_phanto", 71, 88);
+sprite_change_offset("vfx_trail", 40, 4);
+
+sprite_change_offset("hurtbox", 20, 42);
+sprite_change_offset("crouchhurt", 20, 42);
+sprite_change_offset("mask", 20, 44);
+
+sprite_change_offset("intro", 14, 61);
+sprite_change_offset("kirby", 24, 44);
+sprite_change_offset("feri", 84, 114);
+sprite_change_offset("miiverse", 60, 30);
+sprite_change_offset("trial", 31, 0);
+sprite_change_offset("resort", 27, 39);

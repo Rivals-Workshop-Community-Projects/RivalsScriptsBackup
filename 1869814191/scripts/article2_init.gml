@@ -27,7 +27,7 @@ grounds = 1;
 walls = 1;
 dir = 0;
 is_hittable = true;
-can_be_hit[player] = 2;
+can_be_hit[player] = 10;
 //hbox = noone;
 
 accel = .02;
@@ -56,6 +56,10 @@ charge_max = 60;
 knock_growth_min = 0.35;
 knock_growth_mid = 0.5;
 knock_growth_max = 0.8;
+
+hit_growth_min = 0.25;
+hit_growth_mid = 0.4;
+hit_growth_max = 0.6;
 
 knock_angle_min = 75;
 knock_angle_mid = 60;

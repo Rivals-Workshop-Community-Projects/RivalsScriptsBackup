@@ -117,5 +117,7 @@ init_shader();
 		case "FUGG": return "Maeday";
 		case "VIOLET":
 		case "PIKA": return "Violet alt I think";
+		case "TOXIC": return "TAF";
+		case "NIGHT": return "Bau2";
 	}
 }

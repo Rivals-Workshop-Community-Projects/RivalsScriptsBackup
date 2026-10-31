@@ -26,9 +26,10 @@ set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_TYPE, 7);
-set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 21);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 7);
 set_window_value(AT_USPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 5);
+set_window_value(AT_USPECIAL, 4, AG_WINDOW_HAS_WHIFFLAG, 2);
 
 set_num_hitboxes(AT_USPECIAL, 1);
 
@@ -47,6 +48,7 @@ set_hitbox_value(AT_USPECIAL, 1, HG_ANGLE, 90);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_KNOCKBACK, 9);
 set_hitbox_value(AT_USPECIAL, 1, HG_KNOCKBACK_SCALING, .3);
 set_hitbox_value(AT_USPECIAL, 1, HG_BASE_HITPAUSE, 5);
+set_hitbox_value(AT_USPECIAL, 1, HG_EXTRA_HITPAUSE, 5);
 set_hitbox_value(AT_USPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_singlezap2"));
 set_hitbox_value(AT_USPECIAL, 1, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_GROUP, -1);

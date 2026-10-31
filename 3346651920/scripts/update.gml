@@ -195,6 +195,37 @@ switch (state)
 	}
 	break;
 	
+	case PS_TECH_BACKWARD:
+	case PS_TECH_FORWARD:
+	case PS_TECH_GROUND:
+	case PS_WALL_TECH:
+	if (state_timer == 1 && !hitpause)
+	{
+		summon_afterimage(0, 0);
+		sound_stop(asset_get("sfx_tech"));
+		sound_play(asset_get("sfx_tech"), false, noone, 0.5, 0.4);
+		sound_play(asset_get("sfx_tech"), false, noone, 0.25, 0.2);
+		sound_play(sound_get("staticmedium_short"), false, noone, 0.75, 4);
+		sound_play(sound_get("tta_2"), false, noone, 0.5, 1);
+		sound_play(sound_get("tta_6"), false, noone, 0.5, 3);
+	}
+	break;
+	
+	case PS_PARRY:
+	if (state_timer == 1 && !hitpause)
+	{
+		summon_afterimage(0, 0);
+		sound_stop(asset_get("sfx_parry_use"));
+		sound_play(asset_get("sfx_parry_use"),false,noone,0.8,0.9);
+		sound_play(asset_get("sfx_parry_use"),false,noone,0.4,0.87);
+		sound_play(asset_get("sfx_parry_use"),false,noone,0.4,0.81);
+		sound_play(asset_get("sfx_parry_use"),false,noone,0.18,0.6);
+		sound_play(asset_get("sfx_parry_use"),false,noone,0.12,0.22);
+		sound_play(asset_get("sfx_parry_use"),false,noone,0.12,0.2);
+		sound_play(sound_get("tta_5"), false, noone, 0.75, 2);
+	}
+	break;
+	
 	case PS_WAVELAND:
 	if (state_timer == 1 && !hitpause)
 	{
@@ -415,6 +446,9 @@ attack_end();
 var aft_ = instance_create( x, y, "obj_article1" );
 aft_.sprite_index = sprite_index;
 aft_.image_index = image_index;
+if (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_TECH_BACKWARD || state == PS_TECH_FORWARD || state == PS_AIR_DODGE){
+	aft_.image_index = 1;
+}
 aft_.spr_dir = spr_dir;
 aft_.hsp = hsp/3*argument[0];
 aft_.vsp = vsp/3*argument[1];

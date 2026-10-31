@@ -145,6 +145,8 @@ with (oPlayer) if (player != other.player && noelleFrostbiteID == other)
 	else if (noelleFrostgrave > 0 && !hitpause)
 	{
 		noelleFrostgrave--;
+		can_tech = false;
+		can_wall_tech = false;
 		if (state != PS_HITSTUN || noelleFrostgrave <= 0 || noelleEarlyPop)
 		{
 			noelleFrostgrave = 0;

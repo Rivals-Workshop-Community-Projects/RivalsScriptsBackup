@@ -8,10 +8,14 @@ var sfx_dmg = sound_get("sfx_soul_damage");
 var stateAttack = (player_id.state == PS_ATTACK_GROUND || player_id.state == PS_ATTACK_AIR);
 switch(attack) {
 	case AT_DTILT:
-		if (hbox_num == 1) for (var i = 0; i < 20; i++) can_hit[i] = false;
-		if (hbox_num == 1 && image_index >= 4 && _hbox == noone) {
+		if (hbox_num == 1) {
+			for (var i = 0; i < 20; i++) can_hit[i] = false;
+			if (image_index <= 3 && (player_id.state_cat == SC_HITSTUN || player_id.was_parried)) {
+				destroyed_next = true;
+			} else if (image_index >= 4 && _hbox == noone) {
 			_hbox = create_hitbox(attack, 2, x, y-13);
 			sound_play(sound_get("sfx_sans_rise"));
+			}
 		}
 	break;
 	
@@ -57,7 +61,7 @@ switch(attack) {
 	break;
 	
 	case AT_FSPECIAL:
-		if (hitbox_timer >= hitbox_life && !has_hit && !in_hitpause) {
+		if (hitbox_timer >= hitbox_life && !has_hit && !in_hitpause && hbox_num <= 2) {
 			spawn_hit_fx(x, y, (hbox_num == 2 ? player_id.hfx_smallboned_blue : player_id.hfx_smallboned));
 			//sound_play(sound_get("sfx_soul_break"));
 			destroyed_next = true;

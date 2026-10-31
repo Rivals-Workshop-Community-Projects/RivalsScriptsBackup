@@ -24,7 +24,7 @@ set_window_value(atk, _win, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
 
 _win++;
 set_window_value(atk, _win, AG_WINDOW_TYPE, 1);
-set_window_value(atk, _win, AG_WINDOW_LENGTH, 12);
+set_window_value(atk, _win, AG_WINDOW_LENGTH, 10);
 set_window_value(atk, _win, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(atk, _win, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(atk, _win, AG_WINDOW_HAS_WHIFFLAG, 2);

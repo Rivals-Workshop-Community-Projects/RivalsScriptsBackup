@@ -25,7 +25,7 @@ switch (cur_alt) {
     break;
     
     case 17: //monika
-    case 21: //gg!underfell
+    case 25: //gg!underfell
         set_character_color_shading(0, 0.8);
     break;
     

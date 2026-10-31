@@ -1,10 +1,12 @@
 //got_hit.gml
 
+/*
 fspecCharge = 0;
 fspecStored = false;
+*/
 
 if enemy_hitboxID.type == 1 with (hit_player_obj) {
-	sansKR = max(0, sansKR - other.enemy_hitboxID.damage);
+	sansKR = max(0, sansKR - ceil(other.enemy_hitboxID.damage/2));
 	if(sansKR == 0){
 		sansKR_timer = 0;
 		sansKR_player = noone;

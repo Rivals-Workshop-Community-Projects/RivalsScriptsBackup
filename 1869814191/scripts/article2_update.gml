@@ -80,21 +80,33 @@ switch(state) {
         with orig_player_id{
                 if other.charge >= other.charge_max{
                     set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, other.knock_growth_max);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, other.hit_growth_max);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, other.knock_angle_max);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 2);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_KARMA, 6);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 5);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_uair"));
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 304);
                 }
                 else if other.charge >= other.charge_mid{
                     set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, other.knock_growth_mid);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, other.hit_growth_mid);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, other.knock_angle_mid);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 0);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_KARMA, 3);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 0);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 302);
                 }
                 else{
                     set_hitbox_value(AT_NSPECIAL, 1, HG_KNOCKBACK_SCALING, other.knock_growth_min);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_HITPAUSE_SCALING, other.hit_growth_min);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_ANGLE, other.knock_angle_min);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_FORCE_FLINCH, 0);
                     set_hitbox_value(AT_NSPECIAL, 1, HG_KARMA, 0);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_EXTRA_HITPAUSE, 0);
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_HIT_SFX, asset_get("music_empty"));
+                    set_hitbox_value(AT_NSPECIAL, 1, HG_VISUAL_EFFECT, 301);
                 }
             }
         if (state_timer >= state_len[state]) {

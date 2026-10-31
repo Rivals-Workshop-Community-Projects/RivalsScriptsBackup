@@ -257,6 +257,11 @@ if ("practice" in self)
 						AddText("Jab can no longer hit through super armour");
 						AddText("");
 						AddText("NSpecial UI indicator bar speed halved (Does not affect gameplay)");
+						AddText("");
+						AddText("----------------------------------");
+						AddText("v1.9.1 - 19 Oct 2026");
+						AddText("");
+						AddText("Players can no longer tech while Ice Crystal frozen, which had caused them to be invulnerable.");
 						break;
 				}
 				DrawTutorialBlock();
