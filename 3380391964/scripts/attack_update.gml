@@ -65,6 +65,7 @@ if (attack == AT_DSPECIAL){
 				sound_play(sound_get("sfx-shellcharge1"), false, noone, 1, 1+(shelltimer/250));	
 			}
 			
+			
 			if (80 > shelltimer) { //Adding time to shell dash
 				shelltimer += 1;
 			}
@@ -108,6 +109,9 @@ if (attack == AT_DSPECIAL){
 			} else {
 				spawn_base_dust(x, y, "walk", spr_dir);		
 			}
+			
+			sound_stop(sound_get("sfx-shellspin"));	
+			sound_play(sound_get("sfx-shellspin"));	
 		}
 		
 		if shelltimer > 0 {
@@ -325,7 +329,7 @@ if (attack == AT_NSPECIAL) {
 	}
 	if window == 1 {
 		nspecialcharge = 0;	
-		if window_timer == 2 {
+		if window_timer == 1 {
 			sound_play(sound_get("sfx-shellcharge1"), false, noone, 1, .75);	
 		}
 	}
@@ -494,11 +498,7 @@ if (attack == AT_USPECIAL || attack == AT_USPECIAL_2) {
 		}
 	}
 	
-	if window == 2 {
-		if window_timer == 5 {
-			sound_play(sound_get("sfx-hammerthrow"));
-		}
-	}	
+
 	if (3 > window) and !(joy_pad_idle) {
 		if (spr_dir == -1 && right_down || spr_dir == 1 && left_down) {
 			set_hitbox_value(AT_USPECIAL, 1, HG_PROJECTILE_HSPEED, 1);

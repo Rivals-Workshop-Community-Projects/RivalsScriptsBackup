@@ -221,6 +221,9 @@ if (state == PS_CROUCH){
     	crouch_walk_timer += 1;
         hsp = crouch_walk_speed*crouchdir;
         off_edge = false;
+		if (crouch_walk_timer % 12 == 0){
+			spawn_base_dust(x, y, "walk", crouchdir);
+		}
     } else {
     	crouch_walking = false;
     	crouch_walk_timer = 0;
@@ -287,7 +290,7 @@ if (flashbang_detonate_timer >= flashbang_detonate_max){
 
 //glide toss
 if (state_timer >= 1 && state_timer <= 5 && (state == PS_ROLL_BACKWARD || state == PS_ROLL_FORWARD || state == PS_AIR_DODGE)) {
-	if (has_scrap && current_scrap.size == 0 && (is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY) || strong_pressed)) {
+	if (has_scrap && current_scrap.size == 0 && (is_attack_pressed(DIR_ANY) || is_strong_pressed(DIR_ANY) || strong_down)) {
 		if (is_attack_pressed(DIR_RIGHT) || is_strong_pressed(DIR_RIGHT)){
 			spr_dir = 1;
 		}

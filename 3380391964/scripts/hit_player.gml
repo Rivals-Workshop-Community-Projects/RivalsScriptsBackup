@@ -36,8 +36,13 @@ if (my_hitboxID.attack == AT_DAIR) {
 	move_cooldown[AT_DAIR] = 30;
 }
 
+
+if (my_hitboxID.attack == AT_FTILT) {
+	sound_play(sound_get("sfx-hammerhit"), false, noone, 1, 1);
+}
+
 if (my_hitboxID.attack == AT_USPECIAL) {
-	sound_play(sound_get("sfx-mariohit"));
+	sound_play(sound_get("sfx-hammerhit"));
 	my_hitboxID.hsp = 3*spr_dir;
 	my_hitboxID.grav = .45;
 	my_hitboxID.hittimer = 30;

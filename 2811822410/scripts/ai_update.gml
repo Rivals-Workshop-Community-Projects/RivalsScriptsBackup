@@ -1,6 +1,10 @@
 if (custom_clone) {
 	//command grab protection
 	soft_armor = 999;
+	//
+	if clone_die {
+		set_state(PS_IDLE_AIR);
+	}
 	//Inputs
 	if (!clone_owner.rune_sentience) {
 		reset_inputs();

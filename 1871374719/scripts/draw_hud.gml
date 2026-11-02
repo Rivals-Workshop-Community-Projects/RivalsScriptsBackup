@@ -1,85 +1,107 @@
 //draw_hud - the x position of your HUD element is 48*(i-1)
 
 // UStrong HUD Icon
-var temp_color = c_white;
-if (move_cooldown[AT_USTRONG] > 0) temp_color = c_gray;
+// var temp_color = c_white;
+// if (move_cooldown[AT_USTRONG] > 0) temp_color = c_gray;
 
-switch (ustrng)
+// switch (digup)
+// {
+// 	case 7:
+// 		draw_sprite_ext(sprite_get("ustrong_artifact_icon"), 0, temp_x+186, temp_y-20, 2, 2, 0, temp_color, 1);
+// 	break;
+// 	case 6:
+// 		draw_sprite_ext(sprite_get("ustrong_snow_icon"), 0, temp_x+186, temp_y-20, 2, 2, 0, temp_color, 1);
+// 	break;
+// 	default:
+// 		draw_sprite_ext(sprite_get("ustrong_bone_icon"), 0, temp_x+186, temp_y-20, 2, 2, 0, temp_color, 1);
+// }
+if knight_climb
 {
-	case 7:
-		draw_sprite_ext(sprite_get("ustrong_artifact_icon"), 0, temp_x+186, temp_y-20, 2, 2, 0, temp_color, 1);
-	break;
-	case 6:
-		draw_sprite_ext(sprite_get("ustrong_snow_icon"), 0, temp_x+186, temp_y-20, 2, 2, 0, temp_color, 1);
-	break;
-	default:
-		draw_sprite_ext(sprite_get("ustrong_bone_icon"), 0, temp_x+186, temp_y-20, 2, 2, 0, temp_color, 1);
+	if carfuel < 100 || move_cooldown[AT_FSPECIAL] > 0
+	{
+		draw_sprite_ext(sprite_get("chicken_climb_icon"), 0, temp_x+150, temp_y-26, 2, 2, 0, c_white, 1);
+	}
+	else
+	{
+		draw_sprite_ext(sprite_get("chicken_climb_icon"), 0, temp_x+180, temp_y-26, 2, 2, 0, c_white, 1);
+	}
+}
+if !chicken_climb
+{
+	if carfuel < 100 || move_cooldown[AT_FSPECIAL] > 0
+	{
+		draw_sprite_ext(sprite_get("chicken_climb_icon"), 0, temp_x+150, temp_y-26, 2, 2, 0, c_gray, 1);
+	}
+	else
+	{
+		draw_sprite_ext(sprite_get("chicken_climb_icon"), 0, temp_x+180, temp_y-26, 2, 2, 0, c_gray, 1);
+	}
 }
 
 
 // FSpecial HUD Icon
 if (carfuel <= 100 && carfuel >= 9 || move_cooldown[AT_FSPECIAL] > 0)
 {
-	draw_sprite_ext(sprite_get("fspecial_icon"), 0, temp_x+155, temp_y-22, 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sprite_get("fspecial_icon"), 0, temp_x+180, temp_y-22, 2, 2, 0, c_white, 1);
 }
 
 if ((carfuel >= 90 && carfuel <= 99) || (move_cooldown[AT_FSPECIAL] <= 4 && move_cooldown[AT_FSPECIAL] >= 1))
 {
-	draw_sprite_ext(sprite_get("fspecial_icon"), 1, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+	draw_sprite_ext(sprite_get("fspecial_icon"), 1, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 }
 else 
 {
 	if ((carfuel >= 80 && carfuel <= 89) || (move_cooldown[AT_FSPECIAL] <= 8 && move_cooldown[AT_FSPECIAL] >= 5))
 	{
-		draw_sprite_ext(sprite_get("fspecial_icon"), 2, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+		draw_sprite_ext(sprite_get("fspecial_icon"), 2, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 	}
 	else
 	{
 		if ((carfuel >= 70 && carfuel <= 79) || (move_cooldown[AT_FSPECIAL] <= 12 && move_cooldown[AT_FSPECIAL] >= 9))
 		{
-			draw_sprite_ext(sprite_get("fspecial_icon"), 3, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+			draw_sprite_ext(sprite_get("fspecial_icon"), 3, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 		}
 		else
 		{
 			if ((carfuel >= 60 && carfuel <= 69) || (move_cooldown[AT_FSPECIAL] <= 16 && move_cooldown[AT_FSPECIAL] >= 13))
 			{
-				draw_sprite_ext(sprite_get("fspecial_icon"), 4, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+				draw_sprite_ext(sprite_get("fspecial_icon"), 4, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 			}
 			else
 			{
 				if ((carfuel >= 50 && carfuel <= 59) || (move_cooldown[AT_FSPECIAL] <= 20 && move_cooldown[AT_FSPECIAL] >= 17))
 				{
-					draw_sprite_ext(sprite_get("fspecial_icon"), 5, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+					draw_sprite_ext(sprite_get("fspecial_icon"), 5, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 				}
 				else
 				{
 					if ((carfuel >= 40 && carfuel <= 49) || (move_cooldown[AT_FSPECIAL] <= 24 && move_cooldown[AT_FSPECIAL] >= 21))
 					{
-						draw_sprite_ext(sprite_get("fspecial_icon"), 6, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+						draw_sprite_ext(sprite_get("fspecial_icon"), 6, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 					}
 					else
 					{
 						if ((carfuel >= 30 && carfuel <= 39) || (move_cooldown[AT_FSPECIAL] <= 28 && move_cooldown[AT_FSPECIAL] >= 25))
 						{
-							draw_sprite_ext(sprite_get("fspecial_icon"), 7, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+							draw_sprite_ext(sprite_get("fspecial_icon"), 7, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 						}
 						else
 						{
 							if ((carfuel >= 20 && carfuel <= 29) || (move_cooldown[AT_FSPECIAL] <= 32 && move_cooldown[AT_FSPECIAL] >= 29))
 							{
-								draw_sprite_ext(sprite_get("fspecial_icon"), 8, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+								draw_sprite_ext(sprite_get("fspecial_icon"), 8, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 							}
 							else
 							{
 								if ((carfuel >= 10 && carfuel <= 19) || (move_cooldown[AT_FSPECIAL] <= 36 && move_cooldown[AT_FSPECIAL] >= 33))
 								{
-									draw_sprite_ext(sprite_get("fspecial_icon"), 9, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+									draw_sprite_ext(sprite_get("fspecial_icon"), 9, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 								}
 								else
 								{
 									if ((carfuel < 10) && (move_cooldown[AT_FSPECIAL] <= 40 && move_cooldown[AT_FSPECIAL] >= 37))
 									{
-										draw_sprite_ext(sprite_get("fspecial_icon"), 10, temp_x+155, temp_y-22, 2, 2, 0, c_gray, 1);
+										draw_sprite_ext(sprite_get("fspecial_icon"), 10, temp_x+180, temp_y-22, 2, 2, 0, c_gray, 1);
 									}
 								}
 							}
@@ -90,6 +112,8 @@ else
 		}
 	}
 }
+// You marvel at this masterpiece of coding and wonder...
+// how can something so beautiful be so shit
 
 
 //abyss gui code

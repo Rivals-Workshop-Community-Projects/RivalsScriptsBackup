@@ -16,11 +16,12 @@ if (attack == AT_USPECIAL)
 if (attack == AT_DATTACK)
 {
 	set_attack_value(AT_DATTACK, AG_OFF_LEDGE, 0);
+	window = 4;
 }
 
 if (attack == AT_FSTRONG)
 {
-	fstrparry = 1;
+	fstrong_parried = 1;
 }
 
 if (my_hitboxID.attack == AT_NSPECIAL)

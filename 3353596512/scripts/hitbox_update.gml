@@ -60,6 +60,9 @@ switch (attack){
             destroyed_next = true;
            }
     	if (hbox_num == 1){ //small scrap
+	    	if (vsp < 1 && vsp > -1) && (proj_scrap_id.name != "Whoopee cushion" && proj_scrap_id.name != "Soccer ball"){
+	    		through_platforms = 2;
+	    	}
     		if (proj_scrap_id.name != "Laser pointer"){
     			if (hitbox_timer % 4 == 0 && free){
     				proj_angle += -90*spr_dir;
@@ -206,7 +209,10 @@ switch (attack){
     			}
     	}
     	if (hbox_num == 2){
-    		 if (hitbox_timer % 8 == 0){
+	    	if (vsp < 1 && vsp > -1){
+	    		through_platforms = 2;
+	    	}
+			if (hitbox_timer % 8 == 0){
     			proj_angle += -90*spr_dir;
     		}
     		 switch (proj_scrap_id.name){

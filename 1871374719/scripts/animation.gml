@@ -12,10 +12,24 @@ switch (state){
 
 // Intro 
 if (state == PS_SPAWN) {
-
 		if (state_timer == 4)
 		{
-		sound_play(introsfx1);
+			switch (get_player_color(player))
+			{
+			case 10:
+				sound_play(introsfxretro);
+				break;
+			case 8:
+			case 12:
+				sound_play(introsfxknight);
+				break;
+			default:
+				sound_play(introsfx1);
+			}
+		}
+		if (state_timer == 50 && godmode == 1)
+		{
+			sound_play(introgodmode);
 		}
 		if (state_timer == 79)
 		{
@@ -36,7 +50,8 @@ if (state == PS_SPAWN) {
 
 
 // FSpecial Tilting
-if (attack == AT_FSPECIAL) && state == PS_ATTACK_AIR && (window == 3 || window == 4){
+if (state == PS_ATTACK_AIR && ((attack == AT_FSPECIAL && window <= 4) || attack == AT_DSPECIAL))
+{
     if (spr_dir == -1)
 	{
 		spr_angle = point_direction(0,-24,-vsp,-50)-90
@@ -46,10 +61,7 @@ if (attack == AT_FSPECIAL) && state == PS_ATTACK_AIR && (window == 3 || window =
 		spr_angle = point_direction(0,-24,vsp,-50)-90
 	}
 }
-if (attack == AT_FSPECIAL) && state == PS_ATTACK_GROUND{
-		spr_angle = 0;
-}
-if (attack != AT_FSPECIAL)
+if ((attack != AT_FSPECIAL && attack != AT_DSPECIAL) || state == PS_ATTACK_GROUND)
 {
 	spr_angle = 0;
 }

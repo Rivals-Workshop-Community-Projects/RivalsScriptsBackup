@@ -1,4 +1,14 @@
 // CSS Draw
+sound_stop(asset_get("mfx_change_color"));
+
+if (!css_sleep_timer)
+{
+	draw_sprite_ext(sprite_get("charselect_sleep"), get_gameplay_time() / 32, x + 8, y + 8, 2, 2, 0, c_white, 1);
+}
+else
+{
+	draw_sprite_ext(sprite_get("charselect"), get_gameplay_time() / 8, x + 8, y + 8, 2, 2, 0, c_white, 1);
+}
 
 // Bark when loaded
 if (get_color_profile_slot_r(0, 0) == 255)
@@ -8,13 +18,13 @@ if (get_color_profile_slot_r(0, 0) == 255)
 }
 
 // Rainbow
-if (get_player_color(player) = 11)
+if (get_player_color(player) == 13)
 {
 	hue+=.5 if hue>255 hue-=255;
 	color_rgb = make_color_rgb(210, 50, 150);
 	hue2 = (color_get_hue(color_rgb)+hue) mod 255;
 	color_hsv = make_color_hsv(hue2, color_get_saturation(color_rgb), color_get_value(color_rgb)); 
-	set_color_profile_slot(11, 0, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
+	set_color_profile_slot(13, 0, color_get_red(color_hsv), color_get_green(color_hsv), color_get_blue(color_hsv));
 }
 else
 {
@@ -23,88 +33,124 @@ else
 init_shader();
 
 
-
-var temp_x = x + 8;
-var temp_y = y + 9;
- 
-patch_ver = "10.5";
-//patch_day = "30";
-//patch_month = "MAY";
- 
-var num_alts = 12;
-var alt_cur = get_player_color(player);
- 
-alt_name[0]  = "Default";
-alt_name[1]  = "Patience";
-alt_name[2]  = "Determination";
-alt_name[3]  = "Kindness";
-alt_name[4]  = "Integrity";
-alt_name[5]  = "Perseverance";
-alt_name[6]  = "Justice";
-alt_name[7]  = "Bravery";
-alt_name[8]  = "Abyss";
-alt_name[9]  = "Early Access";
-alt_name[10] = "Glass";
-alt_name[11] = "Hopes & Dreams";
-//alt_name[12] = "bluh";
-//alt_name[13] = "bluh";
-//alt_name[14] = "bluh";
-//alt_name[15] = "bluh";
- 
- 
-//Patch
- 
-draw_set_halign(fa_left);
- 
-textDraw(temp_x + 2, temp_y + 32, "fName", c_white, 0, 1000, 1, true, 1, "VER. " + patch_ver);
-//textDraw(temp_x + 2, temp_y + 142, "medFont", c_white, 0, 1000, 1, true, 1, "" + patch_ver);
- 
-//textDraw(temp_x + 2, temp_y + 50, "fName", c_white, 0, 1000, 1, true, 1, patch_day + " " + patch_month);
- 
-
 // Abyss
-if (alt_cur == 8)
-{
-  draw_sprite_ext(sprite_get("cssicons"), 1, temp_x + 168, temp_y + 101, 1, 1, 0, c_white, 1);
-}
-// Early Access
 if (alt_cur == 9)
 {
-  draw_sprite_ext(sprite_get("cssicons"), 3, temp_x + 168, temp_y + 101, 1, 1, 0, c_white, 1);
+  draw_sprite_ext(sprite_get("cssicons"), 1, x + 176, y + 108, 1, 1, 0, c_white, 1);
 }
-// Special
-if (alt_cur == 10 || alt_cur == 11)
-{
-  draw_sprite_ext(sprite_get("cssicons"), 2, temp_x + 168, temp_y + 101, 1, 1, 0, c_white, 1);
-}
-// Fixes the meter being transparent with the glass alt.
+// Early Access
 if (alt_cur == 10)
 {
-  draw_sprite_ext(sprite_get("cssfix"), 2, temp_x + 2, temp_y + 135, 1, 1, 0, c_white, 1);
+  draw_sprite_ext(sprite_get("cssicons"), 3, x + 176, y + 108, 1, 1, 0, c_white, 1);
+}
+// Special
+if (alt_cur == 11 || alt_cur == 12 || alt_cur == 13)
+{
+  draw_sprite_ext(sprite_get("cssicons"), 2, x + 176, y + 108, 1, 1, 0, c_white, 1);
 }
  
-//Alt
- 
-rectDraw(temp_x, temp_y + 135, temp_x + 201, temp_y + 142, c_black);
- 
-for(i = 0; i < num_alts; i++){
-	
-    var draw_color = (i == alt_cur) ? c_white : c_gray;
-    var draw_x = temp_x + 2 + 10 * i;
-    rectDraw(draw_x, temp_y + 137, draw_x + 7, temp_y + 140, draw_color);
-}
- 
-draw_set_halign(fa_left);
- 
-//include alt. name
-//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1) + ": " + alt_name[alt_cur]);
-textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, alt_name[alt_cur]);
+// css_draw
+// Checks if the seventh slot of the first skins blue shade is 255 (it is),
+// then plays the noise and sets the colour to 256. 256 rounds down to 255
+// in game automatically so there is no penalty to alts for using this method.
 
-//exclude alt. name
-//textDraw(temp_x + 2, temp_y + 124, "fName", c_white, 0, 1000, 1, true, 1, "Alt. " + (alt_cur < 9 ? "0" : "") + string(alt_cur + 1));
- 
- 
- 
+/*
+    SupersonicNK's css_draw.gml
+    
+    please don't take this without permission!
+    you can ask me if you want to use it.
+    discord: Supersonic#9999
+*/
+if ("css_hovered" not in self) return;
+cpu_hover_draw(); 
+
+var is_defined_alt = alt_cur < array_length(alts)
+if is_defined_alt {
+		var alt_really_cur = get_player_color(player)
+		var is_still_defined_alt = alt_really_cur < array_length(alts)
+		var icon_count = array_length(alts[alt_really_cur][2])
+		var icon_arr = alts[alt_really_cur][2]
+		var icon_spr = sprite_get("css_icons")
+		var w = sprite_get_width(icon_spr)*2
+		var dist = w
+		if slide_timer < 20 {
+			dist = ease_backOut(4, w, slide_timer, 20, 1);
+		} else if slide_timer < 100 {
+			dist = w
+		} else {
+			dist = ease_sineInOut(w, 4, slide_timer-100, 20);
+		}
+		for (var i = 0; i < icon_count; i++) {
+			var _x = floor(dist * (i+1-icon_count))
+			
+			draw_sprite_ext(icon_spr, icon_arr[i], x+202-w+_x, y+108, 2, 2, 0, -1, 1)
+		}
+}
+if slide_timer < 120 { 
+    draw_set_font(asset_get("fName")) //ensure correct font for text length measurement
+    var text = (css_hovered ? `#${alt_cur+1}: ` : "") + (alt_cur < array_length(alts) ? alts[alt_cur][0] : "undefined; add another alt");
+    var max_s = max(80,string_width(text)+20);
+    var char_max = 40;
+    if slide_timer < 20 {
+        slide_pos = ease_backOut(0,max_s,slide_timer,20,1);   
+        text_pos = slide_pos;    
+        char_pos = ease_circOut(10,char_max,slide_timer,20);  
+    } else if slide_timer < 100 { 
+        slide_pos = lerp(slide_pos,max_s,0.5);  
+        if abs(max_s-slide_pos) < 1 slide_pos = max_s; 
+        text_pos = max_s;
+        char_pos = lerp(char_pos,char_max,0.5);  
+        if abs(80-char_pos) < 1 char_pos = 80; 
+    } else {
+        slide_pos = ease_sineIn(max_s,0,slide_timer-100,20); 
+        text_pos = slide_pos;
+        char_pos = ease_sineIn(char_max,10,slide_timer-100,20);  
+    }
+    var cssline_spr = sprite_get("css_line");
+    var offs_y = 140;
+    var offs_x = 10;
+
+    	shader_end();
+    	//draw_line_color(x-xoffs+offs_x,y-40+offs_y,x-xoffs+offs_x-dist_from_side,y-40+offs_y,c_red,c_red)
+    maskHeader();
+        draw_rectangle_color(x+8,y+8,x+210,y+171, c_lime,c_lime,c_lime,c_lime,false)
+    maskMidder();
+    	
+        draw_sprite_ext(cssline_spr,0,x+offs_x,y+offs_y,(1/sprite_get_width(cssline_spr))*slide_pos,2,0,__dclr,1);
+        draw_sprite_ext(cssline_spr,1,x+offs_x+slide_pos,y+offs_y,2,2,0,__dclr,1);
+        draw_set_alpha(text_pos/max_s);
+        draw_debug_text(floor(x)+offs_x+floor(text_pos/max_s*6),floor(y)+offs_y-8,text);
+        draw_set_alpha(1);
+        
+    maskFooter();
+    
+}
+
+if array_length(__soup_alt_directives[@ alt_cur]) > 0 {
+	draw_sprite_ext(sprite_get("alt_swap_button"),alt_directive_hovering_button ? 1+(alt_directive_button_timer>0) : 0, x+alt_directive_button_pos[0], y+alt_directive_button_pos[1], 2, 2, 0, -1, 1);
+}
+
+#define maskHeader
+
+gpu_set_blendenable(false);
+gpu_set_colorwriteenable(false,false,false,true);
+draw_set_alpha(0);
+draw_rectangle_color(0,0, room_width, room_height, c_white, c_white, c_white, c_white, false);
+draw_set_alpha(1);
+
+#define maskMidder
+
+gpu_set_blendenable(true);
+gpu_set_colorwriteenable(true,true,true,true);
+gpu_set_blendmode_ext(bm_dest_alpha,bm_inv_dest_alpha);
+gpu_set_alphatestenable(true);
+
+#define maskFooter
+
+gpu_set_alphatestenable(false);
+gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);
+
 #define textDraw(x, y, font, color, lineb, linew, scale, outline, alpha, string)
  
 draw_set_font(asset_get(argument[2]));
@@ -126,3 +172,14 @@ return string_width_ext(argument[9], argument[4], argument[5]);
 #define rectDraw(x1, y1, x2, y2, color)
  
 draw_rectangle_color(argument[0], argument[1], argument[2], argument[3], argument[4], argument[4], argument[4], argument[4], false);
+
+#define cpu_hover_draw()
+if (cpu_hover_time > 0) {
+    var prog = min(cpu_hover_time/10, 1);
+    var colprog = min(cpu_color_swap_time/5, 1);
+    var col = merge_color(cpuh_prev_color, cpuh_new_color, colprog);
+    draw_sprite_ext(cpu_hover_sprite, 0, x - 4, y - 6, 2, 2, 0, col, prog);
+    draw_set_alpha(prog);
+    draw_debug_text(plate_bounds[2]-17, plate_bounds[3]+1, `P${cpu_hovering_player}`);
+    draw_set_alpha(1);
+}
