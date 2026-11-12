@@ -40,7 +40,7 @@ set_window_value(AT_FSPECIAL, 6, AG_WINDOW_LENGTH, 24);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_FSPECIAL, 6, AG_WINDOW_ANIM_FRAME_START, 8);
 
-set_num_hitboxes(AT_FSPECIAL, 1);
+/*set_num_hitboxes(AT_FSPECIAL, 1);
 
 // Uncharged Hit
 set_hitbox_value(AT_FSPECIAL, 1, HG_HITBOX_TYPE, 1);

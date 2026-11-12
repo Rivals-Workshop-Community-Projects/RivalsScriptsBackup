@@ -43,15 +43,14 @@ switch(attack){
                 }
             break;
             case 2:
-                if(window_timer >= 3 && has_hit && !hitpause && !was_parried) can_jump = true;
             case 3:
                 if (window == 2 && window_timer == window_length || window == 3) {
                     hsp = glide_speed * spr_dir;
                     vsp = glide_fall_speed;
                 }
                 if (window == 3) {
-                    //can_attack = true;
-                    if(!was_parried) can_jump = true;
+                    can_attack = true;
+                     can_jump = true;
                     if (!special_down) {
                         window_timer = window_length;
                     }
@@ -67,7 +66,8 @@ switch(attack){
 
             break;
             case 4:
-                if(!was_parried) can_jump = true;
+                can_attack = true;
+                can_jump = true;
             break;
             case 6:
                 if (window_timer == window_length - 1) {

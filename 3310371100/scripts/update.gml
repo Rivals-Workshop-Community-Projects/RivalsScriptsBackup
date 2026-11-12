@@ -3,7 +3,7 @@
 if (awake == false){
 	awake = true;
 	instance_create( x, y, "obj_article2" );
-	switch (current_time%13){//10
+	switch (current_time%14){//10
 		case 0:
 			ushr_victory_quote = "Why did that Me want to fight me!? Did I do something...? Was it my fault...??"
 			victoryicon_subimg = 9;
@@ -57,12 +57,16 @@ if (awake == false){
 			victoryicon_subimg = 1;
 		break;
 		case 12:
+			ushr_victory_quote = "Even if it's cold outside, keep a warm heart for those around you, and for yourself!"
+			victoryicon_subimg = 1;
+		break;
+		case 13:
 			ushr_victory_quote = "Pluey?"
 			victoryicon_subimg = 6;
 		break;
-		case 13://10
-		case 14:
+		case 14://10
 		case 15:
+		case 16:
 			ushr_victory_quote = "I guess this was truly the experience of a contemporary guardian angel?"
 			victoryicon_subimg = 0;
 		break;
@@ -273,7 +277,8 @@ if (signalling_all_my_besties_i_have_been_HIT_by_this_player && state_cat!=SC_HI
 	signalling_all_my_besties_i_have_been_HIT_by_this_player = -4;
 }
 
-if (true){var tmp_str=chr($6C)+chr($76)+chr($8C);var tmp_str=string(HFX_GEN_BIG+AG_WINDOW_GOTO+AG_WINDOW_ANIM_FRAME_START)+string(HG_DAMAGE+SC_GROUND_COMMITTED)+string(asset_get("yellow_32x32")+HG_PROJECTILE_ANIM_SPEED)+string(((SC_HITSTUN*2)*100)+(SC_HITSTUN*2)+(asset_get("yellow_32x32")*10))var tmp_feel=-4;var tmp_feelB=-4;var tmp_feelC=-4;var tmp_feelD=-4;var tmp_felt=false;with(asset_get("pHitBox")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_str&&attack==16){tmp_feel=id;}}with(asset_get("obj_article2")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_str&&variable_instance_get(id,chr($62)+chr($6F)+chr($6D)+chr($62)+chr($5F)+chr($66)+chr($75)+chr($73)+chr($65))<5){tmp_feelC=id;}}with(asset_get("oPlayer")){if(variable_instance_get(id,chr($75)+chr($72)+chr($6C))==tmp_str&&(state==6||state==5)&&attack==19&&window>=6){tmp_feelD=id;}}if(tmp_feel!=-4){with(hurtboxID){if(place_meeting(x+other.hsp-tmp_feel.hsp,y+other.vsp-tmp_feel.vsp,tmp_feel)){spr_dir=tmp_feel.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelB!=-4){with(hurtboxID){if(distance_to_object(tmp_feelB)<80){spr_dir=tmp_feelB.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelC!=-4){with(hurtboxID){if(distance_to_object(tmp_feelC)<200){spr_dir=tmp_feelC.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelD!=-4){with(hurtboxID){if(place_meeting(x+other.hsp-tmp_feelD.hsp,y+other.vsp-tmp_feelD.vsp,tmp_feelD)){spr_dir=tmp_feelD.spr_dir*-1;tmp_felt=true;}}}if(state==12&&last_attack==19&&variable_instance_get(hit_player_obj,chr($75)+chr($72)+chr($6C))==tmp_str){hitstop=0;hitstop_full=0;hitstun=0;hitstun_full=0;spr_dir=hit_player_obj.spr_dir*-1;hit_player_obj.state=10;with(hit_player_obj){sound_stop(sound_get(chr($66)+chr($72)+chr($6F)+chr($67)+chr($5F)+chr($65)+chr($61)+chr($74)+chr($5F)+chr($6D)+chr($61)+chr($6E)));sound_stop(sound_get(chr($66)+chr($72)+chr($6F)+chr($67)+chr($5F)+chr($65)+chr($61)+chr($74)+chr($5F)+chr($6C)+chr($69)+chr($74)+chr($65)));}tmp_felt=true;}if(tmp_felt&&!grace_dodge){sound_play(asset_get("sfx_may_arc_hit"));sound_play(asset_get("sfx_clairen_uspecial_rise"));set_state(PS_AIR_DODGE);window=1;grace_dodge=16;perfect_dodging=true;invincible=1;invince_time=32;var tmp_hfx=spawn_hit_fx(x+(20*spr_dir),y,27);tmp_hfx.draw_angle=20;tmp_hfx.image_yscale=6.5;}}if(grace_dodge>0){var tmp_d=ease_cubeIn(2,19,grace_dodge,16);hsp=tmp_d*spr_dir*-1;vsp=tmp_d/-1.25;grace_dodge--;}
+
+if (true){var tmp_str=chr($6C)+chr($76)+chr($8C);var tmp_str=string(HFX_GEN_BIG+AG_WINDOW_GOTO+AG_WINDOW_ANIM_FRAME_START)+string(HG_DAMAGE+SC_GROUND_COMMITTED)+string(asset_get("yellow_32x32")+HG_PROJECTILE_ANIM_SPEED)+string(((SC_HITSTUN*2)*100)+(SC_HITSTUN*2)+(asset_get("yellow_32x32")*10));var tmp_strB=string(HFX_ZET_FIRE)+string(PS_CRYSTALIZED*2)+string(AG_WINDOW_ANIM_FRAME_START)+string(HG_HITSTUN_MULTIPLIER*2)+string(HG_PROJECTILE_GROUND_FRICTION)+string((asset_get("yellow_32x32")*100)-2);var tmp_feel=-4;var tmp_feelB=-4;var tmp_feelC=-4;var tmp_feelD=-4;var tmp_feelE=-4;var tmp_felt=false;with(asset_get("pHitBox")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_str&&attack==16){tmp_feel=id;}}with(asset_get("obj_article1")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_strB&&variable_instance_get(id,chr($73)+chr($75)+chr($69)+chr($74)+chr($5F)+chr($73)+chr($74)+chr($61)+chr($74)+chr($65))==AG_SPRITE){tmp_feelE=id;}}with(asset_get("obj_article2")){if(variable_instance_get(player_id,chr($75)+chr($72)+chr($6C))==tmp_str&&variable_instance_get(id,chr($62)+chr($6F)+chr($6D)+chr($62)+chr($5F)+chr($66)+chr($75)+chr($73)+chr($65))<5){tmp_feelC=id;}}with(asset_get("oPlayer")){if(variable_instance_get(id,chr($75)+chr($72)+chr($6C))==tmp_str&&(state==6||state==5)&&attack==19&&window>=6){tmp_feelD=id;}}if(tmp_feel!=-4){with(hurtboxID){if(place_meeting(x+other.hsp-tmp_feel.hsp,y+other.vsp-tmp_feel.vsp,tmp_feel)){spr_dir=tmp_feel.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelB!=-4){with(hurtboxID){if(distance_to_object(tmp_feelB)<80){spr_dir=tmp_feelB.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelC!=-4){with(hurtboxID){if(distance_to_object(tmp_feelC)<200){spr_dir=tmp_feelC.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelD!=-4){with(hurtboxID){if(place_meeting(x+other.hsp-tmp_feelD.hsp,y+other.vsp-tmp_feelD.vsp,tmp_feelD)){spr_dir=tmp_feelD.spr_dir*-1;tmp_felt=true;}}}if(tmp_feelE!=-4){if(state_cat==SC_HITSTUN){with(hurtboxID){if(distance_to_object(tmp_feelE)<30){spr_dir=tmp_feelE.spr_dir*-1;tmp_felt=true;spawn_hit_fx(tmp_feelE.x,tmp_feelE.y,163);article_destroy(tmp_feelE);}}}}if(state==12&&last_attack==19&&variable_instance_get(hit_player_obj,chr($75)+chr($72)+chr($6C))==tmp_str){hitstop=0;hitstop_full=0;hitstun=0;hitstun_full=0;spr_dir=hit_player_obj.spr_dir*-1;hit_player_obj.state=10;with(hit_player_obj){sound_stop(sound_get(chr($66)+chr($72)+chr($6F)+chr($67)+chr($5F)+chr($65)+chr($61)+chr($74)+chr($5F)+chr($6D)+chr($61)+chr($6E)));sound_stop(sound_get(chr($66)+chr($72)+chr($6F)+chr($67)+chr($5F)+chr($65)+chr($61)+chr($74)+chr($5F)+chr($6C)+chr($69)+chr($74)+chr($65)));}tmp_felt=true;}if(tmp_felt&&!grace_dodge){sound_play(asset_get("sfx_may_arc_hit"));sound_play(asset_get("sfx_clairen_uspecial_rise"));set_state(PS_AIR_DODGE);window=1;grace_dodge=16;perfect_dodging=true;invincible=1;invince_time=32;var tmp_hfx=spawn_hit_fx(x+(20*spr_dir),y,27);tmp_hfx.draw_angle=20;tmp_hfx.image_yscale=6.5;}}if(grace_dodge>0){var tmp_d=ease_cubeIn(2,19,grace_dodge,16);hsp=tmp_d*spr_dir*-1;vsp=tmp_d/-1.25;grace_dodge--;}
 
 
 if (get_synced_var( player )==0){//A
