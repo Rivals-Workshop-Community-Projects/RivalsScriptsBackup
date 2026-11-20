@@ -5,7 +5,7 @@ if attack == AT_USPECIAL {
 }
 
 with (asset_get("pHitBox")) {
-	if (player_id == other.id && (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2) {
+	if (player_id == other.id && (attack == AT_DSPECIAL || attack == AT_DSPECIAL_2)) {
         destroyed = true;
     }
 }

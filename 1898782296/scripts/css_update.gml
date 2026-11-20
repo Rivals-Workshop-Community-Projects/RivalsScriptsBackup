@@ -14,8 +14,13 @@ if get_synced_var(player) > 1 {
 
 var voice_button_index = voice_button*3;
 
-cursor_x = get_instance_x(cursor_id);
-cursor_y = get_instance_y(cursor_id);
+if (instance_exists(cursor_id)){
+	cursor_x = get_instance_x(cursor_id);
+	cursor_y = get_instance_y(cursor_id);
+} else{
+    cursor_y = 0;
+    cursor_x = 0;
+}
 
 if (cursor_x > voice_button_pos[0] && cursor_x < voice_button_pos[2] && cursor_y > voice_button_pos[1] && cursor_y < voice_button_pos[3] && !instance_exists(oTestPlayer))
 {
@@ -64,8 +69,13 @@ if (is_cpu) {
         //suppress_cursor = true;
         var c = cs[@cpu_hovering_player]
         cursor_id = c;
+		if (instance_exists(c)){
         var cx = get_instance_x(c),
             cy = get_instance_y(c);
+		} else{
+		var cx = 0,
+            cy = 0;
+		}
         if (cpu_hover_time < 10) cpu_hover_time++;
         if (cpu_color_swap_time < 5) cpu_color_swap_time++;
         if (cx != clamp(cx, pb[0],pb[2]) || cy != clamp(cy, pb[1],pb[3])) {
@@ -98,8 +108,13 @@ var pb = plate_bounds, cs = cursors;
 suppress_cursor = true;
 for (var i = 1; i <= 4; i++) {
     var c = cs[@i];
-    var cx = get_instance_x(c);
-    var cy = get_instance_y(c);
+    if (instance_exists(c)){
+    	var cx = get_instance_x(c);
+    	var cy = get_instance_y(c);
+    } else{
+    	var cx = 0;
+    	var cy = 0;
+    }
     if cx == clamp(cx, pb[@0], pb[@2]) && cy == clamp(cy, pb[@1], pb[@3]) {
         return i;
     } 

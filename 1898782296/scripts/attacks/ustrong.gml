@@ -42,13 +42,14 @@ set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAMES, 6);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_ANIM_FRAME_START, 10)
 set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_USTRONG, 5, AG_WINDOW_SFX, sound_get("shrink"));
+set_window_value(AT_USTRONG, 5, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 //Endlag
 set_window_value(AT_USTRONG, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_USTRONG, 6, AG_WINDOW_ANIM_FRAME_START, 16);
-set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 12);
+set_window_value(AT_USTRONG, 6, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_USTRONG,3);
 

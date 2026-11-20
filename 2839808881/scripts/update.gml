@@ -249,7 +249,7 @@ switch(state){
 		}
 		if (state_timer == 10
 		|| state_timer == 35){
-			sound_play(sound_get("sfx_step"));
+			sound_play(sound_get("sfx_step"),false,noone,0.4);
 		}
     break;
     case PS_DASH:
@@ -263,9 +263,17 @@ switch(state){
 		}
 		if (state_timer == 10
 		|| state_timer == 30){
-			sound_play(sound_get("sfx_step"));
+			sound_play(sound_get("sfx_step"),false,noone,0.3);
 		}
     break;
+	case PS_AIR_DODGE:
+		sound_stop(jump_sound);
+		sound_stop(sound_get("sfx_doublejump_1"));
+		sound_stop(sound_get("sfx_doublejump_2"));
+	break;
+	case PS_WAVELAND:
+		sound_stop(air_dodge_sound);
+	break;
 }
 
 if (state == PS_DOUBLE_JUMP && state_timer == 0) {
@@ -273,6 +281,12 @@ if (state == PS_DOUBLE_JUMP && state_timer == 0) {
 		spr_dir = -1;
 	} else if (right_down || (right_pressed && !left_down)) {
 		spr_dir = 1;
+	}
+}
+
+if (djump_sound == djump_sound_2){
+	if (djumps == 0){
+		djump_sound = djump_sound_1;
 	}
 }
 

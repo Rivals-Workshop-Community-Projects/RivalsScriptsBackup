@@ -16,8 +16,13 @@ if get_synced_var(player) > 2 {
 
 var voice_button_index = voice_button*3;
 
-cursor_x = get_instance_x(cursor_id);
-cursor_y = get_instance_y(cursor_id);
+if (instance_exists(cursor_id)){
+	cursor_x = get_instance_x(cursor_id);
+	cursor_y = get_instance_y(cursor_id);
+} else{
+	cursor_x = 0;
+	cursor_y = 0;
+}
 
 if (cursor_x > voice_button_pos[0] && cursor_x < voice_button_pos[2] && cursor_y > voice_button_pos[1] && cursor_y < voice_button_pos[3] && !instance_exists(oTestPlayer))
 {
@@ -54,8 +59,13 @@ var tmp_y = [0, 0, 0, 0, 0];
 with(asset_get("cs_playercursor_obj")){
     tmp_cur = (!tmp_i[0])?0:(!tmp_i[1])?1:(!tmp_i[2])?2:(!tmp_i[3])?3:4
     tmp_i[tmp_cur] = 1
+    if (instance_exists(self) == true){
     tmp_x[tmp_cur] = get_instance_x( self )
     tmp_y[tmp_cur] = get_instance_y( self )
+    } else{
+    	tmp_x[tmp_cur] = 0
+    	tmp_y[tmp_cur] = 0
+    }
 }
 var tmp_pt = abs(player-5)-1
 var temp_x = x + 8;

@@ -10,7 +10,8 @@ set_attack_value(AT_USPECIAL, AG_HURTBOX_SPRITE, sprite_get("uspecial_hurt"));
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_LENGTH, 14);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_USPECIAL, 1, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_absa_whip_charge"));
+//set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_absa_whip_charge"));
+set_window_value(AT_USPECIAL, 1, AG_WINDOW_SFX, asset_get("sfx_ell_nair"));
 
 // charge
 set_window_value(AT_USPECIAL, 2, AG_WINDOW_LENGTH, 12);

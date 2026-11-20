@@ -228,7 +228,7 @@ if(state_cat != SC_HITSTUN)
 	if(attack == AT_TAUNT or attack == AT_TAUNT_2){
 		if(state_timer >= 120){
 			unpress_actions();
-			win_taunt = false;
+			win_taunt = true;
 			press_taunt(false)
 		}
 	}
@@ -256,7 +256,9 @@ var try_parry = false
 		}
 		if((abs(ai_target.x - x + ai_target.hsp) <= 90) and (abs(ai_target.y - y + ai_target.vsp) <= 90)){
 	        if(((ai_target.state == PS_ATTACK_AIR or ai_target.state == PS_ATTACK_GROUND))){
-	        	try_parry = true;
+	        	if(!ai_target.was_parried){
+	        		try_parry = true;
+	        	}
 	        }
 		}
 	//}
@@ -1112,7 +1114,7 @@ tap_current_vertical_direction()
 /// @param do_buffer=false
 /// press_taunt(press, do_buffer = false)
 var press = argument[0];
-var do_buffer = argument_count > 1 ? argument[1] : false;
+var do_buffer; if (argument_count > 1) do_buffer = argument[1]; else do_buffer = false;
 {
 taunt_down = press
 taunt_pressed = press
@@ -1123,7 +1125,7 @@ taunt_counter = press && do_buffer ? 0 : 7
 /// @param do_buffer=false
 /// press_attack(press, do_buffer = false)
 var press = argument[0];
-var do_buffer = argument_count > 1 ? argument[1] : false;
+var do_buffer; if (argument_count > 1) do_buffer = argument[1]; else do_buffer = false;
 {
 	attack_down = press
 	attack_pressed = press
@@ -1134,7 +1136,7 @@ var do_buffer = argument_count > 1 ? argument[1] : false;
 /// @param do_buffer=false
 /// press_special(press, do_buffer = false)
 var press = argument[0];
-var do_buffer = argument_count > 1 ? argument[1] : false;
+var do_buffer; if (argument_count > 1) do_buffer = argument[1]; else do_buffer = false;
 {
 special_pressed = press
 special_down = press
@@ -1169,7 +1171,7 @@ special_counter = press && do_buffer ? 0 : 7
 /// @param do_buffer=false
 /// press_parry(press, do_buffer = false)
 var press = argument[0];
-var do_buffer = argument_count > 1 ? argument[1] : false;
+var do_buffer; if (argument_count > 1) do_buffer = argument[1]; else do_buffer = false;
 {
 	shield_pressed = press
 	shield_down = press

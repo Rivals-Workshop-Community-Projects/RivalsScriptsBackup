@@ -1,4 +1,6 @@
 //draw_hud.gml
+if (variable_instance_exists(id, "TCG_Kirby_Copy")){//variable exist check wrap
+
 if(TCG_Kirby_Copy != -1){
 draw_sprite_ext(sprite_get("hud_abilities"), TCG_Kirby_Copy, temp_x - 4, temp_y - 40, 2, 2, 0,c_white, 1);
 } else {
@@ -53,6 +55,8 @@ if (get_match_setting(SET_PRACTICE)){
 	draw_debug_text(temp_x+70,temp_y-32," Hold Up + Taunt to")
 	draw_debug_text(temp_x+70,temp_y-16,"select a Copy Ability!")
 }
+
+}//variable exist check wrap
 
 /*
 draw_debug_text(temp_x,temp_y,"these numbers are for debugging.")

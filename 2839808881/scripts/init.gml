@@ -164,12 +164,14 @@ set_victory_bg(sprite_get("victory_background")); // victory_background.png
 set_victory_theme(sound_get("victory")); // victory_theme.ogg
 
 // Movement SFX
-land_sound          = sound_get("sfx_land");
+land_sound          = sound_get("sfx_land_2");
 landing_lag_sound   = sound_get("sfx_landinglag");
-waveland_sound      = sound_get("sfx_waveland"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
-jump_sound          = sound_get("sfx_jump");
-djump_sound         = sound_get("sfx_doublejump");
-air_dodge_sound     = sound_get("sfx_airdodge");
+waveland_sound      = sound_get("sfx_waveland_2"); // recommended to try out all 14 base cast wavedash sfx (see sfx page in roa manual)
+jump_sound          = sound_get("sfx_jump_2");
+djump_sound         = sound_get("sfx_doublejump_1"); //to be replaced by the two below
+djump_sound_1       = sound_get("sfx_doublejump_1");
+djump_sound_2       = sound_get("sfx_doublejump_2");
+air_dodge_sound     = sound_get("sfx_airdodge_2");
 
 // Visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
@@ -207,6 +209,8 @@ jet_used_again = false;
 
 //jab
 times_through = 0;
+jab_sound = -4;
+
 //nspec Credit to SchmelixSlobDev
 kirby_nspec_swallowed_yet = false;
 nspec_charge = 0;
@@ -235,6 +239,20 @@ enemy = noone;
 //nspecial sound
 inhale_sound = sound_get("inhale_loop");
 inhale_sound_timer = 0;
+
+//fspecial sound
+wheel_sound = -4;
+
+//uspecial sound
+jet_sound = -4;
+jet_sound_status = -1;
+jet_sound_vol_time = 0;
+jet_sound_vol_time_max = 80;
+jet_sound_vol_max = 0.5;
+jet_sound_vol_min = 0.2;
+
+//dspecial sound
+stone_sound = -4;
 
 nspec_grabbed = false;
 grab_timer = 0;

@@ -18,10 +18,14 @@ if (attack == AT_COPY_ICE && (state == PS_HITSTUN || state == PS_HITSTUN_LAND)){
 if (attack == AT_COPY_SPARK && (state == PS_HITSTUN || state == PS_HITSTUN_LAND)){
 	sound_stop(sound_get("sfx_krdl_spark"));
 }
+sound_stop(jet_sound);
 
 sound_stop(sound_get("sfx_charge"));
 
-sound_stop(sound_get("inhale"));
+//sound_stop(sound_get("inhale"));
+sound_stop(inhale_sound);
+sound_stop(wheel_sound);
+sound_stop(jet_sound);
 
 move_cooldown[AT_FSPECIAL] = 0;
 move_cooldown[AT_USPECIAL] = 0;

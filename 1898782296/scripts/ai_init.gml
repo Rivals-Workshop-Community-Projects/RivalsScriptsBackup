@@ -111,7 +111,7 @@ ai_threat_range_proj_arr = [0,0,0,0,0]
 saved_mf_angle = 0;
 
 //Support for taunting after taking stocks
-win_taunt = false;
+win_taunt = true;
 
 strategy = 0;
 strategy_timer = 0;

@@ -87,6 +87,9 @@ if(platform_type = 0){//Magic Carpet
 			hsp = (_next_x - x);
 			vsp = (_next_y - y);
 		//}
+		if(place_meeting(x, y-2, player_id)){
+			player_id.on_autobomb = true;
+		}
 	} else {
 		instance_destroy();
 		exit;

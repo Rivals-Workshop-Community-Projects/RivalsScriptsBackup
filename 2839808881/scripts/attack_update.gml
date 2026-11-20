@@ -48,8 +48,11 @@ switch(attack){
 		}
 		
 		if (window == 8 && !hitpause){
-			if (window_timer == 3 || window_timer == 6 || window_timer == 9 || window_timer == 12){
-				sound_play(asset_get("sfx_swipe_weak1"));
+			//if (window_timer == 3 || window_timer == 6 || window_timer == 9 || window_timer == 12){
+			if (window_timer == 4 || window_timer == 8 || window_timer == 12){
+				//sound_play(asset_get("sfx_swipe_weak1"));
+				sound_stop(jab_sound);
+				jab_sound = sound_play(sound_get("sfx_jabloop"));
 			}
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 				if (times_through == 0 || attack_down){
@@ -85,7 +88,8 @@ switch(attack){
 	case AT_DTILT:
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 			spawn_base_dust( x + (10 * spr_dir), y, "dattack", spr_dir);
-			sound_play(sound_get("sfx_kfl_slide"));
+			//sound_play(sound_get("sfx_kfl_slide"));
+			sound_play(sound_get("sfx_kfl_slide_short"));
 			//spawn_hit_fx(x,y,fx_dust_cloud);
 		}
 		if (window > 1 && has_hit && !hitpause && slideRune){
@@ -204,13 +208,18 @@ switch(attack){
 		}
 		break;
 	case AT_NSPECIAL:
-		if(window != 2){
-			sound_stop(sound_get("inhale"));
-			sound_stop(sound_get("inhale_loop"));
+		if(window != 2 && window != 1){
+			//sound_stop(sound_get("inhale"));
+			//sound_stop(sound_get("inhale_loop"));
+			sound_stop(inhale_sound);
 		}
 		switch(window){
 			case 1:
-				inhale_sound_timer = 0;
+				inhale_sound_timer++;
+				if (window_timer == 1){
+					inhale_sound_timer = 0;
+					inhale_sound = sound_play(sound_get("inhale"));
+				}
 				kirby_nspec_swallowed_yet = false;
 			break;
 			
@@ -220,9 +229,9 @@ switch(attack){
 					inhale_sound_timer++;
 				}
 				if(inhale_sound_timer <= 125){//>
-					if(inhale_sound_timer == 1){
-						inhale_sound = sound_play(sound_get("inhale"));
-					}
+					//if(inhale_sound_timer == 1){
+					//	inhale_sound = sound_play(sound_get("inhale"));
+					//}
 				}
 				if(inhale_sound_timer > 125){
 					if(inhale_sound_timer % 9.5 == 0){
@@ -315,7 +324,17 @@ switch(attack){
 				sound_play(sound_get("hurt"));
 				destroy_hitboxes()
              }
-
+		
+		if (window == 1 && window_timer == 8){
+			wheel_sound = sound_play(sound_get("sfx_wheel_start_2"));
+		}
+		if ((window == 6||window == 8) && window_timer == 7){
+			sound_stop(wheel_sound);
+		}
+		if (window == 7 && window_timer == 1){
+			sound_stop(wheel_sound);
+		}
+		
 		if (window == 1 && window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)) {
 		   var hbox = create_hitbox( AT_FSPECIAL, 1, x, y);
 		   spawn_base_dust( x + (18 * spr_dir), y, "dattack", spr_dir);
@@ -507,6 +526,9 @@ switch(attack){
 			} else {
 				jet_charge_count = 0;
 			}
+			if ((window_timer+4)%5==0){
+				sound_play(sound_get("JET_REAL_CHARGE_1"),false);
+			}
 		}
 		
 		if (window == 2){
@@ -576,7 +598,11 @@ switch(attack){
 				//transition into flight window if special is not held
 				window = 3;
 				window_timer = 0;
-				sound_play(sound_get("sfx_kssu_jet_boost"));
+				if (jet_charge_count==4){
+					sound_play(sound_get("sfx_kssu_jet_boost_3"));
+				}else{
+					sound_play(sound_get("sfx_kssu_jet_boost_2"));
+				}
 				sprite_change_offset("uspecial", 90, 62);
 				if(!free){
 					y -= 30;
@@ -597,15 +623,18 @@ switch(attack){
 					if (jet_charge_count != 4){
 						jet_charge_count++;
 						if (jet_charge_count == 1){
-							sound_play(sound_get("sfx_kssu_jet_chargeup"));
+							//sound_play(sound_get("sfx_kssu_jet_chargeup"));
+							//sound_play(sound_get("sfx_charge_mid"),false,noone,0.3,0.75);
 							var chargeVFX = spawn_hit_fx(x-(16*spr_dir), y - 20, uspec_charge);
 							chargeVFX.depth = depth + 1;
 						} else if (jet_charge_count == 2){
-							sound_play(sound_get("sfx_kssu_jet_med_charge"));
+							//sound_play(sound_get("sfx_kssu_jet_med_charge"));
+							//sound_play(sound_get("sfx_charge_mid"),false,noone,0.3,1);
 							var chargeVFX = spawn_hit_fx(x-(16*spr_dir), y - 20, uspec_charge);
 							chargeVFX.depth = depth + 1;
 						} else if (jet_charge_count == 4){
-							sound_play(sound_get("sfx_kssu_jet_full_charge"));
+							//sound_play(sound_get("sfx_kssu_jet_full_charge"));
+							//sound_play(sound_get("sfx_charge_max"),false,noone,0.3);
 							var chargeVFX = spawn_hit_fx(x-(16*spr_dir), y - 20, uspec_charge);
 							chargeVFX.depth = depth + 1;
 						}
@@ -624,7 +653,39 @@ switch(attack){
 						}
 					}
 				}
+				
+				//SOUNDS
+				switch (jet_charge_count){
+					
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+						if (jet_sound_status != 0 && jet_sound_status != 1 && jet_sound_status != 2 && jet_sound_status != 3){
+							sound_stop(jet_sound);
+							jet_sound = sound_play(sound_get("JET_REAL_CHARGE_2"),false);
+						}
+					break;
+					
+					case 4:
+						if (jet_sound_status != 4){
+							//sound_stop(jet_sound);
+							jet_sound = sound_play(sound_get("JET_REAL_CHARGE_3"),true,noone,jet_sound_vol_max);
+						}
+						var tmp_vol = ease_quadIn( jet_sound_vol_max*100, jet_sound_vol_min*100, jet_sound_vol_time, jet_sound_vol_time_max )/100;
+						sound_volume( jet_sound, tmp_vol, 1 );
+						if (jet_sound_vol_time < jet_sound_vol_time_max){
+							jet_sound_vol_time++;
+						}
+					break;
+					
+					default: break;
+				}
+				jet_sound_status = jet_charge_count;
+				//SOUNDS
+				
 				if (shield_pressed){
+					sound_stop(jet_sound);
 					jet_charge_stored = true;
 					window = 6;
 					window_timer = 0;
@@ -635,6 +696,7 @@ switch(attack){
 		
 		//flying
 		if (window == 3){
+			sound_stop(jet_sound);
 			//0: no dir: just forward.
 			//1: up
 			//2: up + right
@@ -889,7 +951,7 @@ switch(attack){
 		}
 		if (window == 1) {
 			if (window_timer == 1){
-				sound_play(sound_get("sfx_krdl_stone_form"));
+				stone_sound = sound_play(sound_get("sfx_krdl_stone_form"));
 			}
 			if (window_timer == 13){
 				sound_play(asset_get("sfx_charge_blade_swing"));
@@ -925,7 +987,7 @@ switch(attack){
 				if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 					spawn_hit_fx(x,y-10,193);
 					
-					sound_play(sound_get("sfx_krdl_stone_exit"));
+					sound_play(sound_get("sfx_krdl_stone_exit"),false,noone,0.7);
 				}
 			}
 		}
@@ -939,6 +1001,7 @@ switch(attack){
 				destroy_hitboxes();
 				set_attack_value(AT_DSPECIAL_AIR, AG_NUM_WINDOWS, 5);
 				//sound_play(asset_get("sfx_zetter_downb"))
+				sound_stop(stone_sound);
 				sound_play(sound_get("sfx_krdl_stone_land"));
 				if (stonevar == 2){
 					if (!has_hit){
@@ -982,7 +1045,7 @@ switch(attack){
 			if (window_timer == get_window_value(attack, window, AG_WINDOW_LENGTH)){
 				spawn_hit_fx(x,y-10,193);
 				
-				sound_play(sound_get("sfx_krdl_stone_exit"));
+				sound_play(sound_get("sfx_krdl_stone_exit"),false,noone,0.7);
 				if(stonevar == 9){
 					sound_stop(sound_get("walterwhite"));
 				}
@@ -998,7 +1061,7 @@ switch(attack){
 		if (window == 1) {
 			if window_timer == 4 {
 				//sound_play(sound_get("sfx_hammerswing_m"))
-				sound_play(sound_get("sfx_krdl_stone_form"));
+				sound_play(sound_get("sfx_krdl_stone_form"),false,noone,0.7);
 			}
 			if window_timer == 30 {
 				sound_play(sound_get("sfx_krdl_hammer_flip_swipe"), false, noone, 0.6, .9);
@@ -1023,7 +1086,7 @@ switch(attack){
 		}
 		
 		if window == 3 && window_timer == 2 {
-			sound_play(sound_get("sfx_krdl_stone_exit"));
+			sound_play(sound_get("sfx_krdl_stone_exit"),false,noone,0.6);
 		}
 	}
 	case AT_TAUNT: {

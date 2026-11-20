@@ -41,6 +41,11 @@ if (attack == AT_TAUNT){
 	}
 }
 
+if (attack == AT_USPECIAL){
+	jet_sound_status = -1;
+	jet_sound_vol_time = 0;
+}
+
 if attack == AT_DSPECIAL_AIR {
     //stonevar = random_func( 0, stoneamt, true)
     stonecheck = random_func( 0, 101, true);

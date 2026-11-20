@@ -1,8 +1,13 @@
 //css init
 voice_button = 0;
 
-cursor_x = get_instance_x(cursor_id);
-cursor_y = get_instance_y(cursor_id);
+if (instance_exists(cursor_id)){
+    cursor_x = get_instance_x(cursor_id);
+    cursor_y = get_instance_y(cursor_id);
+} else{
+    cursor_x = 0;
+    cursor_y = 0;
+}
 
 voice_button_x = 180
 voice_button_y = 44
@@ -10,13 +15,13 @@ voice_button_y = 44
 //voice_button_index_draw = 0;
 
 //save data
-synced_vars = [voice_button];
-if (get_synced_var(player) != 0 && !init)
-{
-    for (var i = 0; i < 3; i++) synced_vars[i] = (get_synced_var(player) >> (i * 4)) & 0xf;
-    voice_button = synced_vars[0];
+var current_sync = get_synced_var(player);
+if (current_sync != 0) {
+    voice_button = current_sync & 15;         // Reads the first 4 bits (0-15)
+    //feathers_button = (current_sync >> 4) & 15;  // Reads the next 4 bits
+} else {
+    set_synced_var(player, 0);
 }
-else set_synced_var(player, 0);
 
 //cpu css toggle helper (by supersonic)
 cpu_hover_init();

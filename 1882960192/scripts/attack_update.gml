@@ -741,6 +741,23 @@ if 	(attack == AT_EXTRA_2 && window == 2 && window_timer == 6 ||
 	sound_play(asset_get("sfx_absa_kickhit"));
 }
 
+if 	(attack == AT_DAIR && !hitpause) {
+
+	if window == 2 || window == 3 || window == 4 {
+		if window == 2 && (window_timer == 3) {
+			sound_play(asset_get("sfx_swipe_medium2"));
+		}
+		if  (window == 3 && (window_timer == 3)) {
+			sound_stop(asset_get("sfx_ell_drill_loop"));
+			sound_play(asset_get("sfx_ell_drill_loop"));
+		}
+		if  (window == 4 && (window_timer == 3 || window_timer == 7)) {
+			sound_stop(asset_get("sfx_ell_drill_loop"));
+			sound_play(asset_get("sfx_ell_drill_loop"));
+		}
+	}
+}
+
 //codec
 if (attack == AT_TAUNT_2) {
     if (window == 4) {
